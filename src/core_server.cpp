@@ -95,20 +95,25 @@ void    Core_Server::start_server()
     }
     int fd_c;
     struct timespec *timeout = NULL;
-    struct kevent events[1];
-    struct kevent evv;
+    // struct kevent evv;
+    struct kevent events[1000];
     while (1)
     {
         // std::cout << "here";
-        int nevents = kevent(kq,NULL,0,&events[0],1,timeout);
+        int nevents = kevent(kq,NULL,0,events,1000,NULL);
         if (nevents < 0)
         {
             std::cout << "errPor"<<std::endl;
             break ;
         }
-        if (events != nullptr && nevents > 0)
+        else if (nevents == 0)
         {
-            std::cout << "entered";
+            std::cout << "no clients yet" << std::endl;
+            continue;
+        }
+        else if (events != nullptr && nevents > 0)
+        {
+            // std::cout << "entered";
              for (int i = 0;i< nevents;i++)
              {
                  if (events[i].filter == EVFILT_READ)
@@ -117,17 +122,26 @@ void    Core_Server::start_server()
                      if (fd_c < 0)
                         std::cout << "failure connencting client" << std::endl;
                     else
-                        std::cout << "client accepted";
-                 }
-             }
-        }
-        else
-        {
-            std::cout << "error keeping server" << std::endl;
-            break ;
-        }
-        // usleep(10000);
-    }
+                    {
+                        std::cout << "client accepted FD:" << fd_c << std::endl;
+                        // exit (0);
+                    }
+                EV_SET(&ev,_socket,EVFILT_READ , EV_ADD | EV_ENABLE,0,0,NULL);
+                if (kevent(kq,&ev,1,NULL,0,NULL) < 0)
+                {
+                    std::cout << "error"<<std::endl;
+                    exit (1);
+                }
+                             }
+                         }
+                    }
+                    else
+                    {
+                        std::cout << "error keeping server" << std::endl;
+                        break ;
+                    }
+                    // usleep(10000);
+                }
     // EV_SET(&events[0],_socket,EVFILT_WRITE , EV_ADD | EV_CLEAR,0,0,NULL);
     // if (events[0].filter == EVFILT_READ)
     // {
