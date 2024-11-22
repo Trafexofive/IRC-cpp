@@ -47,30 +47,30 @@ void    Core_Server::start_listening()
     std::cout << "start listening on port:"<< port << "..." << std::endl;
     // std::cout << "here";
 }
-void Core_Server::handle_clients()
-{
-    int kq;
-    struct kevent kev;
-    int client_fd;
+// void Core_Server::handle_clients()
+// {
+//     int kq;
+//     struct kevent kev;
+//     int client_fd;
 
-    std::cout << "here";
-    kq = kqueue();
-    EV_SET(&kev,_socket,EVFILT_READ,EV_ADD | EV_ENABLE,0,0,0);
-    kevent(kq,&kev,1,NULL,0,NULL);
-    while (1)
-    {
-        struct kevent *event;
-        int nevent = kevent(kq,NULL,0,event,1,NULL);
-        for(int i = 0;i < nevent;i++)
-        {
-            if (event[i].filter == EVFILT_READ)
-            {
-                client_fd = accept(_socket,NULL,NULL);
-                std::cout << "client client fd accepted" << std::endl;
-            }
-        }
-    }
-}
+//     std::cout << "here";
+//     kq = kqueue();
+//     EV_SET(&kev,_socket,EVFILT_READ,EV_ADD | EV_ENABLE,0,0,0);
+//     kevent(kq,&kev,1,NULL,0,NULL);
+//     while (1)
+//     {
+//         struct kevent *event;
+//         int nevent = kevent(kq,NULL,0,event,1,NULL);
+//         for(int i = 0;i < nevent;i++)
+//         {
+//             if (event[i].filter == EVFILT_READ)
+//             {
+//                 client_fd = accept(_socket,NULL,NULL);
+//                 std::cout << "client client fd accepted" << std::endl;
+//             }
+//         }
+//     }
+// }
 
 void    Core_Server::start_server()
 {
@@ -78,21 +78,25 @@ void    Core_Server::start_server()
     bind_sock();
     start_listening();
     // std::cout << "here" ;
-    int kq = kqueue();
-    if (kq < 0)
+    _kq = kqueue();
+    if (_kq < 0)
     {
         std::cout << "error";
         exit (1);
     }
     // int client_fd;
     // std::cout << "here";
-    struct kevent ev;
-    EV_SET(&ev,_socket,EVFILT_READ , EV_ADD | EV_ENABLE,0,0,NULL);
-    if (kevent(kq,&ev,1,NULL,0,NULL) < 0)
+    // struct kevent ev;
+    EV_SET(&_ev_set,_socket,EVFILT_READ , EV_ADD | EV_ENABLE,0,0,NULL);
+    if (kevent(_kq,&_ev_set,1,NULL,0,NULL) < 0)
     {
         std::cout << "error"<<std::endl;
         exit (1);
     }
+    handle_clients();
+}
+void    Core_Server::handle_clients()
+{
     int fd_c;
     struct timespec *timeout = NULL;
     // struct kevent evv;
@@ -100,7 +104,7 @@ void    Core_Server::start_server()
     while (1)
     {
         // std::cout << "here";
-        int nevents = kevent(kq,NULL,0,events,1000,NULL);
+        int nevents = kevent(_kq,NULL,0,events,1000,NULL);
         if (nevents < 0)
         {
             std::cout << "error"<<std::endl;
@@ -116,8 +120,8 @@ void    Core_Server::start_server()
             // std::cout << "entered";
              for (int i = 0;i< nevents;i++)
              {
-                 if (events[i].filter == EVFILT_READ)
-                 {
+                if (events[i].filter == EVFILT_READ)
+                {
                     if (events[i].ident == _socket)
                     {
                         fd_c = accept(_socket,NULL,NULL);
@@ -128,39 +132,31 @@ void    Core_Server::start_server()
                             std::cout << "client accepted FD:" << fd_c << std::endl;
                             // exit (0);
                         }
-                        EV_SET(&ev,_socket,EVFILT_READ , EV_ADD | EV_ENABLE,0,0,NULL);
-                        if (kevent(kq,&ev,1,NULL,0,NULL) < 0)
+                        EV_SET(&_ev_set,_socket,EVFILT_READ , EV_ADD | EV_ENABLE,0,0,NULL);
+                        if (kevent(_kq,&_ev_set,1,NULL,0,NULL) < 0)
                         {
                             std::cout << "error"<<std::endl;
                             exit (1);
                         }
                         struct sockaddr_in client_addr;
-                    socklen_t client_len = sizeof(client_addr);
-                    getpeername(fd_c, (struct sockaddr*)&client_addr, &client_len);
+                        socklen_t client_len = sizeof(client_addr);
+                        getpeername(fd_c, (struct sockaddr*)&client_addr, &client_len);
+                        clients[fd_c] = _client(fd_c,client_addr);
 
-                    // Print client IP address and port
-                    char host[NI_MAXHOST];
-                    char service[NI_MAXSERV];
-                    getnameinfo((struct sockaddr*)&client_addr, sizeof(client_addr), host, NI_MAXHOST, service, NI_MAXSERV, NI_NUMERICHOST | NI_NUMERICSERV);
-                    std::cout << "Client IP: " << host << ", Service: " << service << std::endl;
+                        // Print client IP address and port
+                        char host[NI_MAXHOST];
+                        char service[NI_MAXSERV];
+                        getnameinfo((struct sockaddr*)&clients[fd_c].get_info(), sizeof(client_addr), host, NI_MAXHOST, service, NI_MAXSERV, NI_NUMERICHOST | NI_NUMERICSERV);
+                        std::cout << "Client IP: " << host << ", Service: " << service << std::endl;
                     }
                     else
                     {
-                        char buff[1024];
-                        std::cout << "entered";
-                        size_t readed = read(events[i].ident,buff,1024);
-                        if (readed <= 0)
-                        {
-                            std::cout << "closing fd connection" << events[i].ident << std::endl;
-                            close (events[i].ident);
-                        }
-                        else
-                        {
-                            std::cout << "data received" << std::string (buff,readed) << std::endl;
-                            // write (events[i].ident,buff,readed);
-                        }
-                    }
-                    
+                        handle_read_events();
+                    }   
+                }
+                else if (events[i].flags & EV_EOF)
+                {
+                    std::cout << "close _connection from " << clients[]
                 }
             }
                     }
@@ -178,5 +174,6 @@ void    Core_Server::start_server()
     //     std::cout << "client accepted" << std::endl;
     // }
 
-    close (kq);
+    close (_kq);
+
 }

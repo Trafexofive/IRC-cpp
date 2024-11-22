@@ -6,7 +6,7 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 04:43:58 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/11/22 21:17:13 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/11/22 22:48:34 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,21 @@ also there is special clients wich are the operators
 */
 
 
-class client
+class _client
 {
     private :
-        // int fd_client;
+        int fd_client;
         std::string ip_addr;
         std::string fullname;
         std::string nickname;
         std::string password;
         struct sockaddr_in client_infos;
     public :
+    _client()
+    {}
+    _client (int fd, struct sockaddr_in ddr) : fd_client(fd),client_infos(ddr)
+    {    
+    }
         int get_fd();
         void    set_fd(int fd);
         std::string get_ip();
@@ -61,21 +66,34 @@ class client
         std::string    get_nick();
         void    set_pass(std::string ip);
         std::string    get_pass();
+        struct sockaddr_in &get_info()
+        {
+            return client_infos;
+        }
+        void    set_info(struct sockaddr_in info)
+        {
+            client_infos = info;
+        }
 };
 
 class Core_Server
 {
     private:
         std::string ip_addr;
+        int _kq;
+        struct kevent _ev_set;
         int port;
         int _socket;
         int epoll_fd;
+        std::map<int , _client> clients;
         struct sockaddr_in _server_addr;
         void    create_socket();
         void    non_blocking_sock();
         void    bind_sock();
         void    start_listening();
         void    handle_clients();
+        void    handle_read_events();
+        void    handle_write_events();
     public:
     Core_Server (std::string ip,int _port): ip_addr(ip) ,port(_port)  {}
     // ~Core_Server ();
