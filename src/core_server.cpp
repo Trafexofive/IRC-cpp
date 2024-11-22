@@ -103,7 +103,7 @@ void    Core_Server::start_server()
         int nevents = kevent(kq,NULL,0,events,1000,NULL);
         if (nevents < 0)
         {
-            std::cout << "errPor"<<std::endl;
+            std::cout << "error"<<std::endl;
             break ;
         }
         else if (nevents == 0)
@@ -118,22 +118,51 @@ void    Core_Server::start_server()
              {
                  if (events[i].filter == EVFILT_READ)
                  {
-                     fd_c = accept(_socket,NULL,NULL);
-                     if (fd_c < 0)
-                        std::cout << "failure connencting client" << std::endl;
+                    if (events[i].ident == _socket)
+                    {
+                        fd_c = accept(_socket,NULL,NULL);
+                         if (fd_c < 0)
+                            std::cout << "failure connencting client" << std::endl;
+                        else
+                        {
+                            std::cout << "client accepted FD:" << fd_c << std::endl;
+                            // exit (0);
+                        }
+                        EV_SET(&ev,_socket,EVFILT_READ , EV_ADD | EV_ENABLE,0,0,NULL);
+                        if (kevent(kq,&ev,1,NULL,0,NULL) < 0)
+                        {
+                            std::cout << "error"<<std::endl;
+                            exit (1);
+                        }
+                        struct sockaddr_in client_addr;
+                    socklen_t client_len = sizeof(client_addr);
+                    getpeername(fd_c, (struct sockaddr*)&client_addr, &client_len);
+
+                    // Print client IP address and port
+                    char host[NI_MAXHOST];
+                    char service[NI_MAXSERV];
+                    getnameinfo((struct sockaddr*)&client_addr, sizeof(client_addr), host, NI_MAXHOST, service, NI_MAXSERV, NI_NUMERICHOST | NI_NUMERICSERV);
+                    std::cout << "Client IP: " << host << ", Service: " << service << std::endl;
+                    }
                     else
                     {
-                        std::cout << "client accepted FD:" << fd_c << std::endl;
-                        // exit (0);
+                        char buff[1024];
+                        std::cout << "entered";
+                        size_t readed = read(events[i].ident,buff,1024);
+                        if (readed <= 0)
+                        {
+                            std::cout << "closing fd connection" << events[i].ident << std::endl;
+                            close (events[i].ident);
+                        }
+                        else
+                        {
+                            std::cout << "data received" << std::string (buff,readed) << std::endl;
+                            // write (events[i].ident,buff,readed);
+                        }
                     }
-                EV_SET(&ev,_socket,EVFILT_READ , EV_ADD | EV_ENABLE,0,0,NULL);
-                if (kevent(kq,&ev,1,NULL,0,NULL) < 0)
-                {
-                    std::cout << "error"<<std::endl;
-                    exit (1);
+                    
                 }
-                             }
-                         }
+            }
                     }
                     else
                     {
@@ -142,11 +171,12 @@ void    Core_Server::start_server()
                     }
                     // usleep(10000);
                 }
+                // std::cout << fd_c << std::endl;
     // EV_SET(&events[0],_socket,EVFILT_WRITE , EV_ADD | EV_CLEAR,0,0,NULL);
     // if (events[0].filter == EVFILT_READ)
     // {
     //     std::cout << "client accepted" << std::endl;
     // }
 
-    // close (kq);
+    close (kq);
 }

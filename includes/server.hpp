@@ -6,7 +6,7 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 04:43:58 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/11/22 16:14:51 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/11/22 21:17:13 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@
 #include<string>
 #include<map>
 #include<vector>
+#include <netdb.h> 
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include<sys/socket.h>
 #include <iostream>
 // #include <sys/epoll.h>
 #include <fcntl.h>
@@ -38,6 +40,28 @@ also there is special clients wich are the operators
 
 */
 
+
+class client
+{
+    private :
+        // int fd_client;
+        std::string ip_addr;
+        std::string fullname;
+        std::string nickname;
+        std::string password;
+        struct sockaddr_in client_infos;
+    public :
+        int get_fd();
+        void    set_fd(int fd);
+        std::string get_ip();
+        void    set_ip(std::string ip);
+        void    set_user(std::string ip);
+        std::string    get_user();
+        void    set_nick(std::string ip);
+        std::string    get_nick();
+        void    set_pass(std::string ip);
+        std::string    get_pass();
+};
 
 class Core_Server
 {

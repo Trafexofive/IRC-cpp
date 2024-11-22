@@ -6,7 +6,7 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 05:18:50 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/11/22 16:14:07 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/11/22 20:37:00 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 // }
 int main ()
 {
-    Core_Server _server("hello",8000);
+    Core_Server _server("hello",6667);
 
     _server.start_server();
 
