@@ -6,7 +6,7 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 04:43:58 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/11/22 22:48:34 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/11/23 02:23:00 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ class _client
         std::string fullname;
         std::string nickname;
         std::string password;
+        std::string buff;
         struct sockaddr_in client_infos;
     public :
     _client()
@@ -56,16 +57,54 @@ class _client
     _client (int fd, struct sockaddr_in ddr) : fd_client(fd),client_infos(ddr)
     {    
     }
-        int get_fd();
-        void    set_fd(int fd);
-        std::string get_ip();
-        void    set_ip(std::string ip);
-        void    set_user(std::string ip);
-        std::string    get_user();
-        void    set_nick(std::string ip);
-        std::string    get_nick();
-        void    set_pass(std::string ip);
-        std::string    get_pass();
+        int get_fd()
+        {
+            return fd_client;
+        }
+        void    set_fd(int fd)
+        {
+            fd_client = fd;
+        }
+        std::string get_ip()
+        {
+            return ip_addr;
+        }
+        void    set_ip(std::string ip)
+        {
+            ip_addr = ip;
+        }
+        void    set_user(std::string ip)
+        {
+            fullname = ip;
+        }
+        std::string    get_user()
+        {
+            return fullname;
+        }
+        void    set_nick(std::string ip)
+        {
+            nickname = ip;
+        }
+        std::string    get_nick()
+        {
+            return nickname;
+        }
+        void    set_pass(std::string ip)
+        {
+            password = ip;
+        }
+        std::string    get_pass()
+        {
+            return password;
+        }
+        std::string get_buff()
+        {
+            return buff;
+        }
+        void    set_buff(std::string _buff)
+        {
+            buff += _buff;
+        }
         struct sockaddr_in &get_info()
         {
             return client_infos;
