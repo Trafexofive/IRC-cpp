@@ -163,27 +163,7 @@ void    Core_Server::handle_clients()
                         //     exit (1);
                         // }
                     // std::cout << "hello";
-                    char buffer[1024];
-                    int readed = read(events[i].ident,buffer,1024);
-                    if (readed <= 0)
-                    {
-                    EV_SET(&_ev_set,events[i].ident ,EVFILT_READ , EV_DELETE ,0,0,NULL);
-                        std::cout << "closing connection FD:" << events[i].ident << std::endl;
-                        close(events[i].ident);
-                        clients.erase(events[i].ident);
-                        // continue;
-                    }
-                    else 
-                    {
-                    buffer[readed] = 0;
-                    std::string _buff(buffer);
-                    // std::cout << "lol" <<_buff;
-                    clients[events[i].ident].set_buff(_buff);
-                    std::cout << clients[events[i].ident].get_buff() << std::endl;
-                    EV_SET(&_ev_set,events[i].ident,EVFILT_WRITE,EV_ADD | EV_ENABLE,0,0,NULL);
-                    kevent(_kq,&_ev_set,1,NULL,0,NULL);
-
-                    }
+                handle_read_events(events[i].ident);
                 }
                 else if (events[i].flags & EV_EOF)
                 {
@@ -200,22 +180,7 @@ void    Core_Server::handle_clients()
                     // EV_SET(&_ev_set,events[i].ident ,EVFILT_WRITE , EV_ADD | EV_ENABLE,0,0,NULL);
                     // kevent(_kq,&_ev_set,1,NULL,0,NULL);
                     // EV_SET(&_ev_set,events[i].ident,EVFILT_WRITE,EV_ENABLE | EV_ADD ,0,0,NULL);
-                    std::string response = " welcome to my server \r\n";
-                    size_t k = write (events[i].ident,response.c_str(),response.length());
-                        EV_SET(&_ev_set,events[i].ident ,EVFILT_READ ,EV_ENABLE,0,0,NULL);
-                        kevent(_kq,&_ev_set,1,NULL,0,NULL);
-                    // int k;
-                    if (k < 0)
-                    {
-                        std::cout << "close _connection from " << events[i].ident << std::endl;
-                        close(events[i].ident);
-                        clients.erase(events[i].ident);
-                        // EV_SET(&_ev_set,events[i].ident ,EVFILT_WRITE , EV_DELETE ,0,0,NULL);
-                        // kevent(_kq,&_ev_set,1,NULL,0,NULL);
-                        // continue;
-                    }
-                        EV_SET(&_ev_set,events[i].ident ,EVFILT_WRITE , EV_DELETE ,0,0,NULL);
-                        kevent(_kq,&_ev_set,1,NULL,0,NULL);
+                    handle_write_events(events[i].ident);
                     // else
                     // {
                     // }

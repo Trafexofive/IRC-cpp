@@ -6,7 +6,7 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 04:43:58 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/11/23 05:33:04 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/11/23 08:30:19 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,15 @@ class _client
         }
         void    set_buff(std::string _buff)
         {
+            if (_buff.find("\r\n") && buff.empty())
+            {
+                buff = _buff;
+                return ;
+            }
+            else if (_buff.find("\r\n"))
             buff += _buff;
+            if (_buff.find("\r\n"))
+                return ;
         }
         struct sockaddr_in &get_info()
         {
@@ -140,8 +148,48 @@ class Core_Server
         void    bind_sock();
         void    start_listening();
         void    handle_clients();
-        void    handle_read_events();
-        void    handle_write_events();
+        void    handle_read_events(int fd)
+        {
+         char buffer[1024];
+         int readed = read(fd,buffer,1024);
+         if (readed <= 0)
+         {
+         EV_SET(&_ev_set,fd ,EVFILT_READ , EV_DELETE ,0,0,NULL);
+             std::cout << "closing connection FD:" << fd << std::endl;
+             close(fd);
+             clients.erase(fd);
+             // continue;
+         }
+         else 
+         {
+         buffer[readed] = 0;
+         std::string _buff(buffer);
+         // std::cout << "lol" <<_buff;
+         clients[fd].set_buff(_buff);
+         
+         EV_SET(&_ev_set,fd,EVFILT_WRITE,EV_ADD | EV_ENABLE,0,0,NULL);
+         kevent(_kq,&_ev_set,1,NULL,0,NULL);
+         }
+        }
+        void    handle_write_events(int fd)
+        {
+            std::string response = " welcome to my server \r\n";
+           size_t k = write (fd,response.c_str(),response.length());
+           EV_SET(&_ev_set,fd ,EVFILT_READ ,EV_ENABLE,0,0,NULL);
+           kevent(_kq,&_ev_set,1,NULL,0,NULL);
+           // int k;
+           if (k < 0)
+           {
+               std::cout << "close _connection from " << fd << std::endl;
+               close(fd);
+               clients.erase(fd);
+               // EV_SET(&_ev_set,fd ,EVFILT_WRITE , EV_DELETE ,0,0,NULL);
+               // kevent(_kq,&_ev_set,1,NULL,0,NULL);
+               // continue;
+           }
+               EV_SET(&_ev_set,fd ,EVFILT_WRITE , EV_DELETE ,0,0,NULL);
+                        kevent(_kq,&_ev_set,1,NULL,0,NULL);
+        }
     public:
     Core_Server (std::string ip,int _port): ip_addr(ip) ,port(_port)  {}
     // ~Core_Server ();
