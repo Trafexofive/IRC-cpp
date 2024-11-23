@@ -6,7 +6,7 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 04:43:58 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/11/23 02:23:00 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/11/23 05:33:04 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ class _client
 {
     private :
         int fd_client;
+        bool auth;
         std::string ip_addr;
         std::string fullname;
         std::string nickname;
@@ -54,6 +55,14 @@ class _client
     public :
     _client()
     {}
+    bool get_bool()
+    {
+        return auth;
+    }
+    void    set_bool(bool i)
+    {
+        auth = i;
+    }
     _client (int fd, struct sockaddr_in ddr) : fd_client(fd),client_infos(ddr)
     {    
     }

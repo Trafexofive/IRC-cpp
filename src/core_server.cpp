@@ -146,15 +146,12 @@ void    Core_Server::handle_clients()
                     char service[NI_MAXSERV];
                     getnameinfo((struct sockaddr*)&clients[fd_c].get_info(), sizeof(client_addr), host, NI_MAXHOST, service, NI_MAXSERV, NI_NUMERICHOST | NI_NUMERICSERV);
                     std::cout << "Client IP: " << host << ", Service: " << service << std::endl;
-                    // EV_SET(&_ev_set,_socket,EVFILT_WRITE , EV_ADD | EV_ENABLE,0,0,NULL);
-                    // if (kevent(_kq,&_ev_set,1,NULL,0,NULL) < 0)
-                    // {
-                    //     std::cout << "error"<<std::endl;
-                    //     exit (1);
-                    // }
-                    //  send(events[i].ident,"welcome to my server      \r\n",23,0);
+                    clients[fd_c].set_bool(false);
+                    EV_SET(&_ev_set,fd_c,EVFILT_WRITE,EV_ADD | EV_ENABLE,0,0,NULL);
+                    kevent(_kq,&_ev_set,1,NULL,0,NULL);
+                    
                 }
-                if (events[i].filter == EVFILT_READ && events[i].ident != _socket)
+                else if (events[i].filter == EVFILT_READ && events[i].ident != _socket)
                 {
                    
                     // else if ()
@@ -168,9 +165,11 @@ void    Core_Server::handle_clients()
                     // std::cout << "hello";
                     char buffer[1024];
                     int readed = read(events[i].ident,buffer,1024);
-                    if (readed < 0)
+                    if (readed <= 0)
                     {
-                        std::cout << "cannot read" << std::endl;
+                    EV_SET(&_ev_set,events[i].ident ,EVFILT_READ , EV_DELETE ,0,0,NULL);
+                        std::cout << "closing connection FD:" << events[i].ident << std::endl;
+                        close(events[i].ident);
                         clients.erase(events[i].ident);
                         // continue;
                     }
@@ -178,33 +177,48 @@ void    Core_Server::handle_clients()
                     {
                     buffer[readed] = 0;
                     std::string _buff(buffer);
-                    std::cout << "lol" <<_buff;
+                    // std::cout << "lol" <<_buff;
                     clients[events[i].ident].set_buff(_buff);
                     std::cout << clients[events[i].ident].get_buff() << std::endl;
+                    EV_SET(&_ev_set,events[i].ident,EVFILT_WRITE,EV_ADD | EV_ENABLE,0,0,NULL);
+                    kevent(_kq,&_ev_set,1,NULL,0,NULL);
 
                     }
                 }
                 else if (events[i].flags & EV_EOF)
                 {
-                    std::cout << "close _connection from " << clients[fd_c].get_fd() << std::endl;
-                    clients.erase(fd_c);
-                    continue;
+                    EV_SET(&_ev_set,events[i].ident ,EVFILT_READ , EV_DELETE ,0,0,NULL);
+                    std::cout << "close _connection from " << events[i].ident << std::endl;
+                    close(events[i].ident);
+                    clients.erase(events[i].ident);
                 }
-                else if (events[i].filter == EVFILT_WRITE)
+            else if (events[i].filter == EVFILT_WRITE)
                 {
+                    // if (clients[events[i].ident].get_bool() == false)
+                        
+                    // std::cout << "here";
+                    // EV_SET(&_ev_set,events[i].ident ,EVFILT_WRITE , EV_ADD | EV_ENABLE,0,0,NULL);
+                    // kevent(_kq,&_ev_set,1,NULL,0,NULL);
+                    // EV_SET(&_ev_set,events[i].ident,EVFILT_WRITE,EV_ENABLE | EV_ADD ,0,0,NULL);
                     std::string response = " welcome to my server \r\n";
                     size_t k = write (events[i].ident,response.c_str(),response.length());
+                        EV_SET(&_ev_set,events[i].ident ,EVFILT_READ ,EV_ENABLE,0,0,NULL);
+                        kevent(_kq,&_ev_set,1,NULL,0,NULL);
+                    // int k;
                     if (k < 0)
                     {
-                        std::cout << "cannot write" << std::endl;
+                        std::cout << "close _connection from " << events[i].ident << std::endl;
                         close(events[i].ident);
                         clients.erase(events[i].ident);
+                        // EV_SET(&_ev_set,events[i].ident ,EVFILT_WRITE , EV_DELETE ,0,0,NULL);
+                        // kevent(_kq,&_ev_set,1,NULL,0,NULL);
+                        // continue;
                     }
-                    else
-                    {
-                        EV_SET(&_ev_set,events[i].ident,EVFILT_WRITE,EV_DELETE ,0,0,NULL);
+                        EV_SET(&_ev_set,events[i].ident ,EVFILT_WRITE , EV_DELETE ,0,0,NULL);
                         kevent(_kq,&_ev_set,1,NULL,0,NULL);
-                    }
+                    // else
+                    // {
+                    // }
                     
                 }
             }
