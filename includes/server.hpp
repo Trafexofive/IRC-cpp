@@ -6,7 +6,7 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 04:43:58 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/11/23 08:30:19 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/11/24 01:06:46 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@
 #include<string>
 #include<map>
 #include<vector>
+#include <functional>
 #include <netdb.h> 
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include<sys/socket.h>
 #include <iostream>
+#include<sstream>
 // #include <sys/epoll.h>
 #include <fcntl.h>
 
@@ -39,18 +41,33 @@ is addressed to ==> will be considered in the client class
 also there is special clients wich are the operators
 
 */
-
+#define RPL_WELCOME 001
+#define RPL_YOURHOST 002
+#define RPL_CREATED 003
+#define RPL_MYINFO 004
+#define RPL_NAMREPLY 353
+#define RPL_ENDOFNAMES 366
+#define RPL_TOPIC 331
+#define ERR_ERRONEUSNICKNAME 332	
+#define ERR_NICKNAMEINUSE 433	
+#define ERR_NEEDMOREPARAMS 461
+#define ERR_UNKNOWNCOMMAND 421
+#define ERR_NOORIGIN 409
 
 class _client
 {
     private :
         int fd_client;
         bool auth;
+        bool connected;
         std::string ip_addr;
         std::string fullname;
         std::string nickname;
         std::string password;
         std::string buff;
+        std::string response;
+        bool    completed_cmd;
+        // std::vector<std::vector <std::string>> parsed;
         struct sockaddr_in client_infos;
     public :
     _client()
@@ -59,11 +76,27 @@ class _client
     {
         return auth;
     }
+    bool get_connect()
+    {
+        return connected;
+    }
+    void    set_connect(bool i)
+    {
+        connected = i;
+    }
     void    set_bool(bool i)
     {
         auth = i;
     }
-    _client (int fd, struct sockaddr_in ddr) : fd_client(fd),client_infos(ddr)
+    void    set_response(std::string _resp)
+    {
+        response = _resp;
+    }
+    std::string    &get_response()
+    {
+        return response;
+    }
+    _client (int fd, struct sockaddr_in ddr) : fd_client(fd),client_infos(ddr),auth(false),completed_cmd(false)
     {    
     }
         int get_fd()
@@ -110,17 +143,14 @@ class _client
         {
             return buff;
         }
-        void    set_buff(std::string _buff)
+        void    set_buff(std::string _buff,int flag)
         {
-            if (_buff.find("\r\n") && buff.empty())
+            if (flag)
             {
-                buff = _buff;
-                return ;
+                buff += _buff;
             }
-            else if (_buff.find("\r\n"))
-            buff += _buff;
-            if (_buff.find("\r\n"))
-                return ;
+            else
+                buff = _buff;
         }
         struct sockaddr_in &get_info()
         {
@@ -135,7 +165,7 @@ class _client
 class Core_Server
 {
     private:
-        std::string ip_addr;
+        std::string passwd;
         int _kq;
         struct kevent _ev_set;
         int port;
@@ -144,10 +174,12 @@ class Core_Server
         std::map<int , _client> clients;
         struct sockaddr_in _server_addr;
         void    create_socket();
-        void    non_blocking_sock();
+        // void    non_blocking_sock();
         void    bind_sock();
         void    start_listening();
         void    handle_clients();
+        void    process_command(_client &client,std::string buff);
+
         void    handle_read_events(int fd)
         {
          char buffer[1024];
@@ -164,17 +196,24 @@ class Core_Server
          {
          buffer[readed] = 0;
          std::string _buff(buffer);
-         // std::cout << "lol" <<_buff;
-         clients[fd].set_buff(_buff);
-         
+         process_command(clients[fd],_buff);
+        //  std::cout << buffer <<std::endl;
+        // handle
+        //  clients[fd].set_buff(_buff,0);
          EV_SET(&_ev_set,fd,EVFILT_WRITE,EV_ADD | EV_ENABLE,0,0,NULL);
          kevent(_kq,&_ev_set,1,NULL,0,NULL);
          }
         }
         void    handle_write_events(int fd)
         {
-            std::string response = " welcome to my server \r\n";
-           size_t k = write (fd,response.c_str(),response.length());
+            size_t k ;
+            if (!clients[fd].get_response().empty())
+            {
+                k = write (fd,clients[fd].get_response().c_str(),clients[fd].get_response().length());
+                clients[fd].get_response().erase();
+            }
+        //     std::string response = " welcome to my server \r\n";
+        //    size_t k = write (fd,response.c_str(),response.length());
            EV_SET(&_ev_set,fd ,EVFILT_READ ,EV_ENABLE,0,0,NULL);
            kevent(_kq,&_ev_set,1,NULL,0,NULL);
            // int k;
@@ -191,7 +230,7 @@ class Core_Server
                         kevent(_kq,&_ev_set,1,NULL,0,NULL);
         }
     public:
-    Core_Server (std::string ip,int _port): ip_addr(ip) ,port(_port)  {}
+    Core_Server (std::string ip,int _port): passwd(ip) ,port(_port)  {}
     // ~Core_Server ();
     void    start_server();
 };

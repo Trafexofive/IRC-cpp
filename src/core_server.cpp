@@ -145,8 +145,9 @@ void    Core_Server::handle_clients()
                     char host[NI_MAXHOST];
                     char service[NI_MAXSERV];
                     getnameinfo((struct sockaddr*)&clients[fd_c].get_info(), sizeof(client_addr), host, NI_MAXHOST, service, NI_MAXSERV, NI_NUMERICHOST | NI_NUMERICSERV);
-                    std::cout << "Client IP: " << host << ", Service: " << service << std::endl;
+                    // std::cout << "Client IP: " << host << ", Service: " << service << std::endl;
                     clients[fd_c].set_bool(false);
+                    clients[fd_c].set_response(":server.example.com NOTICE * :Please authenticate with PASS, then set your NICK and USER.\r\n");
                     EV_SET(&_ev_set,fd_c,EVFILT_WRITE,EV_ADD | EV_ENABLE,0,0,NULL);
                     kevent(_kq,&_ev_set,1,NULL,0,NULL);
                     
@@ -172,7 +173,7 @@ void    Core_Server::handle_clients()
                     close(events[i].ident);
                     clients.erase(events[i].ident);
                 }
-            else if (events[i].filter == EVFILT_WRITE)
+                else if (events[i].filter == EVFILT_WRITE)
                 {
                     // if (clients[events[i].ident].get_bool() == false)
                         
