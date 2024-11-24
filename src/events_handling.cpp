@@ -6,7 +6,7 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 22:41:53 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/11/24 01:35:56 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/11/24 01:46:14 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ void    Core_Server::process_command(_client &client,std::string message)
         }
         else
         {
-            std::cout <<full_mess[0] << "-"<<std::endl;
-            std::cout <<passwd << "-"<< std::endl;
+            // std::cout <<full_mess[0] << "-"<
             client.set_response("464 ERR_PASSWDMISMATCH :Password incorrect\r\n");
             return ;
         }

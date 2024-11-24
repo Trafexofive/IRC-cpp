@@ -6,7 +6,7 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 04:43:58 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/11/24 01:06:46 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/11/24 01:45:26 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ class _client
         std::string password;
         std::string buff;
         std::string response;
-        bool    completed_cmd;
+        // bool    completed_cmd;
         // std::vector<std::vector <std::string>> parsed;
         struct sockaddr_in client_infos;
     public :
