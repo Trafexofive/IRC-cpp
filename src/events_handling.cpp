@@ -12,21 +12,18 @@
 
 #include"../includes/server.hpp"
 
-std::string Core_Server::send_welcome_message(_client& cl) {
+std::string Core_Server::send_welcome_message(_client& cl)
+{
     std::ostringstream response;
 
-    // 001 RPL_WELCOME
     response << "001 " << cl.get_nick() << " :Welcome to the Internet Relay Network "
              << cl.get_nick() << "!" << cl.get_user() << "@" << cl.get_ip() << "\r\n";
 
-    // 002 RPL_YOURHOST
-    response << "002 " << cl.get_nick() << " :Your host is irc.example.com, running version 1.0\r\n";
+    response << "002 " << cl.get_nick() << " :Your host is wesuseARCH.com, running version 1.0\r\n";
 
-    // 003 RPL_CREATED
     response << "003 " << cl.get_nick() << " :This server was created Mon Nov 20 2024\r\n";
 
-    // 004 RPL_MYINFO
-    response << "004 " << cl.get_nick() << " irc.example.com 1.0 iw opsitn\r\n";
+    response << "004 " << cl.get_nick() << " wesuseARCH.com 1.0 iw opsitn\r\n";
 
     return response.str();
 }
@@ -103,5 +100,9 @@ void    Core_Server::process_command(_client &client,std::string message)
             // client.set_bool(false);
             return ;
         }
+    }
+    else
+    {
+
     }
 }
