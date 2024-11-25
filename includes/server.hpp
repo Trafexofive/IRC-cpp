@@ -66,7 +66,7 @@ class _client
         std::string password;
         std::string buff;
         std::string response;
-        // bool    completed_cmd;
+        bool    completed_cmd;
         // std::vector<std::vector <std::string>> parsed;
         struct sockaddr_in client_infos;
     public :
@@ -231,6 +231,7 @@ class Core_Server
         }
     public:
     Core_Server (std::string ip,int _port): passwd(ip) ,port(_port)  {}
+    std::string send_welcome_message(_client& cl);
     // ~Core_Server ();
     void    start_server();
 };
