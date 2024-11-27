@@ -35,7 +35,7 @@ ${NAME}: ${OBJ}
 	${CXX} $^ -o $@
 
 ${OBJ}: ${DIR_OBJ}%.o: ${DIR_SRC}%.cpp
-	mkdir -p ${@D}
+	@mkdir -p ${@D}
 	${CXX} ${CPPFLAGS} $< -o $@
 
 -include ${DEP}
