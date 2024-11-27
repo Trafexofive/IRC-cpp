@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../includes/server.hpp"
+#include"../inc/server.hpp"
 
 std::string Core_Server::send_welcome_message(_client& cl)
 {

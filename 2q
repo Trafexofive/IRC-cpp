@@ -10,7 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-
 NAME = irc-server
 SRC = \
     src/core_server.cpp \
@@ -22,21 +21,21 @@ DIR_OBJ = obj/
 DIR_INC = inc/
 DIR_BIN = bin/
 
-OBJ = ${SRC:%.cpp=${DIR_OBJ}%.o}
-CXX = c++
-DEP = ${OBJ:%.o=%.d}
-CPPFLAGS = -c -I ${DIR_INC}
-RM = rm -f
-RMDIR = rm -rf
+OBJ                     = ${SRC:%.cpp=${DIR_OBJ}%.o}
+CXX                     = c++
+DEP                     = ${OBJ:%.o=%.d}
+CPPFLAGS        =  -c -I ${DIR_INC}
+RM                      = rm -f
+RMDIR           = rm -rf
 
 all: ${NAME}
 
-${NAME}: ${OBJ}
-	${CXX} $^ -o $@
+${NAME} : ${OBJ}
+        ${CXX} $^ -o $@
 
-${OBJ}: ${DIR_OBJ}%.o: ${DIR_SRC}%.cpp
-	mkdir -p ${@D}
-	${CXX} ${CPPFLAGS} $< -o $@
+${OBJ} : ${DIR_OBJ}%.o: ${DIR_SRC}%.cpp
+        mkdir -p ${@D}
+        ${CXX} ${CPPFLAGS} $< -o $@
 
 -include ${DEP}
 
