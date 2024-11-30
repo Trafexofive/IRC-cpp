@@ -5,17 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/27 22:56:49 by mlamkadm          #+#    #+#              #
-#    Updated: 2024/11/27 22:56:49 by mlamkadm         ###   ########.fr        #
+#    Created: 2024/11/30 18:07:15 by mlamkadm          #+#    #+#              #
+#    Updated: 2024/11/30 18:07:15 by mlamkadm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = irc-server
 SRC = \
-    src/core_server.cpp \
-    src/event_handling.cpp \
-    src/server.cpp \
+    core_server.cpp \
+    events_handling.cpp \
+    server.cpp \
 
 DIR_SRC = src/
 DIR_OBJ = obj/
@@ -57,4 +57,6 @@ run:
 
 test:
 	./test.sh
+
+
 
