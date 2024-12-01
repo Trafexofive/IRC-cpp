@@ -6,7 +6,7 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 11:39:28 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/12/01 12:18:00 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/12/01 14:05:33 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 struct ServerData
 {
-    std::string         Passwd;
+    unsigned long         Passwd;
     int                 _socket;
     int                 _poll;
     int                 Port;
@@ -34,7 +34,10 @@ class CoreServer
         void    start_listening();
         void    start_server();
     public :
-        CoreServer(int port,std::string _passwd);
+        CoreServer(std::string port,std::string _passwd);
+        void    WelcomeClient();
+        void    WriteEvent(int fd);
+        void    ReadEvent(int fd);
 };
 
 #endif
