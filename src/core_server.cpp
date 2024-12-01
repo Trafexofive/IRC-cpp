@@ -120,7 +120,7 @@ void    Core_Server::handle_clients()
             // std::cout << "entered";
              for (int i = 0;i< nevents;i++)
              {
-                 if (events[i].ident == _socket)
+                 if (events[i].ident == (unsigned int )_socket)
                 {
                     fd_c = accept(_socket,NULL,NULL);
                      if (fd_c < 0)
@@ -152,7 +152,7 @@ void    Core_Server::handle_clients()
                     kevent(_kq,&_ev_set,1,NULL,0,NULL);
                     
                 }
-                else if (events[i].filter == EVFILT_READ && events[i].ident != _socket)
+                else if (events[i].filter == EVFILT_READ && events[i].ident != (unsigned int)_socket)
                 {
                    
                     // else if ()

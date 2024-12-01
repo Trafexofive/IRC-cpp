@@ -1,44 +1,62 @@
-SRCS = src/core_server.cpp src/events_handling.cpp src/server.cpp
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/11/30 18:07:15 by mlamkadm          #+#    #+#              #
+#    Updated: 2024/11/30 18:07:15 by mlamkadm         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-# Directory for object files
-OBJ_DIR = obj
 
-# Create object file paths based on source files
-OBJS = $(SRCS:src/%.cpp=$(OBJ_DIR)/%.o)
+NAME = irc-server
+SRC = \
+    core_server.cpp \
+    events_handling.cpp \
+    server.cpp \
 
-NAME = weusearch
+DIR_SRC = src/
+DIR_OBJ = obj/
+DIR_INC = inc/
+DIR_BIN = bin/
 
-HEADER = includes/server.hpp
+OBJ = ${SRC:%.cpp=${DIR_OBJ}%.o}
+CXX = c++
+DEP = ${OBJ:%.o=%.d}
+CPPFLAGS = -Wall -Wextra -Werror -c -I ${DIR_INC}
+RM = rm -f
+RMDIR = rm -rf
 
-CC = c++
+all: ${NAME}
 
-CFLAGS = -Wall -Werror -std=c++98
+${NAME}: ${OBJ}
+	${CXX} $^ -o $@
 
-RM = rm -rf
+${OBJ}: ${DIR_OBJ}%.o: ${DIR_SRC}%.cpp
+	@mkdir -p ${@D}
+	${CXX} ${CPPFLAGS} $< -o $@
 
-# Default target: Build the executable
-all: $(NAME)
+-include ${DEP}
 
-# Rule to build the executable
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-
-# Rule to compile .cpp to .o inside the obj directory
-$(OBJ_DIR)/%.o: src/%.cpp $(HEADER)
-	@mkdir -p $(dir $@)  # Create the necessary subdirectories under obj
-	@echo "Compiling $<"
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# Clean up object files in the obj directory
 clean:
-	$(RM) $(OBJ_DIR)
+	${RMDIR} ${DIR_OBJ}
+	${RM} ${NAME}
 
-# Clean up both object files and the binary
 fclean: clean
-	$(RM) $(NAME)
+	${RM} ${NAME}
 
-# Rebuild everything
 re: fclean all
 
-# Declare phony targets
-.PHONY: all re fclean clean
+.PHONY: all clean fclean re
+
+run:
+	@make fclean
+	@./${DIR_BIN}/${NAME}
+
+test:
+	./test.sh
+
+
+

@@ -6,7 +6,7 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 04:43:58 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/11/24 01:45:26 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/12/01 12:06:27 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 #include <sys/types.h>
 #include <sys/event.h>
 #include <sys/time.h>
+#include <poll.h>
 #define MAX_EVENT 1000
 /*
 Clients must have a unique name maximum 9 characters
