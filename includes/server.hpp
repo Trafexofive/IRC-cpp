@@ -66,7 +66,7 @@ class _client
         std::string password;
         std::string buff;
         std::string response;
-        bool    completed_cmd;
+        // bool    completed_cmd;
         // std::vector<std::vector <std::string>> parsed;
         struct sockaddr_in client_infos;
     public :
@@ -96,9 +96,7 @@ class _client
     {
         return response;
     }
-    _client (int fd, struct sockaddr_in ddr) : fd_client(fd),client_infos(ddr),auth(false),completed_cmd(false)
-    {    
-    }
+    _client (int fd, struct sockaddr_in ddr) : fd_client(fd),auth(false),client_infos(ddr){}
         int get_fd()
         {
             return fd_client;
@@ -206,7 +204,7 @@ class Core_Server
         }
         void    handle_write_events(int fd)
         {
-            size_t k ;
+            size_t k  = 0;
             if (!clients[fd].get_response().empty())
             {
                 k = write (fd,clients[fd].get_response().c_str(),clients[fd].get_response().length());

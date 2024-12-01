@@ -30,7 +30,7 @@ std::string Core_Server::send_welcome_message(_client& cl)
 
 void    Core_Server::process_command(_client &client,std::string message)
 {
-    bool flag =false;
+    // bool flag =false;
     std::vector<std::string> full_mess;
     std::vector<std::string>::iterator it;
 

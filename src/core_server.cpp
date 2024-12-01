@@ -98,7 +98,7 @@ void    Core_Server::start_server()
 void    Core_Server::handle_clients()
 {
     int fd_c;
-    struct timespec *timeout = NULL;
+    // struct timespec *timeout = NULL;
     // struct kevent evv;
     struct kevent events[1000];
     while (1)
