@@ -6,7 +6,7 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 05:18:50 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/12/01 14:31:41 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:01:44 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,22 @@ void    CoreServer::create_socket()
 
 void    CoreServer::start_listening()
 {
+    if (bind(ServData._socket ,(struct sockaddr *)&ServData.ServAddr,sizeof(ServData.ServAddr))< 0)
+    {
+        std::cout << "error biding the socket" << std::endl;
+        exit (1);
+    }
     if (listen(ServData._socket,5) < 0)
     {
         std::cout << "error" << std::endl;
         exit (1);
     }
     std::cout << "start listening on port:"<< ServData.Port << "..." << std::endl;
-    if (bind(ServData._socket ,(struct sockaddr *)&ServData.ServAddr,sizeof(ServData.ServAddr))< 0)
-    {
-        std::cout << "error biding the socket" << std::endl;
-        exit (1);
-    }
 }
 
 void    CoreServer::start_server()
 {
+    bzero(fds,sizeof(fds));
     fds[0].fd = ServData._socket;
     fds[0].events = POLLIN;
 
@@ -59,7 +60,7 @@ void    CoreServer::start_server()
         }
         for (int i = 0;i < 1024;i++)
         {
-            if (fds->revents & POLLIN)
+            if (fds[i].revents & POLLIN)
             {
                 if (fds[i].fd == ServData._socket)
                 {
@@ -67,72 +68,18 @@ void    CoreServer::start_server()
                 }
                 else
                 {
-                    WriteEvent(fds[i].fd);
+                    ReadEvent(fds[i].fd);
                 }
             }
-            else
+            else if (fds[i].revents & POLLOUT)
             {
+                WriteEvent(fds[i].fd);
 
-               ReadEvent(fds[i].fd);
             }
         }
     }
 }
 
-void    CoreServer::WelcomeClient()
-{
-    int fd_c;
-    fd_c = accept(ServData._socket,NULL,NULL);
-      if (fd_c < 0)
-        { 
-            std::cout << "failure connencting client" << std::endl;
-            return ;
-        }
-     else
-        {
-             std::cout << "client accepted FD:" << fd_c << std::endl;
-        }
-        struct sockaddr_in client_addr;
-        socklen_t client_len = sizeof(client_addr);
-        getpeername(fd_c, (struct sockaddr*)&client_addr, &client_len);
-        clients[fd_c] = _client(fd_c,client_addr);
-
-        char host[NI_MAXHOST];
-        char service[NI_MAXSERV];
-        getnameinfo((struct sockaddr*)&clients[fd_c].get_info(), sizeof(client_addr), host, NI_MAXHOST, service, NI_MAXSERV, NI_NUMERICHOST | NI_NUMERICSERV);
-        clients[fd_c].set_response(":wesuseARCH.com NOTICE * :Please authenticate with PASS, then set your NICK and USER.\r\n");
-}
-
-void    CoreServer::ReadEvent(int fd)
-{
-    char buffer[1024];
-    int readed = read(fd,buffer,1024);
-    if (readed <= 0)
-    {
-        std::cout << "closing connection FD:" << fd << std::endl;
-        close(fd);
-        clients.erase(fd);
-        return ;
-        // continue;
-    }
-    else
-        printf("%s",buffer);
-}
-
-void    CoreServer::WriteEvent(int fd)
-{
-    size_t k  = 0;
-    if (!clients[fd].get_response().empty())
-    {
-        k = write (fd,clients[fd].get_response().c_str(),clients[fd].get_response().length());
-        if (k < 0)
-        {
-            std::cout << "writing error" << std::endl;
-            // return ;
-        }
-        clients[fd].get_response().erase();
-     }
-}
 
 bool IsValidPort(std::string port ,int& _tport)
 {
@@ -142,38 +89,14 @@ bool IsValidPort(std::string port ,int& _tport)
     }
     // int _tport;
 
-    try
-    {
-        _tport = std::stoi(port);
-        if (_tport < 1 || _tport > 65535)
-            throw false;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
+    _tport = std::stoi(port);
+    if (_tport < 1 || _tport > 65535)
         return false;
-    }
     return true;
     
 }
 
-unsigned long polynomialHash(const std::string &str) {
-    const unsigned long p = 31; // Prime number
-    const unsigned long m = 1000000007; // Large prime number for modulo operation
-
-    unsigned long hash_value = 0;
-    unsigned long p_pow = 1; // p^i
-    
-    // Loop through each character in the string
-    for (size_t i = 0; i < str.length(); ++i) {
-        hash_value = (hash_value + (str[i] - 'a' + 1) * p_pow) % m; // Apply the polynomial hash formula
-        p_pow = (p_pow * p) % m; // Increase power of p for the next character
-    }
-
-    return hash_value;
-}
-
-bool   IsValidPass(std::string _pass,unsigned long& passwd)
+bool   IsValidPass(std::string _pass,std::string& passwd)
 {
     if (_pass.length() < 8)
         return false;
@@ -190,7 +113,8 @@ bool   IsValidPass(std::string _pass,unsigned long& passwd)
         }
         if ((Lower && Upper && Digit && Special)== false)
             return  false;
-    passwd = polynomialHash(_pass);
+    passwd = _pass;
+    // passwd = polynomialHash(_pass);
     return true;
 }
 
@@ -211,8 +135,10 @@ CoreServer::CoreServer(std::string port,std::string password)
         std::cout << "At least 1 special character (e.g., !, @, #, $, etc.) !!" << std::endl;
         return ;
         // throw "INVALID  PASSWORD";
-
     }
+    create_socket();
+    start_listening();
+    start_server();
 }
 
 int main (int ac,char **av)
@@ -223,7 +149,7 @@ int main (int ac,char **av)
     std::string passwd(av[2]);
         // std::cout << port << std::endl;
         // exit(1);
-        CoreServer IrcServ(port,passwd);
+    CoreServer IrcServ(port,passwd);
 
 
 }

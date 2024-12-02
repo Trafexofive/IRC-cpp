@@ -6,7 +6,7 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 11:39:28 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/12/01 14:05:33 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/12/02 09:40:31 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 struct ServerData
 {
-    unsigned long         Passwd;
+    std::string         Passwd;
     int                 _socket;
     int                 _poll;
     int                 Port;
