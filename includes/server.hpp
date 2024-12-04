@@ -6,7 +6,7 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 04:43:58 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/12/01 13:52:40 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:07:27 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ class Core_Server
         int _socket;
         int epoll_fd;
         std::map<int , _client> clients;
-        struct sockaddr_in _server_addr;
+        // struct sockaddr_in _server_addr;
         void    create_socket();
         // void    non_blocking_sock();
         void    bind_sock();

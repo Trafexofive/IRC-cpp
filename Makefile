@@ -3,18 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+         #
+#    By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/30 18:07:15 by mlamkadm          #+#    #+#              #
-#    Updated: 2024/11/30 18:07:15 by mlamkadm         ###   ########.fr        #
+#    Updated: 2024/12/02 10:03:50 by mboutuil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = irc-server
 SRC = \
-    core_server.cpp \
-    events_handling.cpp \
+    HandleEvents.cpp \
     server.cpp \
 
 DIR_SRC = src/

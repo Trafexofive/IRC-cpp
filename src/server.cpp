@@ -6,7 +6,7 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 05:18:50 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/12/02 10:01:44 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:05:32 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ bool   IsValidPass(std::string _pass,std::string& passwd)
     if (_pass.length() < 8)
         return false;
         bool Lower = false,Upper = false,Digit = false ,Special = false;
-        for(int i = 0;i < _pass.length();i++)
+        for(size_t i = 0;i < _pass.length();i++)
         {
             if (std::islower(_pass[i])) Lower = true;
             else if (std::isupper(_pass[i])) 
@@ -143,8 +143,12 @@ CoreServer::CoreServer(std::string port,std::string password)
 
 int main (int ac,char **av)
 {
-    if (!av[1] || !av[2])
+    if (ac != 3 && (!av[1] || !av[2]))
+    {
+        std::cout << "ENTER VALID PARAMETERS !!" << std::endl;
         return 1;
+
+    }
     std::string port(av[1]);
     std::string passwd(av[2]);
         // std::cout << port << std::endl;
