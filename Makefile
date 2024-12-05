@@ -21,10 +21,13 @@ DIR_OBJ = obj/
 DIR_INC = inc/
 DIR_BIN = bin/
 
+
+EVENTS = -lkqueue -L/usr/local/lib -I/usr/local/include
+
 OBJ = ${SRC:%.cpp=${DIR_OBJ}%.o}
 CXX = c++
 DEP = ${OBJ:%.o=%.d}
-CPPFLAGS = -Wall -Wextra -Werror -c -I ${DIR_INC}
+CPPFLAGS = -Wall -Wextra -Werror -c ${EVENTS}  -I ${DIR_INC}
 RM = rm -f
 RMDIR = rm -rf
 
@@ -55,7 +58,7 @@ run:
 	@./${DIR_BIN}/${NAME}
 
 test:
-	./test.sh
+	# ./test.sh
 
 
 

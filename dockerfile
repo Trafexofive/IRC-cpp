@@ -1,19 +1,15 @@
-FROM debian:latest
+FROM ubuntu:20.04
 
 RUN apt-get update && apt-get install -y \
     build-essential \
-    clang \
-    cmake \
-    libc++-dev \
-    libc++abi-dev \
-    libssl-dev \
-    && apt-get clean
+    g++ \
+    libevent-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-COPY . /app
 WORKDIR /app
+
+COPY . .
 
 RUN make
 
-EXPOSE 6667
-
-CMD ["./weusearch"]
+CMD ["./launsh.sh"]

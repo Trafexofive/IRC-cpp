@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../includes/core_server.hpp"
+#include"../inc/core_server.hpp"
 
 void    CoreServer::create_socket()
 {
