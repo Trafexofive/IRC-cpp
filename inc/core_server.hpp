@@ -30,6 +30,7 @@ class CoreServer
         struct ServerData       ServData;
         std::map<int ,_client>  clients;
         struct pollfd fds[1024];
+
         void    create_socket();
         void    start_listening();
         void    start_server();
@@ -39,6 +40,10 @@ class CoreServer
         void    WelcomeClient();
         void    WriteEvent(int fd);
         void    ReadEvent(int fd);
+        //events
+        void    HandleEvents(int fd, char   *buffer);
+
+        //commands
 };
 
 #endif

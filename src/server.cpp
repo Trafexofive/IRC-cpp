@@ -142,19 +142,3 @@ CoreServer::CoreServer(std::string port,std::string password)
     start_server();
 }
 
-int main (int ac,char **av)
-{
-    if (ac != 3 && (!av[1] || !av[2]))
-    {
-        std::cout << "ENTER VALID PARAMETERS !!" << std::endl;
-        return 1;
-
-    }
-    std::string port(av[1]);
-    std::string passwd(av[2]);
-        // std::cout << port << std::endl;
-        // exit(1);
-    CoreServer IrcServ(port,passwd);
-
-
-}

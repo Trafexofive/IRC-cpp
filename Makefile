@@ -14,6 +14,7 @@ NAME = irc-server
 SRC = \
     HandleEvents.cpp \
     server.cpp \
+    main.cpp \
 
 DIR_SRC = src/
 DIR_OBJ = obj/
@@ -29,7 +30,7 @@ CPPFLAGS = -Wall -Wextra -Werror -c ${EVENTS} -I ${DIR_INC}
 RM = rm -f
 RMDIR = rm -rf
 
-ARGS = alilepro 3344
+ARGS = 12600 Alilepro135!
 
 all: ${NAME}
 
@@ -52,8 +53,8 @@ fclean: clean
 
 re: fclean all
 
-run:
-	@make clean
+run: all
+	# @make clean
 	@./${DIR_BIN}/${NAME} $(ARGS)
 
 test:
