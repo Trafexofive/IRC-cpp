@@ -1,0 +1,74 @@
+server = localhost
+port = 3344
+##########################
+password = alilepro
+botname = default_bot
+username = mlamkadm
+nickname = bot
+##########################
+#bot_owner = master
+masters = { master admin cleverlord }
+#bot_hash = 1234
+##########################
+auto_join = true
+channels = #clever 
+##########################
+#interactive = false
+debug = true
+##########################
+#runtime_bool = true
+#runtime = 10
+##########################
+
+auto :
+
+#automated functions with comands and args
+
+var time = "10:00"
+
+func initRoutine {
+sleep 10
+whisper -c #Welcome -u me hello
+reminder -c #Welcome title getcoffeeafterfinishmornigrootine 45
+    
+}
+
+func test(args){
+initRoutine();
+whisper -c #Welcome -u me hello
+reminder -c #Welcome title getcoffeeafterfinishmornigrootine 45
+}
+
+func test(args){
+
+
+
+exec :
+
+initRoutine();
+
+
+
+
+
+
+
+#allow_commands = true
+#commands = {whisper remind help quit unsub sub uptime}
+
+#//advanced commands config
+##########################
+#whisper -c --channel | -u --user [message]
+#note -c --channel | -u --user [note]
+#announce [message] 
+#remind [user/channel] [message] [time]
+#startpoll [name] [question] // subject to change
+#endpoll [name]
+
+#vote [name] [option]
+#listpoll [name]
+#help [command] // subject to change
+#quit
+#unsub [botname]
+#sub [botname] [botpassword]
+

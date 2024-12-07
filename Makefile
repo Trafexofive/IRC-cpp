@@ -53,6 +53,9 @@ fclean: clean
 
 re: fclean all
 
+bonus: all
+	@make -C src/bot 
+
 run: all
 	# @make clean
 	@./${DIR_BIN}/${NAME} $(ARGS)
