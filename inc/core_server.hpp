@@ -41,7 +41,7 @@ class CoreServer
         void    WriteEvent(int fd);
         void    ReadEvent(int fd);
         //events
-        void    HandleEvents(int fd, char   *buffer);
+        void    HandleEvents(int fd, std::string buffer);
 
         //commands
 };

@@ -36,13 +36,12 @@ void    CoreServer::WelcomeClient()
         clients[fd_c].set_response(":wesuseARCH.com NOTICE * :Please authenticate with PASS, then set your NICK and USER.\r\n");
 }
 
-void    CoreServer::HandleEvents(int fd, char  *buffer)
+void    CoreServer::HandleEvents(int fd, std::string buffer)
 {
     
     std::cout << "fd: "<< fd << "buffer" << buffer << std::endl;
 
 }
-
 void    CoreServer::ReadEvent(int fd)
 {
     char buffer[1024];
@@ -56,7 +55,10 @@ void    CoreServer::ReadEvent(int fd)
         // continue;
     }
     else
-        HandleEvents(fd, buffer);
+    {
+        HandleEvents(fd, std::string(buffer));
+    }
+
 
 }
 
