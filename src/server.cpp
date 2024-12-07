@@ -74,7 +74,6 @@ void    CoreServer::start_server()
             else if (fds[i].revents & POLLOUT)
             {
                 WriteEvent(fds[i].fd);
-
             }
         }
     }
