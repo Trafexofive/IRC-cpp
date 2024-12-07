@@ -22,7 +22,7 @@ DIR_INC = inc/
 DIR_BIN = bin/
 
 
-EVENTS = -lkqueue -L/usr/local/lib -I/usr/local/include
+EVENTS = -L/usr/local/lib -I/usr/local/include
 
 OBJ = ${SRC:%.cpp=${DIR_OBJ}%.o}
 CXX = c++

@@ -54,7 +54,7 @@ void    CoreServer::ReadEvent(int fd)
 
 void    CoreServer::WriteEvent(int fd)
 {
-    size_t k  = 0;
+    int k  = 0;
     if (!clients[fd].get_response().empty())
     {
         k = write (fd,clients[fd].get_response().c_str(),clients[fd].get_response().length());

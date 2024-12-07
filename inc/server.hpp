@@ -32,9 +32,10 @@
 #include <fcntl.h>
 
 #include <sys/types.h>
-#include <sys/event.h>
+// #include <sys/event.h>
 #include <sys/time.h>
 #include <poll.h>
+#include <algorithm>
 #define MAX_EVENT 1000
 /*
 Clients must have a unique name maximum 9 characters
@@ -162,78 +163,78 @@ class _client
         }
 };
 
-class Core_Server
-{
-    private:
-        std::string passwd;
-        int _kq;
-        struct kevent _ev_set;
-        int port;
-        int _socket;
-        int epoll_fd;
-        std::map<int , _client> clients;
-        // struct sockaddr_in _server_addr;
-        void    create_socket();
-        // void    non_blocking_sock();
-        void    bind_sock();
-        void    start_listening();
-        void    handle_clients();
-        void    process_command(_client &client,std::string buff);
+// class Core_Server
+// {
+//     private:
+//         std::string passwd;
+//         int _kq;
+//         struct kevent _ev_set;
+//         int port;
+//         int _socket;
+//         int epoll_fd;
+//         std::map<int , _client> clients;
+//         // struct sockaddr_in _server_addr;
+//         void    create_socket();
+//         // void    non_blocking_sock();
+//         void    bind_sock();
+//         void    start_listening();
+//         void    handle_clients();
+//         void    process_command(_client &client,std::string buff);
 
-        void    handle_read_events(int fd)
-        {
-         char buffer[1024];
-         int readed = read(fd,buffer,1024);
-         if (readed <= 0)
-         {
-         EV_SET(&_ev_set,fd ,EVFILT_READ , EV_DELETE ,0,0,NULL);
-             std::cout << "closing connection FD:" << fd << std::endl;
-             close(fd);
-             clients.erase(fd);
-             // continue;
-         }
-         else 
-         {
-         buffer[readed] = 0;
-         std::string _buff(buffer);
-         process_command(clients[fd],_buff);
-        //  std::cout << buffer <<std::endl;
-        // handle
-        //  clients[fd].set_buff(_buff,0);
-         EV_SET(&_ev_set,fd,EVFILT_WRITE,EV_ADD | EV_ENABLE,0,0,NULL);
-         kevent(_kq,&_ev_set,1,NULL,0,NULL);
-         }
-        }
-        void    handle_write_events(int fd)
-        {
-            size_t k  = 0;
-            if (!clients[fd].get_response().empty())
-            {
-                k = write (fd,clients[fd].get_response().c_str(),clients[fd].get_response().length());
-                clients[fd].get_response().erase();
-            }
-        //     std::string response = " welcome to my server \r\n";
-        //    size_t k = write (fd,response.c_str(),response.length());
-           EV_SET(&_ev_set,fd ,EVFILT_READ ,EV_ENABLE,0,0,NULL);
-           kevent(_kq,&_ev_set,1,NULL,0,NULL);
-           // int k;
-           if (k < 0)
-           {
-               std::cout << "close _connection from " << fd << std::endl;
-               close(fd);
-               clients.erase(fd);
-               // EV_SET(&_ev_set,fd ,EVFILT_WRITE , EV_DELETE ,0,0,NULL);
-               // kevent(_kq,&_ev_set,1,NULL,0,NULL);
-               // continue;
-           }
-               EV_SET(&_ev_set,fd ,EVFILT_WRITE , EV_DELETE ,0,0,NULL);
-                        kevent(_kq,&_ev_set,1,NULL,0,NULL);
-        }
-    public:
-    Core_Server (std::string ip,int _port): passwd(ip) ,port(_port)  {}
-    std::string send_welcome_message(_client& cl);
-    // ~Core_Server ();
-    void    start_server();
-};
+//         void    handle_read_events(int fd)
+//         {
+//          char buffer[1024];
+//          int readed = read(fd,buffer,1024);
+//          if (readed <= 0)
+//          {
+//          EV_SET(&_ev_set,fd ,EVFILT_READ , EV_DELETE ,0,0,NULL);
+//              std::cout << "closing connection FD:" << fd << std::endl;
+//              close(fd);
+//              clients.erase(fd);
+//              // continue;
+//          }
+//          else 
+//          {
+//          buffer[readed] = 0;
+//          std::string _buff(buffer);
+//          process_command(clients[fd],_buff);
+//         //  std::cout << buffer <<std::endl;
+//         // handle
+//         //  clients[fd].set_buff(_buff,0);
+//          EV_SET(&_ev_set,fd,EVFILT_WRITE,EV_ADD | EV_ENABLE,0,0,NULL);
+//          kevent(_kq,&_ev_set,1,NULL,0,NULL);
+//          }
+//         }
+//         void    handle_write_events(int fd)
+//         {
+//             size_t k  = 0;
+//             if (!clients[fd].get_response().empty())
+//             {
+//                 k = write (fd,clients[fd].get_response().c_str(),clients[fd].get_response().length());
+//                 clients[fd].get_response().erase();
+//             }
+//         //     std::string response = " welcome to my server \r\n";
+//         //    size_t k = write (fd,response.c_str(),response.length());
+//            EV_SET(&_ev_set,fd ,EVFILT_READ ,EV_ENABLE,0,0,NULL);
+//            kevent(_kq,&_ev_set,1,NULL,0,NULL);
+//            // int k;
+//            if (k < 0)
+//            {
+//                std::cout << "close _connection from " << fd << std::endl;
+//                close(fd);
+//                clients.erase(fd);
+//                // EV_SET(&_ev_set,fd ,EVFILT_WRITE , EV_DELETE ,0,0,NULL);
+//                // kevent(_kq,&_ev_set,1,NULL,0,NULL);
+//                // continue;
+//            }
+//                EV_SET(&_ev_set,fd ,EVFILT_WRITE , EV_DELETE ,0,0,NULL);
+//                         kevent(_kq,&_ev_set,1,NULL,0,NULL);
+//         }
+//     public:
+//     Core_Server (std::string ip,int _port): passwd(ip) ,port(_port)  {}
+//     std::string send_welcome_message(_client& cl);
+//     // ~Core_Server ();
+//     void    start_server();
+// };
 
 #endif

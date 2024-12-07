@@ -22,7 +22,7 @@ struct ServerData
     int                 _poll;
     int                 Port;
     struct sockaddr_in  ServAddr;
-}   ServerData;
+};
 
 class CoreServer
 {

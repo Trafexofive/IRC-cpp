@@ -46,7 +46,7 @@ void    CoreServer::start_listening()
 
 void    CoreServer::start_server()
 {
-    bzero(fds,sizeof(fds));
+    // bzero(fds,sizeof(fds));
     fds[0].fd = ServData._socket;
     fds[0].events = POLLIN;
 
@@ -100,7 +100,7 @@ bool   IsValidPass(std::string _pass,std::string& passwd)
 {
     if (_pass.length() < 8)
         return false;
-        bool Lower = false,Upper = false,Digit = false ,Special = false;
+    bool Lower = false,Upper = false,Digit = false ,Special = false;
         for(size_t i = 0;i < _pass.length();i++)
         {
             if (std::islower(_pass[i])) Lower = true;
