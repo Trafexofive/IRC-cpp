@@ -167,8 +167,37 @@ class _client
 class Channels
 {
     private:
+    std::string name;
+    std::string topic;
+    std::string password;
+    std::vector<_client> clients;
 
     public:
+        Channels(std::string _name,std::string _topic,std::string _password) : name(_name),topic(_topic),password(_password){}
+        std::string get_name()
+        {
+            return name;
+        }
+        void    set_name(std::string _name)
+        {
+            name = _name;
+        }
+        std::string get_topic()
+        {
+            return topic;
+        }
+        void    set_topic(std::string _topic)
+        {
+            topic = _topic;
+        }
+        std::string get_password()
+        {
+            return password;
+        }
+        void    set_password(std::string _password)
+        {
+            password = _password;
+        }
 }
 // class Core_Server
 // {
