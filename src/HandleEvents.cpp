@@ -6,7 +6,7 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 10:00:34 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/12/02 10:01:08 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/12/17 09:54:32 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void    CoreServer::WelcomeClient()
 
 }
 
+
 void    CoreServer::ReadEvent(int fd)
 {
     char buffer[1024];
@@ -55,10 +56,14 @@ void    CoreServer::ReadEvent(int fd)
         return ;
         // continue;
     }
+    else if (clients[fd].get_bool() == false)
+    {
+        clients[fd].authenticate();
+    }
     else
     {
         std::string _cmd(buffer);
-        handleCommands(fd,_cmd);
+        // handleCommands(fd,_cmd);
         printf("client %d: %s",fd,buffer);
     }
     std::memset(buffer,0,1024);

@@ -6,13 +6,14 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 21:54:40 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/12/07 21:56:19 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/12/17 09:54:01 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLIENT_HPP
 #define CLIENT_HPP
 
+#include "server.hpp"
 class _client
 {
     private :
@@ -29,6 +30,7 @@ class _client
         // std::vector<std::vector <std::string>> parsed;
         struct sockaddr_in client_infos;
     public :
+    void    authenticate();
     _client()
     {}
     bool get_bool()
@@ -117,6 +119,29 @@ class _client
         {
             client_infos = info;
         }
+};
+
+class channel
+
+{
+    private:
+        std::string name;
+        std::string topic;
+        std::string password;
+        std::vector<_client> members;
+    public :
+    std::string getName() { return name; }
+    void setName(const std::string& n) { name = n; }
+
+    std::string getTopic() { return topic; }
+    void setTopic(const std::string& t) { topic = t; }
+
+    std::string getPassword() { return password; }
+    void setPassword(const std::string& p) { password = p; }
+
+    const std::vector<_client>& getMembers() const { return members; } 
+    void addMember(_client member) { members.push_back(member); } 
+
 };
 
 #endif
