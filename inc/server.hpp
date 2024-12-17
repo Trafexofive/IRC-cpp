@@ -35,6 +35,7 @@
 // #include <sys/event.h>
 #include <sys/time.h>
 #include <poll.h>
+#include<cstring>
 #include <algorithm>
 #define MAX_EVENT 1000
 /*
@@ -163,6 +164,12 @@ class _client
         }
 };
 
+class Channels
+{
+    private:
+
+    public:
+}
 // class Core_Server
 // {
 //     private:

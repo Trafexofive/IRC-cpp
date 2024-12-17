@@ -6,7 +6,7 @@
 /*   By: mboutuil <mboutuil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 05:18:50 by mboutuil          #+#    #+#             */
-/*   Updated: 2024/12/02 10:05:32 by mboutuil         ###   ########.fr       */
+/*   Updated: 2024/12/13 21:09:24 by mboutuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ void    CoreServer::create_socket()
     ServData.ServAddr.sin_family = AF_INET;
     ServData.ServAddr.sin_port = htons(ServData.Port);
    ServData.ServAddr.sin_addr.s_addr = INADDR_ANY;
+   struct pollfd _fd;
+   _fd.fd = ServData._socket;
+   _fd.events = POLLIN;
+   fds.push_back(_fd);
 }
 
 void    CoreServer::start_listening()
@@ -47,18 +51,18 @@ void    CoreServer::start_listening()
 void    CoreServer::start_server()
 {
     // bzero(fds,sizeof(fds));
-    fds[0].fd = ServData._socket;
-    fds[0].events = POLLIN;
+    // fds[0].fd = ServData._socket;
+    // fds[0].events = POLLIN;
 
     while (1)
     {
-        int ret = poll(fds,1024,5000);
+        int ret = poll(fds.data(),fds.size(),-1);
         if (ret < 0)
         {
             std::cout << "poll error" << std::endl;
             break ;
         }
-        for (int i = 0;i < 1024;i++)
+        for (size_t i = 0;i < fds.size();i++)
         {
             if (fds[i].revents & POLLIN)
             {
@@ -71,11 +75,11 @@ void    CoreServer::start_server()
                     ReadEvent(fds[i].fd);
                 }
             }
-            else if (fds[i].revents & POLLOUT)
-            {
-                WriteEvent(fds[i].fd);
+            // else if (fds[i].revents & POLLOUT)
+            // {
+            //     WriteEvent(fds[i].fd);
 
-            }
+            // }
         }
     }
 }
@@ -136,6 +140,10 @@ CoreServer::CoreServer(std::string port,std::string password)
         return ;
         // throw "INVALID  PASSWORD";
     }
+    commands["NICK"] = &CoreServer::cmdNick;
+    commands["USER"] = &CoreServer::cmdUser;
+    commands["JOIN"] = &CoreServer::cmdJoin;
+    commands["PRIVMSG"] = &CoreServer::cmdPrivmsg;
     create_socket();
     start_listening();
     start_server();

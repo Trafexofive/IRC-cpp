@@ -14,42 +14,54 @@
 
 void    CoreServer::WelcomeClient()
 {
-    int fd_c;
-    fd_c = accept(ServData._socket,NULL,NULL);
-      if (fd_c < 0)
-        { 
-            std::cout << "failure connencting client" << std::endl;
-            return ;
-        }
-     else
-        {
-             std::cout << "client accepted FD:" << fd_c << std::endl;
-        }
-        struct sockaddr_in client_addr;
-        socklen_t client_len = sizeof(client_addr);
-        getpeername(fd_c, (struct sockaddr*)&client_addr, &client_len);
-        clients[fd_c] = _client(fd_c,client_addr);
+    struct sockaddr_in client_addr;
+    socklen_t client_len = sizeof(client_addr);
+    
+    int fd_c = accept(ServData._socket, (struct sockaddr*)&client_addr, &client_len);
+    
+    if (fd_c < 0)
+    { 
+        std::cout << "failure connecting client" << std::endl;
+        return;
+    }
+    
+    std::cout << "client accepted FD:" << fd_c << std::endl;
+    
+    clients[fd_c] = _client(fd_c, client_addr);
 
-        char host[NI_MAXHOST];
-        char service[NI_MAXSERV];
-        getnameinfo((struct sockaddr*)&clients[fd_c].get_info(), sizeof(client_addr), host, NI_MAXHOST, service, NI_MAXSERV, NI_NUMERICHOST | NI_NUMERICSERV);
-        clients[fd_c].set_response(":wesuseARCH.com NOTICE * :Please authenticate with PASS, then set your NICK and USER.\r\n");
+    char host[NI_MAXHOST];
+    char service[NI_MAXSERV];
+    getnameinfo((struct sockaddr*)&clients[fd_c].get_info(), sizeof(client_addr), 
+                host, NI_MAXHOST, service, NI_MAXSERV, 
+                NI_NUMERICHOST | NI_NUMERICSERV);
+    struct pollfd _fd;
+    _fd.fd = fd_c;
+    _fd.events = POLLIN;
+    fds.push_back(_fd);
+    // clients[fd_c].set_response(":wesuseARCH.com NOTICE * :Please authenticate with PASS, then set your NICK and USER.\r\n");
+
 }
 
 void    CoreServer::ReadEvent(int fd)
 {
     char buffer[1024];
     int readed = read(fd,buffer,1024);
-    if (readed < 0)
+    if (readed <= 0)
     {
         std::cout << "closing connection FD:" << fd << std::endl;
+        fds.erase(std::remove_if(fds.begin(), fds.end(), [fd](const struct pollfd& pfd) { return pfd.fd == fd; }), fds.end());
         close(fd);
         clients.erase(fd);
         return ;
         // continue;
     }
     else
-        printf("%s",buffer);
+    {
+        std::string _cmd(buffer);
+        handleCommands(fd,_cmd);
+        printf("client %d: %s",fd,buffer);
+    }
+    std::memset(buffer,0,1024);
 }
 
 void    CoreServer::WriteEvent(int fd)

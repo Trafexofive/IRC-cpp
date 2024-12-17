@@ -15,6 +15,9 @@
 
 #include "server.hpp"
 
+// Add this typedef for the command handler function pointer
+typedef void (CoreServer::*CommandHandler)(int fd, std::string& args);
+
 struct ServerData
 {
     std::string         Passwd;
@@ -28,15 +31,28 @@ class CoreServer
 {
     private :
         struct ServerData       ServData;
-        std::map<int ,_client>  clients;
-        struct pollfd fds[1024];
+        std::map<int, _client> clients;
+        std::vector<struct pollfd> fds;
+        std::vector<>
+        // Add the commands map
+        std::map<std::string, CommandHandler> commands;
+        
         void    create_socket();
         void    start_listening();
         void    start_server();
+        
+        // Add individual command handler methods
+        void    cmdNick(int fd, std::string& args);
+        void    cmdUser(int fd, std::string& args);
+        void    cmdJoin(int fd, std::string& args);
+        void    cmdPrivmsg(int fd, std::string& args);
+        // Add more command handlers as needed
+        
     public :
         CoreServer(std::string port,std::string _passwd);
         void    WelcomeClient();
         void    WriteEvent(int fd);
+        void    handleCommands(int fd, std::string _cmd);
         void    ReadEvent(int fd);
 };
 
