@@ -13,8 +13,9 @@
 NAME = irc-server
 SRC = \
     HandleEvents.cpp \
-    server.cpp \
-    main.cpp \
+    server/server.cpp \
+	client/client.cpp \
+	commands/cmd.cpp \
 
 DIR_SRC = src/
 DIR_OBJ = obj/
@@ -26,7 +27,7 @@ EVENTS = -L/usr/local/lib -I/usr/local/include
 OBJ = ${SRC:%.cpp=${DIR_OBJ}%.o}
 CXX = c++
 DEP = ${OBJ:%.o=%.d}
-CPPFLAGS = -Wall -Wextra -Werror -c ${EVENTS} -I ${DIR_INC}
+CPPFLAGS = -Wall -Wextra -Werror -cpp98 -c ${EVENTS} -I ${DIR_INC}
 RM = rm -f
 RMDIR = rm -rf
 
