@@ -60,12 +60,12 @@ re: fclean all
 bonus: all
 	@make -C src/bot 
 
-run: all
+run: re
 	# @make clean
 	@./${DIR_BIN}/${NAME} $(ARGS)
 
-test:
-	# ./test.sh
+test: re
+	@./test/test.sh
 
 .PHONY: all clean fclean re
 
