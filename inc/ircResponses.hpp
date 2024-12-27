@@ -1,170 +1,103 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   irc_responses.hpp                                  :+:      :+:    :+:   */
+/*   ircResponses.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+       */
+/*   By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 22:36:27 by mlamkadm          #+#    #+#           */
-/*   Updated: 2024/12/07 22:36:27 by mlamkadm         ###   ########.fr      */
+/*   Created: 2024/12/27 08:38:55 by mlamkadm          #+#    #+#             */
+/*   Updated: 2024/12/27 08:38:55 by mlamkadm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IRC_RESPONSES_HPP
 #define IRC_RESPONSES_HPP
 
-#include "requestMacros.hpp"
+#include "./requestMacros.hpp"
 #include <string>
+#include <sstream>
 
 namespace irc_responses
 {
-    // Welcome and Registration Responses
-    inline std::string getWelcomeResponse(const std::string& nickname)
+    // Welcome Responses
+    inline std::string getWelcomeMessages(const std::string& nickname)
     {
-        return FORMAT_RESPONSE("001", nickname + " :Welcome to the Internet Relay Chat Network") +
-               FORMAT_RESPONSE("002", nickname + " :Your host is IRC Server") +
-               FORMAT_RESPONSE("003", nickname + " :This server was created today") +
-               FORMAT_RESPONSE("004", nickname + " :IRC server v1.0");
-    }
-
-    // Error Response Formatters
-    inline std::string getErrorResponse(const std::string& nickname, const std::string& error)
-    {
-        return FORMAT_RESPONSE(error, nickname + " :" + error);
-    }
-
-    inline std::string getNickInUseError(const std::string& nickname)
-    {
-        return FORMAT_RESPONSE("433", "* " + nickname + " :Nickname is already in use");
-    }
-
-    inline std::string getUnknownCommandError(const std::string& command)
-    {
-        return FORMAT_RESPONSE("421", command + " :Unknown command");
-    }
-
-    inline std::string getNoSuchNickError(const std::string& nickname)
-    {
-        return FORMAT_RESPONSE("401", nickname + " :No such nick/channel");
-    }
-
-    // Channel Response Formatters
-    inline std::string getChannelJoinMessage(const std::string& nickname, 
-                                           const std::string& username,
-                                           const std::string& hostname, 
-                                           const std::string& channel)
-    {
-        return ":" + nickname + "!" + username + "@" + hostname + " " + CMD_JOIN + " " + channel + "\r\n";
-    }
-
-    inline std::string getChannelModeResponse(const std::string& channel, const std::string& modes)
-    {
-        return FORMAT_RESPONSE("324", channel + " " + modes);
-    }
-
-    inline std::string getEndOfNamesResponse(const std::string& nickname, const std::string& channel)
-    {
-        return FORMAT_RESPONSE("366", nickname + " " + channel + " :End of /NAMES list");
-    }
-
-    // Message Formatters
-    inline std::string formatPrivateMessage(const std::string& sender,
-                                          const std::string& target,
-                                          const std::string& message)
-    {
-        return ":" + sender + " " + CMD_PRIVMSG + " " + target + " :" + message + "\r\n";
-    }
-
-    inline std::string formatNoticeMessage(const std::string& sender,
-                                         const std::string& target,
-                                         const std::string& message)
-    {
-        return ":" + sender + " " + CMD_NOTICE + " " + target + " :" + message + "\r\n";
-    }
-
-    // Channel Operation Responses
-    inline std::string getKickMessage(const std::string& kicker,
-                                    const std::string& channel,
-                                    const std::string& target,
-                                    const std::string& reason)
-    {
-        return ":" + kicker + " " + CMD_KICK + " " + channel + " " + target + " :" + reason + "\r\n";
-    }
-
-    inline std::string getPartMessage(const std::string& nickname,
-                                    const std::string& channel,
-                                    const std::string& reason = "")
-    {
-        std::string msg = ":" + nickname + " " + CMD_PART + " " + channel;
-        if (!reason.empty())
-            msg += " :" + reason;
-        return msg + "\r\n";
-    }
-
-    // Server Query Responses
-    inline std::string getWhoisResponse(const std::string& nickname)
-    {
-        return FORMAT_RESPONSE("311", nickname + " :WHOIS information");
-    }
-
-    inline std::string getEndOfWhoisResponse(const std::string& nickname)
-    {
-        return RPL_ENDOFWHOIS;
-    }
-
-    // Custom Response Formatters
-    inline std::string getScoreResponse(const std::string& nickname, const std::string& score)
-    {
-        return FORMAT_RESPONSE("800", nickname + " :Your score is " + score);
-    }
-
-    inline std::string getTimeResponse(const std::string& nickname, const std::string& time)
-    {
-        return FORMAT_RESPONSE("801", nickname + " :Current time is " + time);
+        std::ostringstream oss;
+        oss << formatResponse(RPL_WELCOME, nickname + " :Welcome to the Internet Relay Chat Network")
+            << formatResponse(RPL_YOURHOST, nickname + " :Your host is IRC Server")
+            << formatResponse(RPL_CREATED, nickname + " :This server was created " __DATE__)
+            << formatResponse(RPL_MYINFO, nickname + " :IRC server v1.0");
+        return oss.str();
     }
 
     // Authentication Responses
-    inline std::string getPasswordRequest()
+    inline std::string getPasswordRequired()
     {
-        return FORMAT_RESPONSE("464", ":Password required");
+        return formatResponse(ERR_PASSWDMISMATCH, ":Password required");
     }
 
-    inline std::string getAuthenticationError()
+    inline std::string getPasswordIncorrect()
     {
-        return FORMAT_RESPONSE("464", ":Password incorrect");
+        return formatResponse(ERR_PASSWDMISMATCH, ":Password incorrect");
     }
 
-    // List Responses
-    inline std::string getListStartResponse()
+    inline std::string getPasswordAccepted()
     {
-        return RPL_LISTSTART;
+        return ":server NOTICE Auth :Password accepted\r\n";
     }
 
-    inline std::string getChannelListEntry(const std::string& channel, 
-                                         const std::string& userCount,
-                                         const std::string& topic)
+    // Nickname Responses
+    inline std::string getNickInUse(const std::string& nickname)
     {
-        return FORMAT_RESPONSE("322", channel + " " + userCount + " :" + topic);
+        return formatResponse("433", "* " + nickname + " :Nickname is already in use");
     }
 
-    inline std::string getListEndResponse()
+    inline std::string getNickChange(const std::string& oldnick, 
+                                   const std::string& newnick, 
+                                   const std::string& username)
     {
-        return FORMAT_RESPONSE("323", ":End of /LIST");
+        return ":" + oldnick + "!" + username + "@localhost NICK :" + newnick + "\r\n";
     }
 
-    // Ban List Responses
-    inline std::string getBanListEntry(const std::string& channel, 
-                                     const std::string& banmask,
-                                     const std::string& banner,
-                                     const std::string& time)
+    // Channel Responses
+    inline std::string getJoinMessage(const std::string& nickname, 
+                                    const std::string& username,
+                                    const std::string& channel)
     {
-        return FORMAT_RESPONSE("367", channel + " " + banmask + " " + banner + " " + time);
+        return ":" + nickname + "!" + username + "@localhost " + CMD_JOIN + " " + channel + "\r\n";
     }
 
-    inline std::string getEndOfBanList(const std::string& channel)
+    inline std::string getNamesList(const std::string& nickname,
+                                  const std::string& channel,
+                                  const std::string& names)
     {
-        return RPL_ENDOFBANLIST;
+        return formatResponse("353", nickname + " = " + channel + " :" + names);
+    }
+
+    inline std::string getEndOfNames(const std::string& nickname,
+                                   const std::string& channel)
+    {
+        return formatResponse("366", nickname + " " + channel + " :End of /NAMES list");
+    }
+
+    // Error Responses
+    inline std::string getUnknownCommand(const std::string& command)
+    {
+        return formatResponse(ERR_UNKNOWNCMD, command + " :Unknown command");
+    }
+
+    inline std::string getNeedMoreParams(const std::string& command)
+    {
+        return formatResponse(ERR_NEEDMOREPARAMS, command + " :Not enough parameters");
+    }
+
+    // Message Responses
+    inline std::string getPrivateMessage(const std::string& sender,
+                                       const std::string& target,
+                                       const std::string& message)
+    {
+        return ":" + sender + " " + CMD_PRIVMSG + " " + target + " :" + message + "\r\n";
     }
 }
 
-#endif // IRC_RESPONSES_HPP
+#endif

@@ -4,7 +4,7 @@
 
 void CoreServer::create_socket()
 {
-    std::cout << formatServerMessage("DEBUG", "Creating socket...") << std::endl;
+   std::cout << formatServerMessage("DEBUG", "Creating socket...") << std::endl;
     
     ServData._socket = socket(AF_INET, SOCK_STREAM, 0);
     if (ServData._socket < 0)
@@ -13,8 +13,10 @@ void CoreServer::create_socket()
         exit(1);
     }
     
-    std::cout << formatServerMessage("DEBUG", "Socket created: " + ServData._socket) << std::endl;
-    
+    std::ostringstream oss;
+    oss << "Socket created: " << ServData._socket;
+    std::cout << formatServerMessage("DEBUG", oss.str()) << std::endl;
+
     int flags = fcntl(ServData._socket, F_GETFL, 0);
     fcntl(ServData._socket, F_SETFL, flags | O_NONBLOCK);
     int optval = 1;

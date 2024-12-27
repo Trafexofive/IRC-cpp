@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 04:05:32 by mlamkadm          #+#    #+#             */
-/*   Updated: 2024/12/27 04:05:32 by mlamkadm         ###   ########.fr       */
+/*   Created: 2024/12/27 08:42:52 by mlamkadm          #+#    #+#             */
+/*   Updated: 2024/12/27 08:42:52 by mlamkadm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,152 +14,116 @@
 #include <sstream>
 #include <ctime>
 
-#define RED "\033[31m"
-#define GREEN "\033[32m"
-#define YELLOW "\033[33m"
-#define BLUE "\033[34m"
-#define MAGENTA "\033[35m"
-#define RESET "\033[0m"
-
-// Helper function for timestamps
-static std::string getTime() {
-    time_t now = time(NULL);
-    char buffer[9];
-    strftime(buffer, sizeof(buffer), "%H:%M:%S", localtime(&now));
-    return std::string(buffer);
-}
-
-void CoreServer::cmdUser(int fd, std::vector<std::string>& args)
-{
-    std::cout << YELLOW "[" << getTime() << "] USER command from fd(" << fd << ")" << RESET << std::endl;
-
-    if (args.size() < 5)
-    {
-        std::cout << RED "[" << getTime() << "] USER failed: Not enough parameters" << RESET << std::endl;
-        clients[fd].set_response(FORMAT_RESPONSE("461", "USER :Not enough parameters"));
-        return;
-    }
-
-    std::string username = args[1];
-    std::string realname = args[4];
-    
-    std::cout << GREEN "[" << getTime() << "] Setting username for fd(" << fd << "): " 
-              << username << RESET << std::endl;
-    
-    clients[fd].set_user(username);
-
-    if (clients[fd].get_bool() && !clients[fd].get_nick().empty())
-    {
-        std::cout << GREEN "[" << getTime() << "] Registration complete for " 
-                  << clients[fd].get_nick() << RESET << std::endl;
-        
-        clients[fd].set_response(RPL_WELCOME);
-        clients[fd].set_response(RPL_YOURHOST);
-        clients[fd].set_response(RPL_CREATED);
-        clients[fd].set_response(RPL_MYINFO);
-    }
-}
-
-void CoreServer::handleCommands(int fd, const std::string& _cmd)
-{
-    std::cout << BLUE "[" << getTime() << "] CLIENT(" << fd << ") >> " << _cmd << RESET << std::endl;
-
-    std::vector<std::string> args;
-    std::istringstream iss(_cmd);
-    std::string token;
-    
-    while (iss >> token)
-        args.push_back(token);
-    
-    if (args.empty())
-        return;
-
-    std::string cmd = args[0];
-    std::map<std::string, CommandHandler>::iterator it = commands.find(cmd);
-    
-    if (it != commands.end())
-    {
-        std::cout << GREEN "[" << getTime() << "] Processing command: " << cmd << RESET << std::endl;
-        (this->*(it->second))(fd, args);
-    }
-    else
-    {
-        std::cout << RED "[" << getTime() << "] Unknown command: " << cmd << RESET << std::endl;
-        clients[fd].set_response(ERR_UNKNOWNCOMMAND);
-    }
-}
-
 void CoreServer::cmdPass(int fd, std::vector<std::string>& args)
 {
-    std::cout << YELLOW "[" << getTime() << "] AUTH attempt from fd(" << fd << ")" << RESET << std::endl;
-    
+    std::cout << formatServerMessage("DEBUG", "Processing PASS command") << std::endl;
+
     if (args.size() < 2)
     {
-        std::cout << RED "[" << getTime() << "] AUTH failed: No password provided" << RESET << std::endl;
-        clients[fd].set_response(FORMAT_RESPONSE("461", "PASS :Not enough parameters"));
+        std::cout << formatServerMessage("ERROR", "PASS command failed: Not enough parameters") << std::endl;
+        clients[fd].set_response(formatResponse(ERR_NEEDMOREPARAMS, "PASS :Not enough parameters"));
         return;
     }
-    
+
     if (args[1] != ServData.Passwd)
     {
-        std::cout << RED "[" << getTime() << "] AUTH failed: Wrong password" << RESET << std::endl;
-        clients[fd].set_response(FORMAT_RESPONSE("464", ":Password incorrect"));
+        std::cout << formatServerMessage("ERROR", "PASS command failed: Invalid password") << std::endl;
+        clients[fd].set_response(formatResponse(ERR_PASSWDMISMATCH, ":Password incorrect"));
         return;
     }
-    
-    std::cout << GREEN "[" << getTime() << "] AUTH success for fd(" << fd << ")" << RESET << std::endl;
+
+    clients[fd].set_pass(args[1]);
     clients[fd].set_bool(true);
+    std::cout << formatServerMessage("DEBUG", "Password accepted") << std::endl;
+    clients[fd].set_response(":server NOTICE Auth :Password accepted\r\n");
 }
 
 void CoreServer::cmdNick(int fd, std::vector<std::string>& args)
 {
+    std::cout << formatServerMessage("DEBUG", "Processing NICK command") << std::endl;
+
     if (args.size() < 2)
     {
-        std::cout << RED "[" << getTime() << "] NICK failed: No nickname provided" << RESET << std::endl;
-        clients[fd].set_response(FORMAT_RESPONSE("461", "NICK :Not enough parameters"));
+        std::cout << formatServerMessage("ERROR", "NICK command failed: No nickname provided") << std::endl;
+        clients[fd].set_response(formatResponse("431", ":No nickname given"));
         return;
     }
-    
+
     const std::string& nickname = args[1];
-    
+
     // Check for invalid characters
     if (nickname.find_first_of(" ,*?!@") != std::string::npos)
     {
-        std::cout << RED "[" << getTime() << "] NICK failed: Invalid characters in " << nickname << RESET << std::endl;
-        clients[fd].set_response(FORMAT_RESPONSE("432", "* " + nickname + " :Erroneous nickname"));
+        std::cout << formatServerMessage("ERROR", "NICK command failed: Invalid characters in nickname") << std::endl;
+        clients[fd].set_response(formatResponse("432", "* " + nickname + " :Erroneous nickname"));
         return;
     }
-    
-    // Check if nickname is already in use
+
+    // Check for duplicate nicknames
     for (std::map<int, _client>::iterator it = clients.begin(); it != clients.end(); ++it)
     {
-        if (it->second.get_nick() == nickname)
+        if (it->first != fd && it->second.get_nick() == nickname)
         {
-            std::cout << RED "[" << getTime() << "] NICK failed: " << nickname << " already in use" << RESET << std::endl;
-            clients[fd].set_response(ERR_NICKNAMEINUSE);
+            std::cout << formatServerMessage("ERROR", "NICK command failed: Nickname already in use") << std::endl;
+            clients[fd].set_response(formatResponse("433", "* " + nickname + " :Nickname is already in use"));
             return;
         }
     }
 
     std::string oldNick = clients[fd].get_nick();
     clients[fd].set_nick(nickname);
-    
-    std::cout << GREEN "[" << getTime() << "] NICK change: " 
-              << (oldNick.empty() ? "(new)" : oldNick) << " -> " << nickname 
-              << RESET << std::endl;
 
-    if (oldNick.empty() && clients[fd].get_bool())
+    if (oldNick.empty())
     {
-        clients[fd].set_response(RPL_WELCOME);
-        clients[fd].set_response(RPL_YOURHOST);
-        clients[fd].set_response(RPL_CREATED);
-        clients[fd].set_response(RPL_MYINFO);
+        std::cout << formatServerMessage("DEBUG", "Nickname set to: " + nickname) << std::endl;
+        if (clients[fd].get_bool() && !clients[fd].get_user().empty())
+        {
+            // Send welcome messages using formatResponse
+            clients[fd].set_response(formatResponse(RPL_WELCOME, nickname + " :Welcome to the IRC Network"));
+            clients[fd].set_response(formatResponse(RPL_YOURHOST, nickname + " :Your host is irc.example.com"));
+            clients[fd].set_response(formatResponse(RPL_CREATED, nickname + " :This server was created " __DATE__));
+            clients[fd].set_response(formatResponse(RPL_MYINFO, nickname + " :IRC server v1.0"));
+        }
     }
-    else if (!oldNick.empty())
+    else
     {
-        std::string nickChange = ":" + oldNick + " NICK :" + nickname + "\r\n";
-        for (std::map<int, _client>::iterator it = clients.begin(); it != clients.end(); ++it)
-            it->second.set_response(nickChange);
+        std::cout << formatServerMessage("DEBUG", "Nickname changed from " + oldNick + " to " + nickname) << std::endl;
+        std::string response = ":" + oldNick + "!" + clients[fd].get_user() + "@localhost NICK :" + nickname + "\r\n";
+        clients[fd].set_response(response);
+    }
+}
+
+void CoreServer::cmdUser(int fd, std::vector<std::string>& args)
+{
+    std::cout << formatServerMessage("DEBUG", "Processing USER command") << std::endl;
+
+    if (args.size() < 5)
+    {
+        std::cout << formatServerMessage("ERROR", "USER command failed: Not enough parameters") << std::endl;
+        clients[fd].set_response(formatResponse(ERR_NEEDMOREPARAMS, "USER :Not enough parameters"));
+        return;
+    }
+
+    if (!clients[fd].get_user().empty())
+    {
+        std::cout << formatServerMessage("ERROR", "USER command failed: Already registered") << std::endl;
+        clients[fd].set_response(formatResponse(ERR_ALREADYREG, ":You may not reregister"));
+        return;
+    }
+
+    std::string username = args[1];
+    clients[fd].set_user(username);
+
+    if (clients[fd].get_bool() && !clients[fd].get_nick().empty())
+    {
+        std::string nick = clients[fd].get_nick();
+        std::cout << formatServerMessage("DEBUG", "Registration complete for " + nick) << std::endl;
+        
+        // Send welcome messages using formatResponse
+        clients[fd].set_response(formatResponse(RPL_WELCOME, nick + " :Welcome to the IRC Network"));
+        clients[fd].set_response(formatResponse(RPL_YOURHOST, nick + " :Your host is irc.example.com"));
+        clients[fd].set_response(formatResponse(RPL_CREATED, nick + " :This server was created " __DATE__));
+        clients[fd].set_response(formatResponse(RPL_MYINFO, nick + " :IRC server v1.0"));
     }
 }
 
@@ -167,8 +131,8 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string>& args)
 {
     if (args.size() < 2)
     {
-        std::cout << RED "[" << getTime() << "] JOIN failed: No channel specified" << RESET << std::endl;
-        clients[fd].set_response(FORMAT_RESPONSE("461", "JOIN :Not enough parameters"));
+        std::cout << formatServerMessage("ERROR", "JOIN failed: No channel specified") << std::endl;
+        clients[fd].set_response(formatResponse(ERR_NEEDMOREPARAMS, "JOIN :Not enough parameters"));
         return;
     }
     
@@ -176,8 +140,7 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string>& args)
     if (channelName[0] != '#')
         channelName = "#" + channelName;
 
-    std::cout << YELLOW "[" << getTime() << "] " << clients[fd].get_nick() 
-              << " attempting to join " << channelName << RESET << std::endl;
+    std::cout << formatServerMessage("DEBUG", clients[fd].get_nick() + " attempting to join " + channelName) << std::endl;
 
     // Find or create channel
     bool channelExists = false;
@@ -193,24 +156,26 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string>& args)
     
     if (!channelExists)
     {
-        std::cout << GREEN "[" << getTime() << "] Creating new channel: " << channelName << RESET << std::endl;
+        std::cout << formatServerMessage("DEBUG", "Creating new channel: " + channelName) << std::endl;
         channel newChannel(channelName);
         newChannel.addMember(clients[fd]);
         channels.push_back(newChannel);
     }
 
-    std::cout << GREEN "[" << getTime() << "] " << clients[fd].get_nick() 
-              << " joined " << channelName << RESET << std::endl;
+    // Send join message
+    std::string joinMsg = ":" + clients[fd].get_nick() + "!" + clients[fd].get_user() 
+                         + "@localhost JOIN " + channelName + "\r\n";
+    clients[fd].set_response(joinMsg);
 
-    // Rest of your JOIN implementation...
+    std::cout << formatServerMessage("SUCCESS", clients[fd].get_nick() + " joined " + channelName) << std::endl;
 }
 
 void CoreServer::cmdPrivmsg(int fd, std::vector<std::string>& args)
 {
     if (args.size() < 3)
     {
-        std::cout << RED "[" << getTime() << "] PRIVMSG failed: Incomplete message" << RESET << std::endl;
-        clients[fd].set_response(FORMAT_RESPONSE("461", "PRIVMSG :Not enough parameters"));
+        std::cout << formatServerMessage("ERROR", "PRIVMSG failed: Incomplete message") << std::endl;
+        clients[fd].set_response(formatResponse(ERR_NEEDMOREPARAMS, "PRIVMSG :Not enough parameters"));
         return;
     }
 
@@ -223,8 +188,53 @@ void CoreServer::cmdPrivmsg(int fd, std::vector<std::string>& args)
         message += *it;
     }
 
-    std::cout << MAGENTA "[" << getTime() << "] " << clients[fd].get_nick() 
-              << " -> " << target << ": " << message << RESET << std::endl;
+    std::cout << formatServerMessage("MESSAGE", clients[fd].get_nick() + " -> " + target + ": " + message) << std::endl;
 
-    // Rest of your PRIVMSG implementation...
+    std::string response = ":" + clients[fd].get_nick() + "!" + clients[fd].get_user() 
+                          + "@localhost PRIVMSG " + target + " :" + message + "\r\n";
+    
+    if (target[0] == '#')
+    {
+        // Channel message
+        bool channelFound = false;
+        for (std::vector<channel>::iterator it = channels.begin(); it != channels.end(); ++it)
+        {
+            if (it->getName() == target)
+            {
+                channelFound = true;
+                const std::vector<_client>& members = it->getMembers();
+                for (std::vector<_client>::const_iterator member = members.begin(); 
+                     member != members.end(); ++member)
+                {
+                    if (member->get_nick() != clients[fd].get_nick())
+                    {
+                        std::map<int, _client>::iterator clientIt = clients.find(member->get_fd());
+                        if (clientIt != clients.end())
+                            clientIt->second.set_response(response);
+                    }
+                }
+                break;
+            }
+        }
+
+        if (!channelFound)
+            clients[fd].set_response(formatResponse(ERR_NOSUCHCHAN, target + " :No such channel"));
+    }
+    else
+    {
+        // Private message
+        bool recipientFound = false;
+        for (std::map<int, _client>::iterator it = clients.begin(); it != clients.end(); ++it)
+        {
+            if (it->second.get_nick() == target)
+            {
+                recipientFound = true;
+                it->second.set_response(response);
+                break;
+            }
+        }
+
+        if (!recipientFound)
+            clients[fd].set_response(formatResponse(ERR_NOSUCHNICK, target + " :No such nick/channel"));
+    }
 }
