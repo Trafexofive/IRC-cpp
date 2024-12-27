@@ -1,4 +1,6 @@
 
-- implement core event handling.
-- start implement basic CMDs
--
+- implement core event handling. [DONE]
+- start implement basic CMDs [DONE]
+- rfc-complient auth. [URGENT]
+- add 3 more commands. [PENDING]
+- fix the python tester [PENDING]
