@@ -16,6 +16,9 @@ SRC = \
     server/server.cpp \
 	client/client.cpp \
 	commands/cmd.cpp \
+	Utils.cpp \
+	main.cpp \
+	Validation.cpp \
 
 DIR_SRC = src/
 DIR_OBJ = obj/

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Client.hpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 03:42:38 by mlamkadm          #+#    #+#             */
-/*   Updated: 2024/12/27 03:42:38 by mlamkadm         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef CLIENT_HPP
 #define CLIENT_HPP
 
@@ -17,6 +5,9 @@
 #include <vector>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
+#include <iostream>
+#include "Utils.hpp"
 
 class _client
 {
@@ -59,7 +50,7 @@ class _client
         void set_user(const std::string& user) { fullname = user; }
         void set_nick(const std::string& nick) { nickname = nick; }
         void set_pass(const std::string& pass) { password = pass; }
-        void set_response(const std::string& _resp) { response = _resp; }
+        void set_response(const std::string& _resp);  // Remove implementation from header
         void set_info(const struct sockaddr_in& info) { client_infos = info; }
         void set_buff(const std::string& _buff, bool append);
 };
@@ -81,7 +72,8 @@ class channel
         std::string getTopic() const { return topic; }
         std::string getPassword() const { return password; }
         const std::vector<_client>& getMembers() const { return members; }
-
+        std::string getMembersList() const;  // Add this declaration
+        
         // Setters
         void setName(const std::string& n) { name = n; }
         void setTopic(const std::string& t) { topic = t; }
@@ -89,6 +81,7 @@ class channel
         
         void addMember(const _client& member);
         bool removeMember(const std::string& nickname);
+        void broadcast(const std::string& message, const std::string& except_nick = "");  // Add this declaration
 };
 
 #endif
