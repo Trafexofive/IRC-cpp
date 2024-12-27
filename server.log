@@ -1,0 +1,12 @@
+[2024-12-27 10:06:07] [33mDEBUG :: [0mStarting IRC server
+[2024-12-27 10:06:07] [33mDEBUG :: [0mInitializing server...
+[2024-12-27 10:06:07] [33mDEBUG :: [0mValidating port: 12600
+[2024-12-27 10:06:07] [33mDEBUG :: [0mCJŒƒë$
+[2024-12-27 10:06:07] [33mDEBUG :: [0mValidating password
+[2024-12-27 10:06:07] [33mDEBUG :: [0mPassword valid
+[2024-12-27 10:06:07] [33mDEBUG :: [0mRegistering commands...
+[2024-12-27 10:06:07] [33mDEBUG :: [0mCreating socket...
+[2024-12-27 10:06:07] [33mDEBUG :: [0mSocket created: 3
+[2024-12-27 10:06:07] [33mDEBUG :: [0mSocket setup complete
+[2024-12-27 10:06:07] [33mDEBUG :: [0mBinding socket...
+[2024-12-27 10:06:07] [31mERROR :: [0mBinding failed

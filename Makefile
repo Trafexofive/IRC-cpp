@@ -34,7 +34,7 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -c ${EVENTS} -I ${DIR_INC}
 RM = rm -f
 RMDIR = rm -rf
 
-ARGS = 12600 Alilepro135!
+ARGS = 22200 Alilepro135!
 
 all: ${NAME}
 
@@ -61,7 +61,6 @@ bonus: all
 	@make -C src/bot 
 
 run: re
-	# @make clean
 	@./${DIR_BIN}/${NAME} $(ARGS)
 
 test: re
