@@ -10,61 +10,111 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = irc-server
-SRC = \
-    HandleEvents.cpp \
-    server/server.cpp \
-	client/client.cpp \
-	commands/cmd.cpp \
-	Utils.cpp \
-	main.cpp \
-	Validation.cpp \
+NAME := irc-server
+VERSION := 1.0.0
 
-DIR_SRC = src/
-DIR_OBJ = obj/
-DIR_INC = inc/
-DIR_BIN = bin
+DIR_SRC := src
+DIR_OBJ := obj
+DIR_INC := inc
+DIR_BIN := bin
+DIR_TEST := test
+DIR_BOT := src/bot
+DIR_LOG := log
 
-EVENTS = -L/usr/local/lib -I/usr/local/include
+SRC_FILES := HandleEvents.cpp \
+             server/server.cpp \
+             client/client.cpp \
+             commands/cmd.cpp \
+             Utils.cpp \
+             main.cpp \
+             Validation.cpp
 
-OBJ = ${SRC:%.cpp=${DIR_OBJ}%.o}
-CXX = c++
-DEP = ${OBJ:%.o=%.d}
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -c ${EVENTS} -I ${DIR_INC}
-RM = rm -f
-RMDIR = rm -rf
+SRC := $(addprefix $(DIR_SRC)/, $(SRC_FILES))
+OBJ := $(SRC:$(DIR_SRC)/%.cpp=$(DIR_OBJ)/%.o)
+DEP := $(OBJ:.o=.d)
 
-ARGS = 22200 Alilepro135!
+CXX := c++
+CXXFLAGS := -Wall -Wextra -Werror -std=c++98
+CPPFLAGS := -MMD -MP -I$(DIR_INC)
+LDFLAGS := -L/usr/local/lib
 
-all: ${NAME}
+ifeq ($(DEBUG), 1)
+    CXXFLAGS += -g3 -DDEBUG
+else
+    CXXFLAGS += -O2
+endif
 
-${NAME}: ${OBJ}
-	@mkdir -p ${DIR_BIN}
-	${CXX} $^ -o ${DIR_BIN}/$@
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+    LDLIBS += -lpthread
+endif
 
-${OBJ}: ${DIR_OBJ}%.o: ${DIR_SRC}%.cpp
-	@mkdir -p ${@D}
-	${CXX} ${CPPFLAGS} $< -o $@
+PORT ?= 22200
+PASSWORD ?= Alilepro135!
+ARGS := $(PORT) $(PASSWORD)
 
--include ${DEP}
+RM := rm -f
+RMDIR := rm -rf
+MKDIR := mkdir -p
+ECHO := echo
+
+.PHONY: all clean fclean re debug release test run bot help
+
+all: $(NAME)
+
+$(NAME): $(OBJ) | $(DIR_BIN)
+	@$(CXX) $(OBJ) $(LDFLAGS) $(LDLIBS) -o $(DIR_BIN)/$@
+
+$(DIR_OBJ)/%.o: $(DIR_SRC)/%.cpp | $(DIR_OBJ)
+	@$(MKDIR) $(dir $@)
+	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c $< -o $@
+
+$(DIR_BIN) $(DIR_OBJ) $(DIR_LOG):
+	@$(MKDIR) $@
+
+-include $(DEP)
 
 clean:
-	${RMDIR} ${DIR_OBJ}
-	${RM} ${DIR_BIN}/${NAME}
+	@$(RMDIR) $(DIR_OBJ)
+	@$(RMDIR) $(DIR_LOG)
 
 fclean: clean
-	${RM} ${DIR_BIN}/${NAME}
+	@$(RMDIR) $(DIR_BIN)
+	@$(MAKE) -C $(DIR_BOT) fclean 2>/dev/null || true
 
 re: fclean all
 
-bonus: all
-	@make -C src/bot 
+debug: CXXFLAGS += -g3 -DDEBUG
+debug: all
+
+release: CXXFLAGS += -O2 -DNDEBUG
+release: all
+
+test: debug | $(DIR_LOG)
+	@./$(DIR_TEST)/main.sh --debug 2>&1 | tee $(DIR_LOG)/test.log
 
 run: re
-	@./${DIR_BIN}/${NAME} $(ARGS)
+	@./$(DIR_BIN)/$(NAME) $(ARGS)
 
-test: re
-	@./test/test.sh
+bot:
+	@$(MAKE) -C $(DIR_BOT)
 
-.PHONY: all clean fclean re
+help:
+	@$(ECHO) "Available targets:"
+	@$(ECHO) "  make all      - Build the IRC server (default)"
+	@$(ECHO) "  make clean    - Remove object files"
+	@$(ECHO) "  make fclean   - Remove object files and binary"
+	@$(ECHO) "  make re       - Rebuild everything"
+	@$(ECHO) "  make debug    - Build with debug symbols"
+	@$(ECHO) "  make release  - Build with optimizations"
+	@$(ECHO) "  make test     - Run tests"
+	@$(ECHO) "  make run      - Build and run server"
+	@$(ECHO) "  make bot      - Build the bot component"
+	@$(ECHO) "  make help     - Show this help message"
+	@$(ECHO) "Configuration:"
+	@$(ECHO) "  PORT=<port>         - Set server port (default: $(PORT))"
+	@$(ECHO) "  PASSWORD=<pass>     - Set server password"
+	@$(ECHO) "  DEBUG=1             - Enable debug build"
 
+version:
+	@$(ECHO) "$(NAME) version $(VERSION)"
