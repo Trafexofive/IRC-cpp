@@ -1,16 +1,11 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    test.sh                                            :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/12/27 11:31:57 by mlamkadm          #+#    #+#              #
-#    Updated: 2024/12/27 11:31:57 by mlamkadm         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 #!/bin/bash
+
+# -----------------------------------------------------------------------------
+# IRC Server Test Suite - Based on a Verified Working Version
+# -----------------------------------------------------------------------------
+# This script runs a series of tests against a running IRC server. It verifies
+# connections, password authentication, joining channels, and sending messages.
+# -----------------------------------------------------------------------------
 
 # Default Configuration
 PORT=22200
@@ -25,7 +20,7 @@ NO_COLOR=0
 CUSTOM_TESTS=""
 SKIP_CLEANUP=0
 
-# Colors
+# ANSI Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -34,7 +29,7 @@ GRAY='\033[0;90m'
 NC='\033[0m'
 BOLD='\033[1m'
 
-# Test status indicators
+# Test Status Indicators
 OK="${GREEN}[OK]${NC}"
 KO="${RED}[KO]${NC}"
 
@@ -46,16 +41,16 @@ Usage: $0 [OPTIONS]
 IRC Server Test Suite
 
 Options:
-    -h, --help              Show this help message
-    -d, --debug            Enable debug mode with detailed logging
-    -p, --port PORT        Specify server port (default: $PORT)
-    -t, --timeout SEC      Set command timeout (default: $TIMEOUT)
-    -l, --log FILE         Specify log file (default: $LOG_FILE)
-    -v, --verbose          Enable verbose output
-    -q, --quiet            Suppress all non-error output
-    -n, --no-color         Disable colored output
-    -f, --test-file FILE   Run custom tests from file
-    -s, --skip-cleanup     Don't cleanup server process on exit
+    -h, --help                Show this help message
+    -d, --debug               Enable debug mode with detailed logging
+    -p, --port PORT           Specify server port (default: $PORT)
+    -t, --timeout SEC         Set command timeout (default: $TIMEOUT)
+    -l, --log FILE            Specify log file (default: $LOG_FILE)
+    -v, --verbose             Enable verbose output
+    -q, --quiet               Suppress all non-error output
+    -n, --no-color            Disable colored output
+    -f, --test-file FILE      Run custom tests from file
+    -s, --skip-cleanup        Don't cleanup server process on exit
 
 Examples:
     $0 --debug --port 6667
@@ -152,7 +147,8 @@ function init_log() {
 }
 
 function log_message() {
-    local timestamp=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+    local timestamp
+    timestamp=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
     echo "[${timestamp}] $1" >> "$LOG_FILE"
 }
 
@@ -161,24 +157,29 @@ function print_separator() {
     echo "----------------------------------------" >> "$LOG_FILE"
 }
 
+# send_and_receive Function
+# Sends the provided commands to the server and checks if the output
+# contains the expected value. It uses a temporary file to store output.
 function send_and_receive() {
     local commands=$1
     local expected=$2
     local response=""
     
-    local tmpfile=$(mktemp)
+    local tmpfile
+    tmpfile=$(mktemp)
     
     debug_msg "Created temporary file: $tmpfile"
     log_message "Sending commands:"
     log_message "$commands"
     
-    (echo -e "$commands"; sleep 1) | timeout $TIMEOUT nc localhost $PORT > "$tmpfile" 2>> "$LOG_FILE"
+    # Pipe commands into netcat with a small sleep to allow server processing
+    (echo -e "$commands"; sleep 1) \
+        | timeout $TIMEOUT nc localhost $PORT > "$tmpfile" 2>> "$LOG_FILE"
     local exit_code=$?
-    
     response=$(<"$tmpfile")
     
     debug_msg "Raw response size: $(wc -c < "$tmpfile") bytes"
-    log_message "Raw response:"
+    log_message "Raw response (hex dump):"
     log_message "$(cat "$tmpfile" | xxd)"
     log_message "Exit code: $exit_code"
     
@@ -194,6 +195,8 @@ function send_and_receive() {
     fi
 }
 
+# run_test Function
+# Executes a test by sending commands and checking for expected output.
 function run_test() {
     local test_name=$1
     local expected=$2
@@ -222,6 +225,8 @@ function run_test() {
     fi
 }
 
+# load_custom_tests Function
+# If a custom test file is provided, source it to load additional tests.
 function load_custom_tests() {
     if [ -n "$CUSTOM_TESTS" ] && [ -f "$CUSTOM_TESTS" ]; then
         debug_msg "Loading custom tests from: $CUSTOM_TESTS"
@@ -229,11 +234,13 @@ function load_custom_tests() {
     fi
 }
 
+# cleanup Function
+# Stops the server, if running, unless skip-cleanup is enabled.
 function cleanup() {
-    if [ $SKIP_CLEANUP -eq 0 ] && [ -n "$SERVER_PID" ]; then
+    if [ $SKIP_CLEANUP -eq 0 ] && [ -n "${SERVER_PID:-}" ]; then
         log_message "Stopping server (PID: $SERVER_PID)"
-        kill -9 $SERVER_PID 2>/dev/null
-        wait $SERVER_PID 2>/dev/null
+        kill -9 "$SERVER_PID" 2>/dev/null
+        wait "$SERVER_PID" 2>/dev/null || true
     fi
     log_message "Test suite completed"
     [ $QUIET -eq 0 ] && echo -e "${GRAY}Full test log available in: $LOG_FILE${NC}"
@@ -251,6 +258,7 @@ if [ $QUIET -eq 0 ]; then
     echo "Current User's Login: $(whoami)"
     echo "Testing server at localhost:$PORT"
 fi
+
 log_message "Test suite started"
 print_separator
 
@@ -264,15 +272,15 @@ fi
 # Start server in background
 [ $QUIET -eq 0 ] && echo -e "\n${YELLOW}Starting IRC server...${NC}"
 log_message "Starting IRC server"
-$SERVER_BINARY $PORT $PASSWORD > server.log 2>&1 &
+"$SERVER_BINARY" "$PORT" "$PASSWORD" > server.log 2>&1 &
 SERVER_PID=$!
 
-# Wait for server to start
+# Wait briefly for server to start
 sleep 2
 debug_msg "Waiting for server to start (PID: $SERVER_PID)"
 
-# Verify server is running
-if ! ps -p $SERVER_PID > /dev/null || ! nc -z localhost $PORT 2>/dev/null; then
+# Verify server is running 
+if ! ps -p "$SERVER_PID" > /dev/null || ! nc -z localhost "$PORT" 2>/dev/null; then
     echo -e "${RED}Error: Server failed to start or is not listening on port $PORT${NC}" >&2
     log_message "ERROR: Server failed to start or is not listening on port $PORT"
     cleanup
@@ -283,7 +291,7 @@ fi
 log_message "Server started successfully"
 print_separator
 
-# Load any custom tests
+# Load any custom tests if specified
 load_custom_tests
 
 # Run standard tests
@@ -320,8 +328,10 @@ log_message "Test suite shutting down"
 cleanup
 
 print_separator
-[ $QUIET -eq 0 ] && {
+if [ $QUIET -eq 0 ]; then
     echo -e "${GREEN}Tests completed${NC}"
     echo -e "${GRAY}Log file: $LOG_FILE${NC}"
     echo -e "${GRAY}Server log: server.log${NC}"
-}
+fi
+
+exit 0

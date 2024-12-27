@@ -4,3 +4,4 @@
 - rfc-complient auth. [URGENT]
 - add 3 more commands. [PENDING]
 - fix the python tester [PENDING]
+- Over engineered tester [PENDING]

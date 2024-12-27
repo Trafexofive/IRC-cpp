@@ -1,0 +1,90 @@
+========================================
+IRC Server Test Log - 2024-12-27 10:54:54 UTC
+User: mlamkadm
+Server: localhost:22200
+Debug Mode: 0
+Verbose Mode: 0
+========================================
+
+[2024-12-27 10:54:54 UTC] Test suite started
+----------------------------------------
+[2024-12-27 10:54:54 UTC] Starting IRC server
+[2024-12-27 10:54:56 UTC] Server started successfully
+----------------------------------------
+[2024-12-27 10:54:56 UTC] Starting test: Authentication Test
+----------------------------------------
+[2024-12-27 10:54:56 UTC] Sending commands:
+[2024-12-27 10:54:56 UTC] PASS Alilepro135!\r\nNICK testuser\r\nUSER testuser 0 * :Test User\r\n
+[2024-12-27 10:55:01 UTC] Raw response (hex dump):
+[2024-12-27 10:55:01 UTC] 00000000: 3a73 6572 7665 7220 4e4f 5449 4345 2041  :server NOTICE A
+00000010: 7574 6820 3a50 6173 7377 6f72 6420 6163  uth :Password ac
+00000020: 6365 7074 6564 0d0a 3030 3420 7465 7374  cepted..004 test
+00000030: 7573 6572 203a 4952 4320 7365 7276 6572  user :IRC server
+00000040: 2076 312e 300d 0a                         v1.0..
+[2024-12-27 10:55:01 UTC] Exit code: 124
+[2024-12-27 10:55:01 UTC] Response did not match expected pattern: 'Welcome'
+[2024-12-27 10:55:01 UTC] Test FAILED
+[2024-12-27 10:55:01 UTC] Expected: Welcome
+[2024-12-27 10:55:02 UTC] Starting test: Invalid Password Test
+----------------------------------------
+[2024-12-27 10:55:02 UTC] Sending commands:
+[2024-12-27 10:55:02 UTC] PASS wrongpassword\r\nNICK testuser\r\nUSER testuser 0 * :Test User\r\n
+[2024-12-27 10:55:07 UTC] Raw response (hex dump):
+[2024-12-27 10:55:07 UTC] 00000000: 3436 3420 3a50 6173 7377 6f72 6420 696e  464 :Password in
+00000010: 636f 7272 6563 740d 0a                   correct..
+[2024-12-27 10:55:07 UTC] Exit code: 124
+[2024-12-27 10:55:07 UTC] Response matched expected pattern: 'incorrect'
+[2024-12-27 10:55:07 UTC] Test PASSED
+[2024-12-27 10:55:08 UTC] Starting test: Channel Join Test
+----------------------------------------
+[2024-12-27 10:55:08 UTC] Sending commands:
+[2024-12-27 10:55:08 UTC] PASS Alilepro135!\r\nNICK testuser2\r\nUSER testuser2 0 * :Test User\r\nJOIN #testchannel\r\n
+[2024-12-27 10:55:13 UTC] Raw response (hex dump):
+[2024-12-27 10:55:13 UTC] 00000000: 3a73 6572 7665 7220 4e4f 5449 4345 2041  :server NOTICE A
+00000010: 7574 6820 3a50 6173 7377 6f72 6420 6163  uth :Password ac
+00000020: 6365 7074 6564 0d0a 3030 3420 7465 7374  cepted..004 test
+00000030: 7573 6572 3220 3a49 5243 2073 6572 7665  user2 :IRC serve
+00000040: 7220 7631 2e30 0d0a 3a74 6573 7475 7365  r v1.0..:testuse
+00000050: 7232 2174 6573 7475 7365 7232 406c 6f63  r2!testuser2@loc
+00000060: 616c 686f 7374 204a 4f49 4e20 2374 6573  alhost JOIN #tes
+00000070: 7463 6861 6e6e 656c 0d0a                 tchannel..
+[2024-12-27 10:55:13 UTC] Exit code: 124
+[2024-12-27 10:55:13 UTC] Response matched expected pattern: 'JOIN'
+[2024-12-27 10:55:13 UTC] Test PASSED
+[2024-12-27 10:55:14 UTC] Starting test: Empty Password Test
+----------------------------------------
+[2024-12-27 10:55:14 UTC] Sending commands:
+[2024-12-27 10:55:14 UTC] PASS \r\nNICK testuser\r\nUSER testuser 0 * :Test User\r\n
+[2024-12-27 10:55:19 UTC] Raw response (hex dump):
+[2024-12-27 10:55:19 UTC] 00000000: 3436 3120 5041 5353 203a 4e6f 7420 656e  461 PASS :Not en
+00000010: 6f75 6768 2070 6172 616d 6574 6572 730d  ough parameters.
+00000020: 0a                                       .
+[2024-12-27 10:55:19 UTC] Exit code: 124
+[2024-12-27 10:55:19 UTC] Response matched expected pattern: 'parameters'
+[2024-12-27 10:55:19 UTC] Test PASSED
+[2024-12-27 10:55:20 UTC] Starting test: Channel Message Test
+----------------------------------------
+[2024-12-27 10:55:20 UTC] Sending commands:
+[2024-12-27 10:55:20 UTC] PASS Alilepro135!\r\nNICK testuser3\r\nUSER testuser3 0 * :Test User\r\nJOIN #testchannel\r\nPRIVMSG #testchannel :Hello\r\n
+[2024-12-27 10:55:25 UTC] Raw response (hex dump):
+[2024-12-27 10:55:25 UTC] 00000000: 3a73 6572 7665 7220 4e4f 5449 4345 2041  :server NOTICE A
+00000010: 7574 6820 3a50 6173 7377 6f72 6420 6163  uth :Password ac
+00000020: 6365 7074 6564 0d0a 3030 3420 7465 7374  cepted..004 test
+00000030: 7573 6572 3320 3a49 5243 2073 6572 7665  user3 :IRC serve
+00000040: 7220 7631 2e30 0d0a 3a74 6573 7475 7365  r v1.0..:testuse
+00000050: 7233 2174 6573 7475 7365 7233 406c 6f63  r3!testuser3@loc
+00000060: 616c 686f 7374 204a 4f49 4e20 2374 6573  alhost JOIN #tes
+00000070: 7463 6861 6e6e 656c 0d0a 3a74 6573 7475  tchannel..:testu
+00000080: 7365 7233 2174 6573 7475 7365 7233 406c  ser3!testuser3@l
+00000090: 6f63 616c 686f 7374 2050 5249 564d 5347  ocalhost PRIVMSG
+000000a0: 2023 7465 7374 6368 616e 6e65 6c20 3a3a   #testchannel ::
+000000b0: 4865 6c6c 6f0d 0a                        Hello..
+[2024-12-27 10:55:25 UTC] Exit code: 124
+[2024-12-27 10:55:25 UTC] Response matched expected pattern: 'PRIVMSG'
+[2024-12-27 10:55:25 UTC] Test PASSED
+[2024-12-27 10:55:25 UTC] Test suite shutting down
+[2024-12-27 10:55:25 UTC] Stopping server (PID: 2315789)
+[2024-12-27 10:55:25 UTC] Test suite completed
+----------------------------------------
+[2024-12-27 10:55:25 UTC] Stopping server (PID: 2315789)
+[2024-12-27 10:55:25 UTC] Test suite completed
