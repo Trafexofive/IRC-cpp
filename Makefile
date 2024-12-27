@@ -27,7 +27,7 @@ EVENTS = -L/usr/local/lib -I/usr/local/include
 OBJ = ${SRC:%.cpp=${DIR_OBJ}%.o}
 CXX = c++
 DEP = ${OBJ:%.o=%.d}
-CPPFLAGS = -Wall -Wextra -Werror -cpp98 -c ${EVENTS} -I ${DIR_INC}
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -c ${EVENTS} -I ${DIR_INC}
 RM = rm -f
 RMDIR = rm -rf
 
