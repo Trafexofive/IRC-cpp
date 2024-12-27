@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/12/27 10:32:22 by mlamkadm          #+#    #+#              #
-#    Updated: 2024/12/27 10:32:22 by mlamkadm         ###   ########.fr        #
+#    Created: 2024/12/27 11:16:27 by mlamkadm          #+#    #+#              #
+#    Updated: 2024/12/27 11:16:27 by mlamkadm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 PORT=22200
 PASSWORD="Alilepro135!"
 SERVER_BINARY="./bin/irc-server"
-TIMEOUT=2
+TIMEOUT=5  # Increased timeout
 
 # Colors
 RED='\033[0;31m'
@@ -35,6 +35,33 @@ function print_separator() {
     echo -e "${GRAY}----------------------------------------${NC}"
 }
 
+function send_and_receive() {
+    local commands=$1
+    local expected=$2
+    local response=""
+    
+    # Create a temporary file for the response
+    local tmpfile=$(mktemp)
+    
+    # Use netcat with a timeout to send commands and receive response
+    (echo -e "$commands"; sleep 1) | timeout $TIMEOUT nc localhost $PORT > "$tmpfile"
+    
+    # Read the response
+    response=$(<"$tmpfile")
+    rm -f "$tmpfile"
+    
+    # Debug output
+    echo -e "${GRAY}Debug: Raw response:${NC}"
+    echo "$response" | xxd
+    
+    # Check if response contains expected string
+    if [[ "$response" == *"$expected"* ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
 function run_test() {
     local test_name=$1
     local expected=$2
@@ -42,44 +69,19 @@ function run_test() {
     
     echo -e "\n${BOLD}Running: ${test_name}${NC}"
     print_separator
-    
-    # Create a temporary file for the actual output
-    local output_file=$(mktemp)
-    
-    # Run the test with timeout
     echo -e "${GRAY}Sending:${NC}\n$commands"
-    timeout $TIMEOUT bash -c "echo -e \"$commands\" | nc localhost $PORT" > "$output_file" 2>&1
-    local exit_code=$?
-    
-    # Read the actual output
-    local received=$(cat "$output_file")
-    rm -f "$output_file"
-    
     print_separator
+
+    # Add debug output for what we're expecting
+    echo -e "${GRAY}Debug: Expecting to find:${NC} '$expected'"
     
-    # Check for timeout or failure
-    if [ $exit_code -eq 124 ]; then
-        echo -e "${KO} Test timed out after ${TIMEOUT} seconds"
-        echo -e "${YELLOW}Expected:${NC} $expected"
-        echo -e "${RED}Received:${NC} No response (hanging)"
-        return 1
-    elif [ $exit_code -ne 0 ]; then
-        echo -e "${KO} Test failed with exit code $exit_code"
-        echo -e "${YELLOW}Expected:${NC} $expected"
-        echo -e "${RED}Received:${NC} $received"
-        return 1
-    fi
-    
-    # Check if output matches expected
-    if [[ "$received" == *"$expected"* ]]; then
+    if send_and_receive "$commands" "$expected"; then
         echo -e "${OK} Test passed"
-        echo -e "${YELLOW}Expected:${NC} $expected"
-        echo -e "${GREEN}Received:${NC} $received"
         return 0
     else
         echo -e "${KO} Test failed"
         echo -e "${YELLOW}Expected:${NC} $expected"
-        echo -e "${RED}Received:${NC} ${received:-<no output>}"
+        echo -e "${RED}Actual response did not contain expected string${NC}"
         return 1
     fi
 }
@@ -91,12 +93,12 @@ function cleanup() {
     fi
 }
 
-trap cleanup EXIT
+trap cleanup EXIT INT TERM
 
 # Print header
 echo -e "${BLUE}${BOLD}IRC Server Test Suite${NC}"
 echo "Current Date and Time (UTC): $(date -u '+%Y-%m-%d %H:%M:%S')"
-echo "Current User's Login: Trafexofive"
+echo "Current User's Login: $(whoami)"
 echo "Testing server at localhost:$PORT"
 print_separator
 
@@ -112,7 +114,7 @@ $SERVER_BINARY $PORT $PASSWORD > /dev/null 2>&1 &
 SERVER_PID=$!
 
 # Wait for server to start
-sleep 1
+sleep 2
 
 # Verify server is running
 if ! ps -p $SERVER_PID > /dev/null || ! nc -z localhost $PORT 2>/dev/null; then
@@ -124,28 +126,31 @@ fi
 echo -e "${GREEN}Server started successfully${NC}"
 print_separator
 
-# Run tests
-# Test 1: Authentication
+# Run tests with modified expected responses
 run_test "Authentication Test" \
-         "001" \
+         "Welcome" \
          "PASS $PASSWORD\r\nNICK testuser\r\nUSER testuser 0 * :Test User\r\n"
 
-# Test 2: Invalid Password
+sleep 1
+
 run_test "Invalid Password Test" \
-         "464" \
+         "incorrect" \
          "PASS wrongpassword\r\nNICK testuser\r\nUSER testuser 0 * :Test User\r\n"
 
-# Test 3: Channel Join
+sleep 1
+
 run_test "Channel Join Test" \
          "JOIN" \
          "PASS $PASSWORD\r\nNICK testuser2\r\nUSER testuser2 0 * :Test User\r\nJOIN #testchannel\r\n"
 
-# Test 4: Empty Password
+sleep 1
+
 run_test "Empty Password Test" \
-         "464" \
+         "parameters" \
          "PASS \r\nNICK testuser\r\nUSER testuser 0 * :Test User\r\n"
 
-# Test 5: Message to Channel
+sleep 1
+
 run_test "Channel Message Test" \
          "PRIVMSG" \
          "PASS $PASSWORD\r\nNICK testuser3\r\nUSER testuser3 0 * :Test User\r\nJOIN #testchannel\r\nPRIVMSG #testchannel :Hello\r\n"

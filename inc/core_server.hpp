@@ -90,6 +90,7 @@ private:
     void broadcastToChannel(const std::string& channelName,
                           const std::string& message,
                           const std::string& except_nick = "");
+    void handleCommand(int fd, const std::string& line);
 
 public:
     // Constructor and destructor

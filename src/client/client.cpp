@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/27 10:57:28 by mlamkadm          #+#    #+#             */
+/*   Updated: 2024/12/27 10:57:28 by mlamkadm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/Client.hpp"
 #include <algorithm>
 #include <sstream>
@@ -5,7 +17,14 @@
 _client::_client() : 
     fd_client(-1), 
     auth(false), 
-    connected(false) 
+    connected(false),
+    client_infos(),
+    ip_addr(""),
+    fullname(""),
+    nickname(""),
+    password(""),
+    buff(""),
+    response("")
 {
     std::cout << formatServerMessage("DEBUG", "Creating new empty client instance") << std::endl;
 }
@@ -14,7 +33,13 @@ _client::_client(int fd, struct sockaddr_in ddr) :
     fd_client(fd),
     auth(false),
     connected(false),
-    client_infos(ddr)
+    client_infos(ddr),
+    ip_addr(""),
+    fullname(""),
+    nickname(""),
+    password(""),
+    buff(""),
+    response("")
 {
     std::ostringstream debug;
     debug << "Creating new client instance with fd(" << fd << ") and IP(" 
@@ -32,6 +57,10 @@ void _client::authenticate()
     {
         auth = true;
         connected = true;
+        
+        // Set welcome messages
+        std::string welcomeMsg = ":server 001 " + nickname + " :Welcome to the IRC Network";
+        set_response(welcomeMsg);
         
         std::ostringstream success;
         success << "Authentication successful for " << nickname 
@@ -66,12 +95,14 @@ void _client::set_buff(const std::string& _buff, bool append)
 void _client::set_response(const std::string& _response)
 {
     std::ostringstream debug;
-    debug << "Sending response to client fd(" << fd_client << "): " 
+    debug << "Setting response for client fd(" << fd_client << "): " 
           << (_response.length() > 50 ? _response.substr(0, 50) + "..." : _response);
     std::cout << formatServerMessage("SERVER", debug.str()) << std::endl;
 
-    std::string full_response = _response + "\r\n";
-    send(fd_client, full_response.c_str(), full_response.length(), 0);
+    response = _response;
+    if (response.find("\r\n") == std::string::npos) {
+        response += "\r\n";
+    }
 }
 
 void _client::clear() 
@@ -186,6 +217,38 @@ void channel::broadcast(const std::string& message, const std::string& except_ni
          it != members.end(); ++it)
     {
         if (it->get_nick() != except_nick)
+        {
             it->set_response(message);
+        }
     }
 }
+
+int _client::get_fd() const { return fd_client; }
+bool _client::get_bool() const { return auth; }
+bool _client::get_connect() const { return connected; }
+const std::string& _client::get_ip() const { return ip_addr; }
+const std::string& _client::get_user() const { return fullname; }
+const std::string& _client::get_nick() const { return nickname; }
+const std::string& _client::get_pass() const { return password; }
+const std::string& _client::get_buff() const { return buff; }
+const std::string& _client::get_response() const { return response; }
+const struct sockaddr_in& _client::get_info() const { return client_infos; }
+
+void _client::set_fd(int fd) { fd_client = fd; }
+void _client::set_bool(bool i) { auth = i; }
+void _client::set_connect(bool i) { connected = i; }
+void _client::set_ip(const std::string& ip) { ip_addr = ip; }
+void _client::set_user(const std::string& user) { fullname = user; }
+void _client::set_nick(const std::string& nick) { nickname = nick; }
+void _client::set_pass(const std::string& pass) { password = pass; }
+void _client::set_info(const struct sockaddr_in& info) { client_infos = info; }
+
+void _client::clear_response()
+{
+    response.clear();
+}
+
+const std::string& channel::getName() const { return name; }
+const std::string& channel::getTopic() const { return topic; }
+const std::string& channel::getPassword() const { return password; }
+const std::vector<_client>& channel::getMembers() const { return members; }
