@@ -1,4 +1,3 @@
-
 ### [TASKS]
 
 - Implement core event handling. [DONE]
@@ -68,9 +67,8 @@
 ### [FEATURES]
 
 - Add more advanced IRC commands.
-- Implement a GUI client.
 - Introduce plugin support for custom commands.
-- Develop a web-based interface for the server.
+- Develop a web-based interface for the server. [LOL]
 
 ### [TLDR;]
 
@@ -80,6 +78,3 @@
 - Bugs should be reported with the format {location-line}.
 - Future features include advanced commands, GUI client, and plugin support.
 
----
-
-Feel free to modify this as needed.
