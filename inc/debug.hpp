@@ -17,6 +17,9 @@
 #include <string>
 #include <ctime>
 
+
+//in progress...
+
 class ClientDebug
 {
 private:

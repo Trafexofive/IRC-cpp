@@ -8,6 +8,8 @@
 #include <arpa/inet.h>
 #include <iostream>
 #include "Utils.hpp"
+#include <algorithm>
+#include <sstream>
 
 class _client
 {

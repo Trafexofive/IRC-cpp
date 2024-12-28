@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../inc/Client.hpp"
-#include <algorithm>
-#include <sstream>
 
 _client::_client() : 
     fd_client(-1), 
@@ -222,6 +220,8 @@ void channel::broadcast(const std::string& message, const std::string& except_ni
         }
     }
 }
+
+// setters and getters.
 
 int _client::get_fd() const { return fd_client; }
 bool _client::get_bool() const { return auth; }
