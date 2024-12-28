@@ -1,0 +1,60 @@
+[0;34m[1mIRC Server Test Suite[0m
+Current Date and Time (UTC): 2024-12-27 23:35:52
+Current User's Login: mlamkadm
+Testing server at localhost:22200
+[0;90m----------------------------------------[0m
+
+[1;33mStarting IRC server...[0m
+[0;90m[DEBUG] Waiting for server to start (PID: 2595583)[0m
+[0;32mServer started successfully[0m
+[0;90m----------------------------------------[0m
+
+[1mRunning: Authentication Test[0m
+[0;90m----------------------------------------[0m
+[0;90m[DEBUG] Expected pattern: 'Welcome'[0m
+[0;90m[DEBUG] Created temporary file: /tmp/tmp.uqPNNASbGp[0m
+[0;90m[DEBUG] Raw response size: 71 bytes[0m
+[0;90m[DEBUG] Removed temporary file: /tmp/tmp.uqPNNASbGp[0m
+[0;31m[KO][0m Test failed
+[1;33mExpected:[0m Welcome
+[0;31mActual response did not contain expected string[0m
+
+[1mRunning: Invalid Password Test[0m
+[0;90m----------------------------------------[0m
+[0;90m[DEBUG] Expected pattern: 'incorrect'[0m
+[0;90m[DEBUG] Created temporary file: /tmp/tmp.BAuHKNnES2[0m
+[0;90m[DEBUG] Raw response size: 25 bytes[0m
+[0;90m[DEBUG] Removed temporary file: /tmp/tmp.BAuHKNnES2[0m
+[0;32m[OK][0m Test passed
+
+[1mRunning: Channel Join Test[0m
+[0;90m----------------------------------------[0m
+[0;90m[DEBUG] Expected pattern: 'JOIN'[0m
+[0;90m[DEBUG] Created temporary file: /tmp/tmp.OXrlzAkxbF[0m
+[0;90m[DEBUG] Raw response size: 122 bytes[0m
+[0;90m[DEBUG] Removed temporary file: /tmp/tmp.OXrlzAkxbF[0m
+[0;32m[OK][0m Test passed
+
+[1mRunning: Empty Password Test[0m
+[0;90m----------------------------------------[0m
+[0;90m[DEBUG] Expected pattern: 'parameters'[0m
+[0;90m[DEBUG] Created temporary file: /tmp/tmp.RF5dp9grAQ[0m
+[0;90m[DEBUG] Raw response size: 33 bytes[0m
+[0;90m[DEBUG] Removed temporary file: /tmp/tmp.RF5dp9grAQ[0m
+[0;32m[OK][0m Test passed
+
+[1mRunning: Channel Message Test[0m
+[0;90m----------------------------------------[0m
+[0;90m[DEBUG] Expected pattern: 'PRIVMSG'[0m
+[0;90m[DEBUG] Created temporary file: /tmp/tmp.zQa8L0T3Bn[0m
+[0;90m[DEBUG] Raw response size: 183 bytes[0m
+[0;90m[DEBUG] Removed temporary file: /tmp/tmp.zQa8L0T3Bn[0m
+[0;32m[OK][0m Test passed
+
+[1;33mStopping server...[0m
+[0;90mFull test log available in: irc_test.log[0m
+[0;90m----------------------------------------[0m
+[0;32mTests completed[0m
+[0;90mLog file: irc_test.log[0m
+[0;90mServer log: server.log[0m
+[0;90mFull test log available in: irc_test.log[0m

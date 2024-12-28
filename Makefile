@@ -29,7 +29,7 @@ SRC_FILES := HandleEvents.cpp \
              main.cpp \
              Validation.cpp
 
-SRC := $(addprefix $(DIR_SRC)/, $(SRC_FILES))
+SRC := $(addprefix $(DIR_SRC)/, $(SRC_FILES)) #too good not to be forbidden (check 42-docs)
 OBJ := $(SRC:$(DIR_SRC)/%.cpp=$(DIR_OBJ)/%.o)
 DEP := $(OBJ:.o=.d)
 
@@ -38,6 +38,8 @@ CXXFLAGS := -Wall -Wextra -Werror -std=c++98
 CPPFLAGS := -MMD -MP -I$(DIR_INC)
 LDFLAGS := -L/usr/local/lib
 
+
+#-DEBUG-##########################################################
 ifeq ($(DEBUG), 1)
     CXXFLAGS += -g3 -DDEBUG
 else
@@ -49,9 +51,11 @@ ifeq ($(UNAME_S),Linux)
     LDLIBS += -lpthread
 endif
 
+#-ENV-############################################################
 PORT ?= 22200
 PASSWORD ?= Alilepro135!
 ARGS := $(PORT) $(PASSWORD)
+##################################################################
 
 RM := rm -f
 RMDIR := rm -rf

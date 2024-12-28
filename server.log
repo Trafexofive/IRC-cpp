@@ -1,170 +1,170 @@
-[2024-12-27 12:07:49] [33mDEBUG :: [0mStarting IRC server
-[2024-12-27 12:07:49] [33mDEBUG :: [0mInitializing server...
-[2024-12-27 12:07:49] [33mDEBUG :: [0mValidating port: 22200
-[2024-12-27 12:07:49] [33mDEBUG :: [0mÓ
-[2024-12-27 12:07:49] [33mDEBUG :: [0mValidating password
-[2024-12-27 12:07:49] [33mDEBUG :: [0mPassword valid
-[2024-12-27 12:07:49] [33mDEBUG :: [0mRegistering commands...
-[2024-12-27 12:07:49] [33mDEBUG :: [0mCreating socket...
-[2024-12-27 12:07:49] [33mDEBUG :: [0mSocket created: 3
-[2024-12-27 12:07:49] [33mDEBUG :: [0mSocket setup complete
-[2024-12-27 12:07:49] [33mDEBUG :: [0mBinding socket...
-[2024-12-27 12:07:49] [33mDEBUG :: [0mStarting to listen...
-[2024-12-27 12:07:49] [33mDEBUG :: [0mServer listening on port: 22200
-[2024-12-27 12:07:49] [33mDEBUG :: [0mServer main loop starting...
-[2024-12-27 12:07:51] [33mDEBUG :: [0mActive connections: 1
-[2024-12-27 12:07:51] Client accepted FD: 4
-[2024-12-27 12:07:51] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:54692)
-[2024-12-27 12:07:51] [33mDEBUG :: [0mCreating new empty client instance
-[2024-12-27 12:07:51] [33mDEBUG :: [0mActive connections: 2
-[2024-12-27 12:07:51] Closing connection FD: 4
-[2024-12-27 12:07:51] [33mDEBUG :: [0mActive connections: 1
-[2024-12-27 12:07:51] Client accepted FD: 4
-[2024-12-27 12:07:51] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:54702)
-[2024-12-27 12:07:51] [33mDEBUG :: [0mCreating new empty client instance
-[2024-12-27 12:07:51] [33mDEBUG :: [0mActive connections: 2
-[2024-12-27 12:07:51] [33mDEBUG :: [0mProcessing command: PASS
-[2024-12-27 12:07:51] [33mDEBUG :: [0mProcessing PASS command
-[2024-12-27 12:07:51] [33mDEBUG :: [0mPassword accepted
-[2024-12-27 12:07:51] [35mSERVER << [0mSetting response for client fd(4): :server NOTICE Auth :Password accepted
+[2024-12-28 00:35:52] [33mDEBUG :: [0mStarting IRC server
+[2024-12-28 00:35:52] [33mDEBUG :: [0mInitializing server...
+[2024-12-28 00:35:52] [33mDEBUG :: [0mValidating port: 22200
+[2024-12-28 00:35:52] [33mDEBUG :: [0m
+[2024-12-28 00:35:52] [33mDEBUG :: [0mValidating password
+[2024-12-28 00:35:52] [33mDEBUG :: [0mPassword valid
+[2024-12-28 00:35:52] [33mDEBUG :: [0mRegistering commands...
+[2024-12-28 00:35:52] [33mDEBUG :: [0mCreating socket...
+[2024-12-28 00:35:52] [33mDEBUG :: [0mSocket created: 3
+[2024-12-28 00:35:52] [33mDEBUG :: [0mSocket setup complete
+[2024-12-28 00:35:52] [33mDEBUG :: [0mBinding socket...
+[2024-12-28 00:35:52] [33mDEBUG :: [0mStarting to listen...
+[2024-12-28 00:35:52] [33mDEBUG :: [0mServer listening on port: 22200
+[2024-12-28 00:35:52] [33mDEBUG :: [0mServer main loop starting...
+[2024-12-28 00:35:54] [33mDEBUG :: [0mActive connections: 1
+[2024-12-28 00:35:54] Client accepted FD: 4
+[2024-12-28 00:35:54] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:46520)
+[2024-12-28 00:35:54] [33mDEBUG :: [0mCreating new empty client instance
+[2024-12-28 00:35:54] [33mDEBUG :: [0mActive connections: 2
+[2024-12-28 00:35:54] Closing connection FD: 4
+[2024-12-28 00:35:54] [33mDEBUG :: [0mActive connections: 1
+[2024-12-28 00:35:54] Client accepted FD: 4
+[2024-12-28 00:35:54] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:46526)
+[2024-12-28 00:35:54] [33mDEBUG :: [0mCreating new empty client instance
+[2024-12-28 00:35:54] [33mDEBUG :: [0mActive connections: 2
+[2024-12-28 00:35:54] [33mDEBUG :: [0mProcessing command: PASS
+[2024-12-28 00:35:54] [33mDEBUG :: [0mProcessing PASS command
+[2024-12-28 00:35:54] [33mDEBUG :: [0mPassword accepted
+[2024-12-28 00:35:54] [35mSERVER << [0mSetting response for client fd(4): :server NOTICE Auth :Password accepted
 
-[2024-12-27 12:07:51] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+[2024-12-28 00:35:54] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
 
-[2024-12-27 12:07:51] [33mDEBUG :: [0mProcessing command: NICK
-[2024-12-27 12:07:51] [33mDEBUG :: [0mProcessing NICK command
-[2024-12-27 12:07:51] [33mDEBUG :: [0mNickname set to: testuser
-[2024-12-27 12:07:51] [33mDEBUG :: [0mProcessing command: USER
-[2024-12-27 12:07:51] [33mDEBUG :: [0mProcessing USER command
-[2024-12-27 12:07:51] [33mDEBUG :: [0mRegistration complete for testuser
-[2024-12-27 12:07:51] [35mSERVER << [0mSetting response for client fd(4): 001 testuser :Welcome to the IRC Network
+[2024-12-28 00:35:54] [33mDEBUG :: [0mProcessing command: NICK
+[2024-12-28 00:35:54] [33mDEBUG :: [0mProcessing NICK command
+[2024-12-28 00:35:54] [33mDEBUG :: [0mNickname set to: testuser
+[2024-12-28 00:35:54] [33mDEBUG :: [0mProcessing command: USER
+[2024-12-28 00:35:54] [33mDEBUG :: [0mProcessing USER command
+[2024-12-28 00:35:54] [33mDEBUG :: [0mRegistration complete for testuser
+[2024-12-28 00:35:54] [35mSERVER << [0mSetting response for client fd(4): 001 testuser :Welcome to the IRC Network
 
-[2024-12-27 12:07:51] [35mSERVER << [0mSetting response for client fd(4): 002 testuser :Your host is irc.example.com
+[2024-12-28 00:35:54] [35mSERVER << [0mSetting response for client fd(4): 002 testuser :Your host is irc.example.com
 
-[2024-12-27 12:07:51] [35mSERVER << [0mSetting response for client fd(4): 003 testuser :This server was created Dec 27 2024...
-[2024-12-27 12:07:51] [35mSERVER << [0mSetting response for client fd(4): 004 testuser :IRC server v1.0
+[2024-12-28 00:35:54] [35mSERVER << [0mSetting response for client fd(4): 003 testuser :This server was created Dec 28 2024...
+[2024-12-28 00:35:54] [35mSERVER << [0mSetting response for client fd(4): 004 testuser :IRC server v1.0
 
-[2024-12-27 12:07:51] [33mDEBUG :: [0mSending response: 004 testuser :IRC server v1.0
+[2024-12-28 00:35:54] [33mDEBUG :: [0mSending response: 004 testuser :IRC server v1.0
 
-[2024-12-27 12:07:56] [33mDEBUG :: [0mActive connections: 2
-[2024-12-27 12:07:56] Closing connection FD: 4
-[2024-12-27 12:07:57] [33mDEBUG :: [0mActive connections: 1
-[2024-12-27 12:07:57] Client accepted FD: 4
-[2024-12-27 12:07:57] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:37268)
-[2024-12-27 12:07:57] [33mDEBUG :: [0mCreating new empty client instance
-[2024-12-27 12:07:57] [33mDEBUG :: [0mActive connections: 2
-[2024-12-27 12:07:57] [33mDEBUG :: [0mProcessing command: PASS
-[2024-12-27 12:07:57] [33mDEBUG :: [0mProcessing PASS command
-[2024-12-27 12:07:57] [31mERROR :: [0mPASS command failed: Invalid password
-[2024-12-27 12:07:57] [35mSERVER << [0mSetting response for client fd(4): 464 :Password incorrect
+[2024-12-28 00:35:59] [33mDEBUG :: [0mActive connections: 2
+[2024-12-28 00:35:59] Closing connection FD: 4
+[2024-12-28 00:36:00] [33mDEBUG :: [0mActive connections: 1
+[2024-12-28 00:36:00] Client accepted FD: 4
+[2024-12-28 00:36:00] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:47542)
+[2024-12-28 00:36:00] [33mDEBUG :: [0mCreating new empty client instance
+[2024-12-28 00:36:00] [33mDEBUG :: [0mActive connections: 2
+[2024-12-28 00:36:00] [33mDEBUG :: [0mProcessing command: PASS
+[2024-12-28 00:36:00] [33mDEBUG :: [0mProcessing PASS command
+[2024-12-28 00:36:00] [31mERROR :: [0mPASS command failed: Invalid password
+[2024-12-28 00:36:00] [35mSERVER << [0mSetting response for client fd(4): 464 :Password incorrect
 
-[2024-12-27 12:07:57] [33mDEBUG :: [0mSending response: 464 :Password incorrect
+[2024-12-28 00:36:00] [33mDEBUG :: [0mSending response: 464 :Password incorrect
 
-[2024-12-27 12:07:57] [33mDEBUG :: [0mProcessing command: NICK
-[2024-12-27 12:07:57] [33mDEBUG :: [0mProcessing NICK command
-[2024-12-27 12:07:57] [33mDEBUG :: [0mNickname set to: testuser
-[2024-12-27 12:07:57] [33mDEBUG :: [0mProcessing command: USER
-[2024-12-27 12:07:57] [33mDEBUG :: [0mProcessing USER command
-[2024-12-27 12:08:02] [33mDEBUG :: [0mActive connections: 2
-[2024-12-27 12:08:02] Closing connection FD: 4
-[2024-12-27 12:08:03] [33mDEBUG :: [0mActive connections: 1
-[2024-12-27 12:08:03] Client accepted FD: 4
-[2024-12-27 12:08:03] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:37270)
-[2024-12-27 12:08:03] [33mDEBUG :: [0mCreating new empty client instance
-[2024-12-27 12:08:03] [33mDEBUG :: [0mActive connections: 2
-[2024-12-27 12:08:03] [33mDEBUG :: [0mProcessing command: PASS
-[2024-12-27 12:08:03] [33mDEBUG :: [0mProcessing PASS command
-[2024-12-27 12:08:03] [33mDEBUG :: [0mPassword accepted
-[2024-12-27 12:08:03] [35mSERVER << [0mSetting response for client fd(4): :server NOTICE Auth :Password accepted
+[2024-12-28 00:36:00] [33mDEBUG :: [0mProcessing command: NICK
+[2024-12-28 00:36:00] [33mDEBUG :: [0mProcessing NICK command
+[2024-12-28 00:36:00] [33mDEBUG :: [0mNickname set to: testuser
+[2024-12-28 00:36:00] [33mDEBUG :: [0mProcessing command: USER
+[2024-12-28 00:36:00] [33mDEBUG :: [0mProcessing USER command
+[2024-12-28 00:36:05] [33mDEBUG :: [0mActive connections: 2
+[2024-12-28 00:36:05] Closing connection FD: 4
+[2024-12-28 00:36:06] [33mDEBUG :: [0mActive connections: 1
+[2024-12-28 00:36:06] Client accepted FD: 4
+[2024-12-28 00:36:06] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:60850)
+[2024-12-28 00:36:06] [33mDEBUG :: [0mCreating new empty client instance
+[2024-12-28 00:36:06] [33mDEBUG :: [0mActive connections: 2
+[2024-12-28 00:36:06] [33mDEBUG :: [0mProcessing command: PASS
+[2024-12-28 00:36:06] [33mDEBUG :: [0mProcessing PASS command
+[2024-12-28 00:36:06] [33mDEBUG :: [0mPassword accepted
+[2024-12-28 00:36:06] [35mSERVER << [0mSetting response for client fd(4): :server NOTICE Auth :Password accepted
 
-[2024-12-27 12:08:03] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+[2024-12-28 00:36:06] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
 
-[2024-12-27 12:08:03] [33mDEBUG :: [0mProcessing command: NICK
-[2024-12-27 12:08:03] [33mDEBUG :: [0mProcessing NICK command
-[2024-12-27 12:08:03] [33mDEBUG :: [0mNickname set to: testuser2
-[2024-12-27 12:08:03] [33mDEBUG :: [0mProcessing command: USER
-[2024-12-27 12:08:03] [33mDEBUG :: [0mProcessing USER command
-[2024-12-27 12:08:03] [33mDEBUG :: [0mRegistration complete for testuser2
-[2024-12-27 12:08:03] [35mSERVER << [0mSetting response for client fd(4): 001 testuser2 :Welcome to the IRC Network
+[2024-12-28 00:36:06] [33mDEBUG :: [0mProcessing command: NICK
+[2024-12-28 00:36:06] [33mDEBUG :: [0mProcessing NICK command
+[2024-12-28 00:36:06] [33mDEBUG :: [0mNickname set to: testuser2
+[2024-12-28 00:36:06] [33mDEBUG :: [0mProcessing command: USER
+[2024-12-28 00:36:06] [33mDEBUG :: [0mProcessing USER command
+[2024-12-28 00:36:06] [33mDEBUG :: [0mRegistration complete for testuser2
+[2024-12-28 00:36:06] [35mSERVER << [0mSetting response for client fd(4): 001 testuser2 :Welcome to the IRC Network
 
-[2024-12-27 12:08:03] [35mSERVER << [0mSetting response for client fd(4): 002 testuser2 :Your host is irc.example.com
+[2024-12-28 00:36:06] [35mSERVER << [0mSetting response for client fd(4): 002 testuser2 :Your host is irc.example.com
 
-[2024-12-27 12:08:03] [35mSERVER << [0mSetting response for client fd(4): 003 testuser2 :This server was created Dec 27 2024...
-[2024-12-27 12:08:03] [35mSERVER << [0mSetting response for client fd(4): 004 testuser2 :IRC server v1.0
+[2024-12-28 00:36:06] [35mSERVER << [0mSetting response for client fd(4): 003 testuser2 :This server was created Dec 28 2024...
+[2024-12-28 00:36:06] [35mSERVER << [0mSetting response for client fd(4): 004 testuser2 :IRC server v1.0
 
-[2024-12-27 12:08:03] [33mDEBUG :: [0mSending response: 004 testuser2 :IRC server v1.0
+[2024-12-28 00:36:06] [33mDEBUG :: [0mSending response: 004 testuser2 :IRC server v1.0
 
-[2024-12-27 12:08:03] [33mDEBUG :: [0mProcessing command: JOIN
-[2024-12-27 12:08:03] [33mDEBUG :: [0mtestuser2 attempting to join #testchannel
-[2024-12-27 12:08:03] [33mDEBUG :: [0mCreating new channel: #testchannel
-[2024-12-27 12:08:03] [33mDEBUG :: [0mCreating new channel: #testchannel
-[2024-12-27 12:08:03] [33mDEBUG :: [0mAttempting to add testuser2 to channel #testchannel
-[2024-12-27 12:08:03] [33mDEBUG :: [0mAdded testuser2 to channel #testchannel (Total members: 1)
-[2024-12-27 12:08:03] [35mSERVER << [0mSetting response for client fd(4): :testuser2!testuser2@localhost JOIN #testchannel
+[2024-12-28 00:36:06] [33mDEBUG :: [0mProcessing command: JOIN
+[2024-12-28 00:36:06] [33mDEBUG :: [0mtestuser2 attempting to join #testchannel
+[2024-12-28 00:36:06] [33mDEBUG :: [0mCreating new channel: #testchannel
+[2024-12-28 00:36:06] [33mDEBUG :: [0mCreating new channel: #testchannel
+[2024-12-28 00:36:06] [33mDEBUG :: [0mAttempting to add testuser2 to channel #testchannel
+[2024-12-28 00:36:06] [33mDEBUG :: [0mAdded testuser2 to channel #testchannel (Total members: 1)
+[2024-12-28 00:36:06] [35mSERVER << [0mSetting response for client fd(4): :testuser2!testuser2@localhost JOIN #testchannel
 
-[2024-12-27 12:08:03] testuser2 joined #testchannel
-[2024-12-27 12:08:03] [33mDEBUG :: [0mSending response: :testuser2!testuser2@localhost JOIN #testchannel
+[2024-12-28 00:36:06] testuser2 joined #testchannel
+[2024-12-28 00:36:06] [33mDEBUG :: [0mSending response: :testuser2!testuser2@localhost JOIN #testchannel
 
-[2024-12-27 12:08:08] [33mDEBUG :: [0mActive connections: 2
-[2024-12-27 12:08:08] Closing connection FD: 4
-[2024-12-27 12:08:09] [33mDEBUG :: [0mActive connections: 1
-[2024-12-27 12:08:09] Client accepted FD: 4
-[2024-12-27 12:08:09] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:41742)
-[2024-12-27 12:08:09] [33mDEBUG :: [0mCreating new empty client instance
-[2024-12-27 12:08:09] [33mDEBUG :: [0mActive connections: 2
-[2024-12-27 12:08:09] [33mDEBUG :: [0mProcessing command: PASS
-[2024-12-27 12:08:09] [33mDEBUG :: [0mProcessing PASS command
-[2024-12-27 12:08:09] [31mERROR :: [0mPASS command failed: Not enough parameters
-[2024-12-27 12:08:09] [35mSERVER << [0mSetting response for client fd(4): 461 PASS :Not enough parameters
+[2024-12-28 00:36:11] [33mDEBUG :: [0mActive connections: 2
+[2024-12-28 00:36:11] Closing connection FD: 4
+[2024-12-28 00:36:12] [33mDEBUG :: [0mActive connections: 1
+[2024-12-28 00:36:12] Client accepted FD: 4
+[2024-12-28 00:36:12] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:60866)
+[2024-12-28 00:36:12] [33mDEBUG :: [0mCreating new empty client instance
+[2024-12-28 00:36:12] [33mDEBUG :: [0mActive connections: 2
+[2024-12-28 00:36:12] [33mDEBUG :: [0mProcessing command: PASS
+[2024-12-28 00:36:12] [33mDEBUG :: [0mProcessing PASS command
+[2024-12-28 00:36:12] [31mERROR :: [0mPASS command failed: Not enough parameters
+[2024-12-28 00:36:12] [35mSERVER << [0mSetting response for client fd(4): 461 PASS :Not enough parameters
 
-[2024-12-27 12:08:09] [33mDEBUG :: [0mSending response: 461 PASS :Not enough parameters
+[2024-12-28 00:36:12] [33mDEBUG :: [0mSending response: 461 PASS :Not enough parameters
 
-[2024-12-27 12:08:09] [33mDEBUG :: [0mProcessing command: NICK
-[2024-12-27 12:08:09] [33mDEBUG :: [0mProcessing NICK command
-[2024-12-27 12:08:09] [33mDEBUG :: [0mNickname set to: testuser
-[2024-12-27 12:08:09] [33mDEBUG :: [0mProcessing command: USER
-[2024-12-27 12:08:09] [33mDEBUG :: [0mProcessing USER command
-[2024-12-27 12:08:14] [33mDEBUG :: [0mActive connections: 2
-[2024-12-27 12:08:14] Closing connection FD: 4
-[2024-12-27 12:08:15] [33mDEBUG :: [0mActive connections: 1
-[2024-12-27 12:08:15] Client accepted FD: 4
-[2024-12-27 12:08:15] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:41744)
-[2024-12-27 12:08:15] [33mDEBUG :: [0mCreating new empty client instance
-[2024-12-27 12:08:15] [33mDEBUG :: [0mActive connections: 2
-[2024-12-27 12:08:15] [33mDEBUG :: [0mProcessing command: PASS
-[2024-12-27 12:08:15] [33mDEBUG :: [0mProcessing PASS command
-[2024-12-27 12:08:15] [33mDEBUG :: [0mPassword accepted
-[2024-12-27 12:08:15] [35mSERVER << [0mSetting response for client fd(4): :server NOTICE Auth :Password accepted
+[2024-12-28 00:36:12] [33mDEBUG :: [0mProcessing command: NICK
+[2024-12-28 00:36:12] [33mDEBUG :: [0mProcessing NICK command
+[2024-12-28 00:36:12] [33mDEBUG :: [0mNickname set to: testuser
+[2024-12-28 00:36:12] [33mDEBUG :: [0mProcessing command: USER
+[2024-12-28 00:36:12] [33mDEBUG :: [0mProcessing USER command
+[2024-12-28 00:36:17] [33mDEBUG :: [0mActive connections: 2
+[2024-12-28 00:36:17] Closing connection FD: 4
+[2024-12-28 00:36:18] [33mDEBUG :: [0mActive connections: 1
+[2024-12-28 00:36:18] Client accepted FD: 4
+[2024-12-28 00:36:18] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:44488)
+[2024-12-28 00:36:18] [33mDEBUG :: [0mCreating new empty client instance
+[2024-12-28 00:36:18] [33mDEBUG :: [0mActive connections: 2
+[2024-12-28 00:36:18] [33mDEBUG :: [0mProcessing command: PASS
+[2024-12-28 00:36:18] [33mDEBUG :: [0mProcessing PASS command
+[2024-12-28 00:36:18] [33mDEBUG :: [0mPassword accepted
+[2024-12-28 00:36:18] [35mSERVER << [0mSetting response for client fd(4): :server NOTICE Auth :Password accepted
 
-[2024-12-27 12:08:15] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+[2024-12-28 00:36:18] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
 
-[2024-12-27 12:08:15] [33mDEBUG :: [0mProcessing command: NICK
-[2024-12-27 12:08:15] [33mDEBUG :: [0mProcessing NICK command
-[2024-12-27 12:08:15] [33mDEBUG :: [0mNickname set to: testuser3
-[2024-12-27 12:08:15] [33mDEBUG :: [0mProcessing command: USER
-[2024-12-27 12:08:15] [33mDEBUG :: [0mProcessing USER command
-[2024-12-27 12:08:15] [33mDEBUG :: [0mRegistration complete for testuser3
-[2024-12-27 12:08:15] [35mSERVER << [0mSetting response for client fd(4): 001 testuser3 :Welcome to the IRC Network
+[2024-12-28 00:36:18] [33mDEBUG :: [0mProcessing command: NICK
+[2024-12-28 00:36:18] [33mDEBUG :: [0mProcessing NICK command
+[2024-12-28 00:36:18] [33mDEBUG :: [0mNickname set to: testuser3
+[2024-12-28 00:36:18] [33mDEBUG :: [0mProcessing command: USER
+[2024-12-28 00:36:18] [33mDEBUG :: [0mProcessing USER command
+[2024-12-28 00:36:18] [33mDEBUG :: [0mRegistration complete for testuser3
+[2024-12-28 00:36:18] [35mSERVER << [0mSetting response for client fd(4): 001 testuser3 :Welcome to the IRC Network
 
-[2024-12-27 12:08:15] [35mSERVER << [0mSetting response for client fd(4): 002 testuser3 :Your host is irc.example.com
+[2024-12-28 00:36:18] [35mSERVER << [0mSetting response for client fd(4): 002 testuser3 :Your host is irc.example.com
 
-[2024-12-27 12:08:15] [35mSERVER << [0mSetting response for client fd(4): 003 testuser3 :This server was created Dec 27 2024...
-[2024-12-27 12:08:15] [35mSERVER << [0mSetting response for client fd(4): 004 testuser3 :IRC server v1.0
+[2024-12-28 00:36:18] [35mSERVER << [0mSetting response for client fd(4): 003 testuser3 :This server was created Dec 28 2024...
+[2024-12-28 00:36:18] [35mSERVER << [0mSetting response for client fd(4): 004 testuser3 :IRC server v1.0
 
-[2024-12-27 12:08:15] [33mDEBUG :: [0mSending response: 004 testuser3 :IRC server v1.0
+[2024-12-28 00:36:18] [33mDEBUG :: [0mSending response: 004 testuser3 :IRC server v1.0
 
-[2024-12-27 12:08:15] [33mDEBUG :: [0mProcessing command: JOIN
-[2024-12-27 12:08:15] [33mDEBUG :: [0mtestuser3 attempting to join #testchannel
-[2024-12-27 12:08:15] [33mDEBUG :: [0mAttempting to add testuser3 to channel #testchannel
-[2024-12-27 12:08:15] [33mDEBUG :: [0mAdded testuser3 to channel #testchannel (Total members: 2)
-[2024-12-27 12:08:15] [35mSERVER << [0mSetting response for client fd(4): :testuser3!testuser3@localhost JOIN #testchannel
+[2024-12-28 00:36:18] [33mDEBUG :: [0mProcessing command: JOIN
+[2024-12-28 00:36:18] [33mDEBUG :: [0mtestuser3 attempting to join #testchannel
+[2024-12-28 00:36:18] [33mDEBUG :: [0mAttempting to add testuser3 to channel #testchannel
+[2024-12-28 00:36:18] [33mDEBUG :: [0mAdded testuser3 to channel #testchannel (Total members: 2)
+[2024-12-28 00:36:18] [35mSERVER << [0mSetting response for client fd(4): :testuser3!testuser3@localhost JOIN #testchannel
 
-[2024-12-27 12:08:15] testuser3 joined #testchannel
-[2024-12-27 12:08:15] [33mDEBUG :: [0mSending response: :testuser3!testuser3@localhost JOIN #testchannel
+[2024-12-28 00:36:18] testuser3 joined #testchannel
+[2024-12-28 00:36:18] [33mDEBUG :: [0mSending response: :testuser3!testuser3@localhost JOIN #testchannel
 
-[2024-12-27 12:08:15] [33mDEBUG :: [0mProcessing command: PRIVMSG
-[2024-12-27 12:08:15] testuser3 -> #testchannel: :Hello
-[2024-12-27 12:08:15] [35mSERVER << [0mSetting response for client fd(4): :testuser3!testuser3@localhost PRIVMSG #testchanne...
-[2024-12-27 12:08:15] [33mDEBUG :: [0mSending response: :testuser3!testuser3@localhost PRIVMSG #testchannel ::Hello
+[2024-12-28 00:36:18] [33mDEBUG :: [0mProcessing command: PRIVMSG
+[2024-12-28 00:36:18] testuser3 -> #testchannel: :Hello
+[2024-12-28 00:36:18] [35mSERVER << [0mSetting response for client fd(4): :testuser3!testuser3@localhost PRIVMSG #testchanne...
+[2024-12-28 00:36:18] [33mDEBUG :: [0mSending response: :testuser3!testuser3@localhost PRIVMSG #testchannel ::Hello
 
-[2024-12-27 12:08:20] [33mDEBUG :: [0mActive connections: 2
-[2024-12-27 12:08:20] Closing connection FD: 4
+[2024-12-28 00:36:23] [33mDEBUG :: [0mActive connections: 2
+[2024-12-28 00:36:23] Closing connection FD: 4
