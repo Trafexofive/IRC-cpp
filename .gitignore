@@ -4,3 +4,6 @@ bin/*
 obj/*
 .vscode/
 .DS_store/
+server.log
+logs/*
+irc_test.log/
