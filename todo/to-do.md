@@ -12,6 +12,7 @@
 - Could implement debug.hpp for proper error handling .[PENDING] [FLEX]
 - Industry standards missing (proper -h and flag functionalities;check subjet) [PENDING] [FLEX]
 - add test-cases.txt and add its implementation to main.sh [PENDING] [FLEX]
+- Finish dockerfile, add docker compose. [PENDING] [FLEX]
 
 ### [BUGS] use location-line : {test} when reporting bugs
 

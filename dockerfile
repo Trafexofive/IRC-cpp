@@ -10,6 +10,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN make
+RUN make run
 
-CMD ["./launsh.sh"]
+CMD ["./test/main.sh"]
