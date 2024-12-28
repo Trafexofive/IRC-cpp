@@ -12,6 +12,9 @@
 
 #include "../inc/core_server.hpp"
 
+
+
+//loooooooool this is shit. needs some 10xing.
 int main(int ac, char** av)
 {
     std::cout << formatServerMessage("DEBUG", "Starting IRC server") << std::endl;

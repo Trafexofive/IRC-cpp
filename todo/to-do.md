@@ -10,7 +10,16 @@
 - refine and clean-up code. [PENDING]
 - Complete unfinished bot implementations. [PENDING] [UNMAKEABLE]
 - Could implement debug.hpp for proper error handling .[PENDING] [FLEX]
+- Industry standards missing (proper -h and flag functionalities;check subjet) [PENDING] [FLEX]
+- add test-cases.txt and add its implementation to main.sh [PENDING] [FLEX]
 
+### [BUGS] use location-line : {test} when reporting bugs
+
+- eg: inc/test.hpp-43:
+```bash
+#bin/bash
+test-case
+```
 
 ### [FEATURES]
 
