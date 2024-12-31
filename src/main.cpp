@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/core_server.hpp"
+#include "../inc/Server.hpp"
 
 
 
 //loooooooool this is shit. needs some 10xing.
 int main(int ac, char** av)
 {
-    std::cout << formatServerMessage("DEBUG", "Starting IRC server") << std::endl;
+    std::cout << formatServerMessage("INFO", "Starting IRC server") << std::endl;
     
     if (ac != 3 || !av[1] || !av[2])
     {

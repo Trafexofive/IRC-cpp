@@ -1,4 +1,16 @@
-#include "../inc/core_server.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Validation.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/31 14:52:36 by mlamkadm          #+#    #+#             */
+/*   Updated: 2024/12/31 14:52:36 by mlamkadm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../inc/Server.hpp"
 #include <cctype>
 
 bool isStringDigits(const std::string& str)

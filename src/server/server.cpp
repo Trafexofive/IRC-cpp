@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/core_server.hpp"
+#include "../../inc/Server.hpp"
 #include <cstdlib>
 #include <sstream>
 
@@ -121,6 +121,8 @@ CoreServer::CoreServer(std::string port, std::string password) {
   commands[CMD_JOIN] = &CoreServer::cmdJoin;
   commands[CMD_PRIVMSG] = &CoreServer::cmdPrivmsg;
   commands[CMD_PASS] = &CoreServer::cmdPass;
+  // commands[CMD_LIST] = &CoreServer::cmdList;
+  // commands[CMD_PART] = &CoreServer::cmdPart;
 
   create_socket();
   start_listening();

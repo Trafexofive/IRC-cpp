@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/core_server.hpp"
+#include "../../inc/Server.hpp"
 #include <ctime>
 #include <sstream>
 
@@ -89,9 +89,9 @@ void CoreServer::cmdNick(int fd, std::vector<std::string> &args) {
     if (clients[fd].get_bool() && !clients[fd].get_user().empty()) {
       // Send welcome messages using formatResponse
       clients[fd].set_response(formatResponse(
-          RPL_WELCOME, nickname + " :Welcome to the IRC Network"));
+          RPL_WELCOME, nickname + " :Welcome to the WeUseArch IRC CHAT."));
       clients[fd].set_response(formatResponse(
-          RPL_YOURHOST, nickname + " :Your host is irc.example.com"));
+          RPL_YOURHOST, nickname + " :Your host is morpheus-server.ddns.net"));
       clients[fd].set_response(formatResponse(
           RPL_CREATED, nickname + " :This server was created " __DATE__));
       clients[fd].set_response(
@@ -268,3 +268,5 @@ void CoreServer::cmdPrivmsg(int fd, std::vector<std::string> &args) {
           formatResponse(ERR_NOSUCHNICK, target + " :No such nick/channel"));
   }
 }
+
+

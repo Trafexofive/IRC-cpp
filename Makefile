@@ -25,7 +25,7 @@ SRC_FILES := HandleEvents.cpp \
              server/server.cpp \
              client/client.cpp \
              commands/cmd.cpp \
-             Utils.cpp \
+			 utils/Utils.cpp \
              main.cpp \
              Validation.cpp \
 
@@ -95,7 +95,7 @@ release: CXXFLAGS += -O2 -DNDEBUG
 release: all
 
 test: debug | $(DIR_LOG)
-	@./$(DIR_TEST)/main.sh --debug 2>&1 | tee $(DIR_LOG)/test.log
+	@./$(DIR_TEST)/main.sh -v -d -t 1 2>&1 | tee $(DIR_LOG)/test.log
 
 run: re
 	@./$(DIR_BIN)/$(NAME) $(ARGS)

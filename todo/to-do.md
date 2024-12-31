@@ -1,3 +1,4 @@
+
 ### [TASKS]
 
 - Implement core event handling. [DONE]
@@ -55,6 +56,8 @@
 - Fix all ANSI issues (.log files, tester stdout...), no way to get around if this device doesn't support; best we can do is check and disable. [PENDING]
   - Resolve ANSI compatibility issues.
   - Implement checks to disable ANSI where not supported.
+
+- Channels. [DONE] [MANDATORY] [UNSTABLE]
 
 ### [BUGS] use location-line : {test} when reporting bugs
 

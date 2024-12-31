@@ -34,9 +34,11 @@ reminder -c #Welcome title getcoffeeafterfinishmornigrootine 45
 }
 
 func test(args){
+
 initRoutine();
 whisper -c #Welcome -u me hello
 reminder -c #Welcome title getcoffeeafterfinishmornigrootine 45
+note args;
 }
 
 func test(args){
@@ -47,6 +49,7 @@ exec :
 
 initRoutine();
 
+test("test");
 
 
 

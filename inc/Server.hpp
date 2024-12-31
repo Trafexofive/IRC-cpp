@@ -20,6 +20,7 @@
 #include <unistd.h>
 
 // Project includes
+#include "./Channel.hpp"
 #include "./Client.hpp"
 #include "./Utils.hpp"
 #include "./requestMacros.hpp"
@@ -43,6 +44,13 @@ Iterator custom_remove_if(Iterator first, Iterator last, Predicate pred) {
     return result;
 }
 
+typedef enum {
+    INFO,
+    DEBUG,
+    WARNING,
+    ERROR
+} state;
+
 // Server data structure
 struct ServerData {
     std::string Passwd;
@@ -50,7 +58,7 @@ struct ServerData {
     int _poll;
     int Port;
     struct sockaddr_in ServAddr;
-
+    
     ServerData() : _socket(-1), _poll(-1), Port(-1) {
         std::memset(&ServAddr, 0, sizeof(ServAddr));
     }
@@ -84,6 +92,8 @@ private:
     void cmdPass(int fd, std::vector<std::string>& args);
     void cmdJoin(int fd, std::vector<std::string>& args);
     void cmdPrivmsg(int fd, std::vector<std::string>& args);
+    void cmdPart(int fd, std::vector<std::string>& args);
+    void cmdList(int fd, std::vector<std::string>& args);
 
     // Helper methods
     void disconnectClient(int fd);

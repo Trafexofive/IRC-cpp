@@ -3,7 +3,6 @@
 # Enhanced Interactive IRC Client Script (with slash commands)
 # This "10x overhaul" version improves code organization, debugging, and adds new commands.
 # It allows you to interact with an IRC server in real time using netcat, with slash-based commands.
-#
 # Usage:
 #   ./irc_enhanced.sh --server <server> --port <port> --nick <nickname> [options]
 #

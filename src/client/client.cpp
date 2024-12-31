@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../inc/Client.hpp"
+#include "../../inc/Channel.hpp"
 
 _client::_client() : 
     fd_client(-1), 
