@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../inc/Server.hpp"
-#include <cctype>
 
 bool isStringDigits(const std::string& str)
 {

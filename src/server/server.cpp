@@ -15,7 +15,7 @@
 #include <sstream>
 
 void CoreServer::create_socket() {
-  std::cout << formatServerMessage("DEBUG", "Creating socket...") << std::endl;
+  std::cout << formatServerMessage("INFO", "Creating socket...") << std::endl;
 
   ServData._socket = socket(AF_INET, SOCK_STREAM, 0);
   if (ServData._socket < 0) {
@@ -43,7 +43,7 @@ void CoreServer::create_socket() {
   _fd.events = POLLIN;
   fds.push_back(_fd);
 
-  std::cout << formatServerMessage("DEBUG", "Socket setup complete")
+  std::cout << formatServerMessage("INFO", "Socket setup complete")
             << std::endl;
 }
 
@@ -56,7 +56,7 @@ void CoreServer::start_listening() {
     exit(1);
   }
 
-  std::cout << formatServerMessage("DEBUG", "Starting to listen...")
+  std::cout << formatServerMessage("INFO", "Starting to listen...")
             << std::endl;
 
   if (listen(ServData._socket, 5) < 0) {
@@ -66,7 +66,7 @@ void CoreServer::start_listening() {
 
   std::ostringstream oss;
   oss << "Server listening on port: " << ServData.Port;
-  std::cout << formatServerMessage("DEBUG", oss.str()) << std::endl;
+  std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
 }
 
 void CoreServer::start_server() {
@@ -96,7 +96,7 @@ void CoreServer::start_server() {
 }
 
 CoreServer::CoreServer(std::string port, std::string password) {
-  std::cout << formatServerMessage("DEBUG", "Initializing server...")
+  std::cout << formatServerMessage("INFO", "Initializing server...")
             << std::endl;
 
   if (!IsValidPort(port, ServData.Port)) {
@@ -114,7 +114,7 @@ CoreServer::CoreServer(std::string port, std::string password) {
     exit(1);
   }
 
-  std::cout << formatServerMessage("DEBUG", "Registering commands...")
+  std::cout << formatServerMessage("INFO", "Registering commands...")
             << std::endl;
   commands[CMD_NICK] = &CoreServer::cmdNick;
   commands[CMD_USER] = &CoreServer::cmdUser;

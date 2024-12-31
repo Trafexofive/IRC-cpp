@@ -58,6 +58,9 @@
   - Implement checks to disable ANSI where not supported.
 
 - Channels. [DONE] [MANDATORY] [UNSTABLE]
+- [COMMANDS] :
+    - CAP LS behavior. (modern irc auth compliance)
+    - full channel operator support ()
 
 ### [BUGS] use location-line : {test} when reporting bugs
 

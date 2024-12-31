@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <sstream>
 
+#include "../inc/Helpers.hpp"
 class _client
 {
     private:
