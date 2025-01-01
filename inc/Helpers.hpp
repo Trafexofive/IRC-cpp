@@ -39,7 +39,7 @@ typedef enum {
     DEBUG,
     WARNING,
     ERROR
-} level;
+} LEVEL;
 
 // Server data structure
 struct ServerData {
@@ -49,7 +49,7 @@ struct ServerData {
     int Port;
     struct sockaddr_in ServAddr;
     
-    level _infoLevel;
+    LEVEL _infoLevel;
     ServerData() : _socket(-1), _poll(-1), Port(-1), _infoLevel(INFO) {
         std::memset(&ServAddr, 0, sizeof(ServAddr));
     }

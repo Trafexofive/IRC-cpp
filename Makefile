@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME := irc-server
-VERSION := nightly_build@0.5.0
+VERSION := nightly_build@0.7.0
 
 DIR_SRC := src
 DIR_OBJ := obj
@@ -28,6 +28,7 @@ SRC_FILES := HandleEvents.cpp \
 			 utils/Utils.cpp \
              main.cpp \
              Validation.cpp \
+				Channel.cpp \
 
 SRC := $(addprefix $(DIR_SRC)/, $(SRC_FILES)) #too good not to be forbidden (check 42-docs)
 OBJ := $(SRC:$(DIR_SRC)/%.cpp=$(DIR_OBJ)/%.o)

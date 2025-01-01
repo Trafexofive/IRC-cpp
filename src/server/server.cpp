@@ -49,7 +49,6 @@ void CoreServer::create_socket() {
 
 void CoreServer::start_listening() {
   std::cout << formatServerMessage("DEBUG", "Binding socket...") << std::endl;
-
   if (bind(ServData._socket, (struct sockaddr *)&ServData.ServAddr,
            sizeof(ServData.ServAddr)) < 0) {
     std::cerr << formatServerMessage("ERROR", "Binding failed") << std::endl;

@@ -27,7 +27,8 @@ class FdRemovePredicate
         }
 };
 
-void    CoreServer::WelcomeClient()
+// Method to welcome a new client
+void CoreServer::WelcomeClient()
 {
     struct sockaddr_in client_addr;
     socklen_t client_len = sizeof(client_addr);
@@ -44,11 +45,11 @@ void    CoreServer::WelcomeClient()
     oss << "Client accepted FD: " << fd_c;
     std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
     
-    clients[fd_c] = _client(fd_c, client_addr);
+    clients[fd_c] = Client(fd_c, client_addr);
 
     char host[NI_MAXHOST];
     char service[NI_MAXSERV];
-    getnameinfo((struct sockaddr*)&clients[fd_c].get_info(), sizeof(client_addr), 
+    getnameinfo((struct sockaddr*)&clients[fd_c].getClientInfos(), sizeof(client_addr), 
                 host, NI_MAXHOST, service, NI_MAXSERV, 
                 NI_NUMERICHOST | NI_NUMERICSERV);
 
@@ -58,6 +59,7 @@ void    CoreServer::WelcomeClient()
     fds.push_back(_fd);
 }
 
+// Method to handle commands from the client
 void CoreServer::handleCommand(int fd, const std::string& line)
 {
     std::istringstream iss(line);
@@ -83,12 +85,12 @@ void CoreServer::handleCommand(int fd, const std::string& line)
     }
 }
 
-
+// Method to send a response to the client
 void CoreServer::WriteEvent(int fd)
 {
-    if (!clients[fd].get_response().empty())
+    if (!clients[fd].getResponse().empty())
     {
-        const std::string& response = clients[fd].get_response();
+        const std::string& response = clients[fd].getResponse();
         std::cout << formatServerMessage("DEBUG", "Sending response: " + response) << std::endl;
         
         ssize_t written = send(fd, response.c_str(), response.length(), 0);
@@ -99,11 +101,12 @@ void CoreServer::WriteEvent(int fd)
         }
         else
         {
-            clients[fd].clear_response();
+            clients[fd].clearResponse();
         }
     }
 }
 
+// Method to read data from the client
 void CoreServer::ReadEvent(int fd)
 {
     char buffer[1024];
@@ -142,4 +145,3 @@ void CoreServer::ReadEvent(int fd)
         handleCommand(fd, line);
     }
 }
-

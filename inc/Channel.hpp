@@ -22,37 +22,52 @@
 #include <algorithm>
 #include <sstream>
 
+#include <string>
+#include <vector>
 #include "Client.hpp"
 
-class channel
-{
-    private:
-        std::string name;
-        std::string topic;
-        std::string password;
-        std::vector<_client> members;
+class Channel {
+private:
+    std::string name;
+    std::string topic;
+    std::string password;
+    std::vector<Client> members;
 
-        
-    public:
-        channel();
-        channel(const std::string& n);
-        ~channel() {}
+public:
+    // Default constructor
+    Channel();
+    // Parameterized constructors
+    Channel(const std::string& name);
+    Channel(const std::string& name, const std::string& topic);
+    Channel(const std::string& name, const std::string& topic, const std::string& password);
+    // Destructor
+    ~Channel();
 
-        // Getters
-        const std::string& getName() const;
-        const std::string& getTopic() const;
-        const std::string& getPassword() const;
-        const std::vector<_client>& getMembers() const;
-        std::string getMembersList() const;
-        
-        // Setters
-        void setName(const std::string& n);
-        void setTopic(const std::string& t);
-        void setPassword(const std::string& p);
-        
-        void addMember(const _client& member);
-        bool removeMember(const std::string& nickname);
-        void broadcast(const std::string& message, const std::string& except_nick = "");
+    // Getters
+    const std::string& getName() const;
+    const std::string& getTopic() const;
+    const std::string& getPassword() const;
+    const std::vector<Client>& getMembers() const;
+    std::string getMembersList() const;
+
+    // Setters
+    void setName(const std::string& n);
+    void setTopic(const std::string& t);
+    void setPassword(const std::string& p);
+
+    // Member management methods
+    void addMember(const Client& member);
+    bool removeMember(const std::string& nickname);
+    bool isMember(const std::string& nickname) const;
+
+    // Channel-specific methods
+    void broadcast(const std::string& message, const std::string& except_nick = "");
+    void clearMembers();
+
+    // Utility methods
+    bool hasPassword() const;
+    bool checkPassword(const std::string& pass) const;
+    void printInfo() const;
 };
 
-#endif
+#endif // CHANNEL_HPP

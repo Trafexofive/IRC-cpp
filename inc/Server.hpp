@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Server.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/01 18:05:20 by mlamkadm          #+#    #+#             */
+/*   Updated: 2025/01/01 18:05:20 by mlamkadm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CORE_SERVER_HPP
 #define CORE_SERVER_HPP
 
@@ -30,6 +42,7 @@
 
 // Forward declarations
 class CoreServer;
+
 typedef void (CoreServer::*CommandHandler)(int, std::vector<std::string>&);
 
 // Custom remove_if function for C++98
@@ -59,9 +72,9 @@ struct FdPredicate {
 class CoreServer {
 private:
     ServerData ServData;
-    std::map<int, _client> clients;
+    std::map<int, Client> clients;
     std::vector<struct pollfd> fds;
-    std::vector<channel> channels;
+    std::vector<Channel> channels;
     std::map<std::string, CommandHandler> commands;
 
     // Socket and server initialization
@@ -76,13 +89,14 @@ private:
     void cmdJoin(int fd, std::vector<std::string>& args);
     void cmdPrivmsg(int fd, std::vector<std::string>& args);
     void cmdPart(int fd, std::vector<std::string>& args);
-    void cmdList(int fd, std::vector<std::string>& args);
+    // void cmdList(int fd, std::vector<std::string>& args);
 
     // Helper methods
     void disconnectClient(int fd);
     void broadcastToChannel(const std::string& channelName,
                           const std::string& message,
                           const std::string& except_nick = "");
+    // command handling main methods
     void handleCommand(int fd, const std::string& line);
 
 public:
@@ -107,8 +121,13 @@ public:
     }
 
     // Getters
-    const std::map<int, _client>& getClients() const { return clients; }
-    const std::vector<channel>& getChannels() const { return channels; }
+    const std::map<int, Client>& getClients() const { return clients; }
+    const std::vector<Channel>& getChannels() const { return channels; }
+
+    // channel methods
+    LEVEL addChannel(const std::string& name, const std::string& topic, const std::string& password);
+    LEVEL removeChannel(const std::string& name);
+
 };
 
 // Non-member functions for validation

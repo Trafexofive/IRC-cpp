@@ -20,7 +20,7 @@
 std::string formatServerMessage(const ServerData& serverData, const std::string& type, const std::string& message)
 {
     // Determine the logging level based on the type
-    level messageLevel;
+    LEVEL messageLevel;
     if (type == "DEBUG")
         messageLevel = DEBUG;
     else if (type == "ERROR")
@@ -33,6 +33,7 @@ std::string formatServerMessage(const ServerData& serverData, const std::string&
     // Check if the logging level is appropriate
     if (messageLevel < serverData._infoLevel) {
         return ""; // Do not log the message if the level is lower than the current logging level
+                   // honestly this should log regardless.
     }
 
     std::ostringstream oss;
