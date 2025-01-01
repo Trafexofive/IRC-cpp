@@ -4,6 +4,15 @@
 # Enhanced IRC Server Test Suite - Default Configuration
 # -----------------------------------------------------------------------------
 
+# Add these with your other default configurations
+readonly DEFAULT_SUMMARY_FILE="test_summary.md"
+SUMMARY_FILE=$DEFAULT_SUMMARY_FILE
+TOTAL_TESTS=0
+PASSED_TESTS=0
+FAILED_TESTS=0
+SKIPPED_TESTS=0
+TEST_START_TIME=""
+TEST_END_TIME=""
 # System Defaults
 readonly DEFAULT_PORT=22200
 readonly DEFAULT_PASSWORD="Alilepro135!"
@@ -42,6 +51,74 @@ OK="${GREEN}[OK]${NC}"
 KO="${RED}[KO]${NC}"
 INFO="${BLUE}[INFO]${NC}"
 WARN="${YELLOW}[WARN]${NC}"
+
+# Function to generate test summary
+function generate_summary() {
+    local duration=$(($(date +%s) - $(date -d "$TEST_START_TIME" +%s)))
+    local hours=$((duration / 3600))
+    local minutes=$(( (duration % 3600) / 60 ))
+    local seconds=$((duration % 60))
+    
+    cat > "$SUMMARY_FILE" << EOF
+# IRC Server Test Summary
+## Test Execution Details
+
+- **Date**: $TEST_START_TIME
+- **Duration**: ${hours}h ${minutes}m ${seconds}s
+- **User**: $(whoami)
+- **Host**: $(hostname)
+
+## Configuration
+- Server Port: $PORT
+- Debug Mode: $([ "$DEBUG" -eq 1 ] && echo "Enabled" || echo "Disabled")
+- Verbose Mode: $([ "$VERBOSE" -eq 1 ] && echo "Enabled" || echo "Disabled")
+- Test File: ${CUSTOM_TESTS:-"None"}
+
+## Test Results
+- **Total Tests**: $TOTAL_TESTS
+- **Passed**: $PASSED_TESTS 🟢
+- **Failed**: $FAILED_TESTS 🔴
+- **Skipped**: $SKIPPED_TESTS ⚪
+- **Success Rate**: $(( (PASSED_TESTS * 100) / (TOTAL_TESTS - SKIPPED_TESTS) ))%
+
+## Failed Tests
+\`\`\`
+EOF
+
+    # Append failed tests if any
+    if [ ${#FAILED_TESTS_ARRAY[@]} -gt 0 ]; then
+        printf '%s\n' "${FAILED_TESTS_ARRAY[@]}" >> "$SUMMARY_FILE"
+    else
+        echo "No failed tests" >> "$SUMMARY_FILE"
+    fi
+
+    echo -e "\`\`\`\n" >> "$SUMMARY_FILE"
+
+    # Add system information
+    cat >> "$SUMMARY_FILE" << EOF
+## System Information
+\`\`\`
+OS: $(uname -s)
+Kernel: $(uname -r)
+Architecture: $(uname -m)
+Memory: $(free -h | awk '/^Mem:/ {print $2}' 2>/dev/null || echo "N/A")
+\`\`\`
+
+## Log Files
+- Test Log: $LOG_FILE
+- Server Log: server.log
+- Summary File: $SUMMARY_FILE
+
+EOF
+
+    # Add error summary if exists
+    if [ -f "error_summary.txt" ]; then
+        echo -e "\n## Error Summary" >> "$SUMMARY_FILE"
+        echo -e "\`\`\`" >> "$SUMMARY_FILE"
+        cat "error_summary.txt" >> "$SUMMARY_FILE"
+        echo -e "\`\`\`" >> "$SUMMARY_FILE"
+    fi
+}
 
 # Initialize log file with header information
 function init_log() {
@@ -131,33 +208,87 @@ function load_custom_tests() {
 }
 
 # Function to execute tests
+# function execute_tests() {
+#     if [ ! -f "${CUSTOM_TESTS}" ]; then
+#         echo -e "${RED}Error: Test file not found: ${CUSTOM_TESTS}${NC}" >&2
+#         return 1
+#     fi
+#
+#     local total_tests=0
+#     local passed_tests=0
+#     local failed_tests=0
+#
+#     while IFS='|' read -r test_name expected_response commands || [ -n "$test_name" ]; do
+#         # Skip empty lines and comments
+#         [[ -z "$test_name" || "$test_name" =~ ^[[:space:]]*# ]] && continue
+#
+#         ((total_tests++))
+#         if run_single_test "$test_name" "$expected_response" "$commands"; then
+#             ((passed_tests++))
+#         else
+#             ((failed_tests++))
+#         fi
+#     done < "$CUSTOM_TESTS"
+#
+#     if [ "${QUIET:-0}" -eq 0 ]; then
+#         echo -e "\n${GREEN}Test Summary:${NC}"
+#         echo -e "Total: $total_tests"
+#         echo -e "Passed: ${GREEN}$passed_tests${NC}"
+#         echo -e "Failed: ${RED}$failed_tests${NC}"
+#     fi
+# }
+#
+# Declare array for failed tests at the start of the script
+
+declare -a FAILED_TESTS_ARRAY
+
 function execute_tests() {
+    TEST_START_TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+    FAILED_TESTS_ARRAY=()
+
     if [ ! -f "${CUSTOM_TESTS}" ]; then
         echo -e "${RED}Error: Test file not found: ${CUSTOM_TESTS}${NC}" >&2
         return 1
     fi
 
-    local total_tests=0
-    local passed_tests=0
-    local failed_tests=0
-
     while IFS='|' read -r test_name expected_response commands || [ -n "$test_name" ]; do
         # Skip empty lines and comments
         [[ -z "$test_name" || "$test_name" =~ ^[[:space:]]*# ]] && continue
 
-        ((total_tests++))
+        ((TOTAL_TESTS++))
         if run_single_test "$test_name" "$expected_response" "$commands"; then
-            ((passed_tests++))
+            ((PASSED_TESTS++))
         else
-            ((failed_tests++))
+            ((FAILED_TESTS++))
+            FAILED_TESTS_ARRAY+=("❌ $test_name - Expected: '$expected_response'")
         fi
     done < "$CUSTOM_TESTS"
 
+    TEST_END_TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+    
+    # Generate summary
+    generate_summary
+
     if [ "${QUIET:-0}" -eq 0 ]; then
         echo -e "\n${GREEN}Test Summary:${NC}"
-        echo -e "Total: $total_tests"
-        echo -e "Passed: ${GREEN}$passed_tests${NC}"
-        echo -e "Failed: ${RED}$failed_tests${NC}"
+        echo -e "Total: $TOTAL_TESTS"
+        echo -e "Passed: ${GREEN}$PASSED_TESTS${NC}"
+        echo -e "Failed: ${RED}$FAILED_TESTS${NC}"
+        echo -e "Summary written to: ${BLUE}$SUMMARY_FILE${NC}"
+    fi
+}
+
+function print_short_summary() {
+    if [ "${QUIET:-0}" -eq 0 ]; then
+        echo -e "\n${BOLD}Test Execution Summary:${NC}"
+        echo -e "${GRAY}----------------------------------------${NC}"
+        echo -e "Total Tests:    ${BLUE}$TOTAL_TESTS${NC}"
+        echo -e "Passed:         ${GREEN}$PASSED_TESTS${NC}"
+        echo -e "Failed:         ${RED}$FAILED_TESTS${NC}"
+        echo -e "Success Rate:   ${BLUE}$(( (PASSED_TESTS * 100) / (TOTAL_TESTS - SKIPPED_TESTS) ))%${NC}"
+        echo -e "Duration:       ${BLUE}$(($(date +%s) - $(date -d "$TEST_START_TIME" +%s))) seconds${NC}"
+        echo -e "${GRAY}----------------------------------------${NC}"
+        echo -e "Detailed summary: ${BLUE}$SUMMARY_FILE${NC}"
     fi
 }
 
@@ -393,6 +524,13 @@ function main() {
     start_server
     load_custom_tests
     execute_tests
+
+    # TEST_START_TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+    # execute_tests
+    # TEST_END_TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+    # 
+    # generate_summary
+    # print_short_summary
 
     if [ "${QUIET:-0}" -eq 0 ]; then
         echo -e "\n${YELLOW}Stopping server...${NC}"

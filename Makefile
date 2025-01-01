@@ -103,7 +103,15 @@ $(DIR_BIN) $(DIR_OBJ) $(DIR_LOG) $(DIR_DEPS):
 
 -include $(DEP)
 
-clean:
+kill_port:
+	@if lsof -i :$(PORT) > /dev/null 2>&1; then \
+        echo "Killing process on port $(PORT)"; \
+        lsof -ti :$(PORT) | xargs kill -9; \
+    else \
+        echo "No process running on port $(PORT)"; \
+    fi
+
+clean: kill_port
 	@printf "Cleaning object files...\n"
 	@$(RMDIR) $(DIR_OBJ)
 	@$(RMDIR) $(DIR_DEPS)
@@ -122,7 +130,7 @@ debug:
 release:
 	@$(MAKE) all
 
-test: debug | $(DIR_LOG)
+test: re debug | $(DIR_LOG)
 	@printf "Running tests...\n"
 	@./$(DIR_TEST)/main.sh -f ./test/test.txt -d -v 2>&1 | tee $(DIR_LOG)/test.log
 
