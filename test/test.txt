@@ -1,0 +1,68 @@
+# IRC Protocol Test Suite
+# Based on RFC 2812 and modern IRC protocol extensions
+# Format: TestName|ExpectedResponse|Commands
+
+# Registration and Authentication Tests
+Basic Registration|001|PASS Alilepro135!\r\nNICK tester1\r\nUSER tester1 0 * :Test User\r\n
+SASL Authentication|AUTHENTICATE|CAP LS 302\r\nCAP REQ :sasl\r\nAUTHENTICATE PLAIN\r\n
+CAP Negotiation|CAP|CAP LS 302\r\nCAP REQ :multi-prefix extended-join account-notify away-notify\r\n
+
+# Nickname Operations
+Nick Change|NICK|PASS Alilepro135!\r\nNICK tester2\r\nUSER tester2 0 * :Test User\r\nNICK tester2_new\r\n
+Nick Collision|433|PASS Alilepro135!\r\nNICK tester3\r\nUSER tester3 0 * :Test User\r\nNICK tester3\r\n
+
+# Channel Operations
+Basic Channel Join|JOIN|PASS Alilepro135!\r\nNICK chan_test1\r\nUSER chan1 0 * :Channel Test\r\nJOIN #test\r\n
+Multiple Channel Join|JOIN|PASS Alilepro135!\r\nNICK chan_test2\r\nUSER chan2 0 * :Channel Test\r\nJOIN #test1,#test2,#test3\r\n
+Channel with Key|JOIN|PASS Alilepro135!\r\nNICK chan_test3\r\nUSER chan3 0 * :Channel Test\r\nJOIN #secure secretkey\r\n
+Channel Part|PART|PASS Alilepro135!\r\nNICK chan_test4\r\nUSER chan4 0 * :Channel Test\r\nJOIN #test\r\nPART #test :Goodbye!\r\n
+
+# Mode Operations
+User Mode Change|MODE|PASS Alilepro135!\r\nNICK mode_test1\r\nUSER mode1 0 * :Mode Test\r\nMODE mode_test1 +i\r\n
+Channel Mode Change|MODE|PASS Alilepro135!\r\nNICK mode_test2\r\nUSER mode2 0 * :Mode Test\r\nJOIN #test\r\nMODE #test +nt\r\n
+Channel Ban|MODE|PASS Alilepro135!\r\nNICK mode_test3\r\nUSER mode3 0 * :Mode Test\r\nJOIN #test\r\nMODE #test +b *!*@baduser.com\r\n
+
+# Message Tests
+Private Message|PRIVMSG|PASS Alilepro135!\r\nNICK msg_test1\r\nUSER msg1 0 * :Message Test\r\nPRIVMSG msg_test2 :Hello there!\r\n
+Channel Message|PRIVMSG|PASS Alilepro135!\r\nNICK msg_test2\r\nUSER msg2 0 * :Message Test\r\nJOIN #test\r\nPRIVMSG #test :Hello channel!\r\n
+Notice Message|NOTICE|PASS Alilepro135!\r\nNICK notice_test1\r\nUSER notice1 0 * :Notice Test\r\nNOTICE #test :Important notice!\r\n
+Long Message|PRIVMSG|PASS Alilepro135!\r\nNICK msg_test3\r\nUSER msg3 0 * :Message Test\r\nPRIVMSG #test :This is a very long message that tests the server's ability to handle messages up to 512 bytes including the CR-LF\r\n
+
+# Topic Operations
+Topic Change|TOPIC|PASS Alilepro135!\r\nNICK topic_test1\r\nUSER topic1 0 * :Topic Test\r\nJOIN #test\r\nTOPIC #test :New channel topic\r\n
+Topic Query|TOPIC|PASS Alilepro135!\r\nNICK topic_test2\r\nUSER topic2 0 * :Topic Test\r\nJOIN #test\r\nTOPIC #test\r\n
+
+# List Operations
+Channel List|LIST|PASS Alilepro135!\r\nNICK list_test1\r\nUSER list1 0 * :List Test\r\nLIST\r\n
+Who Query|WHO|PASS Alilepro135!\r\nNICK who_test1\r\nUSER who1 0 * :Who Test\r\nWHO #test\r\n
+Whois Query|WHOIS|PASS Alilepro135!\r\nNICK whois_test1\r\nUSER whois1 0 * :Whois Test\r\nWHOIS whois_test2\r\n
+
+# Error Handling
+Invalid Channel Name|403|PASS Alilepro135!\r\nNICK error_test1\r\nUSER error1 0 * :Error Test\r\nJOIN #\r\n
+No Such Nick|401|PASS Alilepro135!\r\nNICK error_test2\r\nUSER error2 0 * :Error Test\r\nPRIVMSG nonexistent :Hello\r\n
+No Such Channel|403|PASS Alilepro135!\r\nNICK error_test3\r\nUSER error3 0 * :Error Test\r\nJOIN #nonexistent\r\n
+
+# Server Response Tests
+Ping Response|PONG|PASS Alilepro135!\r\nNICK ping_test1\r\nUSER ping1 0 * :Ping Test\r\nPING :server1\r\n
+Version Query|VERSION|PASS Alilepro135!\r\nNICK version_test1\r\nUSER version1 0 * :Version Test\r\nVERSION\r\n
+Time Query|TIME|PASS Alilepro135!\r\nNICK time_test1\r\nUSER time1 0 * :Time Test\r\nTIME\r\n
+
+# Connection Tests
+Quit Command|ERROR|PASS Alilepro135!\r\nNICK quit_test1\r\nUSER quit1 0 * :Quit Test\r\nQUIT :Goodbye!\r\n
+Away Status|AWAY|PASS Alilepro135!\r\nNICK away_test1\r\nUSER away1 0 * :Away Test\r\nAWAY :Gone for lunch\r\n
+
+# Extended Features
+ISON Query|ISON|PASS Alilepro135!\r\nNICK ison_test1\r\nUSER ison1 0 * :ISON Test\r\nISON nick1 nick2 nick3\r\n
+USERHOST Query|USERHOST|PASS Alilepro135!\r\nNICK userhost_test1\r\nUSER userhost1 0 * :UserHost Test\r\nUSERHOST userhost_test1\r\n
+
+# Stress Tests
+Rapid Channel Join/Part|JOIN|PASS Alilepro135!\r\nNICK stress_test1\r\nUSER stress1 0 * :Stress Test\r\nJOIN #test1\r\nPART #test1\r\nJOIN #test2\r\nPART #test2\r\nJOIN #test3\r\n
+Multiple Mode Changes|MODE|PASS Alilepro135!\r\nNICK stress_test2\r\nUSER stress2 0 * :Stress Test\r\nJOIN #test\r\nMODE #test +nt-t+s-n\r\n
+Long Nick Change Chain|NICK|PASS Alilepro135!\r\nNICK stress_test3\r\nUSER stress3 0 * :Stress Test\r\nNICK test3_a\r\nNICK test3_b\r\nNICK test3_c\r\n
+
+# Unicode Support
+UTF8 Nick Test|NICK|PASS Alilepro135!\r\nNICK téster1\r\nUSER unicode1 0 * :Unicode Test\r\n
+UTF8 Channel Message|PRIVMSG|PASS Alilepro135!\r\nNICK utf8_test1\r\nUSER unicode2 0 * :Unicode Test\r\nJOIN #test\r\nPRIVMSG #test :Hello 世界！\r\n
+
+# Concurrent Operations
+Multi-Channel Activity|PRIVMSG|PASS Alilepro135!\r\nNICK concurrent_test1\r\nUSER concurrent1 0 * :Concurrent Test\r\nJOIN #test1,#test2,#test3\r\nPRIVMSG #test1,#test2,#test3 :Hello all channels!\r\n

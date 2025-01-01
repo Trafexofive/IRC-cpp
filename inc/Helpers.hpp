@@ -47,11 +47,16 @@ struct ServerData {
     int _socket;
     int _poll;
     int Port;
+    std::string Host;
+    // std::string Motd;
+    // std::string Welcome;
+    std::string ServerName;
+    LEVEL _infoLevel;
+
     struct sockaddr_in ServAddr;
     
-    LEVEL _infoLevel;
-    ServerData() : _socket(-1), _poll(-1), Port(-1), _infoLevel(INFO) {
-        std::memset(&ServAddr, 0, sizeof(ServAddr));
+    ServerData() : Passwd("password"), _socket(-1), _poll(-1), Port(6667), Host(""), ServerName("WeUseArch"), _infoLevel(INFO) {
+        memset(&ServAddr, 0, sizeof(ServAddr));
     }
 };
 

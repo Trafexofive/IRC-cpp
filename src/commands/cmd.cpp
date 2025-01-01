@@ -255,3 +255,54 @@ void CoreServer::cmdPrivmsg(int fd, std::vector<std::string> &args) {
             client.setResponse(formatResponse(ERR_NOSUCHNICK, target + " :No such nick/channel"));
     }
 }
+
+void    CoreServer::cmdPong(int fd, std::vector<std::string> &args)
+{
+    if (args.size() < 2)
+    {
+        std::cout << formatServerMessage("ERROR", "PONG failed: No parameters") << std::endl;
+        clients[fd].setResponse(formatResponse(ERR_NOORIGIN, "PONG :No origin specified"));
+        return;
+    }
+    Client& client = clients[fd];
+    std::string response = ":" + ServData.ServerName + " PONG " + ServData.ServerName + " :" + args[1] + "\r\n";
+    client.setResponse(response);
+}
+
+void    CoreServer::cmdPing(int fd, std::vector<std::string> &args)
+{
+    if (args.size() < 2)
+    {
+        std::cout << formatServerMessage("ERROR", "PING failed: No parameters") << std::endl;
+        clients[fd].setResponse(formatResponse(ERR_NOORIGIN, "PING :No origin specified"));
+        return;
+    }
+    Client& client = clients[fd];
+    std::string response = ":" + ServData.ServerName + " PING " + ServData.ServerName + " :" + args[1] + "\r\n";
+    client.setResponse(response);
+}
+
+// void CoreServer::cmdQuit(int fd, std::vector<std::string> &args) {
+//     Client& client = clients[fd];
+//     std::string quitMsg = ":" + client.getNickName() + "!" + client.getFullName() + "@localhost QUIT :";
+//     if (args.size() > 1) {
+//         for (std::vector<std::string>::iterator it = args.begin() + 1; it != args.end(); ++it) {
+//             if (it != args.begin() + 1)
+//                 quitMsg += " ";
+//             quitMsg += *it;
+//         }
+//     }
+//     quitMsg += "\r\n";
+//     client.setResponse(quitMsg);
+//     std::cout << formatServerMessage("INFO", client.getNickName() + " has quit") << std::endl;
+//     std::vector<Channel>::iterator channelIt;
+//     for (channelIt = channels.begin(); channelIt != channels.end(); ++channelIt) {
+//         channelIt->removeMember(client.getNickName());
+//     }
+//     std::vector<struct pollfd>::iterator new_end = std::remove_if(fds.begin(), fds.end(), FdRemovePredicate(fd));
+//     fds.erase(new_end, fds.end());
+//     close(fd);
+//     clients.erase(fd);
+// }
+
+

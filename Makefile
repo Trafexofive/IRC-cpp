@@ -10,9 +10,14 @@
 #                                                                              #
 # **************************************************************************** #
 
+
+# Project Information
 NAME := irc-server
 VERSION := nightly_build@0.7.0
+AUTHOR := $(shell whoami)
+DATE := $(shell date '+%Y-%m-%d %H:%M:%S')
 
+# Directory Structure
 DIR_SRC := src
 DIR_OBJ := obj
 DIR_INC := inc
@@ -20,106 +25,133 @@ DIR_BIN := bin
 DIR_TEST := test
 DIR_BOT := src/bot
 DIR_LOG := log
+DIR_BACKUP := backup
+DIR_DEPS := .deps
 
+# Source Files
 SRC_FILES := HandleEvents.cpp \
-             server/server.cpp \
-             client/client.cpp \
-             commands/cmd.cpp \
-			 utils/Utils.cpp \
-             main.cpp \
-             Validation.cpp \
-				Channel.cpp \
+    server/server.cpp \
+    client/client.cpp \
+    commands/cmd.cpp \
+    utils/Utils.cpp \
+    main.cpp \
+    Validation.cpp \
+    Channel.cpp
 
-SRC := $(addprefix $(DIR_SRC)/, $(SRC_FILES)) #too good not to be forbidden (check 42-docs)
+# File Management
+SRC := $(addprefix $(DIR_SRC)/, $(SRC_FILES))
 OBJ := $(SRC:$(DIR_SRC)/%.cpp=$(DIR_OBJ)/%.o)
-DEP := $(OBJ:.o=.d)
+DEP := $(OBJ:%.o=$(DIR_DEPS)/%.d)
 
+# Compiler and Flags
 CXX := c++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98
 CPPFLAGS := -MMD -MP -I$(DIR_INC)
 LDFLAGS := -L/usr/local/lib
 
-
-#-DEBUG-##########################################################
+# Debug Configuration
 ifeq ($(DEBUG), 1)
     CXXFLAGS += -g3 -DDEBUG
+    BUILD_TYPE := Debug
 else
-    CXXFLAGS += -O2
+    CXXFLAGS += -O2 -DNDEBUG
+    BUILD_TYPE := Release
 endif
 
+# Platform-specific Configuration
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
     LDLIBS += -lpthread
 endif
 
-#-ENV-############################################################
+# Environment Variables
 PORT ?= 22200
 PASSWORD ?= Alilepro135!
 ARGS := $(PORT) $(PASSWORD)
-##################################################################
 
+# System Commands
 RM := rm -f
 RMDIR := rm -rf
 MKDIR := mkdir -p
 ECHO := echo
 
-.PHONY: all clean fclean re debug release test run bot help
+.PHONY: all clean fclean re debug release test run bot help version banner
 
-all: $(NAME)
+all: banner $(NAME)
+
+banner:
+	@printf "\n%s\n" "===================================="
+	@printf "%s\n" "  Building $(NAME) - $(VERSION)"
+	@printf "%s\n" "  Build Type: $(BUILD_TYPE)"
+	@printf "%s\n" "  Author: $(AUTHOR)"
+	@printf "%s\n\n" "===================================="
 
 $(NAME): $(OBJ) | $(DIR_BIN)
+	@printf "Linking $(NAME)...\n"
 	@$(CXX) $(OBJ) $(LDFLAGS) $(LDLIBS) -o $(DIR_BIN)/$@
+	@printf "Build complete!\n"
 
-$(DIR_OBJ)/%.o: $(DIR_SRC)/%.cpp | $(DIR_OBJ)
+$(DIR_OBJ)/%.o: $(DIR_SRC)/%.cpp | $(DIR_OBJ) $(DIR_DEPS)
 	@$(MKDIR) $(dir $@)
+	@$(MKDIR) $(dir $(DIR_DEPS)/$*)
+	@printf "Compiling $<...\n"
 	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c $< -o $@
+	@mv $(DIR_OBJ)/$*.d $(DIR_DEPS)/$*.d
 
-$(DIR_BIN) $(DIR_OBJ) $(DIR_LOG):
+$(DIR_BIN) $(DIR_OBJ) $(DIR_LOG) $(DIR_DEPS):
 	@$(MKDIR) $@
 
 -include $(DEP)
 
 clean:
+	@printf "Cleaning object files...\n"
 	@$(RMDIR) $(DIR_OBJ)
+	@$(RMDIR) $(DIR_DEPS)
 	@$(RMDIR) $(DIR_LOG)
 
 fclean: clean
+	@printf "Cleaning everything...\n"
 	@$(RMDIR) $(DIR_BIN)
 	@$(MAKE) -C $(DIR_BOT) fclean 2>/dev/null || true
 
 re: fclean all
 
-debug: CXXFLAGS += -g3 -DDEBUG
-debug: all
+debug: 
+	@$(MAKE) DEBUG=1 all
 
-release: CXXFLAGS += -O2 -DNDEBUG
-release: all
+release:
+	@$(MAKE) all
 
 test: debug | $(DIR_LOG)
-	@./$(DIR_TEST)/main.sh -v -d -t 1 2>&1 | tee $(DIR_LOG)/test.log
+	@printf "Running tests...\n"
+	@./$(DIR_TEST)/main.sh -f ./test/test.txt -d -v 2>&1 | tee $(DIR_LOG)/test.log
 
 run: re
+	@printf "Running $(NAME)...\n"
 	@./$(DIR_BIN)/$(NAME) $(ARGS)
 
 bot:
+	@printf "Building bot...\n"
 	@$(MAKE) -C $(DIR_BOT)
 
 help:
-	@$(ECHO) "Available targets:"
-	@$(ECHO) "  make all      - Build the IRC server (default)"
-	@$(ECHO) "  make clean    - Remove object files"
-	@$(ECHO) "  make fclean   - Remove object files and binary"
-	@$(ECHO) "  make re       - Rebuild everything"
-	@$(ECHO) "  make debug    - Build with debug symbols"
-	@$(ECHO) "  make release  - Build with optimizations"
-	@$(ECHO) "  make test     - Run tests"
-	@$(ECHO) "  make run      - Build and run server"
-	@$(ECHO) "  make bot      - Build the bot component"
-	@$(ECHO) "  make help     - Show this help message"
-	@$(ECHO) "Configuration:"
-	@$(ECHO) "  PORT=<port>         - Set server port (default: $(PORT))"
-	@$(ECHO) "  PASSWORD=<pass>     - Set server password"
-	@$(ECHO) "  DEBUG=1             - Enable debug build"
+	@printf "\nAvailable targets:\n"
+	@printf "  make all      - Build the IRC server (default)\n"
+	@printf "  make clean    - Remove object files\n"
+	@printf "  make fclean   - Remove object files and binary\n"
+	@printf "  make re       - Rebuild everything\n"
+	@printf "  make debug    - Build with debug symbols\n"
+	@printf "  make release  - Build with optimizations\n"
+	@printf "  make test     - Run tests\n"
+	@printf "  make run      - Build and run server\n"
+	@printf "  make bot      - Build the bot component\n"
+	@printf "  make help     - Show this help message\n"
+	@printf "\nConfiguration:\n"
+	@printf "  PORT=<port>         - Set server port (default: $(PORT))\n"
+	@printf "  PASSWORD=<pass>     - Set server password\n"
+	@printf "  DEBUG=1             - Enable debug build\n\n"
 
 version:
-	@$(ECHO) "$(NAME) version $(VERSION)"
+	@printf "$(NAME) version $(VERSION)\n"
+	@printf "Built on: $(DATE)\n"
+	@printf "By: $(AUTHOR)\n"
