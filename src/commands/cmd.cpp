@@ -14,6 +14,55 @@
 #include <ctime>
 #include <sstream>
 
+void CoreServer::cmdPart(int fd, std::vector<std::string> &args) {
+    if (args.size() < 2) {
+        std::cout << formatServerMessage("ERROR", "PART failed: No channel specified") << std::endl;
+        clients[fd].set_response(formatResponse(ERR_NEEDMOREPARAMS, "PART :Not enough parameters"));
+        return;
+    }
+
+    // Determine the channel name, ensure it starts with '#'
+    std::string channelName = args[1];
+    if (channelName.empty() || channelName[0] != '#') {
+        channelName = "#" + channelName;
+    }
+
+    // Check if client exists
+    if (clients.find(fd) == clients.end()) {
+        std::cout << formatServerMessage("ERROR", "PART failed: Client not found") << std::endl;
+        return;
+    }
+
+    std::cout << formatServerMessage("DEBUG", clients[fd].get_nick() + " attempting to leave " + channelName) << std::endl;
+
+    bool channelFound = false;
+
+    // Iterate through channels to find the matching channel
+    for (std::vector<channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
+        if (it->getName() == channelName) {
+            channelFound = true;
+            // Pass the client's nickname to removeMember
+            it->removeMember(clients[fd].get_nick());
+            break;
+        }
+    }
+
+    // Handle case where channel was not found
+    if (!channelFound) {
+        std::cout << formatServerMessage("ERROR", "PART failed: Channel not found") << std::endl;
+        clients[fd].set_response(formatResponse(ERR_NOSUCHCHAN, channelName + " :No such channel"));
+        return;
+    }
+
+    // Construct part message
+    std::string partMsg = ":" + clients[fd].get_nick() + "!" + clients[fd].get_user() + "@localhost PART " + channelName + "\r\n";
+    clients[fd].set_response(partMsg);
+
+    // Success message
+    std::cout << formatServerMessage("SUCCESS", clients[fd].get_nick() + " left " + channelName) << std::endl;
+}
+
+
 void CoreServer::cmdPass(int fd, std::vector<std::string> &args) {
   std::cout << formatServerMessage("DEBUG", "Processing PASS command")
             << std::endl;
@@ -268,5 +317,3 @@ void CoreServer::cmdPrivmsg(int fd, std::vector<std::string> &args) {
           formatResponse(ERR_NOSUCHNICK, target + " :No such nick/channel"));
   }
 }
-
-

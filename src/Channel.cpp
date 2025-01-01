@@ -15,6 +15,4 @@
 
 
 
-// void CoreServer::cmdPart()
 
-void CoreServer::cmd()

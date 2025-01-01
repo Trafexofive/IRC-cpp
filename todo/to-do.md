@@ -61,6 +61,9 @@
 - [COMMANDS] :
     - CAP LS behavior. (modern irc auth compliance)
     - full channel operator support ()
+    - 
+    - 
+- [URGENT] need to overhall client and channel specific methodes (helpers), they are slowing command developement.
 
 ### [BUGS] use location-line : {test} when reporting bugs
 
