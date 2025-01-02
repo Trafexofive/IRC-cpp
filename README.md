@@ -1,20 +1,19 @@
-Here is a draft for the README.md file based on the repository details and recent commits:
-
----
-
 # IRC-cpp
 
-An IRC (Internet Relay Chat) client and server implementation in C++.
+An IRC (Internet Relay Chat) server implementation in C++98.
 
 ## Project Description
 
 IRC-cpp is a project aimed at creating a robust IRC client and server using C++. The goal is to provide a lightweight and efficient IRC implementation that can be easily extended and customized.
+
+my initial reason for starting this repo (because of school) was because I wanted to self-host my own irc server, as well as getting into some socket programming. 
 
 ## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
 - [File Structure](#file-structure)
+- [Documentation](#documentation)
 - [Current Status](#current-status)
 - [Contributing](#contributing)
 - [License](#license)
@@ -22,17 +21,25 @@ IRC-cpp is a project aimed at creating a robust IRC client and server using C++.
 ## Installation
 
 1. Clone the repository:
-   ```sh
-   git clone https://github.com/Trafexofive/IRC-cpp.git
-   ```
+    ```sh
+    git clone https://github.com/Trafexofive/IRC-cpp.git
+    ```
 2. Navigate into the project directory:
-   ```sh
-   cd IRC-cpp
-   ```
+    ```sh
+    cd IRC-cpp
+    ```
 3. Build the project using Makefile:
-   ```sh
-   make
-   ```
+    ```sh
+    make
+    ```
+4. Build and run directly:
+    ```sh
+    make build
+    ```
+5. Alternatively you can display help dialog using::
+    ```sh
+    make help
+    ```
 
 ## Usage
 
@@ -56,8 +63,22 @@ IRC-cpp/
 ├── include/            # Header files
 ├── scripts/            # Shell scripts for testing
 ├── Makefile            # Build configuration
-└── README.md           # Project documentation
+├── doc/                # Documentation files
+├── test/               # Test cases and related files
+├── log/                # Log files
+├── backup/             # Backup files
+├── .deps/              # Dependency files
+├── README.md           # Project documentation
+└── LICENSE             # License file
 ```
+
+## Documentation
+
+The project includes several documentation files to help you understand and use IRC-cpp effectively:
+
+- [Internet Relay Chat Protocol (RFC 1459)](doc/irc-rfc.md): The official specification of the IRC protocol.
+- [The New IRC Channel Operator’s Guide](doc/irchelp_main.md): A guide for new IRC channel operators.
+- [Modern IRC RFC](doc/modern-rfc.md): A modernized version of the IRC protocol documentation.
 
 ## Current Status
 
@@ -73,12 +94,9 @@ For more details, check the [commit history](https://github.com/Trafexofive/IRC-
 
 ## Contributing
 
+By all means, Im not the best programmer!
 Contributions are welcome! Please fork the repository and submit pull requests with your changes.
 
 ## License
 
 This project is licensed under the MIT License.
-
----
-
-Feel free to modify this draft as needed.
