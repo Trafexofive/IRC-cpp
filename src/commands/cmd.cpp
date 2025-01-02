@@ -284,7 +284,8 @@ void    CoreServer::cmdPing(int fd, std::vector<std::string> &args)
         return;
     }
     Client& client = clients[fd];
-    std::string response = ":" + ServData.ServerName + " PONG " + ServData.ServerName + " :" + args[1] + "\r\n";
+
+    std::string response = "PONG " + args[1] + "\r\n";
     client.setResponse(response);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 18:05:20 by mlamkadm          #+#    #+#             */
-/*   Updated: 2025/01/01 18:05:20 by mlamkadm         ###   ########.fr       */
+/*   Updated: 2025/01/02 15:59:34 by mlamkadm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,16 @@ private:
     void start_listening();
     void start_server();
 
+
+    // Helper methods
+    void disconnectClient(int fd);
+    void broadcastToChannel(const std::string& channelName,
+                          const std::string& message,
+                          const std::string& except_nick = "");
+    LEVEL   purgeAllClients();
+
     // Command handlers
+    void handleCommand(int fd, const std::string& line);
     void cmdNick(int fd, std::vector<std::string>& args);
     void cmdUser(int fd, std::vector<std::string>& args);
     void cmdPass(int fd, std::vector<std::string>& args);
@@ -92,13 +101,6 @@ private:
     void cmdPing(int fd, std::vector<std::string>& args);
     // void cmdList(int fd, std::vector<std::string>& args);
 
-    // Helper methods
-    void disconnectClient(int fd);
-    void broadcastToChannel(const std::string& channelName,
-                          const std::string& message,
-                          const std::string& except_nick = "");
-    // command handling main methods
-    void handleCommand(int fd, const std::string& line);
 
 public:
     // Constructor and destructor

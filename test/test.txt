@@ -43,7 +43,7 @@ No Such Nick|401|PASS Alilepro135!\r\nNICK error_test2\r\nUSER error2 0 * :Error
 No Such Channel|403|PASS Alilepro135!\r\nNICK error_test3\r\nUSER error3 0 * :Error Test\r\nJOIN #nonexistent\r\n
 
 # Server Response Tests
-Ping Response|PONG|PASS Alilepro135!\r\nNICK ping_test1\r\nUSER ping1 0 * :Ping Test\r\nPING :server1\r\n
+Ping Response|PONG :server1|PASS Alilepro135!\r\nNICK ping_test1\r\nUSER ping1 0 * :Ping Test\r\nPING :server1\r\n
 Version Query|VERSION|PASS Alilepro135!\r\nNICK version_test1\r\nUSER version1 0 * :Version Test\r\nVERSION\r\n
 Time Query|TIME|PASS Alilepro135!\r\nNICK time_test1\r\nUSER time1 0 * :Time Test\r\nTIME\r\n
 

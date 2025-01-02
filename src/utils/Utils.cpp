@@ -87,3 +87,8 @@ std::string formatServerMessage(const std::string& type, const std::string& mess
     return oss.str();
 }
 
+
+// void    formatArg(std::string &msg)
+// {
+//     // Remove leading : if present
+// }

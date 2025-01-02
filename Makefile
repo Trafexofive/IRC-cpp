@@ -28,6 +28,9 @@ DIR_LOG := log
 DIR_BACKUP := backup
 DIR_DEPS := .deps
 
+# Test File
+TEST-FILE := $(DIR_TEST)/test-cases/privmsg-tests
+
 # Source Files
 SRC_FILES := HandleEvents.cpp \
     server/server.cpp \
@@ -132,7 +135,7 @@ release:
 
 test: re debug | $(DIR_LOG)
 	@printf "Running tests...\n"
-	@./$(DIR_TEST)/main.sh -f ./test/test.txt -d -v -t 1 2>&1 | tee $(DIR_LOG)/test.log
+	@./$(DIR_TEST)/main.sh -f $(TEST-FILE) -d -v -t 1 2>&1 | tee $(DIR_LOG)/test.log
 
 run: all
 	@printf "Running $(NAME)...\n"

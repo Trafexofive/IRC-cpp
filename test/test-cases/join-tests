@@ -1,0 +1,21 @@
+
+# COMMAND-TO-TEST: {JOIN}
+
+# EXAMPLE-TEST:
+
+default PING test|PONG :server1|PASS Alilepro135!\r\nNICK ping_test1\r\nUSER ping1 0 * :Ping Test\r\nPING :server1\r\n
+Version Query|VERSION|PASS Alilepro135!\r\nNICK version_test1\r\nUSER version1 0 * :Version Test\r\nVERSION\r\n
+Time Query|TIME|PASS Alilepro135!\r\nNICK time_test1\r\nUSER time1 0 * :Time Test\r\nTIME\r\n
+
+# TEST CASES:
+
+Join single channel|:server 001 join_test1 :Welcome to the IRC network\r\n:join_test1!user@host JOIN #test\r\n:server 353 join_test1 = #test :join_test1\r\n:server 366 join_test1 #test :End of /NAMES list.|PASS Alilepro135!\r\nNICK join_test1\r\nUSER user 0 * :Join Test\r\nJOIN #test\r\n
+Join multiple channels|:server 001 join_test2 :Welcome to the IRC network\r\n:join_test2!user@host JOIN #test1\r\n:server 353 join_test2 = #test1 :join_test2\r\n:server 366 join_test2 #test1 :End of /NAMES list.\r\n:join_test2!user@host JOIN #test2\r\n:server 353 join_test2 = #test2 :join_test2\r\n:server 366 join_test2 #test2 :End of /NAMES list.|PASS Alilepro135!\r\nNICK join_test2\r\nUSER user 0 * :Join Test\r\nJOIN #test1,#test2\r\n
+Join channel with key|:server 001 join_test3 :Welcome to the IRC network\r\n:join_test3!user@host JOIN #keyed\r\n:server 353 join_test3 = #keyed :join_test3\r\n:server 366 join_test3 #keyed :End of /NAMES list.|PASS Alilepro135!\r\nNICK join_test3\r\nUSER user 0 * :Join Test\r\nJOIN #keyed key123\r\n
+Join invite-only channel without invite|:server 001 join_test4 :Welcome to the IRC network\r\n:server 473 join_test4 #invite :Cannot join channel (+i) - you must be invited.|PASS Alilepro135!\r\nNICK join_test4\r\nUSER user 0 * :Join Test\r\nJOIN #invite\r\n
+Join invite-only channel with invite|:server 001 join_test5 :Welcome to the IRC network\r\n:server 341 join_test5 join_test5 #invite\r\n:server 342 join_test5 #invite :Invitation sent.\r\n:join_test5!user@host JOIN #invite\r\n:server 353 join_test5 = #invite :join_test5\r\n:server 366 join_test5 #invite :End of /NAMES list.|PASS Alilepro135!\r\nNICK join_test5\r\nUSER user 0 * :Join Test\r\nINVITE join_test5 #invite\r\nJOIN #invite\r\n
+Join channel with incorrect key|:server 001 join_test6 :Welcome to the IRC network\r\n:server 475 join_test6 #keyed :Cannot join channel (+k) - incorrect key.|PASS Alilepro135!\r\nNICK join_test6\r\nUSER user 0 * :Join Test\r\nJOIN #keyed wrongkey\r\n
+Join channel with correct key|:server 001 join_test7 :Welcome to the IRC network\r\n:join_test7!user@host JOIN #keyed\r\n:server 353 join_test7 = #keyed :join_test7\r\n:server 366 join_test7 #keyed :End of /NAMES list.|PASS Alilepro135!\r\nNICK join_test7\r\nUSER user 0 * :Join Test\r\nJOIN #keyed key123\r\n
+Join banned channel|:server 001 join_test8 :Welcome to the IRC network\r\n:server 474 join_test8 #banned :Cannot join channel (+b) - you are banned.|PASS Alilepro135!\r\nNICK join_test8\r\nUSER user 0 * :Join Test\r\nJOIN #banned\r\n
+Join channel with limit exceeded|:server 001 join_test9 :Welcome to the IRC network\r\n:server 471 join_test9 #limited :Cannot join channel (+l) - channel is full.|PASS Alilepro135!\r\nNICK join_test9\r\nUSER user 0 * :Join Test\r\nJOIN #limited\r\n
+Join channel removing all others|:server 001 join_test10 :Welcome to the IRC network\r\n:join_test10!user@host JOIN #test\r\n:server 353 join_test10 = #test :join_test10\r\n:server 366 join_test10 #test :End of /NAMES list.\r\n:join_test10!user@host JOIN 0\r\n:server 396 join_test10 :You have left all channels.|PASS Alilepro135!\r\nNICK join_test10\r\nUSER user 0 * :Join Test\r\nJOIN #test\r\nJOIN 0\r\n
