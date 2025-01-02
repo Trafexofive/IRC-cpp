@@ -5,5 +5,6 @@ obj/*
 .vscode/
 .DS_store/
 server.log
-logs/*
+log/
 irc_test.log/
+.deps/

@@ -1,92 +1,92 @@
 ========================================
-IRC Server Test Log - 2025-01-01 19:21:24 UTC
+IRC Server Test Log - 2025-01-02 12:07:44 UTC
 User: mlamkadm
 Server: localhost:22200
 Debug Mode: 1
 Verbose Mode: 1
 ========================================
 
-[2025-01-01 19:21:24 UTC] Test suite started
+[2025-01-02 12:07:44 UTC] Test suite started
 ----------------------------------------
-[2025-01-01 19:21:24 UTC] Starting IRC server
-[2025-01-01 19:21:26 UTC] [DEBUG] Waiting for server to start (PID: 116607)
-[2025-01-01 19:21:26 UTC] Server started successfully
-[2025-01-01 19:21:26 UTC] [DEBUG] Loading custom tests from: ./test/test.txt
-[2025-01-01 19:21:26 UTC] Loading custom tests from: ./test/test.txt
-[2025-01-01 19:21:26 UTC] Running test: Basic Registration
-[2025-01-01 19:21:26 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK tester1\r\nUSER tester1 0 * :Test User\r\n
-[2025-01-01 19:21:31 UTC] Running test: SASL Authentication
-[2025-01-01 19:21:31 UTC] [DEBUG] Sending commands: CAP LS 302\r\nCAP REQ :sasl\r\nAUTHENTICATE PLAIN\r\n
-[2025-01-01 19:21:36 UTC] Running test: CAP Negotiation
-[2025-01-01 19:21:36 UTC] [DEBUG] Sending commands: CAP LS 302\r\nCAP REQ :multi-prefix extended-join account-notify away-notify\r\n
-[2025-01-01 19:21:41 UTC] Running test: Nick Change
-[2025-01-01 19:21:41 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK tester2\r\nUSER tester2 0 * :Test User\r\nNICK tester2_new\r\n
-[2025-01-01 19:21:46 UTC] Running test: Nick Collision
-[2025-01-01 19:21:46 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK tester3\r\nUSER tester3 0 * :Test User\r\nNICK tester3\r\n
-[2025-01-01 19:21:51 UTC] Running test: Basic Channel Join
-[2025-01-01 19:21:51 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK chan_test1\r\nUSER chan1 0 * :Channel Test\r\nJOIN #test\r\n
-[2025-01-01 19:21:56 UTC] Running test: Multiple Channel Join
-[2025-01-01 19:21:56 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK chan_test2\r\nUSER chan2 0 * :Channel Test\r\nJOIN #test1,#test2,#test3\r\n
-[2025-01-01 19:22:01 UTC] Running test: Channel with Key
-[2025-01-01 19:22:01 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK chan_test3\r\nUSER chan3 0 * :Channel Test\r\nJOIN #secure secretkey\r\n
-[2025-01-01 19:22:06 UTC] Running test: Channel Part
-[2025-01-01 19:22:06 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK chan_test4\r\nUSER chan4 0 * :Channel Test\r\nJOIN #test\r\nPART #test :Goodbye!\r\n
-[2025-01-01 19:22:11 UTC] Running test: User Mode Change
-[2025-01-01 19:22:11 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK mode_test1\r\nUSER mode1 0 * :Mode Test\r\nMODE mode_test1 +i\r\n
-[2025-01-01 19:22:16 UTC] Running test: Channel Mode Change
-[2025-01-01 19:22:16 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK mode_test2\r\nUSER mode2 0 * :Mode Test\r\nJOIN #test\r\nMODE #test +nt\r\n
-[2025-01-01 19:22:21 UTC] Running test: Channel Ban
-[2025-01-01 19:22:21 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK mode_test3\r\nUSER mode3 0 * :Mode Test\r\nJOIN #test\r\nMODE #test +b *!*@baduser.com\r\n
-[2025-01-01 19:22:26 UTC] Running test: Private Message
-[2025-01-01 19:22:26 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK msg_test1\r\nUSER msg1 0 * :Message Test\r\nPRIVMSG msg_test2 :Hello there!\r\n
-[2025-01-01 19:22:31 UTC] Running test: Channel Message
-[2025-01-01 19:22:31 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK msg_test2\r\nUSER msg2 0 * :Message Test\r\nJOIN #test\r\nPRIVMSG #test :Hello channel!\r\n
-[2025-01-01 19:22:36 UTC] Running test: Notice Message
-[2025-01-01 19:22:36 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK notice_test1\r\nUSER notice1 0 * :Notice Test\r\nNOTICE #test :Important notice!\r\n
-[2025-01-01 19:22:41 UTC] Running test: Long Message
-[2025-01-01 19:22:41 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK msg_test3\r\nUSER msg3 0 * :Message Test\r\nPRIVMSG #test :This is a very long message that tests the server's ability to handle messages up to 512 bytes including the CR-LF\r\n
-[2025-01-01 19:22:46 UTC] Running test: Topic Change
-[2025-01-01 19:22:46 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK topic_test1\r\nUSER topic1 0 * :Topic Test\r\nJOIN #test\r\nTOPIC #test :New channel topic\r\n
-[2025-01-01 19:22:51 UTC] Running test: Topic Query
-[2025-01-01 19:22:51 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK topic_test2\r\nUSER topic2 0 * :Topic Test\r\nJOIN #test\r\nTOPIC #test\r\n
-[2025-01-01 19:22:56 UTC] Running test: Channel List
-[2025-01-01 19:22:56 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK list_test1\r\nUSER list1 0 * :List Test\r\nLIST\r\n
-[2025-01-01 19:23:01 UTC] Running test: Who Query
-[2025-01-01 19:23:01 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK who_test1\r\nUSER who1 0 * :Who Test\r\nWHO #test\r\n
-[2025-01-01 19:23:06 UTC] Running test: Whois Query
-[2025-01-01 19:23:06 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK whois_test1\r\nUSER whois1 0 * :Whois Test\r\nWHOIS whois_test2\r\n
-[2025-01-01 19:23:11 UTC] Running test: Invalid Channel Name
-[2025-01-01 19:23:11 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK error_test1\r\nUSER error1 0 * :Error Test\r\nJOIN #\r\n
-[2025-01-01 19:23:16 UTC] Running test: No Such Nick
-[2025-01-01 19:23:16 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK error_test2\r\nUSER error2 0 * :Error Test\r\nPRIVMSG nonexistent :Hello\r\n
-[2025-01-01 19:23:21 UTC] Running test: No Such Channel
-[2025-01-01 19:23:21 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK error_test3\r\nUSER error3 0 * :Error Test\r\nJOIN #nonexistent\r\n
-[2025-01-01 19:23:27 UTC] Running test: Ping Response
-[2025-01-01 19:23:27 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test1\r\nUSER ping1 0 * :Ping Test\r\nPING :server1\r\n
-[2025-01-01 19:23:32 UTC] Running test: Version Query
-[2025-01-01 19:23:32 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK version_test1\r\nUSER version1 0 * :Version Test\r\nVERSION\r\n
-[2025-01-01 19:23:37 UTC] Running test: Time Query
-[2025-01-01 19:23:37 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK time_test1\r\nUSER time1 0 * :Time Test\r\nTIME\r\n
-[2025-01-01 19:23:42 UTC] Running test: Quit Command
-[2025-01-01 19:23:42 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK quit_test1\r\nUSER quit1 0 * :Quit Test\r\nQUIT :Goodbye!\r\n
-[2025-01-01 19:23:47 UTC] Running test: Away Status
-[2025-01-01 19:23:47 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK away_test1\r\nUSER away1 0 * :Away Test\r\nAWAY :Gone for lunch\r\n
-[2025-01-01 19:23:52 UTC] Running test: ISON Query
-[2025-01-01 19:23:52 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ison_test1\r\nUSER ison1 0 * :ISON Test\r\nISON nick1 nick2 nick3\r\n
-[2025-01-01 19:23:57 UTC] Running test: USERHOST Query
-[2025-01-01 19:23:57 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK userhost_test1\r\nUSER userhost1 0 * :UserHost Test\r\nUSERHOST userhost_test1\r\n
-[2025-01-01 19:24:02 UTC] Running test: Rapid Channel Join/Part
-[2025-01-01 19:24:02 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK stress_test1\r\nUSER stress1 0 * :Stress Test\r\nJOIN #test1\r\nPART #test1\r\nJOIN #test2\r\nPART #test2\r\nJOIN #test3\r\n
-[2025-01-01 19:24:07 UTC] Running test: Multiple Mode Changes
-[2025-01-01 19:24:07 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK stress_test2\r\nUSER stress2 0 * :Stress Test\r\nJOIN #test\r\nMODE #test +nt-t+s-n\r\n
-[2025-01-01 19:24:12 UTC] Running test: Long Nick Change Chain
-[2025-01-01 19:24:12 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK stress_test3\r\nUSER stress3 0 * :Stress Test\r\nNICK test3_a\r\nNICK test3_b\r\nNICK test3_c\r\n
-[2025-01-01 19:24:17 UTC] Running test: UTF8 Nick Test
-[2025-01-01 19:24:17 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK téster1\r\nUSER unicode1 0 * :Unicode Test\r\n
-[2025-01-01 19:24:22 UTC] Running test: UTF8 Channel Message
-[2025-01-01 19:24:22 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK utf8_test1\r\nUSER unicode2 0 * :Unicode Test\r\nJOIN #test\r\nPRIVMSG #test :Hello 世界！\r\n
-[2025-01-01 19:24:27 UTC] Running test: Multi-Channel Activity
-[2025-01-01 19:24:27 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK concurrent_test1\r\nUSER concurrent1 0 * :Concurrent Test\r\nJOIN #test1,#test2,#test3\r\nPRIVMSG #test1,#test2,#test3 :Hello all channels!\r\n
-[2025-01-01 19:24:32 UTC] Test suite shutting down
-[2025-01-01 19:24:32 UTC] Stopping server (PID: 116607)
+[2025-01-02 12:07:44 UTC] Starting IRC server
+[2025-01-02 12:07:46 UTC] [DEBUG] Waiting for server to start (PID: 483950)
+[2025-01-02 12:07:46 UTC] Server started successfully
+[2025-01-02 12:07:46 UTC] [DEBUG] Loading custom tests from: ./test/test.txt
+[2025-01-02 12:07:46 UTC] Loading custom tests from: ./test/test.txt
+[2025-01-02 12:07:46 UTC] Running test: Basic Registration
+[2025-01-02 12:07:46 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK tester1\r\nUSER tester1 0 * :Test User\r\n
+[2025-01-02 12:07:51 UTC] Running test: SASL Authentication
+[2025-01-02 12:07:51 UTC] [DEBUG] Sending commands: CAP LS 302\r\nCAP REQ :sasl\r\nAUTHENTICATE PLAIN\r\n
+[2025-01-02 12:07:56 UTC] Running test: CAP Negotiation
+[2025-01-02 12:07:56 UTC] [DEBUG] Sending commands: CAP LS 302\r\nCAP REQ :multi-prefix extended-join account-notify away-notify\r\n
+[2025-01-02 12:08:01 UTC] Running test: Nick Change
+[2025-01-02 12:08:01 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK tester2\r\nUSER tester2 0 * :Test User\r\nNICK tester2_new\r\n
+[2025-01-02 12:08:06 UTC] Running test: Nick Collision
+[2025-01-02 12:08:06 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK tester3\r\nUSER tester3 0 * :Test User\r\nNICK tester3\r\n
+[2025-01-02 12:08:11 UTC] Running test: Basic Channel Join
+[2025-01-02 12:08:11 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK chan_test1\r\nUSER chan1 0 * :Channel Test\r\nJOIN #test\r\n
+[2025-01-02 12:08:16 UTC] Running test: Multiple Channel Join
+[2025-01-02 12:08:16 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK chan_test2\r\nUSER chan2 0 * :Channel Test\r\nJOIN #test1,#test2,#test3\r\n
+[2025-01-02 12:08:21 UTC] Running test: Channel with Key
+[2025-01-02 12:08:21 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK chan_test3\r\nUSER chan3 0 * :Channel Test\r\nJOIN #secure secretkey\r\n
+[2025-01-02 12:08:26 UTC] Running test: Channel Part
+[2025-01-02 12:08:26 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK chan_test4\r\nUSER chan4 0 * :Channel Test\r\nJOIN #test\r\nPART #test :Goodbye!\r\n
+[2025-01-02 12:08:31 UTC] Running test: User Mode Change
+[2025-01-02 12:08:31 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK mode_test1\r\nUSER mode1 0 * :Mode Test\r\nMODE mode_test1 +i\r\n
+[2025-01-02 12:08:36 UTC] Running test: Channel Mode Change
+[2025-01-02 12:08:36 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK mode_test2\r\nUSER mode2 0 * :Mode Test\r\nJOIN #test\r\nMODE #test +nt\r\n
+[2025-01-02 12:08:41 UTC] Running test: Channel Ban
+[2025-01-02 12:08:41 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK mode_test3\r\nUSER mode3 0 * :Mode Test\r\nJOIN #test\r\nMODE #test +b *!*@baduser.com\r\n
+[2025-01-02 12:08:46 UTC] Running test: Private Message
+[2025-01-02 12:08:46 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK msg_test1\r\nUSER msg1 0 * :Message Test\r\nPRIVMSG msg_test2 :Hello there!\r\n
+[2025-01-02 12:08:51 UTC] Running test: Channel Message
+[2025-01-02 12:08:51 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK msg_test2\r\nUSER msg2 0 * :Message Test\r\nJOIN #test\r\nPRIVMSG #test :Hello channel!\r\n
+[2025-01-02 12:08:56 UTC] Running test: Notice Message
+[2025-01-02 12:08:56 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK notice_test1\r\nUSER notice1 0 * :Notice Test\r\nNOTICE #test :Important notice!\r\n
+[2025-01-02 12:09:01 UTC] Running test: Long Message
+[2025-01-02 12:09:01 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK msg_test3\r\nUSER msg3 0 * :Message Test\r\nPRIVMSG #test :This is a very long message that tests the server's ability to handle messages up to 512 bytes including the CR-LF\r\n
+[2025-01-02 12:09:06 UTC] Running test: Topic Change
+[2025-01-02 12:09:06 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK topic_test1\r\nUSER topic1 0 * :Topic Test\r\nJOIN #test\r\nTOPIC #test :New channel topic\r\n
+[2025-01-02 12:09:11 UTC] Running test: Topic Query
+[2025-01-02 12:09:11 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK topic_test2\r\nUSER topic2 0 * :Topic Test\r\nJOIN #test\r\nTOPIC #test\r\n
+[2025-01-02 12:09:16 UTC] Running test: Channel List
+[2025-01-02 12:09:16 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK list_test1\r\nUSER list1 0 * :List Test\r\nLIST\r\n
+[2025-01-02 12:09:21 UTC] Running test: Who Query
+[2025-01-02 12:09:21 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK who_test1\r\nUSER who1 0 * :Who Test\r\nWHO #test\r\n
+[2025-01-02 12:09:26 UTC] Running test: Whois Query
+[2025-01-02 12:09:26 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK whois_test1\r\nUSER whois1 0 * :Whois Test\r\nWHOIS whois_test2\r\n
+[2025-01-02 12:09:31 UTC] Running test: Invalid Channel Name
+[2025-01-02 12:09:31 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK error_test1\r\nUSER error1 0 * :Error Test\r\nJOIN #\r\n
+[2025-01-02 12:09:36 UTC] Running test: No Such Nick
+[2025-01-02 12:09:36 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK error_test2\r\nUSER error2 0 * :Error Test\r\nPRIVMSG nonexistent :Hello\r\n
+[2025-01-02 12:09:41 UTC] Running test: No Such Channel
+[2025-01-02 12:09:41 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK error_test3\r\nUSER error3 0 * :Error Test\r\nJOIN #nonexistent\r\n
+[2025-01-02 12:09:46 UTC] Running test: Ping Response
+[2025-01-02 12:09:46 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test1\r\nUSER ping1 0 * :Ping Test\r\nPING :server1\r\n
+[2025-01-02 12:09:51 UTC] Running test: Version Query
+[2025-01-02 12:09:51 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK version_test1\r\nUSER version1 0 * :Version Test\r\nVERSION\r\n
+[2025-01-02 12:09:56 UTC] Running test: Time Query
+[2025-01-02 12:09:56 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK time_test1\r\nUSER time1 0 * :Time Test\r\nTIME\r\n
+[2025-01-02 12:10:01 UTC] Running test: Quit Command
+[2025-01-02 12:10:01 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK quit_test1\r\nUSER quit1 0 * :Quit Test\r\nQUIT :Goodbye!\r\n
+[2025-01-02 12:10:06 UTC] Running test: Away Status
+[2025-01-02 12:10:06 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK away_test1\r\nUSER away1 0 * :Away Test\r\nAWAY :Gone for lunch\r\n
+[2025-01-02 12:10:11 UTC] Running test: ISON Query
+[2025-01-02 12:10:11 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ison_test1\r\nUSER ison1 0 * :ISON Test\r\nISON nick1 nick2 nick3\r\n
+[2025-01-02 12:10:16 UTC] Running test: USERHOST Query
+[2025-01-02 12:10:16 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK userhost_test1\r\nUSER userhost1 0 * :UserHost Test\r\nUSERHOST userhost_test1\r\n
+[2025-01-02 12:10:21 UTC] Running test: Rapid Channel Join/Part
+[2025-01-02 12:10:21 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK stress_test1\r\nUSER stress1 0 * :Stress Test\r\nJOIN #test1\r\nPART #test1\r\nJOIN #test2\r\nPART #test2\r\nJOIN #test3\r\n
+[2025-01-02 12:10:26 UTC] Running test: Multiple Mode Changes
+[2025-01-02 12:10:26 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK stress_test2\r\nUSER stress2 0 * :Stress Test\r\nJOIN #test\r\nMODE #test +nt-t+s-n\r\n
+[2025-01-02 12:10:31 UTC] Running test: Long Nick Change Chain
+[2025-01-02 12:10:31 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK stress_test3\r\nUSER stress3 0 * :Stress Test\r\nNICK test3_a\r\nNICK test3_b\r\nNICK test3_c\r\n
+[2025-01-02 12:10:36 UTC] Running test: UTF8 Nick Test
+[2025-01-02 12:10:36 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK téster1\r\nUSER unicode1 0 * :Unicode Test\r\n
+[2025-01-02 12:10:41 UTC] Running test: UTF8 Channel Message
+[2025-01-02 12:10:41 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK utf8_test1\r\nUSER unicode2 0 * :Unicode Test\r\nJOIN #test\r\nPRIVMSG #test :Hello 世界！\r\n
+[2025-01-02 12:10:46 UTC] Running test: Multi-Channel Activity
+[2025-01-02 12:10:46 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK concurrent_test1\r\nUSER concurrent1 0 * :Concurrent Test\r\nJOIN #test1,#test2,#test3\r\nPRIVMSG #test1,#test2,#test3 :Hello all channels!\r\n
+[2025-01-02 12:10:51 UTC] Test suite shutting down
+[2025-01-02 12:10:51 UTC] Stopping server (PID: 483950)
 ----------------------------------------
