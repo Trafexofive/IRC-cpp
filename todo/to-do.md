@@ -63,7 +63,14 @@
     - full channel operator support ()
     - 
     - 
-- [URGENT] need to overhall client and channel specific methodes (helpers), they are slowing command developement.
+- [URGENT] need to overhall client and channel specific methodes (helpers), they are slowing command developement. [DONE]
+- need some new reply helpers eg:
+{
+ RPL_WELCOME (001)
+
+  "<client> :Welcome to the <networkname> Network, <nick>[!<user>@<host>]"
+}
+- simply better to have external methodes for these. (they to much)
 
 ### [BUGS] use location-line : {test} when reporting bugs
 

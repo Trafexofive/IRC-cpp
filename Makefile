@@ -132,13 +132,13 @@ release:
 
 test: re debug | $(DIR_LOG)
 	@printf "Running tests...\n"
-	@./$(DIR_TEST)/main.sh -f ./test/test.txt -d -v 2>&1 | tee $(DIR_LOG)/test.log
+	@./$(DIR_TEST)/main.sh -f ./test/test.txt -d -v -t 1 2>&1 | tee $(DIR_LOG)/test.log
 
-run: re
+run: all
 	@printf "Running $(NAME)...\n"
 	@./$(DIR_BIN)/$(NAME) $(ARGS)
 
-bot:
+bot: all
 	@printf "Building bot...\n"
 	@$(MAKE) -C $(DIR_BOT)
 

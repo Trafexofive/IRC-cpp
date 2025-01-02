@@ -121,7 +121,6 @@ CoreServer::CoreServer(std::string port, std::string password) {
   commands[CMD_PRIVMSG] = &CoreServer::cmdPrivmsg;
   commands[CMD_PASS] = &CoreServer::cmdPass;
 commands[CMD_PING] = &CoreServer::cmdPing;
-commands[CMD_PONG] = &CoreServer::cmdPong;
   // commands[CMD_LIST] = &CoreServer::cmdList;
   // commands[CMD_PART] = &CoreServer::cmdPart;
 

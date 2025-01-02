@@ -256,8 +256,27 @@ void CoreServer::cmdPrivmsg(int fd, std::vector<std::string> &args) {
     }
 }
 
-void    CoreServer::cmdPong(int fd, std::vector<std::string> &args)
+
+void    CoreServer::cmdPing(int fd, std::vector<std::string> &args)
 {
+    
+    long unsigned int i = 0;
+
+    while (i < args.size())
+    {
+        std::cout << "args[" << i << "] = " << args[i] << std::endl;
+        i++;
+    
+    }
+// Numeric Replies:
+//
+// -   [`ERR_NEEDMOREPARAMS`](#errneedmoreparams-461) `(461)`
+// -   [`ERR_NOORIGIN`](#errnoorigin-409) `(409)`
+//
+// Deprecated Numeric Reply:
+//
+// -   [`ERR_NOSUCHSERVER`](#errnosuchserver-402) `(402)`
+
     if (args.size() < 2)
     {
         std::cout << formatServerMessage("ERROR", "PONG failed: No parameters") << std::endl;
@@ -269,18 +288,6 @@ void    CoreServer::cmdPong(int fd, std::vector<std::string> &args)
     client.setResponse(response);
 }
 
-void    CoreServer::cmdPing(int fd, std::vector<std::string> &args)
-{
-    if (args.size() < 2)
-    {
-        std::cout << formatServerMessage("ERROR", "PING failed: No parameters") << std::endl;
-        clients[fd].setResponse(formatResponse(ERR_NOORIGIN, "PING :No origin specified"));
-        return;
-    }
-    Client& client = clients[fd];
-    std::string response = ":" + ServData.ServerName + " PING " + ServData.ServerName + " :" + args[1] + "\r\n";
-    client.setResponse(response);
-}
 
 // void CoreServer::cmdQuit(int fd, std::vector<std::string> &args) {
 //     Client& client = clients[fd];

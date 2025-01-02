@@ -1,8 +1,8 @@
 # IRC Server Test Summary
 ## Test Execution Details
 
-- **Date**: 2025-01-02 12:07:46 UTC
-- **Duration**: 0h 3m 5s
+- **Date**: 2025-01-02 14:43:22 UTC
+- **Duration**: 0h 0m 37s
 - **User**: mlamkadm
 - **Host**: morpheus-arch
 
@@ -14,10 +14,10 @@
 
 ## Test Results
 - **Total Tests**: 37
-- **Passed**: 12 🟢
-- **Failed**: 25 🔴
+- **Passed**: 13 🟢
+- **Failed**: 24 🔴
 - **Skipped**: 0 ⚪
-- **Success Rate**: 32%
+- **Success Rate**: 35%
 
 ## Failed Tests
 ```
@@ -37,7 +37,6 @@
 ❌ Whois Query - Expected: 'WHOIS'
 ❌ Invalid Channel Name - Expected: '403'
 ❌ No Such Channel - Expected: '403'
-❌ Ping Response - Expected: 'PONG'
 ❌ Version Query - Expected: 'VERSION'
 ❌ Time Query - Expected: 'TIME'
 ❌ Quit Command - Expected: 'ERROR'

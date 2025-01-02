@@ -137,10 +137,13 @@ inline std::string formatResponse(const std::string& code, const std::string& me
 // Newly added missing response codes:
 #define ERR_NEEDMOREPARAMS      "461" // Not enough parameters
 #define ERR_PASSWDMISMATCH      "464" // Password mismatch
-#define ERR_ALREADYREG           "462" 
+#define ERR_ALREADYREG          "462" 
 #define ERR_NOSUCHCHAN          "403"
 #define ERR_UNKNOWNMODE         "472"
 #define ERR_PASSWDMISMATCH      "464"
 #define ERR_NEEDMOREPARAMS      "461"
+#define ERR_NOORIGIN            "409"
+
+
 
 #endif
