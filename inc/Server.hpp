@@ -45,7 +45,7 @@ class CoreServer;
 
 typedef void (CoreServer::*CommandHandler)(int, std::vector<std::string>&);
 
-// Custom remove_if function for C++98
+// Custom remove_if function for C++98 (this needs substitution)
 template <typename Iterator, typename Predicate>
 Iterator custom_remove_if(Iterator first, Iterator last, Predicate pred) {
     Iterator result = first;

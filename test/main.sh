@@ -5,12 +5,11 @@
 # -----------------------------------------------------------------------------
 
 # Add these with your other default configurations
-readonly DEFAULT_SUMMARY_FILE="test_summary.md"
+readonly DEFAULT_SUMMARY_FILE="testSummary.md"
 SUMMARY_FILE=$DEFAULT_SUMMARY_FILE
 TOTAL_TESTS=0
 PASSED_TESTS=0
-FAILED_TESTS=0
-SKIPPED_TESTS=0
+FAILED_TESTS=0 SKIPPED_TESTS=0
 TEST_START_TIME=""
 TEST_END_TIME=""
 # System Defaults
@@ -207,38 +206,6 @@ function load_custom_tests() {
     fi
 }
 
-# Function to execute tests
-# function execute_tests() {
-#     if [ ! -f "${CUSTOM_TESTS}" ]; then
-#         echo -e "${RED}Error: Test file not found: ${CUSTOM_TESTS}${NC}" >&2
-#         return 1
-#     fi
-#
-#     local total_tests=0
-#     local passed_tests=0
-#     local failed_tests=0
-#
-#     while IFS='|' read -r test_name expected_response commands || [ -n "$test_name" ]; do
-#         # Skip empty lines and comments
-#         [[ -z "$test_name" || "$test_name" =~ ^[[:space:]]*# ]] && continue
-#
-#         ((total_tests++))
-#         if run_single_test "$test_name" "$expected_response" "$commands"; then
-#             ((passed_tests++))
-#         else
-#             ((failed_tests++))
-#         fi
-#     done < "$CUSTOM_TESTS"
-#
-#     if [ "${QUIET:-0}" -eq 0 ]; then
-#         echo -e "\n${GREEN}Test Summary:${NC}"
-#         echo -e "Total: $total_tests"
-#         echo -e "Passed: ${GREEN}$passed_tests${NC}"
-#         echo -e "Failed: ${RED}$failed_tests${NC}"
-#     fi
-# }
-#
-# Declare array for failed tests at the start of the script
 
 declare -a FAILED_TESTS_ARRAY
 
@@ -292,7 +259,6 @@ function print_short_summary() {
     fi
 }
 
-# Function to run a single test
 function run_single_test() {
     local test_name=$1
     local expected=$2
@@ -303,15 +269,24 @@ function run_single_test() {
     fi
     log_message "Running test: ${test_name}"
 
+    # Use DEFAULT_PASSWORD for AUTH
+    if [[ "$commands" == AUTH* ]]; then
+        commands="PASS ${DEFAULT_PASSWORD}\nNICK tester\nUSER tester 0 * :Test User"
+    fi
+
     # Execute test and return result
     if send_and_receive "$commands" "$expected"; then
         echo -e "${OK} Test passed: ${test_name}"
+        ((PASSED_TESTS++))
         return 0
     else
         echo -e "${KO} Test failed: ${test_name}"
+        ((FAILED_TESTS++))
         return 1
     fi
 }
+
+
 
 # Function to send commands to server and receive response
 function send_and_receive() {
@@ -546,5 +521,4 @@ function main() {
     fi
 }
 
-# Execute main function
 main

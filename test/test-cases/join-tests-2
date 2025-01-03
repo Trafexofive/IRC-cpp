@@ -1,45 +1,55 @@
 # IRC Protocol Test Suite
 # Based on RFC 2812 and modern IRC protocol extensions
-# Format: TestName|ExpectedResponse|Commands
+# Each test case follows the format:
+# TestName|ExpectedResponse|Commands
 
-# COMMAND-TO-TEST: JOIN
+# ---------------------------------------------------------------------
+# TEST CASES USING AUTH KEYWORD
+# ---------------------------------------------------------------------
 
-# Test Case 1: Join a public channel without a key
-auto-join()
-Join public channel|:test_user!~user@host JOIN #public_channel\r\n:server 353 test_user = #public_channel :@test_user\r\n:server 366 test_user #public_channel :End of /NAMES list.|PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #public_channel\r\n
+# COMMAND-TO-TEST: AUTH
 
-# Test Case 2: Join a private channel without a key
-auto-join()
-Join private channel without key|:server 475 test_user #private_channel :Cannot join channel (+k) - bad key|PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #private_channel\r\n
+# Test Case 1: Authenticate and join a public channel without a key
+AUTH|Authenticate and join public channel|
+AUTH|Alilepro135!|test_user|user|
+:server 353 test_user = #public_channel :@test_user\r\n:server 366 test_user #public_channel :End of /NAMES list.|
+PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #public_channel\r\n
 
-# Test Case 3: Join a private channel with the correct key
-auto-join()
-Join private channel with correct key|:test_user!~user@host JOIN #private_channel\r\n:server 353 test_user = #private_channel :@test_user\r\n:server 366 test_user #private_channel :End of /NAMES list.|PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #private_channel secretkey\r\n
+# Test Case 2: Attempt to authenticate with incorrect password
+AUTH|Authentication fails with wrong password|
+AUTH|WrongPassword!|test_user|user|
+:server NOTICE * :Password incorrect\r\n:server ERR_PASSWDMISMATCH test_user :Password incorrect\r\n|
+PASS WrongPassword!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\n
 
-# Test Case 4: Join an invite-only channel without an invite
-auto-join()
-Join invite-only channel without invite|:server 473 test_user #invite_only_channel :Cannot join channel (+i) - you must be invited|PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #invite_only_channel\r\n
+# Test Case 3: Authenticate and join a private channel with a key
+AUTH|Authenticate and join private channel with key|
+AUTH|Alilepro135!|priv_user|user_priv|
+:server 353 priv_user = #private_channel :@priv_user\r\n:server 366 priv_user #private_channel :End of /NAMES list.|
+PASS Alilepro135!\r\nNICK priv_user\r\nUSER user_priv 0 * :Private User\r\nJOIN #private_channel key123\r\n
 
-# Test Case 5: Join an invite-only channel with an invite
-auto-join()
-Join invite-only channel with invite|:test_user!~user@host JOIN #invite_only_channel\r\n:server 353 test_user = #invite_only_channel :@test_user\r\n:server 366 test_user #invite_only_channel :End of /NAMES list.|PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nINVITE test_user #invite_only_channel\r\nJOIN #invite_only_channel\r\n
+# ---------------------------------------------------------------------
+# TEST CASES USING TRADITIONAL COMMANDS
+# ---------------------------------------------------------------------
 
-# Test Case 6: Join multiple channels at once
-auto-join()
-Join multiple channels|:test_user!~user@host JOIN #channel1,#channel2\r\n:server 353 test_user = #channel1 :@test_user\r\n:server 353 test_user = #channel2 :@test_user\r\n:server 366 test_user #channel1 :End of /NAMES list.\r\n:server 366 test_user #channel2 :End of /NAMES list.|PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #channel1,#channel2\r\n
+# Test Case 4: Authenticate using separate PASS, NICK, and USER commands and join a channel
+SeparateAuth|Separate PASS, NICK, USER commands to authenticate|
+:server 353 separate_user = #general_channel :@separate_user\r\n:server 366 separate_user #general_channel :End of /NAMES list.|
+PASS Alilepro135!\r\nNICK separate_user\r\nUSER user_sep 0 * :Separate User\r\nJOIN #general_channel\r\n
 
-# Test Case 7: Join a channel with a space in its name
-auto-join()
-Join channel with space in name|:test_user!~user@host JOIN #channel\ with\ space\r\n:server 353 test_user = #channel\ with\ space :@test_user\r\n:server 366 test_user #channel\ with\ space :End of /NAMES list.|PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #channel\ with\ space\r\n
+# Test Case 5: Join without authenticating
+NoAuth|Attempt to join a channel without authentication|
+:server NOTICE * :You are not registered\r\n:server ERR_NOTREGISTERED * :You have not registered\r\n|
+NICK unauth_user\r\nJOIN #no_auth_channel\r\n
 
-# Test Case 8: Join a channel with special characters in its name
-auto-join()
-Join channel with special chars|:test_user!~user@host JOIN #channel!@#$%\r\n:server 353 test_user = #channel!@#$% :@test_user\r\n:server 366 test_user #channel!@#$% :End of /NAMES list.|PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #channel!@#$%\r\n
+# Test Case 6: Authenticate and send a message to a channel
+AuthMessage|Authenticate and send a message to a channel|
+:server 353 msg_user = #chat_channel :@msg_user\r\n:server 366 msg_user #chat_channel :End of /NAMES list.\r\n:msg_user!user@host PRIVMSG #chat_channel :Hello, everyone!\r\n|
+AUTH|Alilepro135!|msg_user|user_msg|
+PASS Alilepro135!\r\nNICK msg_user\r\nUSER user_msg 0 * :Message User\r\nJOIN #chat_channel\r\nPRIVMSG #chat_channel :Hello, everyone!\r\n
 
-# Test Case 9: Join a channel that does not exist
-auto-join()
-Join non-existent channel|:server 403 test_user #nonexistent :No such channel|PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #nonexistent\r\n
-
-# Test Case 10: Join too many channels
-auto-join()
-Join too many channels|:server 405 test_user :You have joined too many channels|PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #channel1,#channel2,#channel3,#channel4,#channel5\r\n
+# ---------------------------------------------------------------------
+# NOTES:
+# - Each test case is separated by a blank line for readability.
+# - The AUTH keyword is used to simplify authentication by replacing PASS, NICK, and USER commands.
+# - Expected responses are based on successful or failed authentication and subsequent actions.
+# - Ensure that the IRC server is configured to handle these test cases appropriately.

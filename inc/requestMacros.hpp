@@ -20,61 +20,55 @@ inline std::string formatResponse(const std::string& code, const std::string& me
 {
     return code + " " + message + "\r\n";
 }
-typedef struct {
-    int id;
-    const char* name;
-} Command;
-
 
 // Commands
 
-enum CMD{
-    PASS = 1,
-    NICK,
-    USER,
-    OPER,
-    MODE,
-    SERVICE,
-    QUIT,
-    SQUIT,
-    JOIN,
-    PART,
-    TOPIC,
-    NAMES,
-    LIST,
-    INVITE,
-    KICK,
-    PRIVMSG,
-    NOTICE,
-    MOTD,
-    LUSERS,
-    VERSION,
-    STATS,
-    LINKS,
-    TIME,
-    CONNECT,
-    TRACE,
-    ADMIN,
-    INFO,
-    SERVLIST,
-    SQUERY,
-    WHO,
-    WHOIS,
-    WHOWAS,
-    KILL,
-    PING,
-    PONG,
-    ERROR,
-    AWAY,
-    REHASH,
-    DIE,
-    RESTART,
-    SUMMON,
-    USERS,
-    WALLOPS,
-    USERHOST,
-    ISON
-};
+#define PASS "PASS"
+#define NICK "NICK"
+#define USER "USER"
+#define OPER "OPER"
+#define MODE "MODE"
+#define SERVICE "SERVICE"
+#define QUIT "QUIT"
+#define SQUIT "SQUIT"
+#define JOIN "JOIN"
+#define PART "PART"
+#define TOPIC "TOPIC"
+#define NAMES "NAMES"
+#define LIST "LIST"
+#define INVITE "INVITE"
+#define KICK "KICK"
+#define PRIVMSG "PRIVMSG"
+#define NOTICE "NOTICE"
+#define MOTD "MOTD"
+#define LUSERS "LUSERS"
+#define VERSION "VERSION"
+#define STATS "STATS"
+#define LINKS "LINKS"
+#define TIME "TIME"
+#define CONNECT "CONNECT"
+#define TRACE "TRACE"
+#define ADMIN "ADMIN"
+#define INFO "INFO"
+#define SERVLIST "SERVLIST"
+#define SQUERY "SQUERY"
+#define WHO "WHO"
+#define WHOIS "WHOIS"
+#define WHOWAS "WHOWAS"
+#define KILL "KILL"
+#define PING "PING"
+#define PONG "PONG"
+#define ERROR "ERROR"
+#define AWAY "AWAY"
+#define REHASH "REHASH"
+#define DIE "DIE"
+#define RESTART "RESTART"
+#define SUMMON "SUMMON"
+#define USERS "USERS"
+#define WALLOPS "WALLOPS"
+#define USERHOST "USERHOST"
+#define ISON "ISON"
+
 // Response Codes
 #define RPL_WELCOME             "001" 
 #define RPL_YOURHOST            "002"

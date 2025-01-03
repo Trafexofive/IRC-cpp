@@ -6,6 +6,15 @@
 - [KEEP-IN-MIND] Generate test-cases only for the '{COMMAND-NAME}' above.
 - [KEEP-IN-MIND] Output will be processed by a script by a script so anything that is not a test (following the specified format) should and must always be commented.
 - Use auto-join() function that will PASS->NICK->USER to avoid redundancy, of course if they need to be test then dont use it..
+
+# AUTH keyword behavior:
+```bash
+# Use DEFAULT_PASSWORD for AUTH
+    if [[ "$commands" == AUTH* ]]; then
+        commands="PASS ${DEFAULT_PASSWORD}\nNICK tester\nUSER tester 0 * :Test User"
+    fi
+#will auto-login to avoid redundancy.
+```
 # COMMAND-NAME : {JOIN}
 # ENVIRONMENT : {PASSWORD:"Alilepro135!"}
 
