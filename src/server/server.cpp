@@ -94,6 +94,7 @@ void CoreServer::start_server() {
   }
 }
 
+
 CoreServer::CoreServer(std::string port, std::string password) {
   std::cout << formatServerMessage("INFO", "Initializing server...")
             << std::endl;
@@ -115,12 +116,12 @@ CoreServer::CoreServer(std::string port, std::string password) {
 
   std::cout << formatServerMessage("INFO", "Registering commands...")
             << std::endl;
-  commands[CMD_NICK] = &CoreServer::cmdNick;
-  commands[CMD_USER] = &CoreServer::cmdUser;
-  commands[CMD_JOIN] = &CoreServer::cmdJoin;
-  commands[CMD_PRIVMSG] = &CoreServer::cmdPrivmsg;
-  commands[CMD_PASS] = &CoreServer::cmdPass;
-  commands[CMD_PING] = &CoreServer::cmdPing;
+  commands[NICK] = &CoreServer::cmdNick;
+  commands[USER] = &CoreServer::cmdUser;
+  commands[JOIN] = &CoreServer::cmdJoin;
+  commands[PRIVMSG] = &CoreServer::cmdPrivmsg;
+  commands[PASS] = &CoreServer::cmdPass;
+  commands[PING] = &CoreServer::cmdPing;
 
   // commands[CMD_LIST] = &CoreServer::cmdList;
   // commands[CMD_PART] = &CoreServer::cmdPart;

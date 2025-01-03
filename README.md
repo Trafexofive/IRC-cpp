@@ -36,7 +36,7 @@ my initial reason for starting this repo (because of school) was because I wante
     ```sh
     make build
     ```
-5. Alternatively you can display help dialog using::
+5. Alternatively you can display the help dialog using:
     ```sh
     make help
     ```

@@ -525,12 +525,12 @@ function main() {
     load_custom_tests
     execute_tests
 
-    # TEST_START_TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
-    # execute_tests
-    # TEST_END_TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
-    # 
-    # generate_summary
-    # print_short_summary
+    TEST_START_TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+    execute_tests
+    TEST_END_TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+
+    generate_summary
+    print_short_summary
 
     if [ "${QUIET:-0}" -eq 0 ]; then
         echo -e "\n${YELLOW}Stopping server...${NC}"

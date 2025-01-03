@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../inc/Server.hpp"
-
 void CoreServer::cmdPart(int fd, std::vector<std::string> &args) {
     if (args.size() < 2) {
         std::cout << formatServerMessage("ERROR", "PART failed: No channel specified") << std::endl;
@@ -266,7 +265,6 @@ void    CoreServer::cmdPing(int fd, std::vector<std::string> &args)
     {
         std::cout << "args[" << i << "] = " << args[i] << std::endl;
         i++;
-    
     }
 // Numeric Replies:
 //
@@ -276,7 +274,7 @@ void    CoreServer::cmdPing(int fd, std::vector<std::string> &args)
 // Deprecated Numeric Reply:
 //
 // -   [`ERR_NOSUCHSERVER`](#errnosuchserver-402) `(402)`
-
+    
     if (args.size() < 2)
     {
         std::cout << formatServerMessage("ERROR", "PONG failed: No parameters") << std::endl;

@@ -20,56 +20,63 @@ inline std::string formatResponse(const std::string& code, const std::string& me
 {
     return code + " " + message + "\r\n";
 }
+typedef struct {
+    int id;
+    const char* name;
+} Command;
+
 
 // Commands
-#define CMD_PASS        "PASS"
-#define CMD_NICK        "NICK"
-#define CMD_USER        "USER"
-#define CMD_OPER        "OPER"
-#define CMD_MODE        "MODE"
-#define CMD_SERVICE     "SERVICE"
-#define CMD_QUIT        "QUIT"
-#define CMD_SQUIT       "SQUIT"
-#define CMD_JOIN        "JOIN"
-#define CMD_PART        "PART"
-#define CMD_TOPIC       "TOPIC"
-#define CMD_NAMES       "NAMES"
-#define CMD_LIST        "LIST"
-#define CMD_INVITE      "INVITE"
-#define CMD_KICK        "KICK"
-#define CMD_PRIVMSG     "PRIVMSG"
-#define CMD_NOTICE      "NOTICE"
-#define CMD_MOTD        "MOTD"
-#define CMD_LUSERS      "LUSERS"
-#define CMD_VERSION     "VERSION"
-#define CMD_STATS       "STATS"
-#define CMD_LINKS       "LINKS"
-#define CMD_TIME        "TIME"
-#define CMD_CONNECT     "CONNECT"
-#define CMD_TRACE       "TRACE"
-#define CMD_ADMIN       "ADMIN"
-#define CMD_INFO        "INFO"
-#define CMD_SERVLIST    "SERVLIST"
-#define CMD_SQUERY      "SQUERY"
-#define CMD_WHO         "WHO"
-#define CMD_WHOIS       "WHOIS"
-#define CMD_WHOWAS      "WHOWAS"
-#define CMD_KILL        "KILL"
-#define CMD_PING        "PING"
-#define CMD_PONG        "PONG"
-#define CMD_ERROR       "ERROR"
-#define CMD_AWAY        "AWAY"
-#define CMD_REHASH      "REHASH"
-#define CMD_DIE         "DIE"
-#define CMD_RESTART     "RESTART"
-#define CMD_SUMMON      "SUMMON"
-#define CMD_USERS       "USERS"
-#define CMD_WALLOPS     "WALLOPS"
-#define CMD_USERHOST    "USERHOST"
-#define CMD_ISON        "ISON"
 
+enum CMD{
+    PASS = 1,
+    NICK,
+    USER,
+    OPER,
+    MODE,
+    SERVICE,
+    QUIT,
+    SQUIT,
+    JOIN,
+    PART,
+    TOPIC,
+    NAMES,
+    LIST,
+    INVITE,
+    KICK,
+    PRIVMSG,
+    NOTICE,
+    MOTD,
+    LUSERS,
+    VERSION,
+    STATS,
+    LINKS,
+    TIME,
+    CONNECT,
+    TRACE,
+    ADMIN,
+    INFO,
+    SERVLIST,
+    SQUERY,
+    WHO,
+    WHOIS,
+    WHOWAS,
+    KILL,
+    PING,
+    PONG,
+    ERROR,
+    AWAY,
+    REHASH,
+    DIE,
+    RESTART,
+    SUMMON,
+    USERS,
+    WALLOPS,
+    USERHOST,
+    ISON
+};
 // Response Codes
-#define RPL_WELCOME             "001"
+#define RPL_WELCOME             "001" 
 #define RPL_YOURHOST            "002"
 #define RPL_CREATED             "003"
 #define RPL_MYINFO              "004"

@@ -15,6 +15,7 @@
 #define BOLD    "\033[1m"
 #define RESET   "\033[0m"
 
+
 std::string formatServerMessage(const std::string& type, const std::string& message);
 void    formatArg(std::string &msg);
 

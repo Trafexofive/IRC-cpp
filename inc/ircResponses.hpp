@@ -19,13 +19,6 @@
 
 namespace irc_responses {
 // Welcome Responses
-//
-
-
-
-// inline std::string getCapLs(const std::string &nickname) {
-//   return formatResponse(RPL_CAP_LS, nickname + " :cap1 cap2 cap3");
-// }
 
 inline std::string getWelcomeMessages(const std::string &nickname) {
   std::ostringstream oss;
@@ -69,7 +62,7 @@ inline std::string getNickChange(const std::string &oldnick,
 inline std::string getJoinMessage(const std::string &nickname,
                                   const std::string &username,
                                   const std::string &channel) {
-  return ":" + nickname + "!" + username + "@localhost " + CMD_JOIN + " " +
+  return ":" + nickname + "!" + username + "@localhost JOIN " +
          channel + "\r\n";
 }
 
@@ -100,7 +93,7 @@ inline std::string getNeedMoreParams(const std::string &command) {
 inline std::string getPrivateMessage(const std::string &sender,
                                      const std::string &target,
                                      const std::string &message) {
-  return ":" + sender + " " + CMD_PRIVMSG + " " + target + " :" + message +
+  return ":" + sender + " PRIVMSG " + target + " :" + message +
          "\r\n";
 }
 } // namespace irc_responses

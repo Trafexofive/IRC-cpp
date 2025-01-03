@@ -29,7 +29,7 @@ DIR_BACKUP := backup
 DIR_DEPS := .deps
 
 # Test File
-TEST-FILE := $(DIR_TEST)/test-cases/privmsg-tests
+TEST-FILE := $(DIR_TEST)/test-cases/join-tests-2
 
 # Source Files
 SRC_FILES := HandleEvents.cpp \

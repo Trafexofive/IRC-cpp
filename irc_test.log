@@ -1,38 +1,67 @@
 ========================================
-IRC Server Test Log - 2025-01-02 17:08:31 UTC
+IRC Server Test Log - 2025-01-03 10:32:35 UTC
 User: mlamkadm
 Server: localhost:22200
 Debug Mode: 1
 Verbose Mode: 1
 ========================================
 
-[2025-01-02 17:08:31 UTC] Test suite started
+[2025-01-03 10:32:35 UTC] Test suite started
 ----------------------------------------
-[2025-01-02 17:08:31 UTC] Starting IRC server
-[2025-01-02 17:08:33 UTC] [DEBUG] Waiting for server to start (PID: 615580)
-[2025-01-02 17:08:33 UTC] Server started successfully
-[2025-01-02 17:08:33 UTC] [DEBUG] Loading custom tests from: test/test-cases/privmsg-tests
-[2025-01-02 17:08:33 UTC] Loading custom tests from: test/test-cases/privmsg-tests
-[2025-01-02 17:08:33 UTC] Running test: Private Message to User
-[2025-01-02 17:08:33 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK privmsg_test1\r\nUSER privmsg1 0 * :PrivMsg Test\r\nPRIVMSG Wiz :Are you receiving this message ?\r\n
-[2025-01-02 17:08:34 UTC] Running test: Private Message to Host
-[2025-01-02 17:08:34 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK privmsg_test2\r\nUSER privmsg2 0 * :PrivMsg Test\r\nPRIVMSG jto@tolsun.oulu.fi :Hello !\r\n
-[2025-01-02 17:08:35 UTC] Running test: Private Message to Full Address
-[2025-01-02 17:08:35 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK privmsg_test3\r\nUSER privmsg3 0 * :PrivMsg Test\r\nPRIVMSG Wiz!jto@tolsun.oulu.fi :Hello !\r\n
-[2025-01-02 17:08:36 UTC] Running test: Private Message to Channel
-[2025-01-02 17:08:36 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK privmsg_test4\r\nUSER privmsg4 0 * :PrivMsg Test\r\nJOIN #channel\r\nPRIVMSG #channel :Hello everyone!\r\n
-[2025-01-02 17:08:37 UTC] Running test: Private Message to Multiple Targets
-[2025-01-02 17:08:37 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK privmsg_test5\r\nUSER privmsg5 0 * :PrivMsg Test\r\nJOIN #channel\r\nPRIVMSG Wiz,#channel :Hello!\r\n
-[2025-01-02 17:08:38 UTC] Running test: Private Message with Special Characters
-[2025-01-02 17:08:38 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK privmsg_test6\r\nUSER privmsg6 0 * :PrivMsg Test\r\nPRIVMSG Wiz :Hello @world!\r\n
-[2025-01-02 17:08:39 UTC] Running test: Private Message to Operator
-[2025-01-02 17:08:39 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK privmsg_test7\r\nUSER privmsg7 0 * :PrivMsg Test\r\nMODE privmsg_test7 +o\r\nPRIVMSG $*.fi :Server rebooting.\r\n
-[2025-01-02 17:08:40 UTC] Running test: Private Message to Masked Users
-[2025-01-02 17:08:40 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK privmsg_test8\r\nUSER privmsg8 0 * :PrivMsg Test\r\nJOIN #channel\r\nPRIVMSG #*.edu :NSFNet maintenance.\r\n
-[2025-01-02 17:08:41 UTC] Running test: Private Message with Long Text
-[2025-01-02 17:08:41 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK privmsg_test9\r\nUSER privmsg9 0 * :PrivMsg Test\r\nPRIVMSG Wiz :This is a very long message that should be split into multiple lines.\r\n
-[2025-01-02 17:08:42 UTC] Running test: Private Message Error Handling
-[2025-01-02 17:08:42 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK privmsg_test10\r\nUSER privmsg10 0 * :PrivMsg Test\r\nPRIVMSG NonExistentUser :Hello!\r\n
-[2025-01-02 17:08:43 UTC] Test suite shutting down
-[2025-01-02 17:08:43 UTC] Stopping server (PID: 615580)
-----------------------------------------
+[2025-01-03 10:32:35 UTC] Starting IRC server
+[2025-01-03 10:32:37 UTC] [DEBUG] Waiting for server to start (PID: 338584)
+[2025-01-03 10:32:37 UTC] Server started successfully
+[2025-01-03 10:32:37 UTC] [DEBUG] Loading custom tests from: test/test-cases/join-tests-2
+[2025-01-03 10:32:37 UTC] Loading custom tests from: test/test-cases/join-tests-2
+[2025-01-03 10:32:37 UTC] Running test: auto-join()
+[2025-01-03 10:32:37 UTC] [DEBUG] Sending commands: 
+[2025-01-03 10:32:38 UTC] Running test: Join public channel
+[2025-01-03 10:32:38 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #public_channel\r\n
+[2025-01-03 10:32:39 UTC] Running test: auto-join()
+[2025-01-03 10:32:39 UTC] [DEBUG] Sending commands: 
+[2025-01-03 10:32:40 UTC] Running test: Join private channel without key
+[2025-01-03 10:32:40 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #private_channel\r\n
+[2025-01-03 10:32:41 UTC] Running test: auto-join()
+[2025-01-03 10:32:41 UTC] [DEBUG] Sending commands: 
+[2025-01-03 10:32:42 UTC] Running test: Join private channel with correct key
+[2025-01-03 10:32:42 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #private_channel secretkey\r\n
+[2025-01-03 10:32:43 UTC] Running test: auto-join()
+[2025-01-03 10:32:43 UTC] [DEBUG] Sending commands: 
+[2025-01-03 10:32:44 UTC] Running test: Join invite-only channel without invite
+[2025-01-03 10:32:44 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #invite_only_channel\r\n
+[2025-01-03 10:32:45 UTC] Running test: auto-join()
+[2025-01-03 10:32:45 UTC] [DEBUG] Sending commands: 
+[2025-01-03 10:32:46 UTC] Running test: Join invite-only channel with invite
+[2025-01-03 10:32:46 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nINVITE test_user #invite_only_channel\r\nJOIN #invite_only_channel\r\n
+[2025-01-03 10:32:47 UTC] Running test: auto-join()
+[2025-01-03 10:32:47 UTC] [DEBUG] Sending commands: 
+[2025-01-03 10:32:48 UTC] Running test: Join multiple channels
+[2025-01-03 10:32:48 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #channel1,#channel2\r\n
+[2025-01-03 10:32:49 UTC] Running test: auto-join()
+[2025-01-03 10:32:49 UTC] [DEBUG] Sending commands: 
+[2025-01-03 10:32:50 UTC] Running test: Join channel with space in name
+[2025-01-03 10:32:50 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #channel\ with\ space\r\n
+[2025-01-03 10:32:51 UTC] Running test: auto-join()
+[2025-01-03 10:32:51 UTC] [DEBUG] Sending commands: 
+[2025-01-03 10:32:52 UTC] Running test: Join channel with special chars
+[2025-01-03 10:32:52 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #channel!@#$%\r\n
+[2025-01-03 10:32:53 UTC] Running test: auto-join()
+[2025-01-03 10:32:53 UTC] [DEBUG] Sending commands: 
+[2025-01-03 10:32:54 UTC] Running test: Join non-existent channel
+[2025-01-03 10:32:54 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #nonexistent\r\n
+[2025-01-03 10:32:55 UTC] Running test: auto-join()
+[2025-01-03 10:32:55 UTC] [DEBUG] Sending commands: 
+[2025-01-03 10:32:56 UTC] Running test: Join too many channels
+[2025-01-03 10:32:56 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #channel1,#channel2,#channel3,#channel4,#channel5\r\n
+[2025-01-03 10:32:57 UTC] Running test: auto-join()
+[2025-01-03 10:32:57 UTC] [DEBUG] Sending commands: 
+[2025-01-03 10:32:58 UTC] Running test: Join public channel
+[2025-01-03 10:32:58 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #public_channel\r\n
+[2025-01-03 10:32:59 UTC] Running test: auto-join()
+[2025-01-03 10:32:59 UTC] [DEBUG] Sending commands: 
+[2025-01-03 10:33:00 UTC] Running test: Join private channel without key
+[2025-01-03 10:33:00 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #private_channel\r\n
+[2025-01-03 10:33:01 UTC] Running test: auto-join()
+[2025-01-03 10:33:01 UTC] [DEBUG] Sending commands: 
+[2025-01-03 10:33:02 UTC] Running test: Join private channel with correct key
+[2025-01-03 10:33:02 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #private_channel secretkey\r\n
