@@ -10,18 +10,49 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "../../inc/Server.hpp"
-void CoreServer::cmdPart(int fd, std::vector<std::string> &args) {
+#include <vector>
+#include <stdexcept>
+#include <iostream>
+
+// Helper function to check if a name is a valid channel
+static bool isChannel(const std::string& name) {
+    return (!name.empty() && (name[0] == '#' || name[0] == '&'));
+}
+
+// Helper function to get a channel by name
+static Channel& getChannel(const std::string& name, std::vector<Channel>& channels) {
+    for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
+        if (it->getName() == name)
+            return *it;
+    }
+    throw std::runtime_error("Channel not found");
+}
+
+// Helper function to remove a client from a channel
+static void removeClientFromChannel(Client& client, Channel& channel) {
+    channel.removeMember(client.getNickName());
+}
+
+// Helper function to handle invalid channel case
+static void handleInvalidChannel(Client& client, const std::string& channelName) {
+    std::cout << formatServerMessage("ERROR", "PART failed: Invalid channel name " + channelName) << std::endl;
+    client.setResponse(formatResponse(ERR_NOSUCHCHAN, channelName + " :Invalid channel name"));
+}
+
+// Helper function to handle successful part operation
+static void handlePartSuccess(Client& client, const std::string& channelName) {
+    std::string partMsg = ":" + client.getNickName() + "!" + client.getFullName() + "@localhost PART " + channelName + "\r\n";
+    client.setResponse(partMsg);
+    std::cout << formatServerMessage("SUCCESS", client.getNickName() + " left " + channelName) << std::endl;
+}
+
+void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
     if (args.size() < 2) {
         std::cout << formatServerMessage("ERROR", "PART failed: No channel specified") << std::endl;
         clients[fd].setResponse(formatResponse(ERR_NEEDMOREPARAMS, "PART :Not enough parameters"));
         return;
-    }
-
-    // Determine the channel name, ensure it starts with '#'
-    std::string channelName = args[1];
-    if (channelName.empty() || channelName[0] != '#') {
-        channelName = "#" + channelName;
     }
 
     // Check if client exists
@@ -31,34 +62,29 @@ void CoreServer::cmdPart(int fd, std::vector<std::string> &args) {
     }
 
     Client& client = clients[fd];
-    std::cout << formatServerMessage("DEBUG", client.getNickName() + " attempting to leave " + channelName) << std::endl;
 
-    bool channelFound = false;
+    // Loop on args to get the channel names
+    for (std::vector<std::string>::size_type i = 1; i < args.size(); ++i) {
+        std::string channelName = args[i];
 
-    // Iterate through channels to find the matching channel
-    for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
-        if (it->getName() == channelName) {
-            channelFound = true;
-            // Pass the client's nickname to removeMember
-            it->removeMember(client.getNickName());
-            break;
+        if (!isChannel(channelName)) {
+            handleInvalidChannel(client, channelName);
+            continue;
+        }
+
+        std::cout << formatServerMessage("DEBUG", client.getNickName() + " attempting to leave " + channelName) << std::endl;
+
+        try {
+            Channel& channel = getChannel(channelName, channels);
+            removeClientFromChannel(client, channel);
+            handlePartSuccess(client, channelName);
+        } catch (const std::runtime_error& e) {
+            std::cout << formatServerMessage("ERROR", "PART failed: " + std::string(e.what())) << std::endl;
+            client.setResponse(formatResponse(ERR_NOSUCHCHAN, channelName + " :No such channel"));
         }
     }
-
-    // Handle case where channel was not found
-    if (!channelFound) {
-        std::cout << formatServerMessage("ERROR", "PART failed: Channel not found") << std::endl;
-        client.setResponse(formatResponse(ERR_NOSUCHCHAN, channelName + " :No such channel"));
-        return;
-    }
-
-    // Construct part message
-    std::string partMsg = ":" + client.getNickName() + "!" + client.getFullName() + "@localhost PART " + channelName + "\r\n";
-    client.setResponse(partMsg);
-
-    // Success message
-    std::cout << formatServerMessage("SUCCESS", client.getNickName() + " left " + channelName) << std::endl;
 }
+
 
 void CoreServer::cmdPass(int fd, std::vector<std::string> &args) {
     std::cout << formatServerMessage("DEBUG", "Processing PASS command") << std::endl;

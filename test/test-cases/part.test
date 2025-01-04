@@ -1,0 +1,23 @@
+
+#-------------------------------------------------------------------------------------
+# IRC Protocol Test Suite
+# Based on RFC [2812] and modern IRC protocol extensions
+# Format: TestName|ExpectedResponse|Commands
+
+# COMMAND-TO-TEST: PART
+
+# FORMAT:
+# TestName|ExpectedResponse|Commands
+# [Additional lines in the same format if needed]
+#-----------------------------------------------------------------------------------
+
+PartSingleChannel|:server 001 testNick :Welcome to IRC;:testNick!~testNick@host PART #channel|PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel\r\n
+PartMultipleChannels|:server 001 testNick :Welcome to IRC;:testNick!~testNick@host PART #channel1,#channel2|PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel1,#channel2\r\n
+PartWithMessage|:server 001 testNick :Welcome to IRC;:testNick!~testNick@host PART #channel :Goodbye|PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel :Goodbye\r\n
+PartWithoutChannel|:server 461 testNick PART :Not enough parameters|PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART\r\n
+PartInvalidChannel|:server 403 testNick #invalid :No such channel|PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #invalid\r\n
+PartNotInChannel|:server 442 testNick #channel :You're not on that channel|PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel\r\n
+PartMultipleChannelsWithMessage|:server 001 testNick :Welcome to IRC;:testNick!~testNick@host PART #channel1,#channel2 :Goodbye|PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel1,#channel2 :Goodbye\r\n
+PartWithSpecialCharacters|:server 001 testNick :Welcome to IRC;:testNick!~testNick@host PART #chan!@# :Leaving now|PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #chan!@# :Leaving now\r\n
+PartWithColonInChannelName|:server 001 testNick :Welcome to IRC;:testNick!~testNick@host PART #channel:subchannel :Goodbye|PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel:subchannel :Goodbye\r\n
+PartWithNumericChannelName|:server 001 testNick :Welcome to IRC;:testNick!~testNick@host PART #12345 :Leaving now|PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #12345 :Leaving now\r\n
