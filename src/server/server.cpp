@@ -122,9 +122,9 @@ CoreServer::CoreServer(std::string port, std::string password) {
   commands[PRIVMSG] = &CoreServer::cmdPrivmsg;
   commands[PASS] = &CoreServer::cmdPass;
   commands[PING] = &CoreServer::cmdPing;
+  commands[PART] = &CoreServer::cmdPart;
 
   // commands[CMD_LIST] = &CoreServer::cmdList;
-  // commands[CMD_PART] = &CoreServer::cmdPart;
 
   create_socket();
   start_listening();

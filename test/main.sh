@@ -286,25 +286,48 @@ function run_single_test() {
     fi
 }
 
+# Approximate diff function
+function approximate_diff_percentage() {
+    # Takes two file paths, calculates line-based differences, and returns an approximate percentage
+    local oldFile="$1"
+    local newFile="$2"
+    local oldLines=$(wc -l < "$oldFile")
+    local newLines=$(wc -l < "$newFile")
+    local maxLines=$(( oldLines > newLines ? oldLines : newLines ))
 
+    # Count changed lines using diff in unified format,
+    # grepping for lines that begin with + or -.
+    local diffLines=$(diff -u --ignore-all-space "$oldFile" "$newFile" | grep -E '^[+-]' | wc -l)
 
-# Function to send commands to server and receive response
+    # Calculate percentage of changed lines relative to the larger file
+    local percentage=0
+    if [ $maxLines -gt 0 ]; then
+        percentage=$(( 100 * diffLines / maxLines ))
+    fi
+
+    echo "$percentage"
+}
+
+# Modified send_and_receive function
 function send_and_receive() {
     local commands=$1
     local expected=$2
     local response
 
-    # Create temporary file for response
-    local tmpfile
-    tmpfile=$(mktemp)
+    # Create temporary files for the expected string and the server response
+    local tmpExpected=$(mktemp)
+    local tmpResponse=$(mktemp)
+
+    # Write the expected string to a file for diff calculation
+    echo -e "$expected" > "$tmpExpected"
 
     debug_msg "Sending commands: $commands"
     
-    # Send commands to server and capture response
-    echo -e "$commands" | nc localhost "$PORT" > "$tmpfile" 2>/dev/null &
+    # Send commands to server and capture response in a file
+    echo -e "$commands" | nc localhost "$PORT" > "$tmpResponse" 2>/dev/null &
     local nc_pid=$!
     
-    # Wait for response with timeout
+    # Wait for response with a timeout
     local timeout_counter=0
     while [ $timeout_counter -lt "$TIMEOUT" ] && kill -0 $nc_pid 2>/dev/null; do
         sleep 1
@@ -314,20 +337,30 @@ function send_and_receive() {
     # Kill nc if it's still running
     kill $nc_pid 2>/dev/null || true
 
-    response=$(<"$tmpfile")
-    rm -f "$tmpfile"
+    response=$(<"$tmpResponse")
 
     if [ "${VERBOSE:-0}" -eq 1 ]; then
+        # Print the expected and actual responses
+        echo -e "${GRAY}Expected Response:${NC}\n$expected"
         echo -e "${GRAY}Server Response:${NC}\n$response"
+
+        # Calculate and display the approximate difference percentage
+        local diffPercent=$(approximate_diff_percentage "$tmpExpected" "$tmpResponse")
+        echo -e "${GRAY}Approx. difference between expected and actual:${NC} ${diffPercent}%"
     fi
 
-    # Check if expected response is in actual response
+    # Clean up
+    rm -f "$tmpExpected" "$tmpResponse"
+
+    # Check if the expected response is in the actual response
     if [[ "$response" == *"$expected"* ]]; then
         return 0
     else
         return 1
     fi
 }
+
+
 
 # Cleanup function
 function cleanup() {
