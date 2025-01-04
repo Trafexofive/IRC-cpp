@@ -1,0 +1,53 @@
+
+-------------------------------------------------------------------------------------
+# PURPOSE
+Use the following blueprint as a reference to generate a custom test file for a single IRC command by following the blueprint’s structure. Ensure that the final output will be processed by a script, so any additional commentary must be commented out.
+
+# INSTRUCTIONS
+- [DO] Generate 10 test cases using the format defined in the blueprint below, follow the examples for structure.
+- [KEEP-IN-MIND] Generate test cases only for the specified {COMMAND-NAME}.  
+- [KEEP-IN-MIND] All non‑test content must be commented out, as it will be ignored by the processing script.  
+- [KEEP-IN-MIND] The test cases must align with the referenced RFC (RFC [ID]).  
+- [KEEP-IN-MIND] All commands sent to the server are expected to receive a server reply.  
+
+# COMMAND-NAME: {PING}  
+# ENVIRONMENT: {PASSWORD: "Alilepro135!"}
+
+# BLUEPRINT (Reference Only)
+# -----------------------------------------------------------------------------------
+# IRC Protocol Test Suite
+# Based on RFC [2812] and modern IRC protocol extensions
+# Format: TestName|ExpectedResponse|Commands
+
+# COMMAND-TO-TEST: {COMMAND-NAME}
+
+# FORMAT:
+# TestName|ExpectedResponse|Commands
+# [Additional lines in the same format if needed]
+# -----------------------------------------------------------------------------------
+# EXAMPLE-TEST:
+
+default PING test|PONG :server1|PASS Alilepro135!\r\nNICK ping_test1\r\nUSER ping1 0 * :Ping Test\r\nPING :server1\r\n
+Version Query|VERSION|PASS Alilepro135!\r\nNICK version_test1\r\nUSER version1 0 * :Version Test\r\nVERSION\r\n
+JoinSingleChannel|:server 001 testNick :Welcome to IRC;:testNick!~testNick@host JOIN #channel|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;JOIN #channel
+JoinMultipleChannels|:server 001 testNick :Welcome to IRC;:testNick!~testNick@host JOIN #channel1,#channel2|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;JOIN #channel1,#channel2
+JoinWithKey|:server 001 testNick :Welcome to IRC;:testNick!~testNick@host JOIN #channel key|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;JOIN #channel key
+JoinMultipleChannelsWithKeys|:server 001 testNick :Welcome to IRC;:testNick!~testNick@host JOIN #chan1,#chan2 key1,key2|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;JOIN #chan1,#chan2 key1,key2
+JoinWithoutChannel|:server 001 testNick :Welcome to IRC;:server 461 testNick JOIN :Not enough parameters|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;JOIN
+JoinInvalidChannel|:server 001 testNick :Welcome to IRC;:server 403 testNick #invalid :No such channel|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;JOIN #invalid
+JoinAlreadyOnChannel|:server 001 testNick :Welcome to IRC;:server 443 testNick #channel :is already on channel|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;JOIN #channel
+JoinInviteOnly|:server 001 testNick :Welcome to IRC;:server 473 testNick #channel :Cannot join channel (+i)|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;JOIN #channel
+JoinChannelWithLimit|:server 001 testNick :Welcome to IRC;:server 471 testNick #channel :Cannot join channel (+l)|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;JOIN #channel
+JoinChannelWithMultipleModes|:server 001 testNick :Welcome to IRC;:testNick!~testNick@host JOIN #channel|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;JOIN #channel key
+
+
+# NOTE:
+# - Replace {COMMAND-NAME} with the actual IRC command name: {JOIN}.
+# - Adhere strictly to the format: TestName|ExpectedResponse|Commands
+# - Create exactly 10 test cases.
+# - Do not include anything other than the 10 tests (use '# ' to comment out any extra text).
+# - Output only file content zero explanation is needed.
+# - Notice that (PASS/NICK/USER) server replies are always returned so they must always be accounted for when used (refer to examples).
+-------------------------------------------------------------------------------------
+
+

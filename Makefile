@@ -29,7 +29,7 @@ DIR_BACKUP := backup
 DIR_DEPS := .deps
 
 # Test File
-TEST-FILE := $(DIR_TEST)/test-cases/join-tests
+TEST-FILE := $(DIR_TEST)/test-cases/ping-test
 
 # Source Files
 SRC_FILES := HandleEvents.cpp \

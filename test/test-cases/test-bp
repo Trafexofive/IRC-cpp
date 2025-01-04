@@ -4,45 +4,25 @@
 # INSTRUCTIONS :
 - [DO] Generate 10 test cases using the format above, with RFC [ID] specified above.
 - [KEEP-IN-MIND] Generate test-cases only for the '{COMMAND-NAME}' above.
-- [KEEP-IN-MIND] Output will be processed by a script by a script so anything that is not a test (following the specified format) should and must always be commented.
-- Use AUTH keyword: PASS->NICK->USER to avoid redundancy, of course if they need to be test then dont use it..
+- [KEEP-IN-MIND] Output will be processed by a script so anything that is not a test (following the specified format) should and must always be commented.
+- [KEEP-IN-MIND] The test-cases should be based on the RFC specified above.
+- [KEEP-IN-MIND] All commands sent to the server will return a reply.
 
-# AUTH keyword behavior:
-```bash
-# Use DEFAULT_PASSWORD for AUTH
-    if [[ "$commands" == AUTH* ]]; then
-        commands="PASS ${DEFAULT_PASSWORD}\nNICK tester\nUSER tester 0 * :Test User"
-    fi
-#will auto-login to avoid redundancy.
-```
 # COMMAND-NAME : {JOIN}
 # ENVIRONMENT : {PASSWORD:"Alilepro135!"}
 
 =======================================BLUEPRINT===============================================
 # IRC Protocol Test Suite
 # Based on RFC 2812 and modern IRC protocol extensions
-# Format: TestName|keyword (optional)|ExpectedResponse|Commands
+# Format: TestName|ExpectedResponse|Commands
 
 # COMMAND-TO-TEST: {COMMAND-NAME}
 
 # EXAMPLE-TEST:
 
-default PING test|PONG :server1|PASS Alilepro135!\r\nNICK ping_test1\r\nUSER ping1 0 * :Ping Test\r\nPING :server1\r\n
 
-default PING test using auth keyword|PONG :server1|AUTH|PING :server1\r\n
-
-PING with server parameter|PONG :irc.example.com|PASS Alilepro135!\r\nNICK ping_test2\r\nUSER ping2 0 * :Ping Test\r\nPING :irc.example.com\r\n
-
-PING with two server parameters|PONG :irc.example.com|PASS Alilepro135!\r\nNICK ping_test3\r\nUSER ping3 0 * :Ping Test\r\nPING irc.example.com irc.example.net\r\n
-
-PING without parameters|ERROR :No origin specified|PASS Alilepro135!\r\nNICK ping_test4\r\nUSER ping4 0 * :Ping Test\r\nPING\r\n
-
-PING with numeric parameter|PONG :123456|PASS Alilepro135!\r\nNICK ping_test5\r\nUSER ping5 0 * :Ping Test\r\nPING :123456\r\n
-
-PING with special characters|PONG :!@#$%^&*()|PASS Alilepro135!\r\nNICK ping_test6\r\nUSER ping6 0 * :Ping Test\r\nPING :!@#$%^&*()\r\n
-
-PING with maximum length parameter|PONG :aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa|PASS Alilepro135!\r\nNICK ping_test7\r\nUSER ping7 0 * :Ping Test\r\nPING :aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n
 
 ======================================================================================
+
 
 
