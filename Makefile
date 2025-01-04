@@ -141,6 +141,10 @@ run: clean all
 	@printf "Running $(NAME)...\n"
 	@./$(DIR_BIN)/$(NAME) $(ARGS)
 
+client: 
+	@printf "Running client...\n"
+	python3 ./test/TUI-client.py -p 22200 --password Alilepro135!
+
 bot: all
 	@printf "Building bot...\n"
 	@$(MAKE) -C $(DIR_BOT)
