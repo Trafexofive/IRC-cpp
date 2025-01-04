@@ -1,330 +1,441 @@
-[2025-01-03 18:44:42] [32mINFO :: [0mStarting IRC server
-[2025-01-03 18:44:42] [32mINFO :: [0mInitializing server...
-[2025-01-03 18:44:42] [33mDEBUG :: [0mValidating port: 22200
-[2025-01-03 18:44:42] [33mDEBUG :: [0m
-[2025-01-03 18:44:42] [33mDEBUG :: [0mValidating password
-[2025-01-03 18:44:42] [33mDEBUG :: [0mPassword valid
-[2025-01-03 18:44:42] [32mINFO :: [0mRegistering commands...
-[2025-01-03 18:44:42] [32mINFO :: [0mCreating socket...
-[2025-01-03 18:44:42] [33mDEBUG :: [0mSocket created: 3
-[2025-01-03 18:44:42] [32mINFO :: [0mSocket setup complete
-[2025-01-03 18:44:42] [33mDEBUG :: [0mBinding socket...
-[2025-01-03 18:44:42] [32mINFO :: [0mStarting to listen...
-[2025-01-03 18:44:42] [32mINFO :: [0mServer listening on port: 22200
-[2025-01-03 18:44:42] [33mDEBUG :: [0mServer main loop starting...
-[2025-01-03 18:44:44] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:44:44] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:44:44] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:46058)
-[2025-01-03 18:44:44] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:44:44] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:45] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:45] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:44:45] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:44:45] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:44:45] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:46070)
-[2025-01-03 18:44:45] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:44:45] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:45] [33mDEBUG :: [0mProcessing command: TEST_USER|USER|
-[2025-01-03 18:44:46] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:46] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:44:46] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:44:46] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:44:46] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:46086)
-[2025-01-03 18:44:46] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:44:46] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:47] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:47] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:44:47] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:44:47] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:44:47] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:46090)
-[2025-01-03 18:44:47] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:44:47] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:48] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:48] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:44:48] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:44:48] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:44:48] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:46098)
-[2025-01-03 18:44:48] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:44:48] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:49] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:49] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:44:49] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:44:49] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:44:49] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:46112)
-[2025-01-03 18:44:49] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:44:49] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:49] [33mDEBUG :: [0mProcessing command: TEST_USER|USER|
-[2025-01-03 18:44:50] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:50] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:44:50] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:44:50] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:44:50] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:46118)
-[2025-01-03 18:44:50] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:44:50] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:51] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:51] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:44:51] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:44:51] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:44:51] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:50358)
-[2025-01-03 18:44:51] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:44:51] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:52] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:52] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:44:52] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:44:52] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:44:52] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:50374)
-[2025-01-03 18:44:52] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:44:52] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:53] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:53] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:44:53] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:44:53] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:44:53] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:50382)
-[2025-01-03 18:44:53] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:44:53] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:53] [33mDEBUG :: [0mProcessing command: PRIV_USER|USER_PRIV|
-[2025-01-03 18:44:54] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:54] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:44:54] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:44:54] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:44:54] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:50390)
-[2025-01-03 18:44:54] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:44:54] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:55] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:55] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:44:55] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:44:55] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:44:55] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:50406)
-[2025-01-03 18:44:55] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:44:55] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:56] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:56] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:44:56] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:44:56] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:44:56] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:50420)
-[2025-01-03 18:44:56] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:44:56] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:57] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:57] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:44:57] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:44:57] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:44:57] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:50426)
-[2025-01-03 18:44:57] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:44:57] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:58] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:58] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:44:58] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:44:58] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:44:58] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:50438)
-[2025-01-03 18:44:58] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:44:58] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:59] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:44:59] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:44:59] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:44:59] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:44:59] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:50446)
-[2025-01-03 18:44:59] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:44:59] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:00] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:00] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:00] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:00] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:00] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:50458)
-[2025-01-03 18:45:00] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:00] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:01] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:01] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:01] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:01] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:01] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:43680)
-[2025-01-03 18:45:01] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:01] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:02] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:02] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:02] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:02] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:02] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:43690)
-[2025-01-03 18:45:02] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:02] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:03] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:03] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:03] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:03] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:03] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:43698)
-[2025-01-03 18:45:03] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:03] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:04] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:04] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:04] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:04] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:04] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:43710)
-[2025-01-03 18:45:04] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:04] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:04] [33mDEBUG :: [0mProcessing command: MSG_USER|USER_MSG|
-[2025-01-03 18:45:05] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:05] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:05] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:05] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:05] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:43720)
-[2025-01-03 18:45:05] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:05] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:06] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:06] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:06] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:06] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:06] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:43732)
-[2025-01-03 18:45:06] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:06] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:07] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:07] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:07] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:07] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:07] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:43734)
-[2025-01-03 18:45:07] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:07] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:07] [33mDEBUG :: [0mProcessing command: TEST_USER|USER|
-[2025-01-03 18:45:08] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:08] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:08] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:08] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:08] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:43736)
-[2025-01-03 18:45:08] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:08] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:09] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:09] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:09] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:09] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:09] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:43744)
-[2025-01-03 18:45:09] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:09] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:10] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:10] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:10] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:10] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:10] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:43750)
-[2025-01-03 18:45:10] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:10] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:11] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:11] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:11] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:11] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:11] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:60616)
-[2025-01-03 18:45:11] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:11] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:11] [33mDEBUG :: [0mProcessing command: TEST_USER|USER|
-[2025-01-03 18:45:12] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:12] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:12] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:12] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:12] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:60632)
-[2025-01-03 18:45:12] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:12] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:13] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:13] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:13] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:13] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:13] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:60638)
-[2025-01-03 18:45:13] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:13] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:14] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:14] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:14] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:14] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:14] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:60646)
-[2025-01-03 18:45:14] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:14] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:15] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:15] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:15] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:15] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:15] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:60648)
-[2025-01-03 18:45:15] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:15] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:15] [33mDEBUG :: [0mProcessing command: PRIV_USER|USER_PRIV|
-[2025-01-03 18:45:16] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:16] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:16] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:16] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:16] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:60652)
-[2025-01-03 18:45:16] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:16] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:17] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:17] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:17] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:17] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:17] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:60668)
-[2025-01-03 18:45:17] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:17] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:18] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:18] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:18] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:18] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:18] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:60672)
-[2025-01-03 18:45:18] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:18] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:19] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:19] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:19] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:19] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:19] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:60688)
-[2025-01-03 18:45:19] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:19] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:20] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:20] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:20] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:20] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:20] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:60694)
-[2025-01-03 18:45:20] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:20] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:21] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:21] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:21] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:21] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:21] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:53700)
-[2025-01-03 18:45:21] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:21] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:22] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:22] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:22] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:22] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:22] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:53712)
-[2025-01-03 18:45:22] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:22] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:23] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:23] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:23] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:23] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:23] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:53716)
-[2025-01-03 18:45:23] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:23] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:24] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:24] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:24] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:24] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:24] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:53720)
-[2025-01-03 18:45:24] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:24] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:25] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:25] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:25] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:25] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:25] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:53734)
-[2025-01-03 18:45:25] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:25] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:26] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:26] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:26] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:26] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:26] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:53742)
-[2025-01-03 18:45:26] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:26] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:26] [33mDEBUG :: [0mProcessing command: MSG_USER|USER_MSG|
-[2025-01-03 18:45:27] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:27] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-03 18:45:27] [33mDEBUG :: [0mActive connections: 1
-[2025-01-03 18:45:27] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-03 18:45:27] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:53744)
-[2025-01-03 18:45:27] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-03 18:45:27] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:28] [33mDEBUG :: [0mActive connections: 2
-[2025-01-03 18:45:28] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 11:28:14] [32mINFO :: [0mStarting IRC server
+[2025-01-04 11:28:14] [32mINFO :: [0mInitializing server...
+[2025-01-04 11:28:14] [33mDEBUG :: [0mValidating port: 22200
+[2025-01-04 11:28:14] [33mDEBUG :: [0m
+[2025-01-04 11:28:14] [33mDEBUG :: [0mValidating password
+[2025-01-04 11:28:14] [33mDEBUG :: [0mPassword valid
+[2025-01-04 11:28:14] [32mINFO :: [0mRegistering commands...
+[2025-01-04 11:28:14] [32mINFO :: [0mCreating socket...
+[2025-01-04 11:28:14] [33mDEBUG :: [0mSocket created: 3
+[2025-01-04 11:28:14] [32mINFO :: [0mSocket setup complete
+[2025-01-04 11:28:14] [33mDEBUG :: [0mBinding socket...
+[2025-01-04 11:28:14] [32mINFO :: [0mStarting to listen...
+[2025-01-04 11:28:14] [32mINFO :: [0mServer listening on port: 22200
+[2025-01-04 11:28:14] [33mDEBUG :: [0mServer main loop starting...
+[2025-01-04 11:28:16] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 11:28:16] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 11:28:16] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:38016)
+[2025-01-04 11:28:16] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 11:28:16] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:16] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 11:28:16] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 11:28:16] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 11:28:16] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 11:28:16] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 11:28:16] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 11:28:16] [33mDEBUG :: [0mNickname set to: ping_test1
+[2025-01-04 11:28:16] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 11:28:16] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 11:28:16] [33mDEBUG :: [0mRegistration complete for ping_test1
+[2025-01-04 11:28:16] [33mDEBUG :: [0mSending response: 004 ping_test1 :IRC server v1.0
+
+[2025-01-04 11:28:16] [33mDEBUG :: [0mProcessing command: PING
+args[0] = PING
+args[1] = :server1
+[2025-01-04 11:28:16] [33mDEBUG :: [0mSending response: PONG :server1
+
+[2025-01-04 11:28:17] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:17] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 11:28:17] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 11:28:17] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 11:28:17] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:38024)
+[2025-01-04 11:28:17] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 11:28:17] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:17] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 11:28:17] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 11:28:17] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 11:28:17] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 11:28:17] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 11:28:17] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 11:28:17] [33mDEBUG :: [0mNickname set to: version_test1
+[2025-01-04 11:28:17] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 11:28:17] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 11:28:17] [33mDEBUG :: [0mRegistration complete for version_test1
+[2025-01-04 11:28:17] [33mDEBUG :: [0mSending response: 004 version_test1 :IRC server v1.0
+
+[2025-01-04 11:28:17] [33mDEBUG :: [0mProcessing command: VERSION
+[2025-01-04 11:28:18] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:18] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 11:28:18] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 11:28:18] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 11:28:18] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:38026)
+[2025-01-04 11:28:18] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 11:28:18] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:18] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 11:28:18] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 11:28:18] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 11:28:18] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 11:28:18] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 11:28:18] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 11:28:18] [33mDEBUG :: [0mNickname set to: time_test1
+[2025-01-04 11:28:18] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 11:28:18] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 11:28:18] [33mDEBUG :: [0mRegistration complete for time_test1
+[2025-01-04 11:28:18] [33mDEBUG :: [0mSending response: 004 time_test1 :IRC server v1.0
+
+[2025-01-04 11:28:18] [33mDEBUG :: [0mProcessing command: TIME
+[2025-01-04 11:28:19] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:19] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 11:28:19] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 11:28:19] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 11:28:19] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:38030)
+[2025-01-04 11:28:19] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 11:28:19] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:19] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 11:28:19] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 11:28:19] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 11:28:19] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 11:28:19] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 11:28:19] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 11:28:19] [33mDEBUG :: [0mNickname set to: join_test1
+[2025-01-04 11:28:19] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 11:28:19] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 11:28:19] [33mDEBUG :: [0mRegistration complete for join_test1
+[2025-01-04 11:28:19] [33mDEBUG :: [0mSending response: 004 join_test1 :IRC server v1.0
+
+[2025-01-04 11:28:19] [33mDEBUG :: [0mProcessing command: JOIN
+[2025-01-04 11:28:19] [33mDEBUG :: [0mjoin_test1 attempting to join #test
+[2025-01-04 11:28:19] [33mDEBUG :: [0mCreating new channel: #test
+[2025-01-04 11:28:19] [33mDEBUG :: [0mCreating new channel: #test
+[2025-01-04 11:28:19] [33mDEBUG :: [0mAdded join_test1 to channel #test (Total members: 1)
+[2025-01-04 11:28:19] [33mDEBUG :: [0mDestroying channel: #test
+[2025-01-04 11:28:19] join_test1 joined #test
+[2025-01-04 11:28:19] [33mDEBUG :: [0mSending response: :join_test1!user@localhost JOIN #test
+
+[2025-01-04 11:28:20] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:20] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 11:28:20] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 11:28:20] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 11:28:20] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:38034)
+[2025-01-04 11:28:20] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 11:28:20] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:20] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 11:28:20] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 11:28:20] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 11:28:20] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 11:28:20] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 11:28:20] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 11:28:20] [33mDEBUG :: [0mNickname set to: join_test2
+[2025-01-04 11:28:20] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 11:28:20] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 11:28:20] [33mDEBUG :: [0mRegistration complete for join_test2
+[2025-01-04 11:28:20] [33mDEBUG :: [0mSending response: 004 join_test2 :IRC server v1.0
+
+[2025-01-04 11:28:20] [33mDEBUG :: [0mProcessing command: JOIN
+[2025-01-04 11:28:20] [33mDEBUG :: [0mjoin_test2 attempting to join #test1,#test2
+[2025-01-04 11:28:20] [33mDEBUG :: [0mCreating new channel: #test1,#test2
+[2025-01-04 11:28:20] [33mDEBUG :: [0mCreating new channel: #test1,#test2
+[2025-01-04 11:28:20] [33mDEBUG :: [0mAdded join_test2 to channel #test1,#test2 (Total members: 1)
+[2025-01-04 11:28:20] [33mDEBUG :: [0mDestroying channel: #test
+[2025-01-04 11:28:20] [33mDEBUG :: [0mDestroying channel: #test1,#test2
+[2025-01-04 11:28:20] join_test2 joined #test1,#test2
+[2025-01-04 11:28:20] [33mDEBUG :: [0mSending response: :join_test2!user@localhost JOIN #test1,#test2
+
+[2025-01-04 11:28:21] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:21] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 11:28:21] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 11:28:21] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 11:28:21] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56596)
+[2025-01-04 11:28:21] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 11:28:21] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:21] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 11:28:21] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 11:28:21] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 11:28:21] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 11:28:21] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 11:28:21] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 11:28:21] [33mDEBUG :: [0mNickname set to: join_test3
+[2025-01-04 11:28:21] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 11:28:21] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 11:28:21] [33mDEBUG :: [0mRegistration complete for join_test3
+[2025-01-04 11:28:21] [33mDEBUG :: [0mSending response: 004 join_test3 :IRC server v1.0
+
+[2025-01-04 11:28:21] [33mDEBUG :: [0mProcessing command: JOIN
+[2025-01-04 11:28:21] [33mDEBUG :: [0mjoin_test3 attempting to join #keyed
+[2025-01-04 11:28:21] [33mDEBUG :: [0mCreating new channel: #keyed
+[2025-01-04 11:28:21] [33mDEBUG :: [0mCreating new channel: #keyed
+[2025-01-04 11:28:21] [33mDEBUG :: [0mAdded join_test3 to channel #keyed (Total members: 1)
+[2025-01-04 11:28:21] [33mDEBUG :: [0mDestroying channel: #test
+[2025-01-04 11:28:21] [33mDEBUG :: [0mDestroying channel: #test1,#test2
+[2025-01-04 11:28:21] [33mDEBUG :: [0mDestroying channel: #keyed
+[2025-01-04 11:28:21] join_test3 joined #keyed
+[2025-01-04 11:28:21] [33mDEBUG :: [0mSending response: :join_test3!user@localhost JOIN #keyed
+
+[2025-01-04 11:28:22] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:22] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 11:28:22] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 11:28:22] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 11:28:22] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56600)
+[2025-01-04 11:28:22] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 11:28:22] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:22] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 11:28:22] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 11:28:22] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 11:28:22] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 11:28:22] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 11:28:22] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 11:28:22] [33mDEBUG :: [0mNickname set to: join_test4
+[2025-01-04 11:28:22] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 11:28:22] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 11:28:22] [33mDEBUG :: [0mRegistration complete for join_test4
+[2025-01-04 11:28:22] [33mDEBUG :: [0mSending response: 004 join_test4 :IRC server v1.0
+
+[2025-01-04 11:28:22] [33mDEBUG :: [0mProcessing command: JOIN
+[2025-01-04 11:28:22] [33mDEBUG :: [0mjoin_test4 attempting to join #invite
+[2025-01-04 11:28:22] [33mDEBUG :: [0mCreating new channel: #invite
+[2025-01-04 11:28:22] [33mDEBUG :: [0mCreating new channel: #invite
+[2025-01-04 11:28:22] [33mDEBUG :: [0mAdded join_test4 to channel #invite (Total members: 1)
+[2025-01-04 11:28:22] [33mDEBUG :: [0mDestroying channel: #invite
+[2025-01-04 11:28:22] join_test4 joined #invite
+[2025-01-04 11:28:22] [33mDEBUG :: [0mSending response: :join_test4!user@localhost JOIN #invite
+
+[2025-01-04 11:28:23] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:23] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 11:28:23] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 11:28:23] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 11:28:23] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56616)
+[2025-01-04 11:28:23] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 11:28:23] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:23] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 11:28:23] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 11:28:23] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 11:28:23] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 11:28:23] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 11:28:23] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 11:28:23] [33mDEBUG :: [0mNickname set to: join_test5
+[2025-01-04 11:28:23] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 11:28:23] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 11:28:23] [33mDEBUG :: [0mRegistration complete for join_test5
+[2025-01-04 11:28:23] [33mDEBUG :: [0mSending response: 004 join_test5 :IRC server v1.0
+
+[2025-01-04 11:28:23] [33mDEBUG :: [0mProcessing command: INVITE
+[2025-01-04 11:28:23] [33mDEBUG :: [0mProcessing command: JOIN
+[2025-01-04 11:28:23] [33mDEBUG :: [0mjoin_test5 attempting to join #invite
+[2025-01-04 11:28:23] [33mDEBUG :: [0mAdded join_test5 to channel #invite (Total members: 2)
+[2025-01-04 11:28:23] join_test5 joined #invite
+[2025-01-04 11:28:23] [33mDEBUG :: [0mSending response: :join_test5!user@localhost JOIN #invite
+
+[2025-01-04 11:28:24] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:24] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 11:28:24] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 11:28:24] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 11:28:24] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56626)
+[2025-01-04 11:28:24] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 11:28:24] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:24] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 11:28:24] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 11:28:24] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 11:28:24] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 11:28:24] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 11:28:24] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 11:28:24] [33mDEBUG :: [0mNickname set to: join_test6
+[2025-01-04 11:28:24] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 11:28:24] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 11:28:24] [33mDEBUG :: [0mRegistration complete for join_test6
+[2025-01-04 11:28:24] [33mDEBUG :: [0mSending response: 004 join_test6 :IRC server v1.0
+
+[2025-01-04 11:28:24] [33mDEBUG :: [0mProcessing command: JOIN
+[2025-01-04 11:28:24] [33mDEBUG :: [0mjoin_test6 attempting to join #keyed
+[2025-01-04 11:28:24] [33mDEBUG :: [0mAdded join_test6 to channel #keyed (Total members: 2)
+[2025-01-04 11:28:24] join_test6 joined #keyed
+[2025-01-04 11:28:24] [33mDEBUG :: [0mSending response: :join_test6!user@localhost JOIN #keyed
+
+[2025-01-04 11:28:25] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:25] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 11:28:25] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 11:28:25] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 11:28:25] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56634)
+[2025-01-04 11:28:25] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 11:28:25] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:25] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 11:28:25] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 11:28:25] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 11:28:25] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 11:28:25] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 11:28:25] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 11:28:25] [33mDEBUG :: [0mNickname set to: join_test7
+[2025-01-04 11:28:25] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 11:28:25] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 11:28:25] [33mDEBUG :: [0mRegistration complete for join_test7
+[2025-01-04 11:28:25] [33mDEBUG :: [0mSending response: 004 join_test7 :IRC server v1.0
+
+[2025-01-04 11:28:25] [33mDEBUG :: [0mProcessing command: JOIN
+[2025-01-04 11:28:25] [33mDEBUG :: [0mjoin_test7 attempting to join #keyed
+[2025-01-04 11:28:25] [33mDEBUG :: [0mAdded join_test7 to channel #keyed (Total members: 3)
+[2025-01-04 11:28:25] join_test7 joined #keyed
+[2025-01-04 11:28:25] [33mDEBUG :: [0mSending response: :join_test7!user@localhost JOIN #keyed
+
+[2025-01-04 11:28:26] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:26] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 11:28:26] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 11:28:26] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 11:28:26] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56650)
+[2025-01-04 11:28:26] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 11:28:26] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:26] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 11:28:26] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 11:28:26] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 11:28:26] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 11:28:26] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 11:28:26] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 11:28:26] [33mDEBUG :: [0mNickname set to: join_test8
+[2025-01-04 11:28:26] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 11:28:26] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 11:28:26] [33mDEBUG :: [0mRegistration complete for join_test8
+[2025-01-04 11:28:26] [33mDEBUG :: [0mSending response: 004 join_test8 :IRC server v1.0
+
+[2025-01-04 11:28:26] [33mDEBUG :: [0mProcessing command: JOIN
+[2025-01-04 11:28:26] [33mDEBUG :: [0mjoin_test8 attempting to join #banned
+[2025-01-04 11:28:26] [33mDEBUG :: [0mCreating new channel: #banned
+[2025-01-04 11:28:26] [33mDEBUG :: [0mCreating new channel: #banned
+[2025-01-04 11:28:26] [33mDEBUG :: [0mAdded join_test8 to channel #banned (Total members: 1)
+[2025-01-04 11:28:26] [33mDEBUG :: [0mDestroying channel: #test
+[2025-01-04 11:28:26] [33mDEBUG :: [0mDestroying channel: #test1,#test2
+[2025-01-04 11:28:26] [33mDEBUG :: [0mDestroying channel: #keyed
+[2025-01-04 11:28:26] [33mDEBUG :: [0mDestroying channel: #invite
+[2025-01-04 11:28:26] [33mDEBUG :: [0mDestroying channel: #banned
+[2025-01-04 11:28:26] join_test8 joined #banned
+[2025-01-04 11:28:26] [33mDEBUG :: [0mSending response: :join_test8!user@localhost JOIN #banned
+
+[2025-01-04 11:28:27] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:27] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 11:28:27] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 11:28:27] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 11:28:27] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56654)
+[2025-01-04 11:28:27] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 11:28:27] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:27] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 11:28:27] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 11:28:27] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 11:28:27] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 11:28:27] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 11:28:27] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 11:28:27] [33mDEBUG :: [0mNickname set to: join_test9
+[2025-01-04 11:28:27] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 11:28:27] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 11:28:27] [33mDEBUG :: [0mRegistration complete for join_test9
+[2025-01-04 11:28:27] [33mDEBUG :: [0mSending response: 004 join_test9 :IRC server v1.0
+
+[2025-01-04 11:28:27] [33mDEBUG :: [0mProcessing command: JOIN
+[2025-01-04 11:28:27] [33mDEBUG :: [0mjoin_test9 attempting to join #limited
+[2025-01-04 11:28:27] [33mDEBUG :: [0mCreating new channel: #limited
+[2025-01-04 11:28:27] [33mDEBUG :: [0mCreating new channel: #limited
+[2025-01-04 11:28:27] [33mDEBUG :: [0mAdded join_test9 to channel #limited (Total members: 1)
+[2025-01-04 11:28:27] [33mDEBUG :: [0mDestroying channel: #limited
+[2025-01-04 11:28:27] join_test9 joined #limited
+[2025-01-04 11:28:27] [33mDEBUG :: [0mSending response: :join_test9!user@localhost JOIN #limited
+
+[2025-01-04 11:28:28] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:28] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 11:28:28] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 11:28:28] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 11:28:28] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56666)
+[2025-01-04 11:28:28] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 11:28:28] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:28] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 11:28:28] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 11:28:28] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 11:28:28] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 11:28:28] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 11:28:28] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 11:28:28] [33mDEBUG :: [0mNickname set to: join_test10
+[2025-01-04 11:28:28] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 11:28:28] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 11:28:28] [33mDEBUG :: [0mRegistration complete for join_test10
+[2025-01-04 11:28:28] [33mDEBUG :: [0mSending response: 004 join_test10 :IRC server v1.0
+
+[2025-01-04 11:28:28] [33mDEBUG :: [0mProcessing command: JOIN
+[2025-01-04 11:28:28] [33mDEBUG :: [0mjoin_test10 attempting to join #test
+[2025-01-04 11:28:28] [33mDEBUG :: [0mAdded join_test10 to channel #test (Total members: 2)
+[2025-01-04 11:28:28] join_test10 joined #test
+[2025-01-04 11:28:28] [33mDEBUG :: [0mSending response: :join_test10!user@localhost JOIN #test
+
+[2025-01-04 11:28:28] [33mDEBUG :: [0mProcessing command: JOIN
+[2025-01-04 11:28:28] [33mDEBUG :: [0mjoin_test10 attempting to join #0
+[2025-01-04 11:28:28] [33mDEBUG :: [0mCreating new channel: #0
+[2025-01-04 11:28:28] [33mDEBUG :: [0mCreating new channel: #0
+[2025-01-04 11:28:28] [33mDEBUG :: [0mAdded join_test10 to channel #0 (Total members: 1)
+[2025-01-04 11:28:28] [33mDEBUG :: [0mDestroying channel: #0
+[2025-01-04 11:28:28] join_test10 joined #0
+[2025-01-04 11:28:28] [33mDEBUG :: [0mSending response: :join_test10!user@localhost JOIN #0
+
+[2025-01-04 11:28:29] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:29] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 11:28:29] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 11:28:29] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 11:28:29] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56680)
+[2025-01-04 11:28:29] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 11:28:29] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:29] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 11:28:29] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 11:28:29] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 11:28:29] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 11:28:29] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 11:28:29] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 11:28:29] [33mDEBUG :: [0mNickname set to: ping_test1
+[2025-01-04 11:28:29] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 11:28:29] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 11:28:29] [33mDEBUG :: [0mRegistration complete for ping_test1
+[2025-01-04 11:28:29] [33mDEBUG :: [0mSending response: 004 ping_test1 :IRC server v1.0
+
+[2025-01-04 11:28:29] [33mDEBUG :: [0mProcessing command: PING
+args[0] = PING
+args[1] = :server1
+[2025-01-04 11:28:29] [33mDEBUG :: [0mSending response: PONG :server1
+
+[2025-01-04 11:28:30] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:30] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 11:28:30] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 11:28:30] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 11:28:30] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56682)
+[2025-01-04 11:28:30] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 11:28:30] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:30] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 11:28:30] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 11:28:30] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 11:28:30] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 11:28:30] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 11:28:30] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 11:28:30] [33mDEBUG :: [0mNickname set to: version_test1
+[2025-01-04 11:28:30] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 11:28:30] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 11:28:30] [33mDEBUG :: [0mRegistration complete for version_test1
+[2025-01-04 11:28:30] [33mDEBUG :: [0mSending response: 004 version_test1 :IRC server v1.0
+
+[2025-01-04 11:28:30] [33mDEBUG :: [0mProcessing command: VERSION
+[2025-01-04 11:28:31] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:31] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 11:28:31] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 11:28:31] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 11:28:31] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:57328)
+[2025-01-04 11:28:31] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 11:28:31] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 11:28:31] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 11:28:31] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 11:28:31] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 11:28:31] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 11:28:31] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 11:28:31] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 11:28:31] [33mDEBUG :: [0mNickname set to: time_test1
+[2025-01-04 11:28:31] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 11:28:31] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 11:28:31] [33mDEBUG :: [0mRegistration complete for time_test1
+[2025-01-04 11:28:31] [33mDEBUG :: [0mSending response: 004 time_test1 :IRC server v1.0
+
+[2025-01-04 11:28:31] [33mDEBUG :: [0mProcessing command: TIME

@@ -5,7 +5,7 @@
 - [DO] Generate 10 test cases using the format above, with RFC [ID] specified above.
 - [KEEP-IN-MIND] Generate test-cases only for the '{COMMAND-NAME}' above.
 - [KEEP-IN-MIND] Output will be processed by a script by a script so anything that is not a test (following the specified format) should and must always be commented.
-- Use auto-join() function that will PASS->NICK->USER to avoid redundancy, of course if they need to be test then dont use it..
+- Use AUTH keyword: PASS->NICK->USER to avoid redundancy, of course if they need to be test then dont use it..
 
 # AUTH keyword behavior:
 ```bash
@@ -21,13 +21,15 @@
 =======================================BLUEPRINT===============================================
 # IRC Protocol Test Suite
 # Based on RFC 2812 and modern IRC protocol extensions
-# Format: TestName|ExpectedResponse|Commands
+# Format: TestName|keyword (optional)|ExpectedResponse|Commands
 
 # COMMAND-TO-TEST: {COMMAND-NAME}
 
 # EXAMPLE-TEST:
 
 default PING test|PONG :server1|PASS Alilepro135!\r\nNICK ping_test1\r\nUSER ping1 0 * :Ping Test\r\nPING :server1\r\n
+
+default PING test using auth keyword|PONG :server1|AUTH|PING :server1\r\n
 
 PING with server parameter|PONG :irc.example.com|PASS Alilepro135!\r\nNICK ping_test2\r\nUSER ping2 0 * :Ping Test\r\nPING :irc.example.com\r\n
 
@@ -40,33 +42,6 @@ PING with numeric parameter|PONG :123456|PASS Alilepro135!\r\nNICK ping_test5\r\
 PING with special characters|PONG :!@#$%^&*()|PASS Alilepro135!\r\nNICK ping_test6\r\nUSER ping6 0 * :Ping Test\r\nPING :!@#$%^&*()\r\n
 
 PING with maximum length parameter|PONG :aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa|PASS Alilepro135!\r\nNICK ping_test7\r\nUSER ping7 0 * :Ping Test\r\nPING :aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n
-
-PING with empty parameter|ERROR :No origin specified|PASS Alilepro135!\r\nNICK ping_test8\r\nUSER ping8 0 * :Ping Test\r\nPING :\r\n
-
-PING with whitespace parameter|PONG :   |PASS Alilepro135!\r\nNICK ping_test9\r\nUSER ping9 0 * :Ping Test\r\nPING :   \r\n
-
-PING with newline character|PONG :\n|PASS Alilepro135!\r\nNICK ping_test10\r\nUSER ping10 0 * :Ping Test\r\nPING :\n\r\n
-
-# Test Case 1: Join a public channel without a key
-auto-join() #for redundancy
-Join public channel|:test_user!~user@host JOIN #public_channel\r\n:server 353 test_user = #public_channel :@test_user\r\n:server 366 test_user #public_channel :End of /NAMES list.|PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #public_channel\r\n
-
-# Test Case 2: Join a private channel without a key
-auto-join()
-Join private channel without key|:server 475 test_user #private_channel :Cannot join channel (+k) - bad key|PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #private_channel\r\n
-
-# Test Case 3: Join a private channel with the correct key
-auto-join()
-Join private channel with correct key|:test_user!~user@host JOIN #private_channel\r\n:server 353 test_user = #private_channel :@test_user\r\n:server 366 test_user #private_channel :End of /NAMES list.|PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #private_channel secretkey\r\n
-
-# Test Case 4: Join an invite-only channel without an invite
-auto-join()
-Join invite-only channel without invite|:server 473 test_user #invite_only_channel :Cannot join channel (+i) - you must be invited|PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #invite_only_channel\r\n
-
-# Test Case 5: Join an invite-only channel with an invite
-auto-join()
-Join invite-only channel with invite|:test_user!~user@host JOIN #invite_only_channel\r\n:server 353 test_user = #invite_only_channel :@test_user\r\n:server 366 test_user #invite_only_channel :End of /NAMES list.|PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nINVITE test_user #invite_only_channel\r\nJOIN #invite_only_channel\r\n
-
 
 ======================================================================================
 

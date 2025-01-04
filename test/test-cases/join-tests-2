@@ -1,10 +1,10 @@
 # IRC Protocol Test Suite
 # Based on RFC 2812 and modern IRC protocol extensions
 # Each test case follows the format:
-# TestName|ExpectedResponse|Commands
+# keyword (NULL for no keyword)|TestName|ExpectedResponse|Commands
 
 # ---------------------------------------------------------------------
-# TEST CASES USING AUTH KEYWORD
+# TEST CASES 
 # ---------------------------------------------------------------------
 
 # COMMAND-TO-TEST: AUTH

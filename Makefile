@@ -29,7 +29,7 @@ DIR_BACKUP := backup
 DIR_DEPS := .deps
 
 # Test File
-TEST-FILE := $(DIR_TEST)/test-cases/join-tests-2
+TEST-FILE := $(DIR_TEST)/test-cases/join-tests
 
 # Source Files
 SRC_FILES := HandleEvents.cpp \
@@ -137,7 +137,7 @@ test: re debug | $(DIR_LOG)
 	@printf "Running tests...\n"
 	@./$(DIR_TEST)/main.sh -f $(TEST-FILE) -d -v -t 1 2>&1 | tee $(DIR_LOG)/test.log
 
-run: all
+run: clean all
 	@printf "Running $(NAME)...\n"
 	@./$(DIR_BIN)/$(NAME) $(ARGS)
 

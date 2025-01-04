@@ -1,106 +1,47 @@
 ========================================
-IRC Server Test Log - 2025-01-03 17:44:42 UTC
+IRC Server Test Log - 2025-01-04 10:28:14 UTC
 User: mlamkadm
 Server: localhost:22200
 Debug Mode: 1
 Verbose Mode: 1
 ========================================
 
-[2025-01-03 17:44:42 UTC] Test suite started
+[2025-01-04 10:28:14 UTC] Test suite started
 ----------------------------------------
-[2025-01-03 17:44:42 UTC] Starting IRC server
-[2025-01-03 17:44:44 UTC] [DEBUG] Waiting for server to start (PID: 31351)
-[2025-01-03 17:44:44 UTC] Server started successfully
-[2025-01-03 17:44:44 UTC] [DEBUG] Loading custom tests from: test/test-cases/join-tests-2
-[2025-01-03 17:44:44 UTC] Loading custom tests from: test/test-cases/join-tests-2
-[2025-01-03 17:44:44 UTC] Running test: AUTH
-[2025-01-03 17:44:44 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:44:45 UTC] Running test: AUTH
-[2025-01-03 17:44:45 UTC] [DEBUG] Sending commands: test_user|user|
-[2025-01-03 17:44:46 UTC] Running test: :server 353 test_user = #public_channel :@test_user\r\n:server 366 test_user #public_channel :End of /NAMES list.
-[2025-01-03 17:44:46 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:44:47 UTC] Running test: PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #public_channel\r\n
-[2025-01-03 17:44:47 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:44:48 UTC] Running test: AUTH
-[2025-01-03 17:44:48 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:44:49 UTC] Running test: AUTH
-[2025-01-03 17:44:49 UTC] [DEBUG] Sending commands: test_user|user|
-[2025-01-03 17:44:50 UTC] Running test: :server NOTICE * :Password incorrect\r\n:server ERR_PASSWDMISMATCH test_user :Password incorrect\r\n
-[2025-01-03 17:44:50 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:44:51 UTC] Running test: PASS WrongPassword!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\n
-[2025-01-03 17:44:51 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:44:52 UTC] Running test: AUTH
-[2025-01-03 17:44:52 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:44:53 UTC] Running test: AUTH
-[2025-01-03 17:44:53 UTC] [DEBUG] Sending commands: priv_user|user_priv|
-[2025-01-03 17:44:54 UTC] Running test: :server 353 priv_user = #private_channel :@priv_user\r\n:server 366 priv_user #private_channel :End of /NAMES list.
-[2025-01-03 17:44:54 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:44:55 UTC] Running test: PASS Alilepro135!\r\nNICK priv_user\r\nUSER user_priv 0 * :Private User\r\nJOIN #private_channel key123\r\n
-[2025-01-03 17:44:55 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:44:56 UTC] Running test: SeparateAuth
-[2025-01-03 17:44:56 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:44:57 UTC] Running test: :server 353 separate_user = #general_channel :@separate_user\r\n:server 366 separate_user #general_channel :End of /NAMES list.
-[2025-01-03 17:44:57 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:44:58 UTC] Running test: PASS Alilepro135!\r\nNICK separate_user\r\nUSER user_sep 0 * :Separate User\r\nJOIN #general_channel\r\n
-[2025-01-03 17:44:58 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:44:59 UTC] Running test: NoAuth
-[2025-01-03 17:44:59 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:00 UTC] Running test: :server NOTICE * :You are not registered\r\n:server ERR_NOTREGISTERED * :You have not registered\r\n
-[2025-01-03 17:45:00 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:01 UTC] Running test: NICK unauth_user\r\nJOIN #no_auth_channel\r\n
-[2025-01-03 17:45:01 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:02 UTC] Running test: AuthMessage
-[2025-01-03 17:45:02 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:03 UTC] Running test: :server 353 msg_user = #chat_channel :@msg_user\r\n:server 366 msg_user #chat_channel :End of /NAMES list.\r\n:msg_user!user@host PRIVMSG #chat_channel :Hello, everyone!\r\n
-[2025-01-03 17:45:03 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:04 UTC] Running test: AUTH
-[2025-01-03 17:45:04 UTC] [DEBUG] Sending commands: msg_user|user_msg|
-[2025-01-03 17:45:05 UTC] Running test: PASS Alilepro135!\r\nNICK msg_user\r\nUSER user_msg 0 * :Message User\r\nJOIN #chat_channel\r\nPRIVMSG #chat_channel :Hello, everyone!\r\n
-[2025-01-03 17:45:05 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:06 UTC] Running test: AUTH
-[2025-01-03 17:45:06 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:07 UTC] Running test: AUTH
-[2025-01-03 17:45:07 UTC] [DEBUG] Sending commands: test_user|user|
-[2025-01-03 17:45:08 UTC] Running test: :server 353 test_user = #public_channel :@test_user\r\n:server 366 test_user #public_channel :End of /NAMES list.
-[2025-01-03 17:45:08 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:09 UTC] Running test: PASS Alilepro135!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\nJOIN #public_channel\r\n
-[2025-01-03 17:45:09 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:10 UTC] Running test: AUTH
-[2025-01-03 17:45:10 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:11 UTC] Running test: AUTH
-[2025-01-03 17:45:11 UTC] [DEBUG] Sending commands: test_user|user|
-[2025-01-03 17:45:12 UTC] Running test: :server NOTICE * :Password incorrect\r\n:server ERR_PASSWDMISMATCH test_user :Password incorrect\r\n
-[2025-01-03 17:45:12 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:13 UTC] Running test: PASS WrongPassword!\r\nNICK test_user\r\nUSER user 0 * :Test User\r\n
-[2025-01-03 17:45:13 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:14 UTC] Running test: AUTH
-[2025-01-03 17:45:14 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:15 UTC] Running test: AUTH
-[2025-01-03 17:45:15 UTC] [DEBUG] Sending commands: priv_user|user_priv|
-[2025-01-03 17:45:16 UTC] Running test: :server 353 priv_user = #private_channel :@priv_user\r\n:server 366 priv_user #private_channel :End of /NAMES list.
-[2025-01-03 17:45:16 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:17 UTC] Running test: PASS Alilepro135!\r\nNICK priv_user\r\nUSER user_priv 0 * :Private User\r\nJOIN #private_channel key123\r\n
-[2025-01-03 17:45:17 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:18 UTC] Running test: SeparateAuth
-[2025-01-03 17:45:18 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:19 UTC] Running test: :server 353 separate_user = #general_channel :@separate_user\r\n:server 366 separate_user #general_channel :End of /NAMES list.
-[2025-01-03 17:45:19 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:20 UTC] Running test: PASS Alilepro135!\r\nNICK separate_user\r\nUSER user_sep 0 * :Separate User\r\nJOIN #general_channel\r\n
-[2025-01-03 17:45:20 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:21 UTC] Running test: NoAuth
-[2025-01-03 17:45:21 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:22 UTC] Running test: :server NOTICE * :You are not registered\r\n:server ERR_NOTREGISTERED * :You have not registered\r\n
-[2025-01-03 17:45:22 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:23 UTC] Running test: NICK unauth_user\r\nJOIN #no_auth_channel\r\n
-[2025-01-03 17:45:23 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:24 UTC] Running test: AuthMessage
-[2025-01-03 17:45:24 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:25 UTC] Running test: :server 353 msg_user = #chat_channel :@msg_user\r\n:server 366 msg_user #chat_channel :End of /NAMES list.\r\n:msg_user!user@host PRIVMSG #chat_channel :Hello, everyone!\r\n
-[2025-01-03 17:45:25 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:26 UTC] Running test: AUTH
-[2025-01-03 17:45:26 UTC] [DEBUG] Sending commands: msg_user|user_msg|
-[2025-01-03 17:45:27 UTC] Running test: PASS Alilepro135!\r\nNICK msg_user\r\nUSER user_msg 0 * :Message User\r\nJOIN #chat_channel\r\nPRIVMSG #chat_channel :Hello, everyone!\r\n
-[2025-01-03 17:45:27 UTC] [DEBUG] Sending commands: 
-[2025-01-03 17:45:28 UTC] Test suite shutting down
-[2025-01-03 17:45:28 UTC] Stopping server (PID: 31351)
-----------------------------------------
+[2025-01-04 10:28:14 UTC] Starting IRC server
+[2025-01-04 10:28:16 UTC] [DEBUG] Waiting for server to start (PID: 369182)
+[2025-01-04 10:28:16 UTC] Server started successfully
+[2025-01-04 10:28:16 UTC] [DEBUG] Loading custom tests from: test/test-cases/join-tests
+[2025-01-04 10:28:16 UTC] Loading custom tests from: test/test-cases/join-tests
+[2025-01-04 10:28:16 UTC] Running test: default PING test
+[2025-01-04 10:28:16 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test1\r\nUSER ping1 0 * :Ping Test\r\nPING :server1\r\n
+[2025-01-04 10:28:17 UTC] Running test: Version Query
+[2025-01-04 10:28:17 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK version_test1\r\nUSER version1 0 * :Version Test\r\nVERSION\r\n
+[2025-01-04 10:28:18 UTC] Running test: Time Query
+[2025-01-04 10:28:18 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK time_test1\r\nUSER time1 0 * :Time Test\r\nTIME\r\n
+[2025-01-04 10:28:19 UTC] Running test: Join single channel
+[2025-01-04 10:28:19 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK join_test1\r\nUSER user 0 * :Join Test\r\nJOIN #test\r\n
+[2025-01-04 10:28:20 UTC] Running test: Join multiple channels
+[2025-01-04 10:28:20 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK join_test2\r\nUSER user 0 * :Join Test\r\nJOIN #test1,#test2\r\n
+[2025-01-04 10:28:21 UTC] Running test: Join channel with key
+[2025-01-04 10:28:21 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK join_test3\r\nUSER user 0 * :Join Test\r\nJOIN #keyed key123\r\n
+[2025-01-04 10:28:22 UTC] Running test: Join invite-only channel without invite
+[2025-01-04 10:28:22 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK join_test4\r\nUSER user 0 * :Join Test\r\nJOIN #invite\r\n
+[2025-01-04 10:28:23 UTC] Running test: Join invite-only channel with invite
+[2025-01-04 10:28:23 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK join_test5\r\nUSER user 0 * :Join Test\r\nINVITE join_test5 #invite\r\nJOIN #invite\r\n
+[2025-01-04 10:28:24 UTC] Running test: Join channel with incorrect key
+[2025-01-04 10:28:24 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK join_test6\r\nUSER user 0 * :Join Test\r\nJOIN #keyed wrongkey\r\n
+[2025-01-04 10:28:25 UTC] Running test: Join channel with correct key
+[2025-01-04 10:28:25 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK join_test7\r\nUSER user 0 * :Join Test\r\nJOIN #keyed key123\r\n
+[2025-01-04 10:28:26 UTC] Running test: Join banned channel
+[2025-01-04 10:28:26 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK join_test8\r\nUSER user 0 * :Join Test\r\nJOIN #banned\r\n
+[2025-01-04 10:28:27 UTC] Running test: Join channel with limit exceeded
+[2025-01-04 10:28:27 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK join_test9\r\nUSER user 0 * :Join Test\r\nJOIN #limited\r\n
+[2025-01-04 10:28:28 UTC] Running test: Join channel removing all others
+[2025-01-04 10:28:28 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK join_test10\r\nUSER user 0 * :Join Test\r\nJOIN #test\r\nJOIN 0\r\n
+[2025-01-04 10:28:29 UTC] Running test: default PING test
+[2025-01-04 10:28:29 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test1\r\nUSER ping1 0 * :Ping Test\r\nPING :server1\r\n
+[2025-01-04 10:28:30 UTC] Running test: Version Query
+[2025-01-04 10:28:30 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK version_test1\r\nUSER version1 0 * :Version Test\r\nVERSION\r\n
+[2025-01-04 10:28:31 UTC] Running test: Time Query
+[2025-01-04 10:28:31 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK time_test1\r\nUSER time1 0 * :Time Test\r\nTIME\r\n
