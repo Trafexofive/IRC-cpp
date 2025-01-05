@@ -1,0 +1,20 @@
+# IRC Protocol Test Suite
+# Based on RFC [2812] and modern IRC protocol extensions
+# Format: TestName|ExpectedResponse|Commands
+
+# COMMAND-TO-TEST: {PING}
+
+# FORMAT:
+# TestName|ExpectedResponse|Commands
+# [Additional lines in the same format if needed]
+
+PING with server response|PONG :irc.example.com|PASS Alilepro135!\r\nNICK ping_test1\r\nUSER ping1 0 * :Ping Test\r\nPING :irc.example.com\r\n
+PING with different server|PONG :another.server.com|PASS Alilepro135!\r\nNICK ping_test2\r\nUSER ping2 0 * :Ping Test\r\nPING :another.server.com\r\n
+PING with no server|PONG|PASS Alilepro135!\r\nNICK ping_test3\r\nUSER ping3 0 * :Ping Test\r\nPING\r\n
+PING with colon-prefixed server|PONG :server.with.colon|PASS Alilepro135!\r\nNICK ping_test4\r\nUSER ping4 0 * :Ping Test\r\nPING :server.with.colon\r\n
+PING with numeric server name|PONG :123456|PASS Alilepro135!\r\nNICK ping_test5\r\nUSER ping5 0 * :Ping Test\r\nPING :123456\r\n
+PING with special characters in server name|PONG :special!@#|PASS Alilepro135!\r\nNICK ping_test6\r\nUSER ping6 0 * :Ping Test\r\nPING :special!@#\r\n
+PING with underscore in server name|PONG :server_name|PASS Alilepro135!\r\nNICK ping_test7\r\nUSER ping7 0 * :Ping Test\r\nPING :server_name\r\n
+PING with dash in server name|PONG :server-name|PASS Alilepro135!\r\nNICK ping_test8\r\nUSER ping8 0 * :Ping Test\r\nPING :server-name\r\n
+PING with dot in server name|PONG :server.name|PASS Alilepro135!\r\nNICK ping_test9\r\nUSER ping9 0 * :Ping Test\r\nPING :server.name\r\n
+PING with mixed case server name|PONG :ServerName|PASS Alilepro135!\r\nNICK ping_test10\r\nUSER ping10 0 * :Ping Test\r\nPING :ServerName\r\n

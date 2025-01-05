@@ -1,0 +1,526 @@
+[2025-01-04 20:12:07] [32mINFO :: [0mStarting IRC server
+[2025-01-04 20:12:07] [32mINFO :: [0mInitializing server...
+[2025-01-04 20:12:07] [33mDEBUG :: [0mValidating port: 22200
+[2025-01-04 20:12:07] [33mDEBUG :: [0m
+[2025-01-04 20:12:07] [33mDEBUG :: [0mValidating password
+[2025-01-04 20:12:07] [33mDEBUG :: [0mPassword valid
+[2025-01-04 20:12:07] [32mINFO :: [0mRegistering commands...
+[2025-01-04 20:12:07] [32mINFO :: [0mCreating socket...
+[2025-01-04 20:12:07] [33mDEBUG :: [0mSocket created: 3
+[2025-01-04 20:12:07] [32mINFO :: [0mSocket setup complete
+[2025-01-04 20:12:07] [33mDEBUG :: [0mBinding socket...
+[2025-01-04 20:12:07] [32mINFO :: [0mStarting to listen...
+[2025-01-04 20:12:07] [32mINFO :: [0mServer listening on port: 22200
+[2025-01-04 20:12:07] [33mDEBUG :: [0mServer main loop starting...
+[2025-01-04 20:12:09] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:09] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:09] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:47030)
+[2025-01-04 20:12:09] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:09] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:09] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:09] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:09] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:09] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:09] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:09] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:09] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:09] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:09] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:09] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:09] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:09] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:09] [33mDEBUG :: [0mtestNick attempting to leave #channel
+[2025-01-04 20:12:09] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:09] [33mDEBUG :: [0mSending response: 403 #channel :No such channel
+
+[2025-01-04 20:12:10] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:10] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:10] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:10] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:10] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:47042)
+[2025-01-04 20:12:10] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:10] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:10] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:10] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:10] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:10] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:10] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:10] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:10] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:10] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:10] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:10] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:10] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:10] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:10] [33mDEBUG :: [0mtestNick attempting to leave #channel1,#channel2
+[2025-01-04 20:12:10] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:10] [33mDEBUG :: [0mSending response: 403 #channel1,#channel2 :No such channel
+
+[2025-01-04 20:12:11] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:11] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:11] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:11] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:11] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:39494)
+[2025-01-04 20:12:11] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:11] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:11] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:11] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:11] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:11] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:11] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:11] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:11] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:11] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:11] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:11] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:11] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:11] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:11] [33mDEBUG :: [0mtestNick attempting to leave #channel
+[2025-01-04 20:12:11] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:11] [31mERROR :: [0mPART failed: Invalid channel name :Goodbye
+[2025-01-04 20:12:11] [33mDEBUG :: [0mSending response: 403 :Goodbye :Invalid channel name
+
+[2025-01-04 20:12:12] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:12] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:12] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:12] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:12] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:39508)
+[2025-01-04 20:12:12] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:12] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:12] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:12] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:12] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:12] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:12] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:12] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:12] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:12] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:12] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:12] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:12] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:12] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:12] [31mERROR :: [0mPART failed: No channel specified
+[2025-01-04 20:12:12] [33mDEBUG :: [0mSending response: 461 PART :Not enough parameters
+
+[2025-01-04 20:12:13] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:13] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:13] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:13] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:13] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:39524)
+[2025-01-04 20:12:13] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:13] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:13] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:13] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:13] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:13] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:13] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:13] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:13] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:13] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:13] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:13] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:13] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:13] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:13] [33mDEBUG :: [0mtestNick attempting to leave #invalid
+[2025-01-04 20:12:13] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:13] [33mDEBUG :: [0mSending response: 403 #invalid :No such channel
+
+[2025-01-04 20:12:14] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:14] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:14] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:14] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:14] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:39536)
+[2025-01-04 20:12:14] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:14] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:14] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:14] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:14] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:14] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:14] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:14] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:14] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:14] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:14] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:14] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:14] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:14] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:14] [33mDEBUG :: [0mtestNick attempting to leave #channel
+[2025-01-04 20:12:14] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:14] [33mDEBUG :: [0mSending response: 403 #channel :No such channel
+
+[2025-01-04 20:12:15] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:15] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:15] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:15] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:15] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:39546)
+[2025-01-04 20:12:15] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:15] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:15] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:15] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:15] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:15] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:15] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:15] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:15] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:15] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:15] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:15] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:15] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:15] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:15] [33mDEBUG :: [0mtestNick attempting to leave #channel1,#channel2
+[2025-01-04 20:12:15] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:15] [31mERROR :: [0mPART failed: Invalid channel name :Goodbye
+[2025-01-04 20:12:15] [33mDEBUG :: [0mSending response: 403 :Goodbye :Invalid channel name
+
+[2025-01-04 20:12:16] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:16] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:16] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:16] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:16] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:39560)
+[2025-01-04 20:12:16] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:16] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:16] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:16] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:16] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:16] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:16] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:16] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:16] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:16] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:16] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:16] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:16] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:16] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:16] [33mDEBUG :: [0mtestNick attempting to leave #chan!@#
+[2025-01-04 20:12:16] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:16] [31mERROR :: [0mPART failed: Invalid channel name :Leaving
+[2025-01-04 20:12:16] [31mERROR :: [0mPART failed: Invalid channel name now
+[2025-01-04 20:12:16] [33mDEBUG :: [0mSending response: 403 now :Invalid channel name
+
+[2025-01-04 20:12:17] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:17] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:17] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:17] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:17] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:39570)
+[2025-01-04 20:12:17] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:17] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:17] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:17] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:17] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:17] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:17] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:17] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:17] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:17] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:17] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:17] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:17] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:17] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:17] [33mDEBUG :: [0mtestNick attempting to leave #channel:subchannel
+[2025-01-04 20:12:17] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:17] [31mERROR :: [0mPART failed: Invalid channel name :Goodbye
+[2025-01-04 20:12:17] [33mDEBUG :: [0mSending response: 403 :Goodbye :Invalid channel name
+
+[2025-01-04 20:12:18] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:18] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:18] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:18] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:18] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:39574)
+[2025-01-04 20:12:18] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:18] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:18] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:18] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:18] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:18] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:18] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:18] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:18] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:18] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:18] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:18] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:18] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:18] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:18] [33mDEBUG :: [0mtestNick attempting to leave #12345
+[2025-01-04 20:12:18] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:18] [31mERROR :: [0mPART failed: Invalid channel name :Leaving
+[2025-01-04 20:12:18] [31mERROR :: [0mPART failed: Invalid channel name now
+[2025-01-04 20:12:18] [33mDEBUG :: [0mSending response: 403 now :Invalid channel name
+
+[2025-01-04 20:12:19] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:19] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:19] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:19] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:19] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:39584)
+[2025-01-04 20:12:19] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:19] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:19] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:19] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:19] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:19] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:19] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:19] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:19] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:19] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:19] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:19] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:19] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:19] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:19] [33mDEBUG :: [0mtestNick attempting to leave #channel
+[2025-01-04 20:12:19] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:19] [33mDEBUG :: [0mSending response: 403 #channel :No such channel
+
+[2025-01-04 20:12:20] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:20] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:20] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:20] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:20] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:39586)
+[2025-01-04 20:12:20] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:20] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:20] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:20] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:20] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:20] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:20] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:20] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:20] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:20] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:20] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:20] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:20] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:20] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:20] [33mDEBUG :: [0mtestNick attempting to leave #channel1,#channel2
+[2025-01-04 20:12:20] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:20] [33mDEBUG :: [0mSending response: 403 #channel1,#channel2 :No such channel
+
+[2025-01-04 20:12:21] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:21] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:21] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:21] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:21] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56464)
+[2025-01-04 20:12:21] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:21] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:21] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:21] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:21] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:21] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:21] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:21] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:21] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:21] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:21] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:21] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:21] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:21] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:21] [33mDEBUG :: [0mtestNick attempting to leave #channel
+[2025-01-04 20:12:21] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:21] [31mERROR :: [0mPART failed: Invalid channel name :Goodbye
+[2025-01-04 20:12:21] [33mDEBUG :: [0mSending response: 403 :Goodbye :Invalid channel name
+
+[2025-01-04 20:12:22] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:22] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:22] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:22] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:22] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56472)
+[2025-01-04 20:12:22] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:22] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:22] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:22] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:22] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:22] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:22] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:22] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:22] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:22] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:22] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:22] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:22] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:22] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:22] [31mERROR :: [0mPART failed: No channel specified
+[2025-01-04 20:12:22] [33mDEBUG :: [0mSending response: 461 PART :Not enough parameters
+
+[2025-01-04 20:12:23] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:23] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:23] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:23] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:23] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56486)
+[2025-01-04 20:12:23] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:23] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:23] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:23] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:23] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:23] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:23] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:23] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:23] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:23] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:23] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:23] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:23] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:23] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:23] [33mDEBUG :: [0mtestNick attempting to leave #invalid
+[2025-01-04 20:12:23] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:23] [33mDEBUG :: [0mSending response: 403 #invalid :No such channel
+
+[2025-01-04 20:12:24] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:24] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:24] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:24] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:24] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56492)
+[2025-01-04 20:12:24] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:24] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:24] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:24] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:24] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:24] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:24] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:24] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:24] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:24] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:24] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:24] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:24] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:24] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:24] [33mDEBUG :: [0mtestNick attempting to leave #channel
+[2025-01-04 20:12:24] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:24] [33mDEBUG :: [0mSending response: 403 #channel :No such channel
+
+[2025-01-04 20:12:25] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:25] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:25] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:25] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:25] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56494)
+[2025-01-04 20:12:25] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:25] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:25] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:25] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:25] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:25] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:25] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:25] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:25] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:25] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:25] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:25] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:25] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:25] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:25] [33mDEBUG :: [0mtestNick attempting to leave #channel1,#channel2
+[2025-01-04 20:12:25] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:25] [31mERROR :: [0mPART failed: Invalid channel name :Goodbye
+[2025-01-04 20:12:25] [33mDEBUG :: [0mSending response: 403 :Goodbye :Invalid channel name
+
+[2025-01-04 20:12:26] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:26] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:26] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:26] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:26] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56502)
+[2025-01-04 20:12:26] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:26] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:26] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:26] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:26] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:26] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:26] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:26] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:26] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:26] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:26] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:26] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:26] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:26] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:26] [33mDEBUG :: [0mtestNick attempting to leave #chan!@#
+[2025-01-04 20:12:26] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:26] [31mERROR :: [0mPART failed: Invalid channel name :Leaving
+[2025-01-04 20:12:26] [31mERROR :: [0mPART failed: Invalid channel name now
+[2025-01-04 20:12:26] [33mDEBUG :: [0mSending response: 403 now :Invalid channel name
+
+[2025-01-04 20:12:27] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:27] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:27] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:27] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:27] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56510)
+[2025-01-04 20:12:27] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:27] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:27] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:27] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:27] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:27] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:27] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:27] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:27] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:27] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:27] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:27] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:27] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:27] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:27] [33mDEBUG :: [0mtestNick attempting to leave #channel:subchannel
+[2025-01-04 20:12:27] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:27] [31mERROR :: [0mPART failed: Invalid channel name :Goodbye
+[2025-01-04 20:12:27] [33mDEBUG :: [0mSending response: 403 :Goodbye :Invalid channel name
+
+[2025-01-04 20:12:28] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:28] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-04 20:12:28] [33mDEBUG :: [0mActive connections: 1
+[2025-01-04 20:12:28] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-04 20:12:28] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56520)
+[2025-01-04 20:12:28] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-04 20:12:28] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:28] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-04 20:12:28] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-04 20:12:28] [33mDEBUG :: [0mPassword accepted
+[2025-01-04 20:12:28] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+
+[2025-01-04 20:12:28] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-04 20:12:28] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-04 20:12:28] [33mDEBUG :: [0mNickname set to: testNick
+[2025-01-04 20:12:28] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-04 20:12:28] [33mDEBUG :: [0mProcessing USER command
+[2025-01-04 20:12:28] [33mDEBUG :: [0mRegistration complete for testNick
+[2025-01-04 20:12:28] [33mDEBUG :: [0mSending response: 004 testNick :IRC server v1.0
+
+[2025-01-04 20:12:28] [33mDEBUG :: [0mProcessing command: PART
+[2025-01-04 20:12:28] [33mDEBUG :: [0mtestNick attempting to leave #12345
+[2025-01-04 20:12:28] [31mERROR :: [0mPART failed: Channel not found
+[2025-01-04 20:12:28] [31mERROR :: [0mPART failed: Invalid channel name :Leaving
+[2025-01-04 20:12:28] [31mERROR :: [0mPART failed: Invalid channel name now
+[2025-01-04 20:12:28] [33mDEBUG :: [0mSending response: 403 now :Invalid channel name
+
+[2025-01-04 20:12:29] [33mDEBUG :: [0mActive connections: 2
+[2025-01-04 20:12:29] [32mINFO :: [0mClosing connection FD: 4

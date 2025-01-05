@@ -1,0 +1,42 @@
+# -----------------------------------------------------------------------------------
+# IRC Protocol Test Suite
+# Based on RFC 2812 and modern IRC protocol extensions
+# Format: TestName|ExpectedResponse|Commands
+
+# COMMAND-TO-TEST: PING
+
+# FORMAT:
+# TestName|ExpectedResponse|Commands
+# [Additional lines in the same format if needed]
+# -----------------------------------------------------------------------------------
+PingWithServer1|:server PONG server1|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING server1
+PingWithServer1AndServer2|:server PONG server1 server2|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING server1 server2
+PingWithoutServer1|:server 409 testNick :No origin specified|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING
+PingWithNonexistentServer|:server 402 testNick nonexistent.server :No such server|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING nonexistent.server
+PingWithEmptyServer2|:server PONG server1|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING server1 
+PingWithMultipleServers|:server PONG server1 server2 server3|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING server1 server2 server3
+PingWithSpecialCharacters|:server PONG server!@#|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING server!@#
+PingWithWhitespace|:server 409 testNick :No origin specified|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING  
+PingWithLongServerName|:server PONG this.is.a.very.long.server.name.example.com|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING this.is.a.very.long.server.name.example.com
+PingWithNumericServerName|:server PONG 12345|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING 12345 
+# -----------------------------------------------------------------------------------
+# IRC Protocol Test Suite
+# Based on RFC 2812 and modern IRC protocol extensions
+# Format: TestName|ExpectedResponse|Commands
+
+# COMMAND-TO-TEST: PING
+
+# FORMAT:
+# TestName|ExpectedResponse|Commands
+# [Additional lines in the same format if needed]
+# -----------------------------------------------------------------------------------
+PingWithServer|:server PONG server1|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING server1
+PingWithServerAndTarget|:server PONG server1 server2|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING server1 server2
+PingWithoutServer|:server 409 testNick :No origin specified|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING
+PingWithNonexistentServer|:server 402 testNick nonexistent.server :No such server|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING nonexistent.server
+PingWithEmptyTarget|:server PONG server1|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING server1 
+PingWithMultipleTargets|:server PONG server1 server2 server3|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING server1 server2 server3
+PingWithSpecialCharacters|:server PONG server!@#|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING server!@#
+PingWithWhitespace|:server 409 testNick :No origin specified|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING  
+PingWithLongServerName|:server PONG this.is.a.very.long.server.name.example.com|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING this.is.a.very.long.server.name.example.com
+PingWithNumericServerName|:server PONG 12345|PASS Alilepro135!;NICK testNick;USER testUser 0 * :Test User;PING 12345 

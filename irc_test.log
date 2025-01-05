@@ -1,0 +1,58 @@
+========================================
+IRC Server Test Log - 2025-01-04 19:12:07 UTC
+User: mlamkadm
+Server: localhost:22200
+Debug Mode: 1
+Verbose Mode: 1
+========================================
+
+[2025-01-04 19:12:07 UTC] Test suite started
+----------------------------------------
+[2025-01-04 19:12:07 UTC] Starting IRC server
+[2025-01-04 19:12:09 UTC] [DEBUG] Waiting for server to start (PID: 563182)
+[2025-01-04 19:12:09 UTC] Server started successfully
+[2025-01-04 19:12:09 UTC] [DEBUG] Loading custom tests from: test/test-cases/part.test
+[2025-01-04 19:12:09 UTC] Loading custom tests from: test/test-cases/part.test
+[2025-01-04 19:12:09 UTC] Running test: PartSingleChannel
+[2025-01-04 19:12:09 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel\r\n
+[2025-01-04 19:12:10 UTC] Running test: PartMultipleChannels
+[2025-01-04 19:12:10 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel1,#channel2\r\n
+[2025-01-04 19:12:11 UTC] Running test: PartWithMessage
+[2025-01-04 19:12:11 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel :Goodbye\r\n
+[2025-01-04 19:12:12 UTC] Running test: PartWithoutChannel
+[2025-01-04 19:12:12 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART\r\n
+[2025-01-04 19:12:13 UTC] Running test: PartInvalidChannel
+[2025-01-04 19:12:13 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #invalid\r\n
+[2025-01-04 19:12:14 UTC] Running test: PartNotInChannel
+[2025-01-04 19:12:14 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel\r\n
+[2025-01-04 19:12:15 UTC] Running test: PartMultipleChannelsWithMessage
+[2025-01-04 19:12:15 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel1,#channel2 :Goodbye\r\n
+[2025-01-04 19:12:16 UTC] Running test: PartWithSpecialCharacters
+[2025-01-04 19:12:16 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #chan!@# :Leaving now\r\n
+[2025-01-04 19:12:17 UTC] Running test: PartWithColonInChannelName
+[2025-01-04 19:12:17 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel:subchannel :Goodbye\r\n
+[2025-01-04 19:12:18 UTC] Running test: PartWithNumericChannelName
+[2025-01-04 19:12:18 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #12345 :Leaving now\r\n
+[2025-01-04 19:12:19 UTC] Running test: PartSingleChannel
+[2025-01-04 19:12:19 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel\r\n
+[2025-01-04 19:12:20 UTC] Running test: PartMultipleChannels
+[2025-01-04 19:12:20 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel1,#channel2\r\n
+[2025-01-04 19:12:21 UTC] Running test: PartWithMessage
+[2025-01-04 19:12:21 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel :Goodbye\r\n
+[2025-01-04 19:12:22 UTC] Running test: PartWithoutChannel
+[2025-01-04 19:12:22 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART\r\n
+[2025-01-04 19:12:23 UTC] Running test: PartInvalidChannel
+[2025-01-04 19:12:23 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #invalid\r\n
+[2025-01-04 19:12:24 UTC] Running test: PartNotInChannel
+[2025-01-04 19:12:24 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel\r\n
+[2025-01-04 19:12:25 UTC] Running test: PartMultipleChannelsWithMessage
+[2025-01-04 19:12:25 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel1,#channel2 :Goodbye\r\n
+[2025-01-04 19:12:26 UTC] Running test: PartWithSpecialCharacters
+[2025-01-04 19:12:26 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #chan!@# :Leaving now\r\n
+[2025-01-04 19:12:27 UTC] Running test: PartWithColonInChannelName
+[2025-01-04 19:12:27 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel:subchannel :Goodbye\r\n
+[2025-01-04 19:12:28 UTC] Running test: PartWithNumericChannelName
+[2025-01-04 19:12:28 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #12345 :Leaving now\r\n
+[2025-01-04 19:12:29 UTC] Test suite shutting down
+[2025-01-04 19:12:29 UTC] Stopping server (PID: 563182)
+----------------------------------------
