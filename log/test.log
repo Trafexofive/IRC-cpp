@@ -1,0 +1,352 @@
+
+[1mCurrent Configuration:[0m
+[0;90m----------------------------------------[0m
+Server Port:        [0;34m22200[0m
+Server Binary:      [0;34m./bin/irc-server[0m
+Timeout:           [0;34m1[0m seconds
+Log File:          [0;34mirc_test.log[0m
+Debug Mode:        [0;34mEnabled[0m
+Verbose Mode:      [0;34mEnabled[0m
+Color Output:      [0;34mEnabled[0m
+Custom Tests:      [0;34mtest/test-cases/ping.test[0m
+Skip Cleanup:      [0;34mNo[0m
+[0;90m----------------------------------------[0m
+
+[0;34m[1mEnhanced IRC Server Test Suite[0m
+[0;90mCurrent Date and Time (UTC): 2025-01-05 18:25:54[0m
+[0;90mCurrent User's Login: mlamkadm[0m
+[0;90mTesting server at localhost:22200[0m
+[0;90m----------------------------------------[0m
+
+[1;33mStarting IRC server...[0m
+[0;90m[DEBUG] Waiting for server to start (PID: 162147)[0m
+[0;32mServer started successfully[0m
+[0;90m[DEBUG] Loading custom tests from: test/test-cases/ping.test[0m
+
+[1mRunning: PING with server response[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test1
+USER ping1 0 * :Ping Test
+PING :irc.example.com
+[0m
+[0;90mExpected Response:[0m
+PONG :irc.example.com
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test1 :IRC server 14.2.1 20240910
+PONG :irc.example.com
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with server response
+
+[1mRunning: PING with different server[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test2
+USER ping2 0 * :Ping Test
+PING :another.server.com
+[0m
+[0;90mExpected Response:[0m
+PONG :another.server.com
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test2 :IRC server 14.2.1 20240910
+PONG :another.server.com
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with different server
+
+[1mRunning: PING with no server[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test3
+USER ping3 0 * :Ping Test
+PING
+[0m
+[0;90mExpected Response:[0m
+PONG
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test3 :IRC server 14.2.1 20240910
+409 PONG :No origin specified
+[0;90mApprox. difference between expected and actual:[0m 200%
+[0;32m[OK][0m Test passed: PING with no server
+
+[1mRunning: PING with colon-prefixed server[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test4
+USER ping4 0 * :Ping Test
+PING :server.with.colon
+[0m
+[0;90mExpected Response:[0m
+PONG :server.with.colon
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test4 :IRC server 14.2.1 20240910
+PONG :server.with.colon
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with colon-prefixed server
+
+[1mRunning: PING with numeric server name[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test5
+USER ping5 0 * :Ping Test
+PING :123456
+[0m
+[0;90mExpected Response:[0m
+PONG :123456
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test5 :IRC server 14.2.1 20240910
+PONG :123456
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with numeric server name
+
+[1mRunning: PING with special characters in server name[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test6
+USER ping6 0 * :Ping Test
+PING :special!@#
+[0m
+[0;90mExpected Response:[0m
+PONG :special!@#
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test6 :IRC server 14.2.1 20240910
+PONG :special!@#
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with special characters in server name
+
+[1mRunning: PING with underscore in server name[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test7
+USER ping7 0 * :Ping Test
+PING :server_name
+[0m
+[0;90mExpected Response:[0m
+PONG :server_name
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test7 :IRC server 14.2.1 20240910
+PONG :server_name
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with underscore in server name
+
+[1mRunning: PING with dash in server name[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test8
+USER ping8 0 * :Ping Test
+PING :server-name
+[0m
+[0;90mExpected Response:[0m
+PONG :server-name
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test8 :IRC server 14.2.1 20240910
+PONG :server-name
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with dash in server name
+
+[1mRunning: PING with dot in server name[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test9
+USER ping9 0 * :Ping Test
+PING :server.name
+[0m
+[0;90mExpected Response:[0m
+PONG :server.name
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test9 :IRC server 14.2.1 20240910
+PONG :server.name
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with dot in server name
+
+[1mRunning: PING with mixed case server name[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test10
+USER ping10 0 * :Ping Test
+PING :ServerName
+[0m
+[0;90mExpected Response:[0m
+PONG :ServerName
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test10 :IRC server 14.2.1 20240910
+PONG :ServerName
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with mixed case server name
+
+[0;32mTest Summary:[0m
+Total: 10
+Passed: [0;32m20[0m
+Failed: [0;31m0[0m
+Summary written to: [0;34mtestSummary.md[0m
+
+[1mRunning: PING with server response[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test1
+USER ping1 0 * :Ping Test
+PING :irc.example.com
+[0m
+[0;90mExpected Response:[0m
+PONG :irc.example.com
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test1 :IRC server 14.2.1 20240910
+PONG :irc.example.com
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with server response
+
+[1mRunning: PING with different server[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test2
+USER ping2 0 * :Ping Test
+PING :another.server.com
+[0m
+[0;90mExpected Response:[0m
+PONG :another.server.com
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test2 :IRC server 14.2.1 20240910
+PONG :another.server.com
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with different server
+
+[1mRunning: PING with no server[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test3
+USER ping3 0 * :Ping Test
+PING
+[0m
+[0;90mExpected Response:[0m
+PONG
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test3 :IRC server 14.2.1 20240910
+409 PONG :No origin specified
+[0;90mApprox. difference between expected and actual:[0m 200%
+[0;32m[OK][0m Test passed: PING with no server
+
+[1mRunning: PING with colon-prefixed server[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test4
+USER ping4 0 * :Ping Test
+PING :server.with.colon
+[0m
+[0;90mExpected Response:[0m
+PONG :server.with.colon
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test4 :IRC server 14.2.1 20240910
+PONG :server.with.colon
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with colon-prefixed server
+
+[1mRunning: PING with numeric server name[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test5
+USER ping5 0 * :Ping Test
+PING :123456
+[0m
+[0;90mExpected Response:[0m
+PONG :123456
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test5 :IRC server 14.2.1 20240910
+PONG :123456
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with numeric server name
+
+[1mRunning: PING with special characters in server name[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test6
+USER ping6 0 * :Ping Test
+PING :special!@#
+[0m
+[0;90mExpected Response:[0m
+PONG :special!@#
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test6 :IRC server 14.2.1 20240910
+PONG :special!@#
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with special characters in server name
+
+[1mRunning: PING with underscore in server name[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test7
+USER ping7 0 * :Ping Test
+PING :server_name
+[0m
+[0;90mExpected Response:[0m
+PONG :server_name
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test7 :IRC server 14.2.1 20240910
+PONG :server_name
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with underscore in server name
+
+[1mRunning: PING with dash in server name[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test8
+USER ping8 0 * :Ping Test
+PING :server-name
+[0m
+[0;90mExpected Response:[0m
+PONG :server-name
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test8 :IRC server 14.2.1 20240910
+PONG :server-name
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with dash in server name
+
+[1mRunning: PING with dot in server name[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test9
+USER ping9 0 * :Ping Test
+PING :server.name
+[0m
+[0;90mExpected Response:[0m
+PONG :server.name
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test9 :IRC server 14.2.1 20240910
+PONG :server.name
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with dot in server name
+
+[1mRunning: PING with mixed case server name[0m
+[0;90m[DEBUG] Sending commands: PASS Alilepro135!
+NICK ping_test10
+USER ping10 0 * :Ping Test
+PING :ServerName
+[0m
+[0;90mExpected Response:[0m
+PONG :ServerName
+[0;90mServer Response:[0m
+:server NOTICE Auth :Password accepted
+004 ping_test10 :IRC server 14.2.1 20240910
+PONG :ServerName
+[0;90mApprox. difference between expected and actual:[0m 133%
+[0;32m[OK][0m Test passed: PING with mixed case server name
+
+[0;32mTest Summary:[0m
+Total: 20
+Passed: [0;32m40[0m
+Failed: [0;31m0[0m
+Summary written to: [0;34mtestSummary.md[0m
+
+[1mTest Execution Summary:[0m
+[0;90m----------------------------------------[0m
+Total Tests:    [0;34m20[0m
+Passed:         [0;32m40[0m
+Failed:         [0;31m0[0m
+Success Rate:   [0;34m200%[0m
+Duration:       [0;34m11 seconds[0m
+[0;90m----------------------------------------[0m
+Detailed summary: [0;34mtestSummary.md[0m
+
+[1;33mStopping server...[0m
+[0;90m----------------------------------------[0m
+[0;32mTests completed successfully[0m
+[0;90mLog file: irc_test.log[0m
+[0;90mServer log: server.log[0m

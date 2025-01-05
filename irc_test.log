@@ -1,58 +1,58 @@
 ========================================
-IRC Server Test Log - 2025-01-04 19:12:07 UTC
+IRC Server Test Log - 2025-01-05 18:25:54 UTC
 User: mlamkadm
 Server: localhost:22200
 Debug Mode: 1
 Verbose Mode: 1
 ========================================
 
-[2025-01-04 19:12:07 UTC] Test suite started
+[2025-01-05 18:25:54 UTC] Test suite started
 ----------------------------------------
-[2025-01-04 19:12:07 UTC] Starting IRC server
-[2025-01-04 19:12:09 UTC] [DEBUG] Waiting for server to start (PID: 563182)
-[2025-01-04 19:12:09 UTC] Server started successfully
-[2025-01-04 19:12:09 UTC] [DEBUG] Loading custom tests from: test/test-cases/part.test
-[2025-01-04 19:12:09 UTC] Loading custom tests from: test/test-cases/part.test
-[2025-01-04 19:12:09 UTC] Running test: PartSingleChannel
-[2025-01-04 19:12:09 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel\r\n
-[2025-01-04 19:12:10 UTC] Running test: PartMultipleChannels
-[2025-01-04 19:12:10 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel1,#channel2\r\n
-[2025-01-04 19:12:11 UTC] Running test: PartWithMessage
-[2025-01-04 19:12:11 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel :Goodbye\r\n
-[2025-01-04 19:12:12 UTC] Running test: PartWithoutChannel
-[2025-01-04 19:12:12 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART\r\n
-[2025-01-04 19:12:13 UTC] Running test: PartInvalidChannel
-[2025-01-04 19:12:13 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #invalid\r\n
-[2025-01-04 19:12:14 UTC] Running test: PartNotInChannel
-[2025-01-04 19:12:14 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel\r\n
-[2025-01-04 19:12:15 UTC] Running test: PartMultipleChannelsWithMessage
-[2025-01-04 19:12:15 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel1,#channel2 :Goodbye\r\n
-[2025-01-04 19:12:16 UTC] Running test: PartWithSpecialCharacters
-[2025-01-04 19:12:16 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #chan!@# :Leaving now\r\n
-[2025-01-04 19:12:17 UTC] Running test: PartWithColonInChannelName
-[2025-01-04 19:12:17 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel:subchannel :Goodbye\r\n
-[2025-01-04 19:12:18 UTC] Running test: PartWithNumericChannelName
-[2025-01-04 19:12:18 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #12345 :Leaving now\r\n
-[2025-01-04 19:12:19 UTC] Running test: PartSingleChannel
-[2025-01-04 19:12:19 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel\r\n
-[2025-01-04 19:12:20 UTC] Running test: PartMultipleChannels
-[2025-01-04 19:12:20 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel1,#channel2\r\n
-[2025-01-04 19:12:21 UTC] Running test: PartWithMessage
-[2025-01-04 19:12:21 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel :Goodbye\r\n
-[2025-01-04 19:12:22 UTC] Running test: PartWithoutChannel
-[2025-01-04 19:12:22 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART\r\n
-[2025-01-04 19:12:23 UTC] Running test: PartInvalidChannel
-[2025-01-04 19:12:23 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #invalid\r\n
-[2025-01-04 19:12:24 UTC] Running test: PartNotInChannel
-[2025-01-04 19:12:24 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel\r\n
-[2025-01-04 19:12:25 UTC] Running test: PartMultipleChannelsWithMessage
-[2025-01-04 19:12:25 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel1,#channel2 :Goodbye\r\n
-[2025-01-04 19:12:26 UTC] Running test: PartWithSpecialCharacters
-[2025-01-04 19:12:26 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #chan!@# :Leaving now\r\n
-[2025-01-04 19:12:27 UTC] Running test: PartWithColonInChannelName
-[2025-01-04 19:12:27 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #channel:subchannel :Goodbye\r\n
-[2025-01-04 19:12:28 UTC] Running test: PartWithNumericChannelName
-[2025-01-04 19:12:28 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK testNick\r\nUSER testUser 0 * :Test User\r\nPART #12345 :Leaving now\r\n
-[2025-01-04 19:12:29 UTC] Test suite shutting down
-[2025-01-04 19:12:29 UTC] Stopping server (PID: 563182)
+[2025-01-05 18:25:54 UTC] Starting IRC server
+[2025-01-05 18:25:56 UTC] [DEBUG] Waiting for server to start (PID: 162147)
+[2025-01-05 18:25:56 UTC] Server started successfully
+[2025-01-05 18:25:56 UTC] [DEBUG] Loading custom tests from: test/test-cases/ping.test
+[2025-01-05 18:25:56 UTC] Loading custom tests from: test/test-cases/ping.test
+[2025-01-05 18:25:56 UTC] Running test: PING with server response
+[2025-01-05 18:25:56 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test1\r\nUSER ping1 0 * :Ping Test\r\nPING :irc.example.com\r\n
+[2025-01-05 18:25:57 UTC] Running test: PING with different server
+[2025-01-05 18:25:57 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test2\r\nUSER ping2 0 * :Ping Test\r\nPING :another.server.com\r\n
+[2025-01-05 18:25:58 UTC] Running test: PING with no server
+[2025-01-05 18:25:58 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test3\r\nUSER ping3 0 * :Ping Test\r\nPING\r\n
+[2025-01-05 18:25:59 UTC] Running test: PING with colon-prefixed server
+[2025-01-05 18:25:59 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test4\r\nUSER ping4 0 * :Ping Test\r\nPING :server.with.colon\r\n
+[2025-01-05 18:26:00 UTC] Running test: PING with numeric server name
+[2025-01-05 18:26:00 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test5\r\nUSER ping5 0 * :Ping Test\r\nPING :123456\r\n
+[2025-01-05 18:26:01 UTC] Running test: PING with special characters in server name
+[2025-01-05 18:26:01 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test6\r\nUSER ping6 0 * :Ping Test\r\nPING :special!@#\r\n
+[2025-01-05 18:26:02 UTC] Running test: PING with underscore in server name
+[2025-01-05 18:26:02 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test7\r\nUSER ping7 0 * :Ping Test\r\nPING :server_name\r\n
+[2025-01-05 18:26:03 UTC] Running test: PING with dash in server name
+[2025-01-05 18:26:03 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test8\r\nUSER ping8 0 * :Ping Test\r\nPING :server-name\r\n
+[2025-01-05 18:26:04 UTC] Running test: PING with dot in server name
+[2025-01-05 18:26:04 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test9\r\nUSER ping9 0 * :Ping Test\r\nPING :server.name\r\n
+[2025-01-05 18:26:05 UTC] Running test: PING with mixed case server name
+[2025-01-05 18:26:05 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test10\r\nUSER ping10 0 * :Ping Test\r\nPING :ServerName\r\n
+[2025-01-05 18:26:06 UTC] Running test: PING with server response
+[2025-01-05 18:26:06 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test1\r\nUSER ping1 0 * :Ping Test\r\nPING :irc.example.com\r\n
+[2025-01-05 18:26:07 UTC] Running test: PING with different server
+[2025-01-05 18:26:08 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test2\r\nUSER ping2 0 * :Ping Test\r\nPING :another.server.com\r\n
+[2025-01-05 18:26:09 UTC] Running test: PING with no server
+[2025-01-05 18:26:09 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test3\r\nUSER ping3 0 * :Ping Test\r\nPING\r\n
+[2025-01-05 18:26:10 UTC] Running test: PING with colon-prefixed server
+[2025-01-05 18:26:10 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test4\r\nUSER ping4 0 * :Ping Test\r\nPING :server.with.colon\r\n
+[2025-01-05 18:26:11 UTC] Running test: PING with numeric server name
+[2025-01-05 18:26:11 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test5\r\nUSER ping5 0 * :Ping Test\r\nPING :123456\r\n
+[2025-01-05 18:26:12 UTC] Running test: PING with special characters in server name
+[2025-01-05 18:26:12 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test6\r\nUSER ping6 0 * :Ping Test\r\nPING :special!@#\r\n
+[2025-01-05 18:26:13 UTC] Running test: PING with underscore in server name
+[2025-01-05 18:26:13 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test7\r\nUSER ping7 0 * :Ping Test\r\nPING :server_name\r\n
+[2025-01-05 18:26:14 UTC] Running test: PING with dash in server name
+[2025-01-05 18:26:14 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test8\r\nUSER ping8 0 * :Ping Test\r\nPING :server-name\r\n
+[2025-01-05 18:26:15 UTC] Running test: PING with dot in server name
+[2025-01-05 18:26:15 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test9\r\nUSER ping9 0 * :Ping Test\r\nPING :server.name\r\n
+[2025-01-05 18:26:16 UTC] Running test: PING with mixed case server name
+[2025-01-05 18:26:16 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK ping_test10\r\nUSER ping10 0 * :Ping Test\r\nPING :ServerName\r\n
+[2025-01-05 18:26:17 UTC] Test suite shutting down
+[2025-01-05 18:26:17 UTC] Stopping server (PID: 162147)
 ----------------------------------------

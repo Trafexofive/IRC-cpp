@@ -59,31 +59,50 @@ void CoreServer::WelcomeClient()
     fds.push_back(_fd);
 }
 
-// Method to handle commands from the client
-void CoreServer::handleCommand(int fd, const std::string& line)
-{
-    std::istringstream iss(line);
-    std::vector<std::string> args;
-    std::string arg;
-    
-    while (iss >> arg) {
-        args.push_back(arg);
-    }
-    
-    if (args.empty()) {
-        return;
-    }
-    
-    std::string command = args[0];
-    std::transform(command.begin(), command.end(), command.begin(), ::toupper);
-    
-    std::cout << formatServerMessage("DEBUG", "Processing command: " + command) << std::endl;
-    
-    if (commands.find(command) != commands.end()) {
-        (this->*commands[command])(fd, args);
-        WriteEvent(fd);  // Send response immediately after command
+void CoreServer::handleCommand(int fd, const std::string& line) {
+    try {
+        // Parse command line into tokens
+        std::istringstream iss(line);
+        std::vector<std::string> args;
+        std::string arg;
+        
+        while (iss >> arg) {
+            args.push_back(arg);
+        }
+        
+        if (args.empty()) {
+            return;
+        }
+        
+        // Convert command to uppercase
+        std::string command = args[0];
+        std::string::iterator it;
+        for (it = command.begin(); it != command.end(); ++it) {
+            *it = toupper(*it);
+        }
+        
+        std::cout << formatServerMessage("DEBUG", "Processing command: " + command) << std::endl;
+        
+        // Execute command if it exists
+        std::map<std::string, CommandHandler>::iterator cmdIt = commands.find(command);
+        if (cmdIt != commands.end()) {
+            try {
+                (this->*cmdIt->second)(fd, args);
+                WriteEvent(fd);  // Send response immediately after command
+            } catch (const std::exception& e) {
+                std::cerr << formatServerMessage("ERROR", 
+                    std::string("Failed to execute command: ") + command + " - " + e.what()) << std::endl;
+            }
+        } else {
+            std::cerr << formatServerMessage("ERROR", 
+                std::string("Unknown command: ") + command) << std::endl;
+        }
+    } catch (const std::exception& e) {
+        std::cerr << formatServerMessage("ERROR", 
+            std::string("Failed to process command line: ") + e.what()) << std::endl;
     }
 }
+
 
 // Method to send a response to the client
 void CoreServer::WriteEvent(int fd)
