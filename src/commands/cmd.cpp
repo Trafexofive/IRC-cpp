@@ -12,9 +12,6 @@
 
 
 #include "../../inc/Server.hpp"
-#include <vector>
-#include <stdexcept>
-#include <iostream>
 
 // Helper function to check if a name is a valid channel
 static bool isChannel(const std::string& name) {
