@@ -14,12 +14,103 @@
 #define REQUESTMACROS_HPP
 
 #include <string>
+#include <vector>
+#include <map>
+#include <sstream>
+#include <iomanip>
+#include <ctime>
+#include <stdexcept>
 
 // Basic formatting helper function (not a macro)
 inline std::string formatResponse(const std::string& code, const std::string& message)
 {
     return code + " " + message + "\r\n";
 }
+
+
+namespace StringUtils {
+
+// Common line ending often used by IRC servers (CRLF).
+static const std::string LINE_ENDING = "\r\n";
+
+// Defines message severity levels for logging or status indications.
+struct Severity {
+    enum Type {
+        INFO,
+        WARNING,
+        ERROR,
+        CRITICAL
+    };
+};
+
+// Converts a severity enum to its string representation.
+inline std::string getSeverityString(Severity::Type severity) {
+    switch (severity) {
+        case Severity::INFO: return "INFO";
+        case Severity::WARNING: return "WARNING";
+        case Severity::ERROR: return "ERROR";
+        case Severity::CRITICAL: return "CRITICAL";
+        default: return "UNKNOWN";
+    }
+}
+
+// Formats a message string with severity, code, and content.
+inline std::string formatMessage(Severity::Type severity,
+                                 const std::string &code,
+                                 const std::string &message) {
+    return getSeverityString(severity) + " " + code + ": " + message + LINE_ENDING;
+}
+
+// Specialized error message formatting.
+inline std::string formatErrorMessage(const std::string &errorCode,
+                                      const std::string &errorMessage) {
+    return formatMessage(Severity::ERROR, errorCode, errorMessage);
+}
+
+// Specialized success/info message formatting.
+inline std::string formatSuccessMessage(const std::string &successCode,
+                                        const std::string &details) {
+    return formatMessage(Severity::INFO, successCode, details);
+}
+
+// Formats multiple lines with an optional indent.
+inline std::string formatMultilineMessage(const std::string &identifier,
+                                          const std::vector<std::string> &lines,
+                                          const std::string &indent = "  ") {
+    std::ostringstream oss;
+    oss << identifier << LINE_ENDING;
+    for (size_t i = 0; i < lines.size(); ++i) {
+        oss << indent << lines[i] << LINE_ENDING;
+    }
+    return oss.str();
+}
+
+// Formats a command string, e.g., for sending IRC commands.
+inline std::string formatCommand(const std::string &command,
+                                 const std::vector<std::string> &args) {
+    std::ostringstream oss;
+    oss << command;
+    for (size_t i = 0; i < args.size(); ++i) {
+        // Spaces in args usually require special handling or quotes for IRC commands.
+        oss << " " << args[i];
+    }
+    oss << LINE_ENDING;
+    return oss.str();
+}
+
+// Formats a log message using a time_t-based timestamp.
+inline std::string formatLogMessage(std::time_t timestamp,
+                                    const std::string &content,
+                                    const std::string &timeFormat = "%Y-%m-%d %H:%M:%S") {
+    char timeStr[128];
+    std::tm *timeinfo = std::localtime(&timestamp);
+    std::strftime(timeStr, sizeof(timeStr), timeFormat.c_str(), timeinfo);
+    std::ostringstream oss;
+    oss << "[" << timeStr << "] " << content << LINE_ENDING;
+    return oss.str();
+}
+
+} // namespace StringUtils
 
 // Commands
 

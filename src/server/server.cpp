@@ -106,7 +106,7 @@ static void DisplayPassInfo()
 }
 
 CoreServer::CoreServer(std::string port, std::string password) {
-  std::cout << formatServerMessage("INFO", "Initializing server...")
+  std::cout << formatServerMessage("INFO", "Constructing Server Class ...")
             << std::endl;
 
   if (!IsValidPort(port, ServData.Port)) {
@@ -114,6 +114,7 @@ CoreServer::CoreServer(std::string port, std::string password) {
     exit(1);
   }
   if (!IsValidPass(password, ServData.Passwd)) {
+    std::cerr << formatServerMessage("ERROR", "Invalid Password") << std::endl;
       DisplayPassInfo();
     exit(1);
   }

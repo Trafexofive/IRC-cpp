@@ -37,7 +37,7 @@ void CoreServer::WelcomeClient()
     
     if (fd_c < 0)
     { 
-        std::cout << formatServerMessage("ERROR", "Failure connecting client") << std::endl;
+        std::cout << formatServerMessage("WARNING", "Failure connecting client") << std::endl;
         return;
     }
     

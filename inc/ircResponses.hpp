@@ -18,7 +18,6 @@
 #include <string>
 
 
-
 namespace irc_responses {
 
 // -------------------------------------------------------
