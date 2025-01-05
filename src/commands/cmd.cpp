@@ -48,6 +48,9 @@ static void handlePartSuccess(Client& client, const std::string& channelName) {
     std::cout << formatServerMessage("SUCCESS", client.getNickName() + " left " + channelName) << std::endl;
 }
 
+//
+// helpers above need to be moved
+
 void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
     if (args.size() < 2) {
         std::cout << formatServerMessage("ERROR", "PART failed: No channel specified") << std::endl;
@@ -180,10 +183,10 @@ void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
         std::cout << formatServerMessage("DEBUG", "Registration complete for " + nick) << std::endl;
 
         // Send welcome messages using formatResponse
-        client.setResponse(formatResponse(RPL_WELCOME, nick + " :Welcome to the IRC Network"));
-        client.setResponse(formatResponse(RPL_YOURHOST, nick + " :Your host is irc.example.com"));
+        client.setResponse(formatResponse(RPL_WELCOME, nick + " :Welcome to the WeUseArch IRC Network"));
+        client.setResponse(formatResponse(RPL_YOURHOST, nick + " :Your host is morpheus-server.ddns.net"));
         client.setResponse(formatResponse(RPL_CREATED, nick + " :This server was created " __DATE__));
-        client.setResponse(formatResponse(RPL_MYINFO, nick + " :IRC server v1.0"));
+        client.setResponse(formatResponse(RPL_MYINFO, nick + " :IRC server " __VERSION__));
     }
 }
 
@@ -314,27 +317,74 @@ void    CoreServer::cmdPing(int fd, std::vector<std::string> &args)
 }
 
 
-// void CoreServer::cmdQuit(int fd, std::vector<std::string> &args) {
-//     Client& client = clients[fd];
-//     std::string quitMsg = ":" + client.getNickName() + "!" + client.getFullName() + "@localhost QUIT :";
-//     if (args.size() > 1) {
-//         for (std::vector<std::string>::iterator it = args.begin() + 1; it != args.end(); ++it) {
-//             if (it != args.begin() + 1)
-//                 quitMsg += " ";
-//             quitMsg += *it;
-//         }
-//     }
-//     quitMsg += "\r\n";
-//     client.setResponse(quitMsg);
-//     std::cout << formatServerMessage("INFO", client.getNickName() + " has quit") << std::endl;
-//     std::vector<Channel>::iterator channelIt;
-//     for (channelIt = channels.begin(); channelIt != channels.end(); ++channelIt) {
-//         channelIt->removeMember(client.getNickName());
-//     }
-//     std::vector<struct pollfd>::iterator new_end = std::remove_if(fds.begin(), fds.end(), FdRemovePredicate(fd));
-//     fds.erase(new_end, fds.end());
-//     close(fd);
-//     clients.erase(fd);
-// }
 
+static std::string constructQuitMessage(const Client &client, const std::vector<std::string> &args) {
+    std::string quitMsg = ":" + client.getNickName() + "!"
+                        + client.getFullName() + "@localhost QUIT :";
+    if (args.size() > 1) {
+        std::vector<std::string>::const_iterator it = args.begin() + 1;
+        for (; it != args.end(); ++it) {
+            if (it != args.begin() + 1) {
+                quitMsg += " ";
+            }
+            quitMsg += *it;
+        }
+    }
+    quitMsg += "\r\n";
+    return quitMsg;
+}
+
+
+static void removeClientFromAllChannels(const std::string &nickName, std::vector<Channel> &channels) {
+    for (std::vector<Channel>::iterator channelIt = channels.begin(); channelIt != channels.end(); ++channelIt) {
+        channelIt->removeMember(nickName);
+    }
+}
+
+void CoreServer::cmdQuit(int fd, std::vector<std::string> &args) {
+    Client &client = clients[fd];
+    std::string quitMsg = constructQuitMessage(client, args);
+    client.setResponse(quitMsg);
+    std::cout << formatServerMessage("INFO", client.getNickName() + " has quit") << std::endl;
+    removeClientFromAllChannels(client.getNickName(), channels);
+    std::vector<struct pollfd>::iterator new_end = std::remove_if(fds.begin(), fds.end(), FdPredicate(fd));
+    fds.erase(new_end, fds.end());
+    close(fd);
+    clients.erase(fd);
+}
+
+
+// I need to understand this better, cant properly inplement for now
+void CoreServer::cmdCap(int fd, std::vector<std::string> &args) {
+    if (args.size() < 2) {
+        std::cout << formatServerMessage("ERROR", "CAP failed: No subcommand specified") << std::endl;
+        clients[fd].setResponse(formatResponse(ERR_NEEDMOREPARAMS, "CAP :Not enough parameters"));
+        return;
+    }
+    std::string subcommand = args[1];
+    if (subcommand == "LS") {
+        std::string response = ":server CAP " + clients[fd].getNickName() + " LS :multi-prefix sasl\r\n";
+        clients[fd].setResponse(response);
+    } else if (subcommand == "REQ") {
+        if (args.size() < 3) {
+            std::cout << formatServerMessage("ERROR", "CAP REQ failed: No capability specified") << std::endl;
+            clients[fd].setResponse(formatResponse(ERR_NEEDMOREPARAMS, "CAP REQ :Not enough parameters"));
+            return;
+        }
+        std::string capability = args[2];
+        if (capability == "sasl") {
+            std::string response = ":server CAP " + clients[fd].getNickName() + " ACK :sasl\r\n";
+            clients[fd].setResponse(response);
+        } else {
+            std::cout << formatServerMessage("ERROR", "CAP REQ failed: Invalid capability") << std::endl;
+            clients[fd].setResponse(formatResponse(ERR_INVALIDCAP, capability + " :Invalid capability"));
+        }
+    } else if (subcommand == "END") {
+        std::string response = ":server CAP " + clients[fd].getNickName() + " ACK :multi-prefix sasl\r\n";
+        clients[fd].setResponse(response);
+    } else {
+        std::cout << formatServerMessage("ERROR", "CAP failed: Invalid subcommand") << std::endl;
+        clients[fd].setResponse(formatResponse(ERR_INVALIDCAPCMD, subcommand + " :Invalid CAP subcommand"));
+    }
+}
 

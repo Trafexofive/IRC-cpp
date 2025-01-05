@@ -68,6 +68,7 @@ inline std::string formatResponse(const std::string& code, const std::string& me
 #define WALLOPS "WALLOPS"
 #define USERHOST "USERHOST"
 #define ISON "ISON"
+#define CAP "CAP"
 
 // Response Codes
 #define RPL_WELCOME             "001" 
@@ -145,6 +146,10 @@ inline std::string formatResponse(const std::string& code, const std::string& me
 #define ERR_NEEDMOREPARAMS      "461"
 #define ERR_NOORIGIN            "409"
 
-
+// CAP response codes
+#define ERR_INVALIDCAPCMD "410"
+#define ERR_INVALIDCAP "411"
+#define ERR_NEEDMOREPARAMS "461"
+// #define ERR_UNKNOWNCAP "410"
 
 #endif

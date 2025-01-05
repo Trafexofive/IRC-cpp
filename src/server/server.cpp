@@ -94,6 +94,16 @@ void CoreServer::start_server() {
   }
 }
 
+static void DisplayPassInfo()
+{
+    std::cerr << formatServerMessage("ERROR", "Invalid password requirements:")
+              << std::endl;
+    std::cout << "- At least 8 characters" << std::endl;
+    std::cout << "- At least 1 lowercase letter (a-z)" << std::endl;
+    std::cout << "- At least 1 uppercase letter (A-Z)" << std::endl;
+    std::cout << "- At least 1 digit (0-9)" << std::endl;
+    std::cout << "- At least 1 special character" << std::endl;
+}
 
 CoreServer::CoreServer(std::string port, std::string password) {
   std::cout << formatServerMessage("INFO", "Initializing server...")
@@ -104,25 +114,22 @@ CoreServer::CoreServer(std::string port, std::string password) {
     exit(1);
   }
   if (!IsValidPass(password, ServData.Passwd)) {
-    std::cerr << formatServerMessage("ERROR", "Invalid password requirements:")
-              << std::endl;
-    std::cout << "- At least 8 characters" << std::endl;
-    std::cout << "- At least 1 lowercase letter (a-z)" << std::endl;
-    std::cout << "- At least 1 uppercase letter (A-Z)" << std::endl;
-    std::cout << "- At least 1 digit (0-9)" << std::endl;
-    std::cout << "- At least 1 special character" << std::endl;
+      DisplayPassInfo();
     exit(1);
   }
 
   std::cout << formatServerMessage("INFO", "Registering commands...")
             << std::endl;
+// need a better control flow for cmds
+  commands[CAP] = &CoreServer::cmdCap;
+  commands[PASS] = &CoreServer::cmdPass;
   commands[NICK] = &CoreServer::cmdNick;
   commands[USER] = &CoreServer::cmdUser;
   commands[JOIN] = &CoreServer::cmdJoin;
   commands[PRIVMSG] = &CoreServer::cmdPrivmsg;
-  commands[PASS] = &CoreServer::cmdPass;
   commands[PING] = &CoreServer::cmdPing;
   commands[PART] = &CoreServer::cmdPart;
+  commands[QUIT] = &CoreServer::cmdQuit;
 
   // commands[CMD_LIST] = &CoreServer::cmdList;
 

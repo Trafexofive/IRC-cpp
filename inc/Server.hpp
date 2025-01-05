@@ -99,6 +99,8 @@ private:
     void cmdPrivmsg(int fd, std::vector<std::string>& args);
     void cmdPart(int fd, std::vector<std::string>& args);
     void cmdPing(int fd, std::vector<std::string>& args);
+    void cmdCap(int fd, std::vector<std::string>& args);
+    void cmdQuit(int fd, std::vector<std::string>& args);
     // void cmdList(int fd, std::vector<std::string>& args);
 
 
