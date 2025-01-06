@@ -24,7 +24,8 @@ Client::Client() :
     nickName(""),
     passWord(""),
     buff(""),
-    response("")
+    response(""),
+    clientType(CLIENT::NORMAL)
 {
     std::cout << formatServerMessage("DEBUG", "Creating new empty client instance") << std::endl;
 }

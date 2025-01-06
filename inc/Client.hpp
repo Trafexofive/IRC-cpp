@@ -26,6 +26,16 @@
 
 #include "../inc/Helpers.hpp"
 
+
+typedef struct {
+    enum TYPE{
+        NORMAL,
+        OPERATOR,
+        UNKNOWN
+    };
+}
+CLIENT;
+
 class Client
 {
 private:
@@ -39,6 +49,7 @@ private:
     std::string passWord;
     std::string buff;
     std::string response;
+    int clientType;
 
 public:
     Client();

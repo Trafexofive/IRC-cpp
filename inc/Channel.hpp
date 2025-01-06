@@ -26,12 +26,23 @@
 #include <vector>
 #include "Client.hpp"
 
+
+typedef struct {
+    enum TYPE{
+        PUBLIC,
+        PRIVATE,
+        UNKNOWN
+    };
+}
+CHANNEL;
+
 class Channel {
 private:
     std::string name;
     std::string topic;
     std::string password;
     std::vector<Client> members;
+    int         type;
 
 public:
     // Default constructor

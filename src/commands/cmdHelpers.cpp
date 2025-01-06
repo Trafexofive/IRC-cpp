@@ -12,10 +12,21 @@
 
 #include "../../inc/Server.hpp"
 
+
 // Helper function to check if a name is a valid channel
 bool isChannel(const std::string& name) {
     return (!name.empty() && (name[0] == '#' || name[0] == '&'));
 }
+
+CHANNEL::TYPE   ChannelType(const std::string &name)
+{
+    if (name[0] == '#')
+        return CHANNEL::PUBLIC;
+    else if (name[0] == '&')
+        return CHANNEL::PRIVATE;
+    return CHANNEL::UNKNOWN;
+}
+
 
 // Helper function to get a channel by name
 Channel& getChannel(const std::string& name, std::vector<Channel>& channels) {
