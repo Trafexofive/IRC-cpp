@@ -70,4 +70,14 @@ public:
     void printInfo() const;
 };
 
+// helper functions
+
+bool    isChannel(const std::string& name);
+Channel& getChannel(const std::string& name, std::vector<Channel>& channels);
+void removeClientFromChannel(Client& client, Channel& channel) ;
+void handleInvalidChannel(Client& client, const std::string& channelName) ;
+void handlePartSuccess(Client& client, const std::string& channelName) ;
+
+
+
 #endif // CHANNEL_HPP

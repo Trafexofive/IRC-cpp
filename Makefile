@@ -35,8 +35,10 @@ TEST-FILE := $(DIR_TEST)/test-cases/ping.test
 SRC_FILES := HandleEvents.cpp \
     server/server.cpp \
     client/client.cpp \
-    commands/cmd.cpp \
     utils/Utils.cpp \
+    commands/cmd.cpp \
+    commands/join.cpp \
+    commands/cmdHelpers.cpp \
     main.cpp \
     Validation.cpp \
     Channel.cpp

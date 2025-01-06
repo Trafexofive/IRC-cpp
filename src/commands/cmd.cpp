@@ -13,40 +13,6 @@
 
 #include "../../inc/Server.hpp"
 
-// Helper function to check if a name is a valid channel
-static bool isChannel(const std::string& name) {
-    return (!name.empty() && (name[0] == '#' || name[0] == '&'));
-}
-
-// Helper function to get a channel by name
-static Channel& getChannel(const std::string& name, std::vector<Channel>& channels) {
-    for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
-        if (it->getName() == name)
-            return *it;
-    }
-    throw std::runtime_error("Channel not found");
-}
-
-// Helper function to remove a client from a channel
-static void removeClientFromChannel(Client& client, Channel& channel) {
-    channel.removeMember(client.getNickName());
-}
-
-// Helper function to handle invalid channel case
-static void handleInvalidChannel(Client& client, const std::string& channelName) {
-    std::cout << formatServerMessage("ERROR", "PART failed: Invalid channel name " + channelName) << std::endl;
-    client.setResponse(formatResponse(ERR_NOSUCHCHAN, channelName + " :Invalid channel name"));
-}
-
-// Helper function to handle successful part operation
-static void handlePartSuccess(Client& client, const std::string& channelName) {
-    std::string partMsg = ":" + client.getNickName() + "!" + client.getFullName() + "@localhost PART " + channelName + "\r\n";
-    client.setResponse(partMsg);
-    std::cout << formatServerMessage("SUCCESS", client.getNickName() + " left " + channelName) << std::endl;
-}
-
-//
-// helpers above need to be moved
 
 void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
     if (args.size() < 2) {
@@ -187,43 +153,6 @@ void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
     }
 }
 
-void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
-    if (args.size() < 2) {
-        std::cout << formatServerMessage("ERROR", "JOIN failed: No channel specified") << std::endl;
-        clients[fd].setResponse(formatResponse(ERR_NEEDMOREPARAMS, "JOIN :Not enough parameters"));
-        return;
-    }
-
-    std::string channelName = args[1];
-    if (channelName[0] != '#')
-        channelName = "#" + channelName;
-
-    Client& client = clients[fd];
-    std::cout << formatServerMessage("DEBUG", client.getNickName() + " attempting to join " + channelName) << std::endl;
-
-    // Find or create channel
-    bool channelExists = false;
-    for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
-        if (it->getName() == channelName) {
-            channelExists = true;
-            it->addMember(client);
-            break;
-        }
-    }
-
-    if (!channelExists) {
-        std::cout << formatServerMessage("DEBUG", "Creating new channel: " + channelName) << std::endl;
-        Channel newChannel(channelName);
-        newChannel.addMember(client);
-        channels.push_back(newChannel);
-    }
-
-    // Send join message
-    std::string joinMsg = ":" + client.getNickName() + "!" + client.getFullName() + "@localhost JOIN " + channelName + "\r\n";
-    client.setResponse(joinMsg);
-
-    std::cout << formatServerMessage("SUCCESS", client.getNickName() + " joined " + channelName) << std::endl;
-}
 
 void CoreServer::cmdPrivmsg(int fd, std::vector<std::string> &args) {
     if (args.size() < 3) {
