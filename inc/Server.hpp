@@ -132,6 +132,7 @@ public:
     // channel methods
     LEVEL addChannel(const std::string& name, const std::string& topic, const std::string& password);
     LEVEL removeChannel(const std::string& name);
+    void joinChannel(Client& client, const std::string& channelName);
 
 };
 

@@ -13,11 +13,34 @@
 #include "../../inc/Server.hpp"
 #include <string>
 
-
 typedef struct {
   std::string keys;
   std::string channels;
 } JOIN_PARAMS;
+
+
+void    CoreServer::joinChannel(Client& client, const std::string& channelName) {
+    // Find or create channel
+    bool channelExists = false;
+    for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
+        if (it->getName() == channelName) {
+            channelExists = true;
+            it->addMember(client);
+            break;
+        }
+    }
+    if (!channelExists) {
+        std::cout << formatServerMessage("DEBUG", "Creating new channel: " + channelName) << std::endl;
+        Channel newChannel(channelName);
+        newChannel.addMember(client);
+        channels.push_back(newChannel);
+    }
+    // Send join message
+    std::string joinMsg = ":" + client.getNickName() + "!" + client.getFullName() + "@localhost JOIN " + channelName + "\r\n";
+    client.setResponse(joinMsg);
+    std::cout << formatServerMessage("SUCCESS", client.getNickName() + " joined " + channelName) << std::endl;
+}
+
 
 static void InvalidChannelName(Client &client, const std::string &channelName) {
   std::cout << formatServerMessage(
@@ -30,9 +53,7 @@ static void InvalidChannelName(Client &client, const std::string &channelName) {
 // static void handleMultiArgJoin(Client &client,
 //                                const std::vector<std::string> &args) {}
 
-
-
-//JOIN #channel1,#channel2 key1,key2
+// JOIN #channel1,#channel2 key1,key2
 static JOIN_PARAMS &parseJoinParams(const std::vector<std::string> &args) {
   JOIN_PARAMS *params = new JOIN_PARAMS();
   for (std::vector<std::string>::const_iterator it = args.begin() + 1;
@@ -47,17 +68,31 @@ static JOIN_PARAMS &parseJoinParams(const std::vector<std::string> &args) {
   return *params;
 }
 
-// const Channel& channel = getChannel(channelName, channels);
-//     std::cout << formatServerMessage("ERROR", client.getNickName() + " is
-//     already a member of " + channelName) << std::endl;
-//     client.setResponse(formatResponse(ERR_USERONCHANNEL,
-//     client.getNickName() + " " + channelName + " :is already a member of
-//     " + channelName));
-// }
+static void smpJoinMessageConstructor(std::string &joinMsg, Client &client,
+                                      const std::string &channelName) {
+  joinMsg = ":" + client.getNickName() + "!" + client.getFullName() +
+            "@localhost JOIN " + channelName + "\r\n";
+}
+
+static void multiJoinMessageConstructor(std::string &joinMsg, Client &client,
+                                        const std::string &channelName) {
+  joinMsg = ":" + client.getNickName() + "!" + client.getFullName() +
+            "@localhost JOIN " + channelName + "\r\n";
+}
+
+// static void handleParams()
 
 void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
+  // if (args.size() == 2)
+
   if (args.size() > 2) {
     JOIN_PARAMS parameters = parseJoinParams(args);
+    // if (handleParams(parameters, clients[fd], channels)) {
+    //   std::cout << formatServerMessage("SUCCESS", "JOIN successful") <<
+    //   std::endl;
+    // } else {
+    //   std::cout << formatServerMessage("ERROR", "JOIN failed") << std::endl;
+    // }
   } else if (args.size() < 2) {
     std::cout << formatServerMessage("ERROR",
                                      "JOIN failed: No channel specified")
@@ -144,15 +179,12 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
 // =====================================================================================================================
 //
 
-
-
-
 // static void cmdTopic(int fd, std::vector<std::string> &args) {
 //   if (args.size() < 2) {
 //     std::cout << formatServerMessage("ERROR",
 //                                      "TOPIC failed: No channel specified")
 //               << std::endl;
-//     clients[fd].setResponse(formatResponse(ERR_NEEDMOREPARAMS, "TOPIC :Not enough parameters"));
-//     return;
+//     clients[fd].setResponse(formatResponse(ERR_NEEDMOREPARAMS, "TOPIC :Not
+//     enough parameters")); return;
 //   }
 // }

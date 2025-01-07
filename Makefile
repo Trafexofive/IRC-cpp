@@ -50,7 +50,7 @@ DEP := $(OBJ:%.o=$(DIR_DEPS)/%.d)
 
 # Compiler and Flags
 CXX := c++
-CXXFLAGS := -Wall -Wextra -Werror -std=c++98
+CXXFLAGS := -Wall -Wextra -std=c++98 #-Werror 
 CPPFLAGS := -MMD -MP -I$(DIR_INC)
 LDFLAGS := -L/usr/local/lib
 

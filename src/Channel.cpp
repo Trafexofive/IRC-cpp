@@ -137,3 +137,6 @@ void Channel::printInfo() const {
     info << "Channel Info: [Name: " << name << ", Topic: " << topic << ", Password: " << (password.empty() ? "None" : "Set") << ", Members: " << members.size() << "]";
     std::cout << formatServerMessage("INFO", info.str()) << std::endl;
 }
+
+
+

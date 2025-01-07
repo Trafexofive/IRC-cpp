@@ -59,6 +59,16 @@ void CoreServer::WelcomeClient()
     fds.push_back(_fd);
 }
 
+static void printTokens(const std::vector<std::string>& tokens)
+{
+    std::cout << formatServerMessage("DEBUG", "Tokens: ") << std::endl;
+    for (std::vector<std::string>::const_iterator it = tokens.begin(); it != tokens.end(); ++it)
+    {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+}
+
 void CoreServer::handleCommand(int fd, const std::string& line) {
     try {
         // Parse command line into tokens
@@ -69,10 +79,10 @@ void CoreServer::handleCommand(int fd, const std::string& line) {
         while (iss >> arg) {
             args.push_back(arg);
         }
-        
         if (args.empty()) {
             return;
         }
+        printTokens(args);
         
         // Convert command to uppercase
         std::string command = args[0];
