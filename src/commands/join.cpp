@@ -13,6 +13,12 @@
 #include "../../inc/Server.hpp"
 #include <string>
 
+
+typedef struct {
+  std::string keys;
+  std::string channels;
+} JOIN_PARAMS;
+
 static void InvalidChannelName(Client &client, const std::string &channelName) {
   std::cout << formatServerMessage(
                    "ERROR", "JOIN failed: Invalid channel name " + channelName)
@@ -21,50 +27,38 @@ static void InvalidChannelName(Client &client, const std::string &channelName) {
       formatResponse(ERR_NOSUCHCHAN, channelName + " :Invalid channel name"));
 }
 
-static void InvalidChannelsName(Client &client,
-                                const std::vector<std::string> &channels) 
-{
-    std::string channelsStr = "";
-    for (std::vector<std::string>::const_iterator it = channels.begin();
-         it != channels.end(); ++it) {
-        channelsStr += *it + " ";
+// static void handleMultiArgJoin(Client &client,
+//                                const std::vector<std::string> &args) {}
+
+
+
+//JOIN #channel1,#channel2 key1,key2
+static JOIN_PARAMS &parseJoinParams(const std::vector<std::string> &args) {
+  JOIN_PARAMS *params = new JOIN_PARAMS();
+  for (std::vector<std::string>::const_iterator it = args.begin() + 1;
+       it != args.end(); ++it) {
+    std::cout << "arg: " << *it << std::endl;
+    if ((*it)[0] == '#' || (*it)[0] == '&') {
+      params->channels += *it + " ";
+    } else {
+      params->keys += *it + " ";
     }
-    std::cout << formatServerMessage(
-                     "ERROR", "JOIN failed: Invalid channel name " + channelsStr)
-                << std::endl;
-    client.setResponse(
-        formatResponse(ERR_NOSUCHCHAN, channelsStr + " :Invalid channel name"));
+  }
+  return *params;
 }
 
-
-
-static void handleMultiArgJoin(Client &client,
-                               const std::vector<std::string> &args) {}
-
-// static void joinChannel(Client& client, const std::string& channelName) {
-//     const Channel& channel = getChannel(channelName, channels);
-//     if (channel.isMember(client.getNickName())) {
-//         std::cout << formatServerMessage("ERROR", client.getNickName() + " is
-//         already a member of " + channelName) << std::endl;
-//         client.setResponse(formatResponse(ERR_USERONCHANNEL,
-//         client.getNickName() + " " + channelName + " :is already a member of
-//         " + channelName));
-//     }
-//     else {
-//         channel.addMember(client);
-//         std::string joinMsg = ":" + client.getNickName() + "!" +
-//         client.getFullName() + "@localhost JOIN " + channelName + "\r\n";
-//         client.setResponse(joinMsg);
-//         std::cout << formatServerMessage("SUCCESS", client.getNickName() + "
-//         joined " + channelName) << std::endl;
-//     }
+// const Channel& channel = getChannel(channelName, channels);
+//     std::cout << formatServerMessage("ERROR", client.getNickName() + " is
+//     already a member of " + channelName) << std::endl;
+//     client.setResponse(formatResponse(ERR_USERONCHANNEL,
+//     client.getNickName() + " " + channelName + " :is already a member of
+//     " + channelName));
 // }
 
 void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
-    if (args.size() > 2) {
-        bool multiArgs = false;
-    }
-    else if (args.size() < 2) {
+  if (args.size() > 2) {
+    JOIN_PARAMS parameters = parseJoinParams(args);
+  } else if (args.size() < 2) {
     std::cout << formatServerMessage("ERROR",
                                      "JOIN failed: No channel specified")
               << std::endl;
@@ -72,7 +66,6 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
         formatResponse(ERR_NEEDMOREPARAMS, "JOIN :Not enough parameters"));
     return;
   }
-
   // core join logic
   std::string channelName = args[1];
   if (!isChannel(channelName)) {
@@ -147,4 +140,19 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
 //     /LIST\r\n"; clients[fd].setResponse(listMsg); std::cout <<
 //     formatServerMessage("SUCCESS", "Sending channel list to " +
 //     clients[fd].getNickName()) << std::endl;
+// }
+// =====================================================================================================================
+//
+
+
+
+
+// static void cmdTopic(int fd, std::vector<std::string> &args) {
+//   if (args.size() < 2) {
+//     std::cout << formatServerMessage("ERROR",
+//                                      "TOPIC failed: No channel specified")
+//               << std::endl;
+//     clients[fd].setResponse(formatResponse(ERR_NEEDMOREPARAMS, "TOPIC :Not enough parameters"));
+//     return;
+//   }
 // }
