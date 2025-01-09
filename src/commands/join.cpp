@@ -21,6 +21,7 @@ typedef struct {
 
 void    CoreServer::joinChannel(Client& client, const std::string& channelName) {
     // Find or create channel
+
     bool channelExists = false;
     for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
         if (it->getName() == channelName) {
@@ -68,17 +69,19 @@ static JOIN_PARAMS &parseJoinParams(const std::vector<std::string> &args) {
   return *params;
 }
 
+
+
 static void smpJoinMessageConstructor(std::string &joinMsg, Client &client,
                                       const std::string &channelName) {
   joinMsg = ":" + client.getNickName() + "!" + client.getFullName() +
             "@localhost JOIN " + channelName + "\r\n";
 }
 
-static void multiJoinMessageConstructor(std::string &joinMsg, Client &client,
-                                        const std::string &channelName) {
-  joinMsg = ":" + client.getNickName() + "!" + client.getFullName() +
-            "@localhost JOIN " + channelName + "\r\n";
-}
+// static const std::string&  multiJoinMessageConstructor(JOIN_PARAMS parameters, Client &client, Channel &channel) {
+//
+//
+//
+// }
 
 // static void handleParams()
 

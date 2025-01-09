@@ -37,7 +37,12 @@ SRC_FILES := HandleEvents.cpp \
     client/client.cpp \
     utils/Utils.cpp \
     commands/cmd.cpp \
+    commands/ping.cpp \
+    commands/nick.cpp \
     commands/join.cpp \
+    commands/pass.cpp \
+    commands/part.cpp \
+    commands/user.cpp \
     commands/cmdHelpers.cpp \
     main.cpp \
     Validation.cpp \
