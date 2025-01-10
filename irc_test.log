@@ -1,22 +1,22 @@
 ========================================
-IRC Server Test Log - 2025-01-10 19:20:33 UTC
+IRC Server Test Log - 2025-01-10 20:49:15 UTC
 User: mlamkadm
 Server: localhost:22200
 Debug Mode: 1
 Verbose Mode: 1
 ========================================
 
-[2025-01-10 19:20:33 UTC] Test suite started
+[2025-01-10 20:49:15 UTC] Test suite started
 ----------------------------------------
-[2025-01-10 19:20:33 UTC] Starting IRC server
-[2025-01-10 19:20:35 UTC] [DEBUG] Waiting for server to start (PID: 73906)
-[2025-01-10 19:20:35 UTC] Server started successfully
-[2025-01-10 19:20:35 UTC] [DEBUG] Loading custom tests from: test/test-cases/rfc-join.test
-[2025-01-10 19:20:35 UTC] Loading custom tests from: test/test-cases/rfc-join.test
-[2025-01-10 19:20:35 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
-[2025-01-10 19:20:35 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\n
-[2025-01-10 19:20:36 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
-[2025-01-10 19:20:36 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\n
-[2025-01-10 19:20:38 UTC] Test suite shutting down
-[2025-01-10 19:20:38 UTC] Stopping server (PID: 73906)
+[2025-01-10 20:49:15 UTC] Starting IRC server
+[2025-01-10 20:49:17 UTC] [DEBUG] Waiting for server to start (PID: 108409)
+[2025-01-10 20:49:17 UTC] Server started successfully
+[2025-01-10 20:49:17 UTC] [DEBUG] Loading custom tests from: test/test-cases/rfc-join.test
+[2025-01-10 20:49:17 UTC] Loading custom tests from: test/test-cases/rfc-join.test
+[2025-01-10 20:49:17 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
+[2025-01-10 20:49:17 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\n
+[2025-01-10 20:49:18 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
+[2025-01-10 20:49:18 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\n
+[2025-01-10 20:49:19 UTC] Test suite shutting down
+[2025-01-10 20:49:19 UTC] Stopping server (PID: 108409)
 ----------------------------------------

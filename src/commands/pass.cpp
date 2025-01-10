@@ -11,9 +11,16 @@
 /* ************************************************************************** */
 
 #include "../../inc/Server.hpp"
+#include <string>
+
+static const std::string& constructPassMessage(const std::string& nick, const std::string& hostname, const std::string& code, const std::string& message) {
+    static std::string msg = ":" + hostname + " " + code + " " + nick + " :" + message + "\r\n";
+    return msg;
+}
 
 void CoreServer::cmdPass(int fd, std::vector<std::string> &args) {
     std::cout << formatServerMessage("DEBUG", "Processing PASS command") << std::endl;
+    Client& client = clients[fd];
 
     if (args.size() < 2) {
         std::cout << formatServerMessage("ERROR", "PASS command failed: Not enough parameters") << std::endl;
@@ -27,9 +34,9 @@ void CoreServer::cmdPass(int fd, std::vector<std::string> &args) {
         return;
     }
 
-    Client& client = clients[fd];
     client.setPassWord(args[1]);
     client.setAuth(true);
     std::cout << formatServerMessage("DEBUG", "Password accepted") << std::endl;
-    client.setResponse(":server NOTICE Auth :Password accepted\r\n");
+    // 001 pass accepted
+    client.setResponse(constructPassMessage(client.getNickName(), this->ServData.Host, "001", "Password Accepted"));
 }

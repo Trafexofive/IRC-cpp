@@ -123,16 +123,8 @@ CoreServer::CoreServer(std::string port, std::string password) {
 
   std::cout << formatServerMessage("INFO", "Registering commands...")
             << std::endl;
-// need a better control flow for cmds
-  commands[CAP] = &CoreServer::cmdCap;
+// only one allowed before auth
   commands[PASS] = &CoreServer::cmdPass;
-  commands[NICK] = &CoreServer::cmdNick;
-  commands[USER] = &CoreServer::cmdUser;
-  commands[JOIN] = &CoreServer::cmdJoin;
-  commands[PRIVMSG] = &CoreServer::cmdPrivmsg;
-  commands[PING] = &CoreServer::cmdPing;
-  commands[PART] = &CoreServer::cmdPart;
-  commands[QUIT] = &CoreServer::cmdQuit;
 
   // commands[CMD_LIST] = &CoreServer::cmdList;
 
