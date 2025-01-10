@@ -27,6 +27,15 @@ class FdRemovePredicate
         }
 };
 
+static void printAllClientProperties(const Client &client) {
+  std::cout << formatServerMessage("DEBUG", "Client properties:") << std::endl;
+  std::cout << "  - fd: " << client.getFd() << std::endl;
+  std::cout << "  - nick: " << client.getNickName() << std::endl;
+  std::cout << "  - full name: " << client.getFullName() << std::endl;
+  std::cout << "  - password: " << client.getPassWord() << std::endl;
+  std::cout << "  - ip: " << client.getIpAddr() << std::endl;
+}
+
 // Method to welcome a new client
 void CoreServer::WelcomeClient()
 {
@@ -46,6 +55,8 @@ void CoreServer::WelcomeClient()
     std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
     
     clients[fd_c] = Client(fd_c, client_addr);
+    printAllClientProperties(clients[fd_c]);
+
 
     char host[NI_MAXHOST];
     char service[NI_MAXSERV];

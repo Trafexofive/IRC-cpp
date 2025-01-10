@@ -1,0 +1,14 @@
+# IRC Protocol Test Suite
+# Based on RFC [2812] and modern IRC protocol extensions
+# Format: TestName|ExpectedResponse|Commands
+
+# COMMAND-TO-TEST: {USER}
+
+# FORMAT:
+# TestName|ExpectedResponse|Commands
+# [Additional lines in the same format if needed]
+
+# AUTH-BP|PONG :irc.example.com|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\n{actual test}\r\n
+
+
+SINGLE NORMAL CHANNEL JOIN|PONG :irc.example.com|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\n

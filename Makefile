@@ -29,7 +29,7 @@ DIR_BACKUP := backup
 DIR_DEPS := .deps
 
 # Test File
-TEST-FILE := $(DIR_TEST)/test-cases/ping.test
+TEST-FILE := $(DIR_TEST)/test-cases/rfc-join.test
 
 # Source Files
 SRC_FILES := HandleEvents.cpp \
@@ -37,6 +37,8 @@ SRC_FILES := HandleEvents.cpp \
     client/client.cpp \
     utils/Utils.cpp \
     commands/cmd.cpp \
+    commands/cap.cpp \
+    commands/privmsg.cpp \
     commands/ping.cpp \
     commands/nick.cpp \
     commands/join.cpp \

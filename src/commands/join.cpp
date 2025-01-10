@@ -20,7 +20,6 @@ typedef struct {
 
 
 void    CoreServer::joinChannel(Client& client, const std::string& channelName) {
-    // Find or create channel
 
     bool channelExists = false;
     for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
@@ -85,8 +84,17 @@ static void smpJoinMessageConstructor(std::string &joinMsg, Client &client,
 
 // static void handleParams()
 
+
+static void printArgs(std::vector<std::string> &args) {
+  for (std::vector<std::string>::iterator it = args.begin(); it != args.end();
+       ++it) {
+    std::cout << "ARG: [" << *it << std::endl;
+  }
+}
+
 void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
   // if (args.size() == 2)
+
 
   if (args.size() > 2) {
     JOIN_PARAMS parameters = parseJoinParams(args);

@@ -1,514 +1,88 @@
-[2025-01-05 19:25:54] [32mINFO :: [0mStarting IRC server
-[2025-01-05 19:25:54] [32mINFO :: [0mConstructing Server Class ...
-[2025-01-05 19:25:54] [33mDEBUG :: [0mValidating port: 22200
-[2025-01-05 19:25:54] [33mDEBUG :: [0m
-[2025-01-05 19:25:54] [33mDEBUG :: [0mValidating password
-[2025-01-05 19:25:54] [33mDEBUG :: [0mPassword valid
-[2025-01-05 19:25:54] [32mINFO :: [0mRegistering commands...
-[2025-01-05 19:25:54] [32mINFO :: [0mCreating socket...
-[2025-01-05 19:25:54] [33mDEBUG :: [0mSocket created: 3
-[2025-01-05 19:25:54] [32mINFO :: [0mSocket setup complete
-[2025-01-05 19:25:54] [33mDEBUG :: [0mBinding socket...
-[2025-01-05 19:25:54] [32mINFO :: [0mStarting to listen...
-[2025-01-05 19:25:54] [32mINFO :: [0mServer listening on port: 22200
-[2025-01-05 19:25:54] [33mDEBUG :: [0mServer main loop starting...
-[2025-01-05 19:25:56] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:25:56] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:25:56] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:53270)
-[2025-01-05 19:25:56] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:25:56] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:25:56] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:25:56] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:25:56] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:25:56] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+[2025-01-10 20:20:33] [32mINFO :: [0mStarting IRC server
+[2025-01-10 20:20:33] [32mINFO :: [0mConstructing Server Class ...
+[2025-01-10 20:20:33] [33mDEBUG :: [0mValidating port: 22200
+[2025-01-10 20:20:33] [33mDEBUG :: [0m
+[2025-01-10 20:20:33] [33mDEBUG :: [0mValidating password
+[2025-01-10 20:20:33] [33mDEBUG :: [0mPassword valid
+[2025-01-10 20:20:33] [32mINFO :: [0mRegistering commands...
+[2025-01-10 20:20:33] [32mINFO :: [0mCreating socket...
+[2025-01-10 20:20:33] [33mDEBUG :: [0mSocket created: 3
+[2025-01-10 20:20:33] [32mINFO :: [0mSocket setup complete
+[2025-01-10 20:20:33] [33mDEBUG :: [0mBinding socket...
+[2025-01-10 20:20:33] [32mINFO :: [0mStarting to listen...
+[2025-01-10 20:20:33] [32mINFO :: [0mServer listening on port: 22200
+[2025-01-10 20:20:33] [33mDEBUG :: [0mServer main loop starting...
+[2025-01-10 20:20:35] [33mDEBUG :: [0mActive connections: 1
+[2025-01-10 20:20:35] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-10 20:20:35] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:50416)
+[2025-01-10 20:20:35] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-10 20:20:35] [33mDEBUG :: [0mClient properties:
+  - fd: 4
+  - nick: 
+  - full name: 
+  - password: 
+  - ip: 
+[2025-01-10 20:20:35] [33mDEBUG :: [0mActive connections: 2
+[2025-01-10 20:20:35] [33mDEBUG :: [0mTokens: 
+PASS Alilepro135! 
+[2025-01-10 20:20:35] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-10 20:20:35] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-10 20:20:35] [33mDEBUG :: [0mPassword accepted
+[2025-01-10 20:20:35] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
 
-[2025-01-05 19:25:56] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:25:56] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:25:56] [33mDEBUG :: [0mNickname set to: ping_test1
-[2025-01-05 19:25:56] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:25:56] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:25:56] [33mDEBUG :: [0mRegistration complete for ping_test1
-[2025-01-05 19:25:56] [33mDEBUG :: [0mSending response: 004 ping_test1 :IRC server 14.2.1 20240910
+[2025-01-10 20:20:35] [33mDEBUG :: [0mTokens: 
+NICK test-user 
+[2025-01-10 20:20:35] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-10 20:20:35] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-10 20:20:35] [33mDEBUG :: [0mNickname set to: test-user
+[2025-01-10 20:20:35] [33mDEBUG :: [0mTokens: 
+USER testUser 0 * :Test User 
+[2025-01-10 20:20:35] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-10 20:20:35] [33mDEBUG :: [0mProcessing USER command
+[2025-01-10 20:20:35] [33mDEBUG :: [0mRegistration complete for test-user
+[2025-01-10 20:20:35] [33mDEBUG :: [0mSending response: 004 test-user :IRC server 14.2.1 20240910
 
-[2025-01-05 19:25:56] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :irc.example.com
-[2025-01-05 19:25:56] [33mDEBUG :: [0mSending response: PONG :irc.example.com
+[2025-01-10 20:20:35] [33mDEBUG :: [0mTokens: 
+JOIN #test-channel 
+[2025-01-10 20:20:35] [33mDEBUG :: [0mProcessing command: JOIN
+[2025-01-10 20:20:35] [33mDEBUG :: [0mtest-user attempting to join #test-channel
+[2025-01-10 20:20:35] [31mERROR :: [0mFailed to execute command: JOIN - Channel not found
+[2025-01-10 20:20:36] [33mDEBUG :: [0mActive connections: 2
+[2025-01-10 20:20:36] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-10 20:20:36] [33mDEBUG :: [0mActive connections: 1
+[2025-01-10 20:20:36] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-10 20:20:36] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:50432)
+[2025-01-10 20:20:36] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-10 20:20:36] [33mDEBUG :: [0mClient properties:
+  - fd: 4
+  - nick: 
+  - full name: 
+  - password: 
+  - ip: 
+[2025-01-10 20:20:36] [33mDEBUG :: [0mActive connections: 2
+[2025-01-10 20:20:36] [33mDEBUG :: [0mTokens: 
+PASS Alilepro135! 
+[2025-01-10 20:20:36] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-10 20:20:36] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-10 20:20:36] [33mDEBUG :: [0mPassword accepted
+[2025-01-10 20:20:36] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
 
-[2025-01-05 19:25:57] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:25:57] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:25:57] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:25:57] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:25:57] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:53276)
-[2025-01-05 19:25:57] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:25:57] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:25:57] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:25:57] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:25:57] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:25:57] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
+[2025-01-10 20:20:36] [33mDEBUG :: [0mTokens: 
+NICK test-user 
+[2025-01-10 20:20:36] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-10 20:20:36] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-10 20:20:36] [33mDEBUG :: [0mNickname set to: test-user
+[2025-01-10 20:20:36] [33mDEBUG :: [0mTokens: 
+USER testUser 0 * :Test User 
+[2025-01-10 20:20:36] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-10 20:20:36] [33mDEBUG :: [0mProcessing USER command
+[2025-01-10 20:20:36] [33mDEBUG :: [0mRegistration complete for test-user
+[2025-01-10 20:20:36] [33mDEBUG :: [0mSending response: 004 test-user :IRC server 14.2.1 20240910
 
-[2025-01-05 19:25:57] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:25:57] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:25:57] [33mDEBUG :: [0mNickname set to: ping_test2
-[2025-01-05 19:25:57] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:25:57] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:25:57] [33mDEBUG :: [0mRegistration complete for ping_test2
-[2025-01-05 19:25:57] [33mDEBUG :: [0mSending response: 004 ping_test2 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:25:57] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :another.server.com
-[2025-01-05 19:25:57] [33mDEBUG :: [0mSending response: PONG :another.server.com
-
-[2025-01-05 19:25:58] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:25:58] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:25:58] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:25:58] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:25:58] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:53288)
-[2025-01-05 19:25:58] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:25:58] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:25:58] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:25:58] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:25:58] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:25:58] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:25:58] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:25:58] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:25:58] [33mDEBUG :: [0mNickname set to: ping_test3
-[2025-01-05 19:25:58] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:25:58] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:25:58] [33mDEBUG :: [0mRegistration complete for ping_test3
-[2025-01-05 19:25:58] [33mDEBUG :: [0mSending response: 004 ping_test3 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:25:58] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-[2025-01-05 19:25:58] [31mERROR :: [0mPONG failed: No parameters
-[2025-01-05 19:25:58] [33mDEBUG :: [0mSending response: 409 PONG :No origin specified
-
-[2025-01-05 19:25:59] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:25:59] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:25:59] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:25:59] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:25:59] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:37232)
-[2025-01-05 19:25:59] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:25:59] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:25:59] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:25:59] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:25:59] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:25:59] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:25:59] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:25:59] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:25:59] [33mDEBUG :: [0mNickname set to: ping_test4
-[2025-01-05 19:25:59] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:25:59] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:25:59] [33mDEBUG :: [0mRegistration complete for ping_test4
-[2025-01-05 19:25:59] [33mDEBUG :: [0mSending response: 004 ping_test4 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:25:59] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :server.with.colon
-[2025-01-05 19:25:59] [33mDEBUG :: [0mSending response: PONG :server.with.colon
-
-[2025-01-05 19:26:00] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:00] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:26:00] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:26:00] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:26:00] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:37240)
-[2025-01-05 19:26:00] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:26:00] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:00] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:26:00] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:26:00] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:26:00] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:26:00] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:26:00] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:26:00] [33mDEBUG :: [0mNickname set to: ping_test5
-[2025-01-05 19:26:00] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:26:00] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:26:00] [33mDEBUG :: [0mRegistration complete for ping_test5
-[2025-01-05 19:26:00] [33mDEBUG :: [0mSending response: 004 ping_test5 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:26:00] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :123456
-[2025-01-05 19:26:00] [33mDEBUG :: [0mSending response: PONG :123456
-
-[2025-01-05 19:26:01] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:01] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:26:01] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:26:01] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:26:01] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:37246)
-[2025-01-05 19:26:01] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:26:01] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:01] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:26:01] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:26:01] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:26:01] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:26:01] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:26:01] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:26:01] [33mDEBUG :: [0mNickname set to: ping_test6
-[2025-01-05 19:26:01] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:26:01] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:26:01] [33mDEBUG :: [0mRegistration complete for ping_test6
-[2025-01-05 19:26:01] [33mDEBUG :: [0mSending response: 004 ping_test6 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:26:01] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :special!@#
-[2025-01-05 19:26:01] [33mDEBUG :: [0mSending response: PONG :special!@#
-
-[2025-01-05 19:26:02] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:02] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:26:02] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:26:02] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:26:02] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:37250)
-[2025-01-05 19:26:02] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:26:02] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:02] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:26:02] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:26:02] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:26:02] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:26:02] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:26:02] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:26:02] [33mDEBUG :: [0mNickname set to: ping_test7
-[2025-01-05 19:26:02] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:26:02] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:26:02] [33mDEBUG :: [0mRegistration complete for ping_test7
-[2025-01-05 19:26:02] [33mDEBUG :: [0mSending response: 004 ping_test7 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:26:02] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :server_name
-[2025-01-05 19:26:02] [33mDEBUG :: [0mSending response: PONG :server_name
-
-[2025-01-05 19:26:03] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:03] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:26:03] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:26:03] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:26:03] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:37256)
-[2025-01-05 19:26:03] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:26:03] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:03] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:26:03] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:26:03] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:26:03] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:26:03] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:26:03] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:26:03] [33mDEBUG :: [0mNickname set to: ping_test8
-[2025-01-05 19:26:03] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:26:03] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:26:03] [33mDEBUG :: [0mRegistration complete for ping_test8
-[2025-01-05 19:26:03] [33mDEBUG :: [0mSending response: 004 ping_test8 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:26:03] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :server-name
-[2025-01-05 19:26:03] [33mDEBUG :: [0mSending response: PONG :server-name
-
-[2025-01-05 19:26:04] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:04] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:26:04] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:26:04] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:26:04] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:37268)
-[2025-01-05 19:26:04] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:26:04] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:04] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:26:04] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:26:04] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:26:04] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:26:04] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:26:04] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:26:04] [33mDEBUG :: [0mNickname set to: ping_test9
-[2025-01-05 19:26:04] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:26:04] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:26:04] [33mDEBUG :: [0mRegistration complete for ping_test9
-[2025-01-05 19:26:04] [33mDEBUG :: [0mSending response: 004 ping_test9 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:26:04] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :server.name
-[2025-01-05 19:26:04] [33mDEBUG :: [0mSending response: PONG :server.name
-
-[2025-01-05 19:26:05] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:05] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:26:05] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:26:05] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:26:05] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:37278)
-[2025-01-05 19:26:05] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:26:05] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:05] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:26:05] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:26:05] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:26:05] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:26:05] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:26:05] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:26:05] [33mDEBUG :: [0mNickname set to: ping_test10
-[2025-01-05 19:26:05] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:26:05] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:26:05] [33mDEBUG :: [0mRegistration complete for ping_test10
-[2025-01-05 19:26:05] [33mDEBUG :: [0mSending response: 004 ping_test10 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:26:05] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :ServerName
-[2025-01-05 19:26:05] [33mDEBUG :: [0mSending response: PONG :ServerName
-
-[2025-01-05 19:26:06] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:06] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:26:06] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:26:06] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:26:06] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:37286)
-[2025-01-05 19:26:06] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:26:06] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:06] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:26:06] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:26:06] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:26:06] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:26:06] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:26:06] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:26:06] [33mDEBUG :: [0mNickname set to: ping_test1
-[2025-01-05 19:26:06] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:26:06] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:26:06] [33mDEBUG :: [0mRegistration complete for ping_test1
-[2025-01-05 19:26:06] [33mDEBUG :: [0mSending response: 004 ping_test1 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:26:06] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :irc.example.com
-[2025-01-05 19:26:06] [33mDEBUG :: [0mSending response: PONG :irc.example.com
-
-[2025-01-05 19:26:07] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:07] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:26:08] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:26:08] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:26:08] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:37292)
-[2025-01-05 19:26:08] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:26:08] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:08] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:26:08] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:26:08] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:26:08] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:26:08] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:26:08] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:26:08] [33mDEBUG :: [0mNickname set to: ping_test2
-[2025-01-05 19:26:08] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:26:08] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:26:08] [33mDEBUG :: [0mRegistration complete for ping_test2
-[2025-01-05 19:26:08] [33mDEBUG :: [0mSending response: 004 ping_test2 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:26:08] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :another.server.com
-[2025-01-05 19:26:08] [33mDEBUG :: [0mSending response: PONG :another.server.com
-
-[2025-01-05 19:26:09] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:09] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:26:09] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:26:09] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:26:09] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:37304)
-[2025-01-05 19:26:09] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:26:09] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:09] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:26:09] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:26:09] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:26:09] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:26:09] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:26:09] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:26:09] [33mDEBUG :: [0mNickname set to: ping_test3
-[2025-01-05 19:26:09] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:26:09] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:26:09] [33mDEBUG :: [0mRegistration complete for ping_test3
-[2025-01-05 19:26:09] [33mDEBUG :: [0mSending response: 004 ping_test3 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:26:09] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-[2025-01-05 19:26:09] [31mERROR :: [0mPONG failed: No parameters
-[2025-01-05 19:26:09] [33mDEBUG :: [0mSending response: 409 PONG :No origin specified
-
-[2025-01-05 19:26:10] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:10] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:26:10] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:26:10] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:26:10] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:55172)
-[2025-01-05 19:26:10] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:26:10] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:10] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:26:10] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:26:10] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:26:10] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:26:10] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:26:10] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:26:10] [33mDEBUG :: [0mNickname set to: ping_test4
-[2025-01-05 19:26:10] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:26:10] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:26:10] [33mDEBUG :: [0mRegistration complete for ping_test4
-[2025-01-05 19:26:10] [33mDEBUG :: [0mSending response: 004 ping_test4 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:26:10] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :server.with.colon
-[2025-01-05 19:26:10] [33mDEBUG :: [0mSending response: PONG :server.with.colon
-
-[2025-01-05 19:26:11] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:11] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:26:11] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:26:11] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:26:11] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:55188)
-[2025-01-05 19:26:11] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:26:11] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:11] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:26:11] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:26:11] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:26:11] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:26:11] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:26:11] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:26:11] [33mDEBUG :: [0mNickname set to: ping_test5
-[2025-01-05 19:26:11] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:26:11] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:26:11] [33mDEBUG :: [0mRegistration complete for ping_test5
-[2025-01-05 19:26:11] [33mDEBUG :: [0mSending response: 004 ping_test5 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:26:11] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :123456
-[2025-01-05 19:26:11] [33mDEBUG :: [0mSending response: PONG :123456
-
-[2025-01-05 19:26:12] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:12] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:26:12] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:26:12] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:26:12] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:55198)
-[2025-01-05 19:26:12] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:26:12] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:12] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:26:12] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:26:12] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:26:12] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:26:12] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:26:12] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:26:12] [33mDEBUG :: [0mNickname set to: ping_test6
-[2025-01-05 19:26:12] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:26:12] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:26:12] [33mDEBUG :: [0mRegistration complete for ping_test6
-[2025-01-05 19:26:12] [33mDEBUG :: [0mSending response: 004 ping_test6 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:26:12] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :special!@#
-[2025-01-05 19:26:12] [33mDEBUG :: [0mSending response: PONG :special!@#
-
-[2025-01-05 19:26:13] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:13] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:26:13] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:26:13] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:26:13] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:55200)
-[2025-01-05 19:26:13] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:26:13] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:13] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:26:13] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:26:13] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:26:13] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:26:13] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:26:13] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:26:13] [33mDEBUG :: [0mNickname set to: ping_test7
-[2025-01-05 19:26:13] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:26:13] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:26:13] [33mDEBUG :: [0mRegistration complete for ping_test7
-[2025-01-05 19:26:13] [33mDEBUG :: [0mSending response: 004 ping_test7 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:26:13] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :server_name
-[2025-01-05 19:26:13] [33mDEBUG :: [0mSending response: PONG :server_name
-
-[2025-01-05 19:26:14] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:14] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:26:14] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:26:14] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:26:14] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:55208)
-[2025-01-05 19:26:14] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:26:14] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:14] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:26:14] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:26:14] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:26:14] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:26:14] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:26:14] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:26:14] [33mDEBUG :: [0mNickname set to: ping_test8
-[2025-01-05 19:26:14] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:26:14] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:26:14] [33mDEBUG :: [0mRegistration complete for ping_test8
-[2025-01-05 19:26:14] [33mDEBUG :: [0mSending response: 004 ping_test8 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:26:14] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :server-name
-[2025-01-05 19:26:14] [33mDEBUG :: [0mSending response: PONG :server-name
-
-[2025-01-05 19:26:15] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:15] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:26:15] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:26:15] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:26:15] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:55214)
-[2025-01-05 19:26:15] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:26:15] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:15] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:26:15] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:26:15] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:26:15] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:26:15] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:26:15] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:26:15] [33mDEBUG :: [0mNickname set to: ping_test9
-[2025-01-05 19:26:15] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:26:15] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:26:15] [33mDEBUG :: [0mRegistration complete for ping_test9
-[2025-01-05 19:26:15] [33mDEBUG :: [0mSending response: 004 ping_test9 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:26:15] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :server.name
-[2025-01-05 19:26:15] [33mDEBUG :: [0mSending response: PONG :server.name
-
-[2025-01-05 19:26:16] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:16] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-05 19:26:16] [33mDEBUG :: [0mActive connections: 1
-[2025-01-05 19:26:16] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-05 19:26:16] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:55226)
-[2025-01-05 19:26:16] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-05 19:26:16] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:16] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-05 19:26:16] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-05 19:26:16] [33mDEBUG :: [0mPassword accepted
-[2025-01-05 19:26:16] [33mDEBUG :: [0mSending response: :server NOTICE Auth :Password accepted
-
-[2025-01-05 19:26:16] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-05 19:26:16] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-05 19:26:16] [33mDEBUG :: [0mNickname set to: ping_test10
-[2025-01-05 19:26:16] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-05 19:26:16] [33mDEBUG :: [0mProcessing USER command
-[2025-01-05 19:26:16] [33mDEBUG :: [0mRegistration complete for ping_test10
-[2025-01-05 19:26:16] [33mDEBUG :: [0mSending response: 004 ping_test10 :IRC server 14.2.1 20240910
-
-[2025-01-05 19:26:16] [33mDEBUG :: [0mProcessing command: PING
-args[0] = PING
-args[1] = :ServerName
-[2025-01-05 19:26:16] [33mDEBUG :: [0mSending response: PONG :ServerName
-
-[2025-01-05 19:26:17] [33mDEBUG :: [0mActive connections: 2
-[2025-01-05 19:26:17] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-10 20:20:36] [33mDEBUG :: [0mTokens: 
+JOIN #test-channel 
+[2025-01-10 20:20:36] [33mDEBUG :: [0mProcessing command: JOIN
+[2025-01-10 20:20:36] [33mDEBUG :: [0mtest-user attempting to join #test-channel
+[2025-01-10 20:20:36] [31mERROR :: [0mFailed to execute command: JOIN - Channel not found
+[2025-01-10 20:20:37] [33mDEBUG :: [0mActive connections: 2
+[2025-01-10 20:20:37] [32mINFO :: [0mClosing connection FD: 4

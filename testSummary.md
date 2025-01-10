@@ -1,8 +1,8 @@
 # IRC Server Test Summary
 ## Test Execution Details
 
-- **Date**: 2025-01-05 18:26:06 UTC
-- **Duration**: 0h 0m 11s
+- **Date**: 2025-01-10 19:20:36 UTC
+- **Duration**: 0h 0m 2s
 - **User**: mlamkadm
 - **Host**: morpheus-arch
 
@@ -10,18 +10,18 @@
 - Server Port: 22200
 - Debug Mode: Enabled
 - Verbose Mode: Enabled
-- Test File: test/test-cases/ping.test
+- Test File: test/test-cases/rfc-join.test
 
 ## Test Results
-- **Total Tests**: 20
-- **Passed**: 40 🟢
-- **Failed**: 0 🔴
+- **Total Tests**: 2
+- **Passed**: 0 🟢
+- **Failed**: 4 🔴
 - **Skipped**: 0 ⚪
-- **Success Rate**: 200%
+- **Success Rate**: 0%
 
 ## Failed Tests
 ```
-No failed tests
+❌ SINGLE NORMAL CHANNEL JOIN - Expected: 'PONG :irc.example.com'
 ```
 
 ## System Information

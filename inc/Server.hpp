@@ -45,7 +45,6 @@ class CoreServer;
 
 typedef void (CoreServer::*CommandHandler)(int, std::vector<std::string>&);
 
-// Custom remove_if function for C++98 (this needs substitution)
 template <typename Iterator, typename Predicate>
 Iterator custom_remove_if(Iterator first, Iterator last, Predicate pred) {
     Iterator result = first;
@@ -75,6 +74,7 @@ private:
     std::map<int, Client> clients;
     std::vector<struct pollfd> fds;
     std::vector<Channel> channels;
+
     std::map<std::string, CommandHandler> commands;
 
     // Socket and server initialization
@@ -92,6 +92,7 @@ private:
 
     // Command handlers
     void handleCommand(int fd, const std::string& line);
+
     void cmdNick(int fd, std::vector<std::string>& args);
     void cmdUser(int fd, std::vector<std::string>& args);
     void cmdPass(int fd, std::vector<std::string>& args);

@@ -14,6 +14,7 @@
 #include <cstdlib>
 #include <sstream>
 
+
 void CoreServer::create_socket() {
   std::cout << formatServerMessage("INFO", "Creating socket...") << std::endl;
 
@@ -116,6 +117,7 @@ CoreServer::CoreServer(std::string port, std::string password) {
   if (!IsValidPass(password, ServData.Passwd)) {
     std::cerr << formatServerMessage("ERROR", "Invalid Password") << std::endl;
       DisplayPassInfo();
+
     exit(1);
   }
 
