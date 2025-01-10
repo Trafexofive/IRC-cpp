@@ -13,10 +13,6 @@
 
 #include "../../inc/Server.hpp"
 
-
-
-
-
 void CoreServer::cmdPrivmsg(int fd, std::vector<std::string> &args) {
     if (args.size() < 3) {
         std::cout << formatServerMessage("ERROR", "PRIVMSG failed: Incomplete message") << std::endl;
