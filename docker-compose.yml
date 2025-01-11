@@ -7,15 +7,38 @@ services:
     ports:
       - "22200:22200"
     # volumes:
-      # - ./config:/app/config  # Optional: for configuration files
-      # - ./logs:/app/logs      # Optional: for logging
+    #   - ./config:/app/config
+    #   - ./logs:/app/logs
     restart: unless-stopped
     networks:
       - irc_net
-    # Optional environment variables if your IRC server needs them
-    # environment:
-      # - SERVER_NAME=WeUseArch
-      # - MAX_CLIENTS=100
+    environment:
+      - SERVER_NAME=WeUseArch
+      - MAX_CLIENTS=100
+    # Add these for debugging
+    cap_add:
+      - NET_ADMIN
+    # Ensure host networking visibility
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "22200"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: make
+    volumes:
+      - .:/app
+    working_dir: /app
+    networks:
+      - irc_net
+    profiles:
+      - build
 
 networks:
   irc_net:
