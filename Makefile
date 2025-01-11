@@ -158,6 +158,9 @@ bot: all
 	@printf "Building bot...\n"
 	@$(MAKE) -C $(DIR_BOT)
 
+docker: 
+	docker compose up --build
+
 help:
 	@printf "\nAvailable targets:\n"
 	@printf "  make all      - Build the IRC server (default)\n"

@@ -6,10 +6,13 @@ RUN apt-get update && apt-get install -y \
     libevent-dev \
     && rm -rf /var/lib/apt/lists/*
 
+
+EXPOSE 22200
+
 WORKDIR /app
 
 COPY . .
 
 RUN make run
 
-CMD ["./test/main.sh"]
+# CMD ["./test/main.sh"]

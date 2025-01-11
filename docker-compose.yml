@@ -1,0 +1,22 @@
+
+services:
+  irc-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "22200:22200"
+    # volumes:
+      # - ./config:/app/config  # Optional: for configuration files
+      # - ./logs:/app/logs      # Optional: for logging
+    restart: unless-stopped
+    networks:
+      - irc_net
+    # Optional environment variables if your IRC server needs them
+    # environment:
+      # - SERVER_NAME=WeUseArch
+      # - MAX_CLIENTS=100
+
+networks:
+  irc_net:
+    driver: bridge
