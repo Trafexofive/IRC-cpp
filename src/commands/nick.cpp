@@ -12,9 +12,9 @@
 
 #include "../../inc/Server.hpp"
 
+
 void CoreServer::cmdNick(int fd, std::vector<std::string> &args) {
     std::cout << formatServerMessage("DEBUG", "Processing NICK command") << std::endl;
-
     if (args.size() < 2) {
         std::cout << formatServerMessage("ERROR", "NICK command failed: No nickname provided") << std::endl;
         clients[fd].setResponse(formatResponse("431", ":No nickname given"));

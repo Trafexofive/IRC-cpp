@@ -161,6 +161,10 @@ bot: all
 docker: 
 	docker compose up --build
 
+logs:
+	@printf "Viewing logs...\n"
+	@bat server.log
+
 help:
 	@printf "\nAvailable targets:\n"
 	@printf "  make all      - Build the IRC server (default)\n"
@@ -172,6 +176,8 @@ help:
 	@printf "  make test     - Run tests\n"
 	@printf "  make run      - Build and run server\n"
 	@printf "  make bot      - Build the bot component\n"
+	@printf "  make docker   - Run the server in a Docker container\n"
+	@printf "  make logs     - View server logs\n"
 	@printf "  make help     - Show this help message\n"
 	@printf "\nConfiguration:\n"
 	@printf "  PORT=<port>         - Set server port (default: $(PORT))\n"
