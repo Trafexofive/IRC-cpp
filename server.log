@@ -1,88 +1,180 @@
-[2025-01-10 21:49:15] [32mINFO :: [0mStarting IRC server
-[2025-01-10 21:49:15] [32mINFO :: [0mConstructing Server Class ...
-[2025-01-10 21:49:15] [33mDEBUG :: [0mValidating port: 22200
-[2025-01-10 21:49:15] [33mDEBUG :: [0m
-[2025-01-10 21:49:15] [33mDEBUG :: [0mValidating password
-[2025-01-10 21:49:15] [33mDEBUG :: [0mPassword valid
-[2025-01-10 21:49:15] [32mINFO :: [0mRegistering commands...
-[2025-01-10 21:49:15] [32mINFO :: [0mCreating socket...
-[2025-01-10 21:49:15] [33mDEBUG :: [0mSocket created: 3
-[2025-01-10 21:49:15] [32mINFO :: [0mSocket setup complete
-[2025-01-10 21:49:15] [33mDEBUG :: [0mBinding socket...
-[2025-01-10 21:49:15] [32mINFO :: [0mStarting to listen...
-[2025-01-10 21:49:15] [32mINFO :: [0mServer listening on port: 22200
-[2025-01-10 21:49:15] [33mDEBUG :: [0mServer main loop starting...
-[2025-01-10 21:49:17] [33mDEBUG :: [0mActive connections: 1
-[2025-01-10 21:49:17] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-10 21:49:17] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:48410)
-[2025-01-10 21:49:17] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-10 21:49:17] [33mDEBUG :: [0mClient properties:
+[2025-01-16 20:35:40] [32mINFO :: [0mStarting IRC server
+[2025-01-16 20:35:40] [32mINFO :: [0mConstructing Server Class ...
+[2025-01-16 20:35:40] [33mDEBUG :: [0mValidating port: 22200
+[2025-01-16 20:35:40] [33mDEBUG :: [0m
+[2025-01-16 20:35:40] [33mDEBUG :: [0mValidating password
+[2025-01-16 20:35:40] [33mDEBUG :: [0mPassword valid
+[2025-01-16 20:35:40] [32mINFO :: [0mRegistering commands...
+[2025-01-16 20:35:40] [32mINFO :: [0mCreating socket...
+[2025-01-16 20:35:40] [33mDEBUG :: [0mSocket created: 3
+[2025-01-16 20:35:40] [32mINFO :: [0mSocket setup complete
+[2025-01-16 20:35:40] [33mDEBUG :: [0mBinding socket...
+[2025-01-16 20:35:40] [32mINFO :: [0mStarting to listen...
+[2025-01-16 20:35:40] [32mINFO :: [0mServer listening on port: 22200
+[2025-01-16 20:35:40] [33mDEBUG :: [0mServer main loop starting...
+[2025-01-16 20:35:43] [33mDEBUG :: [0mActive connections: 1
+[2025-01-16 20:35:43] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-16 20:35:43] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56382)
+[2025-01-16 20:35:43] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-16 20:35:43] [33mDEBUG :: [0mClient properties:
   - fd: 4
   - nick: 
   - full name: 
   - password: 
   - ip: 
-[2025-01-10 21:49:17] [33mDEBUG :: [0mActive connections: 2
-[2025-01-10 21:49:17] [33mDEBUG :: [0mTokens: 
+[2025-01-16 20:35:43] [33mDEBUG :: [0mActive connections: 2
+[2025-01-16 20:35:43] [33mDEBUG :: [0mTokens: 
 PASS Alilepro135! 
-[2025-01-10 21:49:17] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-10 21:49:17] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-10 21:49:17] [33mDEBUG :: [0mPassword accepted
-[2025-01-10 21:49:17] [33mDEBUG :: [0mSending response: :morpheus-server.ddns.net 001  :Password Accepted
+[2025-01-16 20:35:43] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-16 20:35:43] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-16 20:35:43] [33mDEBUG :: [0mPassword accepted
+[2025-01-16 20:35:43] [33mDEBUG :: [0mSending response: :morpheus-server.ddns.net 001  :Password Accepted
 
-[2025-01-10 21:49:17] [33mDEBUG :: [0mTokens: 
+[2025-01-16 20:35:43] [33mDEBUG :: [0mTokens: 
 NICK test-user 
-[2025-01-10 21:49:17] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-10 21:49:17] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-10 21:49:17] [33mDEBUG :: [0mNickname set to: test-user
-[2025-01-10 21:49:17] [33mDEBUG :: [0mTokens: 
+[2025-01-16 20:35:43] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-16 20:35:43] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-16 20:35:43] [33mDEBUG :: [0mNickname set to: test-user
+[2025-01-16 20:35:43] [33mDEBUG :: [0mTokens: 
 USER testUser 0 * :Test User 
-[2025-01-10 21:49:17] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-10 21:49:17] [33mDEBUG :: [0mProcessing USER command
-[2025-01-10 21:49:17] [33mDEBUG :: [0mRegistration complete for test-user
-[2025-01-10 21:49:17] [33mDEBUG :: [0mSending response: 004 test-user :IRC server 14.2.1 20240910
+[2025-01-16 20:35:43] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-16 20:35:43] [33mDEBUG :: [0mProcessing USER command
+[2025-01-16 20:35:43] [33mDEBUG :: [0mRegistration complete for test-user
+[2025-01-16 20:35:43] [33mDEBUG :: [0mSending response: 004 test-user :IRC server 14.2.1 20240910
 
-[2025-01-10 21:49:17] [33mDEBUG :: [0mTokens: 
+[2025-01-16 20:35:43] [33mDEBUG :: [0mTokens: 
 JOIN #test-channel 
-[2025-01-10 21:49:17] [33mDEBUG :: [0mProcessing command: JOIN
-[2025-01-10 21:49:17] [33mDEBUG :: [0mtest-user attempting to join #test-channel
-[2025-01-10 21:49:17] [31mERROR :: [0mFailed to execute command: JOIN - Channel not found
-[2025-01-10 21:49:18] [33mDEBUG :: [0mActive connections: 2
-[2025-01-10 21:49:18] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-10 21:49:18] [33mDEBUG :: [0mActive connections: 1
-[2025-01-10 21:49:18] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-10 21:49:18] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:48426)
-[2025-01-10 21:49:18] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-10 21:49:18] [33mDEBUG :: [0mClient properties:
+[2025-01-16 20:35:43] [33mDEBUG :: [0mProcessing command: JOIN
+[2025-01-16 20:35:43] [33mDEBUG :: [0mtest-user attempting to join #test-channel
+[2025-01-16 20:35:43] [31mERROR :: [0mFailed to execute command: JOIN - Channel not found
+[2025-01-16 20:35:44] [33mDEBUG :: [0mActive connections: 2
+[2025-01-16 20:35:44] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-16 20:35:44] [33mDEBUG :: [0mActive connections: 1
+[2025-01-16 20:35:44] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-16 20:35:44] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56386)
+[2025-01-16 20:35:44] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-16 20:35:44] [33mDEBUG :: [0mClient properties:
   - fd: 4
   - nick: 
   - full name: 
   - password: 
   - ip: 
-[2025-01-10 21:49:18] [33mDEBUG :: [0mActive connections: 2
-[2025-01-10 21:49:18] [33mDEBUG :: [0mTokens: 
+[2025-01-16 20:35:44] [33mDEBUG :: [0mActive connections: 2
+[2025-01-16 20:35:44] [33mDEBUG :: [0mTokens: 
 PASS Alilepro135! 
-[2025-01-10 21:49:18] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-10 21:49:18] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-10 21:49:18] [33mDEBUG :: [0mPassword accepted
-[2025-01-10 21:49:18] [33mDEBUG :: [0mSending response: :morpheus-server.ddns.net 001  :Password Accepted
+[2025-01-16 20:35:44] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-16 20:35:44] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-16 20:35:44] [33mDEBUG :: [0mPassword accepted
+[2025-01-16 20:35:44] [33mDEBUG :: [0mSending response: :morpheus-server.ddns.net 001  :Password Accepted
 
-[2025-01-10 21:49:18] [33mDEBUG :: [0mTokens: 
+[2025-01-16 20:35:44] [33mDEBUG :: [0mTokens: 
 NICK test-user 
-[2025-01-10 21:49:18] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-10 21:49:18] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-10 21:49:18] [33mDEBUG :: [0mNickname set to: test-user
-[2025-01-10 21:49:18] [33mDEBUG :: [0mTokens: 
+[2025-01-16 20:35:44] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-16 20:35:44] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-16 20:35:44] [33mDEBUG :: [0mNickname set to: test-user
+[2025-01-16 20:35:44] [33mDEBUG :: [0mTokens: 
 USER testUser 0 * :Test User 
-[2025-01-10 21:49:18] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-10 21:49:18] [33mDEBUG :: [0mProcessing USER command
-[2025-01-10 21:49:18] [33mDEBUG :: [0mRegistration complete for test-user
-[2025-01-10 21:49:18] [33mDEBUG :: [0mSending response: 004 test-user :IRC server 14.2.1 20240910
+[2025-01-16 20:35:44] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-16 20:35:44] [33mDEBUG :: [0mProcessing USER command
+[2025-01-16 20:35:44] [33mDEBUG :: [0mRegistration complete for test-user
+[2025-01-16 20:35:44] [33mDEBUG :: [0mSending response: 004 test-user :IRC server 14.2.1 20240910
 
-[2025-01-10 21:49:18] [33mDEBUG :: [0mTokens: 
+[2025-01-16 20:35:44] [33mDEBUG :: [0mTokens: 
 JOIN #test-channel 
-[2025-01-10 21:49:18] [33mDEBUG :: [0mProcessing command: JOIN
-[2025-01-10 21:49:18] [33mDEBUG :: [0mtest-user attempting to join #test-channel
-[2025-01-10 21:49:18] [31mERROR :: [0mFailed to execute command: JOIN - Channel not found
-[2025-01-10 21:49:19] [33mDEBUG :: [0mActive connections: 2
-[2025-01-10 21:49:19] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-16 20:35:44] [33mDEBUG :: [0mProcessing command: JOIN
+[2025-01-16 20:35:44] [33mDEBUG :: [0mtest-user attempting to join #test-channel
+[2025-01-16 20:35:44] [31mERROR :: [0mFailed to execute command: JOIN - Channel not found
+[2025-01-16 20:35:44] [33mDEBUG :: [0mTokens: 
+JOIN #foo,#bar fubar,foobar 
+[2025-01-16 20:35:44] [33mDEBUG :: [0mProcessing command: JOIN
+arg: #foo,#bar
+arg: fubar,foobar
+Channels: #foo #bar 
+Keys: fubar foobar 
+[2025-01-16 20:35:44] [33mDEBUG :: [0mtest-user attempting to join #foo,#bar
+[2025-01-16 20:35:44] [31mERROR :: [0mFailed to execute command: JOIN - Channel not found
+[2025-01-16 20:35:45] [33mDEBUG :: [0mActive connections: 2
+[2025-01-16 20:35:45] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-16 20:35:45] [33mDEBUG :: [0mActive connections: 1
+[2025-01-16 20:35:45] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-16 20:35:45] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56398)
+[2025-01-16 20:35:45] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-16 20:35:45] [33mDEBUG :: [0mClient properties:
+  - fd: 4
+  - nick: 
+  - full name: 
+  - password: 
+  - ip: 
+[2025-01-16 20:35:45] [33mDEBUG :: [0mActive connections: 2
+[2025-01-16 20:35:45] [33mDEBUG :: [0mTokens: 
+PASS Alilepro135! 
+[2025-01-16 20:35:45] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-16 20:35:45] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-16 20:35:45] [33mDEBUG :: [0mPassword accepted
+[2025-01-16 20:35:45] [33mDEBUG :: [0mSending response: :morpheus-server.ddns.net 001  :Password Accepted
+
+[2025-01-16 20:35:45] [33mDEBUG :: [0mTokens: 
+NICK test-user 
+[2025-01-16 20:35:45] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-16 20:35:45] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-16 20:35:45] [33mDEBUG :: [0mNickname set to: test-user
+[2025-01-16 20:35:45] [33mDEBUG :: [0mTokens: 
+USER testUser 0 * :Test User 
+[2025-01-16 20:35:45] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-16 20:35:45] [33mDEBUG :: [0mProcessing USER command
+[2025-01-16 20:35:45] [33mDEBUG :: [0mRegistration complete for test-user
+[2025-01-16 20:35:45] [33mDEBUG :: [0mSending response: 004 test-user :IRC server 14.2.1 20240910
+
+[2025-01-16 20:35:45] [33mDEBUG :: [0mTokens: 
+JOIN #test-channel 
+[2025-01-16 20:35:45] [33mDEBUG :: [0mProcessing command: JOIN
+[2025-01-16 20:35:45] [33mDEBUG :: [0mtest-user attempting to join #test-channel
+[2025-01-16 20:35:45] [31mERROR :: [0mFailed to execute command: JOIN - Channel not found
+[2025-01-16 20:35:46] [33mDEBUG :: [0mActive connections: 2
+[2025-01-16 20:35:46] [32mINFO :: [0mClosing connection FD: 4
+[2025-01-16 20:35:46] [33mDEBUG :: [0mActive connections: 1
+[2025-01-16 20:35:46] [32mINFO :: [0mClient accepted FD: 4
+[2025-01-16 20:35:46] [33mDEBUG :: [0mCreating new client instance with fd(4) and IP(127.0.0.1:56402)
+[2025-01-16 20:35:46] [33mDEBUG :: [0mCreating new empty client instance
+[2025-01-16 20:35:46] [33mDEBUG :: [0mClient properties:
+  - fd: 4
+  - nick: 
+  - full name: 
+  - password: 
+  - ip: 
+[2025-01-16 20:35:46] [33mDEBUG :: [0mActive connections: 2
+[2025-01-16 20:35:46] [33mDEBUG :: [0mTokens: 
+PASS Alilepro135! 
+[2025-01-16 20:35:46] [33mDEBUG :: [0mProcessing command: PASS
+[2025-01-16 20:35:46] [33mDEBUG :: [0mProcessing PASS command
+[2025-01-16 20:35:46] [33mDEBUG :: [0mPassword accepted
+[2025-01-16 20:35:46] [33mDEBUG :: [0mSending response: :morpheus-server.ddns.net 001  :Password Accepted
+
+[2025-01-16 20:35:46] [33mDEBUG :: [0mTokens: 
+NICK test-user 
+[2025-01-16 20:35:46] [33mDEBUG :: [0mProcessing command: NICK
+[2025-01-16 20:35:46] [33mDEBUG :: [0mProcessing NICK command
+[2025-01-16 20:35:46] [33mDEBUG :: [0mNickname set to: test-user
+[2025-01-16 20:35:46] [33mDEBUG :: [0mTokens: 
+USER testUser 0 * :Test User 
+[2025-01-16 20:35:46] [33mDEBUG :: [0mProcessing command: USER
+[2025-01-16 20:35:46] [33mDEBUG :: [0mProcessing USER command
+[2025-01-16 20:35:46] [33mDEBUG :: [0mRegistration complete for test-user
+[2025-01-16 20:35:46] [33mDEBUG :: [0mSending response: 004 test-user :IRC server 14.2.1 20240910
+
+[2025-01-16 20:35:46] [33mDEBUG :: [0mTokens: 
+JOIN #test-channel 
+[2025-01-16 20:35:46] [33mDEBUG :: [0mProcessing command: JOIN
+[2025-01-16 20:35:46] [33mDEBUG :: [0mtest-user attempting to join #test-channel
+[2025-01-16 20:35:46] [31mERROR :: [0mFailed to execute command: JOIN - Channel not found
+[2025-01-16 20:35:46] [33mDEBUG :: [0mTokens: 
+JOIN #foo,#bar fubar,foobar 
+[2025-01-16 20:35:46] [33mDEBUG :: [0mProcessing command: JOIN
+arg: #foo,#bar
+arg: fubar,foobar
+Channels: #foo #bar 
+Keys: fubar foobar 
+[2025-01-16 20:35:46] [33mDEBUG :: [0mtest-user attempting to join #foo,#bar
+[2025-01-16 20:35:46] [31mERROR :: [0mFailed to execute command: JOIN - Channel not found
+[2025-01-16 20:35:47] [33mDEBUG :: [0mActive connections: 2
+[2025-01-16 20:35:47] [32mINFO :: [0mClosing connection FD: 4

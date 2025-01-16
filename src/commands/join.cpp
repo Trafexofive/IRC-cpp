@@ -20,7 +20,6 @@ typedef struct {
 
 
 void    CoreServer::joinChannel(Client& client, const std::string& channelName) {
-
     bool channelExists = false;
     for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
         if (it->getName() == channelName) {
@@ -68,8 +67,6 @@ static JOIN_PARAMS &parseJoinParams(const std::vector<std::string> &args) {
   return *params;
 }
 
-
-
 static void smpJoinMessageConstructor(std::string &joinMsg, Client &client,
                                       const std::string &channelName) {
   joinMsg = ":" + client.getNickName() + "!" + client.getFullName() +
@@ -92,12 +89,29 @@ static void printArgs(std::vector<std::string> &args) {
   }
 }
 
+static void printParams(JOIN_PARAMS &params) {
+  std::cout << "Channels: " << params.channels << std::endl;
+  std::cout << "Keys: " << params.keys << std::endl;
+}
+
+static void morphParams(JOIN_PARAMS &params) {
+  std::string::size_type pos = 0;
+  while ((pos = params.channels.find(",")) != std::string::npos) {
+    params.channels.replace(pos, 1, " ");
+  }
+  while ((pos = params.keys.find(",")) != std::string::npos) {
+    params.keys.replace(pos, 1, " ");
+  }
+}
+
 void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
   // if (args.size() == 2)
 
 
   if (args.size() > 2) {
     JOIN_PARAMS parameters = parseJoinParams(args);
+    morphParams(parameters);
+    printParams(parameters);
     // if (handleParams(parameters, clients[fd], channels)) {
     //   std::cout << formatServerMessage("SUCCESS", "JOIN successful") <<
     //   std::endl;
