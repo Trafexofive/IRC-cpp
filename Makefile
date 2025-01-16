@@ -10,7 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-
 # Project Information
 NAME := irc-server
 VERSION := nightly_build@0.7.0
@@ -142,9 +141,9 @@ debug:
 release:
 	@$(MAKE) all
 
-test: re debug | $(DIR_LOG)
+test: re | $(DIR_LOG)
 	@printf "Running tests...\n"
-	@./$(DIR_TEST)/main.sh -f $(TEST-FILE) -d -v -t 1 2>&1 | tee $(DIR_LOG)/test.log
+	@./.testsuite/irc-test.sh -f $(TEST-FILE) -d -t 1 
 
 run: clean all
 	@printf "Running $(NAME)...\n"

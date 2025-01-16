@@ -1,0 +1,16 @@
+Error Summary Report
+===================
+Generated: 2025-01-16 23:36:37 UTC
+Test Suite User: Trafexofive
+
+Failed Tests:
+❌ SINGLE NORMAL CHANNEL JOIN - Expected: 'PONG :irc.example.com'
+❌ MULTI CHANNEL/KEY JOIN - Expected: 'PONG :irc.example.com'
+❌ MULTI CHANNEL/KEY JOIN - Expected: 'PONG :irc.example.com'
+
+Test Statistics:
+- Total Tests: 3
+- Passed: 0
+- Failed: 3
+- Skipped: 0
+- Success Rate: 0%

@@ -1,27 +1,28 @@
 # IRC Server Test Summary
 ## Test Execution Details
 
-- **Date**: 2025-01-16 19:35:45 UTC
-- **Duration**: 0h 0m 2s
-- **User**: mlamkadm
+- **Date**: 2025-01-16 23:36:34 UTC
+- **Duration**: 0h 0m 3s
+- **User**: Trafexofive
 - **Host**: morpheus-arch
 
 ## Configuration
 - Server Port: 22200
 - Debug Mode: Enabled
-- Verbose Mode: Enabled
+- Verbose Mode: Disabled
 - Test File: test/test-cases/rfc-join.test
 
 ## Test Results
-- **Total Tests**: 4
+- **Total Tests**: 3
 - **Passed**: 0 🟢
-- **Failed**: 8 🔴
+- **Failed**: 3 🔴
 - **Skipped**: 0 ⚪
 - **Success Rate**: 0%
 
 ## Failed Tests
 ```
 ❌ SINGLE NORMAL CHANNEL JOIN - Expected: 'PONG :irc.example.com'
+❌ MULTI CHANNEL/KEY JOIN - Expected: 'PONG :irc.example.com'
 ❌ MULTI CHANNEL/KEY JOIN - Expected: 'PONG :irc.example.com'
 ```
 
@@ -34,7 +35,26 @@ Memory: 15Gi
 ```
 
 ## Log Files
-- Test Log: irc_test.log
+- Test Log: irc.log
 - Server Log: server.log
 - Summary File: testSummary.md
 
+
+## Error Summary
+```
+Error Summary Report
+===================
+Generated: 2025-01-16 23:29:24 UTC
+Test Suite User: Trafexofive
+
+Failed Tests:
+❌ SINGLE NORMAL CHANNEL JOIN - Expected: 'PONG :irc.example.com'
+❌ MULTI CHANNEL/KEY JOIN - Expected: 'PONG :irc.example.com'
+
+Test Statistics:
+- Total Tests: 2
+- Passed: 0
+- Failed: 2
+- Skipped: 0
+- Success Rate: 0%
+```
