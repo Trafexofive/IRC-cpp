@@ -19,6 +19,7 @@ typedef struct {
 } JOIN_PARAMS;
 
 
+// needs key support
 void    CoreServer::joinChannel(Client& client, const std::string& channelName) {
     bool channelExists = false;
     for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
@@ -104,8 +105,13 @@ static void morphParams(JOIN_PARAMS &params) {
   }
 }
 
+static void joinChannels(const Client& client, const JOIN_PARAMS& parameters)
+{
+    //use joinChannel
+}
+
 void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
-  // if (args.size() == 2)
+    Client &client = clients[fd];
 
 
   if (args.size() > 2) {
@@ -122,7 +128,7 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
     std::cout << formatServerMessage("ERROR",
                                      "JOIN failed: No channel specified")
               << std::endl;
-    clients[fd].setResponse(
+    client.setResponse(
         formatResponse(ERR_NEEDMOREPARAMS, "JOIN :Not enough parameters"));
     return;
   }
