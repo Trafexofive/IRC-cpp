@@ -1,32 +1,25 @@
 ========================================
-IRC Server Test Log - 2025-01-17 01:41:13 UTC
+IRC Server Test Log - 2025-01-17 01:54:26 UTC
 User: Trafexofive
 Server: localhost:22200
-Debug Mode: 1
-Verbose Mode: 0
+Debug Mode: 0
+Verbose Mode: 1
 ========================================
 
-[2025-01-17 01:41:13 UTC] Test suite started
+[2025-01-17 01:54:26 UTC] Test suite started
 ----------------------------------------
-[2025-01-17 01:41:13 UTC] Starting IRC server
-[2025-01-17 01:41:15 UTC] [DEBUG] Waiting for server to start (PID: 237376)
-[2025-01-17 01:41:15 UTC] Server started successfully
-[2025-01-17 01:41:15 UTC] [DEBUG] Starting test execution from file: test/test-cases/rfc-join.test
-[2025-01-17 01:41:15 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
-[2025-01-17 01:41:15 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
-[2025-01-17 01:41:15 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\n
-[2025-01-17 01:41:16 UTC] Test 'SINGLE NORMAL CHANNEL JOIN' completed in 1s
-[2025-01-17 01:41:16 UTC] Running test: MULTI CHANNEL/KEY JOIN
-[2025-01-17 01:41:16 UTC] Running test: MULTI CHANNEL/KEY JOIN
-[2025-01-17 01:41:16 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\nJOIN #foo,#bar fubar,foobar\r\n
-[2025-01-17 01:41:17 UTC] Test 'MULTI CHANNEL/KEY JOIN' completed in 1s
-[2025-01-17 01:41:17 UTC] Running test: MULTI CHANNEL/KEY JOIN
-[2025-01-17 01:41:17 UTC] Running test: MULTI CHANNEL/KEY JOIN
-[2025-01-17 01:41:17 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\nJOIN #foo,&bar fubar\r\n
-[2025-01-17 01:41:18 UTC] Test 'MULTI CHANNEL/KEY JOIN' completed in 1s
-[2025-01-17 01:41:18 UTC] [DEBUG] Test execution completed. Success rate: 0%
-[2025-01-17 01:41:18 UTC] [DEBUG] Error summary saved to error_summary.txt
-[2025-01-17 01:41:18 UTC] Test suite shutting down
-[2025-01-17 01:41:18 UTC] Stopping server (PID: 237376)
+[2025-01-17 01:54:26 UTC] Starting IRC server
+[2025-01-17 01:54:28 UTC] Server started successfully
+[2025-01-17 01:54:28 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
+[2025-01-17 01:54:28 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
+[2025-01-17 01:54:29 UTC] Test 'SINGLE NORMAL CHANNEL JOIN' completed in 1s
+[2025-01-17 01:54:29 UTC] Running test: MULTI CHANNEL/KEY JOIN
+[2025-01-17 01:54:29 UTC] Running test: MULTI CHANNEL/KEY JOIN
+[2025-01-17 01:54:30 UTC] Test 'MULTI CHANNEL/KEY JOIN' completed in 1s
+[2025-01-17 01:54:30 UTC] Running test: MULTI CHANNEL/KEY JOIN
+[2025-01-17 01:54:30 UTC] Running test: MULTI CHANNEL/KEY JOIN
+[2025-01-17 01:54:31 UTC] Test 'MULTI CHANNEL/KEY JOIN' completed in 1s
+[2025-01-17 01:54:31 UTC] Test suite shutting down
+[2025-01-17 01:54:31 UTC] Stopping server (PID: 247435)
 ----------------------------------------
-[2025-01-17 01:41:18 UTC] Stopping server (PID: 237376)
+[2025-01-17 01:54:31 UTC] Stopping server (PID: 247435)

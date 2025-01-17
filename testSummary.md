@@ -1,15 +1,15 @@
 # IRC Server Test Summary
 ## Test Execution Details
 
-- **Date**: 2025-01-17 01:41:15 UTC
+- **Date**: 2025-01-17 01:54:28 UTC
 - **Duration**: 0h 0m 3s
 - **User**: Trafexofive
 - **Host**: morpheus-arch
 
 ## Configuration
 - Server Port: 22200
-- Debug Mode: Enabled
-- Verbose Mode: Disabled
+- Debug Mode: Disabled
+- Verbose Mode: Enabled
 - Test File: test/test-cases/rfc-join.test
 
 ## Test Results
@@ -44,7 +44,7 @@ Memory: 15Gi
 ```
 Error Summary Report
 ===================
-Generated: 2025-01-17 01:34:15 UTC
+Generated: 2025-01-17 01:49:36 UTC
 Test Suite User: Trafexofive
 
 Failed Tests:

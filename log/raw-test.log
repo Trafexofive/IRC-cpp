@@ -1,0 +1,65 @@
+
+[1mCurrent Configuration:[0m
+[0;90m----------------------------------------[0m
+Server Port:        [0;34m22200[0m
+Server Binary:      [0;34m./bin/irc-server[0m
+Timeout:           [0;34m1[0m seconds
+Log File:          [0;34mirc.log[0m
+Debug Mode:        [0;34mDisabled[0m
+Verbose Mode:      [0;34mEnabled[0m
+Color Output:      [0;34mEnabled[0m
+Custom Tests:      [0;34mtest/test-cases/rfc-join.test[0m
+Skip Cleanup:      [0;34mNo[0m
+[0;90m----------------------------------------[0m
+
+[0;34m[1mEnhanced IRC Server Test Suite[0m
+[0;90mCurrent Date and Time (UTC): 2025-01-16 20:49:26[0m
+[0;90mCurrent User's Login: Trafexofive[0m
+[0;90mTesting server at localhost:22200[0m
+[0;90m----------------------------------------[0m
+
+[1;33mStarting IRC server...[0m
+[0;32mServer started successfully[0m
+
+[1mRunning Test: SINGLE NORMAL CHANNEL JOIN[0m
+
+[1mRunning: SINGLE NORMAL CHANNEL JOIN[0m
+[0;90mExpected Response:[0m
+PONG :irc.example.com
+[0;90mServer Response:[0m
+:morpheus-server.ddns.net 001  :Password Accepted
+001 test-user :Welcome to the WeUseArch IRC Network
+002 test-user :Your host is morpheus-server.ddns.net
+[0;90mApprox. difference between expected and actual:[0m 200%
+[0;31m[KO][0m Test failed: SINGLE NORMAL CHANNEL JOIN
+
+[1mRunning Test: MULTI CHANNEL/KEY JOIN[0m
+
+[1mRunning: MULTI CHANNEL/KEY JOIN[0m
+[0;90mExpected Response:[0m
+PONG :irc.example.com
+[0;90mServer Response:[0m
+:morpheus-server.ddns.net 001  :Password Accepted
+001 test-user :Welcome to the WeUseArch IRC Network
+002 test-user :Your host is morpheus-server.ddns.net
+[0;90mApprox. difference between expected and actual:[0m 200%
+[0;31m[KO][0m Test failed: MULTI CHANNEL/KEY JOIN
+
+[1mRunning Test: MULTI CHANNEL/KEY JOIN[0m
+
+[1mRunning: MULTI CHANNEL/KEY JOIN[0m
+[0;90mExpected Response:[0m
+PONG :irc.example.com
+[0;90mServer Response:[0m
+:morpheus-server.ddns.net 001  :Password Accepted
+001 test-user :Welcome to the WeUseArch IRC Network
+002 test-user :Your host is morpheus-server.ddns.net
+[0;90mApprox. difference between expected and actual:[0m 200%
+[0;31m[KO][0m Test failed: MULTI CHANNEL/KEY JOIN
+
+[1;33mStopping server...[0m
+[0;90m----------------------------------------[0m
+[0;32mTests completed successfully[0m
+[0;90mLog file: irc.log[0m
+[0;90mServer log: server.log[0m
+[0;90mSummary file: testSummary.md[0m
