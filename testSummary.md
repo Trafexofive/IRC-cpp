@@ -1,7 +1,7 @@
 # IRC Server Test Summary
 ## Test Execution Details
 
-- **Date**: 2025-01-17 18:53:40 UTC
+- **Date**: 2025-01-17 23:00:42 UTC
 - **Duration**: 0h 0m 4s
 - **User**: Trafexofive
 - **Host**: morpheus-arch
@@ -13,17 +13,15 @@
 - Test File: test/test-cases/rfc-join.test
 
 ## Test Results
-- **Total Tests**: 3
-- **Passed**: 0 🟢
-- **Failed**: 3 🔴
+- **Total Tests**: 4
+- **Passed**: 4 🟢
+- **Failed**: 0 🔴
 - **Skipped**: 0 ⚪
-- **Success Rate**: 0%
+- **Success Rate**: 100%
 
 ## Failed Tests
 ```
-❌ SINGLE NORMAL CHANNEL JOIN - Expected: 'PONG :irc.example.com'
-❌ MULTI CHANNEL/KEY JOIN - Expected: 'PONG :irc.example.com'
-❌ MULTI CHANNEL/KEY JOIN - Expected: 'PONG :irc.example.com'
+No failed tests
 ```
 
 ## System Information
@@ -44,18 +42,16 @@ Memory: 15Gi
 ```
 Error Summary Report
 ===================
-Generated: 2025-01-17 13:49:25 UTC
+Generated: 2025-01-17 22:59:38 UTC
 Test Suite User: Trafexofive
 
 Failed Tests:
-❌ SINGLE NORMAL CHANNEL JOIN - Expected: 'PONG :irc.example.com'
-❌ MULTI CHANNEL/KEY JOIN - Expected: 'PONG :irc.example.com'
-❌ MULTI CHANNEL/KEY JOIN - Expected: 'PONG :irc.example.com'
+❌ JOIN 2 CHANNELS - Expected: ':test-user!testUser@localhost JOIN #test-channel1\r\n:test-user!testUser@localhost JOIN #test-channel2\r\n'
 
 Test Statistics:
-- Total Tests: 3
-- Passed: 0
-- Failed: 3
+- Total Tests: 4
+- Passed: 3
+- Failed: 1
 - Skipped: 0
-- Success Rate: 0%
+- Success Rate: 75%
 ```

@@ -3,6 +3,28 @@
 source $root_dir/config/colors.sh
 source $root_dir/config/config.sh
 
+# Define pretty output functions
+function print_header() {
+    echo -e "${CYAN}========================================${NC}"
+    echo -e "${CYAN} $1 ${NC}"
+    echo -e "${CYAN}========================================${NC}"
+}
+
+function print_success() {
+    echo -e "${GREEN}✔ $1${NC}"
+}
+
+function print_failure() {
+    echo -e "${RED}✘ $1${NC}"
+}
+
+function print_debug() {
+    echo -e "${GRAY}>>> $1${NC}"
+}
+
+function print_divider() {
+    echo -e "${CYAN}----------------------------------------${NC}"
+}
 
 function send_and_receive() {
     local commands=$1
@@ -13,7 +35,7 @@ function send_and_receive() {
     local tmpResponse=$(mktemp)
 
     echo -e "$expected" > "$tmpExpected"
-    debug_msg "Sending commands: $commands"
+    print_debug "Sending commands: $commands"
     
     echo -e "$commands" | nc localhost "$PORT" > "$tmpResponse" 2>/dev/null &
     local nc_pid=$!
@@ -25,96 +47,40 @@ function send_and_receive() {
     done
 
     kill $nc_pid 2>/dev/null || true
-    response=$(<"$tmpResponse")
+    
+    # Filter out all numeric responses, MOTD, and welcome messages
+    response=$(grep -v "^[0-9][0-9][0-9]" < "$tmpResponse" | grep -v "^:\?morpheus-server\.ddns\.net")
+
+    # Normalize newlines and whitespace for comparison
+    local normalized_response=$(echo -n "$response" | tr -d '\r' | sed 's/[[:space:]]*$//' | sed 's/^[[:space:]]*//' | awk '{printf "%s\\r\\n", $0}' | sed 's/\\r\\n$//')
+    local normalized_expected=$(echo -n "$expected" | tr -d '\r' | sed 's/[[:space:]]*$//' | sed 's/^[[:space:]]*//' | awk '{printf "%s\\r\\n", $0}' | sed 's/\\r\\n$//')
 
     if [ "${VERBOSE:-0}" -eq 1 ]; then
+        print_divider
         echo -e "${GRAY}Expected Response:${NC}\n$expected"
         echo -e "${GRAY}Server Response:${NC}\n$response"
-        
+        echo -e "${GRAY}Normalized Expected (hex):${NC}\n$(echo -n "$normalized_expected" | xxd)"
+        echo -e "${GRAY}Normalized Response (hex):${NC}\n$(echo -n "$normalized_response" | xxd)"
         local diffPercent=$(approximate_diff_percentage "$tmpExpected" "$tmpResponse")
         echo -e "${GRAY}Approx. difference between expected and actual:${NC} ${diffPercent}%"
+        print_divider
     fi
 
     rm -f "$tmpExpected" "$tmpResponse"
 
-    [[ "$response" == *"$expected"* ]]
+    if [[ "$normalized_response" == "$normalized_expected" ]]; then
+        return 0
+    else
+        # If strings don't match, show detailed difference
+        if [ "${VERBOSE:-0}" -eq 1 ]; then
+            echo -e "${GRAY}Detailed difference:${NC}"
+            diff <(echo "$normalized_expected") <(echo "$normalized_response") || true
+            print_divider
+        fi
+        return 1
+    fi
 }
 
-# function execute_tests() {
-#     TEST_START_TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
-#     FAILED_TESTS_ARRAY=()
-#
-#     if [ ! -f "${CUSTOM_TESTS}" ]; then
-#         handle_error "Test file not found: ${CUSTOM_TESTS}"
-#         return 1
-#     fi
-#
-#     debug_msg "Starting test execution from file: ${CUSTOM_TESTS}"
-#     
-#     while IFS='|' read -r test_name expected_response commands || [ -n "$test_name" ]; do
-#         # Skip empty lines and comments
-#         [[ -z "$test_name" || "$test_name" =~ ^[[:space:]]*# ]] && continue
-#
-#         ((TOTAL_TESTS++))
-#         
-#         if [ "${QUIET:-0}" -eq 0 ]; then
-#             echo -e "\n${BOLD}Running Test: ${test_name}${NC}"
-#         fi
-#         log_message "Running test: ${test_name}"
-#
-#         local start_time=$(date +%s)
-#         
-#         if run_single_test "$test_name" "$expected_response" "$commands"; then
-#             ((PASSED_TESTS++))
-#             if [ "${QUIET:-0}" -eq 0 ]; then
-#                 echo -e "${OK} Test passed: ${test_name}"
-#             fi
-#         else
-#             ((FAILED_TESTS++))
-#             FAILED_TESTS_ARRAY+=("❌ $test_name - Expected: '$expected_response'")
-#             if [ "${QUIET:-0}" -eq 0 ]; then
-#                 echo -e "${KO} Test failed: ${test_name}"
-#             fi
-#         fi
-#         
-#         local duration=$(($(date +%s) - start_time))
-#         log_message "Test '${test_name}' completed in ${duration}s"
-#     done < "$CUSTOM_TESTS"
-#
-#     TEST_END_TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
-#     
-#     # Prevent division by zero
-#     if [ $((TOTAL_TESTS - SKIPPED_TESTS)) -eq 0 ]; then
-#         SUCCESS_RATE=0
-#     else
-#         SUCCESS_RATE=$(( (PASSED_TESTS * 100) / (TOTAL_TESTS - SKIPPED_TESTS) ))
-#     fi
-#     
-#     debug_msg "Test execution completed. Success rate: ${SUCCESS_RATE}%"
-# }
-#
-# function run_single_test() {
-#     local test_name=$1
-#     local expected=$2
-#     local commands=$3
-#
-#     if [ "${QUIET:-0}" -eq 0 ]; then
-#         echo -e "\n${BOLD}Running: ${test_name}${NC}"
-#     fi
-#     log_message "Running test: ${test_name}"
-#
-#     # Use DEFAULT_PASSWORD for AUTH
-#     if [[ "$commands" == AUTH* ]]; then
-#         commands="PASS ${DEFAULT_PASSWORD}\nNICK tester\nUSER tester 0 * :Test User"
-#     fi
-#
-#     # Execute test and return result
-#     if send_and_receive "$commands" "$expected"; then
-#         return 0
-#     else
-#         return 1
-#     fi
-# }
 function execute_tests() {
     TEST_START_TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
     FAILED_TESTS_ARRAY=()
@@ -122,7 +88,7 @@ function execute_tests() {
         handle_error "Test file not found: ${CUSTOM_TESTS}"
         return 1
     fi
-    debug_msg "Starting test execution from file: ${CUSTOM_TESTS}"
+    print_header "Starting Test Execution"
     
     while IFS='|' read -r test_name expected_response commands || [ -n "$test_name" ]; do
         # Skip empty lines and comments
@@ -133,13 +99,13 @@ function execute_tests() {
         if run_single_test "$test_name" "$expected_response" "$commands"; then
             ((PASSED_TESTS++))
             if [ "${QUIET:-0}" -eq 0 ]; then
-                echo -e "${OK} Test passed: ${test_name}"
+                print_success "Test passed: ${test_name}"
             fi
         else
             ((FAILED_TESTS++))
             FAILED_TESTS_ARRAY+=("❌ $test_name - Expected: '$expected_response'")
             if [ "${QUIET:-0}" -eq 0 ]; then
-                echo -e "${KO} Test failed: ${test_name}"
+                print_failure "Test failed: ${test_name}"
             fi
         fi
         
@@ -155,7 +121,13 @@ function execute_tests() {
         SUCCESS_RATE=$(( (PASSED_TESTS * 100) / (TOTAL_TESTS - SKIPPED_TESTS) ))
     fi
     
-    debug_msg "Test execution completed. Success rate: ${SUCCESS_RATE}%"
+    print_header "Test Execution Summary"
+    echo -e "${CYAN}Total Tests:${NC} $TOTAL_TESTS"
+    echo -e "${GREEN}Passed:${NC} $PASSED_TESTS"
+    echo -e "${RED}Failed:${NC} $FAILED_TESTS"
+    echo -e "${CYAN}Skipped:${NC} $SKIPPED_TESTS"
+    echo -e "${CYAN}Success Rate:${NC} ${SUCCESS_RATE}%"
+    print_divider
 }
 
 function run_single_test() {
@@ -164,7 +136,7 @@ function run_single_test() {
     local commands=$3
     
     if [ "${QUIET:-0}" -eq 0 ]; then
-        echo -e "\n${BOLD}Running Test: ${test_name}${NC}"
+        print_header "Running Test: ${test_name}"
     fi
     log_message "Running test: ${test_name}"
     
@@ -211,7 +183,7 @@ function save_error_summary() {
         fi
     } > "$error_file"
 
-    debug_msg "Error summary saved to $error_file"
+    print_debug "Error summary saved to $error_file"
 }
 
 function approximate_diff_percentage() {
