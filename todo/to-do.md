@@ -72,6 +72,7 @@
 }
 - simply better to have external methodes for these. (they to much)
 - some more command parsing helpers and utils (checking,morphing,parsing and extracting)
+- [URGENT] need to setup actual auth (Pass/user/nick) in any order.
 
 
 ### [VERSION CONTROL]
