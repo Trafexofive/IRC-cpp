@@ -17,48 +17,31 @@
 #include <string>
 #include <ctime>
 
-std::string formatServerMessage(const ServerData& serverData, const std::string& type, const std::string& message)
-{
-    // Determine the logging level based on the type
-    LEVEL messageLevel;
-    if (type == "DEBUG")
-        messageLevel = DEBUG;
-    else if (type == "ERROR")
-        messageLevel = ERROR;
-    else if (type == "WARNING")
-        messageLevel = WARNING;
-    else
-        messageLevel = INFO;
-
-    // Check if the logging level is appropriate
-    if (messageLevel < serverData._infoLevel) {
-        return ""; // Do not log the message if the level is lower than the current logging level
-                   // honestly this should log regardless.
-    }
-
-    std::ostringstream oss;
-    time_t now = time(NULL);
-    char timestamp[20];
-    strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", localtime(&now));
-    
-    oss << "[" << timestamp << "] ";
-    
-    if (type == "DEBUG")
-        oss << YELLOW << "DEBUG :: " << RESET;
-    else if (type == "ERROR")
-        oss << RED << "ERROR :: " << RESET;
-    else if (type == "WARNING")
-        oss << GREEN << "WARNING :: " << RESET;
-    else if (type == "INFO")
-        oss << GREEN << "INFO :: " << RESET;
-    else if (type == "CLIENT")
-        oss << CYAN << "CLIENT >> " << RESET;
-    else if (type == "SERVER")
-        oss << MAGENTA << "SERVER << " << RESET;
-    
-    oss << message;
-    return oss.str();
-}
+// should be removed.
+// std::string formatServerMessage(const ServerData& serverData, const std::string& type, const std::string& message)
+// {
+//     // Determine the logging level based on the type
+//     LEVEL messageLevel;
+//     if (type == "DEBUG")
+//         messageLevel = DEBUG;
+//     else if (type == "ERROR")
+//         messageLevel = ERROR;
+//     else if (type == "WARNING")
+//         messageLevel = WARNING;
+//     else if (type == "INFO")
+//         messageLevel = INFO;
+//     else if (type == "CLIENT")
+//         messageLevel = INFO;
+//     else if (type == "SERVER")
+//         messageLevel = INFO;
+//
+//     // Check if the logging level is appropriate
+//     if (messageLevel < serverData._infoLevel) {
+//         return ""; // Do not log the message if the level is lower than the current logging level
+//                    // honestly this should log regardless.
+//     }
+//     return "";
+// }
 
 
 std::string formatServerMessage(const std::string& type, const std::string& message)
@@ -68,27 +51,25 @@ std::string formatServerMessage(const std::string& type, const std::string& mess
     char timestamp[20];
     strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", localtime(&now));
     
-    oss << "[" << timestamp << "] ";
+    oss << BOLD << "[" << timestamp << "] " << RESET;
     
     if (type == "DEBUG")
         oss << YELLOW << "DEBUG :: " << RESET;
     else if (type == "ERROR")
         oss << RED << "ERROR :: " << RESET;
     else if (type == "WARNING")
-        oss << GREEN << "WARNING :: " << RESET;
+        oss << YELLOW << BOLD << "WARNING :: " << RESET;
     else if (type == "INFO")
         oss << GREEN << "INFO :: " << RESET;
     else if (type == "CLIENT")
-        oss << CYAN << "CLIENT >> " << RESET;
+        oss << CYAN << "CLIENT << " << RESET;
     else if (type == "SERVER")
-        oss << MAGENTA << "SERVER << " << RESET;
+        oss << MAGENTA << "SERVER >> " << RESET;
+    else if (type == "FATAL")
+        oss << RED << BOLD << "FATAL :: " << RESET;
     
     oss << message;
     return oss.str();
+
 }
 
-
-// void    formatArg(std::string &msg)
-// {
-//     // Remove leading : if present
-// }

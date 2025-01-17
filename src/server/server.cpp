@@ -15,7 +15,7 @@
 #include <sstream>
 
 void CoreServer::create_socket() {
-  std::cout << formatServerMessage("INFO", "Creating socket...") << std::endl;
+  std::cout << formatServerMessage("DEBUG", "Creating socket...") << std::endl;
   ServData._socket = socket(AF_INET, SOCK_STREAM, 0);
   if (ServData._socket < 0) {
     std::cerr << formatServerMessage("ERROR", "Socket creation failed")
@@ -38,7 +38,7 @@ void CoreServer::create_socket() {
   _fd.fd = ServData._socket;
   _fd.events = POLLIN;
   fds.push_back(_fd);
-  std::cout << formatServerMessage("INFO", "Socket setup complete")
+std::cout << formatServerMessage("INFO", "Server Socket setup complete")
             << std::endl;
 }
 void CoreServer::start_listening() {
@@ -48,7 +48,7 @@ void CoreServer::start_listening() {
     std::cerr << formatServerMessage("ERROR", "Binding failed") << std::endl;
     exit(1);
   }
-  std::cout << formatServerMessage("INFO", "Starting to listen...")
+  std::cout << formatServerMessage("DEBUG", "Starting to listen...")
             << std::endl;
   if (listen(ServData._socket, 5) < 0) {
     std::cerr << formatServerMessage("ERROR", "Listen failed") << std::endl;
@@ -56,7 +56,7 @@ void CoreServer::start_listening() {
   }
   std::ostringstream oss;
   oss << "Server listening on port: " << ServData.Port;
-  std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
+  std::cout << formatServerMessage("DEBUG", oss.str()) << std::endl;
 }
 void CoreServer::start_server() {
   std::cout << formatServerMessage("DEBUG", "Server main loop starting...")
@@ -64,7 +64,7 @@ void CoreServer::start_server() {
   while (1) {
     int ret = poll(&fds[0], fds.size(), -1);
     if (ret < 0) {
-      std::cerr << formatServerMessage("ERROR", "Poll failed") << std::endl;
+      std::cerr << formatServerMessage("FATAL", "Poll failed") << std::endl;
       break;
     }
     std::ostringstream oss;
@@ -102,12 +102,18 @@ CoreServer::CoreServer(std::string port, std::string password) {
     DisplayPassInfo();
     exit(1);
   }
-  std::cout << formatServerMessage("INFO", "Registering commands...")
+  std::cout << formatServerMessage("DEBUG", "Registering commands...")
             << std::endl;
   // only one allowed before auth
-    commands[PASS] = &CoreServer::cmdPass;
-    commands[NICK] = &CoreServer::cmdNick;
-    commands[USER] = &CoreServer::cmdUser;
+  commands[PASS] = &CoreServer::cmdPass;
+  commands[NICK] = &CoreServer::cmdNick;
+  commands[USER] = &CoreServer::cmdUser;
+  commands[CAP] = &CoreServer::cmdCap;
+  commands[JOIN] = &CoreServer::cmdJoin;
+  commands[PRIVMSG] = &CoreServer::cmdPrivmsg;
+  commands[PING] = &CoreServer::cmdPing;
+  commands[PART] = &CoreServer::cmdPart;
+  commands[QUIT] = &CoreServer::cmdQuit;
   // commands[CMD_LIST] = &CoreServer::cmdList;
   create_socket();
   start_listening();

@@ -107,17 +107,7 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
               << std::endl;
 
     // Execute command if it exists
-    if (client.getAuth()) {
-      commands[CAP] = &CoreServer::cmdCap;
-      commands[JOIN] = &CoreServer::cmdJoin;
-      commands[PRIVMSG] = &CoreServer::cmdPrivmsg;
-      commands[PING] = &CoreServer::cmdPing;
-      commands[PART] = &CoreServer::cmdPart;
-      commands[QUIT] = &CoreServer::cmdQuit;
 
-    } else {
-        // rest of logic here.
-    }
     std::map<std::string, CommandHandler>::iterator cmdIt =
         commands.find(command);
     if (cmdIt != commands.end()) {
@@ -132,7 +122,7 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
       }
     } else {
       std::cerr << formatServerMessage(
-                       "ERROR", std::string("Unknown command: ") + command)
+                       "WARNING", std::string("Unknown command: ") + command)
                 << std::endl;
     }
   } catch (const std::exception &e) {
@@ -147,14 +137,14 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
 void CoreServer::WriteEvent(int fd) {
   if (!clients[fd].getResponse().empty()) {
     const std::string &response = clients[fd].getResponse();
-    std::cout << formatServerMessage("DEBUG", "Sending response: " + response)
+    std::cout << formatServerMessage("SERVER", response)
               << std::endl;
 
     ssize_t written = send(fd, response.c_str(), response.length(), 0);
     clients[fd].clearResponse();
 
     if (written < 0) {
-      std::cout << formatServerMessage("ERROR", "Writing error") << std::endl;
+      std::cout << formatServerMessage("WARNING", "Writing error") << std::endl;
     } else {
       clients[fd].clearResponse();
     }

@@ -141,17 +141,17 @@ debug:
 release:
 	@$(MAKE) all
 
-test: all
+test: re | $(DIR_LOG)
 	@printf "Running tests...\n"
 	@./.testsuite/irc-test.sh -f $(TEST-FILE) -v -d -t 1 > $(DIR_LOG)/raw-test.log && less $(DIR_LOG)/raw-test.log
 
-run: clean all
+run: re
 	@printf "Running $(NAME)...\n"
 	@./$(DIR_BIN)/$(NAME) $(ARGS)
 
 client: 
 	@printf "Running client...\n"
-	python3 ./test/TUI-client.py -p 22200 --password Alilepro135!
+	python3 ./test/client.py -p 22200 --password Alilepro135! -u test-user -n test-nick
 
 bot: all
 	@printf "Building bot...\n"

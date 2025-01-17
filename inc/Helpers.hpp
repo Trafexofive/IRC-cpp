@@ -13,12 +13,19 @@
 #ifndef HELPERS_HPP
 #define HELPERS_HPP
 
+#define RESET "\033[0m"
+
+#define BOLD "\033[1m"
+#define UNDERLINE "\033[4m"
+#define BLINK "\033[5m"
+
 #define YELLOW "\033[33m"
 #define RED "\033[31m"
 #define GREEN "\033[32m"
 #define CYAN "\033[36m"
 #define MAGENTA "\033[35m"
-#define RESET "\033[0m"
+#define BLUE "\033[34m"
+
 
 #include <cstring>
 #include <iostream>
@@ -38,7 +45,8 @@ typedef enum {
     INFO,
     DEBUG,
     WARNING,
-    ERROR
+    ERROR,
+    FATAL
 } LEVEL;
 
 // Server data structure

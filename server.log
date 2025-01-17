@@ -1,52 +1,52 @@
-[2025-01-17 14:49:20] [32mINFO :: [0mConstructing Server Class ...
-[2025-01-17 14:49:20] [33mDEBUG :: [0mValidating port: 22200
-[2025-01-17 14:49:20] [33mDEBUG :: [0m
-[2025-01-17 14:49:20] [33mDEBUG :: [0mValidating password
-[2025-01-17 14:49:20] [33mDEBUG :: [0mPassword valid
-[2025-01-17 14:49:20] [32mINFO :: [0mRegistering commands...
-[2025-01-17 14:49:20] [32mINFO :: [0mCreating socket...
-[2025-01-17 14:49:20] [33mDEBUG :: [0mSocket created: 3
-[2025-01-17 14:49:20] [32mINFO :: [0mSocket setup complete
-[2025-01-17 14:49:20] [33mDEBUG :: [0mBinding socket...
-[2025-01-17 14:49:20] [32mINFO :: [0mStarting to listen...
-[2025-01-17 14:49:20] [32mINFO :: [0mServer listening on port: 22200
-[2025-01-17 14:49:20] [33mDEBUG :: [0mServer main loop starting...
-[2025-01-17 14:49:22] [33mDEBUG :: [0mActive connections: 1
-[2025-01-17 14:49:22] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-17 14:49:22] [33mDEBUG :: [0mCreating new client instance for fd(4)
-[2025-01-17 14:49:22] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-17 14:49:22] [33mDEBUG :: [0mClient properties:
+[1m[2025-01-17 19:53:38] [0m[32mINFO :: [0mConstructing Server Class ...
+[1m[2025-01-17 19:53:38] [0m[33mDEBUG :: [0mValidating port: 22200
+[1m[2025-01-17 19:53:38] [0m[33mDEBUG :: [0m
+[1m[2025-01-17 19:53:38] [0m[33mDEBUG :: [0mValidating password
+[1m[2025-01-17 19:53:38] [0m[33mDEBUG :: [0mPassword valid
+[1m[2025-01-17 19:53:38] [0m[33mDEBUG :: [0mRegistering commands...
+[1m[2025-01-17 19:53:38] [0m[33mDEBUG :: [0mCreating socket...
+[1m[2025-01-17 19:53:38] [0m[33mDEBUG :: [0mSocket created: 3
+[1m[2025-01-17 19:53:38] [0m[32mINFO :: [0mServer Socket setup complete
+[1m[2025-01-17 19:53:38] [0m[33mDEBUG :: [0mBinding socket...
+[1m[2025-01-17 19:53:38] [0m[33mDEBUG :: [0mStarting to listen...
+[1m[2025-01-17 19:53:38] [0m[33mDEBUG :: [0mServer listening on port: 22200
+[1m[2025-01-17 19:53:38] [0m[33mDEBUG :: [0mServer main loop starting...
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-17 19:53:40] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mClient properties:
   - fd: 4
   - nick: 
   - full name: 
   - real name: 
   - password: 
   - ip: 127.0.0.1
-[2025-01-17 14:49:22] [32mINFO :: [0mClient connected
-[2025-01-17 14:49:22] [33mDEBUG :: [0mActive connections: 2
-[2025-01-17 14:49:22] [33mDEBUG :: [0mTokens: 
+[1m[2025-01-17 19:53:40] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mTokens: 
 PASS Alilepro135! 
-[2025-01-17 14:49:22] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-17 14:49:22] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-17 14:49:22] [33mDEBUG :: [0mPassword accepted
-[2025-01-17 14:49:22] [33mDEBUG :: [0mSending response: :morpheus-server.ddns.net 001  :Password Accepted
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mPassword accepted
+[1m[2025-01-17 19:53:40] [0m[35mSERVER >> [0m:morpheus-server.ddns.net 001  :Password Accepted
 
-[2025-01-17 14:49:22] [33mDEBUG :: [0mTokens: 
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mTokens: 
 NICK test-user 
-[2025-01-17 14:49:22] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-17 14:49:22] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-17 14:49:22] [33mDEBUG :: [0mNickname set to: test-user
-[2025-01-17 14:49:22] [33mDEBUG :: [0mTokens: 
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mTokens: 
 USER testUser 0 * :Test User 
-[2025-01-17 14:49:22] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-17 14:49:22] [33mDEBUG :: [0mProcessing USER command
-[2025-01-17 14:49:22] [33mDEBUG :: [0mRegistration complete for test-user
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mRegistration complete for test-user
 Client info:
 Nickname: test-user
 Username: testUser
 Realname: :Test
 Auth: 1
-[2025-01-17 14:49:22] [33mDEBUG :: [0mSending response: 001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-17 19:53:40] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -55,54 +55,54 @@ Auth: 1
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[2025-01-17 14:49:22] [33mDEBUG :: [0mTokens: 
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mTokens: 
 JOIN #test-channel 
-[2025-01-17 14:49:22] [33mDEBUG :: [0mProcessing command: JOIN
-[2025-01-17 14:49:22] [33mDEBUG :: [0mCreating new channel: #test-channel
-[2025-01-17 14:49:22] [33mDEBUG :: [0mCreating new channel: #test-channel
-[2025-01-17 14:49:22] [33mDEBUG :: [0mAdded test-user to channel #test-channel (Total members: 1)
-[2025-01-17 14:49:22] [33mDEBUG :: [0mDestroying channel: #test-channel
-[2025-01-17 14:49:22] test-user joined #test-channel
-[2025-01-17 14:49:22] [33mDEBUG :: [0mSending response: :test-user!testUser@localhost JOIN #test-channel
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mCreating new channel: #test-channel
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mCreating new channel: #test-channel
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mAdded test-user to channel #test-channel (Total members: 1)
+[1m[2025-01-17 19:53:40] [0m[33mDEBUG :: [0mDestroying channel: #test-channel
+[1m[2025-01-17 19:53:40] [0mtest-user joined #test-channel
+[1m[2025-01-17 19:53:40] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel
 
-[2025-01-17 14:49:23] [33mDEBUG :: [0mActive connections: 2
-[2025-01-17 14:49:23] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-17 14:49:23] [33mDEBUG :: [0mActive connections: 1
-[2025-01-17 14:49:23] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-17 14:49:23] [33mDEBUG :: [0mCreating new client instance for fd(4)
-[2025-01-17 14:49:23] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-17 14:49:23] [33mDEBUG :: [0mClient properties:
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-17 19:53:41] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-17 19:53:41] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mClient properties:
   - fd: 4
   - nick: 
   - full name: 
   - real name: 
   - password: 
   - ip: 127.0.0.1
-[2025-01-17 14:49:23] [32mINFO :: [0mClient connected
-[2025-01-17 14:49:23] [33mDEBUG :: [0mActive connections: 2
-[2025-01-17 14:49:23] [33mDEBUG :: [0mTokens: 
+[1m[2025-01-17 19:53:41] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mTokens: 
 PASS Alilepro135! 
-[2025-01-17 14:49:23] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-17 14:49:23] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-17 14:49:23] [33mDEBUG :: [0mPassword accepted
-[2025-01-17 14:49:23] [33mDEBUG :: [0mSending response: :morpheus-server.ddns.net 001  :Password Accepted
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mPassword accepted
+[1m[2025-01-17 19:53:41] [0m[35mSERVER >> [0m:morpheus-server.ddns.net 001  :Password Accepted
 
-[2025-01-17 14:49:23] [33mDEBUG :: [0mTokens: 
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mTokens: 
 NICK test-user 
-[2025-01-17 14:49:23] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-17 14:49:23] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-17 14:49:23] [33mDEBUG :: [0mNickname set to: test-user
-[2025-01-17 14:49:23] [33mDEBUG :: [0mTokens: 
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mTokens: 
 USER testUser 0 * :Test User 
-[2025-01-17 14:49:23] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-17 14:49:23] [33mDEBUG :: [0mProcessing USER command
-[2025-01-17 14:49:23] [33mDEBUG :: [0mRegistration complete for test-user
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mRegistration complete for test-user
 Client info:
 Nickname: test-user
 Username: testUser
 Realname: :Test
 Auth: 1
-[2025-01-17 14:49:23] [33mDEBUG :: [0mSending response: 001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-17 19:53:41] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -111,70 +111,70 @@ Auth: 1
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[2025-01-17 14:49:23] [33mDEBUG :: [0mTokens: 
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mTokens: 
 JOIN #test-channel 
-[2025-01-17 14:49:23] [33mDEBUG :: [0mProcessing command: JOIN
-[2025-01-17 14:49:23] [33mDEBUG :: [0mUser test-user is already in channel #test-channel
-[2025-01-17 14:49:23] test-user joined #test-channel
-[2025-01-17 14:49:23] [33mDEBUG :: [0mSending response: :test-user!testUser@localhost JOIN #test-channel
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mUser test-user is already in channel #test-channel
+[1m[2025-01-17 19:53:41] [0mtest-user joined #test-channel
+[1m[2025-01-17 19:53:41] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel
 
-[2025-01-17 14:49:23] [33mDEBUG :: [0mTokens: 
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mTokens: 
 JOIN #foo,#bar fubar,foobar 
-[2025-01-17 14:49:23] [33mDEBUG :: [0mProcessing command: JOIN
-[2025-01-17 14:49:23] [33mDEBUG :: [0mCreating new channel: #foo
-[2025-01-17 14:49:23] [33mDEBUG :: [0mCreating new channel: #foo
-[2025-01-17 14:49:23] [33mDEBUG :: [0mAdded test-user to channel #foo (Total members: 1)
-[2025-01-17 14:49:23] [33mDEBUG :: [0mDestroying channel: #test-channel
-[2025-01-17 14:49:23] [33mDEBUG :: [0mDestroying channel: #foo
-[2025-01-17 14:49:23] test-user joined #foo
-[2025-01-17 14:49:23] [33mDEBUG :: [0mCreating new channel: #bar
-[2025-01-17 14:49:23] [33mDEBUG :: [0mCreating new channel: #bar
-[2025-01-17 14:49:23] [33mDEBUG :: [0mAdded test-user to channel #bar (Total members: 1)
-[2025-01-17 14:49:23] [33mDEBUG :: [0mDestroying channel: #test-channel
-[2025-01-17 14:49:23] [33mDEBUG :: [0mDestroying channel: #foo
-[2025-01-17 14:49:23] [33mDEBUG :: [0mDestroying channel: #bar
-[2025-01-17 14:49:23] test-user joined #bar
-[2025-01-17 14:49:23] [33mDEBUG :: [0mSending response: :test-user!testUser@localhost JOIN #foo
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mCreating new channel: #foo
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mCreating new channel: #foo
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mAdded test-user to channel #foo (Total members: 1)
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mDestroying channel: #test-channel
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mDestroying channel: #foo
+[1m[2025-01-17 19:53:41] [0mtest-user joined #foo
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mCreating new channel: #bar
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mCreating new channel: #bar
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mAdded test-user to channel #bar (Total members: 1)
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mDestroying channel: #test-channel
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mDestroying channel: #foo
+[1m[2025-01-17 19:53:41] [0m[33mDEBUG :: [0mDestroying channel: #bar
+[1m[2025-01-17 19:53:41] [0mtest-user joined #bar
+[1m[2025-01-17 19:53:41] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #foo
 :test-user!testUser@localhost JOIN #bar
 
-[2025-01-17 14:49:24] [33mDEBUG :: [0mActive connections: 2
-[2025-01-17 14:49:24] [32mINFO :: [0mClosing connection FD: 4
-[2025-01-17 14:49:24] [33mDEBUG :: [0mActive connections: 1
-[2025-01-17 14:49:24] [32mINFO :: [0mClient accepted FD: 4
-[2025-01-17 14:49:24] [33mDEBUG :: [0mCreating new client instance for fd(4)
-[2025-01-17 14:49:24] [33mDEBUG :: [0mCreating new empty client instance
-[2025-01-17 14:49:24] [33mDEBUG :: [0mClient properties:
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-17 19:53:42] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-17 19:53:42] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mClient properties:
   - fd: 4
   - nick: 
   - full name: 
   - real name: 
   - password: 
   - ip: 127.0.0.1
-[2025-01-17 14:49:24] [32mINFO :: [0mClient connected
-[2025-01-17 14:49:24] [33mDEBUG :: [0mActive connections: 2
-[2025-01-17 14:49:24] [33mDEBUG :: [0mTokens: 
+[1m[2025-01-17 19:53:42] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mTokens: 
 PASS Alilepro135! 
-[2025-01-17 14:49:24] [33mDEBUG :: [0mProcessing command: PASS
-[2025-01-17 14:49:24] [33mDEBUG :: [0mProcessing PASS command
-[2025-01-17 14:49:24] [33mDEBUG :: [0mPassword accepted
-[2025-01-17 14:49:24] [33mDEBUG :: [0mSending response: :morpheus-server.ddns.net 001  :Password Accepted
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mPassword accepted
+[1m[2025-01-17 19:53:42] [0m[35mSERVER >> [0m:morpheus-server.ddns.net 001  :Password Accepted
 
-[2025-01-17 14:49:24] [33mDEBUG :: [0mTokens: 
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mTokens: 
 NICK test-user 
-[2025-01-17 14:49:24] [33mDEBUG :: [0mProcessing command: NICK
-[2025-01-17 14:49:24] [33mDEBUG :: [0mProcessing NICK command
-[2025-01-17 14:49:24] [33mDEBUG :: [0mNickname set to: test-user
-[2025-01-17 14:49:24] [33mDEBUG :: [0mTokens: 
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mTokens: 
 USER testUser 0 * :Test User 
-[2025-01-17 14:49:24] [33mDEBUG :: [0mProcessing command: USER
-[2025-01-17 14:49:24] [33mDEBUG :: [0mProcessing USER command
-[2025-01-17 14:49:24] [33mDEBUG :: [0mRegistration complete for test-user
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mRegistration complete for test-user
 Client info:
 Nickname: test-user
 Username: testUser
 Realname: :Test
 Auth: 1
-[2025-01-17 14:49:24] [33mDEBUG :: [0mSending response: 001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-17 19:53:42] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -183,25 +183,25 @@ Auth: 1
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[2025-01-17 14:49:24] [33mDEBUG :: [0mTokens: 
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mTokens: 
 JOIN #test-channel 
-[2025-01-17 14:49:24] [33mDEBUG :: [0mProcessing command: JOIN
-[2025-01-17 14:49:24] [33mDEBUG :: [0mUser test-user is already in channel #test-channel
-[2025-01-17 14:49:24] test-user joined #test-channel
-[2025-01-17 14:49:24] [33mDEBUG :: [0mSending response: :test-user!testUser@localhost JOIN #test-channel
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mUser test-user is already in channel #test-channel
+[1m[2025-01-17 19:53:42] [0mtest-user joined #test-channel
+[1m[2025-01-17 19:53:42] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel
 
-[2025-01-17 14:49:24] [33mDEBUG :: [0mTokens: 
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mTokens: 
 JOIN #foo,&bar fubar 
-[2025-01-17 14:49:24] [33mDEBUG :: [0mProcessing command: JOIN
-[2025-01-17 14:49:24] [33mDEBUG :: [0mUser test-user is already in channel #foo
-[2025-01-17 14:49:24] test-user joined #foo
-[2025-01-17 14:49:24] [33mDEBUG :: [0mCreating new channel: &bar
-[2025-01-17 14:49:24] [33mDEBUG :: [0mCreating new channel: &bar
-[2025-01-17 14:49:24] [33mDEBUG :: [0mAdded test-user to channel &bar (Total members: 1)
-[2025-01-17 14:49:24] [33mDEBUG :: [0mDestroying channel: &bar
-[2025-01-17 14:49:24] test-user joined &bar
-[2025-01-17 14:49:24] [33mDEBUG :: [0mSending response: :test-user!testUser@localhost JOIN #foo
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mUser test-user is already in channel #foo
+[1m[2025-01-17 19:53:42] [0mtest-user joined #foo
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mCreating new channel: &bar
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mCreating new channel: &bar
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mAdded test-user to channel &bar (Total members: 1)
+[1m[2025-01-17 19:53:42] [0m[33mDEBUG :: [0mDestroying channel: &bar
+[1m[2025-01-17 19:53:42] [0mtest-user joined &bar
+[1m[2025-01-17 19:53:42] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #foo
 :test-user!testUser@localhost JOIN &bar
 
-[2025-01-17 14:49:25] [33mDEBUG :: [0mActive connections: 2
-[2025-01-17 14:49:25] [32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-17 19:53:43] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-17 19:53:43] [0m[32mINFO :: [0mClosing connection FD: 4

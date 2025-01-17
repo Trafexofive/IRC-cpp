@@ -15,4 +15,7 @@ SINGLE NORMAL CHANNEL JOIN|PONG :irc.example.com|PASS Alilepro135!\r\nNICK test-
 
 MULTI CHANNEL/KEY JOIN|PONG :irc.example.com|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\nJOIN #foo,#bar fubar,foobar\r\n
 
-MULTI CHANNEL/KEY JOIN|PONG :irc.example.com|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\nJOIN #foo,&bar fubar\r\n
+MULTI CHANNEL/KEY JOIN|:test-user!testUser@localhost JOIN #test-channel
+:test-user!testUser@localhost JOIN #foo\r\n
+:test-user!testUser@localhost JOIN &bar
+|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\nJOIN #foo,&bar fubar\r\n

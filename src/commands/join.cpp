@@ -100,9 +100,14 @@ void CoreServer::joinSingleChannel(Client &client, const std::string &channelNam
 // Main JOIN command handler
 void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
     Client &client = clients[fd];
+    if (!client.isAuthenticated()) {
+        std::cout << formatServerMessage("WARNING", "JOIN failed: Client not authenticated") << std::endl;
+        client.setResponse(formatResponse(ERR_NOTREGISTERED, "JOIN :You have not registered"));
+        return;
+    }
 
     if (args.size() < 2) {
-        std::cout << formatServerMessage("ERROR", "JOIN failed: No channel specified") << std::endl;
+        std::cout << formatServerMessage("WARNING", "JOIN failed: No channel specified") << std::endl;
         client.setResponse(formatResponse(ERR_NEEDMOREPARAMS, "JOIN :Not enough parameters"));
         return;
     }

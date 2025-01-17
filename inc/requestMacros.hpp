@@ -13,6 +13,7 @@
 #ifndef REQUESTMACROS_HPP
 #define REQUESTMACROS_HPP
 
+#include "Helpers.hpp"
 #include <string>
 #include <vector>
 #include <map>
@@ -30,16 +31,15 @@ inline std::string formatResponse(const std::string& code, const std::string& me
 
 namespace StringUtils {
 
-// Common line ending often used by IRC servers (CRLF).
 static const std::string LINE_ENDING = "\r\n";
 
-// Defines message severity levels for logging or status indications.
 struct Severity {
     enum Type {
         INFO,
         WARNING,
         ERROR,
-        CRITICAL
+        DEBUG,
+        FATAL
     };
 };
 
@@ -48,8 +48,9 @@ inline std::string getSeverityString(Severity::Type severity) {
     switch (severity) {
         case Severity::INFO: return "INFO";
         case Severity::WARNING: return "WARNING";
+        case Severity::DEBUG: return "DEBUG";
         case Severity::ERROR: return "ERROR";
-        case Severity::CRITICAL: return "CRITICAL";
+        case Severity::FATAL: return "FATAL";
         default: return "UNKNOWN";
     }
 }
@@ -110,7 +111,7 @@ inline std::string formatLogMessage(std::time_t timestamp,
     return oss.str();
 }
 
-} // namespace StringUtils
+}
 
 // Commands
 
@@ -241,6 +242,7 @@ inline std::string formatLogMessage(std::time_t timestamp,
 #define ERR_INVALIDCAPCMD "410"
 #define ERR_INVALIDCAP "411"
 #define ERR_NEEDMOREPARAMS "461"
+#define ERR_NOTREGISTERED "451"
 // #define ERR_UNKNOWNCAP "410"
 
 #endif

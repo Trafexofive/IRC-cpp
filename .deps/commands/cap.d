@@ -5,6 +5,7 @@ obj/commands/cap.o: src/commands/cap.cpp \
  src/commands/../../inc/./../inc/Helpers.hpp \
  src/commands/../../inc/./Client.hpp src/commands/../../inc/./Utils.hpp \
  src/commands/../../inc/./requestMacros.hpp \
+ src/commands/../../inc/./Helpers.hpp \
  src/commands/../../inc/./ircResponses.hpp \
  src/commands/../../inc/././requestMacros.hpp
 src/commands/../../inc/Server.hpp:
@@ -16,5 +17,6 @@ src/commands/../../inc/./../inc/Helpers.hpp:
 src/commands/../../inc/./Client.hpp:
 src/commands/../../inc/./Utils.hpp:
 src/commands/../../inc/./requestMacros.hpp:
+src/commands/../../inc/./Helpers.hpp:
 src/commands/../../inc/./ircResponses.hpp:
 src/commands/../../inc/././requestMacros.hpp:

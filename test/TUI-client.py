@@ -276,7 +276,7 @@ def tui_main(stdscr, args):
         except Exception:
             pass
     safe_addstr(chat_window, "[Info] Disconnected from server.\n", curses.color_pair(3))
-    chat_window.refresh()
+    chat_window.refresh()   
     # Give a moment for the UI to display the disconnect message
     curses.napms(1000)
 
