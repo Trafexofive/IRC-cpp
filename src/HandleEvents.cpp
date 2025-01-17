@@ -31,6 +31,7 @@ static void printAllClientProperties(const Client &client) {
   std::cout << "  - fd: " << client.getFd() << std::endl;
   std::cout << "  - nick: " << client.getNickName() << std::endl;
   std::cout << "  - full name: " << client.getFullName() << std::endl;
+  std::cout << "  - real name: " << client.getRealName() << std::endl;
   std::cout << "  - password: " << client.getPassWord() << std::endl;
   std::cout << "  - ip: " << client.getIpAddr() << std::endl;
 }
@@ -54,7 +55,9 @@ void CoreServer::WelcomeClient() {
   std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
 
   clients[fd_c] = Client(fd_c, client_addr);
+
   printAllClientProperties(clients[fd_c]);
+  std::cout << formatServerMessage("INFO", "Client connected") << std::endl;
 
   char host[NI_MAXHOST];
   char service[NI_MAXSERV];
@@ -150,6 +153,7 @@ void CoreServer::WriteEvent(int fd) {
               << std::endl;
 
     ssize_t written = send(fd, response.c_str(), response.length(), 0);
+    clients[fd].clearResponse();
 
     if (written < 0) {
       std::cout << formatServerMessage("ERROR", "Writing error") << std::endl;

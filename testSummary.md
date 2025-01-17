@@ -1,7 +1,7 @@
 # IRC Server Test Summary
 ## Test Execution Details
 
-- **Date**: 2025-01-16 23:36:34 UTC
+- **Date**: 2025-01-17 01:41:15 UTC
 - **Duration**: 0h 0m 3s
 - **User**: Trafexofive
 - **Host**: morpheus-arch
@@ -44,17 +44,18 @@ Memory: 15Gi
 ```
 Error Summary Report
 ===================
-Generated: 2025-01-16 23:29:24 UTC
+Generated: 2025-01-17 01:34:15 UTC
 Test Suite User: Trafexofive
 
 Failed Tests:
 ❌ SINGLE NORMAL CHANNEL JOIN - Expected: 'PONG :irc.example.com'
 ❌ MULTI CHANNEL/KEY JOIN - Expected: 'PONG :irc.example.com'
+❌ MULTI CHANNEL/KEY JOIN - Expected: 'PONG :irc.example.com'
 
 Test Statistics:
-- Total Tests: 2
+- Total Tests: 3
 - Passed: 0
-- Failed: 2
+- Failed: 3
 - Skipped: 0
 - Success Rate: 0%
 ```

@@ -46,6 +46,7 @@ private:
     std::string ipAddr;
     std::string fullName;
     std::string nickName;
+    std::string realName;
     std::string passWord;
     std::string buff;
     std::string response;
@@ -63,6 +64,10 @@ public:
     const std::string& getIpAddr() const;
     const std::string& getFullName() const;
     const std::string& getNickName() const;
+    const std::string& getRealName() const
+    {
+        return realName;
+    }
     const std::string& getPassWord() const;
     const std::string& getBuff() const;
     const std::string& getResponse() const;

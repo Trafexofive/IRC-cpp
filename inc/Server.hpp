@@ -58,7 +58,6 @@ Iterator custom_remove_if(Iterator first, Iterator last, Predicate pred) {
     return result;
 }
 
-
 // Predicate for removing file descriptors
 struct FdPredicate {
     int fd_to_remove;

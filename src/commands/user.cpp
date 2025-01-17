@@ -12,6 +12,14 @@
 
 #include "../../inc/Server.hpp"
 
+static void printClientInfo(Client &client) {
+    std::cout << "Client info:" << std::endl;
+    std::cout << "Nickname: " << client.getNickName() << std::endl;
+    std::cout << "Username: " << client.getFullName() << std::endl;
+    std::cout << "Realname: " << client.getRealName() << std::endl;
+    std::cout << "Auth: " << client.getAuth() << std::endl;
+}
+
 void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
     std::cout << formatServerMessage("DEBUG", "Processing USER command") << std::endl;
 
@@ -39,7 +47,6 @@ void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
         // Send welcome messages using formatResponse
         client.setResponse(formatResponse(RPL_WELCOME, nick + " :Welcome to the WeUseArch IRC Network"));
         client.setResponse(formatResponse(RPL_YOURHOST, nick + " :Your host is morpheus-server.ddns.net"));
-        client.setResponse(formatResponse(RPL_CREATED, nick + " :This server was created " __DATE__));
-        client.setResponse(formatResponse(RPL_MYINFO, nick + " :IRC server " __VERSION__));
+        printClientInfo(client);
     }
 }

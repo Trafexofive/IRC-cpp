@@ -22,6 +22,7 @@ Client::Client() :
     ipAddr(""),
     fullName(""),
     nickName(""),
+    realName(""),
     passWord(""),
     buff(""),
     response(""),
@@ -31,24 +32,24 @@ Client::Client() :
 }
 
 // Parameterized constructor
-Client::Client(int fd, struct sockaddr_in ddr) :
-    fdClient(fd),
-    auth(false),
+Client::Client(int fd, struct sockaddr_in addr) : 
+    fdClient(fd), 
+    auth(false), 
     connected(false),
-    clientInfos(ddr),
-    ipAddr(""),
+    clientInfos(addr),
+    ipAddr(inet_ntoa(addr.sin_addr)),
     fullName(""),
     nickName(""),
+    realName(""),
     passWord(""),
     buff(""),
-    response("")
+    response(""),
+    clientType(CLIENT::NORMAL)
 {
     std::ostringstream debug;
-    debug << "Creating new client instance with fd(" << fd << ") and IP(" 
-          << inet_ntoa(ddr.sin_addr) << ":" << ntohs(ddr.sin_port) << ")";
+    debug << "Creating new client instance for fd(" << fd << ")";
     std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
 }
-
 // Getters
 int Client::getFd() const { return fdClient; }
 bool Client::getAuth() const { return auth; }
@@ -69,10 +70,9 @@ void Client::setIpAddr(const std::string& ip) { ipAddr = ip; }
 void Client::setFullName(const std::string& user) { fullName = user; }
 void Client::setNickName(const std::string& nick) { nickName = nick; }
 void Client::setPassWord(const std::string& pass) { passWord = pass; }
-void Client::setResponse(const std::string& response) { 
-    this->response = response; 
-    std::cout << formatServerMessage("INFO", "Setting response for client") << std::endl;
-
+void Client::setResponse(const std::string& response) {
+    // Append the new response to the existing response buffer
+    this->response += response ; // Add IRC message delimiter
 }
 void Client::setClientInfos(const struct sockaddr_in& info) { clientInfos = info; }
 void Client::setBuff(const std::string& _buff, bool append) 
@@ -149,37 +149,6 @@ void Client::resetPassword(const std::string& newPassword)
     std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
 
     passWord = newPassword;
-}
-
-void Client::authenticate() 
-{
-    std::ostringstream debug;
-    debug << "Attempting authentication for client fd(" << fdClient << ")";
-    std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
-
-    if (!passWord.empty() && !nickName.empty() && !fullName.empty()) 
-    {
-        auth = true;
-        connected = true;
-        
-        // Set welcome messages
-        std::string welcomeMsg = ":server 001 " + nickName + " :Welcome to the IRC Network";
-        setResponse(welcomeMsg);
-        
-        std::ostringstream success;
-        success << "Authentication successful for " << nickName 
-                << " (fd: " << fdClient << ")";
-        std::cout << formatServerMessage("DEBUG", success.str()) << std::endl;
-    }
-    else
-    {
-        std::ostringstream error;
-        error << "Authentication failed - Missing: "
-              << (passWord.empty() ? "password " : "")
-              << (nickName.empty() ? "nickname " : "")
-              << (fullName.empty() ? "fullname" : "");
-        std::cout << formatServerMessage("ERROR", error.str()) << std::endl;
-    }
 }
 
 void Client::clear() 
