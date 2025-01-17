@@ -30,8 +30,14 @@ PONG :irc.example.com
 :morpheus-server.ddns.net 001  :Password Accepted
 001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
+003 test-user :This server was created 2024-01-11
+004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
+375 test-user :- morpheus-server.ddns.net Message of the Day - 
+372 test-user :- Welcome to the WeUseArch IRC Network!
+372 test-user :- Enjoy your stay!
+376 test-user :End of /MOTD command.
 :test-user!testUser@localhost JOIN #test-channel
-[0;90mApprox. difference between expected and actual:[0m 175%
+[0;90mApprox. difference between expected and actual:[0m 130%
 [0;31m[KO][0m Test failed: SINGLE NORMAL CHANNEL JOIN
 
 [1mRunning Test: MULTI CHANNEL/KEY JOIN[0m
@@ -43,10 +49,16 @@ PONG :irc.example.com
 :morpheus-server.ddns.net 001  :Password Accepted
 001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
+003 test-user :This server was created 2024-01-11
+004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
+375 test-user :- morpheus-server.ddns.net Message of the Day - 
+372 test-user :- Welcome to the WeUseArch IRC Network!
+372 test-user :- Enjoy your stay!
+376 test-user :End of /MOTD command.
 :test-user!testUser@localhost JOIN #test-channel
 :test-user!testUser@localhost JOIN #foo
 :test-user!testUser@localhost JOIN #bar
-[0;90mApprox. difference between expected and actual:[0m 150%
+[0;90mApprox. difference between expected and actual:[0m 125%
 [0;31m[KO][0m Test failed: MULTI CHANNEL/KEY JOIN
 
 [1mRunning Test: MULTI CHANNEL/KEY JOIN[0m
@@ -58,10 +70,16 @@ PONG :irc.example.com
 :morpheus-server.ddns.net 001  :Password Accepted
 001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
+003 test-user :This server was created 2024-01-11
+004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
+375 test-user :- morpheus-server.ddns.net Message of the Day - 
+372 test-user :- Welcome to the WeUseArch IRC Network!
+372 test-user :- Enjoy your stay!
+376 test-user :End of /MOTD command.
 :test-user!testUser@localhost JOIN #test-channel
 :test-user!testUser@localhost JOIN #foo
 :test-user!testUser@localhost JOIN &bar
-[0;90mApprox. difference between expected and actual:[0m 150%
+[0;90mApprox. difference between expected and actual:[0m 125%
 [0;31m[KO][0m Test failed: MULTI CHANNEL/KEY JOIN
 
 [1;33mStopping server...[0m

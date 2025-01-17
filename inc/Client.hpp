@@ -4,8 +4,7 @@
 /*   Client.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/01 11:48:07 by mlamkadm          #+#    #+#             */
+/*                                                +#+#+#+#+#+   +#+           */ /*   Created: 2025/01/01 11:48:07 by mlamkadm          #+#    #+#             */
 /*   Updated: 2025/01/10 20:14:36 by mlamkadm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -80,6 +79,10 @@ public:
     void setIpAddr(const std::string& ip);
     void setFullName(const std::string& user);
     void setNickName(const std::string& nick);
+    void setRealName(const std::string& real)
+    {
+        realName = real;
+    }
     void setPassWord(const std::string& pass);
     void setResponse(const std::string& response);
     void setClientInfos(const struct sockaddr_in& info);
