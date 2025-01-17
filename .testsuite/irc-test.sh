@@ -85,6 +85,7 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+
 # Main execution flow
 function main() {
     init_log
@@ -92,7 +93,7 @@ function main() {
 
     if [ "${QUIET:-0}" -eq 0 ]; then
         echo -e "${BLUE}${BOLD}Enhanced IRC Server Test Suite${NC}"
-        echo -e "${GRAY}Current Date and Time (UTC): 2025-01-16 20:49:26${NC}"
+        echo -e "${GRAY}Current Date and Time (UTC): $TIME${NC}"
         echo -e "${GRAY}Current User's Login: Trafexofive${NC}"
         echo -e "${GRAY}Testing server at localhost:$PORT${NC}"
     fi

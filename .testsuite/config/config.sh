@@ -34,5 +34,8 @@ NO_COLOR=0
 SKIP_CLEANUP=0
 CUSTOM_TESTS=""
 
+# Misc
+TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+
 # Array to store failed tests
 declare -a FAILED_TESTS_ARRAY

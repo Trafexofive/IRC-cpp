@@ -1,7 +1,6 @@
 # IRC Server Test Summary
 ## Test Execution Details
-
-- **Date**: 2025-01-17 13:44:45 UTC
+- **Date**: 2025-01-17 13:39:47 UTC
 - **Duration**: 0h 0m 3s
 - **User**: Trafexofive
 - **Host**: morpheus-arch
@@ -35,16 +34,15 @@ Memory: 15Gi
 ```
 
 ## Log Files
-- Test Log: irc.log
+- Test Log: test_log.txt
 - Server Log: server.log
-- Summary File: testSummary.md
-
+- Summary File: test_summary.md
 
 ## Error Summary
 ```
 Error Summary Report
 ===================
-Generated: 2025-01-17 13:42:18 UTC
+Generated: 2025-01-17 13:34:48 UTC
 Test Suite User: Trafexofive
 
 Failed Tests:

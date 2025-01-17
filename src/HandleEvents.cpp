@@ -109,8 +109,6 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
     // Execute command if it exists
     if (client.getAuth()) {
       commands[CAP] = &CoreServer::cmdCap;
-      commands[NICK] = &CoreServer::cmdNick;
-      commands[USER] = &CoreServer::cmdUser;
       commands[JOIN] = &CoreServer::cmdJoin;
       commands[PRIVMSG] = &CoreServer::cmdPrivmsg;
       commands[PING] = &CoreServer::cmdPing;

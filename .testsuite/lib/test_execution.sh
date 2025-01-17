@@ -124,30 +124,96 @@ function send_and_receive() {
     [[ "$response" == *"$expected"* ]]
 }
 
+# function execute_tests() {
+#     TEST_START_TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+#     FAILED_TESTS_ARRAY=()
+#
+#     if [ ! -f "${CUSTOM_TESTS}" ]; then
+#         handle_error "Test file not found: ${CUSTOM_TESTS}"
+#         return 1
+#     fi
+#
+#     debug_msg "Starting test execution from file: ${CUSTOM_TESTS}"
+#     
+#     while IFS='|' read -r test_name expected_response commands || [ -n "$test_name" ]; do
+#         # Skip empty lines and comments
+#         [[ -z "$test_name" || "$test_name" =~ ^[[:space:]]*# ]] && continue
+#
+#         ((TOTAL_TESTS++))
+#         
+#         if [ "${QUIET:-0}" -eq 0 ]; then
+#             echo -e "\n${BOLD}Running Test: ${test_name}${NC}"
+#         fi
+#         log_message "Running test: ${test_name}"
+#
+#         local start_time=$(date +%s)
+#         
+#         if run_single_test "$test_name" "$expected_response" "$commands"; then
+#             ((PASSED_TESTS++))
+#             if [ "${QUIET:-0}" -eq 0 ]; then
+#                 echo -e "${OK} Test passed: ${test_name}"
+#             fi
+#         else
+#             ((FAILED_TESTS++))
+#             FAILED_TESTS_ARRAY+=("❌ $test_name - Expected: '$expected_response'")
+#             if [ "${QUIET:-0}" -eq 0 ]; then
+#                 echo -e "${KO} Test failed: ${test_name}"
+#             fi
+#         fi
+#         
+#         local duration=$(($(date +%s) - start_time))
+#         log_message "Test '${test_name}' completed in ${duration}s"
+#     done < "$CUSTOM_TESTS"
+#
+#     TEST_END_TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+#     
+#     # Prevent division by zero
+#     if [ $((TOTAL_TESTS - SKIPPED_TESTS)) -eq 0 ]; then
+#         SUCCESS_RATE=0
+#     else
+#         SUCCESS_RATE=$(( (PASSED_TESTS * 100) / (TOTAL_TESTS - SKIPPED_TESTS) ))
+#     fi
+#     
+#     debug_msg "Test execution completed. Success rate: ${SUCCESS_RATE}%"
+# }
+#
+# function run_single_test() {
+#     local test_name=$1
+#     local expected=$2
+#     local commands=$3
+#
+#     if [ "${QUIET:-0}" -eq 0 ]; then
+#         echo -e "\n${BOLD}Running: ${test_name}${NC}"
+#     fi
+#     log_message "Running test: ${test_name}"
+#
+#     # Use DEFAULT_PASSWORD for AUTH
+#     if [[ "$commands" == AUTH* ]]; then
+#         commands="PASS ${DEFAULT_PASSWORD}\nNICK tester\nUSER tester 0 * :Test User"
+#     fi
+#
+#     # Execute test and return result
+#     if send_and_receive "$commands" "$expected"; then
+#         return 0
+#     else
+#         return 1
+#     fi
+# }
 function execute_tests() {
     TEST_START_TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
     FAILED_TESTS_ARRAY=()
-
     if [ ! -f "${CUSTOM_TESTS}" ]; then
         handle_error "Test file not found: ${CUSTOM_TESTS}"
         return 1
     fi
-
     debug_msg "Starting test execution from file: ${CUSTOM_TESTS}"
     
     while IFS='|' read -r test_name expected_response commands || [ -n "$test_name" ]; do
         # Skip empty lines and comments
         [[ -z "$test_name" || "$test_name" =~ ^[[:space:]]*# ]] && continue
-
         ((TOTAL_TESTS++))
         
-        if [ "${QUIET:-0}" -eq 0 ]; then
-            echo -e "\n${BOLD}Running Test: ${test_name}${NC}"
-        fi
-        log_message "Running test: ${test_name}"
-
         local start_time=$(date +%s)
-        
         if run_single_test "$test_name" "$expected_response" "$commands"; then
             ((PASSED_TESTS++))
             if [ "${QUIET:-0}" -eq 0 ]; then
@@ -164,7 +230,6 @@ function execute_tests() {
         local duration=$(($(date +%s) - start_time))
         log_message "Test '${test_name}' completed in ${duration}s"
     done < "$CUSTOM_TESTS"
-
     TEST_END_TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
     
     # Prevent division by zero
@@ -181,17 +246,17 @@ function run_single_test() {
     local test_name=$1
     local expected=$2
     local commands=$3
-
+    
     if [ "${QUIET:-0}" -eq 0 ]; then
-        echo -e "\n${BOLD}Running: ${test_name}${NC}"
+        echo -e "\n${BOLD}Running Test: ${test_name}${NC}"
     fi
     log_message "Running test: ${test_name}"
-
+    
     # Use DEFAULT_PASSWORD for AUTH
     if [[ "$commands" == AUTH* ]]; then
         commands="PASS ${DEFAULT_PASSWORD}\nNICK tester\nUSER tester 0 * :Test User"
     fi
-
+    
     # Execute test and return result
     if send_and_receive "$commands" "$expected"; then
         return 0

@@ -141,9 +141,9 @@ debug:
 release:
 	@$(MAKE) all
 
-test: re | $(DIR_LOG)
+test: all
 	@printf "Running tests...\n"
-	@./.testsuite/irc-test.sh -f $(TEST-FILE) -v -t 1 > $(DIR_LOG)/raw-test.log && less $(DIR_LOG)/raw-test.log
+	@./.testsuite/irc-test.sh -f $(TEST-FILE) -v -d -t 1 > $(DIR_LOG)/raw-test.log && less $(DIR_LOG)/raw-test.log
 
 run: clean all
 	@printf "Running $(NAME)...\n"

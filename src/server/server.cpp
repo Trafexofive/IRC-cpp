@@ -105,7 +105,9 @@ CoreServer::CoreServer(std::string port, std::string password) {
   std::cout << formatServerMessage("INFO", "Registering commands...")
             << std::endl;
   // only one allowed before auth
-  commands[PASS] = &CoreServer::cmdPass;
+    commands[PASS] = &CoreServer::cmdPass;
+    commands[NICK] = &CoreServer::cmdNick;
+    commands[USER] = &CoreServer::cmdUser;
   // commands[CMD_LIST] = &CoreServer::cmdList;
   create_socket();
   start_listening();
