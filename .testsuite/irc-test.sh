@@ -10,6 +10,8 @@ source $root_dir/lib/logging.sh
 source $root_dir/lib/process_management.sh
 source $root_dir/lib/test_execution.sh
 source $root_dir/lib/utils.sh
+source $root_dir/lib/summary.sh
+source $root_dir/lib/validation.sh
 
 # Parse command line arguments
 while [[ $# -gt 0 ]]; do

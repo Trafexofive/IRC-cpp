@@ -1,29 +1,29 @@
 ========================================
-IRC Server Test Log - 2025-01-17 13:44:43 UTC
+IRC Server Test Log - 2025-01-17 13:49:20 UTC
 User: Trafexofive
 Server: localhost:22200
 Debug Mode: 1
 Verbose Mode: 1
 ========================================
 
-[2025-01-17 13:44:43 UTC] Test suite started
+[2025-01-17 13:49:20 UTC] Test suite started
 ----------------------------------------
-[2025-01-17 13:44:43 UTC] Starting IRC server
-[2025-01-17 13:44:45 UTC] [DEBUG] Waiting for server to start (PID: 501288)
-[2025-01-17 13:44:45 UTC] Server started successfully
-[2025-01-17 13:44:45 UTC] [DEBUG] Starting test execution from file: test/test-cases/rfc-join.test
-[2025-01-17 13:44:45 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
-[2025-01-17 13:44:45 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\n
-[2025-01-17 13:44:46 UTC] Test 'SINGLE NORMAL CHANNEL JOIN' completed in 1s
-[2025-01-17 13:44:46 UTC] Running test: MULTI CHANNEL/KEY JOIN
-[2025-01-17 13:44:46 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\nJOIN #foo,#bar fubar,foobar\r\n
-[2025-01-17 13:44:47 UTC] Test 'MULTI CHANNEL/KEY JOIN' completed in 1s
-[2025-01-17 13:44:47 UTC] Running test: MULTI CHANNEL/KEY JOIN
-[2025-01-17 13:44:47 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\nJOIN #foo,&bar fubar\r\n
-[2025-01-17 13:44:48 UTC] Test 'MULTI CHANNEL/KEY JOIN' completed in 1s
-[2025-01-17 13:44:48 UTC] [DEBUG] Test execution completed. Success rate: 0%
-[2025-01-17 13:44:48 UTC] [DEBUG] Error summary saved to error_summary.txt
-[2025-01-17 13:44:48 UTC] Test suite shutting down
-[2025-01-17 13:44:48 UTC] Stopping server (PID: 501288)
+[2025-01-17 13:49:20 UTC] Starting IRC server
+[2025-01-17 13:49:22 UTC] [DEBUG] Waiting for server to start (PID: 503444)
+[2025-01-17 13:49:22 UTC] Server started successfully
+[2025-01-17 13:49:22 UTC] [DEBUG] Starting test execution from file: test/test-cases/rfc-join.test
+[2025-01-17 13:49:22 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
+[2025-01-17 13:49:22 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\n
+[2025-01-17 13:49:23 UTC] Test 'SINGLE NORMAL CHANNEL JOIN' completed in 1s
+[2025-01-17 13:49:23 UTC] Running test: MULTI CHANNEL/KEY JOIN
+[2025-01-17 13:49:23 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\nJOIN #foo,#bar fubar,foobar\r\n
+[2025-01-17 13:49:24 UTC] Test 'MULTI CHANNEL/KEY JOIN' completed in 1s
+[2025-01-17 13:49:24 UTC] Running test: MULTI CHANNEL/KEY JOIN
+[2025-01-17 13:49:24 UTC] [DEBUG] Sending commands: PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\nJOIN #foo,&bar fubar\r\n
+[2025-01-17 13:49:25 UTC] Test 'MULTI CHANNEL/KEY JOIN' completed in 1s
+[2025-01-17 13:49:25 UTC] [DEBUG] Test execution completed. Success rate: 0%
+[2025-01-17 13:49:25 UTC] [DEBUG] Error summary saved to error_summary.txt
+[2025-01-17 13:49:25 UTC] Test suite shutting down
+[2025-01-17 13:49:25 UTC] Stopping server (PID: 503444)
 ----------------------------------------
-[2025-01-17 13:44:48 UTC] Stopping server (PID: 501288)
+[2025-01-17 13:49:25 UTC] Stopping server (PID: 503444)
