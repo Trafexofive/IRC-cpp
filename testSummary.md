@@ -1,8 +1,8 @@
 # IRC Server Test Summary
 ## Test Execution Details
 
-- **Date**: 2025-01-17 23:00:42 UTC
-- **Duration**: 0h 0m 4s
+- **Date**: 2025-01-17 23:27:24 UTC
+- **Duration**: 0h 0m 20s
 - **User**: Trafexofive
 - **Host**: morpheus-arch
 
@@ -13,15 +13,16 @@
 - Test File: test/test-cases/rfc-join.test
 
 ## Test Results
-- **Total Tests**: 4
-- **Passed**: 4 🟢
-- **Failed**: 0 🔴
+- **Total Tests**: 20
+- **Passed**: 18 🟢
+- **Failed**: 2 🔴
 - **Skipped**: 0 ⚪
-- **Success Rate**: 100%
+- **Success Rate**: 90%
 
 ## Failed Tests
 ```
-No failed tests
+❌ JOIN CHANNEL WITH SPACES (INVALID) - Expected: ':test-user!testUser@localhost JOIN #test channel'
+❌ JOIN CHANNEL WITH INVALID CHARACTERS (INVALID) - Expected: ':test-user!testUser@localhost JOIN #test-channel,'
 ```
 
 ## System Information
@@ -42,16 +43,17 @@ Memory: 15Gi
 ```
 Error Summary Report
 ===================
-Generated: 2025-01-17 22:59:38 UTC
+Generated: 2025-01-17 23:26:55 UTC
 Test Suite User: Trafexofive
 
 Failed Tests:
-❌ JOIN 2 CHANNELS - Expected: ':test-user!testUser@localhost JOIN #test-channel1\r\n:test-user!testUser@localhost JOIN #test-channel2\r\n'
+❌ JOIN CHANNEL WITH SPACES (INVALID) - Expected: ':test-user!testUser@localhost JOIN #test channel'
+❌ JOIN CHANNEL WITH INVALID CHARACTERS (INVALID) - Expected: ':test-user!testUser@localhost JOIN #test-channel,'
 
 Test Statistics:
-- Total Tests: 4
-- Passed: 3
-- Failed: 1
+- Total Tests: 20
+- Passed: 18
+- Failed: 2
 - Skipped: 0
-- Success Rate: 75%
+- Success Rate: 90%
 ```

@@ -44,6 +44,7 @@ SRC_FILES := HandleEvents.cpp \
     commands/pass.cpp \
     commands/part.cpp \
     commands/user.cpp \
+    commands/quit.cpp \
     commands/cmdHelpers.cpp \
     main.cpp \
     Validation.cpp \
@@ -143,7 +144,8 @@ release:
 
 test: re | $(DIR_LOG)
 	@printf "Running tests...\n"
-	@./.testsuite/irc-test.sh -f $(TEST-FILE) -v -d -t 1 > $(DIR_LOG)/raw-test.log && less $(DIR_LOG)/raw-test.log
+	@./.testsuite/irc-test.sh -f $(TEST-FILE) -v -d -t 1 | tee $(DIR_LOG)/raw-test.log
+	@less $(DIR_LOG)/raw-test.log
 
 run: re
 	@printf "Running $(NAME)...\n"

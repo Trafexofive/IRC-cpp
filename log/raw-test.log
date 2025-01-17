@@ -13,7 +13,7 @@ Skip Cleanup:      [0;34mNo[0m
 [0;90m----------------------------------------[0m
 
 [0;34m[1mEnhanced IRC Server Test Suite[0m
-[0;90mCurrent Date and Time (UTC): 2025-01-17 23:00:40 UTC[0m
+[0;90mCurrent Date and Time (UTC): 2025-01-17 23:27:22 UTC[0m
 [0;90mCurrent User's Login: Trafexofive[0m
 [0;90mTesting server at localhost:22200[0m
 [0;90m----------------------------------------[0m
@@ -154,13 +154,450 @@ JOIN #test-channel1,#test-channel2,#test-channel3
 ----------------------------------------[0m
 [0;32m✔ Test passed: JOIN MULTIPLE CHANNELS[0m
 ========================================[0m
+ Running Test: JOIN x CHANNELS [0m
+========================================[0m
+[0;90m>>> Sending commands: PASS Alilepro135!
+NICK test-user
+USER testUser 0 * :Test User
+JOIN #test-channel1,#test-channel2
+[0m
+----------------------------------------[0m
+[0;90mExpected Response:[0m
+:test-user!testUser@localhost JOIN #test-channel1
+:test-user!testUser@localhost JOIN #test-channel2
+[0;90mServer Response:[0m
+:test-user!testUser@localhost JOIN #test-channel1
+:test-user!testUser@localhost JOIN #test-channel2
+[0;90mNormalized Expected (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+00000030: 315c 725c 6e3a 7465 7374 2d75 7365 7221  1
+:test-user!
+00000040: 7465 7374 5573 6572 406c 6f63 616c 686f  testUser@localho
+00000050: 7374 204a 4f49 4e20 2374 6573 742d 6368  st JOIN #test-ch
+00000060: 616e 6e65 6c32                           annel2
+[0;90mNormalized Response (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+00000030: 315c 725c 6e3a 7465 7374 2d75 7365 7221  1
+:test-user!
+00000040: 7465 7374 5573 6572 406c 6f63 616c 686f  testUser@localho
+00000050: 7374 204a 4f49 4e20 2374 6573 742d 6368  st JOIN #test-ch
+00000060: 616e 6e65 6c32                           annel2
+[0;90mApprox. difference between expected and actual:[0m 100%
+----------------------------------------[0m
+[0;32m✔ Test passed: JOIN x CHANNELS[0m
+========================================[0m
+ Running Test: JOIN CHANNEL WITH SPECIAL CHARACTERS [0m
+========================================[0m
+[0;90m>>> Sending commands: PASS Alilepro135!
+NICK test-user
+USER testUser 0 * :Test User
+JOIN #test-channel!@#$
+[0m
+----------------------------------------[0m
+[0;90mExpected Response:[0m
+:test-user!testUser@localhost JOIN #test-channel!@#$
+[0;90mServer Response:[0m
+:test-user!testUser@localhost JOIN #test-channel!@#$
+[0;90mNormalized Expected (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+00000030: 2140 2324                                !@#$
+[0;90mNormalized Response (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+00000030: 2140 2324                                !@#$
+[0;90mApprox. difference between expected and actual:[0m 110%
+----------------------------------------[0m
+[0;32m✔ Test passed: JOIN CHANNEL WITH SPECIAL CHARACTERS[0m
+========================================[0m
+ Running Test: JOIN CHANNEL WITH SPACES (INVALID) [0m
+========================================[0m
+[0;90m>>> Sending commands: PASS Alilepro135!
+NICK test-user
+USER testUser 0 * :Test User
+JOIN #test channel
+[0m
+----------------------------------------[0m
+[0;90mExpected Response:[0m
+:test-user!testUser@localhost JOIN #test channel
+[0;90mServer Response:[0m
+:test-user!testUser@localhost JOIN #test
+[0;90mNormalized Expected (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2063 6861 6e6e 656c  IN #test channel
+[0;90mNormalized Response (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374                      IN #test
+[0;90mApprox. difference between expected and actual:[0m 130%
+----------------------------------------[0m
+[0;90mDetailed difference:[0m
+1c1
+< :test-user!testUser@localhost JOIN #test channel
+---
+> :test-user!testUser@localhost JOIN #test
+----------------------------------------[0m
+[0;31m✘ Test failed: JOIN CHANNEL WITH SPACES (INVALID)[0m
+========================================[0m
+ Running Test: JOIN CHANNEL WITH KEY AND SPECIAL CHARACTERS [0m
+========================================[0m
+[0;90m>>> Sending commands: PASS Alilepro135!
+NICK test-user
+USER testUser 0 * :Test User
+JOIN #test-channel!@#$ key!@#$
+[0m
+----------------------------------------[0m
+[0;90mExpected Response:[0m
+:test-user!testUser@localhost JOIN #test-channel!@#$
+[0;90mServer Response:[0m
+:test-user!testUser@localhost JOIN #test-channel!@#$
+[0;90mNormalized Expected (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+00000030: 2140 2324                                !@#$
+[0;90mNormalized Response (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+00000030: 2140 2324                                !@#$
+[0;90mApprox. difference between expected and actual:[0m 110%
+----------------------------------------[0m
+[0;32m✔ Test passed: JOIN CHANNEL WITH KEY AND SPECIAL CHARACTERS[0m
+========================================[0m
+ Running Test: JOIN CHANNEL WITH LONG NAME [0m
+========================================[0m
+[0;90m>>> Sending commands: PASS Alilepro135!
+NICK test-user
+USER testUser 0 * :Test User
+JOIN #this-is-a-very-long-channel-name
+[0m
+----------------------------------------[0m
+[0;90mExpected Response:[0m
+:test-user!testUser@localhost JOIN #this-is-a-very-long-channel-name
+[0;90mServer Response:[0m
+:test-user!testUser@localhost JOIN #this-is-a-very-long-channel-name
+[0;90mNormalized Expected (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7468 6973 2d69 732d 612d 7665  IN #this-is-a-ve
+00000030: 7279 2d6c 6f6e 672d 6368 616e 6e65 6c2d  ry-long-channel-
+00000040: 6e61 6d65                                name
+[0;90mNormalized Response (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7468 6973 2d69 732d 612d 7665  IN #this-is-a-ve
+00000030: 7279 2d6c 6f6e 672d 6368 616e 6e65 6c2d  ry-long-channel-
+00000040: 6e61 6d65                                name
+[0;90mApprox. difference between expected and actual:[0m 110%
+----------------------------------------[0m
+[0;32m✔ Test passed: JOIN CHANNEL WITH LONG NAME[0m
+========================================[0m
+ Running Test: JOIN CHANNEL WITH NUMERIC NAME [0m
+========================================[0m
+[0;90m>>> Sending commands: PASS Alilepro135!
+NICK test-user
+USER testUser 0 * :Test User
+JOIN #12345
+[0m
+----------------------------------------[0m
+[0;90mExpected Response:[0m
+:test-user!testUser@localhost JOIN #12345
+[0;90mServer Response:[0m
+:test-user!testUser@localhost JOIN #12345
+[0;90mNormalized Expected (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 3132 3334 35                   IN #12345
+[0;90mNormalized Response (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 3132 3334 35                   IN #12345
+[0;90mApprox. difference between expected and actual:[0m 110%
+----------------------------------------[0m
+[0;32m✔ Test passed: JOIN CHANNEL WITH NUMERIC NAME[0m
+========================================[0m
+ Running Test: JOIN CHANNEL WITH MIXED CHARACTERS [0m
+========================================[0m
+[0;90m>>> Sending commands: PASS Alilepro135!
+NICK test-user
+USER testUser 0 * :Test User
+JOIN #test-channel-123!@#$
+[0m
+----------------------------------------[0m
+[0;90mExpected Response:[0m
+:test-user!testUser@localhost JOIN #test-channel-123!@#$
+[0;90mServer Response:[0m
+:test-user!testUser@localhost JOIN #test-channel-123!@#$
+[0;90mNormalized Expected (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+00000030: 2d31 3233 2140 2324                      -123!@#$
+[0;90mNormalized Response (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+00000030: 2d31 3233 2140 2324                      -123!@#$
+[0;90mApprox. difference between expected and actual:[0m 110%
+----------------------------------------[0m
+[0;32m✔ Test passed: JOIN CHANNEL WITH MIXED CHARACTERS[0m
+========================================[0m
+ Running Test: JOIN CHANNEL WITH KEY AND MIXED CHARACTERS [0m
+========================================[0m
+[0;90m>>> Sending commands: PASS Alilepro135!
+NICK test-user
+USER testUser 0 * :Test User
+JOIN #test-channel-123!@#$ key-123!@#$
+[0m
+----------------------------------------[0m
+[0;90mExpected Response:[0m
+:test-user!testUser@localhost JOIN #test-channel-123!@#$
+[0;90mServer Response:[0m
+:test-user!testUser@localhost JOIN #test-channel-123!@#$
+[0;90mNormalized Expected (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+00000030: 2d31 3233 2140 2324                      -123!@#$
+[0;90mNormalized Response (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+00000030: 2d31 3233 2140 2324                      -123!@#$
+[0;90mApprox. difference between expected and actual:[0m 110%
+----------------------------------------[0m
+[0;32m✔ Test passed: JOIN CHANNEL WITH KEY AND MIXED CHARACTERS[0m
+========================================[0m
+ Running Test: JOIN CHANNEL WITH MAXIMUM LENGTH NAME [0m
+========================================[0m
+[0;90m>>> Sending commands: PASS Alilepro135!
+NICK test-user
+USER testUser 0 * :Test User
+JOIN #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[0m
+----------------------------------------[0m
+[0;90mExpected Response:[0m
+:test-user!testUser@localhost JOIN #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[0;90mServer Response:[0m
+:test-user!testUser@localhost JOIN #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[0;90mNormalized Expected (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 6162 6364 6566 6768 696a 6b6c  IN #abcdefghijkl
+00000030: 6d6e 6f70 7172 7374 7576 7778 797a 4142  mnopqrstuvwxyzAB
+00000040: 4344 4546 4748 494a 4b4c 4d4e 4f50 5152  CDEFGHIJKLMNOPQR
+00000050: 5354 5556 5758 595a 3031 3233 3435 3637  STUVWXYZ01234567
+00000060: 3839                                     89
+[0;90mNormalized Response (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 6162 6364 6566 6768 696a 6b6c  IN #abcdefghijkl
+00000030: 6d6e 6f70 7172 7374 7576 7778 797a 4142  mnopqrstuvwxyzAB
+00000040: 4344 4546 4748 494a 4b4c 4d4e 4f50 5152  CDEFGHIJKLMNOPQR
+00000050: 5354 5556 5758 595a 3031 3233 3435 3637  STUVWXYZ01234567
+00000060: 3839                                     89
+[0;90mApprox. difference between expected and actual:[0m 110%
+----------------------------------------[0m
+[0;32m✔ Test passed: JOIN CHANNEL WITH MAXIMUM LENGTH NAME[0m
+========================================[0m
+ Running Test: JOIN CHANNEL WITH KEY AND MAXIMUM LENGTH NAME [0m
+========================================[0m
+[0;90m>>> Sending commands: PASS Alilepro135!
+NICK test-user
+USER testUser 0 * :Test User
+JOIN #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 key-123!@#$
+[0m
+----------------------------------------[0m
+[0;90mExpected Response:[0m
+:test-user!testUser@localhost JOIN #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[0;90mServer Response:[0m
+:test-user!testUser@localhost JOIN #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[0;90mNormalized Expected (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 6162 6364 6566 6768 696a 6b6c  IN #abcdefghijkl
+00000030: 6d6e 6f70 7172 7374 7576 7778 797a 4142  mnopqrstuvwxyzAB
+00000040: 4344 4546 4748 494a 4b4c 4d4e 4f50 5152  CDEFGHIJKLMNOPQR
+00000050: 5354 5556 5758 595a 3031 3233 3435 3637  STUVWXYZ01234567
+00000060: 3839                                     89
+[0;90mNormalized Response (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 6162 6364 6566 6768 696a 6b6c  IN #abcdefghijkl
+00000030: 6d6e 6f70 7172 7374 7576 7778 797a 4142  mnopqrstuvwxyzAB
+00000040: 4344 4546 4748 494a 4b4c 4d4e 4f50 5152  CDEFGHIJKLMNOPQR
+00000050: 5354 5556 5758 595a 3031 3233 3435 3637  STUVWXYZ01234567
+00000060: 3839                                     89
+[0;90mApprox. difference between expected and actual:[0m 110%
+----------------------------------------[0m
+[0;32m✔ Test passed: JOIN CHANNEL WITH KEY AND MAXIMUM LENGTH NAME[0m
+========================================[0m
+ Running Test: JOIN CHANNEL WITH EMPTY NAME (INVALID) [0m
+========================================[0m
+[0;90m>>> Sending commands: PASS Alilepro135!
+NICK test-user
+USER testUser 0 * :Test User
+JOIN #
+[0m
+----------------------------------------[0m
+[0;90mExpected Response:[0m
+:test-user!testUser@localhost JOIN #
+[0;90mServer Response:[0m
+:test-user!testUser@localhost JOIN #
+[0;90mNormalized Expected (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023                                IN #
+[0;90mNormalized Response (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023                                IN #
+[0;90mApprox. difference between expected and actual:[0m 110%
+----------------------------------------[0m
+[0;32m✔ Test passed: JOIN CHANNEL WITH EMPTY NAME (INVALID)[0m
+========================================[0m
+ Running Test: JOIN CHANNEL WITH EMPTY KEY (INVALID) [0m
+========================================[0m
+[0;90m>>> Sending commands: PASS Alilepro135!
+NICK test-user
+USER testUser 0 * :Test User
+JOIN #test-channel 
+[0m
+----------------------------------------[0m
+[0;90mExpected Response:[0m
+:test-user!testUser@localhost JOIN #test-channel
+[0;90mServer Response:[0m
+:test-user!testUser@localhost JOIN #test-channel
+[0;90mNormalized Expected (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+[0;90mNormalized Response (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+[0;90mApprox. difference between expected and actual:[0m 110%
+----------------------------------------[0m
+[0;32m✔ Test passed: JOIN CHANNEL WITH EMPTY KEY (INVALID)[0m
+========================================[0m
+ Running Test: JOIN CHANNEL WITH INVALID CHARACTERS (INVALID) [0m
+========================================[0m
+[0;90m>>> Sending commands: PASS Alilepro135!
+NICK test-user
+USER testUser 0 * :Test User
+JOIN #test-channel,
+[0m
+----------------------------------------[0m
+[0;90mExpected Response:[0m
+:test-user!testUser@localhost JOIN #test-channel,
+[0;90mServer Response:[0m
+:test-user!testUser@localhost JOIN #test-channel
+[0;90mNormalized Expected (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+00000030: 2c                                       ,
+[0;90mNormalized Response (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+[0;90mApprox. difference between expected and actual:[0m 130%
+----------------------------------------[0m
+[0;90mDetailed difference:[0m
+1c1
+< :test-user!testUser@localhost JOIN #test-channel,
+---
+> :test-user!testUser@localhost JOIN #test-channel
+----------------------------------------[0m
+[0;31m✘ Test failed: JOIN CHANNEL WITH INVALID CHARACTERS (INVALID)[0m
+========================================[0m
+ Running Test: JOIN CHANNEL WITH MULTIPLE KEYS (INVALID) [0m
+========================================[0m
+[0;90m>>> Sending commands: PASS Alilepro135!
+NICK test-user
+USER testUser 0 * :Test User
+JOIN #test-channel key1 key2
+[0m
+----------------------------------------[0m
+[0;90mExpected Response:[0m
+:test-user!testUser@localhost JOIN #test-channel
+[0;90mServer Response:[0m
+:test-user!testUser@localhost JOIN #test-channel
+[0;90mNormalized Expected (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+[0;90mNormalized Response (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+[0;90mApprox. difference between expected and actual:[0m 110%
+----------------------------------------[0m
+[0;32m✔ Test passed: JOIN CHANNEL WITH MULTIPLE KEYS (INVALID)[0m
+========================================[0m
+ Running Test: JOIN CHANNEL WITH NO KEY BUT TRAILING SPACE [0m
+========================================[0m
+[0;90m>>> Sending commands: PASS Alilepro135!
+NICK test-user
+USER testUser 0 * :Test User
+JOIN #test-channel 
+[0m
+----------------------------------------[0m
+[0;90mExpected Response:[0m
+:test-user!testUser@localhost JOIN #test-channel
+[0;90mServer Response:[0m
+:test-user!testUser@localhost JOIN #test-channel
+[0;90mNormalized Expected (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+[0;90mNormalized Response (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+[0;90mApprox. difference between expected and actual:[0m 110%
+----------------------------------------[0m
+[0;32m✔ Test passed: JOIN CHANNEL WITH NO KEY BUT TRAILING SPACE[0m
+========================================[0m
+ Running Test: JOIN CHANNEL WITH KEY AND TRAILING SPACE [0m
+========================================[0m
+[0;90m>>> Sending commands: PASS Alilepro135!
+NICK test-user
+USER testUser 0 * :Test User
+JOIN #test-channel Alilepro135! 
+[0m
+----------------------------------------[0m
+[0;90mExpected Response:[0m
+:test-user!testUser@localhost JOIN #test-channel
+[0;90mServer Response:[0m
+:test-user!testUser@localhost JOIN #test-channel
+[0;90mNormalized Expected (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+[0;90mNormalized Response (hex):[0m
+00000000: 3a74 6573 742d 7573 6572 2174 6573 7455  :test-user!testU
+00000010: 7365 7240 6c6f 6361 6c68 6f73 7420 4a4f  ser@localhost JO
+00000020: 494e 2023 7465 7374 2d63 6861 6e6e 656c  IN #test-channel
+[0;90mApprox. difference between expected and actual:[0m 110%
+----------------------------------------[0m
+[0;32m✔ Test passed: JOIN CHANNEL WITH KEY AND TRAILING SPACE[0m
+========================================[0m
  Test Execution Summary [0m
 ========================================[0m
-Total Tests:[0m 4
-[0;32mPassed:[0m 4
-[0;31mFailed:[0m 0
+Total Tests:[0m 20
+[0;32mPassed:[0m 18
+[0;31mFailed:[0m 2
 Skipped:[0m 0
-Success Rate:[0m 100%
+Success Rate:[0m 90%
 ----------------------------------------[0m
 [0;90m>>> Error summary saved to error_summary.txt[0m
 
