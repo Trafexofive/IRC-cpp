@@ -1,25 +1,25 @@
 ========================================
-IRC Server Test Log - 2025-01-17 01:54:26 UTC
+IRC Server Test Log - 2025-01-17 02:36:32 UTC
 User: Trafexofive
 Server: localhost:22200
 Debug Mode: 0
 Verbose Mode: 1
 ========================================
 
-[2025-01-17 01:54:26 UTC] Test suite started
+[2025-01-17 02:36:32 UTC] Test suite started
 ----------------------------------------
-[2025-01-17 01:54:26 UTC] Starting IRC server
-[2025-01-17 01:54:28 UTC] Server started successfully
-[2025-01-17 01:54:28 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
-[2025-01-17 01:54:28 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
-[2025-01-17 01:54:29 UTC] Test 'SINGLE NORMAL CHANNEL JOIN' completed in 1s
-[2025-01-17 01:54:29 UTC] Running test: MULTI CHANNEL/KEY JOIN
-[2025-01-17 01:54:29 UTC] Running test: MULTI CHANNEL/KEY JOIN
-[2025-01-17 01:54:30 UTC] Test 'MULTI CHANNEL/KEY JOIN' completed in 1s
-[2025-01-17 01:54:30 UTC] Running test: MULTI CHANNEL/KEY JOIN
-[2025-01-17 01:54:30 UTC] Running test: MULTI CHANNEL/KEY JOIN
-[2025-01-17 01:54:31 UTC] Test 'MULTI CHANNEL/KEY JOIN' completed in 1s
-[2025-01-17 01:54:31 UTC] Test suite shutting down
-[2025-01-17 01:54:31 UTC] Stopping server (PID: 247435)
+[2025-01-17 02:36:32 UTC] Starting IRC server
+[2025-01-17 02:36:34 UTC] Server started successfully
+[2025-01-17 02:36:34 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
+[2025-01-17 02:36:34 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
+[2025-01-17 02:36:35 UTC] Test 'SINGLE NORMAL CHANNEL JOIN' completed in 1s
+[2025-01-17 02:36:35 UTC] Running test: MULTI CHANNEL/KEY JOIN
+[2025-01-17 02:36:35 UTC] Running test: MULTI CHANNEL/KEY JOIN
+[2025-01-17 02:36:37 UTC] Test 'MULTI CHANNEL/KEY JOIN' completed in 2s
+[2025-01-17 02:36:37 UTC] Running test: MULTI CHANNEL/KEY JOIN
+[2025-01-17 02:36:37 UTC] Running test: MULTI CHANNEL/KEY JOIN
+[2025-01-17 02:36:38 UTC] Test 'MULTI CHANNEL/KEY JOIN' completed in 1s
+[2025-01-17 02:36:38 UTC] Test suite shutting down
+[2025-01-17 02:36:38 UTC] Stopping server (PID: 262678)
 ----------------------------------------
-[2025-01-17 01:54:31 UTC] Stopping server (PID: 247435)
+[2025-01-17 02:36:38 UTC] Stopping server (PID: 262678)

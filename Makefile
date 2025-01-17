@@ -143,7 +143,7 @@ release:
 
 test: re | $(DIR_LOG)
 	@printf "Running tests...\n"
-	@./.testsuite/irc-test.sh -f $(TEST-FILE) -v -t 1 > $(DIR_LOG)/raw-test.log
+	@./.testsuite/irc-test.sh -f $(TEST-FILE) -v -t 1 > $(DIR_LOG)/raw-test.log && less $(DIR_LOG)/raw-test.log
 
 run: clean all
 	@printf "Running $(NAME)...\n"

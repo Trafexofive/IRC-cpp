@@ -133,6 +133,7 @@ public:
     LEVEL addChannel(const std::string& name, const std::string& topic, const std::string& password);
     LEVEL removeChannel(const std::string& name);
     void joinChannel(Client& client, const std::string& channelName);
+    void joinSingleChannel(Client &client, const std::string &channelName, const std::string &key);
 
 };
 
