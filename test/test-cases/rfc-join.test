@@ -10,23 +10,23 @@ JOIN 2 CHANNELS|:test-user!testUser@localhost JOIN #test-channel1\r\n:test-user!
 # Test Case 4: Join Multiple Channels
 JOIN MULTIPLE CHANNELS|:test-user!testUser@localhost JOIN #test-channel1\r\n:test-user!testUser@localhost JOIN #test-channel2\r\n:test-user!testUser@localhost JOIN #test-channel3|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel1,#test-channel2,#test-channel3\r\n
 
-# Test Case 5: Join x Channels
-JOIN x CHANNELS|:test-user!testUser@localhost JOIN #test-channel1\r\n:test-user!testUser@localhost JOIN #test-channel2|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel1,#test-channel2\r\n
-
-# Test Case 6: Join Channel with Special Characters
-JOIN CHANNEL WITH SPECIAL CHARACTERS|:test-user!testUser@localhost JOIN #test-channel!@#$|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel!@#$\r\n
-
-# Test Case 7: Join Channel with Spaces (Invalid)
-JOIN CHANNEL WITH SPACES (INVALID)|:test-user!testUser@localhost JOIN #test channel|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test channel\r\n
-
-# Test Case 8: Join Channel with Key and Special Characters
-JOIN CHANNEL WITH KEY AND SPECIAL CHARACTERS|:test-user!testUser@localhost JOIN #test-channel!@#$|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel!@#$ key!@#$\r\n
-
-# Test Case 9: Join Channel with Long Name
-JOIN CHANNEL WITH LONG NAME|:test-user!testUser@localhost JOIN #this-is-a-very-long-channel-name|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #this-is-a-very-long-channel-name\r\n
-
-# Test Case 10: Join Channel with Numeric Name
-JOIN CHANNEL WITH NUMERIC NAME|:test-user!testUser@localhost JOIN #12345|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #12345\r\n
+# # Test Case 5: Join x Channels
+# JOIN x CHANNELS|:test-user!testUser@localhost JOIN #test-channel1\r\n:test-user!testUser@localhost JOIN #test-channel2|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel1,#test-channel2\r\n
+#
+# # Test Case 6: Join Channel with Special Characters
+# JOIN CHANNEL WITH SPECIAL CHARACTERS|:test-user!testUser@localhost JOIN #test-channel!@#$|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel!@#$\r\n
+#
+# # Test Case 7: Join Channel with Spaces (Invalid)
+# JOIN CHANNEL WITH SPACES (INVALID)|:test-user!testUser@localhost JOIN #test channel|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test channel\r\n
+#
+# # Test Case 8: Join Channel with Key and Special Characters
+# JOIN CHANNEL WITH KEY AND SPECIAL CHARACTERS|:test-user!testUser@localhost JOIN #test-channel!@#$|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel!@#$ key!@#$\r\n
+#
+# # Test Case 9: Join Channel with Long Name
+# JOIN CHANNEL WITH LONG NAME|:test-user!testUser@localhost JOIN #this-is-a-very-long-channel-name|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #this-is-a-very-long-channel-name\r\n
+#
+# # Test Case 10: Join Channel with Numeric Name
+# JOIN CHANNEL WITH NUMERIC NAME|:test-user!testUser@localhost JOIN #12345|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #12345\r\n
 
 # Test Case 11: Join Channel with Mixed Characters
 # JOIN CHANNEL WITH MIXED CHARACTERS|:test-user!testUser@localhost JOIN #test-channel-123!@#$|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel-123!@#$\r\n

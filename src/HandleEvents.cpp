@@ -26,16 +26,6 @@ public:
   }
 };
 
-static void printAllClientProperties(const Client &client) {
-  std::cout << formatServerMessage("DEBUG", "Client properties:") << std::endl;
-  std::cout << "  - fd: " << client.getFd() << std::endl;
-  std::cout << "  - nick: " << client.getNickName() << std::endl;
-  std::cout << "  - full name: " << client.getFullName() << std::endl;
-  std::cout << "  - real name: " << client.getRealName() << std::endl;
-  std::cout << "  - password: " << client.getPassWord() << std::endl;
-  std::cout << "  - ip: " << client.getIpAddr() << std::endl;
-}
-
 // Method to welcome a new client
 void CoreServer::WelcomeClient() {
   struct sockaddr_in client_addr;
@@ -56,7 +46,6 @@ void CoreServer::WelcomeClient() {
 
   clients[fd_c] = Client(fd_c, client_addr);
 
-  printAllClientProperties(clients[fd_c]);
   std::cout << formatServerMessage("INFO", "Client connected") << std::endl;
 
   char host[NI_MAXHOST];
@@ -94,7 +83,16 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
     if (args.empty()) {
       return;
     }
-    printTokens(args);
+    if (args[0] == "QUIT") {
+      client.setResponse("Goodbye!\r\n");
+      WriteEvent(fd);
+      return;
+    }
+    if (client.getAuth())
+        client.constructSource();
+
+    // debug
+    // printTokens(args);
 
     // Convert command to uppercase
     std::string command = args[0];
@@ -114,6 +112,7 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
       try {
         (this->*cmdIt->second)(fd, args);
         WriteEvent(fd); // Send response immediately after command
+        client.printClientInfo();
       } catch (const std::exception &e) {
         std::cerr << formatServerMessage(
                          "ERROR", std::string("Failed to execute command: ") +

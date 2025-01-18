@@ -114,7 +114,6 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
 
     JOIN_PARAMS params = parseJoinParams(args);
     morphParams(params);
-    client.constructSource();
 
     std::vector<std::string> channelNames = splitString(params.channels, ' ');
     std::vector<std::string> keys = splitString(params.keys, ' ');

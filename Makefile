@@ -146,6 +146,8 @@ release:
 test: re | $(DIR_LOG)
 	@printf "Running tests...\n"
 	@./.testsuite/irc-test.sh -f $(TEST-FILE) -v -d -t 1 | tee $(DIR_LOG)/raw-test.log
+
+testlog: test
 	@less $(DIR_LOG)/raw-test.log
 
 run: re

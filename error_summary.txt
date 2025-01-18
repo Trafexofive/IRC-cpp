@@ -1,14 +1,13 @@
 Error Summary Report
 ===================
-Generated: 2025-01-18 00:57:25 UTC
+Generated: 2025-01-18 02:13:43 UTC
 Test Suite User: Trafexofive
 
-Failed Tests:
-❌ JOIN CHANNEL WITH SPACES (INVALID) - Expected: ':test-user!testUser@localhost JOIN #test channel'
+No errors detected during test execution.
 
 Test Statistics:
-- Total Tests: 10
-- Passed: 9
-- Failed: 1
+- Total Tests: 4
+- Passed: 4
+- Failed: 0
 - Skipped: 0
-- Success Rate: 90%
+- Success Rate: 100%

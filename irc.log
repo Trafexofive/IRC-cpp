@@ -1,37 +1,25 @@
 ========================================
-IRC Server Test Log - 2025-01-18 00:57:13 UTC
+IRC Server Test Log - 2025-01-18 02:13:37 UTC
 User: Trafexofive
 Server: localhost:22200
 Debug Mode: 1
 Verbose Mode: 1
 ========================================
 
-[2025-01-18 00:57:13 UTC] Test suite started
+[2025-01-18 02:13:37 UTC] Test suite started
 ----------------------------------------
-[2025-01-18 00:57:13 UTC] Starting IRC server
-[2025-01-18 00:57:15 UTC] [DEBUG] Waiting for server to start (PID: 784181)
-[2025-01-18 00:57:15 UTC] Server started successfully
-[2025-01-18 00:57:15 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
-[2025-01-18 00:57:16 UTC] Test 'SINGLE NORMAL CHANNEL JOIN' completed in 1s
-[2025-01-18 00:57:16 UTC] Running test: SINGLE NORMAL CHANNEL JOIN WITH KEY
-[2025-01-18 00:57:17 UTC] Test 'SINGLE NORMAL CHANNEL JOIN WITH KEY' completed in 1s
-[2025-01-18 00:57:17 UTC] Running test: JOIN 2 CHANNELS
-[2025-01-18 00:57:18 UTC] Test 'JOIN 2 CHANNELS' completed in 1s
-[2025-01-18 00:57:18 UTC] Running test: JOIN MULTIPLE CHANNELS
-[2025-01-18 00:57:19 UTC] Test 'JOIN MULTIPLE CHANNELS' completed in 1s
-[2025-01-18 00:57:19 UTC] Running test: JOIN x CHANNELS
-[2025-01-18 00:57:20 UTC] Test 'JOIN x CHANNELS' completed in 1s
-[2025-01-18 00:57:20 UTC] Running test: JOIN CHANNEL WITH SPECIAL CHARACTERS
-[2025-01-18 00:57:21 UTC] Test 'JOIN CHANNEL WITH SPECIAL CHARACTERS' completed in 1s
-[2025-01-18 00:57:21 UTC] Running test: JOIN CHANNEL WITH SPACES (INVALID)
-[2025-01-18 00:57:22 UTC] Test 'JOIN CHANNEL WITH SPACES (INVALID)' completed in 1s
-[2025-01-18 00:57:22 UTC] Running test: JOIN CHANNEL WITH KEY AND SPECIAL CHARACTERS
-[2025-01-18 00:57:23 UTC] Test 'JOIN CHANNEL WITH KEY AND SPECIAL CHARACTERS' completed in 1s
-[2025-01-18 00:57:23 UTC] Running test: JOIN CHANNEL WITH LONG NAME
-[2025-01-18 00:57:24 UTC] Test 'JOIN CHANNEL WITH LONG NAME' completed in 1s
-[2025-01-18 00:57:24 UTC] Running test: JOIN CHANNEL WITH NUMERIC NAME
-[2025-01-18 00:57:25 UTC] Test 'JOIN CHANNEL WITH NUMERIC NAME' completed in 1s
-[2025-01-18 00:57:25 UTC] Test suite shutting down
-[2025-01-18 00:57:25 UTC] Stopping server (PID: 784181)
+[2025-01-18 02:13:37 UTC] Starting IRC server
+[2025-01-18 02:13:39 UTC] [DEBUG] Waiting for server to start (PID: 817751)
+[2025-01-18 02:13:39 UTC] Server started successfully
+[2025-01-18 02:13:39 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
+[2025-01-18 02:13:40 UTC] Test 'SINGLE NORMAL CHANNEL JOIN' completed in 1s
+[2025-01-18 02:13:40 UTC] Running test: SINGLE NORMAL CHANNEL JOIN WITH KEY
+[2025-01-18 02:13:41 UTC] Test 'SINGLE NORMAL CHANNEL JOIN WITH KEY' completed in 1s
+[2025-01-18 02:13:41 UTC] Running test: JOIN 2 CHANNELS
+[2025-01-18 02:13:42 UTC] Test 'JOIN 2 CHANNELS' completed in 1s
+[2025-01-18 02:13:42 UTC] Running test: JOIN MULTIPLE CHANNELS
+[2025-01-18 02:13:43 UTC] Test 'JOIN MULTIPLE CHANNELS' completed in 1s
+[2025-01-18 02:13:43 UTC] Test suite shutting down
+[2025-01-18 02:13:43 UTC] Stopping server (PID: 817751)
 ----------------------------------------
-[2025-01-18 00:57:25 UTC] Stopping server (PID: 784181)
+[2025-01-18 02:13:43 UTC] Stopping server (PID: 817751)

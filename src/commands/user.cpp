@@ -51,6 +51,7 @@ void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
     std::string username = args[1];
     std::string realname = args[4];
     client.setFullName(username);
+    realname.erase(std::remove(realname.begin(), realname.end(), ':'), realname.end());
     client.setRealName(realname);
 
     if (client.getAuth() && !client.getNickName().empty()) {
