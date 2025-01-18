@@ -49,6 +49,7 @@ private:
     std::string passWord;
     std::string buff;
     std::string response;
+    std::string source;
     int clientType;
 
 public:
@@ -83,6 +84,10 @@ public:
     {
         realName = real;
     }
+    void setSource(const std::string& src)
+    {
+        source = src;
+    }
     void setPassWord(const std::string& pass);
     void setResponse(const std::string& response);
     void setClientInfos(const struct sockaddr_in& info);
@@ -100,6 +105,41 @@ public:
     void authenticate();
     void clear();
     void clearResponse();
+
+    void setClientType(int type)
+    {
+        clientType = type;
+    }
+    void setClientType(std::string type)
+    {
+        if (type == "OPERATOR")
+            clientType = CLIENT::OPERATOR;
+        else if (type == "NORMAL")
+            clientType = CLIENT::NORMAL;
+        else
+            clientType = CLIENT::UNKNOWN;
+    }
+    // both should be private
+    void resolveSource()
+    {
+        std::string::size_type at = source.find("@");
+        std::string::size_type ex = source.find("!");
+        if (at != std::string::npos && ex != std::string::npos)
+        {
+            nickName = source.substr(0, ex);
+            realName = source.substr(ex + 1, at - ex - 1);
+            ipAddr = source.substr(at + 1);
+        }
+    }
+    void constructSource()
+    {
+        source = nickName + "!" + realName + "@" + ipAddr;
+        std::cout << formatServerMessage("DEBUG", source) << std::endl;
+    }
+    void constructIpAddr()
+    {
+        ipAddr = inet_ntoa(clientInfos.sin_addr);
+    }
 };
 
 #endif

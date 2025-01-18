@@ -26,6 +26,7 @@ Client::Client() :
     passWord(""),
     buff(""),
     response(""),
+    source(""),
     clientType(CLIENT::NORMAL)
 {
     std::cout << formatServerMessage("DEBUG", "Creating new empty client instance") << std::endl;
@@ -71,83 +72,25 @@ void Client::setFullName(const std::string& user) { fullName = user; }
 void Client::setNickName(const std::string& nick) { nickName = nick; }
 void Client::setPassWord(const std::string& pass) { passWord = pass; }
 void Client::setResponse(const std::string& response) {
-    this->response += response ;
+    if (response.empty())
+        return;
+    else
+        this->response += response;
 }
 void Client::setClientInfos(const struct sockaddr_in& info) { clientInfos = info; }
-void Client::setBuff(const std::string& _buff, bool append) 
-{
-    std::ostringstream debug;
-    debug << "Setting buffer for client fd(" << fdClient << "): " 
-          << (_buff.length() > 50 ? _buff.substr(0, 50) + "..." : _buff)
-          << (append ? " (appending)" : " (replacing)");
-    std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
-
-    if (append)
-        buff += _buff;
-    else
-        buff = _buff;
-}
-
-// Class specific methods
-void Client::sendMessage(const std::string& message)
-{
-    std::ostringstream debug;
-    debug << "Sending message to client fd(" << fdClient << "): " 
-          << (message.length() > 50 ? message.substr(0, 50) + "..." : message);
-    std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
-
-    // Implementation to send the message to the client
-}
-
-std::string Client::receiveMessage()
-{
-    std::ostringstream debug;
-    debug << "Receiving message from client fd(" << fdClient << ")";
-    std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
-
-    // Implementation to receive a message from the client
-    return "";
-}
 
 void Client::disconnect()
 {
     std::ostringstream debug;
     debug << "Disconnecting client fd(" << fdClient << ")";
     std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
-
-    // Implementation to disconnect the client
+    close(fdClient);
+    clear();
 }
 
 bool Client::isAuthenticated() const
 {
     return auth;
-}
-
-void Client::updateNickName(const std::string& newNickName)
-{
-    std::ostringstream debug;
-    debug << "Updating nickname for client fd(" << fdClient << ") to " << newNickName;
-    std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
-
-    nickName = newNickName;
-}
-
-void Client::logActivity(const std::string& activity)
-{
-    std::ostringstream debug;
-    debug << "Logging activity for client fd(" << fdClient << "): " << activity;
-    std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
-
-    // Implementation to log activity
-}
-
-void Client::resetPassword(const std::string& newPassword)
-{
-    std::ostringstream debug;
-    debug << "Resetting password for client fd(" << fdClient << ")";
-    std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
-
-    passWord = newPassword;
 }
 
 void Client::clear() 

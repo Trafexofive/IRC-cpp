@@ -29,7 +29,7 @@ void CoreServer::cmdPrivmsg(int fd, std::vector<std::string> &args) {
     }
 
     Client& client = clients[fd];
-    std::cout << formatServerMessage("MESSAGE", client.getNickName() + " -> " + target + ": " + message) << std::endl;
+    std::cout << formatServerMessage("INFO", client.getNickName() + " -> " + target + ": " + message) << std::endl;
 
     std::string response = ":" + client.getNickName() + "!" + client.getFullName() + "@localhost PRIVMSG " + target + " :" + message + "\r\n";
 

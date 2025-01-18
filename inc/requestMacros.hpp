@@ -28,6 +28,11 @@ inline std::string formatResponse(const std::string& code, const std::string& me
     return code + " " + message + "\r\n";
 }
 
+inline std::string formatResponse(const std::string& source, const std::string& code, const std::string& message)
+{
+    return code + " " + message + "\r\n";
+}
+
 
 namespace StringUtils {
 

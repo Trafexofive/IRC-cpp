@@ -29,6 +29,7 @@ DIR_DEPS := .deps
 
 # Test File
 TEST-FILE := $(DIR_TEST)/test-cases/rfc-join.test
+# TEST-FILE := $(DIR_TEST)/test-cases/privmsg.md
 
 # Source Files
 SRC_FILES := HandleEvents.cpp \
