@@ -77,7 +77,7 @@ Run the server with a valid port and password:
 ```
 
 ### Connecting to the Server
-Use an IRC client (e.g., `irssi`, `hexchat`) or the provided Python TUI client:
+Use an IRC client (e.g., `irssi`, `hexchat`, `weechat`, `limechat`) or the provided Python TUI client:
 ```bash
 python3 ./test/TUI-client.py -p 6667 --password Alilepro135!
 ```
