@@ -1,102 +1,198 @@
-# IRC-cpp
+# IRC Server Project
 
-An IRC (Internet Relay Chat) server implementation in C++98.
+An IRC (Internet Relay Chat) server implemented in C++. This project allows multiple clients to connect, join channels, and communicate with each other in real-time.
 
-## Project Description
-
-IRC-cpp is a project aimed at creating a robust IRC client and server using C++. The goal is to provide a lightweight and efficient IRC implementation that can be easily extended and customized.
-
-my initial reason for starting this repo (because of school) was because I wanted to self-host my own irc server, as well as getting into some socket programming. 
+---
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [File Structure](#file-structure)
-- [Documentation](#documentation)
-- [Current Status](#current-status)
-- [Contributing](#contributing)
-- [License](#license)
+1. [Features](#features)
+2. [Requirements](#requirements)
+3. [Installation](#installation)
+4. [Usage](#usage)
+5. [Commands](#commands)
+6. [Configuration](#configuration)
+7. [Directory Structure](#directory-structure)
+8. [Contributing](#contributing)
+9. [License](#license)
+
+---
+
+## Features
+
+- **Multi-client support**: Handle multiple clients simultaneously using `poll()`.
+- **Channel management**: Create, join, and leave channels.
+- **Authentication**: Password-based authentication for clients.
+- **Command handling**: Supports standard IRC commands like `NICK`, `USER`, `JOIN`, `PART`, `PRIVMSG`, `PING`, `QUIT`, etc.
+- **Logging**: Detailed logging for debugging and monitoring server activity.
+- **Cross-platform**: Works on Linux and macOS.
+
+---
+
+## Requirements
+
+- **Compiler**: `g++` or `clang++` (C++98 standard)
+- **Libraries**: Standard C++ libraries, `libevent` (for networking)
+- **Tools**: `make`, `docker` (optional for containerized deployment)
+
+---
 
 ## Installation
 
-1. Clone the repository:
-    ```sh
-    git clone https://github.com/Trafexofive/IRC-cpp.git
-    ```
-2. Navigate into the project directory:
-    ```sh
-    cd IRC-cpp
-    ```
-3. Build the project using Makefile:
-    ```sh
-    make
-    ```
-4. Build and run directly:
-    ```sh
-    make build
-    ```
-5. Alternatively you can display the help dialog using:
-    ```sh
-    make help
-    ```
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/trafexofive-irc-cpp.git
+cd trafexofive-irc-cpp
+```
+
+### 2. Build the Project
+```bash
+make
+```
+
+### 3. Run the Server
+```bash
+./bin/irc-server <port> <password>
+```
+Example:
+```bash
+./bin/irc-server 6667 Alilepro135!
+```
+
+### 4. (Optional) Docker Setup
+Build and run the server using Docker:
+```bash
+docker build -t irc-server .
+docker run -p 6667:6667 irc-server
+```
+
+---
 
 ## Usage
 
-To start the IRC server:
-```sh
-./irc_server
+### Starting the Server
+Run the server with a valid port and password:
+```bash
+./bin/irc-server 6667 Alilepro135!
 ```
 
-To connect to the IRC server with the client:
-```sh
-./irc_client
+### Connecting to the Server
+Use an IRC client (e.g., `irssi`, `hexchat`) or the provided Python TUI client:
+```bash
+python3 ./test/TUI-client.py -p 6667 --password Alilepro135!
 ```
 
-## File Structure
+### Available Commands
+See the [Commands](#commands) section for a list of supported IRC commands.
 
-The project is organized as follows:
+---
+
+## Commands
+
+| Command   | Description                                      | Example                     |
+|-----------|--------------------------------------------------|-----------------------------|
+| `PASS`    | Authenticate with the server password            | `PASS Alilepro135!`         |
+| `NICK`    | Set your nickname                                | `NICK john`                 |
+| `USER`    | Set your username and real name                  | `USER john 0 * :John Doe`   |
+| `JOIN`    | Join a channel                                   | `JOIN #general`             |
+| `PART`    | Leave a channel                                  | `PART #general`             |
+| `PRIVMSG` | Send a message to a user or channel              | `PRIVMSG #general :Hello!`  |
+| `PING`    | Check server responsiveness                      | `PING server`               |
+| `QUIT`    | Disconnect from the server                       | `QUIT :Goodbye!`            |
+
+---
+
+## Configuration
+
+The server can be configured using the `conf/server.yaml` file. Example configuration:
+```yaml
+server:
+  password: "your_password_here"
+  port: 6667
+
+database:
+  host: "localhost"
+  port: 5432
+  user: "your_db_user"
+  password: "your_db_password"
+  name: "your_db_name"
+
+logging:
+  level: "info"
+  file: "/var/log/app.log"
+
+security:
+  secret_key: "your_secret_key"
+```
+
+---
+
+## Directory Structure
 
 ```
-IRC-cpp/
-├── src/                # Source code files
-├── include/            # Header files
-├── scripts/            # Shell scripts for testing
-├── Makefile            # Build configuration
-├── doc/                # Documentation files
-├── test/               # Test cases and related files
-├── log/                # Log files
-├── backup/             # Backup files
-├── .deps/              # Dependency files
-├── README.md           # Project documentation
-└── LICENSE             # License file
+trafexofive-irc-cpp/
+├── Makefile
+├── dockerfile
+├── conf/
+│   └── server.yaml
+├── doc/
+├── inc/
+│   ├── Channel.hpp
+│   ├── Client.hpp
+│   ├── Conf.hpp
+│   ├── Helpers.hpp
+│   ├── Server.hpp
+│   ├── Utils.hpp
+│   ├── debug.hpp
+│   ├── ircResponses.hpp
+│   └── requestMacros.hpp
+├── src/
+│   ├── Channel.cpp
+│   ├── HandleEvents.cpp
+│   ├── Validation.cpp
+│   ├── main.cpp
+│   ├── channel/
+│   │   └── utils.cpp
+│   ├── client/
+│   │   └── client.cpp
+│   ├── commands/
+│   │   ├── cmd.cpp
+│   │   ├── cmdHelpers.cpp
+│   │   ├── join.cpp
+│   │   ├── mode.cpp
+│   │   ├── nick.cpp
+│   │   ├── part.cpp
+│   │   ├── pass.cpp
+│   │   ├── ping.cpp
+│   │   ├── quit.cpp
+│   │   └── user.cpp
+│   ├── server/
+│   │   └── server.cpp
+│   └── utils/
+│       └── Utils.cpp
+└── todo/
 ```
 
-## Documentation
-
-The project includes several documentation files to help you understand and use IRC-cpp effectively:
-
-- [Internet Relay Chat Protocol (RFC 1459)](doc/irc-rfc.md): The official specification of the IRC protocol.
-- [The New IRC Channel Operator’s Guide](doc/irchelp_main.md): A guide for new IRC channel operators.
-- [Modern IRC RFC](doc/modern-rfc.md): A modernized version of the IRC protocol documentation.
-
-## Current Status
-
-The project is still incomplete. Below are some of the recent changes:
-
-- **small ignore changes** - [Commit Link](https://github.com/Trafexofive/IRC-cpp/commit/f9a20bbe6f2c8dc45f3d2d980847a2a4979a617a)
-- **test** - [Commit Link](https://github.com/Trafexofive/IRC-cpp/commit/67835fc51c11db9b661dd098a9916bb0a272c275)
-- **todo.md changes** - [Commit Link](https://github.com/Trafexofive/IRC-cpp/commit/99c8cb78a7e7bc99d673aa501d86c5827f98b1fe)
-- **latest** - [Commit Link](https://github.com/Trafexofive/IRC-cpp/commit/9e27cca39c3ecbd647021b8fe8ab813483146091)
-- **small test.sh enhancements** - [Commit Link](https://github.com/Trafexofive/IRC-cpp/commit/1cb2466cc493a93f38386fd1af275a276441e02f)
-
-For more details, check the [commit history](https://github.com/Trafexofive/IRC-cpp/commits/master).
+---
 
 ## Contributing
 
-By all means, Im not the best programmer!
-Contributions are welcome! Please fork the repository and submit pull requests with your changes.
+Contributions are welcome! Please follow these steps:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature/YourFeature`).
+5. Open a pull request.
+
+---
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## Acknowledgments
+
+- Inspired by the original IRC protocol (RFC 1459).
+- Special thanks to the contributors and open-source community.
