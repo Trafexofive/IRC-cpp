@@ -16,6 +16,7 @@
 
 void CoreServer::create_socket() {
   std::cout << formatServerMessage("DEBUG", "Creating socket...") << std::endl;
+
   ServData._socket = socket(AF_INET, SOCK_STREAM, 0);
   if (ServData._socket < 0) {
     std::cerr << formatServerMessage("ERROR", "Socket creation failed")
@@ -26,8 +27,13 @@ void CoreServer::create_socket() {
   oss << "Socket created: " << ServData._socket;
   std::cout << formatServerMessage("DEBUG", oss.str()) << std::endl;
   int flags = fcntl(ServData._socket, F_GETFL, 0);
+  // if (flags < 0) {
+  //     std::cerr << formatServerMessage("ERROR", "Fcntl failed") << std::endl;
+  //     exit(1);
+  // }
   fcntl(ServData._socket, F_SETFL, flags | O_NONBLOCK);
   int optval = 1;
+  // if ()
   setsockopt(ServData._socket, SOL_SOCKET, SO_REUSEADDR, &optval,
              sizeof(optval));
   ServData.ServAddr.sin_family = AF_INET;
@@ -38,14 +44,14 @@ void CoreServer::create_socket() {
   _fd.fd = ServData._socket;
   _fd.events = POLLIN;
   fds.push_back(_fd);
-std::cout << formatServerMessage("INFO", "Server Socket setup complete")
+  std::cout << formatServerMessage("INFO", "Server Socket setup complete")
             << std::endl;
 }
 void CoreServer::start_listening() {
   std::cout << formatServerMessage("DEBUG", "Binding socket...") << std::endl;
   if (bind(ServData._socket, (struct sockaddr *)&ServData.ServAddr,
            sizeof(ServData.ServAddr)) < 0) {
-    std::cerr << formatServerMessage("ERROR", "Binding failed") << std::endl;
+    std::cout << formatServerMessage("ERROR", "Binding failed") << std::endl;
     exit(1);
   }
   std::cout << formatServerMessage("DEBUG", "Starting to listen...")
@@ -61,10 +67,11 @@ void CoreServer::start_listening() {
 void CoreServer::start_server() {
   std::cout << formatServerMessage("DEBUG", "Server main loop starting...")
             << std::endl;
+
   while (1) {
     int ret = poll(&fds[0], fds.size(), -1);
     if (ret < 0) {
-      std::cerr << formatServerMessage("FATAL", "Poll failed") << std::endl;
+      std::cout << formatServerMessage("FATAL", "Poll failed") << std::endl;
       break;
     }
     std::ostringstream oss;
@@ -82,7 +89,7 @@ void CoreServer::start_server() {
 }
 
 static void DisplayPassInfo() {
-  std::cerr << formatServerMessage("ERROR", "Invalid password requirements:")
+  std::cout << formatServerMessage("ERROR", "Invalid password requirements:")
             << std::endl;
   std::cout << "- At least 8 characters" << std::endl;
   std::cout << "- At least 1 lowercase letter (a-z)" << std::endl;

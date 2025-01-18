@@ -27,7 +27,7 @@ DIR_LOG := log
 DIR_BACKUP := backup
 DIR_DEPS := .deps
 
-IRCTUICLIENT="python3 /home/mlamkadm/repos/IRC-TUI-python/irc_tui.py"
+IRCTUICLIENT=python3 /home/mlamkadm/repos/IRC-TUI-python/irc_tui.py
 
 # Test File
 TEST-FILE := $(DIR_TEST)/test-cases/rfc-join.test
@@ -156,10 +156,10 @@ run: re
 	@printf "Running $(NAME)...\n"
 	@./$(DIR_BIN)/$(NAME) $(ARGS)
 
+# python3 ./test/client.py -p 22200 --password Alilepro135! -u mlamkadm -r "Mohamed Ali Lamkadmi" -n cleverlord
 client: 
 	@printf "Running client...\n"
-	# python3 ./test/client.py -p 22200 --password Alilepro135! -u mlamkadm -r "Mohamed Ali Lamkadmi" -n cleverlord
-	@$(IRCTUICLIENT) -p 22200 --password Alilepro135! -u mlamkadm -r "Mohamed Ali Lamkadmi" -n cleverlord
+	$(IRCTUICLIENT) --port 22200 --password Alilepro135! --user mlamkadm --real "Mohamed Ali Lamkadmi" --nick cleverlord
 
 
 bot: all

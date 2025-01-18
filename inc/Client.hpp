@@ -29,6 +29,14 @@ typedef struct {
   enum TYPE { NORMAL, OPERATOR, UNKNOWN };
 } CLIENT;
 
+typedef struct {
+enum TYPE { ACTIVE, IDLE, DONOTDISTURB, UNKNOWN };
+} STATE;
+
+typedef struct {
+enum TYPE { AUTHENTICATED, REJECTED, REGISTERED, UNKNOWN };
+} AUTH;
+
 class Client {
 private:
   int fdClient;
@@ -37,19 +45,24 @@ private:
   bool connected;
 
   struct sockaddr_in clientInfos;
+
   std::string ipAddr;
+
   std::string fullName; // username
   std::string nickName;
   std::string realName;
+
   std::string passWord;
+
   std::string response;
+
   std::string source;
 
   int clientType;
 
 public:
-  Client();
   Client(int fd, struct sockaddr_in ddr);
+Client(); // should be private
 
   // Getters
   int getFd() const;
@@ -99,16 +112,6 @@ public:
     else
       clientType = CLIENT::UNKNOWN;
   }
-  // both should be private
-  void resolveSource() {
-    std::string::size_type at = source.find("@");
-    std::string::size_type ex = source.find("!");
-    if (at != std::string::npos && ex != std::string::npos) {
-      nickName = source.substr(0, ex);
-      realName = source.substr(ex + 1, at - ex - 1);
-      ipAddr = source.substr(at + 1);
-    }
-  }
   void constructSource() {
     if (connected) {
 
@@ -116,8 +119,7 @@ public:
         std::cout
             << formatServerMessage(
                    "WARNING",
-                   "NickName is empty, Server is Omitting, constructing source")
-            << std::endl;
+                "NickName is empty, constructing source regardless") << std::endl;
       }
       if (realName.empty() && ipAddr.empty()) {
         source = nickName;

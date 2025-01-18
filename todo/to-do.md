@@ -65,6 +65,7 @@
     - 
 - [URGENT] need to overhall client and channel specific methodes (helpers), they are slowing command developement. [DONE]
 - need some new reply helpers eg:
+
 {
  RPL_WELCOME (001)
 
@@ -72,7 +73,7 @@
 }
 - simply better to have external methodes for these. (they to much)
 - some more command parsing helpers and utils (checking,morphing,parsing and extracting)
-- [URGENT] need to setup actual auth (Pass/user/nick) in any order.
+- [X] need to setup actual auth (Pass/user/nick) in any order.
 - [ ] quit test-user after test case is over.
 
 

@@ -41,6 +41,7 @@ private:
     std::string name;
     std::string topic;
     std::string password;
+
     std::vector<Client> members;
     int         type;
 
