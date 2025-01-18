@@ -1,8 +1,8 @@
 # IRC Server Test Summary
 ## Test Execution Details
 
-- **Date**: 2025-01-18 02:56:00 UTC
-- **Duration**: 0h 0m 4s
+- **Date**: 2025-01-18 03:25:57 UTC
+- **Duration**: 0h 0m 5s
 - **User**: Trafexofive
 - **Host**: morpheus-arch
 
@@ -14,14 +14,17 @@
 
 ## Test Results
 - **Total Tests**: 4
-- **Passed**: 4 🟢
-- **Failed**: 0 🔴
+- **Passed**: 0 🟢
+- **Failed**: 4 🔴
 - **Skipped**: 0 ⚪
-- **Success Rate**: 100%
+- **Success Rate**: 0%
 
 ## Failed Tests
 ```
-No failed tests
+❌ SINGLE NORMAL CHANNEL JOIN - Expected: ':test-user!testUser@localhost JOIN #test-channel'
+❌ SINGLE NORMAL CHANNEL JOIN WITH KEY - Expected: ':test-user!testUser@localhost JOIN #test-channel'
+❌ JOIN 2 CHANNELS - Expected: ':test-user!testUser@localhost JOIN #test-channel1\r\n:test-user!testUser@localhost JOIN #test-channel2'
+❌ JOIN MULTIPLE CHANNELS - Expected: ':test-user!testUser@localhost JOIN #test-channel1\r\n:test-user!testUser@localhost JOIN #test-channel2\r\n:test-user!testUser@localhost JOIN #test-channel3'
 ```
 
 ## System Information
@@ -42,7 +45,7 @@ Memory: 15Gi
 ```
 Error Summary Report
 ===================
-Generated: 2025-01-18 02:52:29 UTC
+Generated: 2025-01-18 03:17:38 UTC
 Test Suite User: Trafexofive
 
 No errors detected during test execution.

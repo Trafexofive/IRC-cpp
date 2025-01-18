@@ -13,11 +13,6 @@
 #include "../../inc/Server.hpp"
 #include <string>
 
-static const std::string& constructPassMessage(const std::string& nick, const std::string& hostname, const std::string& code, const std::string& message) {
-    static std::string msg = ":" + hostname + " " + code + " " + nick + " :" + message + "\r\n";
-    return msg;
-}
-
 void CoreServer::cmdPass(int fd, std::vector<std::string> &args) {
     std::cout << formatServerMessage("DEBUG", "Processing PASS command") << std::endl;
     Client& client = clients[fd];
@@ -34,9 +29,8 @@ void CoreServer::cmdPass(int fd, std::vector<std::string> &args) {
         return;
     }
 
+
     client.setPassWord(args[1]);
     client.setAuth(true);
-    std::cout << formatServerMessage("DEBUG", "Password accepted") << std::endl;
-    // 001 pass accepted
-    client.setResponse(constructPassMessage(client.getNickName(), this->ServData.Host, "001", "Password Accepted"));
+    std::cout << formatServerMessage("INFO", "Client Authenticated") << std::endl;
 }
