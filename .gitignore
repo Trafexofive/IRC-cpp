@@ -2,3 +2,8 @@
 bin/*
 obj/*
 .vscode/
+logs/*
+.deps/*
+
+
+

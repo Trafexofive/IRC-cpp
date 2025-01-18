@@ -13,6 +13,8 @@ source $root_dir/lib/utils.sh
 source $root_dir/lib/summary.sh
 source $root_dir/lib/validation.sh
 
+SERVER_LOG_FILE="log/server.log"
+
 # Parse command line arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -128,7 +130,7 @@ function main() {
     if [ "${QUIET:-0}" -eq 0 ]; then
         echo -e "${GREEN}Tests completed successfully${NC}"
         echo -e "${GRAY}Log file: $LOG_FILE${NC}"
-        echo -e "${GRAY}Server log: server.log${NC}"
+        echo -e "${GRAY}Server log: $SERVER_LOG_FILE${NC}"
         echo -e "${GRAY}Summary file: $SUMMARY_FILE${NC}"
     fi
 }

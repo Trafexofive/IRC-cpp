@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Default Configurations
-DEFAULT_SUMMARY_FILE="testSummary.md"
+DEFAULT_SUMMARY_FILE=".summary.txt"
 DEFAULT_PORT=22200
 DEFAULT_PASSWORD="Alilepro135!"
 DEFAULT_SERVER_BINARY="./bin/irc-server"
 DEFAULT_TIMEOUT=5
-DEFAULT_LOG_FILE="irc.log"
+DEFAULT_LOG_FILE="log/irc.log"
 DEFAULT_MAX_PARALLEL_TESTS=5
 
 # Runtime Configuration

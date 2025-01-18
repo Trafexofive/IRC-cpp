@@ -154,7 +154,7 @@ function run_single_test() {
 }
 
 function save_error_summary() {
-    local error_file="error_summary.txt"
+    error_file="log/error-summary.txt"
     
     {
         echo "Error Summary Report"

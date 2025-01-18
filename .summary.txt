@@ -1,7 +1,7 @@
 # IRC Server Test Summary
 ## Test Execution Details
 
-- **Date**: 2025-01-18 15:28:24 UTC
+- **Date**: 2025-01-18 18:21:07 UTC
 - **Duration**: 0h 0m 4s
 - **User**: Trafexofive
 - **Host**: morpheus-arch
@@ -33,24 +33,7 @@ Memory: 15Gi
 ```
 
 ## Log Files
-- Test Log: irc.log
+- Test Log: log/irc.log
 - Server Log: server.log
-- Summary File: testSummary.md
+- Summary File: .summary.txt
 
-
-## Error Summary
-```
-Error Summary Report
-===================
-Generated: 2025-01-18 14:22:36 UTC
-Test Suite User: Trafexofive
-
-No errors detected during test execution.
-
-Test Statistics:
-- Total Tests: 4
-- Passed: 4
-- Failed: 0
-- Skipped: 0
-- Success Rate: 100%
-```

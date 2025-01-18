@@ -4,8 +4,7 @@
 /*   client.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 10:57:28 by mlamkadm          #+#    #+#             */
+/*                                                +#+#+#+#+#+   +#+           */ /*   Created: 2024/12/27 10:57:28 by mlamkadm          #+#    #+#             */
 /*   Updated: 2024/12/27 10:57:28 by mlamkadm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -74,6 +73,7 @@ void Client::setResponse(const std::string& response) {
     else
         this->response += response;
 }
+
 void Client::setClientInfos(const struct sockaddr_in& info) { clientInfos = info; }
 
 void Client::disconnect()
