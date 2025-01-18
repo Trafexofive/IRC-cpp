@@ -1,17 +1,13 @@
 Error Summary Report
 ===================
-Generated: 2025-01-18 03:26:02 UTC
+Generated: 2025-01-18 04:14:11 UTC
 Test Suite User: Trafexofive
 
-Failed Tests:
-❌ SINGLE NORMAL CHANNEL JOIN - Expected: ':test-user!testUser@localhost JOIN #test-channel'
-❌ SINGLE NORMAL CHANNEL JOIN WITH KEY - Expected: ':test-user!testUser@localhost JOIN #test-channel'
-❌ JOIN 2 CHANNELS - Expected: ':test-user!testUser@localhost JOIN #test-channel1\r\n:test-user!testUser@localhost JOIN #test-channel2'
-❌ JOIN MULTIPLE CHANNELS - Expected: ':test-user!testUser@localhost JOIN #test-channel1\r\n:test-user!testUser@localhost JOIN #test-channel2\r\n:test-user!testUser@localhost JOIN #test-channel3'
+No errors detected during test execution.
 
 Test Statistics:
 - Total Tests: 4
-- Passed: 0
-- Failed: 4
+- Passed: 4
+- Failed: 0
 - Skipped: 0
-- Success Rate: 0%
+- Success Rate: 100%

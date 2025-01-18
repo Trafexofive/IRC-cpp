@@ -12,15 +12,6 @@
 
 #include "../../inc/Server.hpp"
 
-static void printClientInfo(Client &client) {
-    std::cout << "Client info:" << std::endl;
-    std::cout << "Nickname: " << client.getNickName() << std::endl;
-    std::cout << "Username: " << client.getFullName() << std::endl;
-    std::cout << "Realname: " << client.getRealName() << std::endl;
-    std::cout << "Auth: " << client.getAuth() << std::endl;
-}
-
-
 static void cmdMotd(Client& client, std::vector<std::string> &args) {
     std::string nick = client.getNickName();
 
@@ -56,7 +47,10 @@ void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
 
     if (client.getAuth() && !client.getNickName().empty()) {
         std::string nick = client.getNickName();
-        std::cout << formatServerMessage("DEBUG", "Registration complete for " + nick) << std::endl;
+        std::cout << formatServerMessage("INFO", "Registration complete for " + nick) << std::endl;
+        client.printClientInfo();
+        // client.setResponse(formatResponse(RPL_REGISTRATION, nick + " :You are now registered"));
+        client.setConnected(true);
 
         // Send welcome messages using formatResponse
         client.setResponse(formatResponse(RPL_WELCOME, nick + " :Welcome to the WeUseArch IRC Network"));
@@ -66,6 +60,7 @@ void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
         // client.setResponse(formatResponse(RPL_ISUPPORT, nick + " CHANTYPES=# PREFIX=(o)@ CHANMODES=k,l,imnpst :are supported by this server"));
 
         // Send MOTD
+
         cmdMotd(client, args);
 
         // Handle client modes
@@ -73,7 +68,6 @@ void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
         //     client.setResponse(formatResponse(RPL_UMODEIS, nick + " " + client.getModes()));
         // }
 
-        printClientInfo(client);
     }
 }
 

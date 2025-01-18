@@ -110,7 +110,6 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
       try {
         (this->*cmdIt->second)(fd, args);
         WriteEvent(fd); // Send response immediately after command
-        client.printClientInfo();
       } catch (const std::exception &e) {
         std::cerr << formatServerMessage(
                          "ERROR", std::string("Failed to execute command: ") +

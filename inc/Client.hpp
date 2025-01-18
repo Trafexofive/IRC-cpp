@@ -112,7 +112,7 @@ public:
     }
   }
   void constructSource() {
-    if (!auth) {
+    if (!connected) {
 
       if (nickName.empty()) {
         std::cout

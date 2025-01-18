@@ -33,4 +33,5 @@ void CoreServer::cmdPass(int fd, std::vector<std::string> &args) {
     client.setPassWord(args[1]);
     client.setAuth(true);
     std::cout << formatServerMessage("INFO", "Client Authenticated") << std::endl;
+    
 }
