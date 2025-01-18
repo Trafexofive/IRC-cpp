@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 """
-Enhanced Interactive IRC Client Script (with slash commands) - Python "10x" Overhaul
-
-This version replicates and improves the functionality of the Bash script, allowing live interaction
-with an IRC server. Slash-based commands are supported (e.g., /auto, /nickname, /exit, etc.).
+Enhanced Interactive IRC Client Script
 
 Usage:
   python irc_enhanced.py --server <server> --port <port> --nick <nickname> [OPTIONS]
@@ -266,3 +263,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

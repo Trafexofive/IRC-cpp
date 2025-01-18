@@ -83,14 +83,6 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
     if (args.empty()) {
       return;
     }
-    if (client.getAuth() && !client.getConnected())
-    {
-        client.constructSource();
-        client.setConnected(true);
-    }
-
-    // debug
-    // printTokens(args);
 
     // Convert command to uppercase
     std::string command = args[0];
@@ -147,6 +139,13 @@ void CoreServer::WriteEvent(int fd) {
   }
 }
 
+void CoreServer::leaveAllChannels(int fd) {
+  for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end();
+       ++it) {
+    it->removeMember(clients[fd].getNickName());
+  }
+}
+
 // Method to read data from the client
 void CoreServer::ReadEvent(int fd) {
   char buffer[1024];
@@ -158,6 +157,7 @@ void CoreServer::ReadEvent(int fd) {
     std::ostringstream oss;
     oss << "Closing connection FD: " << fd;
     std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
+    leaveAllChannels(fd);
 
     std::vector<struct pollfd>::iterator new_end =
         std::remove_if(fds.begin(), fds.end(), FdRemovePredicate(fd));

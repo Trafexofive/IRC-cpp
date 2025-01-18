@@ -22,6 +22,17 @@ static void cmdMotd(Client& client, std::vector<std::string> &args) {
     client.setResponse(formatResponse(RPL_ENDOFMOTD, nick + " :End of /MOTD command."));
 }
 
+static void welcomeClient(Client& client) {
+    std::string nick = client.getNickName();
+    // Send welcome messages using formatResponse
+    client.setResponse(formatResponse(RPL_WELCOME, nick + " :Welcome to the WeUseArch IRC Network"));
+    client.setResponse(formatResponse(RPL_YOURHOST, nick + " :Your host is morpheus-server.ddns.net"));
+    client.setResponse(formatResponse(RPL_CREATED, nick + " :This server was created 2024-01-11"));
+    client.setResponse(formatResponse(RPL_MYINFO, nick + " morpheus-server.ddns.net 1.0 usermodes channelmodes"));
+    // client.setResponse(formatResponse(RPL_ISUPPORT, nick + " CHANTYPES=# PREFIX=(o)@ CHANMODES=k,l,imnpst :are supported by this server"));
+    // Send MOTD
+}
+
 void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
     std::cout << formatServerMessage("DEBUG", "Processing USER command") << std::endl;
 
@@ -47,20 +58,14 @@ void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
 
     if (client.getAuth() && !client.getNickName().empty()) {
         std::string nick = client.getNickName();
+
         std::cout << formatServerMessage("INFO", "Registration complete for " + nick) << std::endl;
-        client.printClientInfo();
-        // client.setResponse(formatResponse(RPL_REGISTRATION, nick + " :You are now registered"));
         client.setConnected(true);
+        client.constructSource();
+        client.printClientInfo();
 
-        // Send welcome messages using formatResponse
-        client.setResponse(formatResponse(RPL_WELCOME, nick + " :Welcome to the WeUseArch IRC Network"));
-        client.setResponse(formatResponse(RPL_YOURHOST, nick + " :Your host is morpheus-server.ddns.net"));
-        client.setResponse(formatResponse(RPL_CREATED, nick + " :This server was created 2024-01-11"));
-        client.setResponse(formatResponse(RPL_MYINFO, nick + " morpheus-server.ddns.net 1.0 usermodes channelmodes"));
-        // client.setResponse(formatResponse(RPL_ISUPPORT, nick + " CHANTYPES=# PREFIX=(o)@ CHANMODES=k,l,imnpst :are supported by this server"));
-
+        welcomeClient(client);
         // Send MOTD
-
         cmdMotd(client, args);
 
         // Handle client modes

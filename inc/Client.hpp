@@ -42,7 +42,6 @@ private:
   std::string nickName;
   std::string realName;
   std::string passWord;
-  std::string buff;
   std::string response;
   std::string source;
 
@@ -61,7 +60,6 @@ public:
   const std::string &getNickName() const;
   const std::string &getRealName() const { return realName; }
   const std::string &getPassWord() const;
-  const std::string &getBuff() const;
   const std::string &getResponse() const;
   const struct sockaddr_in &getClientInfos() const;
 
@@ -112,7 +110,7 @@ public:
     }
   }
   void constructSource() {
-    if (!connected) {
+    if (connected) {
 
       if (nickName.empty()) {
         std::cout
@@ -125,8 +123,6 @@ public:
         source = nickName;
       } else if (ipAddr.empty()) {
         source = nickName + "!" + realName;
-      } else if (realName.empty()) {
-        source = nickName + "@" + ipAddr;
       } else {
         source = nickName + "!" + realName + "@" + ipAddr;
       }

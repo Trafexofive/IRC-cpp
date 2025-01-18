@@ -70,6 +70,7 @@ struct FdPredicate {
 class CoreServer {
 private:
     ServerData ServData;
+
     std::map<int, Client> clients;
     std::vector<struct pollfd> fds;
     std::vector<Channel> channels;
@@ -135,6 +136,7 @@ public:
     void joinChannel(Client& client, const std::string& channelName);
     void joinSingleChannel(Client &client, const std::string &channelName, const std::string &key);
 
+    void leaveAllChannels(int fd);
 };
 
 // Non-member functions for validation

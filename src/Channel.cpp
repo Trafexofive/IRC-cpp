@@ -58,15 +58,15 @@ void Channel::addMember(const Client& member) {
     for (std::vector<Client>::const_iterator it = members.begin(); it != members.end(); ++it) {
         if (it->getNickName() == member.getNickName()) {
             std::ostringstream warning;
-            warning << "User " << member.getNickName() << " is already in channel " << name;
-            std::cout << formatServerMessage("DEBUG", warning.str()) << std::endl;
+            warning << "User " << member.getNickName() << " is already in channel. Ignoring..." << name;
+            std::cout << formatServerMessage("WARNING", warning.str()) << std::endl;
             return;
         }
     }
     members.push_back(member);
     std::ostringstream success;
     success << "Added " << member.getNickName() << " to channel " << name << " (Total members: " << members.size() << ")";
-    std::cout << formatServerMessage("DEBUG", success.str()) << std::endl;
+    std::cout << formatServerMessage("INFO", success.str()) << std::endl;
 }
 
 bool Channel::removeMember(const std::string& nickname) {
@@ -137,7 +137,6 @@ void Channel::printInfo() const {
     info << "Channel Info: [Name: " << name << ", Topic: " << topic << ", Password: " << (password.empty() ? "None" : "Set") << ", Members: " << members.size() << "]";
     std::cout << formatServerMessage("INFO", info.str()) << std::endl;
 }
-
 
 std::string getChannelsString(const std::vector<Channel>& channels)
 {

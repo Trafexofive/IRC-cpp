@@ -24,7 +24,6 @@ Client::Client() :
     nickName(""),
     realName(""),
     passWord(""),
-    buff(""),
     response(""),
     source(""),
     clientType(CLIENT::NORMAL)
@@ -43,7 +42,6 @@ Client::Client(int fd, struct sockaddr_in addr) :
     nickName(""),
     realName(""),
     passWord(""),
-    buff(""),
     response(""),
     clientType(CLIENT::NORMAL)
 {
@@ -59,7 +57,6 @@ const std::string& Client::getIpAddr() const { return ipAddr; }
 const std::string& Client::getFullName() const { return fullName; }
 const std::string& Client::getNickName() const { return nickName; }
 const std::string& Client::getPassWord() const { return passWord; }
-const std::string& Client::getBuff() const { return buff; }
 const std::string& Client::getResponse() const { return response; }
 const struct sockaddr_in& Client::getClientInfos() const { return clientInfos; }
 
@@ -105,7 +102,6 @@ void Client::clear()
     fullName.clear();
     nickName.clear();
     passWord.clear();
-    buff.clear();
     response.clear();
 }
 
