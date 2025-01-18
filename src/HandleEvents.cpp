@@ -27,7 +27,7 @@ public:
 };
 
 // Method to welcome a new client
-void CoreServer::WelcomeClient() {
+void CoreServer::WelcomeClient() {  
   struct sockaddr_in client_addr;
   socklen_t client_len = sizeof(client_addr);
 
@@ -157,6 +157,7 @@ void CoreServer::ReadEvent(int fd) {
     std::ostringstream oss;
     oss << "Closing connection FD: " << fd;
     std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
+
     leaveAllChannels(fd);
 
     std::vector<struct pollfd>::iterator new_end =
