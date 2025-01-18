@@ -65,6 +65,7 @@ public:
   const std::string &getResponse() const;
   const struct sockaddr_in &getClientInfos() const;
 
+
   // Setters
   void setFd(int fd);
   void setAuth(bool auth);
@@ -77,7 +78,6 @@ public:
   void setPassWord(const std::string &pass);
   void setResponse(const std::string &response);
   void setClientInfos(const struct sockaddr_in &info);
-  void setBuff(const std::string &buff, bool append = false);
 
   // Class specific methods
   void sendMessage(const std::string &message);

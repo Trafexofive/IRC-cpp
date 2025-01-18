@@ -83,13 +83,11 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
     if (args.empty()) {
       return;
     }
-    if (args[0] == "QUIT") {
-      client.setResponse("Goodbye!\r\n");
-      WriteEvent(fd);
-      return;
-    }
-    if (client.getAuth())
+    if (client.getAuth() && !client.getConnected())
+    {
         client.constructSource();
+        client.setConnected(true);
+    }
 
     // debug
     // printTokens(args);
@@ -155,9 +153,9 @@ void CoreServer::ReadEvent(int fd) {
   char buffer[1024];
   std::memset(buffer, 0, sizeof(buffer));
 
-  int readed = read(fd, buffer, sizeof(buffer) - 1);
+  int dataRead = read(fd, buffer, sizeof(buffer) - 1);
 
-  if (readed <= 0) {
+  if (dataRead <= 0) {
     std::ostringstream oss;
     oss << "Closing connection FD: " << fd;
     std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
@@ -170,7 +168,7 @@ void CoreServer::ReadEvent(int fd) {
     return;
   }
 
-  buffer[readed] = '\0';
+  buffer[dataRead] = '\0';
   std::string input(buffer);
   std::istringstream iss(input);
   std::string line;
