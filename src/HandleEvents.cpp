@@ -179,7 +179,7 @@ void CoreServer::ReadEvent(int fd) {
     // Remove \r if present
     if (!line.empty() && line[line.length() - 1] == '\r')
       line.erase(line.length() - 1);
-
+    std::cout << formatServerMessage("CLIENT", line) << std::endl;
     if (line.empty())
       continue;
 

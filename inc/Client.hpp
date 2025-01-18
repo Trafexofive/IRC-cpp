@@ -32,8 +32,10 @@ typedef struct {
 class Client {
 private:
   int fdClient;
+
   bool auth;
   bool connected;
+
   struct sockaddr_in clientInfos;
   std::string ipAddr;
   std::string fullName; // username
@@ -43,6 +45,7 @@ private:
   std::string buff;
   std::string response;
   std::string source;
+
   int clientType;
 
 public:
@@ -109,21 +112,29 @@ public:
     }
   }
   void constructSource() {
-    if (nickName.empty()) {
-        std::cout << formatServerMessage("WARNING", "NickName is empty, Server is Omitting, constructing source") << std::endl;
-    }
-    if (realName.empty() && ipAddr.empty()) {
-      source = nickName;
-    } else if (ipAddr.empty()) {
-      source = nickName + "!" + realName;
-    } else if (realName.empty()) {
-      source = nickName + "@" + ipAddr;
-    } else {
-      source = nickName + "!" + realName + "@" + ipAddr;
-    }
+    if (!auth) {
 
-    // Output the constructed source for debugging
-    std::cout << formatServerMessage("DEBUG", "source: " + source) << std::endl;
+      if (nickName.empty()) {
+        std::cout
+            << formatServerMessage(
+                   "WARNING",
+                   "NickName is empty, Server is Omitting, constructing source")
+            << std::endl;
+      }
+      if (realName.empty() && ipAddr.empty()) {
+        source = nickName;
+      } else if (ipAddr.empty()) {
+        source = nickName + "!" + realName;
+      } else if (realName.empty()) {
+        source = nickName + "@" + ipAddr;
+      } else {
+        source = nickName + "!" + realName + "@" + ipAddr;
+      }
+
+      // Output the constructed source for debugging
+      std::cout << formatServerMessage("DEBUG", "source: " + source)
+                << std::endl;
+    }
   }
   void constructIpAddr() { ipAddr = inet_ntoa(clientInfos.sin_addr); }
   void printClientInfo();

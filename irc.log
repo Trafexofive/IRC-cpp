@@ -1,25 +1,25 @@
 ========================================
-IRC Server Test Log - 2025-01-18 02:13:37 UTC
+IRC Server Test Log - 2025-01-18 02:55:58 UTC
 User: Trafexofive
 Server: localhost:22200
 Debug Mode: 1
 Verbose Mode: 1
 ========================================
 
-[2025-01-18 02:13:37 UTC] Test suite started
+[2025-01-18 02:55:58 UTC] Test suite started
 ----------------------------------------
-[2025-01-18 02:13:37 UTC] Starting IRC server
-[2025-01-18 02:13:39 UTC] [DEBUG] Waiting for server to start (PID: 817751)
-[2025-01-18 02:13:39 UTC] Server started successfully
-[2025-01-18 02:13:39 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
-[2025-01-18 02:13:40 UTC] Test 'SINGLE NORMAL CHANNEL JOIN' completed in 1s
-[2025-01-18 02:13:40 UTC] Running test: SINGLE NORMAL CHANNEL JOIN WITH KEY
-[2025-01-18 02:13:41 UTC] Test 'SINGLE NORMAL CHANNEL JOIN WITH KEY' completed in 1s
-[2025-01-18 02:13:41 UTC] Running test: JOIN 2 CHANNELS
-[2025-01-18 02:13:42 UTC] Test 'JOIN 2 CHANNELS' completed in 1s
-[2025-01-18 02:13:42 UTC] Running test: JOIN MULTIPLE CHANNELS
-[2025-01-18 02:13:43 UTC] Test 'JOIN MULTIPLE CHANNELS' completed in 1s
-[2025-01-18 02:13:43 UTC] Test suite shutting down
-[2025-01-18 02:13:43 UTC] Stopping server (PID: 817751)
+[2025-01-18 02:55:58 UTC] Starting IRC server
+[2025-01-18 02:56:00 UTC] [DEBUG] Waiting for server to start (PID: 834594)
+[2025-01-18 02:56:00 UTC] Server started successfully
+[2025-01-18 02:56:00 UTC] Running test: SINGLE NORMAL CHANNEL JOIN
+[2025-01-18 02:56:01 UTC] Test 'SINGLE NORMAL CHANNEL JOIN' completed in 1s
+[2025-01-18 02:56:01 UTC] Running test: SINGLE NORMAL CHANNEL JOIN WITH KEY
+[2025-01-18 02:56:02 UTC] Test 'SINGLE NORMAL CHANNEL JOIN WITH KEY' completed in 1s
+[2025-01-18 02:56:02 UTC] Running test: JOIN 2 CHANNELS
+[2025-01-18 02:56:03 UTC] Test 'JOIN 2 CHANNELS' completed in 1s
+[2025-01-18 02:56:03 UTC] Running test: JOIN MULTIPLE CHANNELS
+[2025-01-18 02:56:04 UTC] Test 'JOIN MULTIPLE CHANNELS' completed in 1s
+[2025-01-18 02:56:04 UTC] Test suite shutting down
+[2025-01-18 02:56:04 UTC] Stopping server (PID: 834594)
 ----------------------------------------
-[2025-01-18 02:13:43 UTC] Stopping server (PID: 817751)
+[2025-01-18 02:56:04 UTC] Stopping server (PID: 834594)

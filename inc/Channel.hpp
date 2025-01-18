@@ -79,6 +79,7 @@ public:
     bool hasPassword() const;
     bool checkPassword(const std::string& pass) const;
     void printInfo() const;
+
 };
 
 // helper functions
@@ -88,6 +89,7 @@ Channel& getChannel(const std::string& name, std::vector<Channel>& channels);
 void removeClientFromChannel(Client& client, Channel& channel) ;
 void handleInvalidChannel(Client& client, const std::string& channelName) ;
 void handlePartSuccess(Client& client, const std::string& channelName) ;
+std::string getChannelsString(const std::vector<Channel>& channels);
 
 
 

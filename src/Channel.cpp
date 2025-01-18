@@ -139,4 +139,16 @@ void Channel::printInfo() const {
 }
 
 
+std::string getChannelsString(const std::vector<Channel>& channels)
+{
+    std::string channelsStr;
+    channelsStr.clear();
+    for (size_t i = 0; i < channels.size(); ++i) {
+        channelsStr += channels[i].getName();
+        if (i < channels.size() - 1) {
+            channelsStr += " ";
+        }
+    }
+    return channelsStr;
+}
 
