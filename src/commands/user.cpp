@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "../../inc/Server.hpp"
+#include <iostream>
+#include <string>
 
 static void cmdMotd(Client& client, std::vector<std::string> &args) {
     std::string nick = client.getNickName();
@@ -33,7 +35,9 @@ static void welcomeClient(Client& client) {
     // Send MOTD
 }
 
+
 void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
+
     std::cout << formatServerMessage("DEBUG", "Processing USER command") << std::endl;
 
     if (args.size() < 5) {
@@ -41,9 +45,7 @@ void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
         clients[fd].setResponse(formatResponse(ERR_NEEDMOREPARAMS, "USER :Not enough parameters"));
         return;
     }
-
     Client& client = clients[fd];
-
     if (!client.getFullName().empty()) {
         std::cout << formatServerMessage("ERROR", "USER command failed: Already registered") << std::endl;
         client.setResponse(formatResponse(ERR_ALREADYREG, ":You may not reregister"));
@@ -52,6 +54,10 @@ void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
 
     std::string username = args[1];
     std::string realname = args[4];
+    // int n = 2;
+    // while (!args[n].empty()) {
+    //     n++;
+    // }
     client.setFullName(username);
     realname.erase(std::remove(realname.begin(), realname.end(), ':'), realname.end());
     client.setRealName(realname);
@@ -59,13 +65,12 @@ void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
     if (client.getAuth() && !client.getNickName().empty()) {
         std::string nick = client.getNickName();
 
-        std::cout << formatServerMessage("INFO", "Registration complete for " + nick) << std::endl;
+        std::cout << formatServerMessage("INFO", "Registration complete for " + client.getSource()) << std::endl;
         client.setConnected(true);
         client.constructSource();
         client.printClientInfo();
 
         welcomeClient(client);
-        // Send MOTD
         cmdMotd(client, args);
 
         // Handle client modes

@@ -33,6 +33,10 @@ typedef struct {
         PRIVATE,
         UNKNOWN
     };
+    enum OPERATOR{
+        ADD,
+        REMOVE
+    };
 }
 CHANNEL;
 

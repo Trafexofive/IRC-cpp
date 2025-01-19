@@ -47,6 +47,19 @@ void CoreServer::create_socket() {
   std::cout << formatServerMessage("INFO", "Server Socket setup complete")
             << std::endl;
 }
+
+static void displayConnectionInfo(struct sockaddr_in client) {
+  std::ostringstream oss;
+  oss << "Connection from: " << inet_ntoa(client.sin_addr) << ":"
+      << ntohs(client.sin_port);
+  std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
+}
+
+static void displayActiveConnections(std::vector<struct pollfd> fds) {
+  std::ostringstream oss;
+  oss << "Active connections: " << fds.size();
+  std::cout << formatServerMessage("DEBUG", oss.str()) << std::endl;
+}
 void CoreServer::start_listening() {
   std::cout << formatServerMessage("DEBUG", "Binding socket...") << std::endl;
   if (bind(ServData._socket, (struct sockaddr *)&ServData.ServAddr,
@@ -74,9 +87,7 @@ void CoreServer::start_server() {
       std::cout << formatServerMessage("FATAL", "Poll failed") << std::endl;
       break;
     }
-    std::ostringstream oss;
-    oss << "Active connections: " << fds.size();
-    std::cout << formatServerMessage("DEBUG", oss.str()) << std::endl;
+    displayActiveConnections(fds);
     for (size_t i = 0; i < fds.size(); i++) {
       if (fds[i].revents & POLLIN) {
         if (fds[i].fd == ServData._socket)

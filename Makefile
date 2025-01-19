@@ -152,9 +152,9 @@ test: re | $(DIR_LOG)
 testlog: test
 	@less $(DIR_LOG)/raw-test.log
 
-run: re
+run: re | $(DIR_LOG)
 	@printf "Running $(NAME)...\n"
-	@./$(DIR_BIN)/$(NAME) $(ARGS)
+	@./$(DIR_BIN)/$(NAME) $(ARGS) | tee $(DIR_LOG)/runtime-server.log
 
 # python3 ./test/client.py -p 22200 --password Alilepro135! -u mlamkadm -r "Mohamed Ali Lamkadmi" -n cleverlord
 client: 

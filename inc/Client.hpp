@@ -30,7 +30,7 @@ typedef struct {
 } CLIENT;
 
 typedef struct {
-enum TYPE { ACTIVE, IDLE, DONOTDISTURB, UNKNOWN };
+enum TYPE { ACTIVE, IDLE, DONOTDISTURB, UNKNOWN, OFFLINE };
 } STATE;
 
 typedef struct {
@@ -72,6 +72,7 @@ Client(); // should be private
   const std::string &getFullName() const;
   const std::string &getNickName() const;
   const std::string &getRealName() const { return realName; }
+const std::string &getSource() const { return source; }
   const std::string &getPassWord() const;
   const std::string &getResponse() const;
   const struct sockaddr_in &getClientInfos() const;

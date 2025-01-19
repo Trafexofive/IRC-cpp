@@ -1,52 +1,52 @@
-[1m[2025-01-18 19:31:41] [0m[32mINFO :: [0mConstructing Server Class ...
-[1m[2025-01-18 19:31:41] [0m[33mDEBUG :: [0mValidating port: 22200
-[1m[2025-01-18 19:31:41] [0m[33mDEBUG :: [0m
-[1m[2025-01-18 19:31:41] [0m[33mDEBUG :: [0mValidating password
-[1m[2025-01-18 19:31:41] [0m[33mDEBUG :: [0mPassword valid
-[1m[2025-01-18 19:31:41] [0m[33mDEBUG :: [0mRegistering commands...
-[1m[2025-01-18 19:31:41] [0m[33mDEBUG :: [0mCreating socket...
-[1m[2025-01-18 19:31:41] [0m[33mDEBUG :: [0mSocket created: 3
-[1m[2025-01-18 19:31:41] [0m[32mINFO :: [0mServer Socket setup complete
-[1m[2025-01-18 19:31:41] [0m[33mDEBUG :: [0mBinding socket...
-[1m[2025-01-18 19:31:41] [0m[33mDEBUG :: [0mStarting to listen...
-[1m[2025-01-18 19:31:41] [0m[33mDEBUG :: [0mServer listening on port: 22200
-[1m[2025-01-18 19:31:41] [0m[33mDEBUG :: [0mServer main loop starting...
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0mActive connections: 1
-[1m[2025-01-18 19:31:43] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-01-18 19:31:43] [0m[32mINFO :: [0mClient connected
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:43] [0m[36mCLIENT << [0mPASS Alilepro135!
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-01-18 19:31:43] [0m[32mINFO :: [0mClient Authenticated
-[1m[2025-01-18 19:31:43] [0m[36mCLIENT << [0mNICK test-user
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0mProcessing command: NICK
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0mProcessing NICK command
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0mNickname set to: test-user
-[1m[2025-01-18 19:31:43] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0mProcessing command: USER
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0mProcessing USER command
-[1m[2025-01-18 19:31:43] [0m[32mINFO :: [0mRegistration complete for test-user
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0mClient Table:
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0m| Field           | Value                         |
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0m| auth            | true                          |
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0m| connected       | true                          |
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0m| realName        | Test                          |
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0m| response        |                               |
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0m| clientType      | 0                             |
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:43] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-19 19:30:53] [0m[32mINFO :: [0mConstructing Server Class ...
+[1m[2025-01-19 19:30:53] [0m[33mDEBUG :: [0mValidating port: 22200
+[1m[2025-01-19 19:30:53] [0m[33mDEBUG :: [0m
+[1m[2025-01-19 19:30:53] [0m[33mDEBUG :: [0mValidating password
+[1m[2025-01-19 19:30:53] [0m[33mDEBUG :: [0mPassword valid
+[1m[2025-01-19 19:30:53] [0m[33mDEBUG :: [0mRegistering commands...
+[1m[2025-01-19 19:30:53] [0m[33mDEBUG :: [0mCreating socket...
+[1m[2025-01-19 19:30:53] [0m[33mDEBUG :: [0mSocket created: 3
+[1m[2025-01-19 19:30:53] [0m[32mINFO :: [0mServer Socket setup complete
+[1m[2025-01-19 19:30:53] [0m[33mDEBUG :: [0mBinding socket...
+[1m[2025-01-19 19:30:53] [0m[33mDEBUG :: [0mStarting to listen...
+[1m[2025-01-19 19:30:53] [0m[33mDEBUG :: [0mServer listening on port: 22200
+[1m[2025-01-19 19:30:53] [0m[33mDEBUG :: [0mServer main loop starting...
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:30:55] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:30:55] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:30:55] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:30:55] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:30:55] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:30:55] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:30:55] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:30:55] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -55,55 +55,55 @@
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[1m[2025-01-18 19:31:43] [0m[36mCLIENT << [0mJOIN #test-channel
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0mCreating new channel: #test-channel
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0mCreating new channel: #test-channel
-[1m[2025-01-18 19:31:43] [0m[32mINFO :: [0mAdded test-user to channel #test-channel (Total members: 1)
-[1m[2025-01-18 19:31:43] [0m[33mDEBUG :: [0mDestroying channel: #test-channel
-[1m[2025-01-18 19:31:43] [0m[32mINFO :: [0mtest-user joined #test-channel
-[1m[2025-01-18 19:31:43] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel
+[1m[2025-01-19 19:30:55] [0m[36mCLIENT << [0mJOIN #test-channel
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0mCreating new channel: #test-channel
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0mCreating new channel: #test-channel
+[1m[2025-01-19 19:30:55] [0m[32mINFO :: [0mAdded test-user to channel #test-channel (Total members: 1)
+[1m[2025-01-19 19:30:55] [0m[33mDEBUG :: [0mDestroying channel: #test-channel
+[1m[2025-01-19 19:30:55] [0m[32mINFO :: [0mtest-user joined #test-channel
+[1m[2025-01-19 19:30:55] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel
 
-[1m[2025-01-18 19:31:43] [0m[36mCLIENT << [0m
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:44] [0m[32mINFO :: [0mClosing connection FD: 4
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel (Remaining members: 0)
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0mActive connections: 1
-[1m[2025-01-18 19:31:44] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-01-18 19:31:44] [0m[32mINFO :: [0mClient connected
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:44] [0m[36mCLIENT << [0mPASS Alilepro135!
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-01-18 19:31:44] [0m[32mINFO :: [0mClient Authenticated
-[1m[2025-01-18 19:31:44] [0m[36mCLIENT << [0mNICK test-user
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0mProcessing command: NICK
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0mProcessing NICK command
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0mNickname set to: test-user
-[1m[2025-01-18 19:31:44] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0mProcessing command: USER
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0mProcessing USER command
-[1m[2025-01-18 19:31:44] [0m[32mINFO :: [0mRegistration complete for test-user
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0mClient Table:
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0m| Field           | Value                         |
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0m| auth            | true                          |
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0m| connected       | true                          |
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0m| realName        | Test                          |
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0m| response        |                               |
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0m| clientType      | 0                             |
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:44] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-19 19:30:55] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:30:56] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel (Remaining members: 0)
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:30:56] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:30:56] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:30:56] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:30:56] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:30:56] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:30:56] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:30:56] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:30:56] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -112,52 +112,52 @@
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[1m[2025-01-18 19:31:44] [0m[36mCLIENT << [0mJOIN #test-channel Alilepro135!
-[1m[2025-01-18 19:31:44] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-01-18 19:31:44] [0m[32mINFO :: [0mAdded test-user to channel #test-channel (Total members: 1)
-[1m[2025-01-18 19:31:44] [0m[32mINFO :: [0mtest-user joined #test-channel
-[1m[2025-01-18 19:31:44] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel
+[1m[2025-01-19 19:30:56] [0m[36mCLIENT << [0mJOIN #test-channel Alilepro135!
+[1m[2025-01-19 19:30:56] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:30:56] [0m[32mINFO :: [0mAdded test-user to channel #test-channel (Total members: 1)
+[1m[2025-01-19 19:30:56] [0m[32mINFO :: [0mtest-user joined #test-channel
+[1m[2025-01-19 19:30:56] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel
 
-[1m[2025-01-18 19:31:44] [0m[36mCLIENT << [0m
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:45] [0m[32mINFO :: [0mClosing connection FD: 4
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel (Remaining members: 0)
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mActive connections: 1
-[1m[2025-01-18 19:31:45] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-01-18 19:31:45] [0m[32mINFO :: [0mClient connected
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:45] [0m[36mCLIENT << [0mPASS Alilepro135!
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-01-18 19:31:45] [0m[32mINFO :: [0mClient Authenticated
-[1m[2025-01-18 19:31:45] [0m[36mCLIENT << [0mNICK test-user
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mProcessing command: NICK
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mProcessing NICK command
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mNickname set to: test-user
-[1m[2025-01-18 19:31:45] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mProcessing command: USER
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mProcessing USER command
-[1m[2025-01-18 19:31:45] [0m[32mINFO :: [0mRegistration complete for test-user
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mClient Table:
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0m| Field           | Value                         |
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0m| auth            | true                          |
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0m| connected       | true                          |
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0m| realName        | Test                          |
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0m| response        |                               |
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0m| clientType      | 0                             |
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:45] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-19 19:30:56] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:30:57] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel (Remaining members: 0)
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:30:57] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:30:57] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:30:57] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:30:57] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:30:57] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:30:57] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:30:57] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:30:57] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -166,66 +166,66 @@
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[1m[2025-01-18 19:31:45] [0m[36mCLIENT << [0mJOIN #test-channel1,#test-channel2
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mCreating new channel: #test-channel1
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mCreating new channel: #test-channel1
-[1m[2025-01-18 19:31:45] [0m[32mINFO :: [0mAdded test-user to channel #test-channel1 (Total members: 1)
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mDestroying channel: #test-channel
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mDestroying channel: #test-channel1
-[1m[2025-01-18 19:31:45] [0m[32mINFO :: [0mtest-user joined #test-channel1
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mCreating new channel: #test-channel2
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mCreating new channel: #test-channel2
-[1m[2025-01-18 19:31:45] [0m[32mINFO :: [0mAdded test-user to channel #test-channel2 (Total members: 1)
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mDestroying channel: #test-channel
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mDestroying channel: #test-channel1
-[1m[2025-01-18 19:31:45] [0m[33mDEBUG :: [0mDestroying channel: #test-channel2
-[1m[2025-01-18 19:31:45] [0m[32mINFO :: [0mtest-user joined #test-channel2
-[1m[2025-01-18 19:31:45] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel1
+[1m[2025-01-19 19:30:57] [0m[36mCLIENT << [0mJOIN #test-channel1,#test-channel2
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mCreating new channel: #test-channel1
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mCreating new channel: #test-channel1
+[1m[2025-01-19 19:30:57] [0m[32mINFO :: [0mAdded test-user to channel #test-channel1 (Total members: 1)
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mDestroying channel: #test-channel
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mDestroying channel: #test-channel1
+[1m[2025-01-19 19:30:57] [0m[32mINFO :: [0mtest-user joined #test-channel1
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mCreating new channel: #test-channel2
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mCreating new channel: #test-channel2
+[1m[2025-01-19 19:30:57] [0m[32mINFO :: [0mAdded test-user to channel #test-channel2 (Total members: 1)
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mDestroying channel: #test-channel
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mDestroying channel: #test-channel1
+[1m[2025-01-19 19:30:57] [0m[33mDEBUG :: [0mDestroying channel: #test-channel2
+[1m[2025-01-19 19:30:57] [0m[32mINFO :: [0mtest-user joined #test-channel2
+[1m[2025-01-19 19:30:57] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel1
 :test-user!testUser@localhost JOIN #test-channel2
 
-[1m[2025-01-18 19:31:45] [0m[36mCLIENT << [0m
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:46] [0m[32mINFO :: [0mClosing connection FD: 4
-[1m[2025-01-18 19:31:46] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel1 (Remaining members: 0)
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel2 (Remaining members: 0)
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mActive connections: 1
-[1m[2025-01-18 19:31:46] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-01-18 19:31:46] [0m[32mINFO :: [0mClient connected
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:46] [0m[36mCLIENT << [0mPASS Alilepro135!
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-01-18 19:31:46] [0m[32mINFO :: [0mClient Authenticated
-[1m[2025-01-18 19:31:46] [0m[36mCLIENT << [0mNICK test-user
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mProcessing command: NICK
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mProcessing NICK command
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mNickname set to: test-user
-[1m[2025-01-18 19:31:46] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mProcessing command: USER
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mProcessing USER command
-[1m[2025-01-18 19:31:46] [0m[32mINFO :: [0mRegistration complete for test-user
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mClient Table:
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0m| Field           | Value                         |
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0m| auth            | true                          |
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0m| connected       | true                          |
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0m| realName        | Test                          |
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0m| response        |                               |
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0m| clientType      | 0                             |
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:46] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-19 19:30:57] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:30:58] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:30:58] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel1 (Remaining members: 0)
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel2 (Remaining members: 0)
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:30:58] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:30:58] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:30:58] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:30:58] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:30:58] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:30:58] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:30:58] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:30:58] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -234,64 +234,64 @@
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[1m[2025-01-18 19:31:46] [0m[36mCLIENT << [0mJOIN #test-channel1,#test-channel2,#test-channel3
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-01-18 19:31:46] [0m[32mINFO :: [0mAdded test-user to channel #test-channel1 (Total members: 1)
-[1m[2025-01-18 19:31:46] [0m[32mINFO :: [0mtest-user joined #test-channel1
-[1m[2025-01-18 19:31:46] [0m[32mINFO :: [0mAdded test-user to channel #test-channel2 (Total members: 1)
-[1m[2025-01-18 19:31:46] [0m[32mINFO :: [0mtest-user joined #test-channel2
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mCreating new channel: #test-channel3
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mCreating new channel: #test-channel3
-[1m[2025-01-18 19:31:46] [0m[32mINFO :: [0mAdded test-user to channel #test-channel3 (Total members: 1)
-[1m[2025-01-18 19:31:46] [0m[33mDEBUG :: [0mDestroying channel: #test-channel3
-[1m[2025-01-18 19:31:46] [0m[32mINFO :: [0mtest-user joined #test-channel3
-[1m[2025-01-18 19:31:46] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel1
+[1m[2025-01-19 19:30:58] [0m[36mCLIENT << [0mJOIN #test-channel1,#test-channel2,#test-channel3
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:30:58] [0m[32mINFO :: [0mAdded test-user to channel #test-channel1 (Total members: 1)
+[1m[2025-01-19 19:30:58] [0m[32mINFO :: [0mtest-user joined #test-channel1
+[1m[2025-01-19 19:30:58] [0m[32mINFO :: [0mAdded test-user to channel #test-channel2 (Total members: 1)
+[1m[2025-01-19 19:30:58] [0m[32mINFO :: [0mtest-user joined #test-channel2
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mCreating new channel: #test-channel3
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mCreating new channel: #test-channel3
+[1m[2025-01-19 19:30:58] [0m[32mINFO :: [0mAdded test-user to channel #test-channel3 (Total members: 1)
+[1m[2025-01-19 19:30:58] [0m[33mDEBUG :: [0mDestroying channel: #test-channel3
+[1m[2025-01-19 19:30:58] [0m[32mINFO :: [0mtest-user joined #test-channel3
+[1m[2025-01-19 19:30:58] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel1
 :test-user!testUser@localhost JOIN #test-channel2
 :test-user!testUser@localhost JOIN #test-channel3
 
-[1m[2025-01-18 19:31:46] [0m[36mCLIENT << [0m
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:47] [0m[32mINFO :: [0mClosing connection FD: 4
-[1m[2025-01-18 19:31:47] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel1 (Remaining members: 0)
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel2 (Remaining members: 0)
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel3 (Remaining members: 0)
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mActive connections: 1
-[1m[2025-01-18 19:31:47] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-01-18 19:31:47] [0m[32mINFO :: [0mClient connected
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:47] [0m[36mCLIENT << [0mPASS Alilepro135!
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-01-18 19:31:47] [0m[32mINFO :: [0mClient Authenticated
-[1m[2025-01-18 19:31:47] [0m[36mCLIENT << [0mNICK test-user
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mProcessing command: NICK
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mProcessing NICK command
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mNickname set to: test-user
-[1m[2025-01-18 19:31:47] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mProcessing command: USER
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mProcessing USER command
-[1m[2025-01-18 19:31:47] [0m[32mINFO :: [0mRegistration complete for test-user
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mClient Table:
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0m| Field           | Value                         |
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0m| auth            | true                          |
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0m| connected       | true                          |
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0m| realName        | Test                          |
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0m| response        |                               |
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0m| clientType      | 0                             |
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:47] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-19 19:30:58] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:30:59] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:30:59] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel1 (Remaining members: 0)
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel2 (Remaining members: 0)
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel3 (Remaining members: 0)
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:30:59] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:30:59] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:30:59] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:30:59] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:30:59] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:30:59] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:30:59] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:30:59] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -300,63 +300,58 @@
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[1m[2025-01-18 19:31:47] [0m[36mCLIENT << [0mJOIN #this-is-a-very-long-channel-name
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mCreating new channel: #this-is-a-very-long-channel-name
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mCreating new channel: #this-is-a-very-long-channel-name
-[1m[2025-01-18 19:31:47] [0m[32mINFO :: [0mAdded test-user to channel #this-is-a-very-long-channel-name (Total members: 1)
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mDestroying channel: #test-channel
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mDestroying channel: #test-channel1
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mDestroying channel: #test-channel2
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mDestroying channel: #test-channel3
-[1m[2025-01-18 19:31:47] [0m[33mDEBUG :: [0mDestroying channel: #this-is-a-very-long-channel-name
-[1m[2025-01-18 19:31:47] [0m[32mINFO :: [0mtest-user joined #this-is-a-very-long-channel-name
-[1m[2025-01-18 19:31:47] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:30:59] [0m[36mCLIENT << [0mJOIN #test-channel1,#test-channel2
+[1m[2025-01-19 19:30:59] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:30:59] [0m[32mINFO :: [0mAdded test-user to channel #test-channel1 (Total members: 1)
+[1m[2025-01-19 19:30:59] [0m[32mINFO :: [0mtest-user joined #test-channel1
+[1m[2025-01-19 19:30:59] [0m[32mINFO :: [0mAdded test-user to channel #test-channel2 (Total members: 1)
+[1m[2025-01-19 19:30:59] [0m[32mINFO :: [0mtest-user joined #test-channel2
+[1m[2025-01-19 19:30:59] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel1
+:test-user!testUser@localhost JOIN #test-channel2
 
-[1m[2025-01-18 19:31:47] [0m[36mCLIENT << [0m
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:48] [0m[32mINFO :: [0mClosing connection FD: 4
-[1m[2025-01-18 19:31:48] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
-[1m[2025-01-18 19:31:48] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
-[1m[2025-01-18 19:31:48] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
-[1m[2025-01-18 19:31:48] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mRemoved test-user from channel #this-is-a-very-long-channel-name (Remaining members: 0)
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mActive connections: 1
-[1m[2025-01-18 19:31:48] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-01-18 19:31:48] [0m[32mINFO :: [0mClient connected
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:48] [0m[36mCLIENT << [0mPASS Alilepro135!
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-01-18 19:31:48] [0m[32mINFO :: [0mClient Authenticated
-[1m[2025-01-18 19:31:48] [0m[36mCLIENT << [0mNICK test-user
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mProcessing command: NICK
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mProcessing NICK command
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mNickname set to: test-user
-[1m[2025-01-18 19:31:48] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mProcessing command: USER
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mProcessing USER command
-[1m[2025-01-18 19:31:48] [0m[32mINFO :: [0mRegistration complete for test-user
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mClient Table:
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0m| Field           | Value                         |
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0m| auth            | true                          |
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0m| connected       | true                          |
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0m| realName        | Test                          |
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0m| response        |                               |
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0m| clientType      | 0                             |
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:48] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-19 19:30:59] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:00] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:31:00] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel1 (Remaining members: 0)
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel2 (Remaining members: 0)
+[1m[2025-01-19 19:31:00] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:31:00] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:31:00] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:00] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:31:00] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:31:00] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:31:00] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:31:00] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:00] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -365,60 +360,63 @@
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[1m[2025-01-18 19:31:48] [0m[36mCLIENT << [0mJOIN #12345
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mCreating new channel: #12345
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mCreating new channel: #12345
-[1m[2025-01-18 19:31:48] [0m[32mINFO :: [0mAdded test-user to channel #12345 (Total members: 1)
-[1m[2025-01-18 19:31:48] [0m[33mDEBUG :: [0mDestroying channel: #12345
-[1m[2025-01-18 19:31:48] [0m[32mINFO :: [0mtest-user joined #12345
-[1m[2025-01-18 19:31:48] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #12345
+[1m[2025-01-19 19:31:00] [0m[36mCLIENT << [0mJOIN #test-channel!@#$
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mCreating new channel: #test-channel!@#$
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mCreating new channel: #test-channel!@#$
+[1m[2025-01-19 19:31:00] [0m[32mINFO :: [0mAdded test-user to channel #test-channel!@#$ (Total members: 1)
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mDestroying channel: #test-channel
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mDestroying channel: #test-channel1
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mDestroying channel: #test-channel2
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mDestroying channel: #test-channel3
+[1m[2025-01-19 19:31:00] [0m[33mDEBUG :: [0mDestroying channel: #test-channel!@#$
+[1m[2025-01-19 19:31:00] [0m[32mINFO :: [0mtest-user joined #test-channel!@#$
+[1m[2025-01-19 19:31:00] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel!@#$
 
-[1m[2025-01-18 19:31:48] [0m[36mCLIENT << [0m
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:49] [0m[32mINFO :: [0mClosing connection FD: 4
-[1m[2025-01-18 19:31:49] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
-[1m[2025-01-18 19:31:49] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
-[1m[2025-01-18 19:31:49] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
-[1m[2025-01-18 19:31:49] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
-[1m[2025-01-18 19:31:49] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mRemoved test-user from channel #12345 (Remaining members: 0)
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mActive connections: 1
-[1m[2025-01-18 19:31:49] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-01-18 19:31:49] [0m[32mINFO :: [0mClient connected
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:49] [0m[36mCLIENT << [0mPASS Alilepro135!
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-01-18 19:31:49] [0m[32mINFO :: [0mClient Authenticated
-[1m[2025-01-18 19:31:49] [0m[36mCLIENT << [0mNICK test-user
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mProcessing command: NICK
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mProcessing NICK command
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mNickname set to: test-user
-[1m[2025-01-18 19:31:49] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mProcessing command: USER
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mProcessing USER command
-[1m[2025-01-18 19:31:49] [0m[32mINFO :: [0mRegistration complete for test-user
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mClient Table:
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0m| Field           | Value                         |
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0m| auth            | true                          |
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0m| connected       | true                          |
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0m| realName        | Test                          |
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0m| response        |                               |
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0m| clientType      | 0                             |
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:49] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-19 19:31:00] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:01] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:31:01] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
+[1m[2025-01-19 19:31:01] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
+[1m[2025-01-19 19:31:01] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
+[1m[2025-01-19 19:31:01] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel!@#$ (Remaining members: 0)
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:31:01] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:31:01] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:01] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:31:01] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:31:01] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:31:01] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:31:01] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:01] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -427,61 +425,60 @@
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[1m[2025-01-18 19:31:49] [0m[36mCLIENT << [0mJOIN #test-channel-123!@#$
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mCreating new channel: #test-channel-123!@#$
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mCreating new channel: #test-channel-123!@#$
-[1m[2025-01-18 19:31:49] [0m[32mINFO :: [0mAdded test-user to channel #test-channel-123!@#$ (Total members: 1)
-[1m[2025-01-18 19:31:49] [0m[33mDEBUG :: [0mDestroying channel: #test-channel-123!@#$
-[1m[2025-01-18 19:31:49] [0m[32mINFO :: [0mtest-user joined #test-channel-123!@#$
-[1m[2025-01-18 19:31:49] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel-123!@#$
+[1m[2025-01-19 19:31:01] [0m[36mCLIENT << [0mJOIN #test channel
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mCreating new channel: #test
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mCreating new channel: #test
+[1m[2025-01-19 19:31:01] [0m[32mINFO :: [0mAdded test-user to channel #test (Total members: 1)
+[1m[2025-01-19 19:31:01] [0m[33mDEBUG :: [0mDestroying channel: #test
+[1m[2025-01-19 19:31:01] [0m[32mINFO :: [0mtest-user joined #test
+[1m[2025-01-19 19:31:01] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test
 
-[1m[2025-01-18 19:31:49] [0m[36mCLIENT << [0m
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:50] [0m[32mINFO :: [0mClosing connection FD: 4
-[1m[2025-01-18 19:31:50] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
-[1m[2025-01-18 19:31:50] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
-[1m[2025-01-18 19:31:50] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
-[1m[2025-01-18 19:31:50] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
-[1m[2025-01-18 19:31:50] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
-[1m[2025-01-18 19:31:50] [0m[31mERROR :: [0mUser test-user not found in channel #12345
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel-123!@#$ (Remaining members: 0)
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0mActive connections: 1
-[1m[2025-01-18 19:31:50] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-01-18 19:31:50] [0m[32mINFO :: [0mClient connected
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:50] [0m[36mCLIENT << [0mPASS Alilepro135!
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-01-18 19:31:50] [0m[32mINFO :: [0mClient Authenticated
-[1m[2025-01-18 19:31:50] [0m[36mCLIENT << [0mNICK test-user
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0mProcessing command: NICK
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0mProcessing NICK command
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0mNickname set to: test-user
-[1m[2025-01-18 19:31:50] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0mProcessing command: USER
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0mProcessing USER command
-[1m[2025-01-18 19:31:50] [0m[32mINFO :: [0mRegistration complete for test-user
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0mClient Table:
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0m| Field           | Value                         |
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0m| auth            | true                          |
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0m| connected       | true                          |
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0m| realName        | Test                          |
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0m| response        |                               |
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0m| clientType      | 0                             |
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:50] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-19 19:31:01] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:02] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:31:02] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
+[1m[2025-01-19 19:31:02] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
+[1m[2025-01-19 19:31:02] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
+[1m[2025-01-19 19:31:02] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
+[1m[2025-01-19 19:31:02] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel!@#$
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0mRemoved test-user from channel #test (Remaining members: 0)
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:31:02] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:31:02] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:02] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:31:02] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:31:02] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:31:02] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:31:02] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:02] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -490,58 +487,57 @@
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[1m[2025-01-18 19:31:50] [0m[36mCLIENT << [0mJOIN #test-channel-123!@#$ key-123!@#$
-[1m[2025-01-18 19:31:50] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-01-18 19:31:50] [0m[32mINFO :: [0mAdded test-user to channel #test-channel-123!@#$ (Total members: 1)
-[1m[2025-01-18 19:31:50] [0m[32mINFO :: [0mtest-user joined #test-channel-123!@#$
-[1m[2025-01-18 19:31:50] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel-123!@#$
+[1m[2025-01-19 19:31:02] [0m[36mCLIENT << [0mJOIN #test-channel!@#$ key!@#$
+[1m[2025-01-19 19:31:02] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:31:02] [0m[32mINFO :: [0mAdded test-user to channel #test-channel!@#$ (Total members: 1)
+[1m[2025-01-19 19:31:02] [0m[32mINFO :: [0mtest-user joined #test-channel!@#$
+[1m[2025-01-19 19:31:02] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel!@#$
 
-[1m[2025-01-18 19:31:50] [0m[36mCLIENT << [0m
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:51] [0m[32mINFO :: [0mClosing connection FD: 4
-[1m[2025-01-18 19:31:51] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
-[1m[2025-01-18 19:31:51] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
-[1m[2025-01-18 19:31:51] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
-[1m[2025-01-18 19:31:51] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
-[1m[2025-01-18 19:31:51] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
-[1m[2025-01-18 19:31:51] [0m[31mERROR :: [0mUser test-user not found in channel #12345
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel-123!@#$ (Remaining members: 0)
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mActive connections: 1
-[1m[2025-01-18 19:31:51] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-01-18 19:31:51] [0m[32mINFO :: [0mClient connected
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:51] [0m[36mCLIENT << [0mPASS Alilepro135!
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-01-18 19:31:51] [0m[32mINFO :: [0mClient Authenticated
-[1m[2025-01-18 19:31:51] [0m[36mCLIENT << [0mNICK test-user
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mProcessing command: NICK
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mProcessing NICK command
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mNickname set to: test-user
-[1m[2025-01-18 19:31:51] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mProcessing command: USER
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mProcessing USER command
-[1m[2025-01-18 19:31:51] [0m[32mINFO :: [0mRegistration complete for test-user
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mClient Table:
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0m| Field           | Value                         |
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0m| auth            | true                          |
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0m| connected       | true                          |
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0m| realName        | Test                          |
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0m| response        |                               |
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0m| clientType      | 0                             |
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:51] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-19 19:31:02] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:03] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:31:03] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
+[1m[2025-01-19 19:31:03] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
+[1m[2025-01-19 19:31:03] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
+[1m[2025-01-19 19:31:03] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel!@#$ (Remaining members: 0)
+[1m[2025-01-19 19:31:03] [0m[31mERROR :: [0mUser test-user not found in channel #test
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:31:03] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:31:03] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:03] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:31:03] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:31:03] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:31:03] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:31:03] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:03] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -550,62 +546,61 @@
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[1m[2025-01-18 19:31:51] [0m[36mCLIENT << [0mJOIN #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mCreating new channel: #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mCreating new channel: #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
-[1m[2025-01-18 19:31:51] [0m[32mINFO :: [0mAdded test-user to channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 (Total members: 1)
-[1m[2025-01-18 19:31:51] [0m[33mDEBUG :: [0mDestroying channel: #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
-[1m[2025-01-18 19:31:51] [0m[32mINFO :: [0mtest-user joined #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
-[1m[2025-01-18 19:31:51] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[1m[2025-01-19 19:31:03] [0m[36mCLIENT << [0mJOIN #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mCreating new channel: #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mCreating new channel: #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:31:03] [0m[32mINFO :: [0mAdded test-user to channel #this-is-a-very-long-channel-name (Total members: 1)
+[1m[2025-01-19 19:31:03] [0m[33mDEBUG :: [0mDestroying channel: #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:31:03] [0m[32mINFO :: [0mtest-user joined #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:31:03] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #this-is-a-very-long-channel-name
 
-[1m[2025-01-18 19:31:51] [0m[36mCLIENT << [0m
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:52] [0m[32mINFO :: [0mClosing connection FD: 4
-[1m[2025-01-18 19:31:52] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
-[1m[2025-01-18 19:31:52] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
-[1m[2025-01-18 19:31:52] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
-[1m[2025-01-18 19:31:52] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
-[1m[2025-01-18 19:31:52] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
-[1m[2025-01-18 19:31:52] [0m[31mERROR :: [0mUser test-user not found in channel #12345
-[1m[2025-01-18 19:31:52] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel-123!@#$
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0mRemoved test-user from channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 (Remaining members: 0)
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0mActive connections: 1
-[1m[2025-01-18 19:31:52] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-01-18 19:31:52] [0m[32mINFO :: [0mClient connected
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:52] [0m[36mCLIENT << [0mPASS Alilepro135!
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-01-18 19:31:52] [0m[32mINFO :: [0mClient Authenticated
-[1m[2025-01-18 19:31:52] [0m[36mCLIENT << [0mNICK test-user
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0mProcessing command: NICK
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0mProcessing NICK command
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0mNickname set to: test-user
-[1m[2025-01-18 19:31:52] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0mProcessing command: USER
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0mProcessing USER command
-[1m[2025-01-18 19:31:52] [0m[32mINFO :: [0mRegistration complete for test-user
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0mClient Table:
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0m| Field           | Value                         |
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0m| auth            | true                          |
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0m| connected       | true                          |
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0m| realName        | Test                          |
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0m| response        |                               |
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0m| clientType      | 0                             |
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:52] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-19 19:31:03] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:04] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:31:04] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
+[1m[2025-01-19 19:31:04] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
+[1m[2025-01-19 19:31:04] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
+[1m[2025-01-19 19:31:04] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
+[1m[2025-01-19 19:31:04] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel!@#$
+[1m[2025-01-19 19:31:04] [0m[31mERROR :: [0mUser test-user not found in channel #test
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mRemoved test-user from channel #this-is-a-very-long-channel-name (Remaining members: 0)
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:31:04] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:31:04] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:04] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:31:04] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:31:04] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:31:04] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:31:04] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:04] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -614,59 +609,62 @@
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[1m[2025-01-18 19:31:52] [0m[36mCLIENT << [0mJOIN #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 key-123!@#$
-[1m[2025-01-18 19:31:52] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-01-18 19:31:52] [0m[32mINFO :: [0mAdded test-user to channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 (Total members: 1)
-[1m[2025-01-18 19:31:52] [0m[32mINFO :: [0mtest-user joined #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
-[1m[2025-01-18 19:31:52] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[1m[2025-01-19 19:31:04] [0m[36mCLIENT << [0mJOIN #12345
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mCreating new channel: #12345
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mCreating new channel: #12345
+[1m[2025-01-19 19:31:04] [0m[32mINFO :: [0mAdded test-user to channel #12345 (Total members: 1)
+[1m[2025-01-19 19:31:04] [0m[33mDEBUG :: [0mDestroying channel: #12345
+[1m[2025-01-19 19:31:04] [0m[32mINFO :: [0mtest-user joined #12345
+[1m[2025-01-19 19:31:04] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #12345
 
-[1m[2025-01-18 19:31:52] [0m[36mCLIENT << [0m
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:53] [0m[32mINFO :: [0mClosing connection FD: 4
-[1m[2025-01-18 19:31:53] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
-[1m[2025-01-18 19:31:53] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
-[1m[2025-01-18 19:31:53] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
-[1m[2025-01-18 19:31:53] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
-[1m[2025-01-18 19:31:53] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
-[1m[2025-01-18 19:31:53] [0m[31mERROR :: [0mUser test-user not found in channel #12345
-[1m[2025-01-18 19:31:53] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel-123!@#$
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mRemoved test-user from channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 (Remaining members: 0)
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mActive connections: 1
-[1m[2025-01-18 19:31:53] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-01-18 19:31:53] [0m[32mINFO :: [0mClient connected
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:53] [0m[36mCLIENT << [0mPASS Alilepro135!
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-01-18 19:31:53] [0m[32mINFO :: [0mClient Authenticated
-[1m[2025-01-18 19:31:53] [0m[36mCLIENT << [0mNICK test-user
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mProcessing command: NICK
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mProcessing NICK command
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mNickname set to: test-user
-[1m[2025-01-18 19:31:53] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mProcessing command: USER
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mProcessing USER command
-[1m[2025-01-18 19:31:53] [0m[32mINFO :: [0mRegistration complete for test-user
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mClient Table:
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0m| Field           | Value                         |
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0m| auth            | true                          |
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0m| connected       | true                          |
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0m| realName        | Test                          |
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0m| response        |                               |
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0m| clientType      | 0                             |
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:53] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-19 19:31:04] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:31:05] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:05] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:31:05] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
+[1m[2025-01-19 19:31:05] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
+[1m[2025-01-19 19:31:05] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
+[1m[2025-01-19 19:31:05] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
+[1m[2025-01-19 19:31:05] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel!@#$
+[1m[2025-01-19 19:31:05] [0m[31mERROR :: [0mUser test-user not found in channel #test
+[1m[2025-01-19 19:31:05] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:31:05] [0m[33mDEBUG :: [0mRemoved test-user from channel #12345 (Remaining members: 0)
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:31:06] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:31:06] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:06] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:31:06] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:31:06] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:31:06] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:31:06] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:06] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -675,71 +673,71 @@
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[1m[2025-01-18 19:31:53] [0m[36mCLIENT << [0mJOIN #
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mCreating new channel: #
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mCreating new channel: #
-[1m[2025-01-18 19:31:53] [0m[32mINFO :: [0mAdded test-user to channel # (Total members: 1)
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mDestroying channel: #test-channel
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mDestroying channel: #test-channel1
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mDestroying channel: #test-channel2
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mDestroying channel: #test-channel3
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mDestroying channel: #this-is-a-very-long-channel-name
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mDestroying channel: #12345
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mDestroying channel: #test-channel-123!@#$
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mDestroying channel: #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
-[1m[2025-01-18 19:31:53] [0m[33mDEBUG :: [0mDestroying channel: #
-[1m[2025-01-18 19:31:53] [0m[32mINFO :: [0mtest-user joined #
-[1m[2025-01-18 19:31:53] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #
+[1m[2025-01-19 19:31:06] [0m[36mCLIENT << [0mJOIN #test-channel-123!@#$
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mCreating new channel: #test-channel-123!@#$
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mCreating new channel: #test-channel-123!@#$
+[1m[2025-01-19 19:31:06] [0m[32mINFO :: [0mAdded test-user to channel #test-channel-123!@#$ (Total members: 1)
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mDestroying channel: #test-channel
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mDestroying channel: #test-channel1
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mDestroying channel: #test-channel2
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mDestroying channel: #test-channel3
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mDestroying channel: #test-channel!@#$
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mDestroying channel: #test
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mDestroying channel: #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mDestroying channel: #12345
+[1m[2025-01-19 19:31:06] [0m[33mDEBUG :: [0mDestroying channel: #test-channel-123!@#$
+[1m[2025-01-19 19:31:06] [0m[32mINFO :: [0mtest-user joined #test-channel-123!@#$
+[1m[2025-01-19 19:31:06] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel-123!@#$
 
-[1m[2025-01-18 19:31:53] [0m[36mCLIENT << [0m
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:54] [0m[32mINFO :: [0mClosing connection FD: 4
-[1m[2025-01-18 19:31:54] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
-[1m[2025-01-18 19:31:54] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
-[1m[2025-01-18 19:31:54] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
-[1m[2025-01-18 19:31:54] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
-[1m[2025-01-18 19:31:54] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
-[1m[2025-01-18 19:31:54] [0m[31mERROR :: [0mUser test-user not found in channel #12345
-[1m[2025-01-18 19:31:54] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel-123!@#$
-[1m[2025-01-18 19:31:54] [0m[31mERROR :: [0mUser test-user not found in channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0mRemoved test-user from channel # (Remaining members: 0)
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0mActive connections: 1
-[1m[2025-01-18 19:31:54] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-01-18 19:31:54] [0m[32mINFO :: [0mClient connected
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:54] [0m[36mCLIENT << [0mPASS Alilepro135!
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-01-18 19:31:54] [0m[32mINFO :: [0mClient Authenticated
-[1m[2025-01-18 19:31:54] [0m[36mCLIENT << [0mNICK test-user
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0mProcessing command: NICK
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0mProcessing NICK command
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0mNickname set to: test-user
-[1m[2025-01-18 19:31:54] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0mProcessing command: USER
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0mProcessing USER command
-[1m[2025-01-18 19:31:54] [0m[32mINFO :: [0mRegistration complete for test-user
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0mClient Table:
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0m| Field           | Value                         |
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0m| auth            | true                          |
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0m| connected       | true                          |
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0m| realName        | Test                          |
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0m| response        |                               |
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0m| clientType      | 0                             |
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:54] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-19 19:31:06] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:07] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:31:07] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
+[1m[2025-01-19 19:31:07] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
+[1m[2025-01-19 19:31:07] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
+[1m[2025-01-19 19:31:07] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
+[1m[2025-01-19 19:31:07] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel!@#$
+[1m[2025-01-19 19:31:07] [0m[31mERROR :: [0mUser test-user not found in channel #test
+[1m[2025-01-19 19:31:07] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:31:07] [0m[31mERROR :: [0mUser test-user not found in channel #12345
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel-123!@#$ (Remaining members: 0)
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:31:07] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:31:07] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:07] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:31:07] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:31:07] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:31:07] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:31:07] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:07] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -748,60 +746,60 @@
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[1m[2025-01-18 19:31:54] [0m[36mCLIENT << [0mJOIN #test-channel 
-[1m[2025-01-18 19:31:54] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-01-18 19:31:54] [0m[32mINFO :: [0mAdded test-user to channel #test-channel (Total members: 1)
-[1m[2025-01-18 19:31:54] [0m[32mINFO :: [0mtest-user joined #test-channel
-[1m[2025-01-18 19:31:54] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel
+[1m[2025-01-19 19:31:07] [0m[36mCLIENT << [0mJOIN #test-channel-123!@#$ key-123!@#$
+[1m[2025-01-19 19:31:07] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:31:07] [0m[32mINFO :: [0mAdded test-user to channel #test-channel-123!@#$ (Total members: 1)
+[1m[2025-01-19 19:31:07] [0m[32mINFO :: [0mtest-user joined #test-channel-123!@#$
+[1m[2025-01-19 19:31:07] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel-123!@#$
 
-[1m[2025-01-18 19:31:54] [0m[36mCLIENT << [0m
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:55] [0m[32mINFO :: [0mClosing connection FD: 4
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel (Remaining members: 0)
-[1m[2025-01-18 19:31:55] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
-[1m[2025-01-18 19:31:55] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
-[1m[2025-01-18 19:31:55] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
-[1m[2025-01-18 19:31:55] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
-[1m[2025-01-18 19:31:55] [0m[31mERROR :: [0mUser test-user not found in channel #12345
-[1m[2025-01-18 19:31:55] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel-123!@#$
-[1m[2025-01-18 19:31:55] [0m[31mERROR :: [0mUser test-user not found in channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
-[1m[2025-01-18 19:31:55] [0m[31mERROR :: [0mUser test-user not found in channel #
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0mActive connections: 1
-[1m[2025-01-18 19:31:55] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-01-18 19:31:55] [0m[32mINFO :: [0mClient connected
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:55] [0m[36mCLIENT << [0mPASS Alilepro135!
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-01-18 19:31:55] [0m[32mINFO :: [0mClient Authenticated
-[1m[2025-01-18 19:31:55] [0m[36mCLIENT << [0mNICK test-user
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0mProcessing command: NICK
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0mProcessing NICK command
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0mNickname set to: test-user
-[1m[2025-01-18 19:31:55] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0mProcessing command: USER
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0mProcessing USER command
-[1m[2025-01-18 19:31:55] [0m[32mINFO :: [0mRegistration complete for test-user
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0mClient Table:
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0m| Field           | Value                         |
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0m| auth            | true                          |
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0m| connected       | true                          |
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0m| realName        | Test                          |
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0m| response        |                               |
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0m| clientType      | 0                             |
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:55] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-19 19:31:07] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:08] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:31:08] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
+[1m[2025-01-19 19:31:08] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
+[1m[2025-01-19 19:31:08] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
+[1m[2025-01-19 19:31:08] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
+[1m[2025-01-19 19:31:08] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel!@#$
+[1m[2025-01-19 19:31:08] [0m[31mERROR :: [0mUser test-user not found in channel #test
+[1m[2025-01-19 19:31:08] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:31:08] [0m[31mERROR :: [0mUser test-user not found in channel #12345
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel-123!@#$ (Remaining members: 0)
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:31:08] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:31:08] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:08] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:31:08] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:31:08] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:31:08] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:31:08] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:08] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -810,60 +808,64 @@
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[1m[2025-01-18 19:31:55] [0m[36mCLIENT << [0mJOIN #test-channel,
-[1m[2025-01-18 19:31:55] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-01-18 19:31:55] [0m[32mINFO :: [0mAdded test-user to channel #test-channel (Total members: 1)
-[1m[2025-01-18 19:31:55] [0m[32mINFO :: [0mtest-user joined #test-channel
-[1m[2025-01-18 19:31:55] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel
+[1m[2025-01-19 19:31:08] [0m[36mCLIENT << [0mJOIN #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mCreating new channel: #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mCreating new channel: #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[1m[2025-01-19 19:31:08] [0m[32mINFO :: [0mAdded test-user to channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 (Total members: 1)
+[1m[2025-01-19 19:31:08] [0m[33mDEBUG :: [0mDestroying channel: #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[1m[2025-01-19 19:31:08] [0m[32mINFO :: [0mtest-user joined #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[1m[2025-01-19 19:31:08] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
 
-[1m[2025-01-18 19:31:55] [0m[36mCLIENT << [0m
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:56] [0m[32mINFO :: [0mClosing connection FD: 4
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel (Remaining members: 0)
-[1m[2025-01-18 19:31:56] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
-[1m[2025-01-18 19:31:56] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
-[1m[2025-01-18 19:31:56] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
-[1m[2025-01-18 19:31:56] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
-[1m[2025-01-18 19:31:56] [0m[31mERROR :: [0mUser test-user not found in channel #12345
-[1m[2025-01-18 19:31:56] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel-123!@#$
-[1m[2025-01-18 19:31:56] [0m[31mERROR :: [0mUser test-user not found in channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
-[1m[2025-01-18 19:31:56] [0m[31mERROR :: [0mUser test-user not found in channel #
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0mActive connections: 1
-[1m[2025-01-18 19:31:56] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-01-18 19:31:56] [0m[32mINFO :: [0mClient connected
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:56] [0m[36mCLIENT << [0mPASS Alilepro135!
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-01-18 19:31:56] [0m[32mINFO :: [0mClient Authenticated
-[1m[2025-01-18 19:31:56] [0m[36mCLIENT << [0mNICK test-user
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0mProcessing command: NICK
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0mProcessing NICK command
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0mNickname set to: test-user
-[1m[2025-01-18 19:31:56] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0mProcessing command: USER
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0mProcessing USER command
-[1m[2025-01-18 19:31:56] [0m[32mINFO :: [0mRegistration complete for test-user
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0mClient Table:
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0m| Field           | Value                         |
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0m| auth            | true                          |
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0m| connected       | true                          |
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0m| realName        | Test                          |
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0m| response        |                               |
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0m| clientType      | 0                             |
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:56] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-19 19:31:08] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:09] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:31:09] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
+[1m[2025-01-19 19:31:09] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
+[1m[2025-01-19 19:31:09] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
+[1m[2025-01-19 19:31:09] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
+[1m[2025-01-19 19:31:09] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel!@#$
+[1m[2025-01-19 19:31:09] [0m[31mERROR :: [0mUser test-user not found in channel #test
+[1m[2025-01-19 19:31:09] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:31:09] [0m[31mERROR :: [0mUser test-user not found in channel #12345
+[1m[2025-01-19 19:31:09] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel-123!@#$
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0mRemoved test-user from channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 (Remaining members: 0)
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:31:09] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:31:09] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:09] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:31:09] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:31:09] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:31:09] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:31:09] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:09] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -872,60 +874,61 @@
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[1m[2025-01-18 19:31:56] [0m[36mCLIENT << [0mJOIN #test-channel key1 key2
-[1m[2025-01-18 19:31:56] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-01-18 19:31:56] [0m[32mINFO :: [0mAdded test-user to channel #test-channel (Total members: 1)
-[1m[2025-01-18 19:31:56] [0m[32mINFO :: [0mtest-user joined #test-channel
-[1m[2025-01-18 19:31:56] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel
+[1m[2025-01-19 19:31:09] [0m[36mCLIENT << [0mJOIN #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 key-123!@#$
+[1m[2025-01-19 19:31:09] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:31:09] [0m[32mINFO :: [0mAdded test-user to channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 (Total members: 1)
+[1m[2025-01-19 19:31:09] [0m[32mINFO :: [0mtest-user joined #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[1m[2025-01-19 19:31:09] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
 
-[1m[2025-01-18 19:31:56] [0m[36mCLIENT << [0m
-[1m[2025-01-18 19:31:57] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:57] [0m[32mINFO :: [0mClosing connection FD: 4
-[1m[2025-01-18 19:31:57] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel (Remaining members: 0)
-[1m[2025-01-18 19:31:57] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
-[1m[2025-01-18 19:31:57] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
-[1m[2025-01-18 19:31:57] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
-[1m[2025-01-18 19:31:57] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
-[1m[2025-01-18 19:31:57] [0m[31mERROR :: [0mUser test-user not found in channel #12345
-[1m[2025-01-18 19:31:57] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel-123!@#$
-[1m[2025-01-18 19:31:57] [0m[31mERROR :: [0mUser test-user not found in channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
-[1m[2025-01-18 19:31:57] [0m[31mERROR :: [0mUser test-user not found in channel #
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0mActive connections: 1
-[1m[2025-01-18 19:31:58] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-01-18 19:31:58] [0m[32mINFO :: [0mClient connected
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:58] [0m[36mCLIENT << [0mPASS Alilepro135!
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-01-18 19:31:58] [0m[32mINFO :: [0mClient Authenticated
-[1m[2025-01-18 19:31:58] [0m[36mCLIENT << [0mNICK test-user
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0mProcessing command: NICK
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0mProcessing NICK command
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0mNickname set to: test-user
-[1m[2025-01-18 19:31:58] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0mProcessing command: USER
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0mProcessing USER command
-[1m[2025-01-18 19:31:58] [0m[32mINFO :: [0mRegistration complete for test-user
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0mClient Table:
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0m| Field           | Value                         |
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0m| auth            | true                          |
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0m| connected       | true                          |
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0m| realName        | Test                          |
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0m| response        |                               |
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0m| clientType      | 0                             |
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:58] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-19 19:31:09] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:10] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:31:10] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
+[1m[2025-01-19 19:31:10] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
+[1m[2025-01-19 19:31:10] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
+[1m[2025-01-19 19:31:10] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
+[1m[2025-01-19 19:31:10] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel!@#$
+[1m[2025-01-19 19:31:10] [0m[31mERROR :: [0mUser test-user not found in channel #test
+[1m[2025-01-19 19:31:10] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:31:10] [0m[31mERROR :: [0mUser test-user not found in channel #12345
+[1m[2025-01-19 19:31:10] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel-123!@#$
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mRemoved test-user from channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 (Remaining members: 0)
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:31:10] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:31:10] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:10] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:31:10] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:31:10] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:31:10] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:31:10] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:10] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -934,60 +937,65 @@
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[1m[2025-01-18 19:31:58] [0m[36mCLIENT << [0mJOIN #test-channel 
-[1m[2025-01-18 19:31:58] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-01-18 19:31:58] [0m[32mINFO :: [0mAdded test-user to channel #test-channel (Total members: 1)
-[1m[2025-01-18 19:31:58] [0m[32mINFO :: [0mtest-user joined #test-channel
-[1m[2025-01-18 19:31:58] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel
+[1m[2025-01-19 19:31:10] [0m[36mCLIENT << [0mJOIN #
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mCreating new channel: #
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mCreating new channel: #
+[1m[2025-01-19 19:31:10] [0m[32mINFO :: [0mAdded test-user to channel # (Total members: 1)
+[1m[2025-01-19 19:31:10] [0m[33mDEBUG :: [0mDestroying channel: #
+[1m[2025-01-19 19:31:10] [0m[32mINFO :: [0mtest-user joined #
+[1m[2025-01-19 19:31:10] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #
 
-[1m[2025-01-18 19:31:58] [0m[36mCLIENT << [0m
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:59] [0m[32mINFO :: [0mClosing connection FD: 4
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel (Remaining members: 0)
-[1m[2025-01-18 19:31:59] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
-[1m[2025-01-18 19:31:59] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
-[1m[2025-01-18 19:31:59] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
-[1m[2025-01-18 19:31:59] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
-[1m[2025-01-18 19:31:59] [0m[31mERROR :: [0mUser test-user not found in channel #12345
-[1m[2025-01-18 19:31:59] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel-123!@#$
-[1m[2025-01-18 19:31:59] [0m[31mERROR :: [0mUser test-user not found in channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
-[1m[2025-01-18 19:31:59] [0m[31mERROR :: [0mUser test-user not found in channel #
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0mActive connections: 1
-[1m[2025-01-18 19:31:59] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-01-18 19:31:59] [0m[32mINFO :: [0mClient connected
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:31:59] [0m[36mCLIENT << [0mPASS Alilepro135!
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-01-18 19:31:59] [0m[32mINFO :: [0mClient Authenticated
-[1m[2025-01-18 19:31:59] [0m[36mCLIENT << [0mNICK test-user
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0mProcessing command: NICK
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0mProcessing NICK command
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0mNickname set to: test-user
-[1m[2025-01-18 19:31:59] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0mProcessing command: USER
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0mProcessing USER command
-[1m[2025-01-18 19:31:59] [0m[32mINFO :: [0mRegistration complete for test-user
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0mClient Table:
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0m| Field           | Value                         |
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0m| auth            | true                          |
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0m| connected       | true                          |
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0m| realName        | Test                          |
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0m| response        |                               |
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0m| clientType      | 0                             |
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
-[1m[2025-01-18 19:31:59] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+[1m[2025-01-19 19:31:10] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:11] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:31:11] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel
+[1m[2025-01-19 19:31:11] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
+[1m[2025-01-19 19:31:11] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
+[1m[2025-01-19 19:31:11] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
+[1m[2025-01-19 19:31:11] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel!@#$
+[1m[2025-01-19 19:31:11] [0m[31mERROR :: [0mUser test-user not found in channel #test
+[1m[2025-01-19 19:31:11] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:31:11] [0m[31mERROR :: [0mUser test-user not found in channel #12345
+[1m[2025-01-19 19:31:11] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel-123!@#$
+[1m[2025-01-19 19:31:11] [0m[31mERROR :: [0mUser test-user not found in channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0mRemoved test-user from channel # (Remaining members: 0)
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:31:11] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:31:11] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:11] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:31:11] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:31:11] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:31:11] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:31:11] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:11] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
 002 test-user :Your host is morpheus-server.ddns.net
 003 test-user :This server was created 2024-01-11
 004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
@@ -996,21 +1004,279 @@
 372 test-user :- Enjoy your stay!
 376 test-user :End of /MOTD command.
 
-[1m[2025-01-18 19:31:59] [0m[36mCLIENT << [0mJOIN #test-channel Alilepro135! 
-[1m[2025-01-18 19:31:59] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-01-18 19:31:59] [0m[32mINFO :: [0mAdded test-user to channel #test-channel (Total members: 1)
-[1m[2025-01-18 19:31:59] [0m[32mINFO :: [0mtest-user joined #test-channel
-[1m[2025-01-18 19:31:59] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel
+[1m[2025-01-19 19:31:11] [0m[36mCLIENT << [0mJOIN #test-channel 
+[1m[2025-01-19 19:31:11] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:31:11] [0m[32mINFO :: [0mAdded test-user to channel #test-channel (Total members: 1)
+[1m[2025-01-19 19:31:11] [0m[32mINFO :: [0mtest-user joined #test-channel
+[1m[2025-01-19 19:31:11] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel
 
-[1m[2025-01-18 19:31:59] [0m[36mCLIENT << [0m
-[1m[2025-01-18 19:32:00] [0m[33mDEBUG :: [0mActive connections: 2
-[1m[2025-01-18 19:32:00] [0m[32mINFO :: [0mClosing connection FD: 4
-[1m[2025-01-18 19:32:00] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel (Remaining members: 0)
-[1m[2025-01-18 19:32:00] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
-[1m[2025-01-18 19:32:00] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
-[1m[2025-01-18 19:32:00] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
-[1m[2025-01-18 19:32:00] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
-[1m[2025-01-18 19:32:00] [0m[31mERROR :: [0mUser test-user not found in channel #12345
-[1m[2025-01-18 19:32:00] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel-123!@#$
-[1m[2025-01-18 19:32:00] [0m[31mERROR :: [0mUser test-user not found in channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
-[1m[2025-01-18 19:32:00] [0m[31mERROR :: [0mUser test-user not found in channel #
+[1m[2025-01-19 19:31:11] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:12] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel (Remaining members: 0)
+[1m[2025-01-19 19:31:12] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
+[1m[2025-01-19 19:31:12] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
+[1m[2025-01-19 19:31:12] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
+[1m[2025-01-19 19:31:12] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel!@#$
+[1m[2025-01-19 19:31:12] [0m[31mERROR :: [0mUser test-user not found in channel #test
+[1m[2025-01-19 19:31:12] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:31:12] [0m[31mERROR :: [0mUser test-user not found in channel #12345
+[1m[2025-01-19 19:31:12] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel-123!@#$
+[1m[2025-01-19 19:31:12] [0m[31mERROR :: [0mUser test-user not found in channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[1m[2025-01-19 19:31:12] [0m[31mERROR :: [0mUser test-user not found in channel #
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:31:12] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:31:12] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:12] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:31:12] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:31:12] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:31:12] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:31:12] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:12] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+002 test-user :Your host is morpheus-server.ddns.net
+003 test-user :This server was created 2024-01-11
+004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
+375 test-user :- morpheus-server.ddns.net Message of the Day - 
+372 test-user :- Welcome to the WeUseArch IRC Network!
+372 test-user :- Enjoy your stay!
+376 test-user :End of /MOTD command.
+
+[1m[2025-01-19 19:31:12] [0m[36mCLIENT << [0mJOIN #test-channel,
+[1m[2025-01-19 19:31:12] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:31:12] [0m[32mINFO :: [0mAdded test-user to channel #test-channel (Total members: 1)
+[1m[2025-01-19 19:31:12] [0m[32mINFO :: [0mtest-user joined #test-channel
+[1m[2025-01-19 19:31:12] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel
+
+[1m[2025-01-19 19:31:12] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:13] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel (Remaining members: 0)
+[1m[2025-01-19 19:31:13] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
+[1m[2025-01-19 19:31:13] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
+[1m[2025-01-19 19:31:13] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
+[1m[2025-01-19 19:31:13] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel!@#$
+[1m[2025-01-19 19:31:13] [0m[31mERROR :: [0mUser test-user not found in channel #test
+[1m[2025-01-19 19:31:13] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:31:13] [0m[31mERROR :: [0mUser test-user not found in channel #12345
+[1m[2025-01-19 19:31:13] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel-123!@#$
+[1m[2025-01-19 19:31:13] [0m[31mERROR :: [0mUser test-user not found in channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[1m[2025-01-19 19:31:13] [0m[31mERROR :: [0mUser test-user not found in channel #
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:31:13] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:31:13] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:13] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:31:13] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:31:13] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:31:13] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:31:13] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:13] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+002 test-user :Your host is morpheus-server.ddns.net
+003 test-user :This server was created 2024-01-11
+004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
+375 test-user :- morpheus-server.ddns.net Message of the Day - 
+372 test-user :- Welcome to the WeUseArch IRC Network!
+372 test-user :- Enjoy your stay!
+376 test-user :End of /MOTD command.
+
+[1m[2025-01-19 19:31:13] [0m[36mCLIENT << [0mJOIN #test-channel key1 key2
+[1m[2025-01-19 19:31:13] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:31:13] [0m[32mINFO :: [0mAdded test-user to channel #test-channel (Total members: 1)
+[1m[2025-01-19 19:31:13] [0m[32mINFO :: [0mtest-user joined #test-channel
+[1m[2025-01-19 19:31:13] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel
+
+[1m[2025-01-19 19:31:13] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:14] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel (Remaining members: 0)
+[1m[2025-01-19 19:31:14] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
+[1m[2025-01-19 19:31:14] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
+[1m[2025-01-19 19:31:14] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
+[1m[2025-01-19 19:31:14] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel!@#$
+[1m[2025-01-19 19:31:14] [0m[31mERROR :: [0mUser test-user not found in channel #test
+[1m[2025-01-19 19:31:14] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:31:14] [0m[31mERROR :: [0mUser test-user not found in channel #12345
+[1m[2025-01-19 19:31:14] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel-123!@#$
+[1m[2025-01-19 19:31:14] [0m[31mERROR :: [0mUser test-user not found in channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[1m[2025-01-19 19:31:14] [0m[31mERROR :: [0mUser test-user not found in channel #
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:31:14] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:31:14] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:14] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:31:14] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:31:14] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:31:14] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:31:14] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:14] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+002 test-user :Your host is morpheus-server.ddns.net
+003 test-user :This server was created 2024-01-11
+004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
+375 test-user :- morpheus-server.ddns.net Message of the Day - 
+372 test-user :- Welcome to the WeUseArch IRC Network!
+372 test-user :- Enjoy your stay!
+376 test-user :End of /MOTD command.
+
+[1m[2025-01-19 19:31:14] [0m[36mCLIENT << [0mJOIN #test-channel 
+[1m[2025-01-19 19:31:14] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:31:14] [0m[32mINFO :: [0mAdded test-user to channel #test-channel (Total members: 1)
+[1m[2025-01-19 19:31:14] [0m[32mINFO :: [0mtest-user joined #test-channel
+[1m[2025-01-19 19:31:14] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel
+
+[1m[2025-01-19 19:31:14] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:15] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel (Remaining members: 0)
+[1m[2025-01-19 19:31:15] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
+[1m[2025-01-19 19:31:15] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
+[1m[2025-01-19 19:31:15] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
+[1m[2025-01-19 19:31:15] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel!@#$
+[1m[2025-01-19 19:31:15] [0m[31mERROR :: [0mUser test-user not found in channel #test
+[1m[2025-01-19 19:31:15] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:31:15] [0m[31mERROR :: [0mUser test-user not found in channel #12345
+[1m[2025-01-19 19:31:15] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel-123!@#$
+[1m[2025-01-19 19:31:15] [0m[31mERROR :: [0mUser test-user not found in channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[1m[2025-01-19 19:31:15] [0m[31mERROR :: [0mUser test-user not found in channel #
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0mActive connections: 1
+[1m[2025-01-19 19:31:15] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-19 19:31:15] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:15] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-19 19:31:15] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-19 19:31:15] [0m[36mCLIENT << [0mNICK test-user
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0mNickname set to: test-user
+[1m[2025-01-19 19:31:15] [0m[36mCLIENT << [0mUSER testUser 0 * :Test User
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-19 19:31:15] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0msource: test-user!Test@127.0.0.1
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0m| fullName        | testUser                      |
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0m| nickName        | test-user                     |
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0m| source          | test-user!Test@127.0.0.1      |
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0m| clientType      | 0                             |
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-19 19:31:15] [0m[35mSERVER >> [0m001 test-user :Welcome to the WeUseArch IRC Network
+002 test-user :Your host is morpheus-server.ddns.net
+003 test-user :This server was created 2024-01-11
+004 test-user morpheus-server.ddns.net 1.0 usermodes channelmodes
+375 test-user :- morpheus-server.ddns.net Message of the Day - 
+372 test-user :- Welcome to the WeUseArch IRC Network!
+372 test-user :- Enjoy your stay!
+376 test-user :End of /MOTD command.
+
+[1m[2025-01-19 19:31:15] [0m[36mCLIENT << [0mJOIN #test-channel Alilepro135! 
+[1m[2025-01-19 19:31:15] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-19 19:31:15] [0m[32mINFO :: [0mAdded test-user to channel #test-channel (Total members: 1)
+[1m[2025-01-19 19:31:15] [0m[32mINFO :: [0mtest-user joined #test-channel
+[1m[2025-01-19 19:31:15] [0m[35mSERVER >> [0m:test-user!testUser@localhost JOIN #test-channel
+
+[1m[2025-01-19 19:31:15] [0m[36mCLIENT << [0m
+[1m[2025-01-19 19:31:16] [0m[33mDEBUG :: [0mActive connections: 2
+[1m[2025-01-19 19:31:16] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-19 19:31:16] [0m[33mDEBUG :: [0mRemoved test-user from channel #test-channel (Remaining members: 0)
+[1m[2025-01-19 19:31:16] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel1
+[1m[2025-01-19 19:31:16] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel2
+[1m[2025-01-19 19:31:16] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel3
+[1m[2025-01-19 19:31:16] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel!@#$
+[1m[2025-01-19 19:31:16] [0m[31mERROR :: [0mUser test-user not found in channel #test
+[1m[2025-01-19 19:31:16] [0m[31mERROR :: [0mUser test-user not found in channel #this-is-a-very-long-channel-name
+[1m[2025-01-19 19:31:16] [0m[31mERROR :: [0mUser test-user not found in channel #12345
+[1m[2025-01-19 19:31:16] [0m[31mERROR :: [0mUser test-user not found in channel #test-channel-123!@#$
+[1m[2025-01-19 19:31:16] [0m[31mERROR :: [0mUser test-user not found in channel #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+[1m[2025-01-19 19:31:16] [0m[31mERROR :: [0mUser test-user not found in channel #

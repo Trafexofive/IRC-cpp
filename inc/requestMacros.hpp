@@ -22,6 +22,20 @@
 #include <ctime>
 #include <stdexcept>
 
+
+
+#define SERVER_NAME "WeUseArch"
+#define SERVER_HOST "morpheus-server.ddns.net"
+
+#define CRLF "\r\n"
+
+
+typedef enum {
+    HOST,
+    SOURCE,
+    NONE
+} MODE;
+
 // Basic formatting helper function (not a macro)
 inline std::string formatResponse(const std::string& code, const std::string& message)
 {
@@ -30,7 +44,17 @@ inline std::string formatResponse(const std::string& code, const std::string& me
 
 inline std::string formatResponse(const std::string& source, const std::string& code, const std::string& message)
 {
-    return code + " " + message + "\r\n";
+    return ":" + source + " " + code + " " + message + "\r\n";
+}
+
+inline std::string formatResponse(const std::string &source, const std::string& code, const std::string& message, MODE mode)
+{
+    if (mode == HOST)
+        return ":" + source + " " + code + " " + message + "\r\n";
+    else if (mode == SOURCE)
+        return ":" + source + " " + code + " " + message + "\r\n";
+    else
+        return ":" + source + " " + code + " " + message + "\r\n";
 }
 
 
