@@ -69,6 +69,17 @@ static void printTokens(const std::vector<std::string> &tokens) {
   std::cout << std::endl;
 }
 
+void static displayTable(const std::vector<Channel>& channels) {
+    std::cout << formatServerMessage("INFO", "Channel Table") << std::endl;
+    std::cout << formatServerMessage("INFO", "Name\t\tClient Count") << std::endl;
+    std::cout << formatServerMessage("INFO", "----\t\t------------") << std::endl;
+    std::ostringstream table;
+    for (std::vector<Channel>::const_iterator it = channels.begin(); it != channels.end(); ++it) {
+        table << it->getName() << "\t\t" << it->getMembers().size() << std::endl;
+    }
+    std::cout << table.str();
+}
+
 void CoreServer::handleCommand(int fd, const std::string &line) {
   try {
     // Parse command line into tokens
@@ -94,14 +105,13 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
     std::cout << formatServerMessage("DEBUG", "Processing command: " + command)
               << std::endl;
 
-    // Execute command if it exists
 
     std::map<std::string, CommandHandler>::iterator cmdIt =
         commands.find(command);
     if (cmdIt != commands.end()) {
       try {
         (this->*cmdIt->second)(fd, args);
-        WriteEvent(fd); // Send response immediately after command
+        WriteEvent(fd);
       } catch (const std::exception &e) {
         std::cerr << formatServerMessage(
                          "ERROR", std::string("Failed to execute command: ") +
@@ -119,6 +129,8 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
                      std::string("Failed to process command line: ") + e.what())
               << std::endl;
   }
+
+    displayTable(channels);
 }
 
 // Method to send a response to the client

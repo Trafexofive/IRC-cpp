@@ -45,7 +45,6 @@ private:
 
     std::vector<Client> members;
     CHANNEL _type;
-    int     _memberCount;
 
 
 public:
@@ -81,7 +80,6 @@ public:
     // Utility methods
     bool hasPassword() const;
     bool checkPassword(const std::string& pass) const;
-    void displayTable() const;
 
     // General methods
     void broadcast(const std::string& message);

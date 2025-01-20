@@ -34,7 +34,8 @@ Channel& getChannel(const std::string& name, std::vector<Channel>& channels) {
         if (it->getName() == name)
             return *it;
     }
-    throw std::runtime_error("Channel not found");
+    std::cout << formatServerMessage("ERROR", "Channel " + name + " not found") << std::endl;
+    throw std::runtime_error("Channel " + name + " not found");
 }
 
 // Helper function to remove a client from a channel

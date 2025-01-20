@@ -40,32 +40,35 @@ static std::vector<std::string> splitString(const std::string &input, char delim
     return tokens;
 }
 
-// Helper function to parse JOIN command parameters
 static JOIN_ARGS parseJoinParams(const std::vector<std::string> &args) {
     JOIN_ARGS params;
-    for (size_t i = 1; i < args.size(); ++i) {
-        if (isValidChannelName(args[i])) {
-            params.channels += args[i] + " ";
-        } else {
-            params.keys += args[i] + " ";
-        }
-    }
-    return params;
-}
 
-// Helper function to replace commas with spaces in JOIN parameters
-static void morphParams(JOIN_ARGS &params) {
+    if (args.size() < 2) {
+        return params;
+    }
+    
+    params.channels = args[1];
+    
+    if (args.size() > 2) {
+        params.keys = args[2];
+    }
+    
     for (size_t i = 0; i < params.channels.length(); ++i) {
         if (params.channels[i] == ',') {
             params.channels[i] = ' ';
         }
     }
+    
     for (size_t i = 0; i < params.keys.length(); ++i) {
         if (params.keys[i] == ',') {
             params.keys[i] = ' ';
         }
     }
+    
+    std::cout << formatServerMessage("DEBUG", "Channel: " + params.channels + " Key: " + params.keys) << std::endl;
+    return params;
 }
+
 
 
 // Helper function to join a single channel
@@ -75,7 +78,7 @@ void CoreServer::joinSingleChannel(Client &client, const std::string &channelNam
         return;
     }
 
-    if (!isChannel(channelName)){
+if (!isChannel(channelName)){
         std::cout << formatServerMessage("DEBUG", "Creating new channel: " + channelName) << std::endl;
         Channel newChannel(channelName);
         newChannel.addMember(client);
@@ -88,17 +91,51 @@ void CoreServer::joinSingleChannel(Client &client, const std::string &channelNam
     std::cout << formatServerMessage("INFO", client.getNickName() + " joined " + channelName) << std::endl;
 }
 
-// static void joinChannels(Client &client, std::vector<Channel> &channels, JOIN_ARGS &params)
-// {
-//
-//     for (size_t i = 0; i < channels.size(); ++i)
-//     {
-//         const std::string &channelName = channels[i].getName();
-//         const std::string &key = (i < params.keys.size()) ? params.keys[i] : "";
-//         joinChannel(client, channelName);
-//     }
-//
-// }
+#define ERR_BADCHANNELKEY "475"
+
+void CoreServer::joinChannel(Client &client, const std::string &channelName, const std::string &key)
+{
+    if (!isValidChannelName(channelName))
+    {
+        handleInvalidChannelName(client, channelName);
+        return;
+    }
+    if (!isChannel(channelName))
+    {
+        std::cout << formatServerMessage("DEBUG", "Creating new channel: " + channelName) << std::endl;
+        if (key.empty())
+        {
+            Channel newChannel(channelName);
+            newChannel.addMember(client);
+            channels.push_back(newChannel);
+            Channel &channel = newChannel;
+        }
+        else
+        {
+            Channel newChannel(channelName, key);
+            newChannel.addMember(client);
+            channels.push_back(newChannel);
+            Channel &channel = newChannel;
+        }
+    }
+    Channel &channel = getChannel(channelName, channels);
+    if (channel.isMember(client.getNickName()))
+    {
+        std::cout << formatServerMessage("WARNING", client.getNickName() + " is already in channel " + channelName) << std::endl;
+        client.setResponse(formatResponse(ERR_USERONCHANNEL, client.getNickName() + " " + channelName + " :is already on channel"));
+        return;
+    }
+    if (channel.hasPassword() && channel.checkPassword(key))
+    {
+        std::cout << formatServerMessage("WARNING", "JOIN failed: Invalid channel key") << std::endl;
+        client.setResponse(formatResponse(ERR_BADCHANNELKEY, channelName + " :Cannot join channel (+k)"));
+        return;
+    }
+    channel.addMember(client);
+    std::string joinMsg = client.getSource() + " JOIN " + channelName + "\r\n";
+    client.setResponse(joinMsg);
+    std::cout << formatServerMessage("INFO", client.getNickName() + " joined " + channelName) << std::endl;
+}
 
 // Main JOIN command handler
 void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
@@ -116,7 +153,6 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
     }
 
     JOIN_ARGS params = parseJoinParams(args);
-    morphParams(params);
 
     std::vector<std::string> channelNames = splitString(params.channels, ' ');
     std::vector<std::string> keys = splitString(params.keys, ' ');
@@ -124,7 +160,7 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
     for (size_t i = 0; i < channelNames.size(); ++i) {
         const std::string &channelName = channelNames[i];
         const std::string &key = (i < keys.size()) ? keys[i] : "";
-        joinSingleChannel(client, channelName);
+        joinChannel(client, channelName, key);
     }
 }
 // =====================================================================================================================

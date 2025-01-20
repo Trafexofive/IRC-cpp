@@ -138,10 +138,6 @@ bool Channel::checkPassword(const std::string& pass) const {
     return password == pass;
 }
 
-void displayTable(const std::vector<Channel>& channels) {
-    std::cout << formatServerMessage("INFO", "Channel Table") << std::endl;
-    std::cout << formatServerMessage("INFO", "Name\t\tTopic\t\tPassword") << std::endl;
-}
 
 // general methods
 void Channel::broadcast(const std::string& message) {
