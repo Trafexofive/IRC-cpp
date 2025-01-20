@@ -15,6 +15,7 @@
 // Default constructor
 Channel::Channel() : name(""), topic(""), password("") {
     std::cout << formatServerMessage("DEBUG", "Creating new empty channel") << std::endl;
+    _type.state = CHANNEL::UNKNOWN;
 }
 
 // Parameterized constructors
@@ -22,12 +23,14 @@ Channel::Channel(const std::string& name) : name(name), topic(""), password("") 
     std::ostringstream debug;
     debug << "Creating new channel: " << name;
     std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
+    _type.state = CHANNEL::PUBLIC;
 }
 
 Channel::Channel(const std::string& name, const std::string& topic) : name(name), topic(topic), password("") {
     std::ostringstream debug;
     debug << "Creating new channel: " << name << " with topic: " << topic;
     std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
+    _type.state = CHANNEL::PUBLIC;
 }
 
 Channel::Channel(const std::string& name, const std::string& topic, const std::string& password) 
@@ -35,7 +38,9 @@ Channel::Channel(const std::string& name, const std::string& topic, const std::s
     std::ostringstream debug;
     debug << "Creating new channel: " << name << " with topic: " << topic << " and password";
     std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
+    _type.state = CHANNEL::PRIVATE;
 }
+
 
 // Destructor
 Channel::~Channel() {
@@ -47,11 +52,24 @@ const std::string& Channel::getName() const { return name; }
 const std::string& Channel::getTopic() const { return topic; }
 const std::string& Channel::getPassword() const { return password; }
 const std::vector<Client>& Channel::getMembers() const { return members; }
+std::string getChannelsString(const std::vector<Channel>& channels)
+{
+    std::string channelsStr;
+    channelsStr.clear();
+    for (size_t i = 0; i < channels.size(); ++i) {
+        channelsStr += channels[i].getName();
+        if (i < channels.size() - 1) {
+            channelsStr += " ";
+        }
+    }
+    return channelsStr;
+}
 
 // Setters
 void Channel::setName(const std::string& n) { name = n; }
 void Channel::setTopic(const std::string& t) { topic = t; }
 void Channel::setPassword(const std::string& p) { password = p; }
+
 
 // Member management methods
 void Channel::addMember(const Client& member) {
@@ -104,18 +122,6 @@ std::string Channel::getMembersList() const {
     return memberList.str();
 }
 
-void Channel::broadcast(const std::string& message, const std::string& except_nick) {
-    std::ostringstream debug;
-    debug << "Broadcasting to channel " << name << ": " << (message.length() > 50 ? message.substr(0, 50) + "..." : message);
-    std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
-
-    for (std::vector<Client>::iterator it = members.begin(); it != members.end(); ++it) {
-        if (it->getNickName() != except_nick) {
-            it->setResponse(message);
-        }
-    }
-}
-
 void Channel::clearMembers() {
     members.clear();
     std::ostringstream info;
@@ -132,22 +138,16 @@ bool Channel::checkPassword(const std::string& pass) const {
     return password == pass;
 }
 
-void Channel::printInfo() const {
-    std::ostringstream info;
-    info << "Channel Info: [Name: " << name << ", Topic: " << topic << ", Password: " << (password.empty() ? "None" : "Set") << ", Members: " << members.size() << "]";
-    std::cout << formatServerMessage("INFO", info.str()) << std::endl;
+void displayTable(const std::vector<Channel>& channels) {
+    std::cout << formatServerMessage("INFO", "Channel Table") << std::endl;
+    std::cout << formatServerMessage("INFO", "Name\t\tTopic\t\tPassword") << std::endl;
 }
 
-std::string getChannelsString(const std::vector<Channel>& channels)
-{
-    std::string channelsStr;
-    channelsStr.clear();
-    for (size_t i = 0; i < channels.size(); ++i) {
-        channelsStr += channels[i].getName();
-        if (i < channels.size() - 1) {
-            channelsStr += " ";
-        }
+// general methods
+void Channel::broadcast(const std::string& message) {
+    for (std::vector<Client>::iterator it = members.begin(); it != members.end(); ++it) {
+        Client& client = *it;
+        client.setResponse(message);
     }
-    return channelsStr;
 }
 

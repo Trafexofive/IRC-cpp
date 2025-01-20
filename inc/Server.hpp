@@ -85,9 +85,6 @@ private:
 
     // Helper methods
     void disconnectClient(int fd);
-    void broadcastToChannel(const std::string& channelName,
-                          const std::string& message,
-                          const std::string& except_nick = "");
     LEVEL   purgeAllClients();
 
     // Command handlers
@@ -131,11 +128,15 @@ public:
     const std::vector<Channel>& getChannels() const { return channels; }
 
     // channel methods
+    void joinChannel(Client& client, const std::string& channelName);
+    void joinChannel(Client& client, const std::string& channelName, const std::string& key);
     LEVEL addChannel(const std::string& name, const std::string& topic, const std::string& password);
     LEVEL removeChannel(const std::string& name);
-    void joinChannel(Client& client, const std::string& channelName);
     // void joinSingleChannel(Client &client, const std::string &channelName, const std::string &key);
     void joinSingleChannel(Client &client, const std::string &channelName);
+    void broadcastToChannel(const std::string& channelName,
+                          const std::string& message,
+                          const std::string& except_nick = "");
 
     void leaveAllChannels(int fd);
 };

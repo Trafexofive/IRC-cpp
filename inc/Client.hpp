@@ -26,15 +26,20 @@
 #include "../inc/Helpers.hpp"
 
 typedef struct {
-  enum TYPE { NORMAL, OPERATOR, UNKNOWN };
-} CLIENT;
+  enum TYPE { NORMAL, OPERATOR, OWNER, UNKNOWN };
+int state;
+} CLEARANCE;
 
 typedef struct {
+
 enum TYPE { ACTIVE, IDLE, DONOTDISTURB, UNKNOWN, OFFLINE };
+int state;
+
 } STATE;
 
 typedef struct {
 enum TYPE { AUTHENTICATED, REJECTED, REGISTERED, UNKNOWN };
+int state;
 } AUTH;
 
 class Client {
@@ -57,6 +62,9 @@ private:
   std::string response;
 
   std::string source;
+  STATE _state;
+  AUTH _status;
+  CLEARANCE _clearance;
 
   int clientType;
 
@@ -107,11 +115,13 @@ const std::string &getSource() const { return source; }
   void setClientType(int type) { clientType = type; }
   void setClientType(std::string type) {
     if (type == "OPERATOR")
-      clientType = CLIENT::OPERATOR;
+      _clearance.state = CLEARANCE::OPERATOR;
     else if (type == "NORMAL")
-      clientType = CLIENT::NORMAL;
+      _clearance.state = CLEARANCE::NORMAL;
+    else if (type == "OWNER")
+        _clearance.state = CLEARANCE::OWNER;
     else
-      clientType = CLIENT::UNKNOWN;
+      _clearance.state = CLEARANCE::UNKNOWN;
   }
   void constructSource() {
     if (connected) {

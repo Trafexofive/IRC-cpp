@@ -24,8 +24,7 @@ Client::Client() :
     realName(""),
     passWord(""),
     response(""),
-    source(""),
-    clientType(CLIENT::NORMAL)
+    source("")
 {
     std::cout << formatServerMessage("DEBUG", "Creating new empty client instance") << std::endl;
 }
@@ -41,8 +40,7 @@ Client::Client(int fd, struct sockaddr_in addr) :
     nickName(""),
     realName(""),
     passWord(""),
-    response(""),
-    clientType(CLIENT::NORMAL)
+    response("")
 {
     std::ostringstream debug;
     debug << "Creating new client instance for fd(" << fd << ")";

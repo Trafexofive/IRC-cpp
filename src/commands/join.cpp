@@ -15,9 +15,14 @@
 typedef struct {
     std::string channels;
     std::string keys;
-} JOIN_PARAMS;
+} JOIN_ARGS;
 
-// Helper function to check if a channel name is valid
+
+static void handleInvalidChannelName(Client &client, const std::string &channelName) {
+    std::cout << formatServerMessage("WARNING", "JOIN failed: Invalid channel name " + channelName) << std::endl;
+    client.setResponse(formatResponse(ERR_NOSUCHCHAN, channelName + " :Invalid channel name"));
+}
+
 static bool isValidChannelName(const std::string &channelName) {
     return !channelName.empty() && (channelName[0] == '#' || channelName[0] == '&');
 }
@@ -36,8 +41,8 @@ static std::vector<std::string> splitString(const std::string &input, char delim
 }
 
 // Helper function to parse JOIN command parameters
-static JOIN_PARAMS parseJoinParams(const std::vector<std::string> &args) {
-    JOIN_PARAMS params;
+static JOIN_ARGS parseJoinParams(const std::vector<std::string> &args) {
+    JOIN_ARGS params;
     for (size_t i = 1; i < args.size(); ++i) {
         if (isValidChannelName(args[i])) {
             params.channels += args[i] + " ";
@@ -49,7 +54,7 @@ static JOIN_PARAMS parseJoinParams(const std::vector<std::string> &args) {
 }
 
 // Helper function to replace commas with spaces in JOIN parameters
-static void morphParams(JOIN_PARAMS &params) {
+static void morphParams(JOIN_ARGS &params) {
     for (size_t i = 0; i < params.channels.length(); ++i) {
         if (params.channels[i] == ',') {
             params.channels[i] = ' ';
@@ -62,12 +67,6 @@ static void morphParams(JOIN_PARAMS &params) {
     }
 }
 
-
-// Helper function to handle invalid channel names
-static void handleInvalidChannelName(Client &client, const std::string &channelName) {
-    std::cout << formatServerMessage("WARNING", "JOIN failed: Invalid channel name " + channelName) << std::endl;
-    client.setResponse(formatResponse(ERR_NOSUCHCHAN, channelName + " :Invalid channel name"));
-}
 
 // Helper function to join a single channel
 void CoreServer::joinSingleChannel(Client &client, const std::string &channelName) {
@@ -89,6 +88,18 @@ void CoreServer::joinSingleChannel(Client &client, const std::string &channelNam
     std::cout << formatServerMessage("INFO", client.getNickName() + " joined " + channelName) << std::endl;
 }
 
+// static void joinChannels(Client &client, std::vector<Channel> &channels, JOIN_ARGS &params)
+// {
+//
+//     for (size_t i = 0; i < channels.size(); ++i)
+//     {
+//         const std::string &channelName = channels[i].getName();
+//         const std::string &key = (i < params.keys.size()) ? params.keys[i] : "";
+//         joinChannel(client, channelName);
+//     }
+//
+// }
+
 // Main JOIN command handler
 void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
     Client &client = clients[fd];
@@ -104,7 +115,7 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
         return;
     }
 
-    JOIN_PARAMS params = parseJoinParams(args);
+    JOIN_ARGS params = parseJoinParams(args);
     morphParams(params);
 
     std::vector<std::string> channelNames = splitString(params.channels, ' ');

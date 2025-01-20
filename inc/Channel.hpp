@@ -33,10 +33,7 @@ typedef struct {
         PRIVATE,
         UNKNOWN
     };
-    enum OPERATOR{
-        ADD,
-        REMOVE
-    };
+    int state;
 }
 CHANNEL;
 
@@ -47,7 +44,9 @@ private:
     std::string password;
 
     std::vector<Client> members;
-    int         type;
+    CHANNEL _type;
+    int     _memberCount;
+
 
 public:
     // Default constructor
@@ -77,13 +76,15 @@ public:
     bool isMember(const std::string& nickname) const;
 
     // Channel-specific methods
-    void broadcast(const std::string& message, const std::string& except_nick = "");
     void clearMembers();
 
     // Utility methods
     bool hasPassword() const;
     bool checkPassword(const std::string& pass) const;
-    void printInfo() const;
+    void displayTable() const;
+
+    // General methods
+    void broadcast(const std::string& message);
 
 };
 
