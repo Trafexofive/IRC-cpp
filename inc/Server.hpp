@@ -123,6 +123,8 @@ public:
         fds.erase(custom_remove_if(fds.begin(), fds.end(), FdPredicate(fd)), fds.end());
     }
 
+    bool isChannel(const std::string& name);
+
     // Getters
     const std::map<int, Client>& getClients() const { return clients; }
     const std::vector<Channel>& getChannels() const { return channels; }
@@ -130,8 +132,9 @@ public:
     // channel methods
     void joinChannel(Client& client, const std::string& channelName);
     void joinChannel(Client& client, const std::string& channelName, const std::string& key);
-    LEVEL addChannel(const std::string& name, const std::string& topic, const std::string& password);
-    LEVEL removeChannel(const std::string& name);
+
+    void addChannel(const std::string& name, const std::string& topic, const std::string& password);
+    void removeChannel(const std::string& name);
     // void joinSingleChannel(Client &client, const std::string &channelName, const std::string &key);
     void joinSingleChannel(Client &client, const std::string &channelName);
     void broadcastToChannel(const std::string& channelName,

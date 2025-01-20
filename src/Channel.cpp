@@ -76,7 +76,7 @@ void Channel::addMember(const Client& member) {
     for (std::vector<Client>::const_iterator it = members.begin(); it != members.end(); ++it) {
         if (it->getNickName() == member.getNickName()) {
             std::ostringstream warning;
-            warning << "User " << member.getNickName() << " is already in channel. Ignoring..." << name;
+            warning << "User " << member.getNickName() << " is already in channel. Ignoring..." << this->name;
             std::cout << formatServerMessage("WARNING", warning.str()) << std::endl;
             return;
         }

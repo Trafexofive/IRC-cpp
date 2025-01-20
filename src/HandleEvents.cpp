@@ -77,7 +77,7 @@ void static displayTable(const std::vector<Channel>& channels) {
     for (std::vector<Channel>::const_iterator it = channels.begin(); it != channels.end(); ++it) {
         table << it->getName() << "\t\t" << it->getMembers().size() << std::endl;
     }
-    std::cout << table.str();
+    std::cout << formatServerMessage("INFO", table.str()) << std::endl;
 }
 
 void CoreServer::handleCommand(int fd, const std::string &line) {
@@ -129,8 +129,6 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
                      std::string("Failed to process command line: ") + e.what())
               << std::endl;
   }
-
-    displayTable(channels);
 }
 
 // Method to send a response to the client

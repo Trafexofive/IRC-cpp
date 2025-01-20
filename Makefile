@@ -48,7 +48,7 @@ SRC_FILES := HandleEvents.cpp \
     commands/part.cpp \
     commands/user.cpp \
     commands/quit.cpp \
-    commands/cmdHelpers.cpp \
+    channel/server.cpp\
     main.cpp \
     Validation.cpp \
     Channel.cpp
