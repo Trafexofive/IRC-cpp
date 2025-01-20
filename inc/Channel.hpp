@@ -62,6 +62,15 @@ public:
     const std::string& getPassword() const;
     const std::vector<Client>& getMembers() const;
     std::string getMembersList() const;
+    const std::string getType() const
+    {
+        if (_type.state == CHANNEL::PUBLIC)
+            return "PUBLIC";
+        else if (_type.state == CHANNEL::PRIVATE)
+            return "PRIVATE";
+        else
+            return "UNKNOWN";
+    }
 
     // Setters
     void setName(const std::string& n);

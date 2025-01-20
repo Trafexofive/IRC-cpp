@@ -13,18 +13,21 @@
 #include "../../inc/Server.hpp"
 #include <iostream>
 
-
-void static displayTable(const std::vector<Channel>& channels) {
-    std::cout << formatServerMessage("INFO", "+ Channel Table") << std::endl;
-    std::cout << formatServerMessage("INFO", "+ --------------------") << std::endl;
-    std::cout << formatServerMessage("INFO", "+ Name\t\tClient Count") << std::endl;
-    std::cout << formatServerMessage("INFO", "+-----\t\t------------") << std::endl;
-    std::ostringstream table;
-    for (std::vector<Channel>::const_iterator it = channels.begin(); it != channels.end(); ++it) {
-        table << "+" << it->getName() << "\t\t" << it->getMembers().size();
-        std::cout << formatServerMessage("INFO", table.str()) << std::endl;
-        table.str("");
-    }
+void static displayTable(const std::vector<Channel> &channels) {
+  std::cout << formatServerMessage("INFO", "+ Channel Table") << std::endl;
+  std::cout << formatServerMessage("INFO", "+ --------------------------------------")
+            << std::endl;
+std::cout << formatServerMessage("INFO", "+ Name\t\tClient Count\t\tChannel Type")
+            << std::endl;
+  std::cout << formatServerMessage("INFO", "+---------------------------------------")
+            << std::endl;
+  std::ostringstream table;
+  for (std::vector<Channel>::const_iterator it = channels.begin();
+       it != channels.end(); ++it) {
+    table << "+" << it->getName() << "\t\t" << it->getMembers().size() << "\t\t" << it->getType();
+    std::cout << formatServerMessage("INFO", table.str()) << std::endl;
+    table.str("");
+  }
 }
 
 typedef struct {
@@ -112,12 +115,11 @@ static void constructJoinMessage(const std::string &source,
 
 void CoreServer::joinChannel(Client &client, const std::string &channelName) {
   if (!isChannel(channelName)) {
-    std::cout << formatServerMessage("FATAL", "=================================" + channelName) << std::endl;
     channels.push_back(Channel(channelName));
     channels.back().addMember(client); // Access the copied object
-    displayTable(channels);
     Channel &channel = channels.back();
     constructJoinMessage(client.getSource(), channelName);
+  displayTable(channels);
     return;
   }
   Channel &channel = getChannel(channelName, channels);
@@ -133,17 +135,18 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
     return;
   }
   constructJoinMessage(client.getSource(), channelName);
+  displayTable(channels);
 }
 
 void CoreServer::joinChannel(Client &client, const std::string &channelName,
                              const std::string &key) {
   if (!isChannel(channelName)) {
 
-    Channel newChannel(channelName, "", key);
-    newChannel.addMember(client);
-    channels.push_back(newChannel);
-    Channel &channel = newChannel;
+    channels.push_back(Channel(channelName, "", key));
+    channels.back().addMember(client);
+    Channel &channel = channels.back();
     constructJoinMessage(client.getSource(), channelName);
+  displayTable(channels);
     return;
   }
   Channel &channel = getChannel(channelName, channels);
@@ -167,15 +170,16 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
     return;
   }
   constructJoinMessage(client.getSource(), channelName);
+  displayTable(channels);
 }
 
 static std::string channelType(const std::string &channelName) {
-    if (channelName[0] == '#') {
-        return "Public";
-    } else if (channelName[0] == '&') {
-        return "Private";
-    }
-    return "Unknown";
+  if (channelName[0] == '#') {
+    return "Public";
+  } else if (channelName[0] == '&') {
+    return "Private";
+  }
+  return "Unknown";
 }
 
 // Main JOIN command handler
