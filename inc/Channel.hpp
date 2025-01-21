@@ -27,13 +27,22 @@
 
 
 typedef struct {
+
     enum TYPE{
         PUBLIC,
         PRIVATE,
+        LOCAL,
         UNKNOWN
     };
     int state;
+
+    bool inviteMode;
+    bool topicMode;
+    bool operatorMode;
+    bool keyMode;
+
 }
+
 CHANNEL;
 
 class Channel {
@@ -43,6 +52,8 @@ private:
     std::string password;
 
     std::vector<Client> members;
+    std::vector<Client> operators;
+
     CHANNEL _type;
 
 

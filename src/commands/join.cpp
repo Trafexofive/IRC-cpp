@@ -14,20 +14,33 @@
 #include <iostream>
 
 void static displayTable(const std::vector<Channel> &channels) {
-  std::cout << formatServerMessage("INFO", "+-Channel Table-----------------------------------------") << std::endl;
-  std::cout << formatServerMessage("INFO", "+-------------------------------------------------------") << std::endl;
-  std::cout << formatServerMessage("INFO", "+ Name\t\tOnline\t\tType") << std::endl;
-  std::cout << formatServerMessage("INFO", "+-------------------------------------------------------") << std::endl;
+  std::cout << formatServerMessage(
+                   "INFO",
+                   "+-Channel Table-----------------------------------------")
+            << std::endl;
+  std::cout << formatServerMessage(
+                   "INFO",
+                   "+-------------------------------------------------------")
+            << std::endl;
+  std::cout << formatServerMessage("INFO", "+ Name\t\tOnline\t\tType")
+            << std::endl;
+  std::cout << formatServerMessage(
+                   "INFO",
+                   "+-------------------------------------------------------")
+            << std::endl;
 
-  for (std::vector<Channel>::const_iterator it = channels.begin(); it != channels.end(); ++it) {
+  for (std::vector<Channel>::const_iterator it = channels.begin();
+       it != channels.end(); ++it) {
     std::ostringstream row;
-    row << "+ " << it->getName() << "\t\t" 
-        << it->getMembers().size() << "\t\t" 
+    row << "+ " << it->getName() << "\t\t" << it->getMembers().size() << "\t\t"
         << it->getType();
     std::cout << formatServerMessage("INFO", row.str()) << std::endl;
   }
 
-  std::cout << formatServerMessage("INFO", "+-------------------------------------------------------") << std::endl;
+  std::cout << formatServerMessage(
+                   "INFO",
+                   "+-------------------------------------------------------")
+            << std::endl;
 }
 
 typedef struct {
@@ -104,7 +117,7 @@ bool CoreServer::isChannel(const std::string &name) {
 
 static void constructJoinMessage(const std::string &source,
                                  const std::string &channelName) {
-    std::string joinMsg = ":" + source + " JOIN :" + channelName;
+  std::string joinMsg = ":" + source + " JOIN :" + channelName;
   std::cout << formatServerMessage("SERVER", joinMsg) << std::endl;
 }
 
@@ -119,7 +132,8 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
   }
   Channel &channel = getChannel(channelName, channels);
 
-if (channel.getType() == "PRIVATE" && !channel.isMember(client.getNickName())) {
+  if (channel.getType() == "PRIVATE" &&
+      !channel.isMember(client.getNickName())) {
     std::cout << formatServerMessage("WARNING",
                                      "JOIN failed: Channel requires a key")
               << std::endl;
@@ -155,10 +169,11 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
   }
   Channel &channel = getChannel(channelName, channels);
 
-if (channel.getType() == "PUBLIC" && !channel.isMember(client.getNickName())) {
+  if (channel.getType() == "PUBLIC" &&
+      !channel.isMember(client.getNickName())) {
     joinChannel(client, channelName);
     return;
-}
+  }
   if (channel.isMember(client.getNickName())) {
     std::cout << formatServerMessage("WARNING", client.getNickName() +
                                                     " is already in channel " +
