@@ -104,7 +104,7 @@ bool CoreServer::isChannel(const std::string &name) {
 
 static void constructJoinMessage(const std::string &source,
                                  const std::string &channelName) {
-    std::string joinMsg = ":" + source + " JOIN " + channelName;
+    std::string joinMsg = ":" + source + " JOIN :" + channelName;
   std::cout << formatServerMessage("SERVER", joinMsg) << std::endl;
 }
 
@@ -182,7 +182,6 @@ if (channel.getType() == "PUBLIC" && !channel.isMember(client.getNickName())) {
   displayTable(channels);
 }
 
-// Main JOIN command handler
 void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
   Client &client = clients[fd];
 
@@ -214,6 +213,7 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
   }
 
   JOIN_ARGS params = parseJoinParams(args);
+
   std::vector<std::string> channelNames = splitString(params.channels, ' ');
   std::vector<std::string> keys = splitString(params.keys, ' ');
 

@@ -1,8 +1,8 @@
 # IRC Server Test Summary
 ## Test Execution Details
 
-- **Date**: 2025-01-21 04:32:15 UTC
-- **Duration**: 0h 0m 21s
+- **Date**: 2025-01-21 05:07:58 UTC
+- **Duration**: 0h 0m 1s
 - **User**: Trafexofive
 - **Host**: morpheus-arch
 
@@ -13,34 +13,15 @@
 - Test File: test/test-cases/rfc-join.test
 
 ## Test Results
-- **Total Tests**: 20
+- **Total Tests**: 1
 - **Passed**: 0 🟢
-- **Failed**: 20 🔴
+- **Failed**: 1 🔴
 - **Skipped**: 0 ⚪
 - **Success Rate**: 0%
 
 ## Failed Tests
 ```
-❌ SINGLE NORMAL CHANNEL JOIN - Expected: ':test-user!testUser@localhost JOIN #test-channel'
-❌ SINGLE NORMAL CHANNEL JOIN WITH KEY - Expected: ':test-user!testUser@localhost JOIN #test-channel'
-❌ JOIN 2 CHANNELS - Expected: ':test-user!testUser@localhost JOIN #test-channel1\r\n:test-user!testUser@localhost JOIN #test-channel2'
-❌ JOIN MULTIPLE CHANNELS - Expected: ':test-user!testUser@localhost JOIN #test-channel1\r\n:test-user!testUser@localhost JOIN #test-channel2\r\n:test-user!testUser@localhost JOIN #test-channel3'
-❌ JOIN x CHANNELS - Expected: ':test-user!testUser@localhost JOIN #test-channel1\r\n:test-user!testUser@localhost JOIN #test-channel2'
-❌ JOIN CHANNEL WITH SPECIAL CHARACTERS - Expected: ':test-user!testUser@localhost JOIN #test-channel!@#$'
-❌ JOIN CHANNEL WITH SPACES (INVALID) - Expected: ':test-user!testUser@localhost JOIN #test channel'
-❌ JOIN CHANNEL WITH KEY AND SPECIAL CHARACTERS - Expected: ':test-user!testUser@localhost JOIN #test-channel!@#$'
-❌ JOIN CHANNEL WITH LONG NAME - Expected: ':test-user!testUser@localhost JOIN #this-is-a-very-long-channel-name'
-❌ JOIN CHANNEL WITH NUMERIC NAME - Expected: ':test-user!testUser@localhost JOIN #12345'
-❌ JOIN CHANNEL WITH MIXED CHARACTERS - Expected: ':test-user!testUser@localhost JOIN #test-channel-123!@#$'
-❌ JOIN CHANNEL WITH KEY AND MIXED CHARACTERS - Expected: ':test-user!testUser@localhost JOIN #test-channel-123!@#$'
-❌ JOIN CHANNEL WITH MAXIMUM LENGTH NAME - Expected: ':test-user!testUser@localhost JOIN #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-❌ JOIN CHANNEL WITH KEY AND MAXIMUM LENGTH NAME - Expected: ':test-user!testUser@localhost JOIN #abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-❌ JOIN CHANNEL WITH EMPTY NAME (INVALID) - Expected: ':test-user!testUser@localhost JOIN #'
-❌ JOIN CHANNEL WITH EMPTY KEY (INVALID) - Expected: ':test-user!testUser@localhost JOIN #test-channel'
-❌ JOIN CHANNEL WITH INVALID CHARACTERS (INVALID) - Expected: ':test-user!testUser@localhost JOIN #test-channel,'
-❌ JOIN CHANNEL WITH MULTIPLE KEYS (INVALID) - Expected: ':test-user!testUser@localhost JOIN #test-channel'
-❌ JOIN CHANNEL WITH NO KEY BUT TRAILING SPACE - Expected: ':test-user!testUser@localhost JOIN #test-channel'
-❌ JOIN CHANNEL WITH KEY AND TRAILING SPACE - Expected: ':test-user!testUser@localhost JOIN #test-channel'
+❌ SINGLE NORMAL CHANNEL JOIN - Expected: ':test-user!testUser@localhost JOIN :#test-channel'
 ```
 
 ## System Information

@@ -1,0 +1,32 @@
+
+PASS Alilepro135!
+NICK TestUser
+USER TestUser 0 * :Test User
+
+# Basic JOIN: Joining a single channel
+JOIN #testchannel
+
+# Multiple Channels: Joining multiple channels at once
+JOIN #channel1,#channel2,#channel3
+
+# Channel Keys: Joining a channel with a key/password
+JOIN #securechannel secretkey
+
+# Invalid Channels: Attempting to join invalid channels
+JOIN #invalid,channel  # Invalid channel name (contains a comma)
+JOIN #bannedchannel    # Assuming this channel is banned or restricted
+
+# Channel Modes: Testing JOIN behavior with different channel modes
+JOIN #inviteonlychannel  # Attempting to join an invite-only channel (+i)
+JOIN #limitedchannel     # Attempting to join a channel with a user limit (+l)
+
+# Error Handling: Testing server responses for invalid JOIN attempts
+JOIN                    # Missing channel parameter
+JOIN #                  # Empty channel name
+JOIN #channel1,         # Trailing comma
+JOIN #channel1,#        # Trailing comma with multiple channels
+
+# Cleanup: Leaving all channels
+PART #testchannel,#channel1,#channel2,#channel3,#securechannel,#invalid,channel,#bannedchannel,#inviteonlychannel,#limitedchannel
+
+QUIT :JOIN command testing complete

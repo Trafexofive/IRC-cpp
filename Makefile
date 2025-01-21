@@ -152,6 +152,11 @@ test: re | $(DIR_LOG)
 testlog: test
 	@less $(DIR_LOG)/raw-test.log
 
+bulktest:
+	@printf "Running bulk tests...\n"
+	@./.testsuite/bulk-tester.sh -s localhost -p 22200 -f .testsuite/tests/join/join-functionality
+	@bat server.log
+
 run: re | $(DIR_LOG)
 	@printf "Running $(NAME)...\n"
 	@./$(DIR_BIN)/$(NAME) $(ARGS) | tee $(DIR_LOG)/runtime-server.log

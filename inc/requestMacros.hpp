@@ -30,31 +30,20 @@
 #define CRLF "\r\n"
 
 
-typedef enum {
-    HOST,
-    SOURCE,
-    NONE
-} MODE;
-
 // Basic formatting helper function (not a macro)
 inline std::string formatResponse(const std::string& code, const std::string& message)
 {
     return ":" + code + " " + message + "\r\n";
 }
 
-inline std::string formatResponse(const std::string& source, const std::string& code, const std::string& message)
+inline std::string formatResponseSource(const std::string& source, const std::string& code, const std::string& message)
 {
     return ":" + source + " " + code + " " + message + "\r\n";
 }
 
-inline std::string formatResponse(const std::string &source, const std::string& code, const std::string& message, MODE mode)
+inline std::string formatResponseHost(const std::string& code, const std::string& message)
 {
-    if (mode == HOST)
-        return ":" + source + " " + code + " " + message + "\r\n";
-    else if (mode == SOURCE)
-        return ":" + source + " " + code + " " + message + "\r\n";
-    else
-        return ":" + source + " " + code + " " + message + "\r\n";
+        return ":WeUseArch.localhost " + code + " " + message + "\r\n";
 }
 
 
@@ -147,15 +136,16 @@ inline std::string formatLogMessage(std::time_t timestamp,
 #define PASS "PASS"
 #define NICK "NICK"
 #define USER "USER"
-#define OPER "OPER"
-#define MODE "MODE"
+#define JOIN "JOIN"
+
+#define MODE "MODE" // mode next
 #define SERVICE "SERVICE"
 #define QUIT "QUIT"
 #define SQUIT "SQUIT"
-#define JOIN "JOIN"
 #define PART "PART"
 #define TOPIC "TOPIC"
 #define NAMES "NAMES"
+#define OPER "OPER"
 #define LIST "LIST"
 #define INVITE "INVITE"
 #define KICK "KICK"
