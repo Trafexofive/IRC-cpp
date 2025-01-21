@@ -15,19 +15,26 @@
 
 void static displayTable(const std::vector<Channel> &channels) {
   std::cout << formatServerMessage("INFO", "+ Channel Table") << std::endl;
-  std::cout << formatServerMessage("INFO", "+ --------------------------------------")
+  std::cout << formatServerMessage("INFO",
+                                   "+ --------------------------------------")
             << std::endl;
-std::cout << formatServerMessage("INFO", "+ Name\t\tClient Count\t\tChannel Type")
+  std::cout << formatServerMessage("INFO",
+                                   "+ Name\t\tClient Count\t\tChannel Type")
             << std::endl;
-  std::cout << formatServerMessage("INFO", "+---------------------------------------")
+  std::cout << formatServerMessage("INFO",
+                                   "+---------------------------------------")
             << std::endl;
   std::ostringstream table;
   for (std::vector<Channel>::const_iterator it = channels.begin();
        it != channels.end(); ++it) {
-    table << "+" << it->getName() << "\t\t" << it->getMembers().size() << "\t\t" << it->getType();
+    table << "+" << it->getName() << "\t\t" << it->getMembers().size() << "\t\t"
+          << it->getType();
     std::cout << formatServerMessage("INFO", table.str()) << std::endl;
     table.str("");
   }
+  std::cout << formatServerMessage("INFO",
+                                   "+---------------------------------------")
+            << std::endl;
 }
 
 typedef struct {
@@ -46,8 +53,7 @@ static void handleInvalidChannelName(Client &client,
 }
 
 static bool isValidChannelName(const std::string &channelName) {
-  return !channelName.empty() &&
-         (channelName[0] == '#');
+  return !channelName.empty() && (channelName[0] == '#');
 }
 
 // Helper function to split a string into a vector of strings
@@ -88,10 +94,6 @@ static JOIN_ARGS parseJoinParams(const std::vector<std::string> &args) {
       params.keys[i] = ' ';
     }
   }
-
-  std::cout << formatServerMessage("DEBUG", "Channel: " + params.channels +
-                                                " Key: " + params.keys)
-            << std::endl;
   return params;
 }
 
@@ -119,11 +121,19 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
     channels.back().addMember(client); // Access the copied object
     Channel &channel = channels.back();
     constructJoinMessage(client.getSource(), channelName);
-  displayTable(channels);
+    displayTable(channels);
     return;
   }
   Channel &channel = getChannel(channelName, channels);
 
+if (channel.getType() == "PRIVATE" && !channel.isMember(client.getNickName())) {
+    std::cout << formatServerMessage("WARNING",
+                                     "JOIN failed: Channel requires a key")
+              << std::endl;
+    client.setResponse(formatResponse(
+        ERR_BADCHANNELKEY, channelName + " :Cannot join channel (+k)"));
+    return;
+  }
   if (channel.isMember(client.getNickName())) {
     std::cout << formatServerMessage("WARNING", client.getNickName() +
                                                     " is already in channel " +
@@ -134,6 +144,7 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
                                           " :is already on channel"));
     return;
   }
+  channel.addMember(client);
   constructJoinMessage(client.getSource(), channelName);
   displayTable(channels);
 }
@@ -143,16 +154,21 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
   if (!isChannel(channelName)) {
 
     channels.push_back(Channel(channelName, "", key));
-    std::cout << formatServerMessage("ERROR", channels.back().getType())
-              << std::endl;
     channels.back().addMember(client);
     Channel &channel = channels.back();
     constructJoinMessage(client.getSource(), channelName);
-  displayTable(channels);
+    displayTable(channels);
     return;
   }
   Channel &channel = getChannel(channelName, channels);
 
+if (channel.getType() == "PUBLIC" && !channel.isMember(client.getNickName())) {
+    std::cout << formatServerMessage("WARNING",
+                                     "User attempty to enter public channel with key: Channel requires a key")
+              << std::endl;
+    joinChannel(client, channelName);
+    return;
+}
   if (channel.isMember(client.getNickName())) {
     std::cout << formatServerMessage("WARNING", client.getNickName() +
                                                     " is already in channel " +
@@ -171,22 +187,33 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
         ERR_BADCHANNELKEY, channelName + " :Cannot join channel (+k)"));
     return;
   }
+  channel.addMember(client);
   constructJoinMessage(client.getSource(), channelName);
   displayTable(channels);
 }
 
-static std::string channelType(const std::string &channelName, const std::string &key) {
-    if (channelName[0] == '#' && key.empty())
-        return "Public";
-    else if (channelName[0] == '#' && !key.empty())
-        return "Private";
-    else
-        return "Unknown";
+static std::string channelType(const std::string &channelName,
+                               const std::string &key) {
+
+  if (channelName.empty() && key.empty())
+    return "NoChannel/key";
+  else if (channelName.empty())
+    return "NoChannel";
+  else if (key.empty())
+    return "NoKey";
+
+  // if (channelName[0] == '#' && key.empty())
+  //   return "Public";
+  // else if (!channelName.empty() && channelName[0] == '#' && !key.empty())
+  //   return "Private";
+  // else
+  //   return "Unknown";
 }
 
 // Main JOIN command handler
 void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
   Client &client = clients[fd];
+
   if (!client.isAuthenticated()) {
     std::cout << formatServerMessage("WARNING",
                                      "JOIN failed: Client not authenticated")
@@ -205,25 +232,44 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
     return;
   }
 
-  JOIN_ARGS params = parseJoinParams(args);
+  if (args.size() > 3) {
+    std::cout << formatServerMessage("WARNING",
+                                     "JOIN failed: Too many arguments")
+              << std::endl;
+    client.setResponse(
+        formatResponse(ERR_NEEDMOREPARAMS, "JOIN :Too many arguments"));
+    return;
+  }
 
+  JOIN_ARGS params = parseJoinParams(args);
   std::vector<std::string> channelNames = splitString(params.channels, ' ');
   std::vector<std::string> keys = splitString(params.keys, ' ');
 
+  if (channelNames.empty()) {
+    client.setResponse(formatResponse(ERR_NEEDMOREPARAMS,
+                                      "JOIN :No valid channels specified"));
+    return;
+  }
+
   for (size_t i = 0; i < channelNames.size(); ++i) {
-    const std::string &channelName = channelNames[i];
-    const std::string &key = (i < keys.size()) ? keys[i] : "";
-    if (channelType(channelName, key) == "Unknown") {
-      handleInvalidChannelName(client, channelName);
-      return;
+    if (!isValidChannelName(channelNames[i])) {
+      handleInvalidChannelName(client, channelNames[i]);
+      continue;
     }
-    if (channelType(channelName, key) == "Public") {
-      joinChannel(client, channelName);
-    } else if (channelType(channelName, key) == "Private") {
-      joinChannel(client, channelName, key);
+
+    std::string key;
+    if (i < keys.size()) {
+      key = keys[i];
+    }
+
+    if (key.empty()) {
+      joinChannel(client, channelNames[i]);
+    } else {
+      joinChannel(client, channelNames[i], key);
     }
   }
 }
+
 // =====================================================================================================================
 
 // void CoreServer::cmdList(int fd, std::vector<std::string> &args) {

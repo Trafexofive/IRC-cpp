@@ -116,12 +116,8 @@ public:
     void WelcomeClient();
     void WriteEvent(int fd);
     void ReadEvent(int fd);
-    void handleCommands(int fd, const std::string& _cmd);
 
     // Utility methods
-    void removeFd(int fd) {
-        fds.erase(custom_remove_if(fds.begin(), fds.end(), FdPredicate(fd)), fds.end());
-    }
 
     bool isChannel(const std::string& name);
 

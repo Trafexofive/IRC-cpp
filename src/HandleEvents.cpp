@@ -81,6 +81,7 @@ void static displayTable(const std::vector<Channel>& channels) {
 }
 
 void CoreServer::handleCommand(int fd, const std::string &line) {
+    std::cout << formatServerMessage("CLIENT", line) << std::endl;
   try {
     // Parse command line into tokens
     std::istringstream iss(line);
@@ -153,6 +154,13 @@ void CoreServer::leaveAllChannels(int fd) {
   for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end();
        ++it) {
     it->removeMember(clients[fd].getNickName());
+    if (it->getMembers().empty()) {
+      std::ostringstream oss;
+      oss << "Channel " << it->getName() << " is empty, removing it";
+      std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
+      channels.erase(it);
+    }
+    std::cout << formatServerMessage("DEBUG", "Removed " + clients[fd].getNickName() + " from channel " + it->getName()) << std::endl;
   }
 }
 
@@ -174,6 +182,7 @@ void CoreServer::ReadEvent(int fd) {
         std::remove_if(fds.begin(), fds.end(), FdRemovePredicate(fd));
     fds.erase(new_end, fds.end());
     close(fd);
+
     clients.erase(fd);
     return;
   }
@@ -187,7 +196,6 @@ void CoreServer::ReadEvent(int fd) {
     // Remove \r if present
     if (!line.empty() && line[line.length() - 1] == '\r')
       line.erase(line.length() - 1);
-    std::cout << formatServerMessage("CLIENT", line) << std::endl;
     if (line.empty())
       continue;
 

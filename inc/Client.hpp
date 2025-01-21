@@ -71,6 +71,7 @@ private:
 public:
   Client(int fd, struct sockaddr_in ddr);
 Client(); // should be private
+~Client();
 
   // Getters
   int getFd() const;

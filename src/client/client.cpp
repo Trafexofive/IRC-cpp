@@ -77,7 +77,7 @@ void Client::setClientInfos(const struct sockaddr_in& info) { clientInfos = info
 void Client::disconnect()
 {
     std::ostringstream debug;
-    debug << "Disconnecting client fd(" << fdClient << ")";
+    debug << "Disconnecting client fdr(" << fdClient << ")";
     std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
     close(fdClient);
     clear();
@@ -106,4 +106,12 @@ void Client::clear()
 void Client::clearResponse()
 {
     response.clear();
+}
+
+Client::~Client()
+{
+    std::ostringstream debug;
+    debug << "Destroying client instance for fd(" << fdClient << ")";
+    std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
+
 }

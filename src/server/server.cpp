@@ -57,11 +57,13 @@ static void displayConnectionInfo(struct sockaddr_in client) {
 
 static void displayActiveConnections(std::vector<struct pollfd> fds) {
   std::ostringstream oss;
-  oss << "Active connections: " << fds.size();
-  std::cout << formatServerMessage("DEBUG", oss.str()) << std::endl;
+oss << "Active connections: " << fds.size() << std::endl << "===========================";
+  std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
+std::cout << formatServerMessage("INFO", "========================") << std::endl;
 }
+
 void CoreServer::start_listening() {
-  std::cout << formatServerMessage("DEBUG", "Binding socket...") << std::endl;
+
   if (bind(ServData._socket, (struct sockaddr *)&ServData.ServAddr,
            sizeof(ServData.ServAddr)) < 0) {
     std::cout << formatServerMessage("ERROR", "Binding failed") << std::endl;
@@ -69,8 +71,9 @@ void CoreServer::start_listening() {
   }
   std::cout << formatServerMessage("DEBUG", "Starting to listen...")
             << std::endl;
+
   if (listen(ServData._socket, 5) < 0) {
-    std::cerr << formatServerMessage("ERROR", "Listen failed") << std::endl;
+    std::cout << formatServerMessage("ERROR", "Listen failed") << std::endl;
     exit(1);
   }
   std::ostringstream oss;
@@ -82,18 +85,19 @@ void CoreServer::start_server() {
             << std::endl;
 
   while (1) {
+
     int ret = poll(&fds[0], fds.size(), -1);
     if (ret < 0) {
-      std::cout << formatServerMessage("FATAL", "Poll failed") << std::endl;
+      std::cout << formatServerMessage("FATAL", "Poll failed, Server Shutdown") << std::endl;
       break;
     }
-    displayActiveConnections(fds);
     for (size_t i = 0; i < fds.size(); i++) {
       if (fds[i].revents & POLLIN) {
         if (fds[i].fd == ServData._socket)
           WelcomeClient();
         else
           ReadEvent(fds[i].fd);
+        // displayActiveConnections(fds);
       }
     }
   }
@@ -108,24 +112,24 @@ static void DisplayPassInfo() {
   std::cout << "- At least 1 digit (0-9)" << std::endl;
   std::cout << "- At least 1 special character" << std::endl;
 }
+
 CoreServer::CoreServer(std::string port, std::string password) {
-  std::cout << formatServerMessage("INFO", "Constructing Server Class ...")
+  std::cout << formatServerMessage("DEBUG", "Constructing Server Class ...")
             << std::endl;
   if (!IsValidPort(port, ServData.Port)) {
-    std::cerr << formatServerMessage("ERROR", "Invalid port") << std::endl;
+    std::cerr << formatServerMessage("FATAL", "Invalid port, exiting ...") << std::endl;
     exit(1);
   }
   if (!IsValidPass(password, ServData.Passwd)) {
-    std::cerr << formatServerMessage("ERROR", "Invalid Password") << std::endl;
+    std::cerr << formatServerMessage("FATAL", "Invalid Password, exiting ...") << std::endl;
     DisplayPassInfo();
     exit(1);
   }
-  std::cout << formatServerMessage("DEBUG", "Registering commands...")
-            << std::endl;
-  // only one allowed before auth
+
   commands[PASS] = &CoreServer::cmdPass;
   commands[NICK] = &CoreServer::cmdNick;
   commands[USER] = &CoreServer::cmdUser;
+// all the commands need to be guarded by a connection check.
   commands[CAP] = &CoreServer::cmdCap;
   commands[JOIN] = &CoreServer::cmdJoin;
   commands[PRIVMSG] = &CoreServer::cmdPrivmsg;

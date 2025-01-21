@@ -1,0 +1,172 @@
+[1m[2025-01-21 05:08:10] [0m[33mDEBUG :: [0mConstructing Server Class ...
+[1m[2025-01-21 05:08:10] [0m[33mDEBUG :: [0mValidating port: 22200
+[1m[2025-01-21 05:08:10] [0m[33mDEBUG :: [0m
+[1m[2025-01-21 05:08:10] [0m[33mDEBUG :: [0mValidating password
+[1m[2025-01-21 05:08:10] [0m[33mDEBUG :: [0mPassword valid
+[1m[2025-01-21 05:08:10] [0m[33mDEBUG :: [0mCreating socket...
+[1m[2025-01-21 05:08:10] [0m[33mDEBUG :: [0mSocket created: 3
+[1m[2025-01-21 05:08:10] [0m[32mINFO :: [0mServer Socket setup complete
+[1m[2025-01-21 05:08:10] [0m[33mDEBUG :: [0mStarting to listen...
+[1m[2025-01-21 05:08:10] [0m[33mDEBUG :: [0mServer listening on port: 22200
+[1m[2025-01-21 05:08:10] [0m[33mDEBUG :: [0mServer main loop starting...
+[1m[2025-01-21 05:08:14] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-21 05:08:14] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-21 05:08:14] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-21 05:08:14] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-21 05:08:14] [0m[36mCLIENT << [0mNICK cleverlord
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0mNickname set to: cleverlord
+[1m[2025-01-21 05:08:14] [0m[36mCLIENT << [0mUSER mlamkadm 0 * :Mohamed Ali Lamkadmi
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-21 05:08:14] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0msource: cleverlord!Mohamed@127.0.0.1
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0m| fullName        | mlamkadm                      |
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0m| nickName        | cleverlord                    |
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0m| realName        | Mohamed                       |
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0m| source          | cleverlord!Mohamed@127.0.0.1  |
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0m| clientType      | 32767                         |
+[1m[2025-01-21 05:08:14] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-21 05:08:14] [0m[35mSERVER >> [0m:001 cleverlord :Welcome to the WeUseArch IRC Network
+:002 cleverlord :Your host is morpheus-server.ddns.net
+:003 cleverlord :This server was created 2024-01-11
+:004 cleverlord morpheus-server.ddns.net 1.0 usermodes channelmodes
+:375 cleverlord :- morpheus-server.ddns.net Message of the Day - 
+:372 cleverlord :- Welcome to the WeUseArch IRC Network!
+:372 cleverlord :- Enjoy your stay!
+:376 cleverlord :End of /MOTD command.
+
+[1m[2025-01-21 05:08:28] [0m[36mCLIENT << [0mjoin #test,#heck,#hello test,kaka
+[1m[2025-01-21 05:08:28] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-21 05:08:28] [0m[33mDEBUG :: [0mCreating new channel: #test with topic:  and password
+[1m[2025-01-21 05:08:28] [0m[33mDEBUG :: [0mDestroying channel: #test
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0mAdded cleverlord to channel #test (Total members: 1)
+[1m[2025-01-21 05:08:28] [0m[35mSERVER >> [0m:cleverlord!Mohamed@127.0.0.1 JOIN #test
+
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+ Channel Table
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+ --------------------------------------
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+ Name		Client Count		Channel Type
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+---------------------------------------
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+#test		1		PRIVATE
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+---------------------------------------
+[1m[2025-01-21 05:08:28] [0m[33mDEBUG :: [0mCreating new channel: #heck with topic:  and password
+[1m[2025-01-21 05:08:28] [0m[33mDEBUG :: [0mDestroying channel: #test
+[1m[2025-01-21 05:08:28] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-21 05:08:28] [0m[33mDEBUG :: [0mDestroying channel: #heck
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0mAdded cleverlord to channel #heck (Total members: 1)
+[1m[2025-01-21 05:08:28] [0m[35mSERVER >> [0m:cleverlord!Mohamed@127.0.0.1 JOIN #heck
+
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+ Channel Table
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+ --------------------------------------
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+ Name		Client Count		Channel Type
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+---------------------------------------
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+#test		1		PRIVATE
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+#heck		1		PRIVATE
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+---------------------------------------
+[1m[2025-01-21 05:08:28] [0m[33mDEBUG :: [0mCreating new channel: #hello
+[1m[2025-01-21 05:08:28] [0m[33mDEBUG :: [0mDestroying channel: #test
+[1m[2025-01-21 05:08:28] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-21 05:08:28] [0m[33mDEBUG :: [0mDestroying channel: #heck
+[1m[2025-01-21 05:08:28] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-21 05:08:28] [0m[33mDEBUG :: [0mDestroying channel: #hello
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0mAdded cleverlord to channel #hello (Total members: 1)
+[1m[2025-01-21 05:08:28] [0m[35mSERVER >> [0m:cleverlord!Mohamed@127.0.0.1 JOIN #hello
+
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+ Channel Table
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+ --------------------------------------
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+ Name		Client Count		Channel Type
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+---------------------------------------
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+#test		1		PRIVATE
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+#heck		1		PRIVATE
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+#hello		1		PUBLIC
+[1m[2025-01-21 05:08:28] [0m[32mINFO :: [0m+---------------------------------------
+[1m[2025-01-21 05:09:05] [0m[36mCLIENT << [0mjoin #ddddd,#eEe,#rr,#RRRR
+[1m[2025-01-21 05:09:05] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-21 05:09:05] [0m[33mDEBUG :: [0mCreating new channel: #ddddd
+[1m[2025-01-21 05:09:05] [0m[33mDEBUG :: [0mDestroying channel: #ddddd
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0mAdded cleverlord to channel #ddddd (Total members: 1)
+[1m[2025-01-21 05:09:05] [0m[35mSERVER >> [0m:cleverlord!Mohamed@127.0.0.1 JOIN #ddddd
+
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+ Channel Table
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+ --------------------------------------
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+ Name		Client Count		Channel Type
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+---------------------------------------
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#test		1		PRIVATE
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#heck		1		PRIVATE
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#hello		1		PUBLIC
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#ddddd		1		PUBLIC
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+---------------------------------------
+[1m[2025-01-21 05:09:05] [0m[33mDEBUG :: [0mCreating new channel: #eEe
+[1m[2025-01-21 05:09:05] [0m[33mDEBUG :: [0mDestroying channel: #test
+[1m[2025-01-21 05:09:05] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-21 05:09:05] [0m[33mDEBUG :: [0mDestroying channel: #heck
+[1m[2025-01-21 05:09:05] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-21 05:09:05] [0m[33mDEBUG :: [0mDestroying channel: #hello
+[1m[2025-01-21 05:09:05] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-21 05:09:05] [0m[33mDEBUG :: [0mDestroying channel: #ddddd
+[1m[2025-01-21 05:09:05] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-21 05:09:05] [0m[33mDEBUG :: [0mDestroying channel: #eEe
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0mAdded cleverlord to channel #eEe (Total members: 1)
+[1m[2025-01-21 05:09:05] [0m[35mSERVER >> [0m:cleverlord!Mohamed@127.0.0.1 JOIN #eEe
+
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+ Channel Table
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+ --------------------------------------
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+ Name		Client Count		Channel Type
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+---------------------------------------
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#test		1		PRIVATE
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#heck		1		PRIVATE
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#hello		1		PUBLIC
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#ddddd		1		PUBLIC
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#eEe		1		PUBLIC
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+---------------------------------------
+[1m[2025-01-21 05:09:05] [0m[33mDEBUG :: [0mCreating new channel: #rr
+[1m[2025-01-21 05:09:05] [0m[33mDEBUG :: [0mDestroying channel: #rr
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0mAdded cleverlord to channel #rr (Total members: 1)
+[1m[2025-01-21 05:09:05] [0m[35mSERVER >> [0m:cleverlord!Mohamed@127.0.0.1 JOIN #rr
+
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+ Channel Table
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+ --------------------------------------
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+ Name		Client Count		Channel Type
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+---------------------------------------
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#test		1		PRIVATE
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#heck		1		PRIVATE
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#hello		1		PUBLIC
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#ddddd		1		PUBLIC
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#eEe		1		PUBLIC
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#rr		1		PUBLIC
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+---------------------------------------
+[1m[2025-01-21 05:09:05] [0m[33mDEBUG :: [0mCreating new channel: #RRRR
+[1m[2025-01-21 05:09:05] [0m[33mDEBUG :: [0mDestroying channel: #RRRR
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0mAdded cleverlord to channel #RRRR (Total members: 1)
+[1m[2025-01-21 05:09:05] [0m[35mSERVER >> [0m:cleverlord!Mohamed@127.0.0.1 JOIN #RRRR
+
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+ Channel Table
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+ --------------------------------------
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+ Name		Client Count		Channel Type
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+---------------------------------------
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#test		1		PRIVATE
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#heck		1		PRIVATE
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#hello		1		PUBLIC
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#ddddd		1		PUBLIC
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#eEe		1		PUBLIC
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#rr		1		PUBLIC
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+#RRRR		1		PUBLIC
+[1m[2025-01-21 05:09:05] [0m[32mINFO :: [0m+---------------------------------------
