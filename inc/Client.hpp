@@ -61,7 +61,7 @@ private:
 
   std::string response;
 
-  std::string source;
+  std::string source; // should be renamed to target
   STATE _state;
   AUTH _status;
   CLEARANCE _clearance;
