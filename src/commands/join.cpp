@@ -125,7 +125,6 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
   if (!isChannel(channelName)) {
     channels.push_back(Channel(channelName));
     channels.back().addMember(client);
-    Channel &channel = channels.back();
     constructJoinMessage(client.getSource(), channelName);
     displayTable(channels);
     return;
@@ -162,7 +161,6 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
 
     channels.push_back(Channel(channelName, "", key));
     channels.back().addMember(client);
-    Channel &channel = channels.back();
     constructJoinMessage(client.getSource(), channelName);
     displayTable(channels);
     return;

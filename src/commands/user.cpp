@@ -14,7 +14,7 @@
 #include <iostream>
 #include <string>
 
-static void cmdMotd(Client& client, std::vector<std::string> &args) {
+static void cmdMotd(Client& client) {
     std::string nick = client.getNickName();
 
     // Example MOTD response
@@ -71,7 +71,7 @@ void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
         client.printClientInfo();
 
         welcomeClient(client);
-        cmdMotd(client, args);
+        cmdMotd(client);
 
         // Handle client modes
         // if (!client.getModes().empty()) {
