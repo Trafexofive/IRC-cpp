@@ -14,8 +14,8 @@
 #include <iostream>
 
 void static displayTable(const std::vector<Channel> &channels) {
-  std::cout << formatServerMessage("INFO", "+ Channel Table") << std::endl;
-  std::cout << formatServerMessage("INFO", "+ ------------------------------------------------------") << std::endl;
+  std::cout << formatServerMessage("INFO", "+-Channel Table-----------------------------------------") << std::endl;
+  std::cout << formatServerMessage("INFO", "+-------------------------------------------------------") << std::endl;
   std::cout << formatServerMessage("INFO", "+ Name\t\tOnline\t\tType") << std::endl;
   std::cout << formatServerMessage("INFO", "+-------------------------------------------------------") << std::endl;
 
