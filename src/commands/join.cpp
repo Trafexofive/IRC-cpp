@@ -15,26 +15,19 @@
 
 void static displayTable(const std::vector<Channel> &channels) {
   std::cout << formatServerMessage("INFO", "+ Channel Table") << std::endl;
-  std::cout << formatServerMessage("INFO",
-                                   "+ --------------------------------------")
-            << std::endl;
-  std::cout << formatServerMessage("INFO",
-                                   "+ Name\t\tClient Count\t\tChannel Type")
-            << std::endl;
-  std::cout << formatServerMessage("INFO",
-                                   "+---------------------------------------")
-            << std::endl;
-  std::ostringstream table;
-  for (std::vector<Channel>::const_iterator it = channels.begin();
-       it != channels.end(); ++it) {
-    table << "+" << it->getName() << "\t\t" << it->getMembers().size() << "\t\t"
-          << it->getType();
-    std::cout << formatServerMessage("INFO", table.str()) << std::endl;
-    table.str("");
+  std::cout << formatServerMessage("INFO", "+ ------------------------------------------------------") << std::endl;
+  std::cout << formatServerMessage("INFO", "+ Name\t\tOnline\t\tType") << std::endl;
+  std::cout << formatServerMessage("INFO", "+-------------------------------------------------------") << std::endl;
+
+  for (std::vector<Channel>::const_iterator it = channels.begin(); it != channels.end(); ++it) {
+    std::ostringstream row;
+    row << "+ " << it->getName() << "\t\t" 
+        << it->getMembers().size() << "\t\t" 
+        << it->getType();
+    std::cout << formatServerMessage("INFO", row.str()) << std::endl;
   }
-  std::cout << formatServerMessage("INFO",
-                                   "+---------------------------------------")
-            << std::endl;
+
+  std::cout << formatServerMessage("INFO", "+-------------------------------------------------------") << std::endl;
 }
 
 typedef struct {
@@ -118,7 +111,7 @@ static void constructJoinMessage(const std::string &source,
 void CoreServer::joinChannel(Client &client, const std::string &channelName) {
   if (!isChannel(channelName)) {
     channels.push_back(Channel(channelName));
-    channels.back().addMember(client); // Access the copied object
+    channels.back().addMember(client);
     Channel &channel = channels.back();
     constructJoinMessage(client.getSource(), channelName);
     displayTable(channels);
@@ -248,37 +241,3 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
     }
   }
 }
-
-// =====================================================================================================================
-
-// void CoreServer::cmdList(int fd, std::vector<std::string> &args) {
-//     if (args.size() > 1) {
-//         std::cout << formatServerMessage("ERROR", "LIST failed: Too many
-//         arguments") << std::endl;
-//         clients[fd].setResponse(formatResponse(ERR_NEEDMOREPARAMS, "LIST :Too
-//         many arguments")); return;
-//     }
-//     std::string listMsg = ":server 321 " + clients[fd].getNickName() + "
-//     Channel :Users Name\r\n"; for (std::vector<Channel>::iterator it =
-//     channels.begin(); it != channels.end(); ++it) {
-//         listMsg += ":server 322 " + clients[fd].getNickName() + " " +
-//         it->getName() + " " + std::to_string(it->getMembers().size()) + " :No
-//         topic\r\n";
-//     }
-//     listMsg += ":server 323 " + clients[fd].getNickName() + " :End of
-//     /LIST\r\n"; clients[fd].setResponse(listMsg); std::cout <<
-//     formatServerMessage("SUCCESS", "Sending channel list to " +
-//     clients[fd].getNickName()) << std::endl;
-// }
-// =====================================================================================================================
-//
-
-// static void cmdTopic(int fd, std::vector<std::string> &args) {
-//   if (args.size() < 2) {
-//     std::cout << formatServerMessage("ERROR",
-//                                      "TOPIC failed: No channel specified")
-//               << std::endl;
-//     clients[fd].setResponse(formatResponse(ERR_NEEDMOREPARAMS, "TOPIC :Not
-//     enough parameters")); return;
-//   }
-// }
