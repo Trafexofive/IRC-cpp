@@ -48,20 +48,6 @@ void CoreServer::create_socket() {
             << std::endl;
 }
 
-static void displayConnectionInfo(struct sockaddr_in client) {
-  std::ostringstream oss;
-  oss << "Connection from: " << inet_ntoa(client.sin_addr) << ":"
-      << ntohs(client.sin_port);
-  std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
-}
-
-static void displayActiveConnections(std::vector<struct pollfd> fds) {
-  std::ostringstream oss;
-oss << "Active connections: " << fds.size() << std::endl << "===========================";
-  std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
-std::cout << formatServerMessage("INFO", "========================") << std::endl;
-}
-
 void CoreServer::start_listening() {
 
   if (bind(ServData._socket, (struct sockaddr *)&ServData.ServAddr,

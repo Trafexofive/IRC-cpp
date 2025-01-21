@@ -60,32 +60,11 @@ void CoreServer::WelcomeClient() {
   fds.push_back(_fd);
 }
 
-static void printTokens(const std::vector<std::string> &tokens) {
-  std::cout << formatServerMessage("DEBUG", "Tokens: ") << std::endl;
-  for (std::vector<std::string>::const_iterator it = tokens.begin();
-       it != tokens.end(); ++it) {
-    std::cout << *it << " ";
-  }
-  std::cout << std::endl;
-}
-
-void static displayTable(const std::vector<Channel>& channels) {
-    std::cout << formatServerMessage("INFO", "Channel Table") << std::endl;
-    std::cout << formatServerMessage("INFO", "Name\t\tClient Count") << std::endl;
-    std::cout << formatServerMessage("INFO", "----\t\t------------") << std::endl;
-    std::ostringstream table;
-    for (std::vector<Channel>::const_iterator it = channels.begin(); it != channels.end(); ++it) {
-        table << it->getName() << "\t\t" << it->getMembers().size() << std::endl;
-    }
-    std::cout << formatServerMessage("INFO", table.str()) << std::endl;
-}
-
 void CoreServer::handleCommand(int fd, const std::string &line) {
     std::cout << formatServerMessage("CLIENT", line) << std::endl;
   try {
     // Parse command line into tokens
     std::istringstream iss(line);
-    Client &client = clients[fd];
     std::vector<std::string> args;
     std::string arg;
 

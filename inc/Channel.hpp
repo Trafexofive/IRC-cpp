@@ -31,7 +31,7 @@ typedef struct {
     enum TYPE{
         PUBLIC,
         PRIVATE,
-        LOCAL,
+        LOCAL, // if this is allowed Ill handle it.
         UNKNOWN
     };
     int state;
@@ -97,8 +97,8 @@ public:
     void clearMembers();
 
     // Utility methods
-    bool hasPassword() const;
-    bool checkPassword(const std::string& pass) const;
+    bool hasPassword() const; // should be removed
+    bool checkPassword(const std::string& pass) const; //should be renamed to validate password
 
     // General methods
     void broadcast(const std::string& message);

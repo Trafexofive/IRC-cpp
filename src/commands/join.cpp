@@ -227,6 +227,7 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
     return;
   }
 
+  // needs better error/edge-cases (parse ya lm3gaz)
   JOIN_ARGS params = parseJoinParams(args);
 
   std::vector<std::string> channelNames = splitString(params.channels, ' ');
