@@ -71,7 +71,6 @@ void printField(const std::string& field, const std::string& value, int col1Widt
 
 void Client::printClientInfo()
 {
-    // should be MACROS with control @ Makefile
     const int COL1_WIDTH = 15; // Width for the field name column
     const int COL2_WIDTH = 29; // Width for the field value column
     
@@ -85,7 +84,6 @@ void Client::printClientInfo()
     
     std::cout << formatServerMessage("DEBUG", "+-----------------+-------------------------------+") << std::endl;
     
-    // Print each field using the enhanced function
     printField("fdClient", numberToString(fdClient), COL1_WIDTH, COL2_WIDTH);
     printField("auth", numberToString(auth), COL1_WIDTH, COL2_WIDTH);
     printField("connected", numberToString(connected), COL1_WIDTH, COL2_WIDTH);

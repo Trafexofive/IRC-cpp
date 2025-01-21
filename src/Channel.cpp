@@ -37,8 +37,8 @@ Channel::Channel(const std::string& name, const std::string& topic, const std::s
     : name(name), topic(topic), password(password) {
     std::ostringstream debug;
     debug << "Creating new channel: " << name << " with topic: " << topic << " and password";
-    std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
     _type.state = CHANNEL::PRIVATE;
+    std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
 }
 
 

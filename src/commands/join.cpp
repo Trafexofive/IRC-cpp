@@ -47,7 +47,7 @@ static void handleInvalidChannelName(Client &client,
 
 static bool isValidChannelName(const std::string &channelName) {
   return !channelName.empty() &&
-         (channelName[0] == '#' || channelName[0] == '&');
+         (channelName[0] == '#');
 }
 
 // Helper function to split a string into a vector of strings
@@ -143,6 +143,8 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
   if (!isChannel(channelName)) {
 
     channels.push_back(Channel(channelName, "", key));
+    std::cout << formatServerMessage("ERROR", channels.back().getType())
+              << std::endl;
     channels.back().addMember(client);
     Channel &channel = channels.back();
     constructJoinMessage(client.getSource(), channelName);
@@ -173,13 +175,13 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
   displayTable(channels);
 }
 
-static std::string channelType(const std::string &channelName) {
-  if (channelName[0] == '#') {
-    return "Public";
-  } else if (channelName[0] == '&') {
-    return "Private";
-  }
-  return "Unknown";
+static std::string channelType(const std::string &channelName, const std::string &key) {
+    if (channelName[0] == '#' && key.empty())
+        return "Public";
+    else if (channelName[0] == '#' && !key.empty())
+        return "Private";
+    else
+        return "Unknown";
 }
 
 // Main JOIN command handler
@@ -211,13 +213,13 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
   for (size_t i = 0; i < channelNames.size(); ++i) {
     const std::string &channelName = channelNames[i];
     const std::string &key = (i < keys.size()) ? keys[i] : "";
-    if (channelType(channelName) == "Unknown") {
+    if (channelType(channelName, key) == "Unknown") {
       handleInvalidChannelName(client, channelName);
       return;
     }
-    if (channelType(channelName) == "Public") {
+    if (channelType(channelName, key) == "Public") {
       joinChannel(client, channelName);
-    } else if (channelType(channelName) == "Private") {
+    } else if (channelType(channelName, key) == "Private") {
       joinChannel(client, channelName, key);
     }
   }
