@@ -111,7 +111,7 @@ bool CoreServer::isChannel(const std::string &name) {
 
 static void constructJoinMessage(const std::string &source,
                                  const std::string &channelName) {
-  std::string joinMsg = ":" + source + " JOIN " + channelName + "\r\n";
+    std::string joinMsg = ":" + source + " JOIN " + channelName;
   std::cout << formatServerMessage("SERVER", joinMsg) << std::endl;
 }
 
@@ -163,9 +163,6 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
   Channel &channel = getChannel(channelName, channels);
 
 if (channel.getType() == "PUBLIC" && !channel.isMember(client.getNickName())) {
-    std::cout << formatServerMessage("WARNING",
-                                     "User attempty to enter public channel with key: Channel requires a key")
-              << std::endl;
     joinChannel(client, channelName);
     return;
 }
@@ -179,7 +176,7 @@ if (channel.getType() == "PUBLIC" && !channel.isMember(client.getNickName())) {
                                           " :is already on channel"));
     return;
   }
-  if (channel.hasPassword() && channel.checkPassword(key)) {
+  if (channel.getType() == "PRIVATE" && !channel.checkPassword(key)) {
     std::cout << formatServerMessage("WARNING",
                                      "JOIN failed: Invalid channel key")
               << std::endl;
@@ -190,24 +187,6 @@ if (channel.getType() == "PUBLIC" && !channel.isMember(client.getNickName())) {
   channel.addMember(client);
   constructJoinMessage(client.getSource(), channelName);
   displayTable(channels);
-}
-
-static std::string channelType(const std::string &channelName,
-                               const std::string &key) {
-
-  if (channelName.empty() && key.empty())
-    return "NoChannel/key";
-  else if (channelName.empty())
-    return "NoChannel";
-  else if (key.empty())
-    return "NoKey";
-
-  // if (channelName[0] == '#' && key.empty())
-  //   return "Public";
-  // else if (!channelName.empty() && channelName[0] == '#' && !key.empty())
-  //   return "Private";
-  // else
-  //   return "Unknown";
 }
 
 // Main JOIN command handler
