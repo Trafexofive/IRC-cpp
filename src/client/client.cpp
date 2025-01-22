@@ -29,6 +29,29 @@ Client::Client() :
     std::cout << formatServerMessage("DEBUG", "Creating new empty client instance") << std::endl;
 }
 
+//copy constructor
+Client::Client(const Client &client) : 
+    fdClient(client.fdClient), 
+    auth(client.auth), 
+    connected(client.connected),
+    clientInfos(client.clientInfos),
+    ipAddr(client.ipAddr),
+    fullName(client.fullName),
+    nickName(client.nickName),
+    realName(client.realName),
+    passWord(client.passWord),
+    response(client.response),
+    source(client.source)
+{
+    std::ostringstream debug;
+    debug << "Creating new client instance for fd(" << fdClient << ")";
+    std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
+}
+
+// assignment operator
+
+
+
 // Parameterized constructor
 Client::Client(int fd, struct sockaddr_in addr) : 
     fdClient(fd), 

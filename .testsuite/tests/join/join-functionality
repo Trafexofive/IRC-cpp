@@ -13,18 +13,28 @@ JOIN #channel1,#channel2,#channel3
 JOIN #securechannel secretkey
 
 # Invalid Channels: Attempting to join invalid channels
-JOIN #invalid,channel  # Invalid channel name (contains a comma)
-JOIN #bannedchannel    # Assuming this channel is banned or restricted
+
+# Invalid channel name (contains a comma)
+JOIN #invalid,channel  
+# Assuming this channel is banned or restricted
+JOIN #bannedchannel    
 
 # Channel Modes: Testing JOIN behavior with different channel modes
-JOIN #inviteonlychannel  # Attempting to join an invite-only channel (+i)
-JOIN #limitedchannel     # Attempting to join a channel with a user limit (+l)
+# Attempting to join an invite-only channel (+i)
+JOIN #inviteonlychannel  
+# Attempting to join a channel with a user limit (+l)
+JOIN #limitedchannel     
 
 # Error Handling: Testing server responses for invalid JOIN attempts
-JOIN                    # Missing channel parameter
-JOIN #                  # Empty channel name
-JOIN #channel1,         # Trailing comma
-JOIN #channel1,#        # Trailing comma with multiple channels
+
+# Missing channel parameter
+JOIN                    
+# Empty channel name
+JOIN #                  
+# Trailing comma
+JOIN #channel1,         
+# Trailing comma with multiple channels
+JOIN #channel1,#        
 
 # Cleanup: Leaving all channels
 PART #testchannel,#channel1,#channel2,#channel3,#securechannel,#invalid,channel,#bannedchannel,#inviteonlychannel,#limitedchannel

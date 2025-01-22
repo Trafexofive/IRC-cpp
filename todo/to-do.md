@@ -75,6 +75,7 @@
 - some more command parsing helpers and utils (checking,morphing,parsing and extracting)
 - [X] need to setup actual auth (Pass/user/nick) in any order.
 - [ ] quit test-user after test case is over.
+- [ ] Channels not getting destroyed after all users leave.
 
 
 ### [VERSION CONTROL]
@@ -86,17 +87,6 @@
   #bin/bash
   test-case
   ```
-- src/commands/*:
-    - needs to send already in channel
-```
-  60 ~ │ [2025-01-18 00:12:55] DEBUG :: Processing command: JOIN
-  61 ~ │ [2025-01-18 00:12:55] DEBUG :: Creating new channel: #test-channel
-  62 ~ │ [2025-01-18 00:12:55] DEBUG :: Creating new channel: #test-channel
-  63 ~ │ [2025-01-18 00:12:55] DEBUG :: Added test-user to channel #test-channel (Total members: 1)
-  64 ~ │ [2025-01-18 00:12:55] DEBUG :: Destroying channel: #test-channel
-  65 ~ │ [2025-01-18 00:12:55] test-user joined #test-channel
-  66 ~ │ [2025-01-18 00:12:55] SERVER >> :test-user!testUser@localhost JOIN #test-channel
-```
 ### [FEATURES]
 
 - Add more advanced IRC commands.

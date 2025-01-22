@@ -13,35 +13,6 @@
 #include "../../inc/Server.hpp"
 #include <iostream>
 
-void static displayTable(const std::vector<Channel> &channels) {
-  std::cout << formatServerMessage(
-                   "INFO",
-                   "+-Channel Table-----------------------------------------")
-            << std::endl;
-  std::cout << formatServerMessage(
-                   "INFO",
-                   "+-------------------------------------------------------")
-            << std::endl;
-  std::cout << formatServerMessage("INFO", "+ Name\t\tOnline\t\tType")
-            << std::endl;
-  std::cout << formatServerMessage(
-                   "INFO",
-                   "+-------------------------------------------------------")
-            << std::endl;
-
-  for (std::vector<Channel>::const_iterator it = channels.begin();
-       it != channels.end(); ++it) {
-    std::ostringstream row;
-    row << "+ " << it->getName() << "\t\t" << it->getMembers().size() << "\t\t"
-        << it->getType();
-    std::cout << formatServerMessage("INFO", row.str()) << std::endl;
-  }
-
-  std::cout << formatServerMessage(
-                   "INFO",
-                   "+-------------------------------------------------------")
-            << std::endl;
-}
 
 typedef struct {
   std::string channels;
@@ -126,7 +97,6 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
     channels.push_back(Channel(channelName));
     channels.back().addMember(client);
     constructJoinMessage(client.getSource(), channelName);
-    displayTable(channels);
     return;
   }
   Channel &channel = getChannel(channelName, channels);
@@ -152,7 +122,6 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
   }
   channel.addMember(client);
   constructJoinMessage(client.getSource(), channelName);
-  displayTable(channels);
 }
 
 void CoreServer::joinChannel(Client &client, const std::string &channelName,
@@ -162,7 +131,6 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
     channels.push_back(Channel(channelName, "", key));
     channels.back().addMember(client);
     constructJoinMessage(client.getSource(), channelName);
-    displayTable(channels);
     return;
   }
   Channel &channel = getChannel(channelName, channels);
@@ -192,7 +160,6 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
   }
   channel.addMember(client);
   constructJoinMessage(client.getSource(), channelName);
-  displayTable(channels);
 }
 
 void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {

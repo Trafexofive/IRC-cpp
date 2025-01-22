@@ -17,6 +17,7 @@
 
 
 std::string formatServerMessage(const std::string& type, const std::string& message);
+
 void    formatArg(std::string &msg);
 
 #endif

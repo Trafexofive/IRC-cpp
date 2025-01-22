@@ -1,0 +1,432 @@
+[1m[2025-01-22 10:41:26] [0m[33mDEBUG :: [0mConstructing Server Class ...
+[1m[2025-01-22 10:41:26] [0m[33mDEBUG :: [0mValidating port: 22200
+[1m[2025-01-22 10:41:26] [0m[33mDEBUG :: [0m
+[1m[2025-01-22 10:41:26] [0m[33mDEBUG :: [0mValidating password
+[1m[2025-01-22 10:41:26] [0m[33mDEBUG :: [0mPassword valid
+[1m[2025-01-22 10:41:26] [0m[33mDEBUG :: [0mCreating socket...
+[1m[2025-01-22 10:41:26] [0m[33mDEBUG :: [0mSocket created: 3
+[1m[2025-01-22 10:41:26] [0m[32mINFO :: [0mServer Socket setup complete
+[1m[2025-01-22 10:41:26] [0m[33mDEBUG :: [0mStarting to listen...
+[1m[2025-01-22 10:41:26] [0m[33mDEBUG :: [0mServer listening on port: 22200
+[1m[2025-01-22 10:41:26] [0m[33mDEBUG :: [0mServer main loop starting...
+[1m[2025-01-22 10:41:27] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-22 10:41:27] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:27] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-22 10:41:27] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-01-22 10:41:27] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-01-22 10:41:27] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-01-22 10:41:27] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-01-22 10:41:27] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:41:27] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-22 10:41:28] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-22 10:41:28] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-22 10:41:28] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-22 10:41:28] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-22 10:41:28] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-22 10:41:28] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:28] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-22 10:41:28] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:28] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:29] [0m[36mCLIENT << [0mNICK TestUser
+[1m[2025-01-22 10:41:29] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-22 10:41:29] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-22 10:41:29] [0m[33mDEBUG :: [0mNickname set to: TestUser
+[1m[2025-01-22 10:41:29] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-22 10:41:29] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:29] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-22 10:41:29] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:29] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:30] [0m[36mCLIENT << [0mUSER TestUser 0 * :Test User
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-22 10:41:30] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0msource: TestUser!Test@127.0.0.1
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0m| fullName        | TestUser                      |
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0m| nickName        | TestUser                      |
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0m| realName        | Test                          |
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0m| source          | TestUser!Test@127.0.0.1       |
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0m| clientType      | 32767                         |
+[1m[2025-01-22 10:41:30] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-22 10:41:30] [0m[35mSERVER >> [0m:WeUseArch.localhost 001 TestUser :Welcome to the WeUseArch IRC Network
+:WeUseArch.localhost 002 TestUser :Your host is morpheus-server.ddns.net
+:WeUseArch.localhost 003 TestUser :This server was created 2024-01-11
+:WeUseArch.localhost 004 TestUser morpheus-server.ddns.net 1.0 usermodes channelmodes
+:WeUseArch.localhost 375 TestUser :- morpheus-server.ddns.net Message of the Day - 
+:WeUseArch.localhost 372 TestUser :- Welcome to the WeUseArch IRC Network!
+:WeUseArch.localhost 372 TestUser :- Enjoy your stay!
+:WeUseArch.localhost 376 TestUser :End of /MOTD command.
+
+[1m[2025-01-22 10:41:30] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-22 10:41:30] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:30] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-22 10:41:30] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:30] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:32] [0m[36mCLIENT << [0m# Basic JOIN: Joining a single channel
+[1m[2025-01-22 10:41:32] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-01-22 10:41:33] [0m[36mCLIENT << [0mJOIN #testchannel
+[1m[2025-01-22 10:41:33] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-22 10:41:33] [0m[33mDEBUG :: [0mCreating new channel: #testchannel
+[1m[2025-01-22 10:41:33] [0m[33mDEBUG :: [0mDestroying channel: #testchannel
+[1m[2025-01-22 10:41:33] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:33] [0m[32mINFO :: [0mAdded TestUser to channel #testchannel (Total members: 1)
+[1m[2025-01-22 10:41:33] [0m[35mSERVER >> [0m:TestUser!Test@127.0.0.1 JOIN :#testchannel
+[1m[2025-01-22 10:41:33] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-22 10:41:33] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:33] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-22 10:41:33] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:33] [0m[32mINFO :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-01-22 10:41:33] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:35] [0m[36mCLIENT << [0m# Multiple Channels: Joining multiple channels at once
+[1m[2025-01-22 10:41:35] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-01-22 10:41:36] [0m[36mCLIENT << [0mJOIN #channel1,#channel2,#channel3
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mCreating new channel: #channel1
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mDestroying channel: #testchannel
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mDestroying channel: #channel1
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:36] [0m[32mINFO :: [0mAdded TestUser to channel #channel1 (Total members: 1)
+[1m[2025-01-22 10:41:36] [0m[35mSERVER >> [0m:TestUser!Test@127.0.0.1 JOIN :#channel1
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mCreating new channel: #channel2
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mDestroying channel: #testchannel
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mDestroying channel: #channel1
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mDestroying channel: #channel2
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:36] [0m[32mINFO :: [0mAdded TestUser to channel #channel2 (Total members: 1)
+[1m[2025-01-22 10:41:36] [0m[35mSERVER >> [0m:TestUser!Test@127.0.0.1 JOIN :#channel2
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mCreating new channel: #channel3
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mDestroying channel: #channel3
+[1m[2025-01-22 10:41:36] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:36] [0m[32mINFO :: [0mAdded TestUser to channel #channel3 (Total members: 1)
+[1m[2025-01-22 10:41:36] [0m[35mSERVER >> [0m:TestUser!Test@127.0.0.1 JOIN :#channel3
+[1m[2025-01-22 10:41:36] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-22 10:41:36] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:36] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-22 10:41:36] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:36] [0m[32mINFO :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-01-22 10:41:36] [0m[32mINFO :: [0m+ #channel1		1		PUBLIC
+[1m[2025-01-22 10:41:36] [0m[32mINFO :: [0m+ #channel2		1		PUBLIC
+[1m[2025-01-22 10:41:36] [0m[32mINFO :: [0m+ #channel3		1		PUBLIC
+[1m[2025-01-22 10:41:36] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:38] [0m[36mCLIENT << [0m# Channel Keys: Joining a channel with a key/password
+[1m[2025-01-22 10:41:38] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-01-22 10:41:39] [0m[36mCLIENT << [0mJOIN #securechannel secretkey
+[1m[2025-01-22 10:41:39] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-22 10:41:39] [0m[33mDEBUG :: [0mCreating new channel: #securechannel with topic:  and password
+[1m[2025-01-22 10:41:39] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:39] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:39] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:39] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:39] [0m[33mDEBUG :: [0mDestroying channel: #testchannel
+[1m[2025-01-22 10:41:39] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:41:39] [0m[33mDEBUG :: [0mDestroying channel: #channel1
+[1m[2025-01-22 10:41:39] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:41:39] [0m[33mDEBUG :: [0mDestroying channel: #channel2
+[1m[2025-01-22 10:41:39] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:41:39] [0m[33mDEBUG :: [0mDestroying channel: #channel3
+[1m[2025-01-22 10:41:39] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:41:39] [0m[33mDEBUG :: [0mDestroying channel: #securechannel
+[1m[2025-01-22 10:41:39] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:39] [0m[32mINFO :: [0mAdded TestUser to channel #securechannel (Total members: 1)
+[1m[2025-01-22 10:41:39] [0m[35mSERVER >> [0m:TestUser!Test@127.0.0.1 JOIN :#securechannel
+[1m[2025-01-22 10:41:39] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-22 10:41:39] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:39] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-22 10:41:39] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:39] [0m[32mINFO :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-01-22 10:41:39] [0m[32mINFO :: [0m+ #channel1		1		PUBLIC
+[1m[2025-01-22 10:41:39] [0m[32mINFO :: [0m+ #channel2		1		PUBLIC
+[1m[2025-01-22 10:41:39] [0m[32mINFO :: [0m+ #channel3		1		PUBLIC
+[1m[2025-01-22 10:41:39] [0m[32mINFO :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-01-22 10:41:39] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:41] [0m[36mCLIENT << [0m# Invalid Channels: Attempting to join invalid channels
+[1m[2025-01-22 10:41:41] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-01-22 10:41:43] [0m[36mCLIENT << [0m# Invalid channel name (contains a comma)
+[1m[2025-01-22 10:41:43] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-01-22 10:41:44] [0m[36mCLIENT << [0mJOIN #invalid,channel  
+[1m[2025-01-22 10:41:44] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-22 10:41:44] [0m[33mDEBUG :: [0mCreating new channel: #invalid
+[1m[2025-01-22 10:41:44] [0m[33mDEBUG :: [0mDestroying channel: #invalid
+[1m[2025-01-22 10:41:44] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:44] [0m[32mINFO :: [0mAdded TestUser to channel #invalid (Total members: 1)
+[1m[2025-01-22 10:41:44] [0m[35mSERVER >> [0m:TestUser!Test@127.0.0.1 JOIN :#invalid
+[1m[2025-01-22 10:41:44] [0m[33m[1mWARNING :: [0mJOIN failed: Invalid channel name channel
+[1m[2025-01-22 10:41:44] [0m[35mSERVER >> [0m:403 channel :Invalid channel name
+
+[1m[2025-01-22 10:41:44] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-22 10:41:44] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:44] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-22 10:41:44] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:44] [0m[32mINFO :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-01-22 10:41:44] [0m[32mINFO :: [0m+ #channel1		1		PUBLIC
+[1m[2025-01-22 10:41:44] [0m[32mINFO :: [0m+ #channel2		1		PUBLIC
+[1m[2025-01-22 10:41:44] [0m[32mINFO :: [0m+ #channel3		1		PUBLIC
+[1m[2025-01-22 10:41:44] [0m[32mINFO :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-01-22 10:41:44] [0m[32mINFO :: [0m+ #invalid		1		PUBLIC
+[1m[2025-01-22 10:41:44] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:45] [0m[36mCLIENT << [0m# Assuming this channel is banned or restricted
+[1m[2025-01-22 10:41:45] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-01-22 10:41:46] [0m[36mCLIENT << [0mJOIN #bannedchannel    
+[1m[2025-01-22 10:41:46] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-22 10:41:46] [0m[33mDEBUG :: [0mCreating new channel: #bannedchannel
+[1m[2025-01-22 10:41:46] [0m[33mDEBUG :: [0mDestroying channel: #bannedchannel
+[1m[2025-01-22 10:41:46] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:46] [0m[32mINFO :: [0mAdded TestUser to channel #bannedchannel (Total members: 1)
+[1m[2025-01-22 10:41:46] [0m[35mSERVER >> [0m:TestUser!Test@127.0.0.1 JOIN :#bannedchannel
+[1m[2025-01-22 10:41:46] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-22 10:41:46] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:46] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-22 10:41:46] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:46] [0m[32mINFO :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-01-22 10:41:46] [0m[32mINFO :: [0m+ #channel1		1		PUBLIC
+[1m[2025-01-22 10:41:46] [0m[32mINFO :: [0m+ #channel2		1		PUBLIC
+[1m[2025-01-22 10:41:46] [0m[32mINFO :: [0m+ #channel3		1		PUBLIC
+[1m[2025-01-22 10:41:46] [0m[32mINFO :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-01-22 10:41:46] [0m[32mINFO :: [0m+ #invalid		1		PUBLIC
+[1m[2025-01-22 10:41:46] [0m[32mINFO :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-01-22 10:41:46] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:48] [0m[36mCLIENT << [0m# Channel Modes: Testing JOIN behavior with different channel modes
+[1m[2025-01-22 10:41:48] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-01-22 10:41:49] [0m[36mCLIENT << [0m# Attempting to join an invite-only channel (+i)
+[1m[2025-01-22 10:41:49] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-01-22 10:41:50] [0m[36mCLIENT << [0mJOIN #inviteonlychannel  
+[1m[2025-01-22 10:41:50] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-22 10:41:50] [0m[33mDEBUG :: [0mCreating new channel: #inviteonlychannel
+[1m[2025-01-22 10:41:50] [0m[33mDEBUG :: [0mDestroying channel: #inviteonlychannel
+[1m[2025-01-22 10:41:50] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:50] [0m[32mINFO :: [0mAdded TestUser to channel #inviteonlychannel (Total members: 1)
+[1m[2025-01-22 10:41:50] [0m[35mSERVER >> [0m:TestUser!Test@127.0.0.1 JOIN :#inviteonlychannel
+[1m[2025-01-22 10:41:50] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-22 10:41:50] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:50] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-22 10:41:50] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:50] [0m[32mINFO :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-01-22 10:41:50] [0m[32mINFO :: [0m+ #channel1		1		PUBLIC
+[1m[2025-01-22 10:41:50] [0m[32mINFO :: [0m+ #channel2		1		PUBLIC
+[1m[2025-01-22 10:41:50] [0m[32mINFO :: [0m+ #channel3		1		PUBLIC
+[1m[2025-01-22 10:41:50] [0m[32mINFO :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-01-22 10:41:50] [0m[32mINFO :: [0m+ #invalid		1		PUBLIC
+[1m[2025-01-22 10:41:50] [0m[32mINFO :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-01-22 10:41:50] [0m[32mINFO :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-01-22 10:41:50] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:51] [0m[36mCLIENT << [0m# Attempting to join a channel with a user limit (+l)
+[1m[2025-01-22 10:41:51] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-01-22 10:41:52] [0m[36mCLIENT << [0mJOIN #limitedchannel     
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mCreating new channel: #limitedchannel
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mDestroying channel: #testchannel
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mDestroying channel: #channel1
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mDestroying channel: #channel2
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mDestroying channel: #channel3
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mDestroying channel: #securechannel
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mDestroying channel: #invalid
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mDestroying channel: #bannedchannel
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mDestroying channel: #inviteonlychannel
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mDestroying channel: #limitedchannel
+[1m[2025-01-22 10:41:52] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:52] [0m[32mINFO :: [0mAdded TestUser to channel #limitedchannel (Total members: 1)
+[1m[2025-01-22 10:41:52] [0m[35mSERVER >> [0m:TestUser!Test@127.0.0.1 JOIN :#limitedchannel
+[1m[2025-01-22 10:41:52] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-22 10:41:52] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:52] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-22 10:41:52] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:52] [0m[32mINFO :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-01-22 10:41:52] [0m[32mINFO :: [0m+ #channel1		1		PUBLIC
+[1m[2025-01-22 10:41:52] [0m[32mINFO :: [0m+ #channel2		1		PUBLIC
+[1m[2025-01-22 10:41:52] [0m[32mINFO :: [0m+ #channel3		1		PUBLIC
+[1m[2025-01-22 10:41:52] [0m[32mINFO :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-01-22 10:41:52] [0m[32mINFO :: [0m+ #invalid		1		PUBLIC
+[1m[2025-01-22 10:41:52] [0m[32mINFO :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-01-22 10:41:52] [0m[32mINFO :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-01-22 10:41:52] [0m[32mINFO :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-01-22 10:41:52] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:54] [0m[36mCLIENT << [0m# Error Handling: Testing server responses for invalid JOIN attempts
+[1m[2025-01-22 10:41:54] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-01-22 10:41:56] [0m[36mCLIENT << [0m# Missing channel parameter
+[1m[2025-01-22 10:41:56] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-01-22 10:41:57] [0m[36mCLIENT << [0mJOIN                    
+[1m[2025-01-22 10:41:57] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-22 10:41:57] [0m[33m[1mWARNING :: [0mJOIN failed: No channel specified
+[1m[2025-01-22 10:41:57] [0m[35mSERVER >> [0m:461 JOIN :Not enough parameters
+
+[1m[2025-01-22 10:41:57] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-22 10:41:57] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:57] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-22 10:41:57] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:57] [0m[32mINFO :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-01-22 10:41:57] [0m[32mINFO :: [0m+ #channel1		1		PUBLIC
+[1m[2025-01-22 10:41:57] [0m[32mINFO :: [0m+ #channel2		1		PUBLIC
+[1m[2025-01-22 10:41:57] [0m[32mINFO :: [0m+ #channel3		1		PUBLIC
+[1m[2025-01-22 10:41:57] [0m[32mINFO :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-01-22 10:41:57] [0m[32mINFO :: [0m+ #invalid		1		PUBLIC
+[1m[2025-01-22 10:41:57] [0m[32mINFO :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-01-22 10:41:57] [0m[32mINFO :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-01-22 10:41:57] [0m[32mINFO :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-01-22 10:41:57] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:58] [0m[36mCLIENT << [0m# Empty channel name
+[1m[2025-01-22 10:41:58] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-01-22 10:41:59] [0m[36mCLIENT << [0mJOIN #                  
+[1m[2025-01-22 10:41:59] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-22 10:41:59] [0m[33mDEBUG :: [0mCreating new channel: #
+[1m[2025-01-22 10:41:59] [0m[33mDEBUG :: [0mDestroying channel: #
+[1m[2025-01-22 10:41:59] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-22 10:41:59] [0m[32mINFO :: [0mAdded TestUser to channel # (Total members: 1)
+[1m[2025-01-22 10:41:59] [0m[35mSERVER >> [0m:TestUser!Test@127.0.0.1 JOIN :#
+[1m[2025-01-22 10:41:59] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-22 10:41:59] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:59] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-22 10:41:59] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:41:59] [0m[32mINFO :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-01-22 10:41:59] [0m[32mINFO :: [0m+ #channel1		1		PUBLIC
+[1m[2025-01-22 10:41:59] [0m[32mINFO :: [0m+ #channel2		1		PUBLIC
+[1m[2025-01-22 10:41:59] [0m[32mINFO :: [0m+ #channel3		1		PUBLIC
+[1m[2025-01-22 10:41:59] [0m[32mINFO :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-01-22 10:41:59] [0m[32mINFO :: [0m+ #invalid		1		PUBLIC
+[1m[2025-01-22 10:41:59] [0m[32mINFO :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-01-22 10:41:59] [0m[32mINFO :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-01-22 10:41:59] [0m[32mINFO :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-01-22 10:41:59] [0m[32mINFO :: [0m+ #		1		PUBLIC
+[1m[2025-01-22 10:41:59] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:42:00] [0m[36mCLIENT << [0m# Trailing comma
+[1m[2025-01-22 10:42:00] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-01-22 10:42:01] [0m[36mCLIENT << [0mJOIN #channel1,         
+[1m[2025-01-22 10:42:01] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-22 10:42:01] [0m[33m[1mWARNING :: [0mTestUser is already in channel #channel1
+[1m[2025-01-22 10:42:01] [0m[35mSERVER >> [0m:443 TestUser #channel1 :is already on channel
+
+[1m[2025-01-22 10:42:01] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-22 10:42:01] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:42:01] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-22 10:42:01] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:42:01] [0m[32mINFO :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-01-22 10:42:01] [0m[32mINFO :: [0m+ #channel1		1		PUBLIC
+[1m[2025-01-22 10:42:01] [0m[32mINFO :: [0m+ #channel2		1		PUBLIC
+[1m[2025-01-22 10:42:01] [0m[32mINFO :: [0m+ #channel3		1		PUBLIC
+[1m[2025-01-22 10:42:01] [0m[32mINFO :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-01-22 10:42:01] [0m[32mINFO :: [0m+ #invalid		1		PUBLIC
+[1m[2025-01-22 10:42:01] [0m[32mINFO :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-01-22 10:42:01] [0m[32mINFO :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-01-22 10:42:01] [0m[32mINFO :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-01-22 10:42:01] [0m[32mINFO :: [0m+ #		1		PUBLIC
+[1m[2025-01-22 10:42:01] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:42:02] [0m[36mCLIENT << [0m# Trailing comma with multiple channels
+[1m[2025-01-22 10:42:02] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-01-22 10:42:03] [0m[36mCLIENT << [0mJOIN #channel1,#        
+[1m[2025-01-22 10:42:03] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-22 10:42:03] [0m[33m[1mWARNING :: [0mTestUser is already in channel #channel1
+[1m[2025-01-22 10:42:03] [0m[33m[1mWARNING :: [0mTestUser is already in channel #
+[1m[2025-01-22 10:42:03] [0m[35mSERVER >> [0m:443 TestUser #channel1 :is already on channel
+:443 TestUser # :is already on channel
+
+[1m[2025-01-22 10:42:03] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-22 10:42:03] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:42:03] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-22 10:42:03] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:42:03] [0m[32mINFO :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-01-22 10:42:03] [0m[32mINFO :: [0m+ #channel1		1		PUBLIC
+[1m[2025-01-22 10:42:03] [0m[32mINFO :: [0m+ #channel2		1		PUBLIC
+[1m[2025-01-22 10:42:03] [0m[32mINFO :: [0m+ #channel3		1		PUBLIC
+[1m[2025-01-22 10:42:03] [0m[32mINFO :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-01-22 10:42:03] [0m[32mINFO :: [0m+ #invalid		1		PUBLIC
+[1m[2025-01-22 10:42:03] [0m[32mINFO :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-01-22 10:42:03] [0m[32mINFO :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-01-22 10:42:03] [0m[32mINFO :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-01-22 10:42:03] [0m[32mINFO :: [0m+ #		1		PUBLIC
+[1m[2025-01-22 10:42:03] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:42:05] [0m[36mCLIENT << [0m# Cleanup: Leaving all channels
+[1m[2025-01-22 10:42:05] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-01-22 10:42:06] [0m[36mCLIENT << [0mPART #testchannel,#channel1,#channel2,#channel3,#securechannel,#invalid,channel,#bannedchannel,#inviteonlychannel,#limitedchannel
+[1m[2025-01-22 10:42:06] [0m[33mDEBUG :: [0mProcessing command: PART
+[1m[2025-01-22 10:42:06] [0m[31mERROR :: [0mPART failed: Invalid channel name #testchannel,#channel1,#channel2,#channel3,#securechannel,#invalid,channel,#bannedchannel,#inviteonlychannel,#limitedchannel
+[1m[2025-01-22 10:42:06] [0m[35mSERVER >> [0m:403 #testchannel,#channel1,#channel2,#channel3,#securechannel,#invalid,channel,#bannedchannel,#inviteonlychannel,#limitedchannel :Invalid channel name
+
+[1m[2025-01-22 10:42:06] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-22 10:42:06] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:42:06] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-22 10:42:06] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:42:06] [0m[32mINFO :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-01-22 10:42:06] [0m[32mINFO :: [0m+ #channel1		1		PUBLIC
+[1m[2025-01-22 10:42:06] [0m[32mINFO :: [0m+ #channel2		1		PUBLIC
+[1m[2025-01-22 10:42:06] [0m[32mINFO :: [0m+ #channel3		1		PUBLIC
+[1m[2025-01-22 10:42:06] [0m[32mINFO :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-01-22 10:42:06] [0m[32mINFO :: [0m+ #invalid		1		PUBLIC
+[1m[2025-01-22 10:42:06] [0m[32mINFO :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-01-22 10:42:06] [0m[32mINFO :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-01-22 10:42:06] [0m[32mINFO :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-01-22 10:42:06] [0m[32mINFO :: [0m+ #		1		PUBLIC
+[1m[2025-01-22 10:42:06] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:42:08] [0m[36mCLIENT << [0mQUIT :JOIN command testing complete
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mProcessing command: QUIT
+[1m[2025-01-22 10:42:08] [0m[32mINFO :: [0mTestUser has quit
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mRemoved TestUser from channel #testchannel (Remaining members: 0)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mRemoved TestUser from channel #channel1 (Remaining members: 0)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mRemoved TestUser from channel #channel2 (Remaining members: 0)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mRemoved TestUser from channel #channel3 (Remaining members: 0)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mRemoved TestUser from channel #securechannel (Remaining members: 0)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mRemoved TestUser from channel #invalid (Remaining members: 0)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mRemoved TestUser from channel #bannedchannel (Remaining members: 0)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mRemoved TestUser from channel #inviteonlychannel (Remaining members: 0)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mRemoved TestUser from channel #limitedchannel (Remaining members: 0)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mRemoved TestUser from channel # (Remaining members: 0)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-01-22 10:42:08] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-01-22 10:42:08] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-22 10:42:08] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:42:08] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-22 10:42:08] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-22 10:42:08] [0m[32mINFO :: [0m+ #testchannel		0		PUBLIC
+[1m[2025-01-22 10:42:08] [0m[32mINFO :: [0m+ #channel1		0		PUBLIC
+[1m[2025-01-22 10:42:08] [0m[32mINFO :: [0m+ #channel2		0		PUBLIC
+[1m[2025-01-22 10:42:08] [0m[32mINFO :: [0m+ #channel3		0		PUBLIC
+[1m[2025-01-22 10:42:08] [0m[32mINFO :: [0m+ #securechannel		0		PRIVATE
+[1m[2025-01-22 10:42:08] [0m[32mINFO :: [0m+ #invalid		0		PUBLIC
+[1m[2025-01-22 10:42:08] [0m[32mINFO :: [0m+ #bannedchannel		0		PUBLIC
+[1m[2025-01-22 10:42:08] [0m[32mINFO :: [0m+ #inviteonlychannel		0		PUBLIC
+[1m[2025-01-22 10:42:08] [0m[32mINFO :: [0m+ #limitedchannel		0		PUBLIC
+[1m[2025-01-22 10:42:08] [0m[32mINFO :: [0m+ #		0		PUBLIC
+[1m[2025-01-22 10:42:08] [0m[32mINFO :: [0m+-------------------------------------------------------

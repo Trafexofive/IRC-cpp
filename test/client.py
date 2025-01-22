@@ -46,9 +46,7 @@ USER = None
 REALNAME = None
 
 
-def debug_print(*args):
-    """Print debug output if debug mode is enabled."""
-    if DEBUG:
+def debug_print(*args): """Print debug output if debug mode is enabled.""" if DEBUG:
         print(f"{GRAY}[DEBUG]{NC}", *args)
 
 

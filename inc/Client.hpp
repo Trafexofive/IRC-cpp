@@ -27,19 +27,19 @@
 
 typedef struct {
   enum TYPE { NORMAL, OPERATOR, OWNER, UNKNOWN };
-int state;
+  int state;
 } CLEARANCE;
 
 typedef struct {
 
-enum TYPE { ACTIVE, IDLE, DONOTDISTURB, UNKNOWN, OFFLINE };
-int state;
+  enum TYPE { ACTIVE, IDLE, DONOTDISTURB, UNKNOWN, OFFLINE };
+  int state;
 
 } STATE;
 
 typedef struct {
-enum TYPE { AUTHENTICATED, REJECTED, REGISTERED, UNKNOWN };
-int state;
+  enum TYPE { AUTHENTICATED, REJECTED, REGISTERED, UNKNOWN };
+  int state;
 } AUTH;
 
 class Client {
@@ -62,6 +62,7 @@ private:
   std::string response;
 
   std::string source; // should be renamed to target
+
   STATE _state;
   AUTH _status;
   CLEARANCE _clearance;
@@ -69,23 +70,25 @@ private:
   int clientType;
 
 public:
+  // constructors
   Client(int fd, struct sockaddr_in ddr);
-Client(); // should be private
-~Client();
+  Client(const Client &obj);
+  Client(); // should be private
+  ~Client();
 
   // Getters
   int getFd() const;
   bool getAuth() const;
   bool getConnected() const;
+
   const std::string &getIpAddr() const;
   const std::string &getFullName() const;
   const std::string &getNickName() const;
   const std::string &getRealName() const { return realName; }
-const std::string &getSource() const { return source; }
+  const std::string &getSource() const { return source; }
   const std::string &getPassWord() const;
   const std::string &getResponse() const;
   const struct sockaddr_in &getClientInfos() const;
-
 
   // Setters
   void setFd(int fd);
@@ -120,7 +123,7 @@ const std::string &getSource() const { return source; }
     else if (type == "NORMAL")
       _clearance.state = CLEARANCE::NORMAL;
     else if (type == "OWNER")
-        _clearance.state = CLEARANCE::OWNER;
+      _clearance.state = CLEARANCE::OWNER;
     else
       _clearance.state = CLEARANCE::UNKNOWN;
   }
@@ -128,10 +131,10 @@ const std::string &getSource() const { return source; }
     if (connected) {
 
       if (nickName.empty()) {
-        std::cout
-            << formatServerMessage(
-                   "WARNING",
-                "NickName is empty, constructing source regardless") << std::endl;
+        std::cout << formatServerMessage(
+                         "WARNING",
+                         "NickName is empty, constructing source regardless")
+                  << std::endl;
       }
       if (realName.empty() && ipAddr.empty()) {
         source = nickName;
