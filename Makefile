@@ -156,7 +156,7 @@ testlog: test
 bulktest:
 	@printf "Running bulk tests...\n"
 	@./.testsuite/bulk-tester.sh -s localhost -p 22200 -f .testsuite/tests/join/join-functionality
-	@bat server.log
+	@less log/runtime-server.log
 
 run: re | $(DIR_LOG)
 	@printf "Running $(NAME)...\n"
@@ -177,7 +177,7 @@ docker:
 
 logs:
 	@printf "Viewing logs...\n"
-	@bat server.log
+	@less log/runtime-server.log
 
 help:
 	@printf "\nAvailable targets:\n"
