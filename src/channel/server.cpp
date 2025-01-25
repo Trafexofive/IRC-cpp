@@ -14,36 +14,6 @@
 #include "../../inc/Server.hpp"
 
 
-// Helper function to check if a name is a valid channel
-// bool isChannel(const std::string& name) {
-//     return (!name.empty() && (name[0] == '#' || name[0] == '&'));
-// }
-
-CHANNEL::TYPE   ChannelType(const std::string &name)
-{
-    if (name[0] == '#')
-        return CHANNEL::PUBLIC;
-    else if (name[0] == '&')
-        return CHANNEL::PRIVATE;
-    return CHANNEL::UNKNOWN;
-}
-
-
-// Helper function to get a channel by name
-Channel& getChannel(const std::string& name, std::vector<Channel>& channels) {
-    for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
-        if (it->getName() == name)
-            return *it;
-    }
-    std::cout << formatServerMessage("ERROR", "Channel " + name + " not found") << std::endl;
-    // loool I hate this
-    throw std::runtime_error("Channel " + name + " not found");
-}
-
-// Helper function to remove a client from a channel
-void removeClientFromChannel(Client& client, Channel& channel) {
-    channel.removeMember(client.getNickName());
-}
 
 // Helper function to handle invalid channel case
 void handleInvalidChannel(Client& client, const std::string& channelName) {

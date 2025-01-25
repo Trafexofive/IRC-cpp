@@ -38,12 +38,13 @@ void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
 
         std::cout << formatServerMessage("DEBUG", client.getNickName() + " attempting to leave " + channelName) << std::endl;
 
-        try {
+        if (!getChannel(channelName, channels).isMember(client.getNickName())) {
             Channel& channel = getChannel(channelName, channels);
-            removeClientFromChannel(client, channel);
+            channel.removeMember(client.getNickName());
             handlePartSuccess(client, channelName);
-        } catch (const std::runtime_error& e) {
-            std::cout << formatServerMessage("ERROR", "PART failed: " + std::string(e.what())) << std::endl;
+        }
+        else {
+            std::cout << formatServerMessage("ERROR", "PART failed: Channel Not Found") << std::endl;
             client.setResponse(formatResponse(ERR_NOSUCHCHAN, channelName + " :No such channel"));
         }
     }
