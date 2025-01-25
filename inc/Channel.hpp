@@ -31,7 +31,8 @@ typedef struct {
     enum TYPE{
         PUBLIC,
         PRIVATE,
-        LOCAL, // if this is allowed Ill handle it.
+        // LOCAL, // if this is allowed Ill handle it.
+        EMPTY,
         UNKNOWN
     };
     int state;
@@ -73,12 +74,16 @@ public:
     const std::string& getPassword() const;
     const std::vector<Client>& getMembers() const;
     std::string getMembersList() const;
-    const std::string getType() const
+    const std::string getState() const
     {
         if (_type.state == CHANNEL::PUBLIC)
             return "PUBLIC";
         else if (_type.state == CHANNEL::PRIVATE)
             return "PRIVATE";
+        // else if (_type.state == CHANNEL::LOCAL)
+        //     return "LOCAL";
+        else if (_type.state == CHANNEL::EMPTY)
+            return "EMPTY";
         else
             return "UNKNOWN";
     }
@@ -87,6 +92,19 @@ public:
     void setName(const std::string& n);
     void setTopic(const std::string& t);
     void setPassword(const std::string& p);
+    void setState(const std::string& s)
+    {
+        if (s == "PUBLIC")
+            _type.state = CHANNEL::PUBLIC;
+        else if (s == "PRIVATE")
+            _type.state = CHANNEL::PRIVATE;
+        // else if (s == "LOCAL")
+        //     _type.state = CHANNEL::LOCAL;
+        else if (s == "EMPTY")
+            _type.state = CHANNEL::EMPTY;
+        else
+            _type.state = CHANNEL::UNKNOWN;
+    }
 
     // Member management methods
     void addMember(const Client& member);

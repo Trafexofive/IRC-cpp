@@ -101,7 +101,7 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
   }
   Channel &channel = getChannel(channelName, channels);
 
-  if (channel.getType() == "PRIVATE" &&
+  if (channel.getState() == "PRIVATE" &&
       !channel.isMember(client.getNickName())) {
     std::cout << formatServerMessage("WARNING",
                                      "JOIN failed: Channel requires a key")
@@ -135,7 +135,7 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
   }
   Channel &channel = getChannel(channelName, channels);
 
-  if (channel.getType() == "PUBLIC" &&
+  if (channel.getState() == "PUBLIC" &&
       !channel.isMember(client.getNickName())) {
     joinChannel(client, channelName);
     return;
@@ -150,7 +150,7 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
                                           " :is already on channel"));
     return;
   }
-  if (channel.getType() == "PRIVATE" && !channel.checkPassword(key)) {
+  if (channel.getState() == "PRIVATE" && !channel.checkPassword(key)) {
     std::cout << formatServerMessage("WARNING",
                                      "JOIN failed: Invalid channel key")
               << std::endl;

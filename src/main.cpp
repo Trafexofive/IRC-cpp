@@ -11,10 +11,11 @@
 /* ************************************************************************** */
 
 #include "../inc/Server.hpp"
+#include <cstdlib>
+#include <list>
 
 
 
-//loooooooool this is shit. needs some 10xing.
 int main(int ac, char** av)
 {
     if (ac != 3 || !av[1] || !av[2])

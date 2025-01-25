@@ -80,7 +80,7 @@ void static displayTable(const std::vector<Channel> &channels) {
        it != channels.end(); ++it) {
     std::ostringstream row;
     row << "+ " << it->getName() << "\t\t" << it->getMembers().size() << "\t\t"
-        << it->getType();
+        << it->getState();
     std::cout << formatServerMessage("INFO", row.str()) << std::endl;
   }
 
@@ -162,11 +162,25 @@ void CoreServer::WriteEvent(int fd) {
   }
 }
 
+void CoreServer::channelDestroyer() {
+  std::vector<Channel>::iterator it = channels.begin();
+  while (it != channels.end()) {
+    if (it->getMembers().empty() || it->getState() == "EMPTY") {
+      std::ostringstream oss;
+      oss << "Channel " << it->getName() << " is empty, removing it";
+      std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
+      channels.erase(it);
+      return;
+    }
+    ++it;
+  }
+}
+
 void CoreServer::leaveAllChannels(int fd) {
   for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end();
        ++it) {
     it->removeMember(clients[fd].getNickName());
-    if (it->getMembers().empty()) {
+    if (it->getMembers().empty() || it->getState() == "EMPTY") {
       std::ostringstream oss;
       oss << "Channel " << it->getName() << " is empty, removing it";
       std::cout << formatServerMessage("INFO", oss.str()) << std::endl;

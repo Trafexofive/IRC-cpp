@@ -142,6 +142,7 @@ public:
                           const std::string &except_nick = "");
 
   void leaveAllChannels(int fd);
+void channelDestroyer();
 };
 
 // Non-member functions for validation

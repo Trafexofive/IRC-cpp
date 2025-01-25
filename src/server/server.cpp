@@ -65,7 +65,9 @@ void CoreServer::start_listening() {
   std::ostringstream oss;
   oss << "Server listening on port: " << ServData.Port;
   std::cout << formatServerMessage("DEBUG", oss.str()) << std::endl;
+
 }
+
 void CoreServer::start_server() {
   std::cout << formatServerMessage("DEBUG", "Server main loop starting...")
             << std::endl;
@@ -78,6 +80,7 @@ void CoreServer::start_server() {
       break;
     }
     for (size_t i = 0; i < fds.size(); i++) {
+
       if (fds[i].revents & POLLIN) {
         if (fds[i].fd == ServData._socket)
           WelcomeClient();

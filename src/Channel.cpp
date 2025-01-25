@@ -41,7 +41,6 @@ Channel::Channel(const std::string& name, const std::string& topic, const std::s
     std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
 }
 
-
 // Destructor
 Channel::~Channel() {
     std::cout << formatServerMessage("DEBUG", "Destroying channel: " + name) << std::endl;
@@ -52,6 +51,7 @@ const std::string& Channel::getName() const { return name; }
 const std::string& Channel::getTopic() const { return topic; }
 const std::string& Channel::getPassword() const { return password; }
 const std::vector<Client>& Channel::getMembers() const { return members; }
+
 std::string getChannelsString(const std::vector<Channel>& channels)
 {
     std::string channelsStr;
@@ -94,6 +94,9 @@ bool Channel::removeMember(const std::string& nickname) {
             std::ostringstream success;
             success << "Removed " << nickname << " from channel " << name << " (Remaining members: " << members.size() << ")";
             std::cout << formatServerMessage("DEBUG", success.str()) << std::endl;
+            if (members.empty()) {
+                this->setState("EMPTY");
+            }
             return true;
         }
     }
