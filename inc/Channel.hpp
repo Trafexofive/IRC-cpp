@@ -52,8 +52,8 @@ private:
     std::string topic;
     std::string password;
 
-    std::vector<Client> &members;
-    std::vector<Client> operators;
+    std::vector<Client *> members;
+    // std::vector<Client> &operators;
 
     CHANNEL _type;
 
@@ -62,18 +62,34 @@ public:
     // Default constructor
     Channel();
     // Parameterized constructors
-    Channel(const std::string& name);
-    Channel(const std::string& name, const std::string& topic);
-    Channel(const std::string& name, const std::string& topic, const std::string& password);
+    Channel(const std::string& name, Client* client);
+    Channel(const std::string& name, const std::string& topic, Client* client);
+    Channel(const std::string& name, const std::string& topic, const std::string& password, Client* client);
     // Destructor
     ~Channel();
+
+    // Channel (const Channel& obj, const Client& client)
+    // {
+    //     name = obj.name;
+    //     topic = obj.topic;
+    //     password = obj.password;
+    //     members = obj.members;
+    //     _type = obj._type;
+    //
+    //     members.push_back(client);
+    // }
+    // const Channel& operator=(const Channel& obj)
+    // {
+    //     
+    //
+    //
+    // }
 
     // Getters
     const std::string& getName() const;
     const std::string& getTopic() const;
     const std::string& getPassword() const;
-    const std::vector<Client>& getMembers() const;
-    std::string getMembersList() const;
+    const std::vector<Client*>& getMembers() const;
     const std::string getState() const
     {
         if (_type.state == CHANNEL::PUBLIC)
@@ -107,9 +123,10 @@ public:
     }
 
     // Member management methods
-    void addMember(const Client& member);
     bool removeMember(const std::string& nickname);
-    bool removeMember(const Client& obj);
+
+    void addMember(Client* member);
+    bool removeMember(Client* obj);
     bool isMember(const std::string& nickname) const;
 
     // Channel-specific methods

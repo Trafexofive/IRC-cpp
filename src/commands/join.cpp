@@ -94,8 +94,8 @@ static void constructJoinMessage(const std::string &source,
 
 void CoreServer::joinChannel(Client &client, const std::string &channelName) {
   if (!isChannel(channelName)) {
-    channels.push_back(Channel(channelName));
-    channels.back().addMember(client);
+    channels.push_back(Channel(channelName, &client));
+    channels.back().addMember(&client);
     constructJoinMessage(client.getSource(), channelName);
     return;
   }
@@ -120,7 +120,7 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
                                           " :is already on channel"));
     return;
   }
-  channel.addMember(client);
+  channel.addMember(&client);
   constructJoinMessage(client.getSource(), channelName);
 }
 
@@ -128,8 +128,8 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
                              const std::string &key) {
   if (!isChannel(channelName)) {
 
-    channels.push_back(Channel(channelName, "", key));
-    channels.back().addMember(client);
+    channels.push_back(Channel(channelName, "", key, &client));
+    channels.back().addMember(&client);
     constructJoinMessage(client.getSource(), channelName);
     return;
   }
@@ -158,7 +158,7 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
         ERR_BADCHANNELKEY, channelName + " :Cannot join channel (+k)"));
     return;
   }
-  channel.addMember(client);
+  channel.addMember(&client);
   constructJoinMessage(client.getSource(), channelName);
 }
 

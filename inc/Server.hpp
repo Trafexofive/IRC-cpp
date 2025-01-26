@@ -6,7 +6,7 @@
 /*   By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 18:05:20 by mlamkadm          #+#    #+#             */
-/*   Updated: 2025/01/02 15:59:34 by mlamkadm         ###   ########.fr       */
+/*   Updated: 2025/01/26 21:51:17 by mlamkadm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,10 @@ public:
                           const std::string &except_nick = "");
 
   void leaveAllChannels(int fd);
-void channelDestroyer();
+
+    void channelDestroyer();
+
+    void displayChannelTable() ;
 };
 
 // Non-member functions for validation

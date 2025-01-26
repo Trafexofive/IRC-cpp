@@ -40,7 +40,6 @@ SRC_FILES := HandleEvents.cpp \
     utils/Utils.cpp \
     commands/cmd.cpp \
     commands/cap.cpp \
-    commands/privmsg.cpp \
     commands/ping.cpp \
     commands/nick.cpp \
     commands/join.cpp \
@@ -54,6 +53,7 @@ SRC_FILES := HandleEvents.cpp \
     Validation.cpp \
     Channel.cpp
 
+# commands/privmsg.cpp \
 # File Management
 SRC := $(addprefix $(DIR_SRC)/, $(SRC_FILES))
 OBJ := $(SRC:$(DIR_SRC)/%.cpp=$(DIR_OBJ)/%.o)

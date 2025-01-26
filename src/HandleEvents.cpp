@@ -60,35 +60,6 @@ void CoreServer::WelcomeClient() {
   fds.push_back(_fd);
 }
 
-void static displayTable(const std::vector<Channel> &channels) {
-  std::cout << formatServerMessage(
-                   "INFO",
-                   "+-Channel Table-----------------------------------------")
-            << std::endl;
-  std::cout << formatServerMessage(
-                   "INFO",
-                   "+-------------------------------------------------------")
-            << std::endl;
-  std::cout << formatServerMessage("INFO", "+ Name\t\tOnline\t\tType")
-            << std::endl;
-  std::cout << formatServerMessage(
-                   "INFO",
-                   "+-------------------------------------------------------")
-            << std::endl;
-
-  for (std::vector<Channel>::const_iterator it = channels.begin();
-       it != channels.end(); ++it) {
-    std::ostringstream row;
-    row << "+ " << it->getName() << "\t\t" << it->getMembers().size() << "\t\t"
-        << it->getState();
-    std::cout << formatServerMessage("INFO", row.str()) << std::endl;
-  }
-
-  std::cout << formatServerMessage(
-                   "INFO",
-                   "+-------------------------------------------------------")
-            << std::endl;
-}
 
 void CoreServer::handleCommand(int fd, const std::string &line) {
     std::cout << formatServerMessage("CLIENT", line) << std::endl;
@@ -124,7 +95,7 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
         (this->*cmdIt->second)(fd, args);
         WriteEvent(fd);
 
-        displayTable(channels);
+        displayChannelTable();
       } catch (const std::exception &e) {
         std::cerr << formatServerMessage(
                          "ERROR", std::string("Failed to execute command: ") +
@@ -177,6 +148,7 @@ void CoreServer::channelDestroyer() {
 }
 
 void CoreServer::leaveAllChannels(int fd) {
+
   for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end();
        ++it) {
     it->removeMember(clients[fd].getNickName());
@@ -202,8 +174,11 @@ void CoreServer::ReadEvent(int fd) {
     std::ostringstream oss;
     oss << "Closing connection FD: " << fd;
     std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
+    displayChannelTable();
 
-    leaveAllChannels(fd);
+    channelDestroyer();
+
+    // leaveAllChannels(fd);
     // if (!leaveAllChannels(fd)) {
     //   std::cout << formatServerMessage("DEBUG", "Client not in any channel")
     //             << std::endl;

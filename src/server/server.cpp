@@ -119,7 +119,7 @@ CoreServer::CoreServer(std::string port, std::string password) {
   commands[NICK] = &CoreServer::cmdNick;
   commands[USER] = &CoreServer::cmdUser;
   commands[JOIN] = &CoreServer::cmdJoin;
-  commands[PRIVMSG] = &CoreServer::cmdPrivmsg;
+  // commands[PRIVMSG] = &CoreServer::cmdPrivmsg;
 // all the commands need to be guarded by a connection check.
   commands[CAP] = &CoreServer::cmdCap;
   commands[PING] = &CoreServer::cmdPing;

@@ -37,3 +37,33 @@ void handlePartSuccess(Client& client, const std::string& channelName) {
     std::cout << formatServerMessage("SUCCESS", client.getNickName() + " left " + channelName) << std::endl;
 }
 
+void CoreServer::displayChannelTable() {
+  std::cout << formatServerMessage(
+                   "INFO",
+                   "+-Channel Table-----------------------------------------")
+            << std::endl;
+  std::cout << formatServerMessage(
+                   "INFO",
+                   "+-------------------------------------------------------")
+            << std::endl;
+  std::cout << formatServerMessage("INFO", "+ Name\t\tOnline\t\tType")
+            << std::endl;
+  std::cout << formatServerMessage(
+                   "INFO",
+                   "+-------------------------------------------------------")
+            << std::endl;
+
+  for (std::vector<Channel>::const_iterator it = channels.begin();
+       it != channels.end(); ++it) {
+    std::ostringstream row;
+    row << "+ " << it->getName() << "\t\t" << it->getMembers().size() << "\t\t"
+        << it->getState();
+    std::cout << formatServerMessage("INFO", row.str()) << std::endl;
+  }
+
+  std::cout << formatServerMessage(
+                   "INFO",
+                   "+-------------------------------------------------------")
+            << std::endl;
+}
+

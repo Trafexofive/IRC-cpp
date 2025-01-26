@@ -13,43 +13,52 @@
 #include "../inc/Server.hpp"
 #include <algorithm>
 
+#include "../inc/Server.hpp"
+#include <algorithm>
 
 /* ************************************************************************** */
 /*                       CONSTRUCTION                                         */
 /* ************************************************************************** */
 
 // Default constructor
-Channel::Channel() : name(""), topic(""), password("") {
-    std::cout << formatServerMessage("DEBUG", "Creating new empty channel") << std::endl;
-    _type.state = CHANNEL::UNKNOWN;
-}
+// Channel::Channel() : name(""), topic(""), password("") {
+//     std::cout << formatServerMessage("DEBUG", "Creating new empty channel") << std::endl;
+//     _type.state = CHANNEL::UNKNOWN;
+// }
 
 // Parameterized constructors
-Channel::Channel(const std::string& name) : name(name), topic(""), password("") {
+Channel::Channel(const std::string& name, Client* client) : name(name), topic(""), password("") {
     std::ostringstream debug;
     debug << "Creating new channel: " << name;
     std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
+
     _type.state = CHANNEL::PUBLIC;
+    members.push_back(client);
 }
 
-Channel::Channel(const std::string& name, const std::string& topic) : name(name), topic(topic), password("") {
+Channel::Channel(const std::string& name, const std::string& topic, Client* client) : name(name), topic(topic), password("") {
     std::ostringstream debug;
     debug << "Creating new channel: " << name << " with topic: " << topic;
     std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
+
     _type.state = CHANNEL::PUBLIC;
+    members.push_back(client);
 }
 
-Channel::Channel(const std::string& name, const std::string& topic, const std::string& password) 
+Channel::Channel(const std::string& name, const std::string& topic, const std::string& password, Client* client) 
     : name(name), topic(topic), password(password) {
     std::ostringstream debug;
     debug << "Creating new channel: " << name << " with topic: " << topic << " and password";
-    _type.state = CHANNEL::PRIVATE;
     std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
+
+    _type.state = CHANNEL::PRIVATE;
+    members.push_back(client);
 }
 
 // Destructor
 Channel::~Channel() {
     std::cout << formatServerMessage("DEBUG", "Destroying channel: " + name) << std::endl;
+    members.clear();
 }
 
 /* ************************************************************************** */
@@ -60,7 +69,7 @@ Channel::~Channel() {
 const std::string& Channel::getName() const { return name; }
 const std::string& Channel::getTopic() const { return topic; }
 const std::string& Channel::getPassword() const { return password; }
-const std::vector<Client>& Channel::getMembers() const { return members; }
+const std::vector<Client*>& Channel::getMembers() const { return members; }
 
 std::string getChannelsString(const std::vector<Channel>& channels)
 {
@@ -84,27 +93,25 @@ void Channel::setPassword(const std::string& p) { password = p; }
 /*                       MANAGEMENT                                           */
 /* ************************************************************************** */
 
-
 // Member management methods
-void Channel::addMember(const Client& member) {
-    for (std::vector<Client>::const_iterator it = members.begin(); it != members.end(); ++it) {
-        if (it->getNickName() == member.getNickName()) {
+void Channel::addMember(Client* member) {
+    for (std::vector<Client*>::const_iterator it = members.begin(); it != members.end(); ++it) {
+        if ((*it)->getNickName() == member->getNickName()) {
             std::ostringstream warning;
-            warning << "User " << member.getNickName() << " is already in channel. Ignoring..." << this->name;
+            warning << "User " << member->getNickName() << " is already in channel. Ignoring..." << this->name;
             std::cout << formatServerMessage("WARNING", warning.str()) << std::endl;
             return;
         }
     }
     members.push_back(member);
     std::ostringstream success;
-    success << "Added " << member.getNickName() << " to channel " << name << " (Total members: " << members.size() << ")";
+    success << "Added " << member->getNickName() << " to channel " << name << " (Total members: " << members.size() << ")";
     std::cout << formatServerMessage("INFO", success.str()) << std::endl;
 }
 
 bool Channel::removeMember(const std::string& nickname) {
-
-    for (std::vector<Client>::iterator it = members.begin(); it != members.end(); ++it) {
-        if (it->getNickName() == nickname) {
+    for (std::vector<Client*>::iterator it = members.begin(); it != members.end(); ++it) {
+        if ((*it)->getNickName() == nickname) {
             members.erase(it);
             std::ostringstream success;
             success << "Removed " << nickname << " from channel " << name << " (Remaining members: " << members.size() << ")";
@@ -119,13 +126,12 @@ bool Channel::removeMember(const std::string& nickname) {
     return false;
 }
 
-bool    Channel::removeMember(const Client& client) {
-
-    for (std::vector<Client>::iterator it = members.begin(); it != members.end(); ++it) {
-        if (it->getNickName() == client.getNickName()) {
+bool Channel::removeMember(Client* client) {
+    for (std::vector<Client*>::iterator it = members.begin(); it != members.end(); ++it) {
+        if ((*it)->getNickName() == client->getNickName()) {
             members.erase(it);
             std::ostringstream success;
-            success << "Removed " << client.getNickName() << " from channel " << name << " (Remaining members: " << members.size() << ")";
+            success << "Removed " << client->getNickName() << " from channel " << name << " (Remaining members: " << members.size() << ")";
             std::cout << formatServerMessage("DEBUG", success.str()) << std::endl;
             if (members.empty()) {
                 this->setState("EMPTY");
@@ -142,9 +148,8 @@ bool    Channel::removeMember(const Client& client) {
 /* ************************************************************************** */
 
 bool Channel::isMember(const std::string& nickname) const {
-
-    for (std::vector<Client>::const_iterator it = members.begin(); it != members.end(); ++it) {
-        if (it->getNickName() == nickname) {
+    for (std::vector<Client*>::const_iterator it = members.begin(); it != members.end(); ++it) {
+        if ((*it)->getNickName() == nickname) {
             return true;
         }
     }
@@ -155,16 +160,16 @@ bool Channel::isMember(const std::string& nickname) const {
 /*                       SECTION/FUNCTION/NAME                                */
 /* ************************************************************************** */
 
-std::string Channel::getMembersList() const {
-    std::ostringstream memberList;
-
-    for (std::vector<Client>::const_iterator it = members.begin(); it != members.end(); ++it) {
-        if (it != members.begin())
-            memberList << " ";
-        memberList << it->getNickName();
-    }
-    return memberList.str();
-}
+// std::string Channel::getMembersList() const {
+//     std::ostringstream memberList;
+//
+//     for (std::vector<Client*>::const_iterator it = members.begin(); it != members.end(); ++it) {
+//         if (it != members.begin())
+//             memberList << " ";
+//         memberList << (*it)->getNickName();
+//     }
+//     return memberList.str();
+// }
 
 void Channel::clearMembers() {
     members.clear();
@@ -185,11 +190,10 @@ bool Channel::checkPassword(const std::string& pass) const {
     return password == pass;
 }
 
-
 void Channel::broadcast(const std::string& message) {
-    for (std::vector<Client>::iterator it = members.begin(); it != members.end(); ++it) {
-        Client& client = *it;
-        client.setResponse(message);
+    for (std::vector<Client*>::iterator it = members.begin(); it != members.end(); ++it) {
+        Client* client = *it;
+        client->setResponse(message);
     }
 }
 
