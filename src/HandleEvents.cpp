@@ -180,6 +180,7 @@ void CoreServer::leaveAllChannels(int fd) {
   for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end();
        ++it) {
     it->removeMember(clients[fd].getNickName());
+
     if (it->getMembers().empty() || it->getState() == "EMPTY") {
       std::ostringstream oss;
       oss << "Channel " << it->getName() << " is empty, removing it";
@@ -203,9 +204,14 @@ void CoreServer::ReadEvent(int fd) {
     std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
 
     leaveAllChannels(fd);
+    // if (!leaveAllChannels(fd)) {
+    //   std::cout << formatServerMessage("DEBUG", "Client not in any channel")
+    //             << std::endl;
+    // }
 
     std::vector<struct pollfd>::iterator new_end =
         std::remove_if(fds.begin(), fds.end(), FdRemovePredicate(fd));
+
     fds.erase(new_end, fds.end());
     close(fd);
 

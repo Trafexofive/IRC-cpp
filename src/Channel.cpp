@@ -11,6 +11,12 @@
 /* ************************************************************************** */
 
 #include "../inc/Server.hpp"
+#include <algorithm>
+
+
+/* ************************************************************************** */
+/*                       CONSTRUCTION                                         */
+/* ************************************************************************** */
 
 // Default constructor
 Channel::Channel() : name(""), topic(""), password("") {
@@ -46,6 +52,10 @@ Channel::~Channel() {
     std::cout << formatServerMessage("DEBUG", "Destroying channel: " + name) << std::endl;
 }
 
+/* ************************************************************************** */
+/*                       GETTERS && SETTERS                                   */
+/* ************************************************************************** */
+
 // Getters
 const std::string& Channel::getName() const { return name; }
 const std::string& Channel::getTopic() const { return topic; }
@@ -70,6 +80,10 @@ void Channel::setName(const std::string& n) { name = n; }
 void Channel::setTopic(const std::string& t) { topic = t; }
 void Channel::setPassword(const std::string& p) { password = p; }
 
+/* ************************************************************************** */
+/*                       MANAGEMENT                                           */
+/* ************************************************************************** */
+
 
 // Member management methods
 void Channel::addMember(const Client& member) {
@@ -88,6 +102,7 @@ void Channel::addMember(const Client& member) {
 }
 
 bool Channel::removeMember(const std::string& nickname) {
+
     for (std::vector<Client>::iterator it = members.begin(); it != members.end(); ++it) {
         if (it->getNickName() == nickname) {
             members.erase(it);
@@ -100,13 +115,34 @@ bool Channel::removeMember(const std::string& nickname) {
             return true;
         }
     }
-    std::ostringstream error;
-    error << "User " << nickname << " not found in channel " << name;
-    std::cout << formatServerMessage("ERROR", error.str()) << std::endl;
+    std::cout << formatServerMessage("WARNING", "Client Instance Not Found.") << std::endl;
     return false;
 }
 
+bool    Channel::removeMember(const Client& client) {
+
+    for (std::vector<Client>::iterator it = members.begin(); it != members.end(); ++it) {
+        if (it->getNickName() == client.getNickName()) {
+            members.erase(it);
+            std::ostringstream success;
+            success << "Removed " << client.getNickName() << " from channel " << name << " (Remaining members: " << members.size() << ")";
+            std::cout << formatServerMessage("DEBUG", success.str()) << std::endl;
+            if (members.empty()) {
+                this->setState("EMPTY");
+            }
+            return true;
+        }
+    }
+    std::cout << formatServerMessage("WARNING", "Client Instance Not Found.") << std::endl;
+    return false;
+}
+
+/* ************************************************************************** */
+/*                       STATES/TYPES                                         */
+/* ************************************************************************** */
+
 bool Channel::isMember(const std::string& nickname) const {
+
     for (std::vector<Client>::const_iterator it = members.begin(); it != members.end(); ++it) {
         if (it->getNickName() == nickname) {
             return true;
@@ -115,8 +151,13 @@ bool Channel::isMember(const std::string& nickname) const {
     return false;
 }
 
+/* ************************************************************************** */
+/*                       SECTION/FUNCTION/NAME                                */
+/* ************************************************************************** */
+
 std::string Channel::getMembersList() const {
     std::ostringstream memberList;
+
     for (std::vector<Client>::const_iterator it = members.begin(); it != members.end(); ++it) {
         if (it != members.begin())
             memberList << " ";
@@ -132,7 +173,10 @@ void Channel::clearMembers() {
     std::cout << formatServerMessage("INFO", info.str()) << std::endl;
 }
 
-// Utility methods
+/* ************************************************************************** */
+/*                       UTILITY                                              */
+/* ************************************************************************** */
+
 bool Channel::hasPassword() const {
     return !password.empty();
 }
@@ -142,7 +186,6 @@ bool Channel::checkPassword(const std::string& pass) const {
 }
 
 
-// general methods
 void Channel::broadcast(const std::string& message) {
     for (std::vector<Client>::iterator it = members.begin(); it != members.end(); ++it) {
         Client& client = *it;

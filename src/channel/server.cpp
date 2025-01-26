@@ -13,6 +13,15 @@
 
 #include "../../inc/Server.hpp"
 
+Channel& getChannel(const std::string& name, std::vector<Channel>& channels) {
+    for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
+        if (it->getName() == name)
+            return *it;
+    }
+    std::cout << formatServerMessage("ERROR", "Channel " + name + " not found") << std::endl;
+    // loool I hate this
+    throw std::runtime_error("Channel " + name + " not found");
+}
 
 
 // Helper function to handle invalid channel case

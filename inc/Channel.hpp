@@ -52,7 +52,7 @@ private:
     std::string topic;
     std::string password;
 
-    std::vector<Client> members;
+    std::vector<Client> &members;
     std::vector<Client> operators;
 
     CHANNEL _type;
@@ -109,6 +109,7 @@ public:
     // Member management methods
     void addMember(const Client& member);
     bool removeMember(const std::string& nickname);
+    bool removeMember(const Client& obj);
     bool isMember(const std::string& nickname) const;
 
     // Channel-specific methods
