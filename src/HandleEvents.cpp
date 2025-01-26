@@ -76,6 +76,7 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
       return;
     }
 
+
     // Convert command to uppercase
     std::string command = args[0];
     std::string::iterator it;
@@ -85,6 +86,11 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
 
     std::cout << formatServerMessage("DEBUG", "Processing command: " + command)
               << std::endl;
+    const std::vector<Client *> &Members = getMembers(d);
+    // if (!channels.getMembers()empty()) {
+    //   std::cout << formatServerMessage("DEBUG", "Members in channel: " + channels.getMembers().front()->getNickName())
+    //             << std::endl;
+    // }
 
 
     std::map<std::string, CommandHandler>::iterator cmdIt =
@@ -136,7 +142,8 @@ void CoreServer::WriteEvent(int fd) {
 void CoreServer::channelDestroyer() {
   std::vector<Channel>::iterator it = channels.begin();
   while (it != channels.end()) {
-    if (it->getMembers().empty() || it->getState() == "EMPTY") {
+      std::cout << it->getState() << std::endl;
+    if (it->getState() == "EMPTY") {
       std::ostringstream oss;
       oss << "Channel " << it->getName() << " is empty, removing it";
       std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
@@ -170,6 +177,8 @@ void CoreServer::ReadEvent(int fd) {
 
   int dataRead = read(fd, buffer, sizeof(buffer) - 1);
 
+
+    // leaveAllChannels(fd);
   if (dataRead <= 0) {
     std::ostringstream oss;
     oss << "Closing connection FD: " << fd;
@@ -178,11 +187,6 @@ void CoreServer::ReadEvent(int fd) {
 
     channelDestroyer();
 
-    // leaveAllChannels(fd);
-    // if (!leaveAllChannels(fd)) {
-    //   std::cout << formatServerMessage("DEBUG", "Client not in any channel")
-    //             << std::endl;
-    // }
 
     std::vector<struct pollfd>::iterator new_end =
         std::remove_if(fds.begin(), fds.end(), FdRemovePredicate(fd));

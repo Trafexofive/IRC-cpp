@@ -1,32 +1,162 @@
-[1m[2025-01-26 22:08:09] [0m[33mDEBUG :: [0mConstructing Server Class ...
-[1m[2025-01-26 22:08:09] [0m[33mDEBUG :: [0mValidating port: 22200
-[1m[2025-01-26 22:08:09] [0m[33mDEBUG :: [0m
-[1m[2025-01-26 22:08:09] [0m[33mDEBUG :: [0mValidating password
-[1m[2025-01-26 22:08:09] [0m[33mDEBUG :: [0mPassword valid
-[1m[2025-01-26 22:08:09] [0m[33mDEBUG :: [0mCreating socket...
-[1m[2025-01-26 22:08:09] [0m[33mDEBUG :: [0mSocket created: 3
-[1m[2025-01-26 22:08:09] [0m[32mINFO :: [0mServer Socket setup complete
-[1m[2025-01-26 22:08:09] [0m[33mDEBUG :: [0mStarting to listen...
-[1m[2025-01-26 22:08:09] [0m[33mDEBUG :: [0mServer listening on port: 22200
-[1m[2025-01-26 22:08:09] [0m[33mDEBUG :: [0mServer main loop starting...
-[1m[2025-01-26 22:08:13] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-26 22:08:13] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-26 22:08:13] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-01-26 22:08:13] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
-[1m[2025-01-26 22:08:13] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
-[1m[2025-01-26 22:08:13] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
-[1m[2025-01-26 22:08:13] [0m[33mDEBUG :: [0mDisconnecting client fdr(-1)
-[1m[2025-01-26 22:08:13] [0m[33mDEBUG :: [0mClearing client data for fd(-1)
-[1m[2025-01-26 22:08:13] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
-[1m[2025-01-26 22:08:13] [0m[33mDEBUG :: [0mDisconnecting client fdr(-1)
-[1m[2025-01-26 22:08:13] [0m[33mDEBUG :: [0mClearing client data for fd(-1)
-[1m[2025-01-26 22:08:13] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
-[1m[2025-01-26 22:08:13] [0m[33mDEBUG :: [0mDisconnecting client fdr(4)
-[1m[2025-01-26 22:08:13] [0m[33mDEBUG :: [0mClearing client data for fd(4)
-[1m[2025-01-26 22:08:13] [0m[32mINFO :: [0mClient connected
-[1m[2025-01-26 22:08:20] [0m[32mINFO :: [0mClient accepted FD: 4
-[1m[2025-01-26 22:08:20] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-01-26 22:08:20] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
-[1m[2025-01-26 22:08:20] [0m[33mDEBUG :: [0mDisconnecting client fdr(4)
-[1m[2025-01-26 22:08:20] [0m[33mDEBUG :: [0mClearing client data for fd(4)
-[1m[2025-01-26 22:08:20] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-26 22:47:21] [0m[33mDEBUG :: [0mConstructing Server Class ...
+[1m[2025-01-26 22:47:21] [0m[33mDEBUG :: [0mValidating port: 22200
+[1m[2025-01-26 22:47:21] [0m[33mDEBUG :: [0m
+[1m[2025-01-26 22:47:21] [0m[33mDEBUG :: [0mValidating password
+[1m[2025-01-26 22:47:21] [0m[33mDEBUG :: [0mPassword valid
+[1m[2025-01-26 22:47:21] [0m[33mDEBUG :: [0mCreating socket...
+[1m[2025-01-26 22:47:21] [0m[33mDEBUG :: [0mSocket created: 3
+[1m[2025-01-26 22:47:21] [0m[32mINFO :: [0mServer Socket setup complete
+[1m[2025-01-26 22:47:21] [0m[33mDEBUG :: [0mStarting to listen...
+[1m[2025-01-26 22:47:21] [0m[33mDEBUG :: [0mServer listening on port: 22200
+[1m[2025-01-26 22:47:21] [0m[33mDEBUG :: [0mServer main loop starting...
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0mClient connected
+[1m[2025-01-26 22:47:28] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:28] [0m[36mCLIENT << [0mNICK cleverlord
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0mNickname set to: cleverlord
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:28] [0m[36mCLIENT << [0mUSER mlamkadm 0 * :Mohamed Ali Lamkadmi
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0msource: cleverlord!Mohamed@127.0.0.1
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0m| fullName        | mlamkadm                      |
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0m| nickName        | cleverlord                    |
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0m| realName        | Mohamed                       |
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0m| source          | cleverlord!Mohamed@127.0.0.1  |
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0m| clientType      | 32765                         |
+[1m[2025-01-26 22:47:28] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-26 22:47:28] [0m[35mSERVER >> [0m:WeUseArch.localhost 001 cleverlord :Welcome to the WeUseArch IRC Network
+:WeUseArch.localhost 002 cleverlord :Your host is morpheus-server.ddns.net
+:WeUseArch.localhost 003 cleverlord :This server was created 2024-01-11
+:WeUseArch.localhost 004 cleverlord morpheus-server.ddns.net 1.0 usermodes channelmodes
+:WeUseArch.localhost 375 cleverlord :- morpheus-server.ddns.net Message of the Day - 
+:WeUseArch.localhost 372 cleverlord :- Welcome to the WeUseArch IRC Network!
+:WeUseArch.localhost 372 cleverlord :- Enjoy your stay!
+:WeUseArch.localhost 376 cleverlord :End of /MOTD command.
+
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:28] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:31] [0m[36mCLIENT << [0mjoin #test
+[1m[2025-01-26 22:47:31] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-01-26 22:47:31] [0m[33mDEBUG :: [0mCreating new channel: #test
+[1m[2025-01-26 22:47:31] [0m[33mDEBUG :: [0mDestroying channel: #test
+[1m[2025-01-26 22:47:31] [0m[33m[1mWARNING :: [0mUser cleverlord is already in channel. Ignoring...#test
+[1m[2025-01-26 22:47:31] [0m[35mSERVER >> [0m:cleverlord!Mohamed@127.0.0.1 JOIN :#test
+[1m[2025-01-26 22:47:31] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-26 22:47:31] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:31] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-26 22:47:31] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:31] [0m[32mINFO :: [0m+ #test		1		PUBLIC
+[1m[2025-01-26 22:47:31] [0m[32mINFO :: [0m+-------------------------------------------------------
+PUBLIC
+[1m[2025-01-26 22:47:35] [0m[32mINFO :: [0mClosing connection FD: 4
+[1m[2025-01-26 22:47:35] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-26 22:47:35] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:35] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-26 22:47:35] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:35] [0m[32mINFO :: [0m+ #test		1		PUBLIC
+[1m[2025-01-26 22:47:35] [0m[32mINFO :: [0m+-------------------------------------------------------
+PUBLIC
+[1m[2025-01-26 22:47:35] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+PUBLIC
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0mClient accepted FD: 4
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0mClient connected
+PUBLIC
+[1m[2025-01-26 22:47:38] [0m[36mCLIENT << [0mPASS Alilepro135!
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0mClient Authenticated
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+ #test		1		PUBLIC
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:38] [0m[36mCLIENT << [0mNICK cleverlord
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0mProcessing NICK command
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0mNickname set to: cleverlord
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+ #test		1		PUBLIC
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:38] [0m[36mCLIENT << [0mUSER mlamkadm 0 * :Mohamed Ali Lamkadmi
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0mRegistration complete for 
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0msource: cleverlord!Mohamed@127.0.0.1
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0mClient Table:
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0m| Field           | Value                         |
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0m| fdClient        | 4                             |
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0m| auth            | true                          |
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0m| connected       | true                          |
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0m| ipAddr          | 127.0.0.1                     |
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0m| fullName        | mlamkadm                      |
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0m| nickName        | cleverlord                    |
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0m| realName        | Mohamed                       |
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0m| passWord        | Alilepro135!                  |
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0m| response        |                               |
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0m| source          | cleverlord!Mohamed@127.0.0.1  |
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0m| clientType      | 1702109952                    |
+[1m[2025-01-26 22:47:38] [0m[33mDEBUG :: [0m+-----------------+-------------------------------+
+[1m[2025-01-26 22:47:38] [0m[35mSERVER >> [0m:WeUseArch.localhost 001 cleverlord :Welcome to the WeUseArch IRC Network
+:WeUseArch.localhost 002 cleverlord :Your host is morpheus-server.ddns.net
+:WeUseArch.localhost 003 cleverlord :This server was created 2024-01-11
+:WeUseArch.localhost 004 cleverlord morpheus-server.ddns.net 1.0 usermodes channelmodes
+:WeUseArch.localhost 375 cleverlord :- morpheus-server.ddns.net Message of the Day - 
+:WeUseArch.localhost 372 cleverlord :- Welcome to the WeUseArch IRC Network!
+:WeUseArch.localhost 372 cleverlord :- Enjoy your stay!
+:WeUseArch.localhost 376 cleverlord :End of /MOTD command.
+
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+-Channel Table-----------------------------------------
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+ Name		Online		Type
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+-------------------------------------------------------
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+ #test		1		PUBLIC
+[1m[2025-01-26 22:47:38] [0m[32mINFO :: [0m+-------------------------------------------------------

@@ -33,7 +33,7 @@ void CoreServer::cmdQuit(int fd, std::vector<std::string> &args) {
     std::string quitMsg = constructQuitMessage(client, args);
     client.setResponse(quitMsg);
     std::cout << formatServerMessage("INFO", client.getNickName() + " has quit") << std::endl;
-    channelDestroyer();
+    // channelDestroyer();
     std::vector<struct pollfd>::iterator new_end = std::remove_if(fds.begin(), fds.end(), FdPredicate(fd));
     fds.erase(new_end, fds.end());
     close(fd);

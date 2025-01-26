@@ -79,6 +79,7 @@ void CoreServer::start_server() {
       std::cout << formatServerMessage("FATAL", "Poll failed, Server Shutdown") << std::endl;
       break;
     }
+    channelDestroyer();
     for (size_t i = 0; i < fds.size(); i++) {
 
       if (fds[i].revents & POLLIN) {

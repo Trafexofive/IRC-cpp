@@ -90,6 +90,12 @@ public:
     const std::string& getTopic() const;
     const std::string& getPassword() const;
     const std::vector<Client*>& getMembers() const;
+    const std::vector<Client*>& getMembers(const Channel &obj) const
+    {
+        std::vector<Client*> _members = obj.getMembers();
+
+        return _members;
+    }
     const std::string getState() const
     {
         if (_type.state == CHANNEL::PUBLIC)

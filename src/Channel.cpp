@@ -116,7 +116,7 @@ bool Channel::removeMember(const std::string& nickname) {
             std::ostringstream success;
             success << "Removed " << nickname << " from channel " << name << " (Remaining members: " << members.size() << ")";
             std::cout << formatServerMessage("DEBUG", success.str()) << std::endl;
-            if (members.empty()) {
+            if (!members.size()) {
                 this->setState("EMPTY");
             }
             return true;
