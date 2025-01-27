@@ -65,7 +65,6 @@ void CoreServer::start_listening() {
   std::ostringstream oss;
   oss << "Server listening on port: " << ServData.Port;
   std::cout << formatServerMessage("DEBUG", oss.str()) << std::endl;
-
 }
 
 void CoreServer::start_server() {
@@ -76,12 +75,14 @@ void CoreServer::start_server() {
 
     int ret = poll(&fds[0], fds.size(), -1);
     if (ret < 0) {
-      std::cout << formatServerMessage("FATAL", "Poll failed, Server Shutdown") << std::endl;
+      std::cout << formatServerMessage("FATAL", "Poll failed, Server Shutdown")
+                << std::endl;
       break;
     }
     channelDestroyer();
     for (size_t i = 0; i < fds.size(); i++) {
 
+      channelStatusHandler();
       if (fds[i].revents & POLLIN) {
         if (fds[i].fd == ServData._socket)
           WelcomeClient();
@@ -107,11 +108,13 @@ CoreServer::CoreServer(std::string port, std::string password) {
   std::cout << formatServerMessage("DEBUG", "Constructing Server Class ...")
             << std::endl;
   if (!IsValidPort(port, ServData.Port)) {
-    std::cerr << formatServerMessage("FATAL", "Invalid port, exiting ...") << std::endl;
+    std::cerr << formatServerMessage("FATAL", "Invalid port, exiting ...")
+              << std::endl;
     exit(1);
   }
   if (!IsValidPass(password, ServData.Passwd)) {
-    std::cerr << formatServerMessage("FATAL", "Invalid Password, exiting ...") << std::endl;
+    std::cerr << formatServerMessage("FATAL", "Invalid Password, exiting ...")
+              << std::endl;
     DisplayPassInfo();
     exit(1);
   }
@@ -121,7 +124,7 @@ CoreServer::CoreServer(std::string port, std::string password) {
   commands[USER] = &CoreServer::cmdUser;
   commands[JOIN] = &CoreServer::cmdJoin;
   // commands[PRIVMSG] = &CoreServer::cmdPrivmsg;
-// all the commands need to be guarded by a connection check.
+  // all the commands need to be guarded by a connection check.
   commands[CAP] = &CoreServer::cmdCap;
   commands[PING] = &CoreServer::cmdPing;
   commands[PART] = &CoreServer::cmdPart;

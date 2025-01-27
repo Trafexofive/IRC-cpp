@@ -141,11 +141,12 @@ public:
                           const std::string &message,
                           const std::string &except_nick = "");
 
-  void leaveAllChannels(int fd);
+  void leaveAllChannels(const Client &client);
 
     void channelDestroyer();
 
     void displayChannelTable() ;
+    void channelStatusHandler();
 };
 
 // Non-member functions for validation
