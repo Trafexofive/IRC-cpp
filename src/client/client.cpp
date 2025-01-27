@@ -69,6 +69,8 @@ Client::Client(int fd, struct sockaddr_in addr) :
     debug << "Creating new client instance for fd(" << fd << ")";
     std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
 }
+
+
 // Getters
 int Client::getFd() const { return fdClient; }
 bool Client::getAuth() const { return auth; }
@@ -130,6 +132,7 @@ void Client::clearResponse()
 {
     response.clear();
 }
+
 
 Client::~Client()
 {

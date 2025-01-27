@@ -127,20 +127,29 @@ public:
 
   // Member management methods
   bool removeMember(const std::string &nickname);
-  void removeMember(const Client &client) {
-
-    for (std::vector<Client *>::iterator it = members.begin();
-         it != members.end(); ++it) {
-      if ((*it)->getNickName() == client.getNickName()) {
-        members.erase(it);
-        break;
-      }
-    }
-  }
 
   void addMember(Client *member);
   bool removeMember(Client *obj);
+  void removeMember(const Client& member)
+  {
+    for (std::vector<Client *>::iterator it = members.begin(); it != members.end(); ++it) {
+        if ((*it)->getNickName() == member.getNickName()) {
+          members.erase(it);
+          return ;
+        }
+    }
+  }
+
   bool isMember(const std::string &nickname) const;
+  bool isMember(const Client &client) {
+    for (std::vector<Client *>::const_iterator it = members.begin();
+         it != members.end(); ++it) {
+      if ((*it)->getNickName() == client.getNickName())
+        return true;
+    }
+    return false;
+  }
+  bool isMember(Client *client);
 
   // Channel-specific methods
   void clearMembers();
@@ -152,6 +161,25 @@ public:
 
   // General methods
   void broadcast(const std::string &message);
+
+  void purgeClients() {
+    for (std::vector<Client *>::iterator it = members.begin();
+         it != members.end(); ++it) {
+      if ((*it)->getFd() == -1) {
+        members.erase(it);
+        break;
+      }
+    }
+  }
+  void purgeClientsPtr() {
+    for (std::vector<Client *>::iterator it = members.begin();
+         it != members.end(); ++it) {
+      if ((*it) == 0) {
+        members.erase(it);
+        break;
+      }
+    }
+  }
 };
 
 // helper functions

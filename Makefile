@@ -34,10 +34,11 @@ TEST-FILE := $(DIR_TEST)/test-cases/rfc-join.test
 # TEST-FILE := $(DIR_TEST)/test-cases/privmsg.md
 
 # Source Files
-SRC_FILES := HandleEvents.cpp \
+SRC_FILES := events/HandleEvents.cpp \
     server/server.cpp \
+    server/management.cpp \
     client/client.cpp \
-    utils/Utils.cpp \
+	utils/Utils.cpp \
     commands/cmd.cpp \
     commands/cap.cpp \
     commands/ping.cpp \
@@ -48,10 +49,9 @@ SRC_FILES := HandleEvents.cpp \
     commands/user.cpp \
     commands/quit.cpp \
     commands/mode.cpp \
-    channel/server.cpp\
     main.cpp \
     Validation.cpp \
-    Channel.cpp
+	channel/Channel.cpp
 
 # commands/privmsg.cpp \
 # File Management

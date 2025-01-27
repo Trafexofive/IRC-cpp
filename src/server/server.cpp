@@ -79,16 +79,14 @@ void CoreServer::start_server() {
                 << std::endl;
       break;
     }
-    channelDestroyer();
     for (size_t i = 0; i < fds.size(); i++) {
 
-      channelStatusHandler();
       if (fds[i].revents & POLLIN) {
+        channelStatusHandler();
         if (fds[i].fd == ServData._socket)
           WelcomeClient();
         else
           ReadEvent(fds[i].fd);
-        // displayActiveConnections(fds);
       }
     }
   }

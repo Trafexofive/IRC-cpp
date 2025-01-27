@@ -106,11 +106,14 @@ public:
   // Constructor and destructor
   CoreServer(std::string port, std::string password);
   ~CoreServer() {
+
     for (std::vector<struct pollfd>::iterator it = fds.begin(); it != fds.end();
          ++it) {
       if (it->fd >= 0)
         close(it->fd);
     }
+    channels.clear();
+    clients.clear();
   }
 
   // Client handling methods
@@ -133,7 +136,10 @@ public:
 
   void addChannel(const std::string &name, const std::string &topic,
                   const std::string &password);
-  void removeChannel(const std::string &name);
+
+  // void removeChannel(const std::string &name);
+  // void removeChannel(const Channel& name);
+
   // void joinSingleChannel(Client &client, const std::string &channelName,
   // const std::string &key);
   void joinSingleChannel(Client &client, const std::string &channelName);
@@ -143,10 +149,11 @@ public:
 
   void leaveAllChannels(const Client &client);
 
-    void channelDestroyer();
+  // void channelDestroyer();
 
-    void displayChannelTable() ;
-    void channelStatusHandler();
+  void displayChannelTable();
+  void channelStatusHandler();
+
 };
 
 // Non-member functions for validation

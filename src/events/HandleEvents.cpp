@@ -9,7 +9,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Server.hpp"
+#include "../../inc/Server.hpp"
 #include <algorithm>
 #include <cstdio>
 #include <netdb.h>
@@ -75,7 +75,6 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
       return;
     }
 
-
     // Convert command to uppercase
     std::string command = args[0];
     std::string::iterator it;
@@ -131,45 +130,6 @@ void CoreServer::WriteEvent(int fd) {
   }
 }
 
-void CoreServer::channelStatusHandler() {
-
-  for (std::vector<Channel>::iterator it = channels.begin();
-       it != channels.end(); ++it) {
-    std::ostringstream oss;
-    oss << "Channel " << it->getName() << " has " << it->getMembers().size()
-        << " members";
-    std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
-
-    if (it->getMembers().size() == 0 || it->getState() == "EMPTY") {
-      std::ostringstream oss;
-      oss << "Channel " << it->getName() << " is empty, removing it";
-      std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
-      channels.erase(it);
-    }
-  }
-}
-
-void CoreServer::channelDestroyer() {
-  std::vector<Channel>::iterator it = channels.begin();
-  while (it != channels.end()) {
-    std::cout << it->getState() << std::endl;
-    if (it->getState() == "EMPTY" || it->getMembers().size() == 0) {
-      std::ostringstream oss;
-      oss << "Channel " << it->getName() << " is empty, removing it";
-      std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
-      channels.erase(it);
-      return;
-    }
-    ++it;
-  }
-}
-
-void CoreServer::leaveAllChannels(const Client &client) {
-  for (std::vector<Channel>::iterator it = channels.begin();
-       it != channels.end(); ++it) {
-    it->removeMember(client);
-  }
-}
 
 // Method to read data from the client
 void CoreServer::ReadEvent(int fd) {
@@ -184,7 +144,7 @@ void CoreServer::ReadEvent(int fd) {
     std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
 
     leaveAllChannels(clients[fd]);
-    displayChannelTable();
+
     std::vector<struct pollfd>::iterator new_end =
         std::remove_if(fds.begin(), fds.end(), FdRemovePredicate(fd));
 
@@ -192,10 +152,11 @@ void CoreServer::ReadEvent(int fd) {
     close(fd);
 
     clients.erase(fd);
+
+    displayChannelTable();
     return;
   }
-    displayChannelTable();
-
+  displayChannelTable();
 
   buffer[dataRead] = '\0';
   std::string input(buffer);
