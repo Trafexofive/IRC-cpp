@@ -99,10 +99,10 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
     constructJoinMessage(client.getSource(), channelName);
     return;
   }
-  Channel &channel = getChannel(channelName, channels);
+  Channel &channel = getChannel(channelName);
 
   if (channel.getState() == "PRIVATE" &&
-      !channel.isMember(client.getNickName())) {
+      !channel.isMember(client)) {
     std::cout << formatServerMessage("WARNING",
                                      "JOIN failed: Channel requires a key")
               << std::endl;
@@ -110,7 +110,7 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
         ERR_BADCHANNELKEY, channelName + " :Cannot join channel (+k)"));
     return;
   }
-  if (channel.isMember(client.getNickName())) {
+  if (channel.isMember(client)) {
     std::cout << formatServerMessage("WARNING", client.getNickName() +
                                                     " is already in channel " +
                                                     channelName)
@@ -133,14 +133,14 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
     constructJoinMessage(client.getSource(), channelName);
     return;
   }
-  Channel &channel = getChannel(channelName, channels);
+  Channel &channel = getChannel(channelName);
 
   if (channel.getState() == "PUBLIC" &&
-      !channel.isMember(client.getNickName())) {
+      !channel.isMember(client)) {
     joinChannel(client, channelName);
     return;
   }
-  if (channel.isMember(client.getNickName())) {
+  if (channel.isMember(client)) {
     std::cout << formatServerMessage("WARNING", client.getNickName() +
                                                     " is already in channel " +
                                                     channelName)

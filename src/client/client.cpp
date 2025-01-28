@@ -140,6 +140,5 @@ Client::~Client()
     std::ostringstream debug;
     debug << "Destroying client instance for fd(" << fdClient << ")";
     std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
-    // this->disconnect();
 
 }

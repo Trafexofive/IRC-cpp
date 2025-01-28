@@ -38,8 +38,8 @@ void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
 
         std::cout << formatServerMessage("DEBUG", client.getNickName() + " attempting to leave " + channelName) << std::endl;
 
-        if (!getChannel(channelName, channels).isMember(client.getNickName())) {
-            Channel& channel = getChannel(channelName, channels);
+        if (!getChannel(channelName).isMember(client)) {
+            Channel& channel = getChannel(channelName);
             channel.removeMember(client.getNickName());
             handlePartSuccess(client, channelName);
         }

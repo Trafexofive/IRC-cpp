@@ -88,6 +88,7 @@ private:
 
   // Command handlers
   void handleCommand(int fd, const std::string &line);
+  void handleDisconnect(int fd);
 
   void cmdNick(int fd, std::vector<std::string> &args);
   void cmdUser(int fd, std::vector<std::string> &args);
@@ -124,6 +125,14 @@ public:
   // Utility methods
 
   bool isChannel(const std::string &name);
+  Channel &getChannel(const std::string &channel) {
+    for  (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
+        if (it->getName() == channel) {
+          return *it;
+        }
+    }
+
+  }
 
   // Getters
   const std::map<int, Client> &getClients() const { return clients; }
@@ -153,6 +162,16 @@ public:
 
   void displayChannelTable();
   void channelStatusHandler();
+
+void removeChannel(const Channel &channel)
+{
+    for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
+        if (it->getName() == channel.getName()) {
+            channels.erase(it);
+            break;
+        }
+    }
+}
 
 };
 

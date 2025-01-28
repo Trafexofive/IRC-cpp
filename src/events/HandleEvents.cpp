@@ -130,6 +130,15 @@ void CoreServer::WriteEvent(int fd) {
   }
 }
 
+void CoreServer::handleDisconnect(int fd) {
+  leaveAllChannels(clients[fd]);
+  std::vector<struct pollfd>::iterator new_end =
+      std::remove_if(fds.begin(), fds.end(), FdRemovePredicate(fd));
+  fds.erase(new_end, fds.end());
+  close(fd);
+  clients.erase(fd);
+  displayChannelTable();
+}
 
 // Method to read data from the client
 void CoreServer::ReadEvent(int fd) {
@@ -143,17 +152,18 @@ void CoreServer::ReadEvent(int fd) {
     oss << "Closing connection FD: " << fd;
     std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
 
-    leaveAllChannels(clients[fd]);
-
-    std::vector<struct pollfd>::iterator new_end =
-        std::remove_if(fds.begin(), fds.end(), FdRemovePredicate(fd));
-
-    fds.erase(new_end, fds.end());
-    close(fd);
-
-    clients.erase(fd);
-
-    displayChannelTable();
+    // leaveAllChannels(clients[fd]);
+    //
+    // std::vector<struct pollfd>::iterator new_end =
+    //     std::remove_if(fds.begin(), fds.end(), FdRemovePredicate(fd));
+    //
+    // fds.erase(new_end, fds.end());
+    // close(fd);
+    //
+    // clients.erase(fd);
+    //
+    // displayChannelTable();
+    handleDisconnect(fd);
     return;
   }
   displayChannelTable();

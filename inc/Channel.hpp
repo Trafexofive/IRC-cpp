@@ -140,7 +140,6 @@ public:
     }
   }
 
-  bool isMember(const std::string &nickname) const;
   bool isMember(const Client &client) {
     for (std::vector<Client *>::const_iterator it = members.begin();
          it != members.end(); ++it) {
@@ -162,7 +161,7 @@ public:
   // General methods
   void broadcast(const std::string &message);
 
-  void purgeClients() {
+  void purgeClientsPtr() {
     for (std::vector<Client *>::iterator it = members.begin();
          it != members.end(); ++it) {
       if ((*it)->getFd() == -1) {
@@ -171,15 +170,7 @@ public:
       }
     }
   }
-  void purgeClientsPtr() {
-    for (std::vector<Client *>::iterator it = members.begin();
-         it != members.end(); ++it) {
-      if ((*it) == 0) {
-        members.erase(it);
-        break;
-      }
-    }
-  }
+
 };
 
 // helper functions

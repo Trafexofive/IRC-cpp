@@ -32,6 +32,7 @@ Channel::Channel(const std::string &name, Client *client)
 Channel::Channel(const std::string &name, const std::string &topic,
                  Client *client)
     : name(name), topic(topic), password("") {
+
   std::ostringstream debug;
   debug << "Creating new channel: " << name << " with topic: " << topic;
   std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
@@ -155,15 +156,7 @@ bool Channel::removeMember(Client *client) {
 /*                       STATES/TYPES                                         */
 /* ************************************************************************** */
 
-bool Channel::isMember(const std::string &nickname) const {
-  for (std::vector<Client *>::const_iterator it = members.begin();
-       it != members.end(); ++it) {
-    if ((*it)->getNickName() == nickname) {
-      return true;
-    }
-  }
-  return false;
-}
+
 
 /* ************************************************************************** */
 /*                       SECTION/FUNCTION/NAME                                */
