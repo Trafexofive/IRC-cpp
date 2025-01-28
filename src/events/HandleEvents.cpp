@@ -28,6 +28,7 @@ public:
 
 // Method to welcome a new client
 void CoreServer::WelcomeClient() {
+
   struct sockaddr_in client_addr;
   socklen_t client_len = sizeof(client_addr);
 
@@ -130,13 +131,28 @@ void CoreServer::WriteEvent(int fd) {
   }
 }
 
+void CoreServer::disableClient(int fd) {
+
+    Client& client = clients[fd];
+
+    client.setStatus("DISCONNECTED");
+    client.clear();
+    client.setFd(-1);
+
+    close(fd);
+}
+
+
 void CoreServer::handleDisconnect(int fd) {
+
+
   leaveAllChannels(clients[fd]);
+  disableClient(fd);
+
   std::vector<struct pollfd>::iterator new_end =
       std::remove_if(fds.begin(), fds.end(), FdRemovePredicate(fd));
   fds.erase(new_end, fds.end());
-  close(fd);
-  clients.erase(fd);
+
   displayChannelTable();
 }
 
@@ -152,17 +168,6 @@ void CoreServer::ReadEvent(int fd) {
     oss << "Closing connection FD: " << fd;
     std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
 
-    // leaveAllChannels(clients[fd]);
-    //
-    // std::vector<struct pollfd>::iterator new_end =
-    //     std::remove_if(fds.begin(), fds.end(), FdRemovePredicate(fd));
-    //
-    // fds.erase(new_end, fds.end());
-    // close(fd);
-    //
-    // clients.erase(fd);
-    //
-    // displayChannelTable();
     handleDisconnect(fd);
     return;
   }

@@ -91,10 +91,7 @@ void Client::setFullName(const std::string& user) { fullName = user; }
 void Client::setNickName(const std::string& nick) { nickName = nick; }
 void Client::setPassWord(const std::string& pass) { passWord = pass; }
 void Client::setResponse(const std::string& response) {
-    if (response.empty())
-        return;
-    else
-        this->response += response;
+    this->response += response;
 }
 
 void Client::setClientInfos(const struct sockaddr_in& info) { clientInfos = info; }

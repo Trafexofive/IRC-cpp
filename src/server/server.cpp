@@ -82,11 +82,11 @@ void CoreServer::start_server() {
     for (size_t i = 0; i < fds.size(); i++) {
 
       if (fds[i].revents & POLLIN) {
-        channelStatusHandler();
         if (fds[i].fd == ServData._socket)
           WelcomeClient();
         else
           ReadEvent(fds[i].fd);
+        watchdog();
       }
     }
   }

@@ -134,7 +134,7 @@ public:
   {
     for (std::vector<Client *>::iterator it = members.begin(); it != members.end(); ++it) {
         if ((*it)->getNickName() == member.getNickName()) {
-          members.erase(it);
+            (*it)->setStatus("DISCONNECTED");
           return ;
         }
     }
@@ -143,12 +143,13 @@ public:
   bool isMember(const Client &client) {
     for (std::vector<Client *>::const_iterator it = members.begin();
          it != members.end(); ++it) {
-      if ((*it)->getNickName() == client.getNickName())
-        return true;
+        if ((*it)->getStatus() == "DISCONNECTED")
+            continue;
+        if ((*it)->getNickName() == client.getNickName())
+            return true;
     }
     return false;
   }
-  bool isMember(Client *client);
 
   // Channel-specific methods
   void clearMembers();
@@ -161,15 +162,7 @@ public:
   // General methods
   void broadcast(const std::string &message);
 
-  void purgeClientsPtr() {
-    for (std::vector<Client *>::iterator it = members.begin();
-         it != members.end(); ++it) {
-      if ((*it)->getFd() == -1) {
-        members.erase(it);
-        break;
-      }
-    }
-  }
+int getMemberCount() const ; 
 
 };
 

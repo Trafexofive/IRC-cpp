@@ -45,20 +45,7 @@ class CoreServer;
 
 typedef void (CoreServer::*CommandHandler)(int, std::vector<std::string> &);
 
-template <typename Iterator, typename Predicate>
-Iterator custom_remove_if(Iterator first, Iterator last, Predicate pred) {
-  Iterator result = first;
-  for (; first != last; ++first) {
-    if (!pred(*first)) {
-      if (result != first)
-        *result = *first;
-      ++result;
-    }
-  }
-  return result;
-}
 
-// Predicate for removing file descriptors
 struct FdPredicate {
   int fd_to_remove;
   explicit FdPredicate(int fd) : fd_to_remove(fd) {}
@@ -85,6 +72,7 @@ private:
   // Helper methods
   void disconnectClient(int fd);
   LEVEL purgeAllClients();
+  void purgeEmptyChannels();
 
   // Command handlers
   void handleCommand(int fd, const std::string &line);
@@ -121,6 +109,7 @@ public:
   void WelcomeClient();
   void WriteEvent(int fd);
   void ReadEvent(int fd);
+  void disableClient(int fd);
 
   // Utility methods
 
@@ -152,16 +141,14 @@ public:
   // void joinSingleChannel(Client &client, const std::string &channelName,
   // const std::string &key);
   void joinSingleChannel(Client &client, const std::string &channelName);
-  void broadcastToChannel(const std::string &channelName,
-                          const std::string &message,
-                          const std::string &except_nick = "");
 
   void leaveAllChannels(const Client &client);
 
   // void channelDestroyer();
 
   void displayChannelTable();
-  void channelStatusHandler();
+  void watchdog();
+  void purgeDisconnectedClients();
 
 void removeChannel(const Channel &channel)
 {

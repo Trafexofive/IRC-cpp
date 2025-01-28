@@ -15,7 +15,28 @@
 
 // for all the server methodes that manage clients and channels.
 
-void CoreServer::channelStatusHandler() {
+void CoreServer::purgeDisconnectedClients() {
+    for (std::map <int, Client>::iterator it = clients.begin(); it != clients.end(); ++it) {
+        if (it->second.getStatus() == "DISCONNECTED") {
+            std::cout << formatServerMessage("INFO", "Purging client " + it->second.getNickName()) << std::endl;
+
+            leaveAllChannels(it->second);
+
+            clients.erase(it);
+        }
+    }
+}
+
+void CoreServer::purgeEmptyChannels() {
+    for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
+        if (it->getMemberCount() == 0){
+            std::cout << formatServerMessage("INFO", "Purging empty channel " + it->getName()) << std::endl;
+            channels.erase(it);
+        }
+    }
+}
+
+void CoreServer::watchdog() {
 
   if (channels.empty()) {
     std::cout
@@ -25,27 +46,9 @@ void CoreServer::channelStatusHandler() {
         << std::endl;
     return;
   }
-  for (std::vector<Channel>::iterator it = channels.begin();
-       it != channels.end(); ++it) {
-    it->purgeClientsPtr();
-    if (channels.empty()) {
-      std::cout << formatServerMessage("WARNING",
-                                       "No channels available, return from "
-                                       "channelStatusHandler Scope")
-                << std::endl;
-      return;
-    }
 
-    std::cerr << formatServerMessage("INFO", "Members: ")
-              << it->getMembers().size() << std::endl;
-    if (it->getMembers().size() == 0) {
-      std::ostringstream oss;
-      oss << "Channel " << it->getName() << " is empty, removing it";
-      std::cerr << formatServerMessage("INFO", oss.str()) << std::endl;
-
-      channels.erase(it);
-    }
-  }
+  purgeEmptyChannels();
+  purgeDisconnectedClients();
 }
 
 void CoreServer::leaveAllChannels(const Client &client) {
@@ -109,7 +112,7 @@ void CoreServer::displayChannelTable() {
   for (std::vector<Channel>::const_iterator it = channels.begin();
        it != channels.end(); ++it) {
     std::ostringstream row;
-    row << "+ " << it->getName() << "\t\t" << it->getMembers().size() << "\t\t"
+    row << "+ " << it->getName() << "\t\t" << it->getMemberCount() << "\t\t"
         << it->getState();
     std::cout << formatServerMessage("INFO", row.str()) << std::endl;
   }

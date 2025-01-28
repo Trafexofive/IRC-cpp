@@ -58,7 +58,6 @@ Channel::~Channel() {
   std::cout << formatServerMessage("DEBUG", "Destroying channel: " + name)
             << std::endl;
   // members.clear();
-  purgeClientsPtr();
 }
 
 /* ************************************************************************** */
@@ -150,6 +149,20 @@ bool Channel::removeMember(Client *client) {
   std::cout << formatServerMessage("WARNING", "Client Instance Not Found.")
             << std::endl;
   return false;
+}
+
+int Channel::getMemberCount() const { 
+    int count = 0;
+    if (this->getMembers().empty()) 
+        return count;
+    for (std::vector<Client *>::const_iterator it = members.begin(); it != members.end(); ++it) {
+        if ((*it)->getStatus() == "DISCONNECTED") {
+            continue;
+        } else {
+            count++;
+        }
+    }
+    return count;
 }
 
 /* ************************************************************************** */

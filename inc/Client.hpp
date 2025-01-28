@@ -38,9 +38,9 @@ typedef struct {
 } STATE;
 
 typedef struct {
-  enum TYPE { AUTHENTICATED, REJECTED, REGISTERED, UNKNOWN };
+  enum TYPE { AUTHENTICATED, DISCONNECTED, REGISTERED, UNKNOWN };
   int state;
-} AUTH;
+} STATUS;
 
 class Client {
 private:
@@ -64,7 +64,7 @@ private:
   std::string source; // should be renamed to target
 
   STATE _state;
-  AUTH _status;
+  STATUS _status;
   CLEARANCE _clearance;
 
   int clientType;
@@ -115,6 +115,10 @@ public:
   void authenticate();
   void clear();
   void clearResponse();
+  void setClientInfos(int fd, struct sockaddr_in ddr) {
+    fdClient = fd;
+    clientInfos = ddr;
+  }
 
   void setClientType(int type) { clientType = type; }
   void setClientType(std::string type) {
@@ -127,7 +131,62 @@ public:
     else
       _clearance.state = CLEARANCE::UNKNOWN;
   }
-  void constructSource() {
+  void setState(std::string state) {
+    if (state == "ACTIVE")
+      _state.state = STATE::ACTIVE;
+    else if (state == "IDLE")
+      _state.state = STATE::IDLE;
+    else if (state == "DONOTDISTURB")
+      _state.state = STATE::DONOTDISTURB;
+    else if (state == "OFFLINE")
+      _state.state = STATE::OFFLINE;
+    else
+      _state.state = STATE::UNKNOWN;
+  }
+  void setStatus(const std::string status) {
+    if (status == "AUTHENTICATED")
+      _status.state = STATUS::AUTHENTICATED;
+    else if (status == "DISCONNECTED")
+      _status.state = STATUS::DISCONNECTED;
+    else if (status == "REGISTERED")
+      _status.state = STATUS::REGISTERED;
+    else
+      _status.state = STATUS::UNKNOWN;
+  }
+const std::string getClientType() {
+    if (_clearance.state == CLEARANCE::OPERATOR)
+      return "OPERATOR";
+    else if (_clearance.state == CLEARANCE::NORMAL)
+      return "NORMAL";
+    else if (_clearance.state == CLEARANCE::OWNER)
+      return "OWNER";
+    else
+      return "UNKNOWN";
+}
+const std::string getState() {
+    if (_state.state == STATE::ACTIVE)
+      return "ACTIVE";
+    else if (_state.state == STATE::IDLE)
+      return "IDLE";
+    else if (_state.state == STATE::DONOTDISTURB)
+      return "DONOTDISTURB";
+    else if (_state.state == STATE::OFFLINE)
+      return "OFFLINE";
+    else
+      return "UNKNOWN";
+}
+const std::string getStatus() {
+    if (_status.state == STATUS::AUTHENTICATED)
+      return "AUTHENTICATED";
+    else if (_status.state == STATUS::DISCONNECTED)
+      return "DISCONNECTED";
+    else if (_status.state == STATUS::REGISTERED)
+      return "REGISTERED";
+    else
+      return "UNKNOWN";
+  }
+
+void constructSource() { // should be renamed to constructTarget
     if (connected) {
 
       if (nickName.empty()) {
