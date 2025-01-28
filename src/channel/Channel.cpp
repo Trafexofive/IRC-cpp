@@ -12,7 +12,7 @@
 
 #include "../../inc/Server.hpp"
 #include <algorithm>
-
+#include <iostream>
 
 /* ************************************************************************** */
 /*                       CONSTRUCTION                                         */
@@ -57,7 +57,7 @@ Channel::Channel(const std::string &name, const std::string &topic,
 Channel::~Channel() {
   std::cout << formatServerMessage("DEBUG", "Destroying channel: " + name)
             << std::endl;
-  // members.clear();
+  members.clear();
 }
 
 /* ************************************************************************** */
@@ -69,18 +69,6 @@ const std::string &Channel::getName() const { return name; }
 const std::string &Channel::getTopic() const { return topic; }
 const std::string &Channel::getPassword() const { return password; }
 const std::vector<Client *> &Channel::getMembers() const { return members; }
-
-std::string getChannelsString(const std::vector<Channel> &channels) {
-  std::string channelsStr;
-  channelsStr.clear();
-  for (size_t i = 0; i < channels.size(); ++i) {
-    channelsStr += channels[i].getName();
-    if (i < channels.size() - 1) {
-      channelsStr += " ";
-    }
-  }
-  return channelsStr;
-}
 
 // Setters
 void Channel::setName(const std::string &n) { name = n; }
@@ -119,9 +107,8 @@ bool Channel::removeMember(const std::string &nickname) {
       success << "Removed " << nickname << " from channel " << name
               << " (Remaining members: " << members.size() << ")";
       std::cout << formatServerMessage("DEBUG", success.str()) << std::endl;
-      // if (!members.size()) {
-      //     this->setState("EMPTY");
-      // }
+      if (getMemberCount() == 0)
+        this->setState("EMPTY");
       return true;
     }
   }
@@ -140,9 +127,8 @@ bool Channel::removeMember(Client *client) {
       success << "Removed " << client->getNickName() << " from channel " << name
               << " (Remaining members: " << members.size() << ")";
       std::cout << formatServerMessage("DEBUG", success.str()) << std::endl;
-      // if (members.empty()) {
-      //     this->setState("EMPTY");
-      // }
+      if (getMemberCount() == 0)
+        this->setState("EMPTY");
       return true;
     }
   }
@@ -151,25 +137,42 @@ bool Channel::removeMember(Client *client) {
   return false;
 }
 
-int Channel::getMemberCount() const { 
-    int count = 0;
-    if (this->getMembers().empty()) 
-        return count;
-    for (std::vector<Client *>::const_iterator it = members.begin(); it != members.end(); ++it) {
-        if ((*it)->getStatus() == "DISCONNECTED") {
-            continue;
-        } else {
-            count++;
-        }
+int Channel::getMemberCount() const {
+  int count = 0;
+
+  for (std::vector<Client *>::const_iterator it = members.begin();
+       it != members.end(); ++it) {
+
+    if ((*it)->getStatus() == "DISCONNECTED") {
+      std::cerr << formatServerMessage("WARNING", "Client is disconnected")
+                << std::endl;
+      continue;
+    } else {
+      count++;
     }
-    return count;
+  }
+  if (count == 0) {
+    std::cerr << formatServerMessage(
+                     "WARNING",
+                     "No members in channel, setting status to EMPTY.")
+              << std::endl;
+  }
+  return count;
 }
 
 /* ************************************************************************** */
 /*                       STATES/TYPES                                         */
 /* ************************************************************************** */
 
-
+Channel &CoreServer::getChannel(const std::string &name) {
+  for (std::vector<Channel>::iterator it = channels.begin();
+       it != channels.end(); ++it) {
+    if (it->getName() == name) {
+      return *it;
+    }
+  }
+  // return ;
+}
 
 /* ************************************************************************** */
 /*                       SECTION/FUNCTION/NAME                                */
@@ -189,9 +192,12 @@ int Channel::getMemberCount() const {
 
 void Channel::clearMembers() {
   members.clear();
+
   std::ostringstream info;
   info << "Cleared all members from channel " << name;
   std::cout << formatServerMessage("INFO", info.str()) << std::endl;
+
+  // probably need to set state to empty
 }
 
 /* ************************************************************************** */

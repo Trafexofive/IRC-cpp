@@ -41,9 +41,9 @@ typedef struct {
   bool operatorMode;
   bool keyMode;
 
-}
+} CHANNEL;
 
-CHANNEL;
+typedef enum { SUBSCRIBED, UNSUBSCRIBED, UNKNOWN } CLIENT_STATE;
 
 class Channel {
 private:
@@ -52,6 +52,8 @@ private:
   std::string password;
 
   std::vector<Client *> members;
+
+std::map<int,Client *> clients;
   // std::vector<Client> &operators;
 
   CHANNEL _type;
@@ -134,8 +136,8 @@ public:
   {
     for (std::vector<Client *>::iterator it = members.begin(); it != members.end(); ++it) {
         if ((*it)->getNickName() == member.getNickName()) {
-            (*it)->setStatus("DISCONNECTED");
-          return ;
+            members.erase(it);
+            return ;
         }
     }
   }

@@ -131,22 +131,20 @@ void CoreServer::WriteEvent(int fd) {
   }
 }
 
-void CoreServer::disableClient(int fd) {
+void CoreServer::purgeDisconnectedClients() {
+    for (std::map <int, Client>::iterator it = clients.begin(); it != clients.end(); ++it) {
+        if (it->second.getStatus() == "DISCONNECTED") {
+            std::cout << formatServerMessage("INFO", "Purging client name:" + it->second.getNickName()) << std::endl;
 
-    Client& client = clients[fd];
-
-    client.setStatus("DISCONNECTED");
-    client.clear();
-    client.setFd(-1);
-
-    close(fd);
+            clients.erase(it);
+        }
+    }
 }
 
 
 void CoreServer::handleDisconnect(int fd) {
 
 
-  leaveAllChannels(clients[fd]);
   disableClient(fd);
 
   std::vector<struct pollfd>::iterator new_end =

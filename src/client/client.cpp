@@ -116,8 +116,8 @@ void Client::clear()
     debug << "Clearing client data for fd(" << fdClient << ")";
     std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
 
-    auth = false;
-    connected = false;
+    // auth = false;
+    // connected = false;
     ipAddr.clear();
     fullName.clear();
     nickName.clear();

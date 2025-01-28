@@ -15,23 +15,43 @@
 
 // for all the server methodes that manage clients and channels.
 
-void CoreServer::purgeDisconnectedClients() {
-    for (std::map <int, Client>::iterator it = clients.begin(); it != clients.end(); ++it) {
-        if (it->second.getStatus() == "DISCONNECTED") {
-            std::cout << formatServerMessage("INFO", "Purging client " + it->second.getNickName()) << std::endl;
+void CoreServer::disableClient(int fd) {
 
-            leaveAllChannels(it->second);
+    Client& client = clients[fd];
 
-            clients.erase(it);
-        }
-    }
+    client.setStatus("DISCONNECTED");
+    client.clear();
+
+    close(fd);
+    client.setFd(-1);
 }
 
+
+void CoreServer::disableChannel(const std::string &name) {
+  for (std::vector<Channel>::iterator it = channels.begin();
+       it != channels.end(); ++it) {
+    if (it->getName() == name && it->getState() != "EMPTY") {
+      it->clearMembers();
+      it->setState("EMPTY");
+      break;
+    }
+  }
+}
+
+
 void CoreServer::purgeEmptyChannels() {
+    if (channels.empty()) {
+        std::cout << formatServerMessage("WARNING", "No channels available, return from purgeEmptyChannels Scope") << std::endl;
+        return;
+    }
+    int i = 0;
     for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
-        if (it->getMemberCount() == 0){
+        std::cout << formatServerMessage("DEBUG", "Checking channel index") << std::endl;
+        if (it->getMemberCount() == 0 || it->getState() == "EMPTY") {
             std::cout << formatServerMessage("INFO", "Purging empty channel " + it->getName()) << std::endl;
+
             channels.erase(it);
+            i++;
         }
     }
 }
@@ -48,25 +68,11 @@ void CoreServer::watchdog() {
   }
 
   purgeEmptyChannels();
+
   purgeDisconnectedClients();
 }
 
-void CoreServer::leaveAllChannels(const Client &client) {
-  if (channels.empty()) {
-    std::cout
-        << formatServerMessage(
-               "WARNING",
-               "No channels available, return from leaveAllChannels Scope")
-        << std::endl;
-    return;
-  }
-
-  for (std::vector<Channel>::iterator it = channels.begin();
-       it != channels.end(); ++it) {
-    if (it->isMember(client))
-      it->removeMember(client);
-  }
-}
+// void Coreserver::
 
 // void CoreServer::removeChannel (const Channel& channel)
 // {

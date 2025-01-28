@@ -31,14 +31,12 @@ void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
     for (std::vector<std::string>::size_type i = 1; i < args.size(); ++i) {
         std::string channelName = args[i];
 
+        std::cout << formatServerMessage("DEBUG", client.getNickName() + " attempting to leave " + channelName) << std::endl;
         if (!isChannel(channelName)) {
             handleInvalidChannel(client, channelName);
             continue;
         }
-
-        std::cout << formatServerMessage("DEBUG", client.getNickName() + " attempting to leave " + channelName) << std::endl;
-
-        if (!getChannel(channelName).isMember(client)) {
+        else if (isChannel(channelName)) {
             Channel& channel = getChannel(channelName);
             channel.removeMember(client.getNickName());
             handlePartSuccess(client, channelName);

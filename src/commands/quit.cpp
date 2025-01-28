@@ -30,10 +30,12 @@ static std::string constructQuitMessage(const Client &client, const std::vector<
 
 void CoreServer::cmdQuit(int fd, std::vector<std::string> &args) {
     Client &client = clients[fd];
+
     std::string quitMsg = constructQuitMessage(client, args);
     client.setResponse(quitMsg);
     std::cout << formatServerMessage("INFO", client.getNickName() + " has quit") << std::endl;
-    leaveAllChannels(client);
+
+    disableClient(fd);
     std::vector<struct pollfd>::iterator new_end = std::remove_if(fds.begin(), fds.end(), FdPredicate(fd));
     fds.erase(new_end, fds.end());
     close(fd);

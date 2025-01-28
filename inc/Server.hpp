@@ -109,23 +109,26 @@ public:
   void WelcomeClient();
   void WriteEvent(int fd);
   void ReadEvent(int fd);
+
   void disableClient(int fd);
+  void disableChannel(const std::string &name);
 
   // Utility methods
 
   bool isChannel(const std::string &name);
-  Channel &getChannel(const std::string &channel) {
-    for  (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
-        if (it->getName() == channel) {
-          return *it;
-        }
-    }
-
-  }
+  // Channel &getChannel(const std::string &channel) {
+  //   for  (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
+  //       if (it->getName() == channel) {
+  //         return *it;
+  //       }
+  //   }
+  //
+  // }
 
   // Getters
   const std::map<int, Client> &getClients() const { return clients; }
   const std::vector<Channel> &getChannels() const { return channels; }
+  Channel& getChannel(const std::string &name) ;
 
   // channel methods
   void joinChannel(Client &client, const std::string &channelName);
@@ -135,16 +138,9 @@ public:
   void addChannel(const std::string &name, const std::string &topic,
                   const std::string &password);
 
-  // void removeChannel(const std::string &name);
-  // void removeChannel(const Channel& name);
-
-  // void joinSingleChannel(Client &client, const std::string &channelName,
-  // const std::string &key);
   void joinSingleChannel(Client &client, const std::string &channelName);
 
-  void leaveAllChannels(const Client &client);
-
-  // void channelDestroyer();
+  // void leaveAllChannels(Client &client);
 
   void displayChannelTable();
   void watchdog();

@@ -13,7 +13,6 @@
 #include "../../inc/Server.hpp"
 #include <iostream>
 
-
 typedef struct {
   std::string channels;
   std::string keys;
@@ -80,7 +79,7 @@ bool CoreServer::isChannel(const std::string &name) {
 
   for (std::vector<Channel>::iterator it = channels.begin();
        it != channels.end(); ++it) {
-    if (it->getName() == name)
+    if (it->getName() == name && it->getState() != "EMPTY") 
       return true;
   }
   return false;
@@ -101,8 +100,7 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
   }
   Channel &channel = getChannel(channelName);
 
-  if (channel.getState() == "PRIVATE" &&
-      !channel.isMember(client)) {
+  if (channel.getState() == "PRIVATE" && !channel.isMember(client)) {
     std::cout << formatServerMessage("WARNING",
                                      "JOIN failed: Channel requires a key")
               << std::endl;
@@ -135,8 +133,7 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
   }
   Channel &channel = getChannel(channelName);
 
-  if (channel.getState() == "PUBLIC" &&
-      !channel.isMember(client)) {
+  if (channel.getState() == "PUBLIC" && !channel.isMember(client)) {
     joinChannel(client, channelName);
     return;
   }
