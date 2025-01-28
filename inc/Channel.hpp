@@ -53,7 +53,7 @@ private:
 
   std::vector<Client *> members;
 
-std::map<int,Client *> clients;
+  std::map<int,Client *> clients; // used along side members to keep track of the clients in the channel (using states), handlers still need to change to accomodate changes.
   // std::vector<Client> &operators;
 
   CHANNEL _type;
