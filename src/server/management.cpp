@@ -30,10 +30,9 @@ void CoreServer::disableClient(int fd) {
 void CoreServer::disableChannel(const std::string &name) {
   for (std::vector<Channel>::iterator it = channels.begin();
        it != channels.end(); ++it) {
-    if (it->getName() == name && it->getState() != "EMPTY") {
-      it->clearMembers();
-      it->setState("EMPTY");
-      break;
+    if (it->getName() == name) {
+        it->setChannelType(CHANNEL::EMPTY);
+        return;
     }
   }
 }
@@ -47,7 +46,7 @@ void CoreServer::purgeEmptyChannels() {
     int i = 0;
     for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
         std::cout << formatServerMessage("DEBUG", "Checking channel index") << std::endl;
-        if (it->getMemberCount() == 0 || it->getState() == "EMPTY") {
+        if (it->getMemberCount() == 0 || it->getChannelType() == CHANNEL::EMPTY) {
             std::cout << formatServerMessage("INFO", "Purging empty channel " + it->getName()) << std::endl;
 
             channels.erase(it);
@@ -119,7 +118,7 @@ void CoreServer::displayChannelTable() {
        it != channels.end(); ++it) {
     std::ostringstream row;
     row << "+ " << it->getName() << "\t\t" << it->getMemberCount() << "\t\t"
-        << it->getState();
+        << it->getChannelType();
     std::cout << formatServerMessage("INFO", row.str()) << std::endl;
   }
 

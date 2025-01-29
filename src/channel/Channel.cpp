@@ -26,7 +26,8 @@ Channel::Channel(const std::string &name, Client *client)
   std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
 
   _type.state = CHANNEL::PUBLIC;
-  members.push_back(client);
+    addMember(client);
+
 }
 
 Channel::Channel(const std::string &name, const std::string &topic,
@@ -38,7 +39,7 @@ Channel::Channel(const std::string &name, const std::string &topic,
   std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
 
   _type.state = CHANNEL::PUBLIC;
-  members.push_back(client);
+    addMember(client);
 }
 
 Channel::Channel(const std::string &name, const std::string &topic,
@@ -50,14 +51,14 @@ Channel::Channel(const std::string &name, const std::string &topic,
   std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
 
   _type.state = CHANNEL::PRIVATE;
-  members.push_back(client);
+    addMember(client);
 }
 
 // Destructor
 Channel::~Channel() {
   std::cout << formatServerMessage("DEBUG", "Destroying channel: " + name)
             << std::endl;
-  members.clear();
+// CleanRegistry();
 }
 
 /* ************************************************************************** */
@@ -68,7 +69,6 @@ Channel::~Channel() {
 const std::string &Channel::getName() const { return name; }
 const std::string &Channel::getTopic() const { return topic; }
 const std::string &Channel::getPassword() const { return password; }
-const std::vector<Client *> &Channel::getMembers() const { return members; }
 
 // Setters
 void Channel::setName(const std::string &n) { name = n; }
@@ -80,84 +80,54 @@ void Channel::setPassword(const std::string &p) { password = p; }
 /* ************************************************************************** */
 
 // Member management methods
-void Channel::addMember(Client *member) {
-  for (std::vector<Client *>::const_iterator it = members.begin();
-       it != members.end(); ++it) {
-    if ((*it)->getNickName() == member->getNickName()) {
-      std::ostringstream warning;
-      warning << "User " << member->getNickName()
-              << " is already in channel. Ignoring..." << this->name;
-      std::cout << formatServerMessage("WARNING", warning.str()) << std::endl;
-      return;
+
+void Channel::addMember(Client *client) 
+{
+    for(std::list<ClientEntry>::iterator it = _Registry.begin(); 
+        it != _Registry.end(); ++it) {
+        if(it->client == client) return;
     }
-  }
-  members.push_back(member);
-  std::ostringstream success;
-  success << "Added " << member->getNickName() << " to channel " << name
-          << " (Total members: " << members.size() << ")";
-  std::cout << formatServerMessage("INFO", success.str()) << std::endl;
+    
+    ClientEntry entry;
+    entry.client = client;
+    entry.state = ClientEntry::SUBSCRIBED;
+    _Registry.push_back(entry);
+
 }
 
-bool Channel::removeMember(const std::string &nickname) {
-  for (std::vector<Client *>::iterator it = members.begin();
-       it != members.end(); ++it) {
-    if ((*it)->getNickName() == nickname) {
-      members.erase(it);
-      std::ostringstream success;
-      success << "Removed " << nickname << " from channel " << name
-              << " (Remaining members: " << members.size() << ")";
-      std::cout << formatServerMessage("DEBUG", success.str()) << std::endl;
-      if (getMemberCount() == 0)
-        this->setState("EMPTY");
-      return true;
+void Channel::removeMember(Client *client) 
+{
+    for(std::list<ClientEntry>::iterator it = _Registry.begin(); 
+        it != _Registry.end(); ++it) {
+        if(it->client == client) {
+            it->state = ClientEntry::UNSUBSCRIBED;
+            return;
+        }
     }
-  }
-  std::cout << formatServerMessage("WARNING", "Client Instance Not Found.")
-            << std::endl;
-  return false;
 }
 
-bool Channel::removeMember(Client *client) {
-  for (std::vector<Client *>::iterator it = members.begin();
-       it != members.end(); ++it) {
-
-    if ((*it)->getNickName() == client->getNickName()) {
-      members.erase(it);
-      std::ostringstream success;
-      success << "Removed " << client->getNickName() << " from channel " << name
-              << " (Remaining members: " << members.size() << ")";
-      std::cout << formatServerMessage("DEBUG", success.str()) << std::endl;
-      if (getMemberCount() == 0)
-        this->setState("EMPTY");
-      return true;
+void Channel::removeMember(const std::string &nick) 
+{
+    for(std::list<ClientEntry>::iterator it = _Registry.begin(); 
+        it != _Registry.end(); ++it) {
+        if(it->client->getNickName() == nick) {
+            it->state = ClientEntry::UNSUBSCRIBED;
+            return;
+        }
     }
-  }
-  std::cout << formatServerMessage("WARNING", "Client Instance Not Found.")
-            << std::endl;
-  return false;
 }
+
 
 int Channel::getMemberCount() const {
-  int count = 0;
+    int count = 0;
 
-  for (std::vector<Client *>::const_iterator it = members.begin();
-       it != members.end(); ++it) {
-
-    if ((*it)->getStatus() == "DISCONNECTED") {
-      std::cerr << formatServerMessage("WARNING", "Client is disconnected")
-                << std::endl;
-      continue;
-    } else {
-      count++;
+    for(std::list<ClientEntry>::const_iterator it = _Registry.begin(); 
+        it != _Registry.end(); ++it) {
+        if(it->state == ClientEntry::SUBSCRIBED) count++;
     }
-  }
-  if (count == 0) {
-    std::cerr << formatServerMessage(
-                     "WARNING",
-                     "No members in channel, setting status to EMPTY.")
-              << std::endl;
-  }
-  return count;
+
+    return count;
+
 }
 
 /* ************************************************************************** */
@@ -206,7 +176,7 @@ void Channel::clearMembers() {
 
 bool Channel::hasPassword() const { return !password.empty(); }
 
-bool Channel::checkPassword(const std::string &pass) const {
+bool Channel::validatePassword(const std::string &pass) const {
   return password == pass;
 }
 

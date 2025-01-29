@@ -15,39 +15,31 @@
 #include <algorithm>
 #include <arpa/inet.h>
 #include <iostream>
+#include <list>
 #include <netinet/in.h>
 #include <sstream>
 #include <string>
 #include <sys/socket.h>
 #include <vector>
-#include <list>
 
 #include "Client.hpp"
 #include <string>
 #include <vector>
 
 struct CHANNEL {
-  enum TYPE {
-    PUBLIC,
-    PRIVATE,
-    EMPTY,
-    UNKNOWN
-    // LOCAL, // if this is allowed Ill handle it.
-  };
-
-  int state;
+  enum TYPE { PUBLIC, PRIVATE, EMPTY, UNKNOWN };
+  TYPE type;
 
   bool inviteMode;
   bool topicMode;
   bool operatorMode;
   bool keyMode;
-
 };
 
-typedef enum { SUBSCRIBED, UNSUBSCRIBED, UNKNOWN } CLIENT;
-
 struct ClientEntry {
-  CLIENT state;
+
+  enum TYPE { SUBSCRIBED, UNSUBSCRIBED, UNKNOWN };
+  TYPE state;
   Client *client;
 };
 
@@ -57,13 +49,15 @@ private:
   std::string topic;
   std::string password;
 
-  std::vector<Client *> members;
+  // std::vector<Client *> members;
 
-  std::list<ClientEntry> Registry; // used along side members to keep track of the clients in the channel (using states), handlers still need to change to accomodate changes.
+  std::list<ClientEntry>
+      _Registry; // used along side members to keep track of the clients in the
+                 // channel (using states), handlers still need to change to
+                 // accomomdate changes.
   // std::vector<Client> &operators;
 
-  CHANNEL _type;
-  // CLIENT_STATE _state;
+CHANNEL _settings;
 
 public:
   // Default constructor
@@ -76,103 +70,75 @@ public:
   // Destructor
   ~Channel();
 
-  // Channel (const Channel& obj, const Client& client)
-  // {
-  //     name = obj.name;
-  //     topic = obj.topic;
-  //     password = obj.password;
-  //     members = obj.members;
-  //     _type = obj._type;
-  //
-  //     members.push_back(client);
-  // }
-  // const Channel& operator=(const Channel& obj)
-  // {
-  //
-  //
-  //
-  // }
-
   // Getters
-  const std::string &getName() const;
-  const std::string &getTopic() const;
-  const std::string &getPassword() const;
-  const std::vector<Client *> &getMembers() const;
-  const std::vector<Client *> getMembers(const Channel &obj) const {
-    std::vector<Client *> _members = obj.getMembers();
+const std::string &getName() const { return name; }
+const std::string &getTopic() const { return topic; }
+const std::string &getPassword() const { return password; }
 
-    return _members;
-  }
-  const std::string getState() const {
-    if (_type.state == CHANNEL::PUBLIC)
-      return "PUBLIC";
-    else if (_type.state == CHANNEL::PRIVATE)
-      return "PRIVATE";
-    // else if (_type.state == CHANNEL::LOCAL)
-    //     return "LOCAL";
-    else if (_type.state == CHANNEL::EMPTY)
-      return "EMPTY";
-    else
-      return "UNKNOWN";
-  }
+  const std::list<ClientEntry> &getRegistry() const { return _Registry; };
+
+  CHANNEL::TYPE getChannelType() const { return _settings.type; }
+ClientEntry::TYPE getClientState(Client *client) const {
+    for (std::list<ClientEntry>::const_iterator it = _Registry.begin();
+         it != _Registry.end(); ++it) {
+      if (it->client == client)
+        return it->state;
+    }
+    return ClientEntry::UNKNOWN;
+}
 
   // Setters
   void setName(const std::string &n);
   void setTopic(const std::string &t);
   void setPassword(const std::string &p);
-  void setState(const std::string &s) {
-    if (s == "PUBLIC")
-      _type.state = CHANNEL::PUBLIC;
-    else if (s == "PRIVATE")
-      _type.state = CHANNEL::PRIVATE;
-    // else if (s == "LOCAL")
-    //     _type.state = CHANNEL::LOCAL;
-    else if (s == "EMPTY")
-      _type.state = CHANNEL::EMPTY;
-    else
-      _type.state = CHANNEL::UNKNOWN;
-    // _state.type
-  }
 
-  // Member management methods
-  bool removeMember(const std::string &nickname);
-
-  void addMember(Client *member);
-  bool removeMember(Client *obj);
-  void removeMember(const Client& member)
-  {
-    for (std::vector<Client *>::iterator it = members.begin(); it != members.end(); ++it) {
-        if ((*it)->getNickName() == member.getNickName()) {
-            members.erase(it);
-            return ;
-        }
+  void setChannelType(CHANNEL::TYPE type) { _settings.type = type; }
+  void setClientState(Client *client, ClientEntry::TYPE state) {
+    for (std::list<ClientEntry>::iterator it = _Registry.begin();
+         it != _Registry.end(); ++it) {
+      if (it->client == client) {
+        it->state = state;
+        return;
+      }
     }
   }
 
-  bool isMember(const Client &client) {
-    for (std::vector<Client *>::const_iterator it = members.begin();
-         it != members.end(); ++it) {
-        if ((*it)->getStatus() == "DISCONNECTED")
-            continue;
-        if ((*it)->getNickName() == client.getNickName())
-            return true;
+  // Validation methods
+  bool isMember(Client *client) const {
+    for (std::list<ClientEntry>::const_iterator it = _Registry.begin();
+         it != _Registry.end(); ++it) {
+      if (it->client == client && it->state == ClientEntry::SUBSCRIBED)
+        return true;
     }
     return false;
   }
 
-  // Channel-specific methods
+  bool isMember(Client &client) const {
+    for (std::list<ClientEntry>::const_iterator it = _Registry.begin();
+         it != _Registry.end(); ++it) {
+      if (it->client == &client && it->state == ClientEntry::SUBSCRIBED)
+        return true;
+    }
+    return false;
+  }
+
+  bool hasPassword() const; // should be removed
+  bool validatePassword(
+      const std::string &pass) const; // should be renamed to validate password
+  // Member management methods
+  void removeMember(const std::string &nick);
+  void removeMember(Client *obj);
+
+  void addMember(Client *member);
+
+// clean up methods
   void clearMembers();
 
-  // Utility methods
-  bool hasPassword() const; // should be removed
-  bool checkPassword(
-      const std::string &pass) const; // should be renamed to validate password
 
   // General methods
   void broadcast(const std::string &message);
 
-int getMemberCount() const ; 
-
+  int getMemberCount() const;
 };
 
 // helper functions
