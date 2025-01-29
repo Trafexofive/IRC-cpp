@@ -22,6 +22,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <list>
 
 // System includes
 #include <arpa/inet.h>

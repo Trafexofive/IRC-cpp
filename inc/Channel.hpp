@@ -20,20 +20,21 @@
 #include <string>
 #include <sys/socket.h>
 #include <vector>
+#include <list>
 
 #include "Client.hpp"
 #include <string>
 #include <vector>
 
-typedef struct {
-
+struct CHANNEL {
   enum TYPE {
     PUBLIC,
     PRIVATE,
-    // LOCAL, // if this is allowed Ill handle it.
     EMPTY,
     UNKNOWN
+    // LOCAL, // if this is allowed Ill handle it.
   };
+
   int state;
 
   bool inviteMode;
@@ -41,9 +42,14 @@ typedef struct {
   bool operatorMode;
   bool keyMode;
 
-} CHANNEL;
+};
 
-typedef enum { SUBSCRIBED, UNSUBSCRIBED, UNKNOWN } CLIENT_STATE;
+typedef enum { SUBSCRIBED, UNSUBSCRIBED, UNKNOWN } CLIENT;
+
+struct ClientEntry {
+  CLIENT state;
+  Client *client;
+};
 
 class Channel {
 private:
@@ -53,10 +59,11 @@ private:
 
   std::vector<Client *> members;
 
-  std::map<int,Client *> clients; // used along side members to keep track of the clients in the channel (using states), handlers still need to change to accomodate changes.
+  std::list<ClientEntry> Registry; // used along side members to keep track of the clients in the channel (using states), handlers still need to change to accomodate changes.
   // std::vector<Client> &operators;
 
   CHANNEL _type;
+  // CLIENT_STATE _state;
 
 public:
   // Default constructor
