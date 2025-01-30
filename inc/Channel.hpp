@@ -1,11 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */ /*   Channel.hpp                                        :+:      :+:    :+:   */
+/*                                                        :::      ::::::::   */
+/*   Channel.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/29 21:33:01 by mlamkadm          #+#    #+#             */
-/*   Updated: 2024/12/29 21:33:01 by mlamkadm         ###   ########.fr       */
+/*   Created: 2025/01/30 18:00:13 by mlamkadm          #+#    #+#             */
+/*   Updated: 2025/01/30 18:00:13 by mlamkadm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +22,6 @@
 #include <string>
 #include <sys/socket.h>
 #include <vector>
-
 #include "Client.hpp"
 #include <string>
 #include <vector>
@@ -41,6 +41,7 @@ struct ClientEntry {
   enum TYPE { SUBSCRIBED, UNSUBSCRIBED, UNKNOWN };
   TYPE state;
   Client *client;
+
 };
 
 class Channel {
@@ -76,6 +77,7 @@ public:
   const std::list<ClientEntry> &getRegistry() const { return _Registry; };
 
   CHANNEL::TYPE getChannelType() const { return _settings.type; }
+
   ClientEntry::TYPE getClientState(Client *client) const {
     for (std::list<ClientEntry>::const_iterator it = _Registry.begin();
          it != _Registry.end(); ++it) {
@@ -91,6 +93,7 @@ public:
   void setPassword(const std::string &p);
 
   void setChannelType(CHANNEL::TYPE type) { _settings.type = type; }
+
   void setClientState(Client *client, ClientEntry::TYPE state) {
     for (std::list<ClientEntry>::iterator it = _Registry.begin();
          it != _Registry.end(); ++it) {
@@ -100,6 +103,7 @@ public:
       }
     }
   }
+
   void massSetClientState(ClientEntry::TYPE state) {
     for (std::list<ClientEntry>::iterator it = _Registry.begin();
          it != _Registry.end(); ++it) {
@@ -143,6 +147,7 @@ public:
   void broadcast(const std::string &message);
 
   int getMemberCount() const;
+// Registry and state management.
 };
 
 // helper functions
