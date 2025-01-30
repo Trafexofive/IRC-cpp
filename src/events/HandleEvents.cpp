@@ -73,6 +73,7 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
       args.push_back(arg);
     }
     if (args.empty()) {
+        std::cout << formatServerMessage("DEBUG", "Empty command, Omitting") << std::endl;
       return;
     }
 
@@ -100,11 +101,13 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
                          "ERROR", std::string("Failed to execute command: ") +
                                       command + " - " + e.what())
                   << std::endl;
+        displayChannelTable();
       }
     } else {
       std::cerr << formatServerMessage(
                        "WARNING", std::string("Unknown command: ") + command)
                 << std::endl;
+        displayChannelTable();
     }
   } catch (const std::exception &e) {
     std::cerr << formatServerMessage(
@@ -133,7 +136,7 @@ void CoreServer::WriteEvent(int fd) {
 
 void CoreServer::purgeDisconnectedClients() {
     for (std::map <int, Client>::iterator it = clients.begin(); it != clients.end(); ++it) {
-        if (it->second.getStatus() == "DISCONNECTED") {
+        if (it->second.isStatus(STATUS::DISCONNECTED)) {
             std::cout << formatServerMessage("INFO", "Purging client name:" + it->second.getNickName()) << std::endl;
 
             clients.erase(it);

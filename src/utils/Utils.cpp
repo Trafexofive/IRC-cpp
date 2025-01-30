@@ -85,16 +85,14 @@ void Client::printClientInfo()
     std::cout << formatServerMessage("DEBUG", "+-----------------+-------------------------------+") << std::endl;
     
     printField("fdClient", numberToString(fdClient), COL1_WIDTH, COL2_WIDTH);
-    printField("auth", numberToString(auth), COL1_WIDTH, COL2_WIDTH);
-    printField("connected", numberToString(connected), COL1_WIDTH, COL2_WIDTH);
     printField("ipAddr", ipAddr, COL1_WIDTH, COL2_WIDTH);
     printField("fullName", fullName, COL1_WIDTH, COL2_WIDTH);
     printField("nickName", nickName, COL1_WIDTH, COL2_WIDTH);
     printField("realName", realName, COL1_WIDTH, COL2_WIDTH);
     printField("passWord", passWord, COL1_WIDTH, COL2_WIDTH);
     printField("response", response, COL1_WIDTH, COL2_WIDTH);
-    printField("source", source, COL1_WIDTH, COL2_WIDTH);
-    printField("clientType", numberToString(clientType), COL1_WIDTH, COL2_WIDTH);
+    printField("source", _target, COL1_WIDTH, COL2_WIDTH);
+    printField("clientType", numberToString(_status.state), COL1_WIDTH, COL2_WIDTH);
     
     std::cout << formatServerMessage("DEBUG", "+-----------------+-------------------------------+") << std::endl;
 }

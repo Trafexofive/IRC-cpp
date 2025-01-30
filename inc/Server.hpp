@@ -18,11 +18,11 @@
 #include <cctype>
 #include <cstring>
 #include <iostream>
+#include <list>
 #include <map>
 #include <sstream>
 #include <string>
 #include <vector>
-#include <list>
 
 // System includes
 #include <arpa/inet.h>
@@ -45,7 +45,6 @@
 class CoreServer;
 
 typedef void (CoreServer::*CommandHandler)(int, std::vector<std::string> &);
-
 
 struct FdPredicate {
   int fd_to_remove;
@@ -117,19 +116,11 @@ public:
   // Utility methods
 
   bool isChannel(const std::string &name);
-  // Channel &getChannel(const std::string &channel) {
-  //   for  (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
-  //       if (it->getName() == channel) {
-  //         return *it;
-  //       }
-  //   }
-  //
-  // }
 
   // Getters
   const std::map<int, Client> &getClients() const { return clients; }
   const std::vector<Channel> &getChannels() const { return channels; }
-  Channel& getChannel(const std::string &name) ;
+  Channel *getChannel(const std::string &name);
 
   // channel methods
   void joinChannel(Client &client, const std::string &channelName);
@@ -147,16 +138,19 @@ public:
   void watchdog();
   void purgeDisconnectedClients();
 
-void removeChannel(const Channel &channel)
-{
-    for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
-        if (it->getName() == channel.getName()) {
-            channels.erase(it);
-            break;
-        }
+  void removeChannel(const Channel &channel) {
+    for (std::vector<Channel>::iterator it = channels.begin();
+         it != channels.end(); ++it) {
+      if (it->getName() == channel.getName()) {
+        channels.erase(it);
+        break;
+      }
     }
-}
+  }
 
+bool validatePassword(const std::string &password) {
+    return ServData.Passwd == password;
+}
 };
 
 // Non-member functions for validation

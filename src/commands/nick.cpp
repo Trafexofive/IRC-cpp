@@ -14,7 +14,6 @@
 
 
 void CoreServer::cmdNick(int fd, std::vector<std::string> &args) {
-    std::cout << formatServerMessage("DEBUG", "Processing NICK command") << std::endl;
     if (args.size() < 2) {
         std::cout << formatServerMessage("ERROR", "NICK command failed: No nickname provided") << std::endl;
         clients[fd].setResponse(formatResponse("431", ":No nickname given"));
@@ -39,13 +38,14 @@ void CoreServer::cmdNick(int fd, std::vector<std::string> &args) {
         }
     }
 
+    // setting the nickname
     Client& client = clients[fd];
     std::string oldNick = client.getNickName();
     client.setNickName(nickname);
 
-    if (oldNick.empty()) {
+    if (oldNick.empty() && client.isAuthenticated()) {
         std::cout << formatServerMessage("DEBUG", "Nickname set to: " + nickname) << std::endl;
-        if (client.getAuth() && !client.getFullName().empty()) {
+        if (client.isAuthenticated()) {
             // Send welcome messages using formatResponse
             client.setResponse(formatResponse(RPL_WELCOME, nickname + " :Welcome to the WeUseArch IRC CHAT."));
             client.setResponse(formatResponse(RPL_YOURHOST, nickname + " :Your host is morpheus-server.ddns.net"));

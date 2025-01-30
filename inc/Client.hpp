@@ -4,8 +4,9 @@
 /*   Client.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */ /*   Created: 2025/01/01 11:48:07 by mlamkadm          #+#    #+#             */
-/*   Updated: 2025/01/10 20:14:36 by mlamkadm         ###   ########.fr       */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/30 05:00:23 by mlamkadm          #+#    #+#             */
+/*   Updated: 2025/01/30 05:00:26 by mlamkadm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +26,26 @@
 
 #include "../inc/Helpers.hpp"
 
-typedef struct {
+struct CLEARANCE {
   enum TYPE { NORMAL, OPERATOR, OWNER, UNKNOWN };
-  int state;
-} CLEARANCE;
+  TYPE state;
+};
 
-typedef struct {
-
+struct STATE {
   enum TYPE { ACTIVE, IDLE, DONOTDISTURB, UNKNOWN, OFFLINE };
-  int state;
-
-} STATE;
-
-typedef struct {
+  TYPE state;
+};
+struct STATUS {
   enum TYPE { AUTHENTICATED, DISCONNECTED, REGISTERED, UNKNOWN };
-  int state;
-} STATUS;
+  TYPE state;
+};
 
+// simple load balancer
 class Client {
 private:
   int fdClient;
 
-  bool auth;
-  bool connected;
-
   struct sockaddr_in clientInfos;
-
   std::string ipAddr;
 
   std::string fullName; // username
@@ -58,16 +53,13 @@ private:
   std::string realName;
 
   std::string passWord;
-
   std::string response;
 
-  std::string source; // should be renamed to target
+  std::string _target; // should be renamed to target
 
   STATE _state;
   STATUS _status;
   CLEARANCE _clearance;
-
-  int clientType;
 
 public:
   // constructors
@@ -78,27 +70,23 @@ public:
 
   // Getters
   int getFd() const;
-  bool getAuth() const;
-  bool getConnected() const;
 
   const std::string &getIpAddr() const;
   const std::string &getFullName() const;
   const std::string &getNickName() const;
   const std::string &getRealName() const { return realName; }
-  const std::string &getSource() const { return source; }
+  const std::string &getTarget() const { return _target; }
   const std::string &getPassWord() const;
   const std::string &getResponse() const;
   const struct sockaddr_in &getClientInfos() const;
 
   // Setters
   void setFd(int fd);
-  void setAuth(bool auth);
-  void setConnected(bool connected);
   void setIpAddr(const std::string &ip);
   void setFullName(const std::string &user);
   void setNickName(const std::string &nick);
   void setRealName(const std::string &real) { realName = real; }
-  void setSource(const std::string &src) { source = src; }
+  void setTarget(const std::string &target) { _target = target; }
   void setPassWord(const std::string &pass);
   void setResponse(const std::string &response);
   void setClientInfos(const struct sockaddr_in &info);
@@ -112,6 +100,13 @@ public:
   void logActivity(const std::string &activity);
   void resetPassword(const std::string &newPassword);
 
+  bool isState(STATE::TYPE state) const { return _state.state == state; }
+  bool isStatus(STATUS::TYPE state) const { return _status.state == state; }
+  bool isClearance(CLEARANCE::TYPE state) const {
+    return _clearance.state == state;
+  }
+bool isRegistered() const;
+
   void authenticate();
   void clear();
   void clearResponse();
@@ -120,94 +115,41 @@ public:
     clientInfos = ddr;
   }
 
-  void setClientType(int type) { clientType = type; }
-  void setClientType(std::string type) {
-    if (type == "OPERATOR")
-      _clearance.state = CLEARANCE::OPERATOR;
-    else if (type == "NORMAL")
-      _clearance.state = CLEARANCE::NORMAL;
-    else if (type == "OWNER")
-      _clearance.state = CLEARANCE::OWNER;
-    else
-      _clearance.state = CLEARANCE::UNKNOWN;
-  }
-  void setState(std::string state) {
-    if (state == "ACTIVE")
-      _state.state = STATE::ACTIVE;
-    else if (state == "IDLE")
-      _state.state = STATE::IDLE;
-    else if (state == "DONOTDISTURB")
-      _state.state = STATE::DONOTDISTURB;
-    else if (state == "OFFLINE")
-      _state.state = STATE::OFFLINE;
-    else
-      _state.state = STATE::UNKNOWN;
-  }
-  void setStatus(const std::string status) {
-    if (status == "AUTHENTICATED")
-      _status.state = STATUS::AUTHENTICATED;
-    else if (status == "DISCONNECTED")
-      _status.state = STATUS::DISCONNECTED;
-    else if (status == "REGISTERED")
-      _status.state = STATUS::REGISTERED;
-    else
-      _status.state = STATUS::UNKNOWN;
-  }
-const std::string getClientType() {
-    if (_clearance.state == CLEARANCE::OPERATOR)
-      return "OPERATOR";
-    else if (_clearance.state == CLEARANCE::NORMAL)
-      return "NORMAL";
-    else if (_clearance.state == CLEARANCE::OWNER)
-      return "OWNER";
-    else
-      return "UNKNOWN";
-}
-const std::string getState() {
-    if (_state.state == STATE::ACTIVE)
-      return "ACTIVE";
-    else if (_state.state == STATE::IDLE)
-      return "IDLE";
-    else if (_state.state == STATE::DONOTDISTURB)
-      return "DONOTDISTURB";
-    else if (_state.state == STATE::OFFLINE)
-      return "OFFLINE";
-    else
-      return "UNKNOWN";
-}
-const std::string getStatus() {
-    if (_status.state == STATUS::AUTHENTICATED)
-      return "AUTHENTICATED";
-    else if (_status.state == STATUS::DISCONNECTED)
-      return "DISCONNECTED";
-    else if (_status.state == STATUS::REGISTERED)
-      return "REGISTERED";
-    else
-      return "UNKNOWN";
-  }
+void setRegistered() { _status.state = STATUS::REGISTERED; }
+void setAuthenticated() { _status.state = STATUS::AUTHENTICATED; }
+void setDisconnected() { _status.state = STATUS::DISCONNECTED; }
 
-void constructSource() { // should be renamed to constructTarget
-    if (connected) {
+  void setState(STATE::TYPE state) { _state.state = state; }
+  void setStatus(STATUS::TYPE state) { _status.state = state; }
+  void setClearance(CLEARANCE::TYPE state) { _clearance.state = state; }
 
-      if (nickName.empty()) {
-        std::cout << formatServerMessage(
-                         "WARNING",
-                         "NickName is empty, constructing source regardless")
-                  << std::endl;
-      }
-      if (realName.empty() && ipAddr.empty()) {
-        source = nickName;
-      } else if (ipAddr.empty()) {
-        source = nickName + "!" + realName;
-      } else {
-        source = nickName + "!" + realName + "@" + ipAddr;
-      }
+  STATE getState() const { return _state; }
+  STATUS getStatus() const { return _status; }
+  CLEARANCE getClearance() const { return _clearance; }
 
-      // Output the constructed source for debugging
-      std::cout << formatServerMessage("DEBUG", "source: " + source)
+
+  void constructSource() { // should be renamed to constructTarget
+                           //
+
+    if (nickName.empty()) {
+      std::cout << formatServerMessage(
+                       "WARNING",
+                       "NickName is empty, constructing source regardless")
                 << std::endl;
     }
+    if (realName.empty() && ipAddr.empty()) {
+      _target = nickName;
+    } else if (ipAddr.empty()) {
+      _target = nickName + "!" + realName;
+    } else {
+      _target = nickName + "!" + realName + "@" + ipAddr;
+    }
+
+    // Output the constructed source for debugging
+    std::cout << formatServerMessage("DEBUG", "source: " + _target)
+              << std::endl;
   }
+
   void constructIpAddr() { ipAddr = inet_ntoa(clientInfos.sin_addr); }
   void printClientInfo();
 };

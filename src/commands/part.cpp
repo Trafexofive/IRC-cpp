@@ -37,8 +37,8 @@ void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
             continue;
         }
         else if (isChannel(channelName)) {
-            Channel& channel = getChannel(channelName);
-            channel.removeMember(client.getNickName());
+            Channel* channel = getChannel(channelName);
+            channel->removeMember(client.getNickName());
             handlePartSuccess(client, channelName);
         }
         else {

@@ -19,8 +19,8 @@ void CoreServer::disableClient(int fd) {
 
     Client& client = clients[fd];
 
-    client.setStatus("DISCONNECTED");
-    client.clear();
+    client.isStatus(STATUS::DISCONNECTED);
+    // client.clear();
 
     close(fd);
     client.setFd(-1);
@@ -117,8 +117,9 @@ void CoreServer::displayChannelTable() {
   for (std::vector<Channel>::const_iterator it = channels.begin();
        it != channels.end(); ++it) {
     std::ostringstream row;
+    std::string type = it->getChannelType() == CHANNEL::PUBLIC ? "PUBLIC" : "PRIVATE";
     row << "+ " << it->getName() << "\t\t" << it->getMemberCount() << "\t\t"
-        << it->getChannelType();
+        << type;
     std::cout << formatServerMessage("INFO", row.str()) << std::endl;
   }
 

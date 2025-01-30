@@ -25,9 +25,8 @@ Channel::Channel(const std::string &name, Client *client)
   debug << "Creating new channel: " << name;
   std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
 
-  _type.state = CHANNEL::PUBLIC;
-    addMember(client);
-
+  _settings.type = CHANNEL::PUBLIC;
+  addMember(client);
 }
 
 Channel::Channel(const std::string &name, const std::string &topic,
@@ -38,8 +37,8 @@ Channel::Channel(const std::string &name, const std::string &topic,
   debug << "Creating new channel: " << name << " with topic: " << topic;
   std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
 
-  _type.state = CHANNEL::PUBLIC;
-    addMember(client);
+  _settings.type = CHANNEL::PUBLIC;
+  addMember(client);
 }
 
 Channel::Channel(const std::string &name, const std::string &topic,
@@ -50,15 +49,24 @@ Channel::Channel(const std::string &name, const std::string &topic,
         << " and password";
   std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
 
-  _type.state = CHANNEL::PRIVATE;
-    addMember(client);
+  _settings.type = CHANNEL::PRIVATE;
+  addMember(client);
+}
+
+void Channel::CleanRegistry() {
+  for (std::list<ClientEntry>::iterator it = _Registry.begin();
+       it != _Registry.end(); ++it) {
+    if (it->state == ClientEntry::UNSUBSCRIBED) {
+      _Registry.erase(it);
+    }
+  }
 }
 
 // Destructor
 Channel::~Channel() {
   std::cout << formatServerMessage("DEBUG", "Destroying channel: " + name)
             << std::endl;
-// CleanRegistry();
+  CleanRegistry();
 }
 
 /* ************************************************************************** */
@@ -81,93 +89,78 @@ void Channel::setPassword(const std::string &p) { password = p; }
 
 // Member management methods
 
-void Channel::addMember(Client *client) 
-{
-    for(std::list<ClientEntry>::iterator it = _Registry.begin(); 
-        it != _Registry.end(); ++it) {
-        if(it->client == client) return;
-    }
-    
-    ClientEntry entry;
-    entry.client = client;
-    entry.state = ClientEntry::SUBSCRIBED;
-    _Registry.push_back(entry);
+void Channel::addMember(Client *client) {
+  for (std::list<ClientEntry>::iterator it = _Registry.begin();
+       it != _Registry.end(); ++it) {
+    if (it->client == client)
+      return;
+  }
 
+  ClientEntry entry;
+  entry.client = client;
+  entry.state = ClientEntry::SUBSCRIBED;
+  _Registry.push_back(entry);
 }
 
-void Channel::removeMember(Client *client) 
-{
-    for(std::list<ClientEntry>::iterator it = _Registry.begin(); 
-        it != _Registry.end(); ++it) {
-        if(it->client == client) {
-            it->state = ClientEntry::UNSUBSCRIBED;
-            return;
-        }
+void Channel::removeMember(Client *client) {
+  for (std::list<ClientEntry>::iterator it = _Registry.begin();
+       it != _Registry.end(); ++it) {
+    if (it->client == client) {
+      it->state = ClientEntry::UNSUBSCRIBED;
+      return;
     }
+  }
 }
 
-void Channel::removeMember(const std::string &nick) 
-{
-    for(std::list<ClientEntry>::iterator it = _Registry.begin(); 
-        it != _Registry.end(); ++it) {
-        if(it->client->getNickName() == nick) {
-            it->state = ClientEntry::UNSUBSCRIBED;
-            return;
-        }
+void Channel::removeMember(const std::string &nick) {
+  for (std::list<ClientEntry>::iterator it = _Registry.begin();
+       it != _Registry.end(); ++it) {
+    if (it->client->getNickName() == nick) {
+      it->state = ClientEntry::UNSUBSCRIBED;
+      return;
     }
+  }
 }
-
 
 int Channel::getMemberCount() const {
-    int count = 0;
+  int count = 0;
 
-    for(std::list<ClientEntry>::const_iterator it = _Registry.begin(); 
-        it != _Registry.end(); ++it) {
-        if(it->state == ClientEntry::SUBSCRIBED) count++;
-    }
+  for (std::list<ClientEntry>::const_iterator it = _Registry.begin();
+       it != _Registry.end(); ++it) {
+    if (it->state == ClientEntry::SUBSCRIBED)
+      count++;
+  }
 
-    return count;
-
+  return count;
 }
 
 /* ************************************************************************** */
 /*                       STATES/TYPES                                         */
 /* ************************************************************************** */
 
-Channel &CoreServer::getChannel(const std::string &name) {
-  for (std::vector<Channel>::iterator it = channels.begin();
-       it != channels.end(); ++it) {
-    if (it->getName() == name) {
-      return *it;
+Channel *CoreServer::getChannel(const std::string &name) {
+
+    for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end();
+         ++it) {
+        if (it->getName() == name) {
+        return &(*it);
+        }
     }
-  }
-  // return ;
+    return NULL;
 }
 
 /* ************************************************************************** */
 /*                       SECTION/FUNCTION/NAME                                */
 /* ************************************************************************** */
 
-// std::string Channel::getMembersList() const {
-//     std::ostringstream memberList;
-//
-//     for (std::vector<Client*>::const_iterator it = members.begin(); it !=
-//     members.end(); ++it) {
-//         if (it != members.begin())
-//             memberList << " ";
-//         memberList << (*it)->getNickName();
-//     }
-//     return memberList.str();
-// }
-
 void Channel::clearMembers() {
-  members.clear();
 
   std::ostringstream info;
-  info << "Cleared all members from channel " << name;
+  info << "UNSUBSCRIBING all members from channel " << name;
   std::cout << formatServerMessage("INFO", info.str()) << std::endl;
 
-  // probably need to set state to empty
+  // set all members to unsubscribed
+  massSetClientState(ClientEntry::UNSUBSCRIBED);
 }
 
 /* ************************************************************************** */
@@ -181,9 +174,11 @@ bool Channel::validatePassword(const std::string &pass) const {
 }
 
 void Channel::broadcast(const std::string &message) {
-  for (std::vector<Client *>::iterator it = members.begin();
-       it != members.end(); ++it) {
-    Client *client = *it;
-    client->setResponse(message);
+
+  for (std::list<ClientEntry>::iterator it = _Registry.begin();
+       it != _Registry.end(); ++it) {
+    if (it->state == ClientEntry::SUBSCRIBED) {
+      it->client->setResponse(message);
+    }
   }
 }

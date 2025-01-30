@@ -49,15 +49,13 @@ private:
   std::string topic;
   std::string password;
 
-  // std::vector<Client *> members;
+  std::vector<Client *> members;
 
   std::list<ClientEntry>
-      _Registry; // used along side members to keep track of the clients in the
-                 // channel (using states), handlers still need to change to
-                 // accomomdate changes.
+      _Registry;
   // std::vector<Client> &operators;
 
-CHANNEL _settings;
+  CHANNEL _settings;
 
 public:
   // Default constructor
@@ -71,21 +69,21 @@ public:
   ~Channel();
 
   // Getters
-const std::string &getName() const { return name; }
-const std::string &getTopic() const { return topic; }
-const std::string &getPassword() const { return password; }
+  const std::string &getName() const ;
+  const std::string &getTopic() const ;
+  const std::string &getPassword() const; 
 
   const std::list<ClientEntry> &getRegistry() const { return _Registry; };
 
   CHANNEL::TYPE getChannelType() const { return _settings.type; }
-ClientEntry::TYPE getClientState(Client *client) const {
+  ClientEntry::TYPE getClientState(Client *client) const {
     for (std::list<ClientEntry>::const_iterator it = _Registry.begin();
          it != _Registry.end(); ++it) {
       if (it->client == client)
         return it->state;
     }
     return ClientEntry::UNKNOWN;
-}
+  }
 
   // Setters
   void setName(const std::string &n);
@@ -100,6 +98,12 @@ ClientEntry::TYPE getClientState(Client *client) const {
         it->state = state;
         return;
       }
+    }
+  }
+  void massSetClientState(ClientEntry::TYPE state) {
+    for (std::list<ClientEntry>::iterator it = _Registry.begin();
+         it != _Registry.end(); ++it) {
+      it->state = state;
     }
   }
 
@@ -131,9 +135,9 @@ ClientEntry::TYPE getClientState(Client *client) const {
 
   void addMember(Client *member);
 
-// clean up methods
+  // clean up methods
   void clearMembers();
-
+  void CleanRegistry();
 
   // General methods
   void broadcast(const std::string &message);

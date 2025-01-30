@@ -79,7 +79,7 @@ bool CoreServer::isChannel(const std::string &name) {
 
   for (std::vector<Channel>::iterator it = channels.begin();
        it != channels.end(); ++it) {
-    if (it->getName() == name && it->getState() != "EMPTY") 
+    if (it->getName() == name && it->getChannelType() != CHANNEL::EMPTY)
       return true;
   }
   return false;
@@ -95,12 +95,22 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
   if (!isChannel(channelName)) {
     channels.push_back(Channel(channelName, &client));
     channels.back().addMember(&client);
-    constructJoinMessage(client.getSource(), channelName);
+    constructJoinMessage(client.getTarget(), channelName);
     return;
   }
-  Channel &channel = getChannel(channelName);
+  Channel *channelPtr = getChannel(channelName);
+  if (channelPtr == NULL) {
+    std::cout << formatServerMessage("WARNING",
+                                     "JOIN failed: Channel not found")
+              << std::endl;
+    client.setResponse(
+        formatResponse(ERR_NOSUCHCHAN, channelName + " :No such channel"));
+    return;
+  }
+  Channel &channel = *channelPtr;
 
-  if (channel.getState() == "PRIVATE" && !channel.isMember(client)) {
+  if (channel.getChannelType() == CHANNEL::PRIVATE &&
+      !channel.isMember(client)) {
     std::cout << formatServerMessage("WARNING",
                                      "JOIN failed: Channel requires a key")
               << std::endl;
@@ -119,7 +129,7 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
     return;
   }
   channel.addMember(&client);
-  constructJoinMessage(client.getSource(), channelName);
+  constructJoinMessage(client.getTarget(), channelName);
 }
 
 void CoreServer::joinChannel(Client &client, const std::string &channelName,
@@ -128,12 +138,22 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
 
     channels.push_back(Channel(channelName, "", key, &client));
     channels.back().addMember(&client);
-    constructJoinMessage(client.getSource(), channelName);
+    constructJoinMessage(client.getTarget(), channelName);
     return;
   }
-  Channel &channel = getChannel(channelName);
+  Channel *channelPtr = getChannel(channelName);
+  if (channelPtr == NULL) {
+    std::cout << formatServerMessage("WARNING",
+                                     "JOIN failed: Channel not found")
+              << std::endl;
+    client.setResponse(
+        formatResponse(ERR_NOSUCHCHAN, channelName + " :No such channel"));
+    return;
+  }
+  Channel &channel = *channelPtr;
 
-  if (channel.getState() == "PUBLIC" && !channel.isMember(client)) {
+  if (channel.getChannelType() == CHANNEL::PUBLIC &&
+      !channel.isMember(client)) {
     joinChannel(client, channelName);
     return;
   }
@@ -147,7 +167,8 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
                                           " :is already on channel"));
     return;
   }
-  if (channel.getState() == "PRIVATE" && !channel.checkPassword(key)) {
+  if (channel.getChannelType() == CHANNEL::PRIVATE &&
+      !channel.validatePassword(key)) {
     std::cout << formatServerMessage("WARNING",
                                      "JOIN failed: Invalid channel key")
               << std::endl;
@@ -156,13 +177,13 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
     return;
   }
   channel.addMember(&client);
-  constructJoinMessage(client.getSource(), channelName);
+  constructJoinMessage(client.getTarget(), channelName);
 }
 
 void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
   Client &client = clients[fd];
 
-  if (!client.isAuthenticated()) {
+  if (!client.isRegistered()) {
     std::cout << formatServerMessage("WARNING",
                                      "JOIN failed: Client not authenticated")
               << std::endl;
@@ -170,7 +191,6 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
         formatResponse(ERR_NOTREGISTERED, "JOIN :You have not registered"));
     return;
   }
-
   if (args.size() < 2) {
     std::cout << formatServerMessage("WARNING",
                                      "JOIN failed: No channel specified")

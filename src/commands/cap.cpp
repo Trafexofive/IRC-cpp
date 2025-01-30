@@ -13,6 +13,7 @@
 #include "../../inc/Server.hpp"
 
 // I need to understand this better, cant properly inplement for now
+// Kinda do now ,the logic requires freezing the registration process. until the cap command is done sending the capabilities.
 void CoreServer::cmdCap(int fd, std::vector<std::string> &args) {
     if (args.size() < 2) {
         std::cout << formatServerMessage("ERROR", "CAP failed: No subcommand specified") << std::endl;
