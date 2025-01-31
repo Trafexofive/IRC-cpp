@@ -1,6 +1,7 @@
 #ifndef UTILS_HPP
 #define UTILS_HPP
 
+#include <cstddef>
 #include <string>
 #include <sstream>
 #include <ctime>
@@ -16,9 +17,10 @@
 #define RESET   "\033[0m"
 
 
+// Global functions
+
 std::string formatServerMessage(const std::string& type, const std::string& message);
-
 void    formatArg(std::string &msg);
-
+std::string numberToString(int value);
 
 #endif

@@ -146,7 +146,9 @@ void CoreServer::purgeDisconnectedClients() {
                 << std::endl;
 
       clients.erase(it);
+    _serverStats.totalClients--;
     }
+    _serverStats.totalClients++;
     it = tmp;
   }
 }

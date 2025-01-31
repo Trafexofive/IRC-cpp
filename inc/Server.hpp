@@ -52,12 +52,18 @@ struct FdPredicate {
   bool operator()(const struct pollfd &pfd) const {
     return pfd.fd == fd_to_remove;
   }
+};
 
+struct Stats {
+  int totalClients;
+  int totalChannels;
 };
 
 class CoreServer {
 private:
+
   ServerData ServData;
+  Stats _serverStats;
 
   std::map<int, Client> clients;
   std::vector<struct pollfd> fds;
@@ -75,7 +81,7 @@ private:
   void purgeEmptyChannels();
   void unsubFromChannels(int fd) {
     if (clients[fd].isDisconnected())
-        return;
+      return;
     for (std::vector<Channel>::iterator it = channels.begin();
          it != channels.end(); ++it) {
       std::cout << formatServerMessage("DEBUG",
@@ -89,21 +95,15 @@ private:
     }
   }
   // Smp State Getters
-bool isClientRegistered(int fd) {
-    return clients[fd].isRegistered();
-}
-bool isClientAuthenticated(int fd) {
-    return clients[fd].isAuthenticated();
-}
-bool isClientDisconnected(int fd) {
-    return clients[fd].isDisconnected();
-}
+  bool isClientRegistered(int fd) { return clients[fd].isRegistered(); }
+  bool isClientAuthenticated(int fd) { return clients[fd].isAuthenticated(); }
+  bool isClientDisconnected(int fd) { return clients[fd].isDisconnected(); }
 
   // Command handlers
   void handleCommand(int fd, const std::string &line);
   void handleDisconnect(int fd);
 
-// Actual commands
+  // Actual commands
   void cmdNick(int fd, std::vector<std::string> &args);
   void cmdUser(int fd, std::vector<std::string> &args);
   void cmdPass(int fd, std::vector<std::string> &args);
@@ -183,7 +183,6 @@ public:
   bool validatePassword(const std::string &password) {
     return ServData.Passwd == password;
   }
-
 };
 
 // Non-member functions for validation

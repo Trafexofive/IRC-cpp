@@ -14,6 +14,7 @@
 #include "../../inc/Helpers.hpp"
 #include "../../inc/Client.hpp"
 #include <iostream>
+#include <iterator>
 #include <sstream>
 #include <string>
 #include <ctime>
@@ -49,26 +50,5 @@ std::string formatServerMessage(const std::string& type, const std::string& mess
 
 }
 
-std::string numberToString(int value) {
-    std::ostringstream oss;
-    oss << value;
-    return oss.str();
-}
 
-std::string numberToString(bool value) {
-    std::ostringstream oss;
-    oss << (value ? "true" : "false");
-    return oss.str();
-}
 
-// static std::string getStatusString(STATUS::TYPE satus) {
-//
-// }
-
-void Client::printClientInfo() {
-    std::cout << formatServerMessage("DEBUG", "----------------------------------\nClient: Fd=" + numberToString(fdClient) + 
-              " IP:" + ipAddr + " Name:" + fullName + " | Nick:" + nickName + 
-              " RealName:" + realName + " | Pass:" + passWord + 
-              " | Response:" + response + " | target:" + _target + 
-              " | Type=" + numberToString(_status.state)) << std::endl;
-}

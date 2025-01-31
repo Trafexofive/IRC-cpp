@@ -12,6 +12,7 @@
 
 #include "../../inc/Server.hpp"
 #include <iostream>
+#include <ostream>
 #include <vector>
 
 // for all the server methodes that manage clients and channels.
@@ -91,6 +92,10 @@ void handlePartSuccess(Client &client, const std::string &channelName) {
 
 void CoreServer::displayChannelTable() {
   if (channels.empty()) {
+    std::cout << formatServerMessage(
+                     "INFO",
+                     "+-------------------------------------------------------")
+              << std::endl;
     std::cout << formatServerMessage("INFO", "+ No channels available")
               << std::endl;
     std::cout << formatServerMessage(
@@ -129,6 +134,15 @@ void CoreServer::displayChannelTable() {
         << type;
     std::cout << formatServerMessage("INFO", row.str()) << std::endl;
   }
+// total number of users
+
+std::cout << formatServerMessage(
+                 "INFO",
+                 "+-------------------------------------------------------")
+            << std::endl;
+std::ostringstream total;
+total << "USER-COUNT: " << clients.size();
+std::cout << formatServerMessage("INFO", total.str()) << std::endl;
 
   std::cout << formatServerMessage(
                    "INFO",

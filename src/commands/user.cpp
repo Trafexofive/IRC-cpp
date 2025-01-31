@@ -99,7 +99,6 @@ void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
             << std::endl;
   client.setRegistered();
   client.constructSource();
-  client.printClientInfo();
 
   welcomeClient(client);
   cmdMotd(client);

@@ -3,59 +3,77 @@ import threading
 import time
 from datetime import datetime
 import random
+import resource
+import os
 
-# Test channels
-PUBLIC_CHANNELS = ['#general', '#lobby', '#public']
-PRIVATE_CHANNELS = ['#staff', '#admin', '#mods']
+def increase_limit():
+    """Attempt to increase the file descriptor limit"""
+    try:
+        soft, hard = resource.getrlimit(resource.RLIMIT_NOFILE)
+        # Try to set to hard limit
+        resource.setrlimit(resource.RLIMIT_NOFILE, (hard, hard))
+        print(f"Increased file descriptor limit from {soft} to {hard}")
+        return hard
+    except Exception as e:
+        print(f"Could not increase file descriptor limit: {e}")
+        return soft
+
+class ConnectionPool:
+    """Manages a pool of connections to prevent overwhelming system limits"""
+    def __init__(self, max_connections=500):
+        self.semaphore = threading.Semaphore(max_connections)
+        self.active_connections = 0
+        self.lock = threading.Lock()
+
+    def acquire(self):
+        return self.semaphore.acquire(timeout=5)  # 5 second timeout
+
+    def release(self):
+        self.semaphore.release()
 
 def join_channels(sock, client_id):
     """Join a mix of public and private channels"""
     try:
         # Join 1-2 public channels
         num_public = random.randint(1, 2)
-        chosen_public = random.sample(PUBLIC_CHANNELS, num_public)
+        chosen_public = random.sample(['#general', '#lobby', '#public'], num_public)
         for channel in chosen_public:
             sock.send(f"JOIN {channel}\r\n".encode())
             print(f"[{datetime.now()}] Client {client_id}: Sent join request for {channel}")
         
-        # Join 0-1 private channels
         if random.random() < 0.3:
-            channel = random.choice(PRIVATE_CHANNELS)
+            channel = random.choice(['#staff', '#admin', '#mods'])
             sock.send(f"JOIN {channel}\r\n".encode())
             print(f"[{datetime.now()}] Client {client_id}: Sent join request for {channel}")
-            
     except Exception as e:
         print(f"[{datetime.now()}] Client {client_id}: Failed to send join commands - {str(e)}")
 
-def connect_client(server, port, client_id, test_duration=30):
-    """Single client connection with timeout"""
+def connect_client(server, port, client_id, pool, test_duration=30):
+    """Single client connection with resource management"""
+    if not pool.acquire():
+        print(f"[{datetime.now()}] Client {client_id}: Could not acquire connection slot")
+        return
+
+    sock = None
     try:
-        # Create socket with timeout
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(5)  # 5 second timeout for operations
+        sock.settimeout(5)
         sock.connect((server, port))
         
-        # Authentication
         sock.send(f"PASS Alilepro135!\r\n".encode())
         sock.send(f"NICK loadtest_{client_id}\r\n".encode())
         sock.send(f"USER loadtest_{client_id} 0 * :Load Test Bot\r\n".encode())
         
-        # Brief pause before joining
         time.sleep(0.5)
-        
-        # Join channels
         join_channels(sock, client_id)
         
-        # Set start time for test duration
         start_time = time.time()
-        
-        # Keep connection alive for test_duration seconds
         while time.time() - start_time < test_duration:
             try:
-                sock.settimeout(1)  # Short timeout for reads
+                sock.settimeout(1)
                 data = sock.recv(1024)
                 if data:
-                    print(f"[{datetime.now()}] Client {client_id}: Received data: {data[:100]}")
+                    print(f"[{datetime.now()}] Client {client_id}: Received data")
             except socket.timeout:
                 continue
             except Exception as e:
@@ -65,50 +83,56 @@ def connect_client(server, port, client_id, test_duration=30):
     except Exception as e:
         print(f"[{datetime.now()}] Client {client_id}: Connection error - {str(e)}")
     finally:
-        try:
-            sock.close()
-            print(f"[{datetime.now()}] Client {client_id}: Connection closed")
-        except:
-            pass
+        if sock:
+            try:
+                sock.close()
+            except:
+                pass
+        pool.release()
+        print(f"[{datetime.now()}] Client {client_id}: Connection closed")
 
 def run_channel_test(server, port, num_clients, test_duration=30):
-    """Main test function with duration limit"""
-    print(f"Starting channel load test with {num_clients} clients")
+    """Main test function with connection pooling"""
+    # Get system limits
+    max_fds = increase_limit()
+    # Use 75% of available file descriptors, leaving some for system
+    safe_connections = min(int(max_fds * 0.75), num_clients)
+    
+    print(f"Starting channel load test")
+    print(f"Requested clients: {num_clients}")
+    print(f"Safe connection limit: {safe_connections}")
     print(f"Server: {server}:{port}")
     print(f"Test duration: {test_duration} seconds")
-    print("Public channels:", ', '.join(PUBLIC_CHANNELS))
-    print("Private channels:", ', '.join(PRIVATE_CHANNELS))
+    
+    # Create connection pool
+    pool = ConnectionPool(safe_connections)
     
     threads = []
-    
-    # Create and start threads
     for i in range(num_clients):
         thread = threading.Thread(
             target=connect_client, 
-            args=(server, port, i, test_duration)
+            args=(server, port, i, pool, test_duration)
         )
         thread.start()
         threads.append(thread)
-        time.sleep(0.1)  # Small delay between client starts
+        time.sleep(0.1)
     
-    # Wait for all threads with timeout
+    # Wait for completion
     start_time = time.time()
-    while time.time() - start_time < test_duration + 10:  # Extra 10 seconds for cleanup
+    while time.time() - start_time < test_duration + 10:
         if not any(t.is_alive() for t in threads):
             break
         time.sleep(1)
     
     print("\nTest completed!")
-    
-    # Count still-running threads
     running = sum(1 for t in threads if t.is_alive())
     if running:
         print(f"Note: {running} clients still running (they will timeout shortly)")
 
 if __name__ == "__main__":
-    SERVER = "localhost"  # Change to your server address
+    SERVER = "localhost"
     PORT = 22200
-    NUM_CLIENTS = 30     # Number of simultaneous clients
-    TEST_DURATION = 30   # How long to run the test in seconds
+    NUM_CLIENTS = 11000    # This will be automatically limited to a safe number
+    TEST_DURATION = 1030
     
     run_channel_test(SERVER, PORT, NUM_CLIENTS, TEST_DURATION)

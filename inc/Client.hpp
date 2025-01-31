@@ -155,7 +155,15 @@ public:
 
   void constructIpAddr() { ipAddr = inet_ntoa(clientInfos.sin_addr); }
 
-  void printClientInfo();
+  void printClientInfo() {
+    std::ostringstream oss;
+    oss << "Client Info: " << "| fd: " << fdClient << " | ip: " << ipAddr
+        << " | nick: " << nickName << " | real: " << realName << " | target: "
+        << _target << " | status: " << _status.state << " | state: "
+        << _state.state << " | clearance: " << _clearance.state;
+
+
+  }
 };
 
 #endif
