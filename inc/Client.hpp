@@ -93,41 +93,43 @@ public:
   void setClientInfos(const struct sockaddr_in &info);
 
   // Class specific methods
-  void sendMessage(const std::string &message);
-  std::string receiveMessage();
   void disconnect();
-  bool isAuthenticated() const;
+
   void updateNickName(const std::string &newNickName);
   void logActivity(const std::string &activity);
   void resetPassword(const std::string &newPassword);
+
+  void setRegistered() { _status.state = STATUS::REGISTERED; }
+  void setAuthenticated() { _status.state = STATUS::AUTHENTICATED; }
+  void setDisconnected() { _status.state = STATUS::DISCONNECTED; }
+
+  void setState(STATE::TYPE state) { _state.state = state; }
+  void setStatus(STATUS::TYPE state) { _status.state = state; }
+  void setClearance(CLEARANCE::TYPE state) { _clearance.state = state; }
 
   bool isState(STATE::TYPE state) const { return _state.state == state; }
   bool isStatus(STATUS::TYPE state) const { return _status.state == state; }
   bool isClearance(CLEARANCE::TYPE state) const {
     return _clearance.state == state;
   }
-bool isRegistered() const;
+
+  // Smp State Getters
+  bool isRegistered() const;
+  bool isAuthenticated() const;
+  bool isDisconnected() const { return _status.state == STATUS::DISCONNECTED; }
 
   void authenticate();
   void clear();
   void clearResponse();
+
   void setClientInfos(int fd, struct sockaddr_in ddr) {
     fdClient = fd;
     clientInfos = ddr;
   }
 
-void setRegistered() { _status.state = STATUS::REGISTERED; }
-void setAuthenticated() { _status.state = STATUS::AUTHENTICATED; }
-void setDisconnected() { _status.state = STATUS::DISCONNECTED; }
-
-  void setState(STATE::TYPE state) { _state.state = state; }
-  void setStatus(STATUS::TYPE state) { _status.state = state; }
-  void setClearance(CLEARANCE::TYPE state) { _clearance.state = state; }
-
   STATE getState() const { return _state; }
   STATUS getStatus() const { return _status; }
   CLEARANCE getClearance() const { return _clearance; }
-
 
   void constructSource() { // should be renamed to constructTarget
                            //

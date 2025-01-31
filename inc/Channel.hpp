@@ -36,7 +36,7 @@ struct CHANNEL {
 
 struct ClientEntry {
 
-  enum TYPE { SUBSCRIBED, UNSUBSCRIBED};
+  enum TYPE { SUBSCRIBED, UNSUBSCRIBED };
   TYPE state;
   Client *client;
 };
@@ -51,13 +51,13 @@ private:
 
   std::list<ClientEntry> _Registry;
   int _memberCount;
-  // std::vector<Client> &operators;
+  std::vector<Client *> operators;
 
   CHANNEL _settings;
 
+  Channel();
 public:
   // Default constructor
-  Channel();
   // Parameterized constructors
   Channel(const std::string &name, Client *client);
   Channel(const std::string &name, const std::string &topic, Client *client);
@@ -74,7 +74,6 @@ public:
   const std::list<ClientEntry> &getRegistry() const { return _Registry; };
 
   CHANNEL::TYPE getChannelType() const { return _settings.type; }
-
 
   // Setters
   void setName(const std::string &n);
@@ -120,13 +119,22 @@ public:
   }
 
   bool hasPassword() const; // should be removed
-  bool validatePassword(
-      const std::string &pass) const; // should be renamed to validate password
+  bool validatePassword(const std::string &pass) const;
   // Member management methods
   void removeMember(const std::string &nick);
   void removeMember(Client *obj);
 
   void addMember(Client *member);
+  void addOperator(Client *member) {
+    if (member->isDisconnected())
+      return;
+    // if (member->isOperator())
+    //   return;
+    //   handle is already an operator
+    if (std::find(operators.begin(), operators.end(), member) ==
+        operators.end())
+      operators.push_back(member);
+  }
 
   // clean up methods
   void clearMembers();

@@ -52,6 +52,7 @@ struct FdPredicate {
   bool operator()(const struct pollfd &pfd) const {
     return pfd.fd == fd_to_remove;
   }
+
 };
 
 class CoreServer {
@@ -59,9 +60,7 @@ private:
   ServerData ServData;
 
   std::map<int, Client> clients;
-
   std::vector<struct pollfd> fds;
-
   std::vector<Channel> channels;
 
   std::map<std::string, CommandHandler> commands;
@@ -71,15 +70,40 @@ private:
   void start_listening();
   void start_server();
 
-  // Helper methods
+  // Cleaner methods
   void disconnectClient(int fd);
-  LEVEL purgeAllClients();
   void purgeEmptyChannels();
+  void unsubFromChannels(int fd) {
+    if (clients[fd].isDisconnected())
+        return;
+    for (std::vector<Channel>::iterator it = channels.begin();
+         it != channels.end(); ++it) {
+      std::cout << formatServerMessage("DEBUG",
+                                       "Unsubscribing client from channel " +
+                                           it->getName())
+                << std::endl;
+      if (it->getChannelType() == CHANNEL::EMPTY)
+        continue;
+      if (it->isMember(clients[fd]))
+        it->removeMember(&clients[fd]);
+    }
+  }
+  // Smp State Getters
+bool isClientRegistered(int fd) {
+    return clients[fd].isRegistered();
+}
+bool isClientAuthenticated(int fd) {
+    return clients[fd].isAuthenticated();
+}
+bool isClientDisconnected(int fd) {
+    return clients[fd].isDisconnected();
+}
 
   // Command handlers
   void handleCommand(int fd, const std::string &line);
   void handleDisconnect(int fd);
 
+// Actual commands
   void cmdNick(int fd, std::vector<std::string> &args);
   void cmdUser(int fd, std::vector<std::string> &args);
   void cmdPass(int fd, std::vector<std::string> &args);
@@ -132,10 +156,6 @@ public:
   void addChannel(const std::string &name, const std::string &topic,
                   const std::string &password);
 
-  void joinSingleChannel(Client &client, const std::string &channelName);
-
-  // void leaveAllChannels(Client &client);
-
   void displayChannelTable();
   void watchdog();
   void purgeDisconnectedClients();
@@ -164,21 +184,6 @@ public:
     return ServData.Passwd == password;
   }
 
-  void unsubFromChannels(int fd) {
-    if (clients[fd].isStatus(STATUS::DISCONNECTED))
-        return;
-    for (std::vector<Channel>::iterator it = channels.begin();
-         it != channels.end(); ++it) {
-      std::cout << formatServerMessage("DEBUG",
-                                       "Unsubscribing client from channel " +
-                                           it->getName())
-                << std::endl;
-      if (it->getChannelType() == CHANNEL::EMPTY)
-        continue;
-      if (it->isMember(clients[fd]))
-        it->removeMember(&clients[fd]);
-    }
-  }
 };
 
 // Non-member functions for validation
