@@ -12,63 +12,54 @@
 
 #include "../../inc/Server.hpp"
 #include <iostream>
+#include <vector>
 
 // for all the server methodes that manage clients and channels.
 
 void CoreServer::disableClient(int fd) {
 
-    Client& client = clients[fd];
+  Client &client = clients[fd];
 
-    client.isStatus(STATUS::DISCONNECTED);
-    // client.clear();
+  client.setStatus(STATUS::DISCONNECTED);
+  // client.clear();
 
-    close(fd);
-    client.setFd(-1);
+  close(fd);
+  client.setFd(-1);
 }
 
-
 void CoreServer::disableChannel(const std::string &name) {
+
   for (std::vector<Channel>::iterator it = channels.begin();
        it != channels.end(); ++it) {
     if (it->getName() == name) {
-        it->setChannelType(CHANNEL::EMPTY);
-        return;
+      it->setChannelType(CHANNEL::EMPTY);
+      return;
     }
   }
 }
 
 
 void CoreServer::purgeEmptyChannels() {
-    if (channels.empty()) {
-        std::cout << formatServerMessage("WARNING", "No channels available, return from purgeEmptyChannels Scope") << std::endl;
-        return;
-    }
-    int i = 0;
-    for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end(); ++it) {
-        std::cout << formatServerMessage("DEBUG", "Checking channel index") << std::endl;
-        if (it->getMemberCount() == 0 || it->getChannelType() == CHANNEL::EMPTY) {
-            std::cout << formatServerMessage("INFO", "Purging empty channel " + it->getName()) << std::endl;
-
-            channels.erase(it);
-            i++;
+    std::vector<Channel>::iterator it = channels.begin();
+    
+    while (it != channels.end()) {
+        if (it->getChannelType() == CHANNEL::EMPTY ||
+            it->getMemberCount() == 0) {
+            std::cout << formatServerMessage("INFO",
+                                          "Purging channel name:" + it->getName())
+                     << std::endl;
+            it = channels.erase(it);  // erase() returns iterator to next element
+        } else {
+            ++it;
         }
     }
 }
 
 void CoreServer::watchdog() {
 
-  if (channels.empty()) {
-    std::cout
-        << formatServerMessage(
-               "WARNING",
-               "No channels available, return from channelStatusHandler Scope")
-        << std::endl;
-    return;
-  }
+  purgeDisconnectedClients();
 
   purgeEmptyChannels();
-
-  purgeDisconnectedClients();
 }
 
 // void Coreserver::
@@ -99,6 +90,15 @@ void handlePartSuccess(Client &client, const std::string &channelName) {
 }
 
 void CoreServer::displayChannelTable() {
+  if (channels.empty()) {
+    std::cout << formatServerMessage("INFO", "+ No channels available")
+              << std::endl;
+    std::cout << formatServerMessage(
+                     "INFO",
+                     "+-------------------------------------------------------")
+              << std::endl;
+    return;
+  }
   std::cout << formatServerMessage(
                    "INFO",
                    "+-Channel Table-----------------------------------------")
@@ -117,7 +117,14 @@ void CoreServer::displayChannelTable() {
   for (std::vector<Channel>::const_iterator it = channels.begin();
        it != channels.end(); ++it) {
     std::ostringstream row;
-    std::string type = it->getChannelType() == CHANNEL::PUBLIC ? "PUBLIC" : "PRIVATE";
+    std::string type;
+    if (it->getChannelType() == CHANNEL::PRIVATE) {
+      row << "+ " << it->getName() << "\t\t" << it->getMemberCount() << "\t\t"
+          << "PRIVATE";
+    } else {
+      row << "+ " << it->getName() << "\t\t" << it->getMemberCount() << "\t\t"
+          << "PUBLIC";
+    }
     row << "+ " << it->getName() << "\t\t" << it->getMemberCount() << "\t\t"
         << type;
     std::cout << formatServerMessage("INFO", row.str()) << std::endl;

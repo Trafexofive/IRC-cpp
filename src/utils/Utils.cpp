@@ -61,38 +61,14 @@ std::string numberToString(bool value) {
     return oss.str();
 }
 
-// Enhanced helper function to print a field with server message formatting
-void printField(const std::string& field, const std::string& value, int col1Width, int col2Width) {
-    std::ostringstream row;
-    row << "| " << std::left << std::setw(col1Width) << field 
-        << " | " << std::setw(col2Width) << value << " |";
-    std::cout << formatServerMessage("DEBUG", row.str()) << std::endl;
-}
+// static std::string getStatusString(STATUS::TYPE satus) {
+//
+// }
 
-void Client::printClientInfo()
-{
-    const int COL1_WIDTH = 15; // Width for the field name column
-    const int COL2_WIDTH = 29; // Width for the field value column
-    
-    std::cout << formatServerMessage("DEBUG", "Client Table:") << std::endl;
-    std::cout << formatServerMessage("DEBUG", "+-----------------+-------------------------------+") << std::endl;
-    
-    std::ostringstream header;
-    header << "| " << std::left << std::setw(COL1_WIDTH) << "Field" 
-           << " | " << std::setw(COL2_WIDTH) << "Value" << " |";
-    std::cout << formatServerMessage("DEBUG", header.str()) << std::endl;
-    
-    std::cout << formatServerMessage("DEBUG", "+-----------------+-------------------------------+") << std::endl;
-    
-    printField("fdClient", numberToString(fdClient), COL1_WIDTH, COL2_WIDTH);
-    printField("ipAddr", ipAddr, COL1_WIDTH, COL2_WIDTH);
-    printField("fullName", fullName, COL1_WIDTH, COL2_WIDTH);
-    printField("nickName", nickName, COL1_WIDTH, COL2_WIDTH);
-    printField("realName", realName, COL1_WIDTH, COL2_WIDTH);
-    printField("passWord", passWord, COL1_WIDTH, COL2_WIDTH);
-    printField("response", response, COL1_WIDTH, COL2_WIDTH);
-    printField("source", _target, COL1_WIDTH, COL2_WIDTH);
-    printField("clientType", numberToString(_status.state), COL1_WIDTH, COL2_WIDTH);
-    
-    std::cout << formatServerMessage("DEBUG", "+-----------------+-------------------------------+") << std::endl;
+void Client::printClientInfo() {
+    std::cout << formatServerMessage("DEBUG", "----------------------------------\nClient: Fd=" + numberToString(fdClient) + 
+              " IP:" + ipAddr + " Name:" + fullName + " | Nick:" + nickName + 
+              " RealName:" + realName + " | Pass:" + passWord + 
+              " | Response:" + response + " | target:" + _target + 
+              " | Type=" + numberToString(_status.state)) << std::endl;
 }

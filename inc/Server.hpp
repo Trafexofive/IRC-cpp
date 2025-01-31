@@ -59,7 +59,9 @@ private:
   ServerData ServData;
 
   std::map<int, Client> clients;
+
   std::vector<struct pollfd> fds;
+
   std::vector<Channel> channels;
 
   std::map<std::string, CommandHandler> commands;
@@ -148,9 +150,35 @@ public:
     }
   }
 
-bool validatePassword(const std::string &password) {
+  void DisplayClientInfo(int fd) {
+    for (std::map<int, Client>::iterator it = clients.begin();
+         it != clients.end(); ++it) {
+      if (it->second.getFd() == fd) {
+        it->second.printClientInfo();
+        return;
+      }
+    }
+  };
+
+  bool validatePassword(const std::string &password) {
     return ServData.Passwd == password;
-}
+  }
+
+  void unsubFromChannels(int fd) {
+    if (clients[fd].isStatus(STATUS::DISCONNECTED))
+        return;
+    for (std::vector<Channel>::iterator it = channels.begin();
+         it != channels.end(); ++it) {
+      std::cout << formatServerMessage("DEBUG",
+                                       "Unsubscribing client from channel " +
+                                           it->getName())
+                << std::endl;
+      if (it->getChannelType() == CHANNEL::EMPTY)
+        continue;
+      if (it->isMember(clients[fd]))
+        it->removeMember(&clients[fd]);
+    }
+  }
 };
 
 // Non-member functions for validation

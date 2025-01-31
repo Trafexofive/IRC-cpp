@@ -14,6 +14,18 @@
 #include <cstdlib>
 #include <sstream>
 
+
+
+static void DisplayPassInfo() {
+  std::cout << formatServerMessage("ERROR", "Invalid password requirements:")
+            << std::endl;
+  std::cout << "- At least 8 characters" << std::endl;
+  std::cout << "- At least 1 lowercase letter (a-z)" << std::endl;
+  std::cout << "- At least 1 uppercase letter (A-Z)" << std::endl;
+  std::cout << "- At least 1 digit (0-9)" << std::endl;
+  std::cout << "- At least 1 special character" << std::endl;
+}
+
 void CoreServer::create_socket() {
   std::cout << formatServerMessage("DEBUG", "Creating socket...") << std::endl;
 
@@ -92,15 +104,6 @@ void CoreServer::start_server() {
   }
 }
 
-static void DisplayPassInfo() {
-  std::cout << formatServerMessage("ERROR", "Invalid password requirements:")
-            << std::endl;
-  std::cout << "- At least 8 characters" << std::endl;
-  std::cout << "- At least 1 lowercase letter (a-z)" << std::endl;
-  std::cout << "- At least 1 uppercase letter (A-Z)" << std::endl;
-  std::cout << "- At least 1 digit (0-9)" << std::endl;
-  std::cout << "- At least 1 special character" << std::endl;
-}
 
 CoreServer::CoreServer(std::string port, std::string password) {
   std::cout << formatServerMessage("DEBUG", "Constructing Server Class ...")
@@ -132,3 +135,4 @@ CoreServer::CoreServer(std::string port, std::string password) {
   start_listening();
   start_server();
 }
+

@@ -35,6 +35,7 @@ struct STATE {
   enum TYPE { ACTIVE, IDLE, DONOTDISTURB, UNKNOWN, OFFLINE };
   TYPE state;
 };
+
 struct STATUS {
   enum TYPE { AUTHENTICATED, DISCONNECTED, REGISTERED, UNKNOWN };
   TYPE state;
@@ -151,6 +152,7 @@ void setDisconnected() { _status.state = STATUS::DISCONNECTED; }
   }
 
   void constructIpAddr() { ipAddr = inet_ntoa(clientInfos.sin_addr); }
+
   void printClientInfo();
 };
 

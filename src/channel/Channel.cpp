@@ -54,10 +54,12 @@ Channel::Channel(const std::string &name, const std::string &topic,
 }
 
 void Channel::CleanRegistry() {
+
   for (std::list<ClientEntry>::iterator it = _Registry.begin();
        it != _Registry.end(); ++it) {
     if (it->state == ClientEntry::UNSUBSCRIBED) {
       _Registry.erase(it);
+      _memberCount--;
     }
   }
 }
@@ -66,7 +68,6 @@ void Channel::CleanRegistry() {
 Channel::~Channel() {
   std::cout << formatServerMessage("DEBUG", "Destroying channel: " + name)
             << std::endl;
-  CleanRegistry();
 }
 
 /* ************************************************************************** */
@@ -92,14 +93,28 @@ void Channel::setPassword(const std::string &p) { password = p; }
 void Channel::addMember(Client *client) {
   for (std::list<ClientEntry>::iterator it = _Registry.begin();
        it != _Registry.end(); ++it) {
-    if (it->client == client)
+    if (it->client == client && it->state == ClientEntry::SUBSCRIBED)
+    {
+        std::cout << formatServerMessage("WARNING", "Client already in channel. Server Omitting ...")
+              << std::endl;
+        return;
+    } else if (it->client == client && it->state == ClientEntry::UNSUBSCRIBED) {
+      it->state = ClientEntry::SUBSCRIBED;
+      _memberCount++;
       return;
+    }
   }
 
   ClientEntry entry;
   entry.client = client;
   entry.state = ClientEntry::SUBSCRIBED;
   _Registry.push_back(entry);
+  _memberCount++;
+  if (_memberCount == 0)
+    std::cout << formatServerMessage(
+                     "FATAL",
+                     "YO SOMETHING REALLY BAD JUST HAPPENED, IT WAS NEGATIVE")
+              << std::endl;
 }
 
 void Channel::removeMember(Client *client) {
@@ -107,6 +122,9 @@ void Channel::removeMember(Client *client) {
        it != _Registry.end(); ++it) {
     if (it->client == client) {
       it->state = ClientEntry::UNSUBSCRIBED;
+      _memberCount--;
+      if (_memberCount == 0)
+        _settings.type = CHANNEL::EMPTY;
       return;
     }
   }
@@ -117,11 +135,17 @@ void Channel::removeMember(const std::string &nick) {
        it != _Registry.end(); ++it) {
     if (it->client->getNickName() == nick) {
       it->state = ClientEntry::UNSUBSCRIBED;
+      _memberCount--;
+      if (_memberCount == 0)
+        _settings.type = CHANNEL::EMPTY;
       return;
     }
   }
 }
 
+
+
+// Ill leave this here for now
 int Channel::getMemberCount() const {
   int count = 0;
 
@@ -140,13 +164,13 @@ int Channel::getMemberCount() const {
 
 Channel *CoreServer::getChannel(const std::string &name) {
 
-    for (std::vector<Channel>::iterator it = channels.begin(); it != channels.end();
-         ++it) {
-        if (it->getName() == name) {
-        return &(*it);
-        }
+  for (std::vector<Channel>::iterator it = channels.begin();
+       it != channels.end(); ++it) {
+    if (it->getName() == name) {
+      return &(*it);
     }
-    return NULL;
+  }
+  return NULL;
 }
 
 /* ************************************************************************** */

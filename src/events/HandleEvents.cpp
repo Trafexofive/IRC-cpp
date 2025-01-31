@@ -73,7 +73,8 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
       args.push_back(arg);
     }
     if (args.empty()) {
-        std::cout << formatServerMessage("DEBUG", "Empty command, Omitting") << std::endl;
+      std::cout << formatServerMessage("DEBUG", "Empty command, Omitting")
+                << std::endl;
       return;
     }
 
@@ -107,7 +108,7 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
       std::cerr << formatServerMessage(
                        "WARNING", std::string("Unknown command: ") + command)
                 << std::endl;
-        displayChannelTable();
+      displayChannelTable();
     }
   } catch (const std::exception &e) {
     std::cerr << formatServerMessage(
@@ -135,26 +136,31 @@ void CoreServer::WriteEvent(int fd) {
 }
 
 void CoreServer::purgeDisconnectedClients() {
-    for (std::map <int, Client>::iterator it = clients.begin(); it != clients.end(); ++it) {
-        if (it->second.isStatus(STATUS::DISCONNECTED)) {
-            std::cout << formatServerMessage("INFO", "Purging client name:" + it->second.getNickName()) << std::endl;
+  std::map<int, Client>::iterator it = clients.begin();
+  std::map<int, Client>::iterator tmp;
 
-            clients.erase(it);
-        }
+  while (tmp != clients.end()) {
+    tmp = it;
+    ++tmp;
+    if (it->second.isStatus(STATUS::DISCONNECTED)) {
+      std::cout << formatServerMessage("INFO", "Purging client name:" +
+                                                   it->second.getNickName())
+                << std::endl;
+
+      clients.erase(it);
     }
+    it = tmp;
+  }
 }
-
 
 void CoreServer::handleDisconnect(int fd) {
 
-
+  unsubFromChannels(fd);
   disableClient(fd);
 
   std::vector<struct pollfd>::iterator new_end =
       std::remove_if(fds.begin(), fds.end(), FdRemovePredicate(fd));
   fds.erase(new_end, fds.end());
-
-  displayChannelTable();
 }
 
 // Method to read data from the client

@@ -13,6 +13,7 @@
 #ifndef CHANNEL_HPP
 #define CHANNEL_HPP
 
+#include "Client.hpp"
 #include <algorithm>
 #include <arpa/inet.h>
 #include <iostream>
@@ -21,9 +22,6 @@
 #include <sstream>
 #include <string>
 #include <sys/socket.h>
-#include <vector>
-#include "Client.hpp"
-#include <string>
 #include <vector>
 
 struct CHANNEL {
@@ -38,10 +36,9 @@ struct CHANNEL {
 
 struct ClientEntry {
 
-  enum TYPE { SUBSCRIBED, UNSUBSCRIBED, UNKNOWN };
+  enum TYPE { SUBSCRIBED, UNSUBSCRIBED};
   TYPE state;
   Client *client;
-
 };
 
 class Channel {
@@ -52,8 +49,8 @@ private:
 
   std::vector<Client *> members;
 
-  std::list<ClientEntry>
-      _Registry;
+  std::list<ClientEntry> _Registry;
+  int _memberCount;
   // std::vector<Client> &operators;
 
   CHANNEL _settings;
@@ -70,22 +67,14 @@ public:
   ~Channel();
 
   // Getters
-  const std::string &getName() const ;
-  const std::string &getTopic() const ;
-  const std::string &getPassword() const; 
+  const std::string &getName() const;
+  const std::string &getTopic() const;
+  const std::string &getPassword() const;
 
   const std::list<ClientEntry> &getRegistry() const { return _Registry; };
 
   CHANNEL::TYPE getChannelType() const { return _settings.type; }
 
-  ClientEntry::TYPE getClientState(Client *client) const {
-    for (std::list<ClientEntry>::const_iterator it = _Registry.begin();
-         it != _Registry.end(); ++it) {
-      if (it->client == client)
-        return it->state;
-    }
-    return ClientEntry::UNKNOWN;
-  }
 
   // Setters
   void setName(const std::string &n);
@@ -147,14 +136,9 @@ public:
   void broadcast(const std::string &message);
 
   int getMemberCount() const;
-// Registry and state management.
+  // Registry and state management.
 };
 
-// helper functions
-
-bool isChannel(const std::string &name);
-Channel &getChannel(const std::string &name, std::vector<Channel> &channels);
-void removeClientFromChannel(Client &client, Channel &channel);
 void handleInvalidChannel(Client &client, const std::string &channelName);
 void handlePartSuccess(Client &client, const std::string &channelName);
 std::string getChannelsString(const std::vector<Channel> &channels);
