@@ -99,6 +99,7 @@ void CoreServer::start_server() {
         else
           ReadEvent(fds[i].fd);
         watchdog();
+        displayChannelTable();
       }
     }
   }

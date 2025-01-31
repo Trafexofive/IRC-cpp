@@ -10,6 +10,7 @@
 /* ************************************************************************** */
 
 #include "../../inc/Server.hpp"
+
 #include <algorithm>
 #include <cstdio>
 #include <netdb.h>
@@ -96,19 +97,16 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
         (this->*cmdIt->second)(fd, args);
         WriteEvent(fd);
 
-        displayChannelTable();
       } catch (const std::exception &e) {
         std::cerr << formatServerMessage(
                          "ERROR", std::string("Failed to execute command: ") +
                                       command + " - " + e.what())
                   << std::endl;
-        displayChannelTable();
       }
     } else {
       std::cerr << formatServerMessage(
                        "WARNING", std::string("Unknown command: ") + command)
                 << std::endl;
-      displayChannelTable();
     }
   } catch (const std::exception &e) {
     std::cerr << formatServerMessage(
@@ -161,6 +159,7 @@ void CoreServer::handleDisconnect(int fd) {
   std::vector<struct pollfd>::iterator new_end =
       std::remove_if(fds.begin(), fds.end(), FdRemovePredicate(fd));
   fds.erase(new_end, fds.end());
+
 }
 
 // Method to read data from the client
@@ -178,7 +177,6 @@ void CoreServer::ReadEvent(int fd) {
     handleDisconnect(fd);
     return;
   }
-  displayChannelTable();
 
   buffer[dataRead] = '\0';
   std::string input(buffer);
