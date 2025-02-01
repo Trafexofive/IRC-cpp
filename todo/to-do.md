@@ -57,6 +57,8 @@
   - Resolve ANSI compatibility issues.
   - Implement checks to disable ANSI where not supported.
 
+---
+
 - Channels. [DONE] [MANDATORY] [UNSTABLE]
 - [COMMANDS] :
     - CAP LS behavior. (modern irc auth compliance)
@@ -71,14 +73,16 @@
 
   "<client> :Welcome to the <networkname> Network, <nick>[!<user>@<host>]"
 }
-- simply better to have external methodes for these. (they to much)
-- some more command parsing helpers and utils (checking,morphing,parsing and extracting)
-- [X] need to setup actual auth (Pass/user/nick) in any order.
-- [ ] quit test-user after test case is over.
-- [ ] Channels not getting destroyed after all users leave.
 
+---
 
 ### [VERSION CONTROL]
+
+# [VER.beta@0.1.0]
+# [VER.beta@0.1.1]
+
+---
+
 
 ### [BUGS] use location-line : {test} when reporting bugs
 
@@ -103,5 +107,4 @@
 
 ### [CHANGE-LOG]
 
-## [VER.nightly_build@0.7.1]
 
