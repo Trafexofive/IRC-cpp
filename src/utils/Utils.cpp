@@ -37,11 +37,11 @@ std::string formatServerMessage(const std::string& type, const std::string& mess
     else if (type == "WARNING")
         oss << YELLOW << BOLD << "WARNING :: " << RESET;
     else if (type == "INFO")
-        oss << GREEN << "INFO :: " << RESET;
+        oss << GREEN << "INFO  :: " << RESET;
     else if (type == "CLIENT")
-        oss << CYAN << "CLIENT << " << RESET;
+        oss << CYAN << "CLIENT :: " << RESET;
     else if (type == "SERVER")
-        oss << MAGENTA << "SERVER >> " << RESET;
+        oss << MAGENTA << "SERVER :: " << RESET;
     else if (type == "FATAL")
         oss << RED << BOLD << "FATAL :: " << RESET;
     
@@ -49,6 +49,7 @@ std::string formatServerMessage(const std::string& type, const std::string& mess
     return oss.str();
 
 }
+
 
 
 

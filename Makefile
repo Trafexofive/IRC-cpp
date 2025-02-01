@@ -63,16 +63,17 @@ DEP := $(OBJ:%.o=$(DIR_DEPS)/%.d)
 CXX := c++
 CXXFLAGS := -Wall -Wextra -std=c++98 #-Werror 
 CPPFLAGS := -MMD -MP -I$(DIR_INC)
-LDFLAGS := -L/usr/local/lib
+LEVEL := -DPRODUCTION
+LDFLAGS := -L/usr/local/lib 
 
-# Debug Configuration
-ifeq ($(DEBUG), 1)
-    CXXFLAGS += -g3 -DDEBUG
-    BUILD_TYPE := Debug
-else
-    CXXFLAGS += -O2 -DNDEBUG
-    BUILD_TYPE := Release
-endif
+# # Debug Configuration
+# ifeq ($(DEBUG), 1)
+#     CXXFLAGS += -g3 -DDEBUG
+#     BUILD_TYPE := Debug
+# else
+#     CXXFLAGS += -O2 -DNDEBUG
+#     BUILD_TYPE := Release
+# endif
 
 # Platform-specific Configuration
 UNAME_S := $(shell uname -s)
@@ -104,14 +105,14 @@ banner:
 
 $(NAME): $(OBJ) | $(DIR_BIN)
 	@printf "Linking $(NAME)...\n"
-	@$(CXX) $(OBJ) $(LDFLAGS) $(LDLIBS) -o $(DIR_BIN)/$@
+	@$(CXX) -DPRODUCTION $(OBJ) $(LDFLAGS) $(LDLIBS) -o $(DIR_BIN)/$@
 	@printf "Build complete!\n"
 
 $(DIR_OBJ)/%.o: $(DIR_SRC)/%.cpp | $(DIR_OBJ) $(DIR_DEPS)
 	@$(MKDIR) $(dir $@)
 	@$(MKDIR) $(dir $(DIR_DEPS)/$*)
 	@printf "Compiling $<...\n"
-	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c $< -o $@
+	@$(CXX) -DPRODUCTION $(CXXFLAGS) $(CPPFLAGS) -c $< -o $@
 	@mv $(DIR_OBJ)/$*.d $(DIR_DEPS)/$*.d
 
 $(DIR_BIN) $(DIR_OBJ) $(DIR_LOG) $(DIR_DEPS):

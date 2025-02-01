@@ -23,4 +23,7 @@ std::string formatServerMessage(const std::string& type, const std::string& mess
 void    formatArg(std::string &msg);
 std::string numberToString(int value);
 
+
+
+
 #endif

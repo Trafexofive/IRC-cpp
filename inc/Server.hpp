@@ -66,10 +66,12 @@ private:
   Stats _serverStats;
 
   std::map<int, Client> clients;
+
   std::vector<struct pollfd> fds;
+
   std::vector<Channel> channels;
 
-  // std::map<std::string, Channel> _channels; // in favor of quick lookup and time complexity
+  std::map<std::string, Channel> _channels; // in favor of quick lookup and time complexity
 
   std::map<std::string, CommandHandler> commands;
 
@@ -158,6 +160,12 @@ public:
 
   void addChannel(const std::string &name, const std::string &topic,
                   const std::string &password);
+
+// bool  isTickRate(const std::string &ticket) {
+//
+//     // prime numbers
+//     return true
+// };
 
   void displayChannelTable();
   void watchdog();

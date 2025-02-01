@@ -37,7 +37,9 @@ struct CHANNEL {
 struct ClientEntry {
 
   enum TYPE { SUBSCRIBED, UNSUBSCRIBED };
+
   TYPE state;
+
   Client *client;
 };
 
@@ -47,11 +49,10 @@ private:
   std::string topic;
   std::string password;
 
-  std::vector<Client *> members;
+  std::vector<Client *> operators; // still not sure about handling this this way.
 
   std::list<ClientEntry> _Registry;
   int _memberCount;
-  std::vector<Client *> operators;
 
   CHANNEL _settings;
 

@@ -43,7 +43,8 @@ def join_channels(sock, client_id):
         
         if random.random() < 0.3:
             channel = random.choice(['#staff', '#admin', '#mods'])
-            sock.send(f"JOIN {channel}\r\n".encode())
+            passwd = random.randint(1, 1000)
+            sock.send(f"JOIN {channel} {passwd}\r\n".encode())
             print(f"[{datetime.now()}] Client {client_id}: Sent join request for {channel}")
     except Exception as e:
         print(f"[{datetime.now()}] Client {client_id}: Failed to send join commands - {str(e)}")
