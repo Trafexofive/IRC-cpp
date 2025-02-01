@@ -14,8 +14,6 @@
 #include <cstdlib>
 #include <sstream>
 
-
-
 static void DisplayPassInfo() {
   std::cout << formatServerMessage("ERROR", "Invalid password requirements:")
             << std::endl;
@@ -105,7 +103,6 @@ void CoreServer::start_server() {
   }
 }
 
-
 CoreServer::CoreServer(std::string port, std::string password) {
   std::cout << formatServerMessage("DEBUG", "Constructing Server Class ...")
             << std::endl;
@@ -136,4 +133,3 @@ CoreServer::CoreServer(std::string port, std::string password) {
   start_listening();
   start_server();
 }
-
