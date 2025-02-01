@@ -69,6 +69,8 @@ private:
   std::vector<struct pollfd> fds;
   std::vector<Channel> channels;
 
+  // std::map<std::string, Channel> _channels; // in favor of quick lookup and time complexity
+
   std::map<std::string, CommandHandler> commands;
 
   // Socket and server initialization
@@ -79,6 +81,7 @@ private:
   // Cleaner methods
   void disconnectClient(int fd);
   void purgeEmptyChannels();
+
   void unsubFromChannels(int fd) {
     if (clients[fd].isDisconnected())
       return;
