@@ -39,21 +39,19 @@ void CoreServer::disableChannel(const std::string &name) {
   }
 }
 
-
 void CoreServer::purgeEmptyChannels() {
-    std::vector<Channel>::iterator it = channels.begin();
-    
-    while (it != channels.end()) {
-        if (it->getChannelType() == CHANNEL::EMPTY ||
-            it->getMemberCount() == 0) {
-            std::cout << formatServerMessage("INFO",
-                                          "Purging channel name:" + it->getName())
-                     << std::endl;
-            it = channels.erase(it);  // erase() returns iterator to next element
-        } else {
-            ++it;
-        }
+  std::vector<Channel>::iterator it = channels.begin();
+
+  while (it != channels.end()) {
+    if (it->getChannelType() == CHANNEL::EMPTY || it->getMemberCount() == 0) {
+      std::cout << formatServerMessage("INFO",
+                                       "Purging channel name:" + it->getName())
+                << std::endl;
+      it = channels.erase(it); // erase() returns iterator to next element
+    } else {
+      ++it;
     }
+  }
 }
 
 void CoreServer::watchdog() {
@@ -98,27 +96,16 @@ void CoreServer::displayChannelTable() {
               << std::endl;
     std::cout << formatServerMessage("INFO", "+ No channels available")
               << std::endl;
-    std::cout << formatServerMessage(
-                     "INFO",
-                     "+-------------------------------------------------------")
-              << std::endl;
-    return;
-  }
-  std::cout << formatServerMessage(
-                   "INFO",
-                   "+-Channel Table-----------------------------------------")
-            << std::endl;
-  std::cout << formatServerMessage(
-                   "INFO",
-                   "+-------------------------------------------------------")
-            << std::endl;
-  std::cout << formatServerMessage("INFO", "+ Name\t\tOnline\t\tType")
-            << std::endl;
-  std::cout << formatServerMessage(
-                   "INFO",
-                   "+-------------------------------------------------------")
-            << std::endl;
+  std::ostringstream total;
+  total << "REGISTERED USERS: " << clients.size();
+  std::cout << formatServerMessage("INFO", total.str()) << std::endl;
 
+  std::cout << formatServerMessage(
+                   "INFO",
+                   "+-------------------------------------------------------")
+            << std::endl;
+  return;
+  }
   for (std::vector<Channel>::const_iterator it = channels.begin();
        it != channels.end(); ++it) {
     std::ostringstream row;
@@ -134,15 +121,15 @@ void CoreServer::displayChannelTable() {
         << type;
     std::cout << formatServerMessage("INFO", row.str()) << std::endl;
   }
-// total number of users
+  // total number of users
 
-std::cout << formatServerMessage(
-                 "INFO",
-                 "+-------------------------------------------------------")
+  std::cout << formatServerMessage(
+                   "INFO",
+                   "+-------------------------------------------------------")
             << std::endl;
-std::ostringstream total;
-total << "USER-COUNT: " << clients.size();
-std::cout << formatServerMessage("INFO", total.str()) << std::endl;
+  std::ostringstream total;
+  total << "REGISTERED USERS: " << clients.size();
+  std::cout << formatServerMessage("INFO", total.str()) << std::endl;
 
   std::cout << formatServerMessage(
                    "INFO",
