@@ -16,6 +16,7 @@
 - [ ] either drop to an older working commit, or fix the bot.
 - [ ] tickrate/timout implementation for clean cicles..
 - [ ] Project cleanup as well as naming scheme standardization.
+- [ ] config file.
 
 
 

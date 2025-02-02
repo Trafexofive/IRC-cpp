@@ -56,9 +56,12 @@ struct ServerData {
     int _poll;
     int Port;
     std::string Host;
+
     // std::string Motd;
     // std::string Welcome;
+    
     std::string ServerName;
+
     LEVEL _infoLevel;
 
     struct sockaddr_in ServAddr;

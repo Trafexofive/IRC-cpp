@@ -15,30 +15,30 @@
 #include <string>
 
 static void cmdMotd(Client &client) {
-  std::string nick = client.getNickName();
+  std::string nick = client.getTarget();
 
   // Example MOTD response
-  client.setResponse(formatResponseHost(
+  client.setResponse(formatResponse(
       RPL_MOTDSTART,
       nick + " :- morpheus-server.ddns.net Message of the Day - "));
-  client.setResponse(formatResponseHost(
+  client.setResponse(formatResponse(
       RPL_MOTD, nick + " :- Welcome to the WeUseArch IRC Network!"));
   client.setResponse(
-      formatResponseHost(RPL_MOTD, nick + " :- Enjoy your stay!"));
+      formatResponse(RPL_MOTD, nick + " :- Enjoy your stay!"));
   client.setResponse(
-      formatResponseHost(RPL_ENDOFMOTD, nick + " :End of /MOTD command."));
+      formatResponse(RPL_ENDOFMOTD, nick + " :End of /MOTD command."));
 }
 
 static void welcomeClient(Client &client) {
-  std::string nick = client.getNickName();
+  std::string nick = client.getTarget();
   // Send welcome messages using formatResponse
-  client.setResponse(formatResponseHost(
+  client.setResponse(formatResponse(
       RPL_WELCOME, nick + " :Welcome to the WeUseArch IRC Network"));
-  client.setResponse(formatResponseHost(
+  client.setResponse(formatResponse(
       RPL_YOURHOST, nick + " :Your host is morpheus-server.ddns.net"));
-  client.setResponse(formatResponseHost(
+  client.setResponse(formatResponse(
       RPL_CREATED, nick + " :This server was created 2024-01-11"));
-  client.setResponse(formatResponseHost(
+  client.setResponse(formatResponse(
       RPL_MYINFO,
       nick + " morpheus-server.ddns.net 1.0 usermodes channelmodes"));
   // client.setResponse(formatResponse(RPL_ISUPPORT, nick + " CHANTYPES=#
@@ -47,10 +47,23 @@ static void welcomeClient(Client &client) {
 }
 
 void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
-  // if (clients.find(fd) == clients.end()) {
-  //     std::cout << formatServerMessage("ERROR", "USER command failed: Client
-  //     not found") << std::endl; return;
-  // }
+  if (isClientDisconnected(fd)) {
+    std::cout << formatServerMessage("ERROR",
+                                     "USER command failed: Client disconnected")
+              << std::endl;
+    return;
+  }
+  if (!isClientAuthenticated(fd)) {
+    std::cout << formatServerMessage(
+                     "ERROR", "USER command failed: Client not authenticated")
+              << std::endl;
+    clients[fd].setResponse(
+        formatResponse(ERR_ALREADYREG, ":You may not reregister"));
+    return;
+  }
+  if (isClientRegistered(fd)) {
+    // probably should handle renaming
+  }
 
   std::cout << formatServerMessage("DEBUG", "Processing USER command")
             << std::endl;
@@ -73,13 +86,6 @@ void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
                                       ":You Must provide a nickname first"));
     return;
   }
-
-  // if (client.isRegistered()) {
-  //     std::cout << formatServerMessage("ERROR", "USER command failed: Already
-  //     registered") << std::endl;
-  //     client.setResponse(formatResponse(ERR_ALREADYREG, ":You may not
-  //     reregister")); return;
-  // }
 
   std::string username = args[1];
   std::string realname = args[4];

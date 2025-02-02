@@ -1,114 +1,76 @@
-[1m[2025-02-02 01:27:12] [0m[33mDEBUG :: [0mConstructing Server Class ...
-[1m[2025-02-02 01:27:12] [0m[33mDEBUG :: [0mValidating port: 22200
-[1m[2025-02-02 01:27:12] [0m[33mDEBUG :: [0m@
-[1m[2025-02-02 01:27:12] [0m[33mDEBUG :: [0mValidating password
-[1m[2025-02-02 01:27:12] [0m[33mDEBUG :: [0mPassword valid
-[1m[2025-02-02 01:27:12] [0m[33mDEBUG :: [0mCreating socket...
-[1m[2025-02-02 01:27:12] [0m[33mDEBUG :: [0mSocket created: 3
-[1m[2025-02-02 01:27:12] [0m[32mINFO  :: [0mServer Socket setup complete
-[1m[2025-02-02 01:27:12] [0m[33mDEBUG :: [0mStarting to listen...
-[1m[2025-02-02 01:27:12] [0m[33mDEBUG :: [0mServer listening on port: 22200
-[1m[2025-02-02 01:27:12] [0m[33mDEBUG :: [0mServer main loop starting...
-[1m[2025-02-02 01:27:42] [0m[32mINFO  :: [0mClient accepted FD: 4
-[1m[2025-02-02 01:27:42] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-02-02 01:27:42] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-02-02 01:27:42] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
-[1m[2025-02-02 01:27:42] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
-[1m[2025-02-02 01:27:42] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
-[1m[2025-02-02 01:27:42] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
-[1m[2025-02-02 01:27:42] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
-[1m[2025-02-02 01:27:42] [0m[32mINFO  :: [0mClient connected
-[1m[2025-02-02 01:27:42] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:27:42] [0m[32mINFO  :: [0m+ No channels available
-[1m[2025-02-02 01:27:42] [0m[32mINFO  :: [0mREGISTERED USERS: 1
-[1m[2025-02-02 01:27:42] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:27:42] [0m[36mCLIENT :: [0mCAP LS 302
-[1m[2025-02-02 01:27:42] [0m[33mDEBUG :: [0mProcessing command: CAP
-[1m[2025-02-02 01:27:42] [0m[35mSERVER :: [0m:server CAP  LS :multi-prefix sasl
+[1m[2025-02-02 19:48:36] [0m[33mDEBUG :: [0mConstructing Server Class ...
+[1m[2025-02-02 19:48:36] [0m[33mDEBUG :: [0mValidating port: 22200
+[1m[2025-02-02 19:48:36] [0m[33mDEBUG :: [0mM
+[1m[2025-02-02 19:48:36] [0m[33mDEBUG :: [0mValidating password
+[1m[2025-02-02 19:48:36] [0m[33mDEBUG :: [0mPassword valid
+[1m[2025-02-02 19:48:36] [0m[33mDEBUG :: [0mCreating socket...
+[1m[2025-02-02 19:48:36] [0m[33mDEBUG :: [0mSocket created: 3
+[1m[2025-02-02 19:48:36] [0m[32mINFO  :: [0mServer Socket setup complete
+[1m[2025-02-02 19:48:36] [0m[33mDEBUG :: [0mStarting to listen...
+[1m[2025-02-02 19:48:36] [0m[33mDEBUG :: [0mServer listening on port: 22200
+[1m[2025-02-02 19:48:36] [0m[33mDEBUG :: [0mServer main loop starting...
+[1m[2025-02-02 19:48:43] [0m[32mINFO  :: [0mClient accepted FD: 4
+[1m[2025-02-02 19:48:43] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-02-02 19:48:43] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-02-02 19:48:43] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-02-02 19:48:43] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-02-02 19:48:43] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-02 19:48:43] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-02 19:48:43] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-02-02 19:48:43] [0m[32mINFO  :: [0mClient connected
+[1m[2025-02-02 19:48:43] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-02 19:48:43] [0m[32mINFO  :: [0m+ No channels available
+[1m[2025-02-02 19:48:43] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-02 19:48:43] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-02 19:48:43] [0m[36mCLIENT :: [0mPASS Alilepro135!
+[1m[2025-02-02 19:48:43] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-02-02 19:48:43] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-02-02 19:48:43] [0m[32mINFO  :: [0mClient Authenticated
+[1m[2025-02-02 19:48:43] [0m[36mCLIENT :: [0mNICK cleverlord
+[1m[2025-02-02 19:48:43] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-02-02 19:48:43] [0m[33mDEBUG :: [0mNickname set to: cleverlord
+[1m[2025-02-02 19:48:43] [0m[35mSERVER :: [0m:WeUseArch.localhost 001 cleverlord :Welcome to the WeUseArch IRC CHAT.
+:WeUseArch.localhost 002 cleverlord :Your host is morpheus-server.ddns.net
+:WeUseArch.localhost 003 cleverlord :This server was created Feb  2 2025
+:WeUseArch.localhost 004 cleverlord :IRC server v1.0
 
-[1m[2025-02-02 01:27:42] [0m[36mCLIENT :: [0mJOIN :
-[1m[2025-02-02 01:27:42] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-02-02 01:27:42] [0m[33m[1mWARNING :: [0mJOIN failed: Client not authenticated
-[1m[2025-02-02 01:27:42] [0m[35mSERVER :: [0m:451 JOIN :You have not registered
+[1m[2025-02-02 19:48:43] [0m[36mCLIENT :: [0mUSER mlamkadm 0 * :Mohamed Ali Lamkadmi
+[1m[2025-02-02 19:48:43] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-02-02 19:48:43] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-02-02 19:48:43] [0m[32mINFO  :: [0mRegistration complete for 
+[1m[2025-02-02 19:48:43] [0m[33mDEBUG :: [0msource: cleverlord!Mohamed@127.0.0.1
+[1m[2025-02-02 19:48:43] [0m[35mSERVER :: [0m:WeUseArch.localhost 001 cleverlord!Mohamed@127.0.0.1 :Welcome to the WeUseArch IRC Network
+:WeUseArch.localhost 002 cleverlord!Mohamed@127.0.0.1 :Your host is morpheus-server.ddns.net
+:WeUseArch.localhost 003 cleverlord!Mohamed@127.0.0.1 :This server was created 2024-01-11
+:WeUseArch.localhost 004 cleverlord!Mohamed@127.0.0.1 morpheus-server.ddns.net 1.0 usermodes channelmodes
+:WeUseArch.localhost 375 cleverlord!Mohamed@127.0.0.1 :- morpheus-server.ddns.net Message of the Day - 
+:WeUseArch.localhost 372 cleverlord!Mohamed@127.0.0.1 :- Welcome to the WeUseArch IRC Network!
+:WeUseArch.localhost 372 cleverlord!Mohamed@127.0.0.1 :- Enjoy your stay!
+:WeUseArch.localhost 376 cleverlord!Mohamed@127.0.0.1 :End of /MOTD command.
 
-[1m[2025-02-02 01:27:42] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:27:42] [0m[32mINFO  :: [0m+ No channels available
-[1m[2025-02-02 01:27:42] [0m[32mINFO  :: [0mREGISTERED USERS: 1
-[1m[2025-02-02 01:27:42] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:29:17] [0m[32mINFO  :: [0mClosing connection FD: 4
-[1m[2025-02-02 01:29:17] [0m[32mINFO  :: [0mPurging client name:
-[1m[2025-02-02 01:29:17] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
-[1m[2025-02-02 01:29:17] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:29:17] [0m[32mINFO  :: [0m+ No channels available
-[1m[2025-02-02 01:29:17] [0m[32mINFO  :: [0mREGISTERED USERS: 0
-[1m[2025-02-02 01:29:17] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:29:53] [0m[32mINFO  :: [0mClient accepted FD: 4
-[1m[2025-02-02 01:29:53] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-02-02 01:29:53] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-02-02 01:29:53] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
-[1m[2025-02-02 01:29:53] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
-[1m[2025-02-02 01:29:53] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
-[1m[2025-02-02 01:29:53] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
-[1m[2025-02-02 01:29:53] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
-[1m[2025-02-02 01:29:53] [0m[32mINFO  :: [0mClient connected
-[1m[2025-02-02 01:29:53] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:29:53] [0m[32mINFO  :: [0m+ No channels available
-[1m[2025-02-02 01:29:53] [0m[32mINFO  :: [0mREGISTERED USERS: 1
-[1m[2025-02-02 01:29:53] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:30:11] [0m[36mCLIENT :: [0mpass Alilep
-[1m[2025-02-02 01:30:11] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-02-02 01:30:11] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-02-02 01:30:11] [0m[31mERROR :: [0mPASS command failed: Invalid password
-[1m[2025-02-02 01:30:11] [0m[35mSERVER :: [0m:464 :Password incorrect
+[1m[2025-02-02 19:48:43] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-02 19:48:43] [0m[32mINFO  :: [0m+ No channels available
+[1m[2025-02-02 19:48:43] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-02 19:48:43] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-02 19:49:31] [0m[36mCLIENT :: [0mjoin #hell
+[1m[2025-02-02 19:49:31] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-02 19:49:31] [0m[33mDEBUG :: [0mCreating new channel: #hell
+[1m[2025-02-02 19:49:31] [0m[33mDEBUG :: [0mDestroying channel: #hell
+[1m[2025-02-02 19:49:31] [0m[33m[1mWARNING :: [0mClient already in channel. Server Omitting ...
+[1m[2025-02-02 19:49:31] [0m[35mSERVER :: [0m:cleverlord!Mohamed@127.0.0.1 JOIN :#hell
+[1m[2025-02-02 19:49:31] [0m[32mINFO  :: [0m+ #hell		1		PUBLIC+ #hell		1		
+[1m[2025-02-02 19:49:31] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-02 19:49:31] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-02 19:49:31] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-02 19:49:35] [0m[36mCLIENT :: [0mpart #hell
+[1m[2025-02-02 19:49:35] [0m[33mDEBUG :: [0mProcessing command: PART
+[1m[2025-02-02 19:49:35] [0m[33mDEBUG :: [0mcleverlord attempting to leave #hell
+[1m[2025-02-02 19:49:35] [0mcleverlord left #hell
+[1m[2025-02-02 19:49:35] [0m[35mSERVER :: [0m:cleverlord!mlamkadm@localhost PART #hell
 
-[1m[2025-02-02 01:30:11] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:30:11] [0m[32mINFO  :: [0m+ No channels available
-[1m[2025-02-02 01:30:11] [0m[32mINFO  :: [0mREGISTERED USERS: 1
-[1m[2025-02-02 01:30:11] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:30:39] [0m[36mCLIENT :: [0mpass Alilepro135!
-[1m[2025-02-02 01:30:39] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-02-02 01:30:39] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-02-02 01:30:39] [0m[31mERROR :: [0mPASS command failed: Invalid password
-[1m[2025-02-02 01:30:39] [0m[35mSERVER :: [0m:464 :Password incorrect
-
-[1m[2025-02-02 01:30:39] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:30:39] [0m[32mINFO  :: [0m+ No channels available
-[1m[2025-02-02 01:30:39] [0m[32mINFO  :: [0mREGISTERED USERS: 1
-[1m[2025-02-02 01:30:39] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:31:16] [0m[32mINFO  :: [0mClosing connection FD: 4
-[1m[2025-02-02 01:31:16] [0m[32mINFO  :: [0mPurging client name:
-[1m[2025-02-02 01:31:16] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
-[1m[2025-02-02 01:31:16] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:31:16] [0m[32mINFO  :: [0m+ No channels available
-[1m[2025-02-02 01:31:16] [0m[32mINFO  :: [0mREGISTERED USERS: 0
-[1m[2025-02-02 01:31:16] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:31:30] [0m[32mINFO  :: [0mClient accepted FD: 4
-[1m[2025-02-02 01:31:30] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-02-02 01:31:30] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-02-02 01:31:30] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
-[1m[2025-02-02 01:31:30] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
-[1m[2025-02-02 01:31:30] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
-[1m[2025-02-02 01:31:30] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
-[1m[2025-02-02 01:31:30] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
-[1m[2025-02-02 01:31:30] [0m[32mINFO  :: [0mClient connected
-[1m[2025-02-02 01:31:30] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:31:30] [0m[32mINFO  :: [0m+ No channels available
-[1m[2025-02-02 01:31:30] [0m[32mINFO  :: [0mREGISTERED USERS: 1
-[1m[2025-02-02 01:31:30] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:31:41] [0m[36mCLIENT :: [0mpass Aliepro
-[1m[2025-02-02 01:31:41] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-02-02 01:31:41] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-02-02 01:31:41] [0m[31mERROR :: [0mPASS command failed: Invalid password
-[1m[2025-02-02 01:31:41] [0m[35mSERVER :: [0m:464 :Password incorrect
-
-[1m[2025-02-02 01:31:41] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:31:41] [0m[32mINFO  :: [0m+ No channels available
-[1m[2025-02-02 01:31:41] [0m[32mINFO  :: [0mREGISTERED USERS: 1
-[1m[2025-02-02 01:31:41] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:32:50] [0m[32mINFO  :: [0mClosing connection FD: 4
-[1m[2025-02-02 01:32:50] [0m[32mINFO  :: [0mPurging client name:
-[1m[2025-02-02 01:32:50] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
-[1m[2025-02-02 01:32:50] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-02 01:32:50] [0m[32mINFO  :: [0m+ No channels available
-[1m[2025-02-02 01:32:50] [0m[32mINFO  :: [0mREGISTERED USERS: 0
-[1m[2025-02-02 01:32:50] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-02 19:49:35] [0m[32mINFO  :: [0mPurging channel name:#hell
+[1m[2025-02-02 19:49:35] [0m[33mDEBUG :: [0mDestroying channel: #hell
+[1m[2025-02-02 19:49:35] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-02 19:49:35] [0m[32mINFO  :: [0m+ No channels available
+[1m[2025-02-02 19:49:35] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-02 19:49:35] [0m[32mINFO  :: [0m+-------------------------------------------------------

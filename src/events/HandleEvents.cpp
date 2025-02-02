@@ -43,6 +43,7 @@ void CoreServer::WelcomeClient() {
   }
 
   std::ostringstream oss;
+
   oss << "Client accepted FD: " << fd_c;
   std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
 

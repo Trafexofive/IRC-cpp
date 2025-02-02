@@ -55,8 +55,13 @@ struct FdPredicate {
 };
 
 struct Stats {
+
   int totalClients;
   int totalChannels;
+  int totalMessages;
+
+  int uptime;
+  int tickRate;
 };
 
 class CoreServer {
@@ -70,7 +75,7 @@ private:
 
   std::vector<Channel> channels;
 
-  // std::map<std::string, Channel> _channels; // in favor of quick lookup and
+  std::map<std::string, Channel> _channels; // in favor of quick lookup and
   // time complexity
 
   std::map<std::string, CommandHandler> commands;

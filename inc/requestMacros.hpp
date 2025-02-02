@@ -33,7 +33,7 @@
 // Basic formatting helper function (not a macro)
 inline std::string formatResponse(const std::string& code, const std::string& message)
 {
-    return ":" + code + " " + message + "\r\n";
+        return ":WeUseArch.localhost " + code + " " + message + "\r\n";
 }
 
 inline std::string formatResponseSource(const std::string& source, const std::string& code, const std::string& message)
@@ -41,10 +41,6 @@ inline std::string formatResponseSource(const std::string& source, const std::st
     return ":" + source + " " + code + " " + message + "\r\n";
 }
 
-inline std::string formatResponseHost(const std::string& code, const std::string& message)
-{
-        return ":WeUseArch.localhost " + code + " " + message + "\r\n";
-}
 
 
 namespace StringUtils {

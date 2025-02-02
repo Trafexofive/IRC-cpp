@@ -14,6 +14,10 @@
 
 
 void CoreServer::cmdNick(int fd, std::vector<std::string> &args) {
+    if (!isClientAuthenticated(fd)) {
+        std::cout << formatServerMessage("ERROR", "NICK command failed: Client not found") << std::endl;
+        return;
+    }
     if (args.size() < 2) {
         std::cout << formatServerMessage("ERROR", "NICK command failed: No nickname provided") << std::endl;
         clients[fd].setResponse(formatResponse("431", ":No nickname given"));

@@ -185,7 +185,7 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
 
   if (!client.isRegistered()) {
     std::cout << formatServerMessage("WARNING",
-                                     "JOIN failed: Client not authenticated")
+                                     "JOIN failed: Client not registered")
               << std::endl;
     client.setResponse(
         formatResponse(ERR_NOTREGISTERED, "JOIN :You have not registered"));

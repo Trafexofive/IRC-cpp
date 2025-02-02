@@ -6,7 +6,7 @@
 /*   By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 16:31:50 by mlamkadm          #+#    #+#             */
-/*   Updated: 2024/12/31 16:31:50 by mlamkadm         ###   ########.fr       */
+/*   Updated: 2025/02/02 19:38:29 by mlamkadm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 #include <iomanip>
 #include <sstream>
 
+
+/* ************************************************************************** */
+/*                       SERVER UTILS                                         */
+/* ************************************************************************** */
 std::string formatServerMessage(const std::string& type, const std::string& message)
 {
     std::ostringstream oss;
@@ -50,6 +54,21 @@ std::string formatServerMessage(const std::string& type, const std::string& mess
 
 }
 
+void printServerMessage(const std::string& type, const std::string& message)
+{
+    std::cout << formatServerMessage(type, message) << std::endl;
+}
 
 
+// Clients
 
+/* ************************************************************************** */
+/*                       CLIENT UTILS                                         */
+/* ************************************************************************** */
+
+// std::string formatResponse(const std::string& code, const std::string& message)
+// {
+//     std::ostringstream oss;
+//     oss << ":WeUseArch " << code << " " << message;
+//     return oss.str();
+// }
