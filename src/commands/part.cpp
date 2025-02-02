@@ -11,19 +11,25 @@
 /* ************************************************************************** */
 
 #include "../../inc/Server.hpp"
+#include <string>
 
 void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
+    if (isClientDisconnected(fd))
+    {
+        std::cout << formatServerMessage("ERROR", "PART failed: Client is disconnected") << std::endl;
+        return;
+    }
     if (args.size() < 2) {
         std::cout << formatServerMessage("ERROR", "PART failed: No channel specified") << std::endl;
         clients[fd].setResponse(formatResponse(ERR_NEEDMOREPARAMS, "PART :Not enough parameters"));
         return;
     }
 
-    // Check if client exists
-    if (clients.find(fd) == clients.end()) {
-        std::cout << formatServerMessage("ERROR", "PART failed: Client not found") << std::endl;
-        return;
-    }
+    // // Check if client exists
+    // if (clients.find(fd) == clients.end()) {
+    //     std::cout << formatServerMessage("ERROR", "PART failed: Client not found") << std::endl;
+    //     return;
+    // } dont need this because we check if client is disconnected. 
 
     Client& client = clients[fd];
 

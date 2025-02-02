@@ -61,7 +61,6 @@ struct Stats {
 
 class CoreServer {
 private:
-
   ServerData ServData;
   Stats _serverStats;
 
@@ -71,7 +70,8 @@ private:
 
   std::vector<Channel> channels;
 
-  std::map<std::string, Channel> _channels; // in favor of quick lookup and time complexity
+  // std::map<std::string, Channel> _channels; // in favor of quick lookup and
+  // time complexity
 
   std::map<std::string, CommandHandler> commands;
 
@@ -83,9 +83,12 @@ private:
   // Cleaner methods
   void disconnectClient(int fd);
   void purgeEmptyChannels();
+  void handleDisconnect(int fd);
+  void disableClient(int fd);
+  void disableChannel(const std::string &name);
 
   void unsubFromChannels(int fd) {
-    if (clients[fd].isDisconnected())
+    if (isClientDisconnected(fd))
       return;
     for (std::vector<Channel>::iterator it = channels.begin();
          it != channels.end(); ++it) {
@@ -106,7 +109,6 @@ private:
 
   // Command handlers
   void handleCommand(int fd, const std::string &line);
-  void handleDisconnect(int fd);
 
   // Actual commands
   void cmdNick(int fd, std::vector<std::string> &args);
@@ -122,9 +124,26 @@ private:
   void cmdWho(int fd, std::vector<std::string> &args);
   // void cmdList(int fd, std::vector<std::string>& args);
 
+  // channel methods
+  void joinChannel(Client &client, const std::string &channelName);
+  void joinChannel(Client &client, const std::string &channelName,
+                   const std::string &key);
+
+  bool isChannel(const std::string &name);
+
+  // Events / Client handlers
+  void WelcomeClient();
+  void WriteEvent(int fd);
+  void ReadEvent(int fd);
+
 public:
   // Constructor and destructor
   CoreServer(std::string port, std::string password);
+
+  // Utility methods
+
+  Channel *getChannel(const std::string &name);
+
   ~CoreServer() {
 
     for (std::vector<struct pollfd>::iterator it = fds.begin(); it != fds.end();
@@ -135,37 +154,11 @@ public:
     channels.clear();
     clients.clear();
   }
-
-  // Client handling methods
-  void WelcomeClient();
-  void WriteEvent(int fd);
-  void ReadEvent(int fd);
-
-  void disableClient(int fd);
-  void disableChannel(const std::string &name);
-
-  // Utility methods
-
-  bool isChannel(const std::string &name);
-
-  // Getters
-  const std::map<int, Client> &getClients() const { return clients; }
-  const std::vector<Channel> &getChannels() const { return channels; }
-  Channel *getChannel(const std::string &name);
-
-  // channel methods
-  void joinChannel(Client &client, const std::string &channelName);
-  void joinChannel(Client &client, const std::string &channelName,
-                   const std::string &key);
-
-  void addChannel(const std::string &name, const std::string &topic,
-                  const std::string &password);
-
-// bool  isTickRate(const std::string &ticket) {
-//
-//     // prime numbers
-//     return true
-// };
+  // bool  isTickRate(const std::string &ticket) {
+  //
+  //     // prime numbers
+  //     return true
+  // };
 
   void displayChannelTable();
   void watchdog();
