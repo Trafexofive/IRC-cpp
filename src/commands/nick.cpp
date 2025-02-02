@@ -14,6 +14,10 @@
 
 
 void CoreServer::cmdNick(int fd, std::vector<std::string> &args) {
+    if (isClientDisconnected(fd)) {
+        std::cout << formatServerMessage("ERROR", "NICK command failed: Client disconnected") << std::endl;
+        return;
+    }
     if (!isClientAuthenticated(fd)) {
         std::cout << formatServerMessage("ERROR", "NICK command failed: Client not found") << std::endl;
         return;

@@ -13,10 +13,36 @@
 #include "../../inc/Server.hpp"
 #include <string>
 
+// Helper function to handle invalid channel case
+static void handleInvalidChannel(Client &client, const std::string &channelName) {
+  std::cout << formatServerMessage(
+                   "ERROR", "PART failed: Invalid channel name " + channelName)
+            << std::endl;
+  client.setResponse(
+      formatResponse(ERR_NOSUCHCHAN, channelName + " :Invalid channel name"));
+}
+
+// Helper function to handle successful part operation
+static void handlePartSuccess(Client &client, const std::string &channelName) {
+  std::string partMsg = ":" + client.getNickName() + "!" +
+                        client.getFullName() + "@localhost PART " +
+                        channelName + "\r\n";
+  client.setResponse(partMsg);
+  std::cout << formatServerMessage("SUCCESS", client.getNickName() + " left " +
+                                                  channelName)
+            << std::endl;
+}
+
 void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
     if (isClientDisconnected(fd))
     {
         std::cout << formatServerMessage("ERROR", "PART failed: Client is disconnected") << std::endl;
+        return;
+    }
+    if (!isClientRegistered(fd))
+    {
+        std::cout << formatServerMessage("ERROR", "PART failed: Client not registered") << std::endl;
+        clients[fd].setResponse(formatResponse(ERR_NOTREGISTERED, ":You have not registered"));
         return;
     }
     if (args.size() < 2) {
@@ -24,12 +50,6 @@ void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
         clients[fd].setResponse(formatResponse(ERR_NEEDMOREPARAMS, "PART :Not enough parameters"));
         return;
     }
-
-    // // Check if client exists
-    // if (clients.find(fd) == clients.end()) {
-    //     std::cout << formatServerMessage("ERROR", "PART failed: Client not found") << std::endl;
-    //     return;
-    // } dont need this because we check if client is disconnected. 
 
     Client& client = clients[fd];
 

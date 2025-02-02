@@ -148,8 +148,4 @@ public:
   // Registry and state management.
 };
 
-void handleInvalidChannel(Client &client, const std::string &channelName);
-void handlePartSuccess(Client &client, const std::string &channelName);
-std::string getChannelsString(const std::vector<Channel> &channels);
-
 #endif // CHANNEL_HPP

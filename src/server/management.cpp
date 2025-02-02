@@ -68,25 +68,6 @@ void CoreServer::watchdog() {
 //
 // }
 
-// Helper function to handle invalid channel case
-void handleInvalidChannel(Client &client, const std::string &channelName) {
-  std::cout << formatServerMessage(
-                   "ERROR", "PART failed: Invalid channel name " + channelName)
-            << std::endl;
-  client.setResponse(
-      formatResponse(ERR_NOSUCHCHAN, channelName + " :Invalid channel name"));
-}
-
-// Helper function to handle successful part operation
-void handlePartSuccess(Client &client, const std::string &channelName) {
-  std::string partMsg = ":" + client.getNickName() + "!" +
-                        client.getFullName() + "@localhost PART " +
-                        channelName + "\r\n";
-  client.setResponse(partMsg);
-  std::cout << formatServerMessage("SUCCESS", client.getNickName() + " left " +
-                                                  channelName)
-            << std::endl;
-}
 
 void CoreServer::displayChannelTable() {
   if (channels.empty()) {
