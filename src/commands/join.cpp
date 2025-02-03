@@ -88,18 +88,18 @@ bool CoreServer::isChannel(const std::string &name) {
 
 static std::string constructJoinMessage(const std::string &source,
                                         const std::string &channelName) {
-std::string joinMsg = ":" + source + " JOIN :" + channelName + CRLF;
+std::string joinMsg = ":" + source + " JOIN " + channelName + CRLF;
   std::cout << formatServerMessage("SERVER", joinMsg) << std::endl;
 
   return joinMsg;
 }
+
 
 void CoreServer::joinChannel(Client &client, const std::string &channelName) {
   if (!isChannel(channelName)) {
     channels.push_back(Channel(channelName, &client));
     channels.back().addMember(&client);
     client.setResponse(constructJoinMessage(client.getTarget(), channelName));
-    client.setResponse(formatResponse(NOTICE, ":Channel created"));
 
     return;
   }

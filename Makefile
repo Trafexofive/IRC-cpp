@@ -44,6 +44,7 @@ SRC_FILES := events/HandleEvents.cpp \
     commands/ping.cpp \
     commands/nick.cpp \
     commands/join.cpp \
+    commands/list.cpp \
     commands/pass.cpp \
     commands/part.cpp \
     commands/user.cpp \

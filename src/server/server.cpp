@@ -104,8 +104,12 @@ void CoreServer::start_server() {
 }
 
 CoreServer::CoreServer(std::string port, std::string password) {
-  std::cout << formatServerMessage("DEBUG", "Constructing Server Class ...")
+
+  // std::cout << formatServerMessage("DEBUG", "Constructing Server Class...")
+  //           << std::endl;
+  std::cout << formatServerMessage("INFO", "Starting Server ...")
             << std::endl;
+  
   if (!IsValidPort(port, ServData.Port)) {
     std::cerr << formatServerMessage("FATAL", "Invalid port, exiting ...")
               << std::endl;
@@ -118,17 +122,18 @@ CoreServer::CoreServer(std::string port, std::string password) {
     exit(1);
   }
 
+  // mandatory commands
   commands[PASS] = &CoreServer::cmdPass;
   commands[NICK] = &CoreServer::cmdNick;
   commands[USER] = &CoreServer::cmdUser;
   commands[JOIN] = &CoreServer::cmdJoin;
+  commands[PART] = &CoreServer::cmdPart;
+  commands[CAP] = &CoreServer::cmdCap; // only CAP LS and CAP END
   // commands[PRIVMSG] = &CoreServer::cmdPrivmsg;
   // all the commands need to be guarded by a connection check.
-  commands[CAP] = &CoreServer::cmdCap;
   commands[PING] = &CoreServer::cmdPing;
-  commands[PART] = &CoreServer::cmdPart;
   commands[QUIT] = &CoreServer::cmdQuit;
-  // commands[CMD_LIST] = &CoreServer::cmdList;
+  commands["LIST"] = &CoreServer::cmdList;
   create_socket();
   start_listening();
   start_server();

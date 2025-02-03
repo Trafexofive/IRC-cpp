@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../inc/Server.hpp"
+
 #include <string>
 
 // Helper function to handle invalid channel case

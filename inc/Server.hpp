@@ -88,6 +88,7 @@ private:
   void disconnectClient(int fd);
   void handleDisconnect(int fd);
   void watchdog();
+  void sendNotice(int fd, const std::string &message);
 
   void purgeEmptyChannels();
   void purgeDisconnectedClients();
@@ -106,6 +107,7 @@ private:
 
   // Actual commands
   void cmdNick(int fd, std::vector<std::string> &args);
+  void cmdList(int fd, std::vector<std::string> &args);
   void cmdUser(int fd, std::vector<std::string> &args);
   void cmdPass(int fd, std::vector<std::string> &args);
   void cmdJoin(int fd, std::vector<std::string> &args);
@@ -117,7 +119,6 @@ private:
   void cmdMode(int fd, std::vector<std::string> &args);
   void cmdWho(int fd, std::vector<std::string> &args);
   void cmdTopic(int fd, std::vector<std::string> &args);
-  // void cmdList(int fd, std::vector<std::string>& args);
 
   // channel management methods
   void joinChannel(Client &client, const std::string &channelName);
