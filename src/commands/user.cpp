@@ -53,16 +53,14 @@ void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {
               << std::endl;
     return;
   }
-  if (!isClientAuthenticated(fd)) {
+  if (isClientRegistered(fd)) {
+    // probably should handle renaming
     std::cout << formatServerMessage(
                      "ERROR", "USER command failed: Client not authenticated")
               << std::endl;
     clients[fd].setResponse(
         formatResponse(ERR_ALREADYREG, ":You may not reregister"));
     return;
-  }
-  if (isClientRegistered(fd)) {
-    // probably should handle renaming
   }
 
   std::cout << formatServerMessage("DEBUG", "Processing USER command")

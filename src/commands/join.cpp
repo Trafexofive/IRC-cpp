@@ -85,20 +85,26 @@ bool CoreServer::isChannel(const std::string &name) {
   return false;
 }
 
-static void constructJoinMessage(const std::string &source,
-                                 const std::string &channelName) {
-  std::string joinMsg = ":" + source + " JOIN :" + channelName;
+
+static std::string constructJoinMessage(const std::string &source,
+                                        const std::string &channelName) {
+std::string joinMsg = ":" + source + " JOIN :" + channelName + CRLF;
   std::cout << formatServerMessage("SERVER", joinMsg) << std::endl;
+
+  return joinMsg;
 }
 
 void CoreServer::joinChannel(Client &client, const std::string &channelName) {
   if (!isChannel(channelName)) {
     channels.push_back(Channel(channelName, &client));
     channels.back().addMember(&client);
-    constructJoinMessage(client.getTarget(), channelName);
+    client.setResponse(constructJoinMessage(client.getTarget(), channelName));
+    client.setResponse(formatResponse(NOTICE, ":Channel created"));
+
     return;
   }
   Channel *channelPtr = getChannel(channelName);
+
   if (channelPtr == NULL) {
     std::cout << formatServerMessage("WARNING",
                                      "JOIN failed: Channel not found")
@@ -124,12 +130,12 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
                                                     channelName)
               << std::endl;
     client.setResponse(formatResponse(ERR_USERONCHANNEL,
-                                      client.getNickName() + " " + channelName +
+                                      client.getTarget() + " " + channelName +
                                           " :is already on channel"));
     return;
   }
   channel.addMember(&client);
-  constructJoinMessage(client.getTarget(), channelName);
+  client.setResponse(constructJoinMessage(client.getTarget(), channelName));
 }
 
 void CoreServer::joinChannel(Client &client, const std::string &channelName,
@@ -138,7 +144,8 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
 
     channels.push_back(Channel(channelName, "", key, &client));
     channels.back().addMember(&client);
-    constructJoinMessage(client.getTarget(), channelName);
+    client.setResponse(constructJoinMessage(client.getTarget(), channelName));
+
     return;
   }
   Channel *channelPtr = getChannel(channelName);
@@ -177,7 +184,7 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
     return;
   }
   channel.addMember(&client);
-  constructJoinMessage(client.getTarget(), channelName);
+  client.setResponse(constructJoinMessage(client.getTarget(), channelName));
 }
 
 void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {

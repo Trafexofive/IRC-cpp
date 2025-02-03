@@ -39,7 +39,6 @@
 #include "./Helpers.hpp"
 #include "./Utils.hpp"
 #include "./ircResponses.hpp"
-#include "./requestMacros.hpp"
 
 // Forward declarations
 class CoreServer;

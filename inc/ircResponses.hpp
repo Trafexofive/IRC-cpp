@@ -1,251 +1,162 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ircResponses.hpp                                   :+:      :+:    :+:   */
+/*   requestMacros.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 08:38:55 by mlamkadm          #+#    #+#             */
-/*   Updated: 2024/12/27 08:38:55 by mlamkadm         ###   ########.fr       */
+/*   Created: 2024/12/29 23:27:22 by mlamkadm          #+#    #+#             */
+/*   Updated: 2024/12/29 23:27:22 by mlamkadm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IRC_RESPONSES_HPP
-#define IRC_RESPONSES_HPP
+#ifndef REQUESTMACROS_HPP
+#define REQUESTMACROS_HPP
 
-#include "./requestMacros.hpp"
-#include <sstream>
 #include <string>
+#include <vector>
+#include <map>
+#include <sstream>
+#include <iomanip>
+#include <ctime>
+#include <stdexcept>
+
+#define CRLF "\r\n"
+
+std::string formatResponse(const std::string& code, const std::string& message);
+std::string formatResponseSource(const std::string& source, const std::string& code, const std::string& message);
+
+// Commands
+
+#define PASS "PASS"
+#define NICK "NICK"
+#define USER "USER"
+#define OPER "OPER"
+#define MODE "MODE"
+#define SERVICE "SERVICE"
+#define QUIT "QUIT"
+#define SQUIT "SQUIT"
+#define JOIN "JOIN"
+#define PART "PART"
+#define TOPIC "TOPIC"
+#define NAMES "NAMES"
+#define LIST "LIST"
+#define INVITE "INVITE"
+#define KICK "KICK"
+#define PRIVMSG "PRIVMSG"
+#define NOTICE "NOTICE"
+#define MOTD "MOTD"
+#define LUSERS "LUSERS"
+#define VERSION "VERSION"
+#define STATS "STATS"
+#define LINKS "LINKS"
+#define TIME "TIME"
+#define CONNECT "CONNECT"
+#define TRACE "TRACE"
+#define ADMIN "ADMIN"
+#define INFO "INFO"
+#define SERVLIST "SERVLIST"
+#define SQUERY "SQUERY"
+#define WHO "WHO"
+#define WHOIS "WHOIS"
+#define WHOWAS "WHOWAS"
+#define KILL "KILL"
+#define PING "PING"
+#define PONG "PONG"
+#define ERROR "ERROR"
+#define AWAY "AWAY"
+#define REHASH "REHASH"
+#define DIE "DIE"
+#define RESTART "RESTART"
+#define SUMMON "SUMMON"
+#define USERS "USERS"
+#define WALLOPS "WALLOPS"
+#define USERHOST "USERHOST"
+#define ISON "ISON"
+#define CAP "CAP"
 
 
-namespace irc_responses {
+// Response Codes
+#define RPL_WELCOME             "001" 
+#define RPL_YOURHOST            "002"
+#define RPL_CREATED             "003"
+#define RPL_MYINFO              "004"
+#define RPL_BOUNCE              "005"
+#define RPL_USERHOST            "302"
+#define RPL_ISON                "303"
+#define RPL_AWAY                "301"
+#define RPL_UNAWAY              "305"
+#define RPL_NOWAWAY             "306"
+#define RPL_WHOISUSER           "311"
+#define RPL_WHOISSERVER         "312"
+#define RPL_WHOISOPERATOR       "313"
+#define RPL_WHOISIDLE           "317"
+#define RPL_ENDOFWHOIS          "318"
+#define RPL_WHOISCHANNELS       "319"
+#define RPL_LISTSTART           "321"
+#define RPL_LIST                "322"
+#define RPL_LISTEND             "323"
+#define RPL_CHANNELMODEIS       "324"
+#define RPL_NOTOPIC             "331"
+#define RPL_TOPIC               "332"
+#define RPL_INVITING            "341"
+#define RPL_SUMMONING           "342"
+#define RPL_VERSION             "351"
+#define RPL_WHOREPLY            "352"
+#define RPL_ENDOFWHO            "315"
+#define RPL_NAMREPLY            "353"
+#define RPL_ENDOFNAMES          "366"
+#define RPL_LINKS               "364"
+#define RPL_ENDOFLINKS          "365"
+#define RPL_BANLIST             "367"
+#define RPL_ENDOFBANLIST        "368"
+#define RPL_INFO                "371"
+#define RPL_ENDOFINFO           "374"
+#define RPL_MOTDSTART           "375"
+#define RPL_MOTD                "372"
+#define RPL_ENDOFMOTD           "376"
+#define RPL_YOUREOPER           "381"
+#define RPL_REHASHING           "382"
+#define RPL_TIME                "391"
+#define ERR_NOSUCHNICK          "401"
+#define ERR_NOSUCHSERVER        "402"
+#define ERR_NOSUCHCHANNEL       "403"
+#define ERR_CANNOTSENDTOCHAN    "404"
+#define ERR_TOOMANYCHANNELS     "405"
+#define ERR_WASNOSUCHNICK       "406"
+#define ERR_TOOMANYTARGETS      "407"
+#define ERR_NOORIGIN            "409"
+#define ERR_NORECIPIENT         "411"
+#define ERR_NOTEXTTOSEND        "412"
+#define ERR_NOTOPLEVEL          "413"
+#define ERR_WILDTOPLEVEL        "414"
+#define ERR_UNKNOWNCOMMAND      "421"
+#define ERR_NOMOTD              "422"
+#define ERR_NOADMININFO         "423"
+#define ERR_FILEERROR           "424"
+#define ERR_NONICKNAMEGIVEN     "431"
+#define ERR_ERRONEUSNICKNAME    "432"
+#define ERR_NICKNAMEINUSE       "433"
+#define ERR_NICKCOLLISION       "436"
+#define ERR_USERNOTINCHANNEL    "441"
+#define ERR_NOTONCHANNEL        "442"
+#define ERR_USERONCHANNEL       "443"
 
-// -------------------------------------------------------
-// WELCOME RESPONSES
-// -------------------------------------------------------
-inline std::string getWelcomeMessages(const std::string &nickname) {
-    std::ostringstream oss;
-    oss << formatResponse(RPL_WELCOME,
-                          nickname + " :Welcome to the Internet Relay Chat Network")
-        << formatResponse(RPL_YOURHOST, nickname + " :Your host is IRC Server")
-        << formatResponse(RPL_CREATED,
-                          nickname + " :This server was created " __DATE__)
-        << formatResponse(RPL_MYINFO, nickname + " :IRC server v1.0");
-    return oss.str();
-}
+// Newly added missing response codes:
+#define ERR_NEEDMOREPARAMS      "461" // Not enough parameters
+#define ERR_PASSWDMISMATCH      "464" // Password mismatch
+#define ERR_ALREADYREG          "462" 
+#define ERR_NOSUCHCHAN          "403"
+#define ERR_UNKNOWNMODE         "472"
+#define ERR_PASSWDMISMATCH      "464"
+#define ERR_NOTREGISTERED       "451"
+#define ERR_NEEDMOREPARAMS      "461"
+#define ERR_NOORIGIN            "409"
 
-// -------------------------------------------------------
-// AUTHENTICATION RESPONSES
-// -------------------------------------------------------
-inline std::string getPasswordRequired() {
-    return formatResponse(ERR_PASSWDMISMATCH, ":Password required");
-}
-
-inline std::string getPasswordIncorrect() {
-    return formatResponse(ERR_PASSWDMISMATCH, ":Password incorrect");
-}
-
-inline std::string getPasswordAccepted() {
-    return ":server NOTICE Auth :Password accepted\r\n";
-}
-
-// -------------------------------------------------------
-// NICKNAME RESPONSES
-// -------------------------------------------------------
-inline std::string getNickInUse(const std::string &nickname) {
-    return formatResponse(ERR_NICKNAMEINUSE,
-                          "* " + nickname + " :Nickname is already in use");
-}
-
-inline std::string getNickChange(const std::string &oldnick,
-                                 const std::string &newnick,
-                                 const std::string &username) {
-    return ":" + oldnick + "!" + username + "@localhost NICK :" + newnick + "\r\n";
-}
-
-// -------------------------------------------------------
-// CHANNEL RESPONSES
-// -------------------------------------------------------
-inline std::string getJoinMessage(const std::string &nickname,
-                                  const std::string &username,
-                                  const std::string &channel) {
-    return ":" + nickname + "!" + username + "@localhost JOIN " + channel + "\r\n";
-}
-
-inline std::string getNamesList(const std::string &nickname,
-                                const std::string &channel,
-                                const std::string &names) {
-    return formatResponse(RPL_NAMREPLY,
-                          nickname + " = " + channel + " :" + names);
-}
-
-inline std::string getEndOfNames(const std::string &nickname,
-                                 const std::string &channel) {
-    return formatResponse(RPL_ENDOFNAMES,
-                          nickname + " " + channel + " :End of /NAMES list");
-}
-
-// -------------------------------------------------------
-// ERROR RESPONSES
-// -------------------------------------------------------
-inline std::string getUnknownCommand(const std::string &command) {
-    return formatResponse(ERR_UNKNOWNCOMMAND, command + " :Unknown command");
-}
-
-inline std::string getNeedMoreParams(const std::string &command) {
-    return formatResponse(ERR_NEEDMOREPARAMS,
-                          command + " :Not enough parameters");
-}
-
-// -------------------------------------------------------
-// MESSAGE RESPONSES
-// -------------------------------------------------------
-inline std::string getPrivateMessage(const std::string &sender,
-                                     const std::string &target,
-                                     const std::string &message) {
-    return ":" + sender + " PRIVMSG " + target + " :" + message + "\r\n";
-}
-
-// -------------------------------------------------------
-// EXTENDED/ADDITIONAL RESPONSES (10x more extensive)
-// -------------------------------------------------------
-
-// 1) MOTD (Message of the Day)
-inline std::string getMotdStart(const std::string &nickname) {
-    return formatResponse(RPL_MOTDSTART,
-                          nickname + " :- IRC Server Message of the Day - ");
-}
-
-inline std::string getMotd(const std::string &motdLine) {
-    return formatResponse(RPL_MOTD, ":- " + motdLine);
-}
-
-inline std::string getEndOfMotd(const std::string &nickname) {
-    return formatResponse(RPL_ENDOFMOTD,
-                          nickname + " :End of MOTD command");
-}
-
-// 2) TOPIC RESPONSES
-inline std::string getTopic(const std::string &nickname,
-                            const std::string &channel,
-                            const std::string &topic) {
-    return formatResponse(RPL_TOPIC,
-                          nickname + " " + channel + " :" + topic);
-}
-
-inline std::string getNoTopic(const std::string &nickname,
-                              const std::string &channel) {
-    return formatResponse(RPL_NOTOPIC,
-                          nickname + " " + channel + " :No topic is set");
-}
-
-// 3) KICK RESPONSES
-inline std::string getKickMessage(const std::string &kicker,
-                                  const std::string &channel,
-                                  const std::string &kicked,
-                                  const std::string &reason) {
-    return ":" + kicker + " KICK " + channel + " " + kicked + " :" + reason + "\r\n";
-}
-
-// inline std::string getCannotKickOp(const std::string &channel,
-//                                    const std::string &nickname) {
-//     return formatResponse(ERR_CHANOPRIVSNEEDED,
-//                           channel + " :Cannot kick channel operator " + nickname);
-// }
-
-// 4) INVITE RESPONSES
-inline std::string getInviteNotification(const std::string &inviter,
-                                         const std::string &invitee,
-                                         const std::string &channel) {
-    return ":" + inviter + " INVITE " + invitee + " :" + channel + "\r\n";
-}
-
-// inline std::string getInviteOnlyChan(const std::string &channel) {
-//     return formatResponse(ERR_INVITEONLYCHAN,
-//                           channel + " :Cannot join channel (+i)");
-// }
-
-// 5) NOTICE RESPONSES
-inline std::string getServerNotice(const std::string &message) {
-    // Typically server notices omit user details in prefix
-    return ":server NOTICE * :" + message + "\r\n";
-}
-
-inline std::string getUserNotice(const std::string &sender,
-                                 const std::string &target,
-                                 const std::string &message) {
-    return ":" + sender + " NOTICE " + target + " :" + message + "\r\n";
-}
-
-// 6) PING / PONG RESPONSES
-inline std::string getPing(const std::string &server) {
-    return "PING :" + server + "\r\n";
-}
-
-inline std::string getPong(const std::string &server) {
-    return "PONG :" + server + "\r\n";
-}
-
-// 7) QUIT RESPONSES
-inline std::string getQuitMessage(const std::string &nickname,
-                                  const std::string &quitMessage) {
-    return ":" + nickname + " QUIT :" + quitMessage + "\r\n";
-}
-
-inline std::string getErrorClosingLink(const std::string &nickname,
-                                       const std::string &reason) {
-    return "ERROR :Closing Link: " + nickname + "[localhost] (" + reason + ")\r\n";
-}
-
-// 8) WHOIS RESPONSES
-inline std::string getWhoisUser(const std::string &requester,
-                                const std::string &nickname,
-                                const std::string &username,
-                                const std::string &host,
-                                const std::string &realName) {
-    return formatResponse(RPL_WHOISUSER,
-                          requester + " " + nickname + " " + username + " " +
-                          host + " * :" + realName);
-}
-
-inline std::string getWhoisServer(const std::string &requester,
-                                  const std::string &nickname,
-                                  const std::string &server,
-                                  const std::string &info) {
-    return formatResponse(RPL_WHOISSERVER,
-                          requester + " " + nickname + " " + server +
-                          " :" + info);
-}
-
-inline std::string getWhoisEnd(const std::string &requester,
-                               const std::string &nickname) {
-    return formatResponse(RPL_ENDOFWHOIS,
-                          requester + " " + nickname + " :End of WHOIS list");
-}
-
-// 9) PRIVMSG ERRORS
-inline std::string getCannotSendToChan(const std::string &channel) {
-    return formatResponse(ERR_CANNOTSENDTOCHAN,
-                          channel + " :Cannot send to channel");
-}
-
-inline std::string getNoSuchNick(const std::string &nickname) {
-    return formatResponse(ERR_NOSUCHNICK,
-                          nickname + " :No such nick/channel");
-}
-
-// 10) USER OPER RESPONSES
-inline std::string getOperLogin(const std::string &nickname) {
-    return formatResponse(RPL_YOUREOPER,
-                          nickname + " :You are now an IRC operator");
-}
-
-// inline std::string getOperFail(const std::string &nickname) {
-//     return formatResponse(ERR_NOOPERHOST,
-//                           nickname + " :No O-lines for your host");
-// }
-
-} // namespace irc_responses
-
+// CAP response codes
+#define ERR_INVALIDCAPCMD "410"
+#define ERR_INVALIDCAP "411"
+#define ERR_NEEDMOREPARAMS "461"
+// #define ERR_UNKNOWNCAP "410"
 
 #endif

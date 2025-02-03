@@ -20,7 +20,12 @@
 #include <ctime>
 #include <iomanip>
 #include <sstream>
+#include <vector>
 
+#define SERVER_NAME "WeUseArch"
+#define SERVER_HOST "morpheus-server.ddns.net"
+
+#define CRLF "\r\n"
 
 /* ************************************************************************** */
 /*                       SERVER UTILS                                         */
@@ -72,3 +77,32 @@ void printServerMessage(const std::string& type, const std::string& message)
 //     oss << ":WeUseArch " << code << " " << message;
 //     return oss.str();
 // }
+
+
+
+
+// Basic formatting helper function (not a macro)
+std::string formatResponse(const std::string& code, const std::string& message)
+{
+        return ":WeUseArch.localhost " + code + " " + message + "\r\n";
+}
+
+std::string formatResponseSource(const std::string& source, const std::string& code, const std::string& message)
+{
+    return ":" + source + " " + code + " " + message + "\r\n";
+}
+
+std::string formatResponseServerCommand(std::vector<std::string> &args)
+{
+    std::ostringstream oss;
+    std::copy(args.begin(), args.end(), std::ostream_iterator<std::string>(oss, " "));
+
+    return ":WeUseArch "  + oss.str() + CRLF;
+}
+
+std::string formatResponseClientCommand(const std::string& source, const std::string& command, const std::string& message)
+{
+    return ":" + source + " " + command + " " + message + "\r\n";
+}
+
+
