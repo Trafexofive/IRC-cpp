@@ -89,7 +89,6 @@ void CoreServer::start_server() {
                 << std::endl;
       break;
     }
-    TickCycle();
     for (size_t i = 0; i < fds.size(); i++) {
 
       if (fds[i].revents & POLLIN) {
@@ -97,6 +96,8 @@ void CoreServer::start_server() {
           WelcomeClient();
         else
           ReadEvent(fds[i].fd);
+        TickCycle();
+        // watchdog();
         displayChannelTable();
       }
     }
@@ -105,8 +106,6 @@ void CoreServer::start_server() {
 
 CoreServer::CoreServer(std::string port, std::string password) {
 
-  // std::cout << formatServerMessage("DEBUG", "Constructing Server Class...")
-  //           << std::endl;
   std::cout << formatServerMessage("INFO", "Starting Server ...")
             << std::endl;
   
@@ -121,6 +120,9 @@ CoreServer::CoreServer(std::string port, std::string password) {
     DisplayPassInfo();
     exit(1);
   }
+
+_serverStats.tickRate = 20;
+_serverStats.tick = 0;
 
   // mandatory commands
   commands[PASS] = &CoreServer::cmdPass;

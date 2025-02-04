@@ -87,6 +87,7 @@ void CoreServer::displayChannelTable() {
     printLine();
     std::cout << formatServerMessage("INFO", "+ No channels available")
               << std::endl;
+    printLine();
     std::ostringstream total;
     total << "REGISTERED USERS: " << clients.size();
 
@@ -105,12 +106,13 @@ void CoreServer::displayChannelTable() {
     if (it->getChannelType() == CHANNEL::PRIVATE) {
       row << "+ " << it->getName() << "\t\t" << it->getMemberCount() << "\t\t"
           << "PRIVATE";
-    } else {
+    } else if (it->getChannelType() == CHANNEL::PUBLIC) {
       row << "+ " << it->getName() << "\t\t" << it->getMemberCount() << "\t\t"
           << "PUBLIC";
+    } else if (it->getChannelType() == CHANNEL::EMPTY) {
+      row << "+ " << it->getName() << "\t\t" << it->getMemberCount() << "\t\t"
+          << "EMPTY";
     }
-    row << "+ " << it->getName() << "\t\t" << it->getMemberCount() << "\t\t"
-        << type;
     std::cout << formatServerMessage("INFO", row.str()) << std::endl;
   }
   // total number of users

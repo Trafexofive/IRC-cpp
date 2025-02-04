@@ -1,59 +1,620 @@
-[1m[2025-02-04 05:47:05] [0m[32mINFO  :: [0mStarting Server ...
-[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mValidating port: 22200
-[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mˆþÿ*
-[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mValidating password
-[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mPassword valid
-[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mCreating socket...
-[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mSocket created: 3
-[1m[2025-02-04 05:47:05] [0m[32mINFO  :: [0mServer Socket setup complete
-[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mStarting to listen...
-[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mServer listening on port: 22200
-[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mServer main loop starting...
-[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0mClient accepted FD: 4
-[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
-[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mCreating new empty client instance
-[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
-[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
-[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
-[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
-[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
-[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0mClient connected
-[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0m+ No channels available
-[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0mREGISTERED USERS: 1
-[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mProcessing command: PASS
-[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mProcessing PASS command
-[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0mClient Authenticated
-[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mProcessing command: NICK
-[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mNickname set to: clevo
-[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mProcessing command: USER
-[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mProcessing USER command
-[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0mRegistration complete for 
-[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0msource: clevo!testreal@127.0.0.1
-[1m[2025-02-04 05:47:15] [0m[35mSERVER :: [0m:WeUseArch.localhost 001 clevo!testreal@127.0.0.1 :Welcome to the WeUseArch IRC Network
-:WeUseArch.localhost 002 clevo!testreal@127.0.0.1 :Your host is morpheus-server.ddns.net
-:WeUseArch.localhost 003 clevo!testreal@127.0.0.1 :This server was created 2024-01-11
-:WeUseArch.localhost 004 clevo!testreal@127.0.0.1 morpheus-server.ddns.net 1.0 usermodes channelmodes
-:WeUseArch.localhost 375 clevo!testreal@127.0.0.1 :- morpheus-server.ddns.net Message of the Day - 
-:WeUseArch.localhost 372 clevo!testreal@127.0.0.1 :- Welcome to the WeUseArch IRC Network!
-:WeUseArch.localhost 372 clevo!testreal@127.0.0.1 :- Enjoy your stay!
-:WeUseArch.localhost 376 clevo!testreal@127.0.0.1 :End of /MOTD command.
+[1m[2025-02-04 06:42:27] [0m[32mINFO  :: [0mStarting Server ...
+[1m[2025-02-04 06:42:27] [0m[33mDEBUG :: [0mValidating port: 22200
+[1m[2025-02-04 06:42:27] [0m[33mDEBUG :: [0m‰þÿ*
+[1m[2025-02-04 06:42:27] [0m[33mDEBUG :: [0mValidating password
+[1m[2025-02-04 06:42:27] [0m[33mDEBUG :: [0mPassword valid
+[1m[2025-02-04 06:42:27] [0m[33mDEBUG :: [0mCreating socket...
+[1m[2025-02-04 06:42:27] [0m[33mDEBUG :: [0mSocket created: 3
+[1m[2025-02-04 06:42:27] [0m[32mINFO  :: [0mServer Socket setup complete
+[1m[2025-02-04 06:42:27] [0m[33mDEBUG :: [0mStarting to listen...
+[1m[2025-02-04 06:42:27] [0m[33mDEBUG :: [0mServer listening on port: 22200
+[1m[2025-02-04 06:42:27] [0m[33mDEBUG :: [0mServer main loop starting...
+[1m[2025-02-04 06:42:31] [0m[32mINFO  :: [0mClient accepted FD: 4
+[1m[2025-02-04 06:42:31] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-02-04 06:42:31] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-02-04 06:42:31] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-02-04 06:42:31] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-02-04 06:42:31] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-04 06:42:31] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-04 06:42:31] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-02-04 06:42:31] [0m[32mINFO  :: [0mClient connected
+[1m[2025-02-04 06:42:31] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:31] [0m[32mINFO  :: [0m+ No channels available
+[1m[2025-02-04 06:42:31] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:31] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:31] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:31] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:31] [0m[32mINFO  :: [0m+ No channels available
+[1m[2025-02-04 06:42:31] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:31] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:31] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:32] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-02-04 06:42:32] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-02-04 06:42:32] [0m[32mINFO  :: [0mClient Authenticated
+[1m[2025-02-04 06:42:32] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:32] [0m[32mINFO  :: [0m+ No channels available
+[1m[2025-02-04 06:42:32] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:32] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:32] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:33] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-02-04 06:42:33] [0m[33mDEBUG :: [0mNickname set to: TestUser
+[1m[2025-02-04 06:42:33] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:33] [0m[32mINFO  :: [0m+ No channels available
+[1m[2025-02-04 06:42:33] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:33] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:33] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:34] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-02-04 06:42:34] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-02-04 06:42:34] [0m[32mINFO  :: [0mRegistration complete for 
+[1m[2025-02-04 06:42:34] [0m[33mDEBUG :: [0msource: TestUser!Test@127.0.0.1
+[1m[2025-02-04 06:42:34] [0m[35mSERVER :: [0m:WeUseArch.localhost 001 TestUser!Test@127.0.0.1 :Welcome to the WeUseArch IRC Network
+:WeUseArch.localhost 002 TestUser!Test@127.0.0.1 :Your host is morpheus-server.ddns.net
+:WeUseArch.localhost 003 TestUser!Test@127.0.0.1 :This server was created 2024-01-11
+:WeUseArch.localhost 004 TestUser!Test@127.0.0.1 morpheus-server.ddns.net 1.0 usermodes channelmodes
+:WeUseArch.localhost 375 TestUser!Test@127.0.0.1 :- morpheus-server.ddns.net Message of the Day - 
+:WeUseArch.localhost 372 TestUser!Test@127.0.0.1 :- Welcome to the WeUseArch IRC Network!
+:WeUseArch.localhost 372 TestUser!Test@127.0.0.1 :- Enjoy your stay!
+:WeUseArch.localhost 376 TestUser!Test@127.0.0.1 :End of /MOTD command.
 
-[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0m+ No channels available
-[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0mREGISTERED USERS: 1
-[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-04 05:47:18] [0m[33mDEBUG :: [0mProcessing command: JOIN
-[1m[2025-02-04 05:47:18] [0m[33mDEBUG :: [0mCreating new channel: #hell
-[1m[2025-02-04 05:47:18] [0m[33mDEBUG :: [0mDestroying channel: #hell
-[1m[2025-02-04 05:47:18] [0m[33m[1mWARNING :: [0mClient already in channel. Server Omitting ...
-[1m[2025-02-04 05:47:18] [0m[35mSERVER :: [0m:clevo!testreal@127.0.0.1 JOIN #hell
+[1m[2025-02-04 06:42:34] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:34] [0m[32mINFO  :: [0m+ No channels available
+[1m[2025-02-04 06:42:34] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:34] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:34] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:35] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:35] [0m[32mINFO  :: [0m+ No channels available
+[1m[2025-02-04 06:42:35] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:35] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:35] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:36] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-02-04 06:42:36] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:36] [0m[32mINFO  :: [0m+ No channels available
+[1m[2025-02-04 06:42:36] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:36] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:36] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:37] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-04 06:42:37] [0m[33mDEBUG :: [0mCreating new channel: #testchannel
+[1m[2025-02-04 06:42:37] [0m[33mDEBUG :: [0mDestroying channel: #testchannel
+[1m[2025-02-04 06:42:37] [0m[33m[1mWARNING :: [0mClient already in channel. Server Omitting ...
+[1m[2025-02-04 06:42:37] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #testchannel
 
-[1m[2025-02-04 05:47:18] [0m[35mSERVER :: [0m:clevo!testreal@127.0.0.1 JOIN #hell
+[1m[2025-02-04 06:42:37] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #testchannel
 
-[1m[2025-02-04 05:47:18] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-04 05:47:18] [0m[32mINFO  :: [0m+ #hell		1		PUBLIC+ #hell		1		
-[1m[2025-02-04 05:47:18] [0m[32mINFO  :: [0m+-------------------------------------------------------
-[1m[2025-02-04 05:47:18] [0m[32mINFO  :: [0mREGISTERED USERS: 1
-[1m[2025-02-04 05:47:18] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:37] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:37] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:37] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:37] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:37] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:38] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:38] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:38] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:38] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:38] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:39] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-02-04 06:42:39] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:39] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:39] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:39] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:39] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:40] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-04 06:42:40] [0m[33mDEBUG :: [0mCreating new channel: #channel1
+[1m[2025-02-04 06:42:40] [0m[33mDEBUG :: [0mDestroying channel: #testchannel
+[1m[2025-02-04 06:42:40] [0m[33mDEBUG :: [0mDestroying channel: #channel1
+[1m[2025-02-04 06:42:40] [0m[33m[1mWARNING :: [0mClient already in channel. Server Omitting ...
+[1m[2025-02-04 06:42:40] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #channel1
+
+[1m[2025-02-04 06:42:40] [0m[33mDEBUG :: [0mCreating new channel: #channel2
+[1m[2025-02-04 06:42:40] [0m[33mDEBUG :: [0mDestroying channel: #testchannel
+[1m[2025-02-04 06:42:40] [0m[33mDEBUG :: [0mDestroying channel: #channel1
+[1m[2025-02-04 06:42:40] [0m[33mDEBUG :: [0mDestroying channel: #channel2
+[1m[2025-02-04 06:42:40] [0m[33m[1mWARNING :: [0mClient already in channel. Server Omitting ...
+[1m[2025-02-04 06:42:40] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #channel2
+
+[1m[2025-02-04 06:42:40] [0m[33mDEBUG :: [0mCreating new channel: #channel3
+[1m[2025-02-04 06:42:40] [0m[33mDEBUG :: [0mDestroying channel: #channel3
+[1m[2025-02-04 06:42:40] [0m[33m[1mWARNING :: [0mClient already in channel. Server Omitting ...
+[1m[2025-02-04 06:42:40] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #channel3
+
+[1m[2025-02-04 06:42:40] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #channel1
+:TestUser!Test@127.0.0.1 JOIN #channel2
+:TestUser!Test@127.0.0.1 JOIN #channel3
+
+[1m[2025-02-04 06:42:40] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:40] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:40] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:40] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:40] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:40] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:40] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:40] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:41] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:41] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:41] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:41] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:41] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:41] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:41] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:41] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:42] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-02-04 06:42:42] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:42] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:42] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:42] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:42] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:42] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:42] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:42] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:43] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-04 06:42:43] [0m[33mDEBUG :: [0mCreating new channel: #securechannel with topic:  and password
+[1m[2025-02-04 06:42:43] [0m[33mDEBUG :: [0mDestroying channel: #testchannel
+[1m[2025-02-04 06:42:43] [0m[33mDEBUG :: [0mDestroying channel: #channel1
+[1m[2025-02-04 06:42:43] [0m[33mDEBUG :: [0mDestroying channel: #channel2
+[1m[2025-02-04 06:42:43] [0m[33mDEBUG :: [0mDestroying channel: #channel3
+[1m[2025-02-04 06:42:43] [0m[33mDEBUG :: [0mDestroying channel: #securechannel
+[1m[2025-02-04 06:42:43] [0m[33m[1mWARNING :: [0mClient already in channel. Server Omitting ...
+[1m[2025-02-04 06:42:43] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #securechannel
+
+[1m[2025-02-04 06:42:43] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #securechannel
+
+[1m[2025-02-04 06:42:43] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:43] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:43] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:43] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:43] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:43] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:42:43] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:43] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:43] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:44] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:44] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:44] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:44] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:44] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:44] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:42:44] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:44] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:44] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:45] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-02-04 06:42:45] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:45] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:45] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:45] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:45] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:45] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:42:45] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:45] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:45] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:46] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:46] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:46] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:46] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:46] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:46] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:42:46] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:46] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:46] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:47] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-02-04 06:42:47] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:47] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:47] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:47] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:47] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:47] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:42:47] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:47] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:47] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:48] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-04 06:42:48] [0m[33mDEBUG :: [0mCreating new channel: #invalid
+[1m[2025-02-04 06:42:48] [0m[33mDEBUG :: [0mDestroying channel: #invalid
+[1m[2025-02-04 06:42:48] [0m[33m[1mWARNING :: [0mClient already in channel. Server Omitting ...
+[1m[2025-02-04 06:42:48] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #invalid
+
+[1m[2025-02-04 06:42:48] [0m[33m[1mWARNING :: [0mJOIN failed: Invalid channel name channel
+[1m[2025-02-04 06:42:48] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #invalid
+:WeUseArch.localhost 403 channel :Invalid channel name
+
+[1m[2025-02-04 06:42:48] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:48] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:48] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:48] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:48] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:48] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:42:48] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:42:48] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:48] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:48] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:49] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-02-04 06:42:49] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:49] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:49] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:49] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:49] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:49] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:42:49] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:42:49] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:49] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:49] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:50] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-04 06:42:50] [0m[33mDEBUG :: [0mCreating new channel: #bannedchannel
+[1m[2025-02-04 06:42:50] [0m[33mDEBUG :: [0mDestroying channel: #bannedchannel
+[1m[2025-02-04 06:42:50] [0m[33m[1mWARNING :: [0mClient already in channel. Server Omitting ...
+[1m[2025-02-04 06:42:50] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #bannedchannel
+
+[1m[2025-02-04 06:42:50] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #bannedchannel
+
+[1m[2025-02-04 06:42:50] [0m[36m[1mSYSTEM :: [0mCLEANUP CYCLE ENGAGED, UPTIME: 1738615003
+[1m[2025-02-04 06:42:50] [0m[32mINFO  :: [0mCLEANER CALLED.[1m[2025-02-04 06:42:50] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:50] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:50] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:50] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:50] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:50] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:42:50] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:42:50] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:42:50] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:50] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:50] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:51] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:51] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:51] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:51] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:51] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:51] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:42:51] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:42:51] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:42:51] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:51] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:51] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:52] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-02-04 06:42:52] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:52] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:52] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:52] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:52] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:52] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:42:52] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:42:52] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:42:52] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:52] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:52] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:53] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-02-04 06:42:53] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:53] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:53] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:53] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:53] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:53] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:42:53] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:42:53] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:42:53] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:53] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:53] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:54] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-04 06:42:54] [0m[33mDEBUG :: [0mCreating new channel: #inviteonlychannel
+[1m[2025-02-04 06:42:54] [0m[33mDEBUG :: [0mDestroying channel: #inviteonlychannel
+[1m[2025-02-04 06:42:54] [0m[33m[1mWARNING :: [0mClient already in channel. Server Omitting ...
+[1m[2025-02-04 06:42:54] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #inviteonlychannel
+
+[1m[2025-02-04 06:42:54] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #inviteonlychannel
+
+[1m[2025-02-04 06:42:54] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:54] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:54] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:54] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:54] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:54] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:42:54] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:42:54] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:42:54] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:42:54] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:54] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:54] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:55] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-02-04 06:42:55] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:55] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:55] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:55] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:55] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:55] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:42:55] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:42:55] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:42:55] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:42:55] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:55] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:55] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:56] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-04 06:42:56] [0m[33mDEBUG :: [0mCreating new channel: #limitedchannel
+[1m[2025-02-04 06:42:56] [0m[33mDEBUG :: [0mDestroying channel: #testchannel
+[1m[2025-02-04 06:42:56] [0m[33mDEBUG :: [0mDestroying channel: #channel1
+[1m[2025-02-04 06:42:56] [0m[33mDEBUG :: [0mDestroying channel: #channel2
+[1m[2025-02-04 06:42:56] [0m[33mDEBUG :: [0mDestroying channel: #channel3
+[1m[2025-02-04 06:42:56] [0m[33mDEBUG :: [0mDestroying channel: #securechannel
+[1m[2025-02-04 06:42:56] [0m[33mDEBUG :: [0mDestroying channel: #invalid
+[1m[2025-02-04 06:42:56] [0m[33mDEBUG :: [0mDestroying channel: #bannedchannel
+[1m[2025-02-04 06:42:56] [0m[33mDEBUG :: [0mDestroying channel: #inviteonlychannel
+[1m[2025-02-04 06:42:56] [0m[33mDEBUG :: [0mDestroying channel: #limitedchannel
+[1m[2025-02-04 06:42:56] [0m[33m[1mWARNING :: [0mClient already in channel. Server Omitting ...
+[1m[2025-02-04 06:42:56] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #limitedchannel
+
+[1m[2025-02-04 06:42:56] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #limitedchannel
+
+[1m[2025-02-04 06:42:56] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:56] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:56] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:56] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:56] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:56] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:42:56] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:42:56] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:42:56] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:42:56] [0m[32mINFO  :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-02-04 06:42:56] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:56] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:56] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:57] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:57] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:57] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:57] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:57] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:57] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:42:57] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:42:57] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:42:57] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:42:57] [0m[32mINFO  :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-02-04 06:42:57] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:57] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:57] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:58] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-02-04 06:42:58] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:58] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:58] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:58] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:58] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:58] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:42:58] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:42:58] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:42:58] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:42:58] [0m[32mINFO  :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-02-04 06:42:58] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:58] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:58] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:59] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:59] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:42:59] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:42:59] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:42:59] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:42:59] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:42:59] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:42:59] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:42:59] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:42:59] [0m[32mINFO  :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-02-04 06:42:59] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:42:59] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:42:59] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:00] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-02-04 06:43:00] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:00] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:43:00] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:43:00] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:43:00] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:43:00] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:43:00] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:43:00] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:00] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:43:00] [0m[32mINFO  :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:00] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:00] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:43:00] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:01] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-04 06:43:01] [0m[33m[1mWARNING :: [0mJOIN failed: No channel specified
+[1m[2025-02-04 06:43:01] [0m[35mSERVER :: [0m:WeUseArch.localhost 461 JOIN :Not enough parameters
+
+[1m[2025-02-04 06:43:01] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:01] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:43:01] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:43:01] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:43:01] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:43:01] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:43:01] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:43:01] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:01] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:43:01] [0m[32mINFO  :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:01] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:01] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:43:01] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:02] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-02-04 06:43:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:02] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:43:02] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:43:02] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:43:02] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:43:02] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:43:02] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:43:02] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:02] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:43:02] [0m[32mINFO  :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:02] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:43:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:03] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-04 06:43:03] [0m[33mDEBUG :: [0mCreating new channel: #
+[1m[2025-02-04 06:43:03] [0m[33mDEBUG :: [0mDestroying channel: #
+[1m[2025-02-04 06:43:03] [0m[33m[1mWARNING :: [0mClient already in channel. Server Omitting ...
+[1m[2025-02-04 06:43:03] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #
+
+[1m[2025-02-04 06:43:03] [0m[35mSERVER :: [0m:TestUser!Test@127.0.0.1 JOIN #
+
+[1m[2025-02-04 06:43:03] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:03] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:43:03] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:43:03] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:43:03] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:43:03] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:43:03] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:43:03] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:03] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:43:03] [0m[32mINFO  :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:03] [0m[32mINFO  :: [0m+ #		1		PUBLIC
+[1m[2025-02-04 06:43:03] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:03] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:43:03] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:04] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-02-04 06:43:04] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:04] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:43:04] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:43:04] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:43:04] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:43:04] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:43:04] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:43:04] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:04] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:43:04] [0m[32mINFO  :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:04] [0m[32mINFO  :: [0m+ #		1		PUBLIC
+[1m[2025-02-04 06:43:04] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:04] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:43:04] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:05] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-04 06:43:05] [0m[33m[1mWARNING :: [0mTestUser is already in channel #channel1
+[1m[2025-02-04 06:43:05] [0m[35mSERVER :: [0m:WeUseArch.localhost 443 TestUser!Test@127.0.0.1 #channel1 :is already on channel
+
+[1m[2025-02-04 06:43:05] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:05] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:43:05] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:43:05] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:43:05] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:43:05] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:43:05] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:43:05] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:05] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:43:05] [0m[32mINFO  :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:05] [0m[32mINFO  :: [0m+ #		1		PUBLIC
+[1m[2025-02-04 06:43:05] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:05] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:43:05] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:06] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-02-04 06:43:06] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:06] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:43:06] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:43:06] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:43:06] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:43:06] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:43:06] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:43:06] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:06] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:43:06] [0m[32mINFO  :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:06] [0m[32mINFO  :: [0m+ #		1		PUBLIC
+[1m[2025-02-04 06:43:06] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:06] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:43:06] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:07] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-04 06:43:07] [0m[33m[1mWARNING :: [0mTestUser is already in channel #channel1
+[1m[2025-02-04 06:43:07] [0m[33m[1mWARNING :: [0mTestUser is already in channel #
+[1m[2025-02-04 06:43:07] [0m[35mSERVER :: [0m:WeUseArch.localhost 443 TestUser!Test@127.0.0.1 #channel1 :is already on channel
+:WeUseArch.localhost 443 TestUser!Test@127.0.0.1 # :is already on channel
+
+[1m[2025-02-04 06:43:07] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:07] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:43:07] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:43:07] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:43:07] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:43:07] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:43:07] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:43:07] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:07] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:43:07] [0m[32mINFO  :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:07] [0m[32mINFO  :: [0m+ #		1		PUBLIC
+[1m[2025-02-04 06:43:07] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:07] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:43:07] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:08] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:08] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:43:08] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:43:08] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:43:08] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:43:08] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:43:08] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:43:08] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:08] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:43:08] [0m[32mINFO  :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:08] [0m[32mINFO  :: [0m+ #		1		PUBLIC
+[1m[2025-02-04 06:43:08] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:08] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:43:08] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:09] [0m[33mDEBUG :: [0mProcessing command: #
+[1m[2025-02-04 06:43:09] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:09] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:43:09] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:43:09] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:43:09] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:43:09] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:43:09] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:43:09] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:09] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:43:09] [0m[32mINFO  :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:09] [0m[32mINFO  :: [0m+ #		1		PUBLIC
+[1m[2025-02-04 06:43:09] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:09] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:43:09] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:10] [0m[33mDEBUG :: [0mProcessing command: PART
+[1m[2025-02-04 06:43:10] [0m[33mDEBUG :: [0mTestUser attempting to leave #testchannel,#channel1,#channel2,#channel3,#securechannel,#invalid,channel,#bannedchannel,#inviteonlychannel,#limitedchannel
+[1m[2025-02-04 06:43:10] [0m[31mERROR :: [0mPART failed: Invalid channel name #testchannel,#channel1,#channel2,#channel3,#securechannel,#invalid,channel,#bannedchannel,#inviteonlychannel,#limitedchannel
+[1m[2025-02-04 06:43:10] [0m[35mSERVER :: [0m:WeUseArch.localhost 403 #testchannel,#channel1,#channel2,#channel3,#securechannel,#invalid,channel,#bannedchannel,#inviteonlychannel,#limitedchannel :Invalid channel name
+
+[1m[2025-02-04 06:43:10] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:10] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:43:10] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:43:10] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:43:10] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:43:10] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:43:10] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:43:10] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:10] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:43:10] [0m[32mINFO  :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:10] [0m[32mINFO  :: [0m+ #		1		PUBLIC
+[1m[2025-02-04 06:43:10] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:10] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:43:10] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:11] [0m[36m[1mSYSTEM :: [0mCLEANUP CYCLE ENGAGED, UPTIME: 32788
+[1m[2025-02-04 06:43:11] [0m[32mINFO  :: [0mCLEANER CALLED.[1m[2025-02-04 06:43:11] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:11] [0m[32mINFO  :: [0m+ #testchannel		1		PUBLIC
+[1m[2025-02-04 06:43:11] [0m[32mINFO  :: [0m+ #channel1		1		PUBLIC
+[1m[2025-02-04 06:43:11] [0m[32mINFO  :: [0m+ #channel2		1		PUBLIC
+[1m[2025-02-04 06:43:11] [0m[32mINFO  :: [0m+ #channel3		1		PUBLIC
+[1m[2025-02-04 06:43:11] [0m[32mINFO  :: [0m+ #securechannel		1		PRIVATE
+[1m[2025-02-04 06:43:11] [0m[32mINFO  :: [0m+ #invalid		1		PUBLIC
+[1m[2025-02-04 06:43:11] [0m[32mINFO  :: [0m+ #bannedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:11] [0m[32mINFO  :: [0m+ #inviteonlychannel		1		PUBLIC
+[1m[2025-02-04 06:43:11] [0m[32mINFO  :: [0m+ #limitedchannel		1		PUBLIC
+[1m[2025-02-04 06:43:11] [0m[32mINFO  :: [0m+ #		1		PUBLIC
+[1m[2025-02-04 06:43:11] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:11] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:43:11] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:12] [0m[33mDEBUG :: [0mProcessing command: QUIT
+[1m[2025-02-04 06:43:12] [0m[32mINFO  :: [0mTestUser has quit
+[1m[2025-02-04 06:43:12] [0m[33mDEBUG :: [0mUnsubscribing client from channel #testchannel
+[1m[2025-02-04 06:43:12] [0m[33mDEBUG :: [0mUnsubscribing client from channel #channel1
+[1m[2025-02-04 06:43:12] [0m[33mDEBUG :: [0mUnsubscribing client from channel #channel2
+[1m[2025-02-04 06:43:12] [0m[33mDEBUG :: [0mUnsubscribing client from channel #channel3
+[1m[2025-02-04 06:43:12] [0m[33mDEBUG :: [0mUnsubscribing client from channel #securechannel
+[1m[2025-02-04 06:43:12] [0m[33mDEBUG :: [0mUnsubscribing client from channel #invalid
+[1m[2025-02-04 06:43:12] [0m[33mDEBUG :: [0mUnsubscribing client from channel #bannedchannel
+[1m[2025-02-04 06:43:12] [0m[33mDEBUG :: [0mUnsubscribing client from channel #inviteonlychannel
+[1m[2025-02-04 06:43:12] [0m[33mDEBUG :: [0mUnsubscribing client from channel #limitedchannel
+[1m[2025-02-04 06:43:12] [0m[33mDEBUG :: [0mUnsubscribing client from channel #
+[1m[2025-02-04 06:43:12] [0m[35mSERVER :: [0m:TestUser!TestUser@localhost QUIT ::JOIN command testing complete
+
+[1m[2025-02-04 06:43:12] [0m[33m[1mWARNING :: [0mWriting error
+[1m[2025-02-04 06:43:12] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:12] [0m[32mINFO  :: [0m+ #testchannel		0		PUBLIC
+[1m[2025-02-04 06:43:12] [0m[32mINFO  :: [0m+ #channel1		0		PUBLIC
+[1m[2025-02-04 06:43:12] [0m[32mINFO  :: [0m+ #channel2		0		PUBLIC
+[1m[2025-02-04 06:43:12] [0m[32mINFO  :: [0m+ #channel3		0		PUBLIC
+[1m[2025-02-04 06:43:12] [0m[32mINFO  :: [0m+ #securechannel		0		PRIVATE
+[1m[2025-02-04 06:43:12] [0m[32mINFO  :: [0m+ #invalid		0		PUBLIC
+[1m[2025-02-04 06:43:12] [0m[32mINFO  :: [0m+ #bannedchannel		0		PUBLIC
+[1m[2025-02-04 06:43:12] [0m[32mINFO  :: [0m+ #inviteonlychannel		0		PUBLIC
+[1m[2025-02-04 06:43:12] [0m[32mINFO  :: [0m+ #limitedchannel		0		PUBLIC
+[1m[2025-02-04 06:43:12] [0m[32mINFO  :: [0m+ #		0		PUBLIC
+[1m[2025-02-04 06:43:12] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 06:43:12] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 06:43:12] [0m[32mINFO  :: [0m+-------------------------------------------------------

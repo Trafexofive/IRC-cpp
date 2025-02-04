@@ -60,9 +60,9 @@ struct Stats {
   int totalMessages;
 
   int uptime;
-  int tickRate = 4;
-  int tick;
 
+  int tickRate;
+  int tick;
 };
 
 class CoreServer {
@@ -83,29 +83,33 @@ private:
 
   // TickRate methods
 
-void UpdateUptime() { 
+  void UpdateUptime() {
     if (_serverStats.uptime == 0)
-        _serverStats.uptime = time(0);
+      _serverStats.uptime = time(0);
     time_t now = time(0);
     _serverStats.uptime = now - _serverStats.uptime;
+  }
 
-}
-      
   // void UpdateServerStats()
   // {
   //
   // }
   void TickCycle() {
-      if (_serverStats.tick == _serverStats.tickRate)
-      {
+    if (_serverStats.tickRate == 0)
+      _serverStats.tickRate = 4;
+    if (_serverStats.tick == _serverStats.tickRate) {
       // Execute state-based operations
       // CheckClientTimeouts();
       // CleanEmptyChannels();
       // UpdateServerStats();
-        std::cout << formatServerMessage("SYSTEM", "CLEANUP CYCLE ENGAGED") << std::endl;
-        watchdog();
-    } else 
-        _serverStats.tick++;
+      UpdateUptime();
+      std::cout << formatServerMessage("SYSTEM",
+                                       "CLEANUP CYCLE ENGAGED, UPTIME: ")
+                << _serverStats.uptime << std::endl;
+      watchdog();
+      _serverStats.tick = 0;
+    } else
+      _serverStats.tick++;
   }
 
   // Socket and server initialization
