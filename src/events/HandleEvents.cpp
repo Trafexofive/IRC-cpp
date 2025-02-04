@@ -64,7 +64,6 @@ void CoreServer::WelcomeClient() {
 }
 
 void CoreServer::handleCommand(int fd, const std::string &line) {
-  std::cout << formatServerMessage("CLIENT", line) << std::endl;
   try {
     // Parse command line into tokens
     std::istringstream iss(line);
@@ -74,17 +73,25 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
     while (iss >> arg) {
       args.push_back(arg);
     }
+
     if (args.empty()) {
       std::cout << formatServerMessage("DEBUG", "Empty command, Omitting")
                 << std::endl;
       return;
     }
-
     // Convert command to uppercase
     std::string command = args[0];
     std::string::iterator it;
     for (it = command.begin(); it != command.end(); ++it) {
       *it = toupper(*it);
+    }
+
+    if (clients[fd].isStatus(STATUS::UNKNOWN) && command != "PASS") {
+        std::cout << formatServerMessage("SERVER", "YUP Client not authenticated @fd: ") << clients[fd].getFd() << std::endl;
+      clients[fd].setResponse(
+          formatResponse(ERR_PASSWDMISMATCH, ":Password required"));
+          WriteEvent(fd);
+      return;
     }
 
     std::cout << formatServerMessage("DEBUG", "Processing command: " + command)
@@ -124,6 +131,7 @@ void CoreServer::WriteEvent(int fd) {
     std::cout << formatServerMessage("SERVER", response) << std::endl;
 
     ssize_t written = send(fd, response.c_str(), response.length(), 0);
+
     clients[fd].clearResponse();
 
     if (written < 0) {
@@ -147,7 +155,7 @@ void CoreServer::purgeDisconnectedClients() {
                 << std::endl;
 
       clients.erase(it);
-    _serverStats.totalClients--;
+      _serverStats.totalClients--;
     }
     _serverStats.totalClients++;
     it = tmp;
@@ -162,7 +170,6 @@ void CoreServer::handleDisconnect(int fd) {
   std::vector<struct pollfd>::iterator new_end =
       std::remove_if(fds.begin(), fds.end(), FdRemovePredicate(fd));
   fds.erase(new_end, fds.end());
-
 }
 
 // Method to read data from the client
@@ -190,8 +197,10 @@ void CoreServer::ReadEvent(int fd) {
     // Remove \r if present
     if (!line.empty() && line[line.length() - 1] == '\r')
       line.erase(line.length() - 1);
+
     if (line.empty())
       continue;
+
 
     handleCommand(fd, line);
   }

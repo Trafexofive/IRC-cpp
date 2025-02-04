@@ -127,6 +127,7 @@ CoreServer::CoreServer(std::string port, std::string password) {
   commands[NICK] = &CoreServer::cmdNick;
   commands[USER] = &CoreServer::cmdUser;
   commands[JOIN] = &CoreServer::cmdJoin;
+  commands[MODE] = &CoreServer::cmdMode;
   commands[PART] = &CoreServer::cmdPart;
   commands[CAP] = &CoreServer::cmdCap; // only CAP LS and CAP END
   // commands[PRIVMSG] = &CoreServer::cmdPrivmsg;

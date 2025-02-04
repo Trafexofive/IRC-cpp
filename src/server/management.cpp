@@ -56,6 +56,7 @@ void CoreServer::purgeEmptyChannels() {
 
 void CoreServer::watchdog() {
 
+    std::cout << formatServerMessage("INFO", "CLEANER CALLED.");
   purgeDisconnectedClients();
 
   purgeEmptyChannels();
