@@ -34,6 +34,7 @@ std::string formatServerMessage(const std::string& type, const std::string& mess
 {
     std::ostringstream oss;
     time_t now = time(NULL);
+
     char timestamp[20];
     strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", localtime(&now));
     
@@ -53,6 +54,10 @@ std::string formatServerMessage(const std::string& type, const std::string& mess
         oss << MAGENTA << "SERVER :: " << RESET;
     else if (type == "FATAL")
         oss << RED << BOLD << "FATAL :: " << RESET;
+    else if (type == "SYSTEM")
+        oss << CYAN << BOLD << "SYSTEM :: " << RESET;
+    else
+        oss << "UNKNOWN :: ";
     
     oss << message;
     return oss.str();

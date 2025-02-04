@@ -1,0 +1,59 @@
+[1m[2025-02-04 05:47:05] [0m[32mINFO  :: [0mStarting Server ...
+[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mValidating port: 22200
+[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mˆþÿ*
+[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mValidating password
+[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mPassword valid
+[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mCreating socket...
+[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mSocket created: 3
+[1m[2025-02-04 05:47:05] [0m[32mINFO  :: [0mServer Socket setup complete
+[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mStarting to listen...
+[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mServer listening on port: 22200
+[1m[2025-02-04 05:47:05] [0m[33mDEBUG :: [0mServer main loop starting...
+[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0mClient accepted FD: 4
+[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mCreating new empty client instance
+[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0mClient connected
+[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0m+ No channels available
+[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0mClient Authenticated
+[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mNickname set to: clevo
+[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0mRegistration complete for 
+[1m[2025-02-04 05:47:15] [0m[33mDEBUG :: [0msource: clevo!testreal@127.0.0.1
+[1m[2025-02-04 05:47:15] [0m[35mSERVER :: [0m:WeUseArch.localhost 001 clevo!testreal@127.0.0.1 :Welcome to the WeUseArch IRC Network
+:WeUseArch.localhost 002 clevo!testreal@127.0.0.1 :Your host is morpheus-server.ddns.net
+:WeUseArch.localhost 003 clevo!testreal@127.0.0.1 :This server was created 2024-01-11
+:WeUseArch.localhost 004 clevo!testreal@127.0.0.1 morpheus-server.ddns.net 1.0 usermodes channelmodes
+:WeUseArch.localhost 375 clevo!testreal@127.0.0.1 :- morpheus-server.ddns.net Message of the Day - 
+:WeUseArch.localhost 372 clevo!testreal@127.0.0.1 :- Welcome to the WeUseArch IRC Network!
+:WeUseArch.localhost 372 clevo!testreal@127.0.0.1 :- Enjoy your stay!
+:WeUseArch.localhost 376 clevo!testreal@127.0.0.1 :End of /MOTD command.
+
+[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0m+ No channels available
+[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 05:47:15] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 05:47:18] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-04 05:47:18] [0m[33mDEBUG :: [0mCreating new channel: #hell
+[1m[2025-02-04 05:47:18] [0m[33mDEBUG :: [0mDestroying channel: #hell
+[1m[2025-02-04 05:47:18] [0m[33m[1mWARNING :: [0mClient already in channel. Server Omitting ...
+[1m[2025-02-04 05:47:18] [0m[35mSERVER :: [0m:clevo!testreal@127.0.0.1 JOIN #hell
+
+[1m[2025-02-04 05:47:18] [0m[35mSERVER :: [0m:clevo!testreal@127.0.0.1 JOIN #hell
+
+[1m[2025-02-04 05:47:18] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 05:47:18] [0m[32mINFO  :: [0m+ #hell		1		PUBLIC+ #hell		1		
+[1m[2025-02-04 05:47:18] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-04 05:47:18] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-04 05:47:18] [0m[32mINFO  :: [0m+-------------------------------------------------------

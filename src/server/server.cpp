@@ -89,6 +89,7 @@ void CoreServer::start_server() {
                 << std::endl;
       break;
     }
+    TickCycle();
     for (size_t i = 0; i < fds.size(); i++) {
 
       if (fds[i].revents & POLLIN) {
@@ -96,7 +97,6 @@ void CoreServer::start_server() {
           WelcomeClient();
         else
           ReadEvent(fds[i].fd);
-        watchdog();
         displayChannelTable();
       }
     }

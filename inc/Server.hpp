@@ -60,7 +60,9 @@ struct Stats {
   int totalMessages;
 
   int uptime;
-  int tickRate;
+  int tickRate = 4;
+  int tick;
+
 };
 
 class CoreServer {
@@ -78,6 +80,33 @@ private:
   // time complexity
 
   std::map<std::string, CommandHandler> commands;
+
+  // TickRate methods
+
+void UpdateUptime() { 
+    if (_serverStats.uptime == 0)
+        _serverStats.uptime = time(0);
+    time_t now = time(0);
+    _serverStats.uptime = now - _serverStats.uptime;
+
+}
+      
+  // void UpdateServerStats()
+  // {
+  //
+  // }
+  void TickCycle() {
+      if (_serverStats.tick == _serverStats.tickRate)
+      {
+      // Execute state-based operations
+      // CheckClientTimeouts();
+      // CleanEmptyChannels();
+      // UpdateServerStats();
+        std::cout << formatServerMessage("SYSTEM", "CLEANUP CYCLE ENGAGED") << std::endl;
+        watchdog();
+    } else 
+        _serverStats.tick++;
+  }
 
   // Socket and server initialization
   void create_socket();
