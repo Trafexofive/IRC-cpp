@@ -27,3 +27,6 @@
 - [ ] shift and change code to accommodate map based Channels.
 - [ ] operator handlers.
 - [ ] channel options/MODE cmd handlers.
+    - [ ] MODE #channel 
+    - [ ] MODE user
+    - [ ] join integration

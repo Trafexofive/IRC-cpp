@@ -14,6 +14,7 @@
 #define CHANNEL_HPP
 
 #include "Client.hpp"
+#include "Utils.hpp"
 #include <algorithm>
 #include <arpa/inet.h>
 #include <iostream>
@@ -26,12 +27,16 @@
 
 struct CHANNEL {
   enum TYPE { PUBLIC, PRIVATE, EMPTY, UNKNOWN };
+
   TYPE type;
 
   bool inviteMode;
   bool topicMode;
   bool operatorMode;
   bool keyMode;
+
+  std::string key;
+  std::string modeString;
 };
 
 struct ClientEntry {
@@ -40,6 +45,7 @@ struct ClientEntry {
 
   TYPE state;
 
+  bool isOperator;
   Client *client;
 };
 
@@ -49,7 +55,8 @@ private:
   std::string topic;
   std::string password;
 
-  std::vector<Client *> operators; // still not sure about handling this this way.
+  std::vector<Client *>
+      operators; // still not sure about handling this this way.
 
   std::list<ClientEntry> _Registry;
   int _memberCount;
@@ -57,6 +64,7 @@ private:
   CHANNEL _settings;
 
   Channel();
+
 public:
   // Default constructor
   // Parameterized constructors
@@ -80,6 +88,53 @@ public:
   void setName(const std::string &n);
   void setTopic(const std::string &t);
   void setPassword(const std::string &p);
+  void setMode(const std::string &mode) {
+    if (mode[0] == '+' || mode[0] == '-') {
+      for (size_t i = 1; i < mode.size(); i++) {
+
+        switch (mode[i]) {
+        case 'i':
+          _settings.inviteMode = mode[0] == '+';
+          break;
+        case 't':
+          _settings.topicMode = mode[0] == '+';
+          break;
+        case 'o':
+          _settings.operatorMode = mode[0] == '+';
+          break;
+        case 'k':
+          _settings.keyMode = mode[0] == '+';
+          break;
+        default:
+          break;
+        }
+      }
+    } else {
+      std::cout << formatServerMessage("WARNING", "Invalid use of SetMode")
+                << std::endl;
+    }
+  }
+  const std::vector<Client *> &getOperators() const { return operators; }
+
+  void updateModeString() {
+    std::stringstream ss;
+    _settings.modeString.clear();
+    ss << "+";
+    if (_settings.inviteMode)
+      ss << "i";
+    if (_settings.topicMode)
+      ss << "t";
+    if (_settings.operatorMode)
+      ss << "o";
+    if (_settings.keyMode)
+      ss << "k";
+    _settings.modeString = ss.str();
+  }
+
+  const std::string &getMode() {
+    this->updateModeString();
+    return _settings.modeString;
+  }
 
   void setChannelType(CHANNEL::TYPE type) { _settings.type = type; }
 
@@ -122,7 +177,6 @@ public:
   bool hasPassword() const; // should be removed
   bool validatePassword(const std::string &pass) const;
   // Member management methods
-  void removeMember(const std::string &nick);
   void removeMember(Client *obj);
 
   void addMember(Client *member);

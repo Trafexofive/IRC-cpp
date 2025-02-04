@@ -55,6 +55,15 @@ Channel::Channel(const std::string &name, const std::string &topic,
 
 void Channel::CleanRegistry() {
 
+    // cpp11 custom remove_if needed
+    // need a way to decrement the member count
+    // _Registry.remove_if([](const ClientEntry &entry) {
+    //     return entry.state == ClientEntry::UNSUBSCRIBED;
+    // });
+    // we have delayed the removal of the client from the channel
+    // _Registry.remove_if([](const ClientEntry &entry) {
+    //     return entry.client->isDisconnected();
+    // });
   for (std::list<ClientEntry>::iterator it = _Registry.begin();
        it != _Registry.end(); ++it) {
     if (it->state == ClientEntry::UNSUBSCRIBED) {
@@ -121,19 +130,6 @@ void Channel::removeMember(Client *client) {
   for (std::list<ClientEntry>::iterator it = _Registry.begin();
        it != _Registry.end(); ++it) {
     if (it->client == client) {
-      it->state = ClientEntry::UNSUBSCRIBED;
-      _memberCount--;
-      if (_memberCount == 0)
-        _settings.type = CHANNEL::EMPTY;
-      return;
-    }
-  }
-}
-
-void Channel::removeMember(const std::string &nick) {
-  for (std::list<ClientEntry>::iterator it = _Registry.begin();
-       it != _Registry.end(); ++it) {
-    if (it->client->getNickName() == nick) {
       it->state = ClientEntry::UNSUBSCRIBED;
       _memberCount--;
       if (_memberCount == 0)

@@ -34,6 +34,7 @@ static void handlePartSuccess(Client &client, const std::string &channelName) {
             << std::endl;
 }
 
+
 void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
     if (isClientDisconnected(fd))
     {
@@ -65,7 +66,7 @@ void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
         }
         else if (isChannel(channelName)) {
             Channel* channel = getChannel(channelName);
-            channel->removeMember(client.getNickName());
+            channel->removeMember(&client);
             handlePartSuccess(client, channelName);
         }
         else {
