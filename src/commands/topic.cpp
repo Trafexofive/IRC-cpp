@@ -12,41 +12,75 @@
 
 #include "../../inc/Server.hpp"
 
+static bool containsMessage(const std::string &topic) {
+  if (topic[0] == ':' && topic.size() > 1)
+    return true;
+  return false;
+}
+
+static std::string &appendArgs(std::vector<std::string> &args, std::string &result, int i) {
+  for (;i < args.size(); i++) {
+    result += args[i];
+    if (i + 1 < args.size())
+      result += " ";
+  }
+printServerMessage("DEBUG", "parsedMessage TOPIC: " + result);
+  return result;
+}
 
 void CoreServer::cmdTopic(int fd, std::vector<std::string> &args) {
   if (isClientDisconnected(fd)) {
-    std::cout << formatServerMessage("DEBUG", "TOPIC failed: Client is disconnected") << std::endl;
-    return;
-  }
-  if (!isClientRegistered(fd)) {
-    std::cout << formatServerMessage("DEBUG", "TOPIC failed: Client not registered") << std::endl;
-    clients[fd].setResponse(formatResponse(ERR_NOTREGISTERED, ":You have not registered"));
+    printServerMessage("DEBUG", "TOPIC failed: Client is disconnected");
     return;
   }
   if (args.size() < 2) {
-    std::cout << formatServerMessage("DEBUG", "TOPIC failed: No channel specified") << std::endl;
-    clients[fd].setResponse(formatResponse(ERR_NEEDMOREPARAMS, "TOPIC :Not enough parameters"));
+    std::cout << formatServerMessage("DEBUG",
+                                     "TOPIC failed: No channel specified")
+              << std::endl;
+    clients[fd].setResponse(
+        formatResponse(ERR_NEEDMOREPARAMS, "TOPIC :Not enough parameters"));
     return;
   }
+
   Client &client = clients[fd];
   std::string channelName = args[1];
   Channel *channel = getChannel(channelName);
+
   if (channel == NULL) {
-    std::cout << formatServerMessage("DEBUG", "TOPIC failed: Channel not found") << std::endl;
+    printServerMessage("DEBUG", "TOPIC failed: Channel does not exist");
+    client.setResponse(
+        formatResponse(ERR_NOSUCHCHANNEL, channelName + " :No such channel"));
     return;
   }
   if (args.size() == 2) {
     std::string topic = channel->getTopic();
+    if (topic.empty()) {
+      client.setResponse(
+          formatResponse(RPL_NOTOPIC, channelName + " :No topic is set"));
+      return;
+    }
     client.setResponse(formatResponse(RPL_TOPIC, channelName + " :" + topic));
     return;
+  } else if (args.size() > 2) {
+
+    std::string parsedMessage = "";
+    appendArgs(args, parsedMessage, 2);
+    if (containsMessage(parsedMessage)) {
+
+    std::string newTopic = parsedMessage.substr(1);
+      channel->setTopic(newTopic);
+
+      std::string topicMsg =
+          formatResponse(RPL_TOPIC, channelName + " :" + newTopic);
+      client.setResponse(topicMsg);
+      printServerMessage("DEBUG", "TOPIC: " + client.getNickName() +
+                                      " changed the topic of " + channelName +
+                                      " to " + newTopic);
+      return;
+    } else {
+        client.setResponse(
+            formatResponse(RPL_TOPIC, channelName + " :" + "Resetting Channel topic"));
+        channel->setTopic("");
+    }
   }
-  std::string newTopic = args[2];
-  channel->setTopic(newTopic);
-  std::string topicMsg = ":" + client.getNickName() + "!" +
-                         client.getFullName() + "@localhost TOPIC " +
-                         channelName + " :" + newTopic + "\r\n";
-  client.setResponse(topicMsg);
-  std::cout << formatServerMessage("SUCCESS", client.getNickName() + " changed the topic of " +
-                                                channelName + " to " + newTopic)
-            << std::endl;
 }

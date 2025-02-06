@@ -25,6 +25,8 @@
 #define printServerMessage(type, message) std::cout << formatServerMessage(type, message) << std::endl
 #define formatResponse(code, message) std::string(SERVER_NAME) + code + " " + message + CRLF
 #define formatResponseSource(source, code, message) ":" + source + " " + code + " " + message + CRLF
+#define formatResponseDest(dest, code, message) ":" + SERVER_NAME + dest + " " + code + " " + message + CRLF
+#define formatResponseCommand(source, dest, code, message) ":" + source + " " + SERVER_NAME + dest + " " + code + " " + message + CRLF
 
 // Commands
 
@@ -122,6 +124,7 @@
 #define RPL_YOUREOPER           "381"
 #define RPL_REHASHING           "382"
 #define RPL_TIME                "391"
+
 #define ERR_NOSUCHNICK          "401"
 #define ERR_NOSUCHSERVER        "402"
 #define ERR_NOSUCHCHANNEL       "403"
@@ -162,5 +165,19 @@
 #define ERR_INVALIDCAP "411"
 #define ERR_NEEDMOREPARAMS "461"
 // #define ERR_UNKNOWNCAP "410"
+
+
+    // ERR_NEEDMOREPARAMS (461)
+    // ERR_NOSUCHCHANNEL (403)
+    // ERR_NOTONCHANNEL (442)
+    // ERR_CHANOPRIVSNEEDED (482)
+    // RPL_NOTOPIC (331)
+    // RPL_TOPIC (332)
+    // RPL_TOPICWHOTIME (333)
+
+#define rpltopic(channel, topic) RPL_TOPIC + " " + SERVER_NAME + channel + " :" + topic + CRLF
+
+
+
 
 #endif

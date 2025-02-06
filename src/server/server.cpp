@@ -141,6 +141,7 @@ _serverStats.totalMessages = 0;
   // all the commands need to be guarded by a connection check.
   commands[PING] = &CoreServer::cmdPing;
   commands[QUIT] = &CoreServer::cmdQuit;
+  commands[TOPIC] = &CoreServer::cmdTopic;
   commands["LIST"] = &CoreServer::cmdList;
 
   create_socket();
