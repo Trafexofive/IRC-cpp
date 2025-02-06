@@ -84,10 +84,7 @@ public:
   const std::string &getPassword() const;
 
   // const std::list<ClientEntry> &getRegistry() const { return _Registry; };
-  // const std::map<int ,ClientEntry> &getRegistry() const { return _Registry; };
- std::map<int ,ClientEntry>& getRegistry() {
-        return _Registry;
-    }
+  const std::map<int ,ClientEntry> &getRegistry() const { return _Registry; };
 
   CHANNEL::TYPE getChannelType() const { return _settings.type; }
 bool isPrivate() const { return _settings.type == CHANNEL::PRIVATE; }

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../inc/Utils.hpp"
-#include "../../inc/Helpers.hpp"
 #include "../../inc/Client.hpp"
 #include <iostream>
 #include <iterator>
@@ -72,6 +71,23 @@ std::string formatServerMessage(const std::string& type, const std::string& mess
 
 }
 
+// std::string formatServerMessage(LEVEL logLevel, const std::string& message)
+// {
+//     std::ostringstream oss;
+//     time_t now = time(NULL);
+//
+//     char timestamp[20];
+//     strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", localtime(&now));
+//     
+//     oss << BOLD << "[" << timestamp << "] " << RESET;
+//     
+//     
+//     if ()
+//     
+//     oss << message;
+//     return oss.str();
+//
+// }
 
 
 

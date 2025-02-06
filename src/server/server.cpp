@@ -116,7 +116,8 @@ CoreServer::CoreServer(std::string port, std::string password) {
   }
 
   printServerMessage("INFO", "CONFIGURATION: ");
-  printServerMessage("INFO", "Port: " + numberToString(ServData.Port));
+  printServerMessage("INFO", "PORT: : " + numberToString(ServData.Port));
+  printServerMessage("INFO", "PID: " + numberToString(getpid()));
   // print configuration if conf file used or defaults
 
 _serverStats.tickRate = TICK_RATE;
@@ -140,6 +141,7 @@ _serverStats.totalMessages = 0;
   // all the commands need to be guarded by a connection check.
   commands[PING] = &CoreServer::cmdPing;
   commands[QUIT] = &CoreServer::cmdQuit;
+  commands[TOPIC] = &CoreServer::cmdTopic;
   commands["LIST"] = &CoreServer::cmdList;
 
   create_socket();

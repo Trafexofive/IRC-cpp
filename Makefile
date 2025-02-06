@@ -43,14 +43,15 @@ SRC_FILES := events/HandleEvents.cpp \
     commands/cap.cpp \
     commands/ping.cpp \
     commands/nick.cpp \
+    commands/privmsg.cpp \
     commands/join.cpp \
+    commands/topic.cpp \
     commands/list.cpp \
     commands/pass.cpp \
     commands/part.cpp \
     commands/user.cpp \
     commands/quit.cpp \
     commands/mode.cpp \
-	commands/privmsg.cpp \
     main.cpp \
     Validation.cpp \
 	channel/Channel.cpp

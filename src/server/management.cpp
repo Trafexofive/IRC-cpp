@@ -78,46 +78,48 @@ static void printLine() {
 void CoreServer::displayChannelTable() {
   if (channels.empty()) {
     printLine();
-    std::cout << formatServerMessage("INFO", "+ No channels available")
-              << std::endl;
+    printServerMessage("INFO", "No channels available");
     printLine();
-    std::ostringstream total;
-    total << "REGISTERED USERS: " << clients.size();
-
-    std::cout << formatServerMessage("INFO", total.str()) << std::endl;
-
+    printServerMessage("INFO", "REGISTERED USERS: " + numberToString(_serverStats.totalClients));
     printLine();
-
     return;
   }
 
   printLine();
+
+  const int nameWidth = 20;
+  const int countWidth = 10;
+  const int typeWidth = 10;
+
+  std::ostringstream header;
+  header << std::left << std::setw(nameWidth) << "CHANNEL NAME"
+         << std::setw(countWidth) << "MEMBERS"
+         << std::setw(typeWidth) << "TYPE";
+  printServerMessage("INFO", header.str());
+  printLine();
+
   for (std::vector<Channel>::const_iterator it = channels.begin();
        it != channels.end(); ++it) {
     std::ostringstream row;
     std::string type;
 
     if (it->getChannelType() == CHANNEL::PRIVATE) {
-      row << "+ " << it->getName() << "\t\t" << it->getMemberCount() << "\t\t"
-          << "PRIVATE";
+      type = "PRIVATE";
     } else if (it->getChannelType() == CHANNEL::PUBLIC) {
-      row << "+ " << it->getName() << "\t\t" << it->getMemberCount() << "\t\t"
-          << "PUBLIC";
+      type = "PUBLIC";
     } else if (it->getChannelType() == CHANNEL::EMPTY) {
-      row << "+ " << it->getName() << "\t\t" << it->getMemberCount() << "\t\t"
-          << "EMPTY";
+      type = "EMPTY";
     } else if (it->getChannelType() == CHANNEL::UNKNOWN) {
-      row << "+ " << it->getName() << "\t\t" << it->getMemberCount() << "\t\t"
-          << "UNKNOWN";
+      type = "UNKNOWN";
     }
-    std::cout << formatServerMessage("INFO", row.str()) << std::endl;
+
+    row << std::left << std::setw(nameWidth) << it->getName()
+        << std::setw(countWidth) << it->getMemberCount()
+        << std::setw(typeWidth) << type;
+    printServerMessage("INFO", row.str());
   }
-  // total number of users
 
   printLine();
-  std::ostringstream total;
-total << "REGISTERED USERS: " << _serverStats.totalClients;
-printServerMessage("INFO", total.str());
-
+  printServerMessage("INFO", "REGISTERED USERS: " + numberToString(_serverStats.totalClients));
   printLine();
 }

@@ -12,13 +12,11 @@
 
 #ifndef CORE_SERVER_HPP
 #define CORE_SERVER_HPP
-
 // Standard library includes
 #include <algorithm>
 #include <cctype>
 #include <cstring>
 #include <iostream>
-#include <list>
 #include <map>
 #include <sstream>
 #include <string>
@@ -36,7 +34,6 @@
 // Project includes
 #include "./Channel.hpp"
 #include "./Client.hpp"
-#include "./Helpers.hpp"
 #include "./Utils.hpp"
 #include "./ircResponses.hpp"
 
@@ -69,7 +66,6 @@ void reset() {
     totalChannels = 0;
     totalMessages = 0;
     uptime = 0;
-    tickRate = 30;
     tick = 0;
 }
 
@@ -116,6 +112,8 @@ private:
   // }
   void TickCycle() {
     if (_serverStats.tick == _serverStats.tickRate) {
+        printServerMessage("SYSTEM", "Tick Cycle Initiated");
+        printServerMessage("SYSTEM", "Cleaning up Server ...");
       // Execute state-based operations
       // CheckClientTimeouts();
       // CleanEmptyChannels();
@@ -124,9 +122,6 @@ private:
 
       purgeEmptyChannels();
       UpdateUptime();
-      std::cout << formatServerMessage("SYSTEM",
-                                       "CLEANUP CYCLE ENGAGED, UPTIME: ")
-                << _serverStats.uptime << std::endl;
       _serverStats.tick = 0;
     } else
       _serverStats.tick++;
@@ -192,9 +187,11 @@ private:
       }
     }
   }
-  //privmsg helpers client && channel
+ //privmsg helpers client && channel
   void send_message_to_channel(int fd,const std::string &channel, const std::string &message);
   void  send_message_to_user(int fd, const std::string &target, const std::string &message);
+
+  // Events / Client handlers
   void WelcomeClient();
   void WriteEvent(int fd);
   void ReadEvent(int fd);
@@ -219,6 +216,7 @@ public:
     }
     channels.clear();
     clients.clear();
+    _serverStats.printStats();
   }
   // bool  isTickRate(const std::string &ticket) {
   //

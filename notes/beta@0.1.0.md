@@ -39,6 +39,8 @@
 - [ ] LIST:
     - [ ] List cmd multi-params (list info only about specified channels)
 
+- [ ] USER:
+    - [ ] Better User parsing.
 - [ ] JOIN:
     - [ ] user after registering.
 
@@ -52,6 +54,7 @@
 - [ ] SERVER:
     - [ ] optimizations 
         - [X] o(1) client pulling and adding. 
+        - [ ] o(1) channel operations.
     - [X] tickrate/timout implementation for clean cicles..
         - [ ] actual tickrate implementation (not based on poll events)
     - [ ] better server/client messages
