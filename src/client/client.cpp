@@ -10,15 +10,12 @@
 /* ************************************************************************** */
 
 #include "../../inc/Client.hpp"
-#include "../../inc/Channel.hpp"
+#include "../../inc/Utils.hpp"
 
 // Default constructor
 Client::Client()
     : fdClient(-1), clientInfos(), ipAddr(""), fullName(""), nickName(""),
       realName(""), passWord(""), response(""), _target("") {
-  std::cout << formatServerMessage("DEBUG",
-                                   "Creating new empty client instance")
-            << std::endl;
 
   setStatus(STATUS::UNKNOWN);
 }

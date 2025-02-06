@@ -39,6 +39,8 @@
 - [ ] LIST:
     - [ ] List cmd multi-params (list info only about specified channels)
 
+- [ ] USER:
+    - [ ] Better User parsing.
 - [ ] JOIN:
     - [ ] user after registering.
 

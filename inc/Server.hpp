@@ -69,7 +69,6 @@ void reset() {
     totalChannels = 0;
     totalMessages = 0;
     uptime = 0;
-    tickRate = 30;
     tick = 0;
 }
 
@@ -116,6 +115,8 @@ private:
   // }
   void TickCycle() {
     if (_serverStats.tick == _serverStats.tickRate) {
+        printServerMessage("SYSTEM", "Tick Cycle Initiated");
+        printServerMessage("SYSTEM", "Cleaning up Server ...");
       // Execute state-based operations
       // CheckClientTimeouts();
       // CleanEmptyChannels();
@@ -124,9 +125,6 @@ private:
 
       purgeEmptyChannels();
       UpdateUptime();
-      std::cout << formatServerMessage("SYSTEM",
-                                       "CLEANUP CYCLE ENGAGED, UPTIME: ")
-                << _serverStats.uptime << std::endl;
       _serverStats.tick = 0;
     } else
       _serverStats.tick++;
