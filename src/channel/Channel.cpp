@@ -26,6 +26,7 @@ Channel::Channel(const std::string &name, Client *client)
   std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
 
   _settings.type = CHANNEL::PUBLIC;
+_memberCount = 0;
   addMember(client);
 }
 
@@ -38,6 +39,7 @@ Channel::Channel(const std::string &name, const std::string &topic,
   std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
 
   _settings.type = CHANNEL::PUBLIC;
+_memberCount = 0;
   addMember(client);
 }
 
@@ -50,6 +52,7 @@ Channel::Channel(const std::string &name, const std::string &topic,
   std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;
 
   _settings.type = CHANNEL::PRIVATE;
+_memberCount = 0;
   addMember(client);
 }
 
