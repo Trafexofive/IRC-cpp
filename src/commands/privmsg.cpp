@@ -12,72 +12,112 @@
 
 #include "../../inc/Server.hpp"
 
-void CoreServer::cmdPrivmsg(int fd, std::vector<std::string> &args) {
-  if (args.size() < 3) {
-    std::cout << formatServerMessage("ERROR",
-                                     "PRIVMSG failed: Incomplete message")
-              << std::endl;
-    clients[fd].setResponse(
-        formatResponse(ERR_NEEDMOREPARAMS, "PRIVMSG :Not enough parameters"));
-    return;
-  }
+std::vector<std::string> get_targets(const std::string &target) {
+    std::vector<std::string> targets;
+    std::stringstream ss(target);
+    std::string item;
 
-  std::string target = args[1];
-  std::string message;
-  for (std::vector<std::string>::iterator it = args.begin() + 2;
-       it != args.end(); ++it) {
-    if (it != args.begin() + 2)
-      message += " ";
-    message += *it;
-  }
+    while (std::getline(ss, item, ',')) {
+        targets.push_back(item);
+    }
 
-  Client &client = clients[fd];
-  std::cout << formatServerMessage("INFO", client.getNickName() + " -> " +
-                                               target + ": " + message)
-            << std::endl;
+    return targets;
+}
 
-  std::string response = ":" + client.getNickName() + "!" +
-                         client.getFullName() + "@localhost PRIVMSG " + target +
-                         " :" + message + "\r\n";
+static std::string constructPrivmsg(const std::string &source,
+                                        const std::string &dest,std::string message) {
+std::string privMsg = ":" + source  + " PRIVMSG " + dest + " " + message + CRLF;
+  return privMsg;
+}
 
-  if (target[0] == '#') {
-    // Channel message
-    bool channelFound = false;
-    for (std::vector<Channel>::iterator it = channels.begin();
-         it != channels.end(); ++it) {
-      if (it->getName() == target) {
-        channelFound = true;
-        const std::vector<Client> &members = it->getMembers();
-        for (std::vector<Client>::const_iterator member = members.begin();
-             member != members.end(); ++member) {
-          if (member->getNickName() != client.getNickName()) {
-            std::map<int, Client>::iterator clientIt =
-                clients.find(member->getFd());
-            if (clientIt != clients.end())
-              clientIt->second.setResponse(response);
-          }
+
+bool is_channel(const std::string &target) {
+    return !target.empty() && (target[0] == '#' || target[0] == '&');
+}
+
+void CoreServer::send_message_to_channel(int fd,const std::string &channel, const std::string &message) {
+    Channel *chan = getChannel(channel);
+    if (chan == NULL){
+      std::string msg = formatResponse(ERR_NOSUCHCHANNEL, "No such channel");
+      std::cout << formatServerMessage("ERROR", "Channel not found") << std::endl;
+        send(fd, msg.c_str(), msg.size(), 0);
+        return;
+    }
+    if (!chan->isMember(clients[fd])) {
+    std::string msg = formatResponse(ERR_NOTONCHANNEL, "You're not on that channel");
+      std::cout << formatServerMessage("ERROR", "Client not in channel") << std::endl;
+        send(fd, msg.c_str(), msg.size(), 0);
+        return;
+    }
+    std::string msg = constructPrivmsg(clients[fd].getTarget(), channel, message);
+    std::map<int, ClientEntry>:: iterator it = chan->getRegistry().begin();
+    for (; it != chan->getRegistry().end(); ++it) {
+      if (it->first != fd) { // Don't send the message back to the sender
+      send(it->first, msg.c_str(), msg.size(), 0);
+      }
+    }
+}
+
+void  CoreServer::send_message_to_user(int fd, const std::string &target, const std::string &message) {
+
+    bool found = false;
+    std::map<int, Client>::iterator it = clients.begin();
+    for (; it != clients.end(); ++it) {
+        if (it->second.getNickName() == target) {
+            std::string msg = constructPrivmsg(clients[fd].getTarget(), target, message);
+            send(it->first, msg.c_str(), msg.size(), 0);
+            found = true;
+            break;
         }
-        break;
-      }
     }
-
-    if (!channelFound)
-      client.setResponse(
-          formatResponse(ERR_NOSUCHCHAN, target + " :No such channel"));
-  } else {
-    // Private message
-    bool recipientFound = false;
-    for (std::map<int, Client>::iterator it = clients.begin();
-         it != clients.end(); ++it) {
-      if (it->second.getNickName() == target) {
-        recipientFound = true;
-        it->second.setResponse(response);
-        break;
-      }
+    if (!found) {
+        std::string msg = formatResponse(ERR_NOSUCHNICK, "No such nick/channel");
+        std::cout << formatServerMessage("ERROR", "User not found") << std::endl;
+        send(fd, msg.c_str(), msg.size(), 0);
     }
+}
 
-    if (!recipientFound)
-      client.setResponse(
-          formatResponse(ERR_NOSUCHNICK, target + " :No such nick/channel"));
-  }
+bool    validmsg(std::vector<std::string> target, std::string message)
+{
+    if (target.empty() || message.empty())
+        return false;
+    if (message.at(0) != ':')
+        return false;
+    std::vector<std::string>::iterator it = target.begin();
+    for (; it != target.end(); ++it) {
+        if (it->empty() || it->at(0) == ' '|| it->at(0) == ',' || it->at(it->size() - 1) == ',' || it->at(it->size() - 1) == ' ')
+            return false;
+    }
+    return true;
+}
+
+ void CoreServer::cmdPrivmsg(int fd, std::vector<std::string> &args)
+ {
+    if (args.size() < 3 ) {
+        std::string msg = formatResponse(ERR_NEEDMOREPARAMS, "Not enough parameters");
+        send(fd, msg.c_str(), msg.size(), 0);
+        return;
+    }
+    std::vector<std::string> targets = get_targets(args[1]);
+    std::string message;
+    for (size_t i = 2; i < args.size(); i++) {
+        message += args[i];
+        if (i + 1 < args.size()) {
+            message += " ";
+        }
+    }
+    if (!validmsg(targets, message))
+    {
+        std::string msg = formatResponse(ERR_NEEDMOREPARAMS, "Not enough parameters");
+        send(fd, msg.c_str(), msg.size(), 0);
+        return; 
+    }
+    std::vector<std::string>::iterator it = targets.begin();
+    for (; it != targets.end(); ++it) {
+        if (is_channel(*it)) {
+            send_message_to_channel(fd, *it, message);
+        } else {
+            send_message_to_user(fd, *it, message);
+        }
+    }
 }

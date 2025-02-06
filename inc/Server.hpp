@@ -192,8 +192,9 @@ private:
       }
     }
   }
-
-  // Events / Client handlers
+  //privmsg helpers client && channel
+  void send_message_to_channel(int fd,const std::string &channel, const std::string &message);
+  void  send_message_to_user(int fd, const std::string &target, const std::string &message);
   void WelcomeClient();
   void WriteEvent(int fd);
   void ReadEvent(int fd);

@@ -24,6 +24,7 @@
 
 #define printServerMessage(type, message) std::cout << formatServerMessage(type, message) << std::endl
 #define formatResponse(code, message) std::string(SERVER_NAME) + code + " " + message + CRLF
+#define privmsgResponse(source, target, message) ":" + source + " PRIVMSG " + target + " :" + message + CRLF
 #define formatResponseSource(source, code, message) ":" + source + " " + code + " " + message + CRLF
 
 // Commands

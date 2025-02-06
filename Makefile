@@ -50,6 +50,7 @@ SRC_FILES := events/HandleEvents.cpp \
     commands/user.cpp \
     commands/quit.cpp \
     commands/mode.cpp \
+	commands/privmsg.cpp \
     main.cpp \
     Validation.cpp \
 	channel/Channel.cpp

@@ -136,7 +136,7 @@ _serverStats.totalMessages = 0;
   commands[MODE] = &CoreServer::cmdMode;
   commands[PART] = &CoreServer::cmdPart;
   commands[CAP] = &CoreServer::cmdCap; // only CAP LS and CAP END
-  // commands[PRIVMSG] = &CoreServer::cmdPrivmsg;
+  commands[PRIVMSG] = &CoreServer::cmdPrivmsg;
   // all the commands need to be guarded by a connection check.
   commands[PING] = &CoreServer::cmdPing;
   commands[QUIT] = &CoreServer::cmdQuit;
