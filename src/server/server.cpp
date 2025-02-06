@@ -97,7 +97,6 @@ void CoreServer::start_server() {
         else
           ReadEvent(fds[i].fd);
         TickCycle();
-        // watchdog();
         displayChannelTable();
       }
     }
@@ -106,23 +105,28 @@ void CoreServer::start_server() {
 
 CoreServer::CoreServer(std::string port, std::string password) {
 
-  std::cout << formatServerMessage("INFO", "Starting Server ...")
-            << std::endl;
-  
   if (!IsValidPort(port, ServData.Port)) {
-    std::cerr << formatServerMessage("FATAL", "Invalid port, exiting ...")
-              << std::endl;
+    printServerMessage("ERROR", "Invalid port number");
     exit(1);
   }
   if (!IsValidPass(password, ServData.Passwd)) {
-    std::cerr << formatServerMessage("FATAL", "Invalid Password, exiting ...")
-              << std::endl;
+    printServerMessage("ERROR", "Invalid password requirements");
     DisplayPassInfo();
     exit(1);
   }
 
-_serverStats.tickRate = 20;
-_serverStats.tick = 0;
+  printServerMessage("INFO", "CONFIGURATION: ");
+  printServerMessage("INFO", "Port: " + numberToString(ServData.Port));
+  // print configuration if conf file used or defaults
+
+_serverStats.tickRate = TICK_RATE;
+  _serverStats.tick = 0;
+_serverStats.uptime = 0;
+_serverStats.totalClients = 0;
+_serverStats.totalChannels = 0;
+_serverStats.totalMessages = 0;
+
+// _serverStats.totalCommands = 0;
 
   // mandatory commands
   commands[PASS] = &CoreServer::cmdPass;
@@ -137,6 +141,7 @@ _serverStats.tick = 0;
   commands[PING] = &CoreServer::cmdPing;
   commands[QUIT] = &CoreServer::cmdQuit;
   commands["LIST"] = &CoreServer::cmdList;
+
   create_socket();
   start_listening();
   start_server();

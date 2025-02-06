@@ -21,31 +21,38 @@
 #include <ctime>
 #include <stdexcept>
 
-#define CRLF "\r\n"
 
-std::string formatResponse(const std::string& code, const std::string& message);
-std::string formatResponseSource(const std::string& source, const std::string& code, const std::string& message);
+#define printServerMessage(type, message) std::cout << formatServerMessage(type, message) << std::endl
+#define formatResponse(code, message) std::string(SERVER_NAME) + code + " " + message + CRLF
+#define formatResponseSource(source, code, message) ":" + source + " " + code + " " + message + CRLF
 
 // Commands
 
+// Available commands
 #define PASS "PASS"
 #define NICK "NICK"
 #define USER "USER"
-#define OPER "OPER"
 #define MODE "MODE"
-#define SERVICE "SERVICE"
 #define QUIT "QUIT"
-#define SQUIT "SQUIT"
 #define JOIN "JOIN"
 #define PART "PART"
 #define TOPIC "TOPIC"
-#define NAMES "NAMES"
+#define PING "PING"
+
+// Inprogress commands
+#define PRIVMSG "PRIVMSG"
 #define LIST "LIST"
+#define MOTD "MOTD"
+#define CAP "CAP"
+#define KILL "KILL"
+
+#define OPER "OPER"
+#define SERVICE "SERVICE"
+#define SQUIT "SQUIT"
+#define NAMES "NAMES"
 #define INVITE "INVITE"
 #define KICK "KICK"
-#define PRIVMSG "PRIVMSG"
 #define NOTICE "NOTICE"
-#define MOTD "MOTD"
 #define LUSERS "LUSERS"
 #define VERSION "VERSION"
 #define STATS "STATS"
@@ -60,8 +67,6 @@ std::string formatResponseSource(const std::string& source, const std::string& c
 #define WHO "WHO"
 #define WHOIS "WHOIS"
 #define WHOWAS "WHOWAS"
-#define KILL "KILL"
-#define PING "PING"
 #define PONG "PONG"
 #define ERROR "ERROR"
 #define AWAY "AWAY"
@@ -73,7 +78,6 @@ std::string formatResponseSource(const std::string& source, const std::string& c
 #define WALLOPS "WALLOPS"
 #define USERHOST "USERHOST"
 #define ISON "ISON"
-#define CAP "CAP"
 
 
 // Response Codes

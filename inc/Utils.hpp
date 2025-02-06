@@ -17,11 +17,20 @@
 #define RESET   "\033[0m"
 
 
+#define CRLF "\r\n"
+#define HOST "morpheus-server.ddns.net"
+#define SERVER_NAME ":WeUseArch "
+
+#ifndef TICK_RATE
+#   define TICK_RATE 5
+#endif
+
 // Global functions
 
 std::string formatServerMessage(const std::string& type, const std::string& message);
 void    formatArg(std::string &msg);
 std::string numberToString(int value);
+
 
 
 

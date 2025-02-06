@@ -42,7 +42,7 @@ bool IsValidPort(std::string port, int& _tport)
     }
         
     _tport = static_cast<int>(val);
-    std::cout << formatServerMessage("DEBUG", "Port valid: " + _tport) << std::endl;
+    std::cout << formatServerMessage("DEBUG", "Port valid: " + numberToString(_tport)) << std::endl;
     return true;
 }
 

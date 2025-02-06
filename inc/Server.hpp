@@ -63,6 +63,26 @@ struct Stats {
 
   int tickRate;
   int tick;
+
+void reset() {
+    totalClients = 0;
+    totalChannels = 0;
+    totalMessages = 0;
+    uptime = 0;
+    tickRate = 30;
+    tick = 0;
+}
+
+void printStats() {
+    printServerMessage("INFO", "---------------------------------");
+    printServerMessage("INFO", "Total Clients: " + numberToString(totalClients));
+    printServerMessage("INFO", "Total Channels: " + numberToString(totalChannels));
+    printServerMessage("INFO", "Total Messages: " + numberToString(totalMessages));
+    printServerMessage("INFO", "Uptime: " + numberToString(uptime));
+    printServerMessage("INFO", "Tick Rate: " + numberToString(tickRate));
+    printServerMessage("INFO", "Tick: " + numberToString(tick));
+    printServerMessage("INFO", "---------------------------------");
+}
 };
 
 class CoreServer {
@@ -95,18 +115,18 @@ private:
   //
   // }
   void TickCycle() {
-    if (_serverStats.tickRate == 0)
-      _serverStats.tickRate = 4;
     if (_serverStats.tick == _serverStats.tickRate) {
       // Execute state-based operations
       // CheckClientTimeouts();
       // CleanEmptyChannels();
       // UpdateServerStats();
+      purgeDisconnectedClients();
+
+      purgeEmptyChannels();
       UpdateUptime();
       std::cout << formatServerMessage("SYSTEM",
                                        "CLEANUP CYCLE ENGAGED, UPTIME: ")
                 << _serverStats.uptime << std::endl;
-      watchdog();
       _serverStats.tick = 0;
     } else
       _serverStats.tick++;
@@ -120,7 +140,6 @@ private:
   // Cleaner methods
   void disconnectClient(int fd);
   void handleDisconnect(int fd);
-  void watchdog();
   void sendNotice(int fd, const std::string &message);
 
   void purgeEmptyChannels();
@@ -164,14 +183,13 @@ private:
       return;
     for (std::vector<Channel>::iterator it = channels.begin();
          it != channels.end(); ++it) {
-      std::cout << formatServerMessage("DEBUG",
-                                       "Unsubscribing client from channel " +
-                                           it->getName())
-                << std::endl;
       if (it->getChannelType() == CHANNEL::EMPTY)
         continue;
       if (it->isMember(clients[fd]))
+      {
+        printServerMessage("INFO", "Removing client from channel " + it->getName());
         it->removeMember(&clients[fd]);
+      }
     }
   }
 

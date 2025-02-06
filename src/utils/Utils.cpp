@@ -22,14 +22,10 @@
 #include <sstream>
 #include <vector>
 
-#define SERVER_NAME "WeUseArch"
-#define SERVER_HOST "morpheus-server.ddns.net"
-
-#define CRLF "\r\n"
-
 /* ************************************************************************** */
 /*                       SERVER UTILS                                         */
 /* ************************************************************************** */
+
 std::string formatServerMessage(const std::string& type, const std::string& message)
 {
     std::ostringstream oss;
@@ -59,43 +55,30 @@ std::string formatServerMessage(const std::string& type, const std::string& mess
     else
         oss << "UNKNOWN :: ";
     
+    // switch (vars::logLevel)
+    // {
+    //         case DEBUG:
+    //         oss << YELLOW << "DEBUG :: " << RESET;
+    //         break;
+    //         case INFO:
+    //         oss << GREEN << "INFO  :: " << RESET;
+    //
+    //
+    // 
+    // }
+    
     oss << message;
     return oss.str();
 
 }
 
-void printServerMessage(const std::string& type, const std::string& message)
-{
-    std::cout << formatServerMessage(type, message) << std::endl;
-}
 
 
-// Clients
+
 
 /* ************************************************************************** */
 /*                       CLIENT UTILS                                         */
 /* ************************************************************************** */
-
-// std::string formatResponse(const std::string& code, const std::string& message)
-// {
-//     std::ostringstream oss;
-//     oss << ":WeUseArch " << code << " " << message;
-//     return oss.str();
-// }
-
-
-
-
-// Basic formatting helper function (not a macro)
-std::string formatResponse(const std::string& code, const std::string& message)
-{
-        return ":WeUseArch.localhost " + code + " " + message + "\r\n";
-}
-
-std::string formatResponseSource(const std::string& source, const std::string& code, const std::string& message)
-{
-    return ":" + source + " " + code + " " + message + "\r\n";
-}
 
 std::string formatResponseServerCommand(std::vector<std::string> &args)
 {
@@ -111,3 +94,9 @@ std::string formatResponseClientCommand(const std::string& source, const std::st
 }
 
 
+std::string numberToString(int value)
+{
+    std::ostringstream oss;
+    oss << value;
+    return oss.str();
+}

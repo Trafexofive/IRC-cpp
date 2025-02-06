@@ -44,10 +44,11 @@ void CoreServer::WelcomeClient() {
 
   std::ostringstream oss;
 
-  oss << "Client accepted FD: " << fd_c;
-  std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
 
+printServerMessage("INFO", "Client connected @fd: " + numberToString(fd_c));
   clients[fd_c] = Client(fd_c, client_addr);
+
+_serverStats.totalClients++;
 
   std::cout << formatServerMessage("INFO", "Client connected") << std::endl;
 
@@ -166,6 +167,7 @@ void CoreServer::handleDisconnect(int fd) {
 
   unsubFromChannels(fd);
   disableClient(fd);
+    _serverStats.totalClients--;
 
   std::vector<struct pollfd>::iterator new_end =
       std::remove_if(fds.begin(), fds.end(), FdRemovePredicate(fd));

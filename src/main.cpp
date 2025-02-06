@@ -15,17 +15,22 @@
 #include <list>
 
 
+// void signalHandler(int signum)
+// {
+//     std::cout << formatServerMessage("SYSTEM", "Interrupt signal (" + numberToString(signum) + ") received. Exiting gracefully") << std::endl;
+//     exit(signum);
+// }
+
 
 int main(int ac, char** av)
 {
     if (ac != 3 || !av[1] || !av[2])
     {
-        std::cerr << formatServerMessage("ERROR", "Usage: ./irc-server <port> <password>") << std::endl;
+        printServerMessage("ERROR", "Usage: ./server <port> <password>");
         return 1;
     }
     else 
     {
-        // std::cout << formatServerMessage("DEBUG", "Insta")
         CoreServer IrcServ(av[1], av[2]);
     }
     

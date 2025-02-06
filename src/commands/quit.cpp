@@ -29,6 +29,10 @@ static std::string constructQuitMessage(const Client &client, const std::vector<
 }
 
 void CoreServer::cmdQuit(int fd, std::vector<std::string> &args) {
+    if (isClientDisconnected(fd)) {
+        printServerMessage("ERROR", "QUIT: Client already disconnected");
+        return;
+    }
     Client &client = clients[fd];
 
     std::string quitMsg = constructQuitMessage(client, args);

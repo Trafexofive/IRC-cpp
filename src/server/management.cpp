@@ -30,10 +30,12 @@ void CoreServer::disableClient(int fd) {
 
 void CoreServer::disableChannel(const std::string &name) {
 
+    // in favor of quick lookup and time complexity <std::string,Channel>
   for (std::vector<Channel>::iterator it = channels.begin();
        it != channels.end(); ++it) {
     if (it->getName() == name) {
       it->setChannelType(CHANNEL::EMPTY);
+    _serverStats.totalChannels--; //setChannelType should handle this.
       return;
     }
   }
@@ -44,22 +46,13 @@ void CoreServer::purgeEmptyChannels() {
 
   while (it != channels.end()) {
     if (it->getChannelType() == CHANNEL::EMPTY || it->getMemberCount() == 0) {
-      std::cout << formatServerMessage("INFO",
-                                       "Purging channel name:" + it->getName())
-                << std::endl;
+        printServerMessage("INFO", "Purging empty channel: " + it->getName());
+        _serverStats.totalChannels--;
       it = channels.erase(it); // erase() returns iterator to next element
     } else {
       ++it;
     }
   }
-}
-
-void CoreServer::watchdog() {
-
-    std::cout << formatServerMessage("INFO", "CLEANER CALLED.");
-  purgeDisconnectedClients();
-
-  purgeEmptyChannels();
 }
 
 /* ************************************************************************** */
@@ -112,6 +105,9 @@ void CoreServer::displayChannelTable() {
     } else if (it->getChannelType() == CHANNEL::EMPTY) {
       row << "+ " << it->getName() << "\t\t" << it->getMemberCount() << "\t\t"
           << "EMPTY";
+    } else if (it->getChannelType() == CHANNEL::UNKNOWN) {
+      row << "+ " << it->getName() << "\t\t" << it->getMemberCount() << "\t\t"
+          << "UNKNOWN";
     }
     std::cout << formatServerMessage("INFO", row.str()) << std::endl;
   }
@@ -119,8 +115,8 @@ void CoreServer::displayChannelTable() {
 
   printLine();
   std::ostringstream total;
-  total << "REGISTERED USERS: " << clients.size();
-  std::cout << formatServerMessage("INFO", total.str()) << std::endl;
+total << "REGISTERED USERS: " << _serverStats.totalClients;
+printServerMessage("INFO", total.str());
 
   printLine();
 }

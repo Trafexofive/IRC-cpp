@@ -30,6 +30,7 @@ Client::Client(const Client &client)
       nickName(client.nickName), realName(client.realName),
       passWord(client.passWord), response(client.response),
       _target(client._target) {
+
   std::ostringstream debug;
   debug << "Creating new client instance for fd(" << fdClient << ")";
   std::cout << formatServerMessage("DEBUG", debug.str()) << std::endl;

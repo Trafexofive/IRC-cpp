@@ -57,4 +57,7 @@
 
 - [ ] CLIENT:
     - [ ] sendMessage() && receiveMessage() type shit.
+
+
+- [ ] BUGS:
 ---

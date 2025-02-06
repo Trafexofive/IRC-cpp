@@ -125,6 +125,6 @@ def run_sync_connect_test(server, port, num_clients):
 if __name__ == "__main__":
     SERVER = "localhost"
     PORT = 22200
-    NUM_CLIENTS = 300 # Will be automatically limited based on system capacity
+    NUM_CLIENTS = 13000 # Will be automatically limited based on system capacity
     
     run_sync_connect_test(SERVER, PORT, NUM_CLIENTS)

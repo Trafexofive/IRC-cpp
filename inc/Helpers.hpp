@@ -69,6 +69,7 @@ struct ServerData {
     ServerData() : Passwd("password"), _socket(-1), _poll(-1), Port(6667), Host("morpheus-server.ddns.net"), ServerName("WeUseArch"), _infoLevel(INFO) {
         memset(&ServAddr, 0, sizeof(ServAddr));
     }
+    
 };
 
 

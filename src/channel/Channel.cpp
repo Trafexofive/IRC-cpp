@@ -55,22 +55,15 @@ Channel::Channel(const std::string &name, const std::string &topic,
 
 void Channel::CleanRegistry() {
 
-    // cpp11 custom remove_if needed
-    // need a way to decrement the member count
-    // _Registry.remove_if([](const ClientEntry &entry) {
-    //     return entry.state == ClientEntry::UNSUBSCRIBED;
-    // });
-    // we have delayed the removal of the client from the channel
-    // _Registry.remove_if([](const ClientEntry &entry) {
-    //     return entry.client->isDisconnected();
-    // });
-  for (std::list<ClientEntry>::iterator it = _Registry.begin();
+for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
        it != _Registry.end(); ++it) {
-    if (it->state == ClientEntry::UNSUBSCRIBED) {
+    if (it->second.state == ClientEntry::UNSUBSCRIBED) {
       _Registry.erase(it);
-      _memberCount--;
     }
-  }
+}
+
+if (_Registry.empty())
+    setChannelType(CHANNEL::EMPTY);
 }
 
 // Destructor
@@ -100,58 +93,50 @@ void Channel::setPassword(const std::string &p) { password = p; }
 // Member management methods
 
 void Channel::addMember(Client *client) {
-  for (std::list<ClientEntry>::iterator it = _Registry.begin();
-       it != _Registry.end(); ++it) {
-    if (it->client == client && it->state == ClientEntry::SUBSCRIBED)
+    if (client->isDisconnected())
+        return;
+    int fd = client->getFd();
+    if (_Registry[fd].client == client && _Registry[fd].state == ClientEntry::SUBSCRIBED)
     {
         std::cout << formatServerMessage("WARNING", "Client already in channel. Server Omitting ...")
               << std::endl;
         return;
-    } else if (it->client == client && it->state == ClientEntry::UNSUBSCRIBED) {
-      it->state = ClientEntry::SUBSCRIBED;
+    } else if (_Registry[fd].client == client) {
+      _Registry[fd].state = ClientEntry::SUBSCRIBED;
       _memberCount++;
       return;
     }
-  }
 
-  ClientEntry entry;
-  entry.client = client;
-  entry.state = ClientEntry::SUBSCRIBED;
-  _Registry.push_back(entry);
-  _memberCount++;
-  if (_memberCount == 0)
-    std::cout << formatServerMessage(
-                     "FATAL",
-                     "YO SOMETHING REALLY BAD JUST HAPPENED, IT WAS NEGATIVE")
-              << std::endl;
+    // adding new client entry to the channel
+    ClientEntry entry;
+    entry.client = client;
+    entry.state = ClientEntry::SUBSCRIBED;
+    _Registry[client->getFd()] = entry;
+    _memberCount++;
+
 }
 
 void Channel::removeMember(Client *client) {
-  for (std::list<ClientEntry>::iterator it = _Registry.begin();
-       it != _Registry.end(); ++it) {
-    if (it->client == client) {
-      it->state = ClientEntry::UNSUBSCRIBED;
+    if (client->isDisconnected())
+        return;
+    int fd = client->getFd();
+
+    if (_Registry[fd].client == client && _Registry[fd].state == ClientEntry::UNSUBSCRIBED)
+    {
+        std::cout << formatServerMessage("WARNING", "Client already removed from channel. Server Omitting ...")
+              << std::endl;
+        return;
+    } else if (_Registry[fd].client == client) {
+      _Registry[fd].state = ClientEntry::UNSUBSCRIBED;
       _memberCount--;
-      if (_memberCount == 0)
-        _settings.type = CHANNEL::EMPTY;
+    if (_memberCount == 0)
+        setChannelType(CHANNEL::EMPTY);
       return;
     }
-  }
 }
 
-
-
-// Ill leave this here for now
 int Channel::getMemberCount() const {
-  int count = 0;
-
-  for (std::list<ClientEntry>::const_iterator it = _Registry.begin();
-       it != _Registry.end(); ++it) {
-    if (it->state == ClientEntry::SUBSCRIBED)
-      count++;
-  }
-
-  return count;
+    return _memberCount;
 }
 
 /* ************************************************************************** */
@@ -193,12 +178,14 @@ bool Channel::validatePassword(const std::string &pass) const {
   return password == pass;
 }
 
-void Channel::broadcast(const std::string &message) {
-
-  for (std::list<ClientEntry>::iterator it = _Registry.begin();
-       it != _Registry.end(); ++it) {
-    if (it->state == ClientEntry::SUBSCRIBED) {
-      it->client->setResponse(message);
+void Channel::broadcast(const std::string &message) 
+{
+    for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
+         it != _Registry.end(); ++it) {
+        if (it->second.state == ClientEntry::SUBSCRIBED)
+        {
+            it->second.client->setResponse(message);
+        }
     }
-  }
 }
+

@@ -37,6 +37,7 @@ struct CHANNEL {
 
   std::string key;
   std::string modeString;
+
 };
 
 struct ClientEntry {
@@ -47,6 +48,7 @@ struct ClientEntry {
 
   bool isOperator;
   Client *client;
+
 };
 
 class Channel {
@@ -55,10 +57,11 @@ private:
   std::string topic;
   std::string password;
 
-  std::vector<Client *>
+  std::vector<Client *> 
       operators; // still not sure about handling this this way.
 
-  std::list<ClientEntry> _Registry;
+  // std::list<ClientEntry> _Registry;
+  std::map<int, ClientEntry> _Registry;
   int _memberCount;
 
   CHANNEL _settings;
@@ -80,9 +83,14 @@ public:
   const std::string &getTopic() const;
   const std::string &getPassword() const;
 
-  const std::list<ClientEntry> &getRegistry() const { return _Registry; };
+  // const std::list<ClientEntry> &getRegistry() const { return _Registry; };
+  const std::map<int ,ClientEntry> &getRegistry() const { return _Registry; };
 
   CHANNEL::TYPE getChannelType() const { return _settings.type; }
+bool isPrivate() const { return _settings.type == CHANNEL::PRIVATE; }
+bool isPublic() const { return _settings.type == CHANNEL::PUBLIC; }
+bool isEmpty() const { return _settings.type == CHANNEL::EMPTY; }
+bool isUnknown() const { return _settings.type == CHANNEL::UNKNOWN; }
 
   // Setters
   void setName(const std::string &n);
@@ -139,40 +147,41 @@ public:
   void setChannelType(CHANNEL::TYPE type) { _settings.type = type; }
 
   void setClientState(Client *client, ClientEntry::TYPE state) {
-    for (std::list<ClientEntry>::iterator it = _Registry.begin();
+    for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
          it != _Registry.end(); ++it) {
-      if (it->client == client) {
-        it->state = state;
+      if (it->second.client == client) {
+        it->second.state = state;
         return;
       }
     }
   }
 
   void massSetClientState(ClientEntry::TYPE state) {
-    for (std::list<ClientEntry>::iterator it = _Registry.begin();
+    for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
          it != _Registry.end(); ++it) {
-      it->state = state;
+      it->second.state = state;
     }
   }
-
   // Validation methods
-  bool isMember(Client *client) const {
-    for (std::list<ClientEntry>::const_iterator it = _Registry.begin();
-         it != _Registry.end(); ++it) {
-      if (it->client == client && it->state == ClientEntry::SUBSCRIBED)
-        return true;
-    }
-    return false;
+  // bool isMember(Client *client) const {
+  //   for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
+  //        it != _Registry.end(); ++it) {
+  //     if (it->second.client == client && it->second.state == ClientEntry::SUBSCRIBED)
+  //       return true;
+  //   }
+  //   return false;
+  // }
+
+// this is a better approach to the above method O(1) instead of O(n)
+  bool isMember(Client &client) const {
+      // maybe use if (fd == -1) // just incase
+    int fd = client.getFd();
+    if (_Registry.find(fd) != _Registry.end() && _Registry.at(fd).state == ClientEntry::SUBSCRIBED)
+      return true;
+    else 
+      return false;
   }
 
-  bool isMember(Client &client) const {
-    for (std::list<ClientEntry>::const_iterator it = _Registry.begin();
-         it != _Registry.end(); ++it) {
-      if (it->client == &client && it->state == ClientEntry::SUBSCRIBED)
-        return true;
-    }
-    return false;
-  }
 
   bool hasPassword() const; // should be removed
   bool validatePassword(const std::string &pass) const;
