@@ -34,9 +34,7 @@ void CoreServer::cmdTopic(int fd, std::vector<std::string> &args) {
     return;
   }
   if (args.size() < 2) {
-    std::cout << formatServerMessage("DEBUG",
-                                     "TOPIC failed: No channel specified")
-              << std::endl;
+    printServerMessage("DEBUG", "TOPIC failed: Not enough parameters");
     clients[fd].setResponse(
         formatResponse(ERR_NEEDMOREPARAMS, "TOPIC :Not enough parameters"));
     return;

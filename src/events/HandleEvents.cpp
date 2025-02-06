@@ -44,13 +44,13 @@ void CoreServer::WelcomeClient() {
 
   std::ostringstream oss;
 
-
   clients[fd_c] = Client(fd_c, client_addr);
 
-    _serverStats.totalClients++;
+  _serverStats.totalClients++;
 
-printServerMessage("INFO", "Client connected @fd: " + numberToString(fd_c));
-printServerMessage("INFO", "Total clients: " + numberToString(_serverStats.totalClients));
+  printServerMessage("INFO", "Client connected @fd: " + numberToString(fd_c));
+  printServerMessage("INFO", "Total clients: " +
+                                 numberToString(_serverStats.totalClients));
 
   char host[NI_MAXHOST];
   char service[NI_MAXSERV];
@@ -88,10 +88,12 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
     }
 
     if (clients[fd].isStatus(STATUS::UNKNOWN) && command != "PASS") {
-        std::cout << formatServerMessage("SYSTEM", "YUP Client not authenticated @fd: ") << clients[fd].getFd() << std::endl;
+      std::cout << formatServerMessage("SYSTEM",
+                                       "YUP Client not authenticated @fd: ")
+                << clients[fd].getFd() << std::endl;
       clients[fd].setResponse(
           formatResponse(ERR_PASSWDMISMATCH, ":Password required"));
-          WriteEvent(fd);
+      WriteEvent(fd);
       return;
     }
 
@@ -200,7 +202,6 @@ void CoreServer::ReadEvent(int fd) {
 
     if (line.empty())
       continue;
-
 
     handleCommand(fd, line);
   }

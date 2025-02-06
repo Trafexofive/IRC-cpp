@@ -23,10 +23,10 @@
 
 
 #define printServerMessage(type, message) std::cout << formatServerMessage(type, message) << std::endl
-#define formatResponse(code, message) std::string(SERVER_NAME) + code + " " + message + CRLF
-#define formatResponseSource(source, code, message) ":" + source + " " + code + " " + message + CRLF
+#define formatResponse(code, message) ":" + SERVER_NAME + code + " " + message + CRLF
+#define formatResponseSource(source, code, message) ":" + SERVER_NAME + source + " " + code + " " + message + CRLF
 #define formatResponseDest(dest, code, message) ":" + SERVER_NAME + dest + " " + code + " " + message + CRLF
-#define formatResponseCommand(source, dest, code, message) ":" + source + " " + SERVER_NAME + dest + " " + code + " " + message + CRLF
+// #define formatResponseCommand(source, dest, code, message) ":" + source + " " + SERVER_NAME + dest + " " + code + " " + message + CRLF
 
 // Commands
 
@@ -175,7 +175,7 @@
     // RPL_TOPIC (332)
     // RPL_TOPICWHOTIME (333)
 
-#define rpltopic(channel, topic) RPL_TOPIC + " " + SERVER_NAME + channel + " :" + topic + CRLF
+#define rpltopic(client, channel, topic) RPC_TOPIC + " " + client + " " + channel + " :" + topic + CRLF
 
 
 

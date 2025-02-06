@@ -18,7 +18,6 @@
 #include <cctype>
 #include <cstring>
 #include <iostream>
-#include <list>
 #include <map>
 #include <sstream>
 #include <string>
@@ -36,7 +35,6 @@
 // Project includes
 #include "./Channel.hpp"
 #include "./Client.hpp"
-#include "./Helpers.hpp"
 #include "./Utils.hpp"
 #include "./ircResponses.hpp"
 
