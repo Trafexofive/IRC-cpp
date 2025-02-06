@@ -1,0 +1,142 @@
+[1m[2025-02-06 17:51:48] [0m[33mDEBUG :: [0mValidating port: 22200
+[1m[2025-02-06 17:51:48] [0m[33mDEBUG :: [0mPort valid: 22200
+[1m[2025-02-06 17:51:48] [0m[33mDEBUG :: [0mValidating password
+[1m[2025-02-06 17:51:48] [0m[33mDEBUG :: [0mPassword valid
+[1m[2025-02-06 17:51:49] [0m[32mINFO  :: [0mCONFIGURATION: 
+[1m[2025-02-06 17:51:49] [0m[32mINFO  :: [0mPORT: : 22200
+[1m[2025-02-06 17:51:49] [0m[32mINFO  :: [0mPID: 646851
+[1m[2025-02-06 17:51:49] [0m[33mDEBUG :: [0mCreating socket...
+[1m[2025-02-06 17:51:49] [0m[33mDEBUG :: [0mSocket created: 3
+[1m[2025-02-06 17:51:49] [0m[32mINFO  :: [0mServer Socket setup complete
+[1m[2025-02-06 17:51:49] [0m[33mDEBUG :: [0mStarting to listen...
+[1m[2025-02-06 17:51:49] [0m[33mDEBUG :: [0mServer listening on port: 22200
+[1m[2025-02-06 17:51:49] [0m[33mDEBUG :: [0mServer main loop starting...
+[1m[2025-02-06 17:53:28] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-02-06 17:53:28] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-02-06 17:53:28] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-02-06 17:53:28] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-06 17:53:28] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-06 17:53:28] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-02-06 17:53:28] [0m[32mINFO  :: [0mClient connected @fd: 4
+[1m[2025-02-06 17:53:28] [0m[32mINFO  :: [0mTotal clients: 1
+[1m[2025-02-06 17:53:28] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:53:28] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-06 17:53:28] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:53:28] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-06 17:53:28] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:53:31] [0m[33mDEBUG :: [0mCreating new client instance for fd(5)
+[1m[2025-02-06 17:53:31] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-02-06 17:53:31] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-02-06 17:53:31] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-06 17:53:31] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-06 17:53:31] [0m[33mDEBUG :: [0mDestroying client instance for fd(5)
+[1m[2025-02-06 17:53:31] [0m[32mINFO  :: [0mClient connected @fd: 5
+[1m[2025-02-06 17:53:31] [0m[32mINFO  :: [0mTotal clients: 2
+[1m[2025-02-06 17:53:31] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-06 17:53:31] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-06 17:53:31] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:53:31] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-06 17:53:31] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:53:31] [0m[32mINFO  :: [0mREGISTERED USERS: 2
+[1m[2025-02-06 17:53:31] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:53:38] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-02-06 17:53:38] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-02-06 17:53:38] [0m[32mINFO  :: [0mClient Authenticated
+[1m[2025-02-06 17:53:38] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-02-06 17:53:38] [0m[33mDEBUG :: [0mNickname set to: lebro
+[1m[2025-02-06 17:53:38] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:53:38] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-06 17:53:38] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:53:38] [0m[32mINFO  :: [0mREGISTERED USERS: 2
+[1m[2025-02-06 17:53:38] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:53:38] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-02-06 17:53:38] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-02-06 17:53:38] [0m[32mINFO  :: [0mRegistration complete for 
+[1m[2025-02-06 17:53:38] [0m[33mDEBUG :: [0msource: lebro!@127.0.0.1
+[1m[2025-02-06 17:53:38] [0m[35mSERVER :: [0m:WeUseArch.localhost 001 lebro!@127.0.0.1 :Welcome to the WeUseArch IRC Network
+:WeUseArch.localhost 002 lebro!@127.0.0.1 :Your host is morpheus-server.ddns.net
+:WeUseArch.localhost 003 lebro!@127.0.0.1 :This server was created 2024-01-11
+:WeUseArch.localhost 004 lebro!@127.0.0.1 morpheus-server.ddns.net 1.0 usermodes channelmodes
+:WeUseArch.localhost 375 lebro!@127.0.0.1 :- morpheus-server.ddns.net Message of the Day - 
+:WeUseArch.localhost 372 lebro!@127.0.0.1 :- Welcome to the WeUseArch IRC Network!
+:WeUseArch.localhost 372 lebro!@127.0.0.1 :- Enjoy your stay!
+:WeUseArch.localhost 376 lebro!@127.0.0.1 :End of /MOTD command.
+
+[1m[2025-02-06 17:53:38] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-06 17:53:38] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-06 17:53:38] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:53:38] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-06 17:53:38] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:53:38] [0m[32mINFO  :: [0mREGISTERED USERS: 2
+[1m[2025-02-06 17:53:38] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:53:44] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-06 17:53:44] [0m[33mDEBUG :: [0mCreating new channel: #test
+[1m[2025-02-06 17:53:44] [0m[33mDEBUG :: [0mDestroying channel: #test
+[1m[2025-02-06 17:53:44] [0m[33m[1mWARNING :: [0mClient already added to channel. Server Omitting ...
+[1m[2025-02-06 17:53:44] [0m[35mSERVER :: [0m:lebro!@127.0.0.1 JOIN #test
+
+[1m[2025-02-06 17:53:44] [0m[35mSERVER :: [0m:lebro!@127.0.0.1 JOIN #test
+
+[1m[2025-02-06 17:53:44] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:53:44] [0m[32mINFO  :: [0mCHANNEL NAME        MEMBERS   TYPE      
+[1m[2025-02-06 17:53:44] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:53:44] [0m[32mINFO  :: [0m#test               1         PUBLIC    
+[1m[2025-02-06 17:53:44] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:53:44] [0m[32mINFO  :: [0mREGISTERED USERS: 2
+[1m[2025-02-06 17:53:44] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:54:02] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-02-06 17:54:02] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-02-06 17:54:02] [0m[32mINFO  :: [0mClient Authenticated
+[1m[2025-02-06 17:54:02] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-02-06 17:54:02] [0m[33mDEBUG :: [0mNickname set to: cmoi
+[1m[2025-02-06 17:54:02] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-06 17:54:02] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-06 17:54:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:54:02] [0m[32mINFO  :: [0mCHANNEL NAME        MEMBERS   TYPE      
+[1m[2025-02-06 17:54:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:54:02] [0m[32mINFO  :: [0m#test               1         PUBLIC    
+[1m[2025-02-06 17:54:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:54:02] [0m[32mINFO  :: [0mREGISTERED USERS: 2
+[1m[2025-02-06 17:54:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:54:04] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-02-06 17:54:04] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-02-06 17:54:04] [0m[32mINFO  :: [0mRegistration complete for 
+[1m[2025-02-06 17:54:04] [0m[33mDEBUG :: [0msource: cmoi!cmoi@127.0.0.1
+[1m[2025-02-06 17:54:04] [0m[35mSERVER :: [0m:WeUseArch.localhost 001 cmoi!cmoi@127.0.0.1 :Welcome to the WeUseArch IRC Network
+:WeUseArch.localhost 002 cmoi!cmoi@127.0.0.1 :Your host is morpheus-server.ddns.net
+:WeUseArch.localhost 003 cmoi!cmoi@127.0.0.1 :This server was created 2024-01-11
+:WeUseArch.localhost 004 cmoi!cmoi@127.0.0.1 morpheus-server.ddns.net 1.0 usermodes channelmodes
+:WeUseArch.localhost 375 cmoi!cmoi@127.0.0.1 :- morpheus-server.ddns.net Message of the Day - 
+:WeUseArch.localhost 372 cmoi!cmoi@127.0.0.1 :- Welcome to the WeUseArch IRC Network!
+:WeUseArch.localhost 372 cmoi!cmoi@127.0.0.1 :- Enjoy your stay!
+:WeUseArch.localhost 376 cmoi!cmoi@127.0.0.1 :End of /MOTD command.
+
+[1m[2025-02-06 17:54:04] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:54:04] [0m[32mINFO  :: [0mCHANNEL NAME        MEMBERS   TYPE      
+[1m[2025-02-06 17:54:04] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:54:04] [0m[32mINFO  :: [0m#test               1         PUBLIC    
+[1m[2025-02-06 17:54:04] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:54:04] [0m[32mINFO  :: [0mREGISTERED USERS: 2
+[1m[2025-02-06 17:54:04] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:54:17] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-06 17:54:17] [0m[35mSERVER :: [0m:cmoi!cmoi@127.0.0.1 JOIN #test
+
+[1m[2025-02-06 17:54:17] [0m[35mSERVER :: [0m:cmoi!cmoi@127.0.0.1 JOIN #test
+
+[1m[2025-02-06 17:54:17] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-06 17:54:17] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-06 17:54:17] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:54:17] [0m[32mINFO  :: [0mCHANNEL NAME        MEMBERS   TYPE      
+[1m[2025-02-06 17:54:17] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:54:17] [0m[32mINFO  :: [0m#test               2         PUBLIC    
+[1m[2025-02-06 17:54:17] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:54:17] [0m[32mINFO  :: [0mREGISTERED USERS: 2
+[1m[2025-02-06 17:54:17] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:57:08] [0m[33mDEBUG :: [0mProcessing command: PRIVMSG
+[1m[2025-02-06 17:57:08] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:57:08] [0m[32mINFO  :: [0mCHANNEL NAME        MEMBERS   TYPE      
+[1m[2025-02-06 17:57:08] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:57:08] [0m[32mINFO  :: [0m#test               2         PUBLIC    
+[1m[2025-02-06 17:57:08] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-06 17:57:08] [0m[32mINFO  :: [0mREGISTERED USERS: 2
+[1m[2025-02-06 17:57:08] [0m[32mINFO  :: [0m+-------------------------------------------------------

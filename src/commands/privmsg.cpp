@@ -50,7 +50,7 @@ bool is_channel(const std::string &target) {
 
 void CoreServer::send_message_to_channel(int fd,const std::string &channel, const std::string &message) {
     Channel *chan = getChannel(channel);
-    if (chan == NULL){
+    if (chan == NULL || chan->getChannelType() == CHANNEL::EMPTY) {
       std::string msg = formatResponse(ERR_NOSUCHCHANNEL, "No such channel");
       std::cout << formatServerMessage("ERROR", "Channel not found") << std::endl;
         send(fd, msg.c_str(), msg.size(), 0);
@@ -63,7 +63,7 @@ void CoreServer::send_message_to_channel(int fd,const std::string &channel, cons
         return;
     }
     std::string msg = constructPrivmsg(clients[fd].getTarget(), channel, message);
-    std::map<int, ClientEntry>:: iterator it = chan->getRegistry().begin();
+    std::map<int, ClientEntry>::const_iterator it = chan->getRegistry().begin();
     for (; it != chan->getRegistry().end(); ++it) {
       if (it->first != fd) { // Don't send the message back to the sender
       send(it->first, msg.c_str(), msg.size(), 0);
@@ -77,6 +77,8 @@ void  CoreServer::send_message_to_user(int fd, const std::string &target, const 
     std::map<int, Client>::iterator it = clients.begin();
     for (; it != clients.end(); ++it) {
         if (it->second.getNickName() == target) {
+            if (it->second.isStatus(STATUS::DISCONNECTED))
+                break ;
             std::string msg = constructPrivmsg(clients[fd].getTarget(), target, message);
             send(it->first, msg.c_str(), msg.size(), 0);
             found = true;
