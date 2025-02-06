@@ -96,6 +96,7 @@ void CoreServer::displayChannelTable() {
        it != channels.end(); ++it) {
     std::ostringstream row;
     std::string type;
+
     if (it->getChannelType() == CHANNEL::PRIVATE) {
       row << "+ " << it->getName() << "\t\t" << it->getMemberCount() << "\t\t"
           << "PRIVATE";

@@ -51,7 +51,9 @@
     
 - [ ] SERVER:
     - [ ] optimizations 
-    - [ ] tickrate/timout implementation for clean cicles..
+        - [X] o(1) client pulling and adding. 
+    - [X] tickrate/timout implementation for clean cicles..
+        - [ ] actual tickrate implementation (not based on poll events)
     - [ ] better server/client messages
     - [ ] better logging
 

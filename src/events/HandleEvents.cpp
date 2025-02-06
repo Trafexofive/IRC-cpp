@@ -45,12 +45,12 @@ void CoreServer::WelcomeClient() {
   std::ostringstream oss;
 
 
-printServerMessage("INFO", "Client connected @fd: " + numberToString(fd_c));
   clients[fd_c] = Client(fd_c, client_addr);
 
-_serverStats.totalClients++;
+    _serverStats.totalClients++;
 
-  std::cout << formatServerMessage("INFO", "Client connected") << std::endl;
+printServerMessage("INFO", "Client connected @fd: " + numberToString(fd_c));
+printServerMessage("INFO", "Total clients: " + numberToString(_serverStats.totalClients));
 
   char host[NI_MAXHOST];
   char service[NI_MAXSERV];
@@ -88,7 +88,7 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
     }
 
     if (clients[fd].isStatus(STATUS::UNKNOWN) && command != "PASS") {
-        std::cout << formatServerMessage("SERVER", "YUP Client not authenticated @fd: ") << clients[fd].getFd() << std::endl;
+        std::cout << formatServerMessage("SYSTEM", "YUP Client not authenticated @fd: ") << clients[fd].getFd() << std::endl;
       clients[fd].setResponse(
           formatResponse(ERR_PASSWDMISMATCH, ":Password required"));
           WriteEvent(fd);
@@ -156,9 +156,7 @@ void CoreServer::purgeDisconnectedClients() {
                 << std::endl;
 
       clients.erase(it);
-      _serverStats.totalClients--;
     }
-    _serverStats.totalClients++;
     it = tmp;
   }
 }
@@ -166,12 +164,12 @@ void CoreServer::purgeDisconnectedClients() {
 void CoreServer::handleDisconnect(int fd) {
 
   unsubFromChannels(fd);
-  disableClient(fd);
-    _serverStats.totalClients--;
+  _serverStats.totalClients--;
 
   std::vector<struct pollfd>::iterator new_end =
       std::remove_if(fds.begin(), fds.end(), FdRemovePredicate(fd));
   fds.erase(new_end, fds.end());
+  disableClient(fd);
 }
 
 // Method to read data from the client
