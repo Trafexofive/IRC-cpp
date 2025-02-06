@@ -42,12 +42,13 @@
 - [ ] USER:
     - [ ] Better User parsing.
 - [ ] JOIN:
+    - [ ] handlers for join modes
     - [ ] user after registering.
 
-- [ ] PRIVMSG:
-    - [ ] privmsg #channel
-    - [ ] privmsg user
-    - [ ] handle privmsg with new client registry map.
+- [X] PRIVMSG:
+    - [X] privmsg #channel
+    - [X] privmsg user
+    - [X] handle privmsg with new client registry map.
 
 - [ ] NICK:
     - [ ] nick newnick

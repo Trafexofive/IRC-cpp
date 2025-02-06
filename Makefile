@@ -41,8 +41,10 @@ SRC_FILES := events/HandleEvents.cpp \
 	utils/Utils.cpp \
     commands/cmd.cpp \
     commands/cap.cpp \
+    commands/invite.cpp \
     commands/ping.cpp \
     commands/nick.cpp \
+    commands/kick.cpp \
     commands/privmsg.cpp \
     commands/join.cpp \
     commands/topic.cpp \
