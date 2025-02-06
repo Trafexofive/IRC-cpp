@@ -47,6 +47,7 @@
 - [ ] PRIVMSG:
     - [ ] privmsg #channel
     - [ ] privmsg user
+    - [ ] handle privmsg with new client registry map.
 
 - [ ] NICK:
     - [ ] nick newnick
@@ -65,4 +66,5 @@
 
 
 - [ ] BUGS:
+    - [ ] 
 ---
