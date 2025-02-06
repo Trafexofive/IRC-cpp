@@ -116,7 +116,8 @@ CoreServer::CoreServer(std::string port, std::string password) {
   }
 
   printServerMessage("INFO", "CONFIGURATION: ");
-  printServerMessage("INFO", "Port: " + numberToString(ServData.Port));
+  printServerMessage("INFO", "PORT: : " + numberToString(ServData.Port));
+  printServerMessage("INFO", "PID: " + numberToString(getpid()));
   // print configuration if conf file used or defaults
 
 _serverStats.tickRate = TICK_RATE;

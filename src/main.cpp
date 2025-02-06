@@ -12,14 +12,14 @@
 
 #include "../inc/Server.hpp"
 #include <cstdlib>
-#include <list>
+#include <signal.h>
 
 
-// void signalHandler(int signum)
-// {
-//     std::cout << formatServerMessage("SYSTEM", "Interrupt signal (" + numberToString(signum) + ") received. Exiting gracefully") << std::endl;
-//     exit(signum);
-// }
+void signalHandler(int signum)
+{
+    printServerMessage("INFO", "Interrupt signal (" + numberToString(signum) + ") received.");
+    exit(signum);
+}
 
 
 int main(int ac, char** av)
@@ -33,6 +33,7 @@ int main(int ac, char** av)
     {
         CoreServer IrcServ(av[1], av[2]);
     }
+    signal(SIGINT, signalHandler);
     
     return 0;
 }

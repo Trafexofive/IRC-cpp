@@ -134,6 +134,6 @@ if __name__ == "__main__":
     SERVER = "localhost"
     PORT = 22200
     NUM_CLIENTS = 11000    # This will be automatically limited to a safe number
-    TEST_DURATION = 1030
+    TEST_DURATION = 111030
     
     run_channel_test(SERVER, PORT, NUM_CLIENTS, TEST_DURATION)

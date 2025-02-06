@@ -22,7 +22,7 @@
 #define SERVER_NAME ":WeUseArch "
 
 #ifndef TICK_RATE
-#   define TICK_RATE 5
+#   define TICK_RATE 1
 #endif
 
 // Global functions

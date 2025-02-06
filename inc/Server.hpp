@@ -216,6 +216,7 @@ public:
     }
     channels.clear();
     clients.clear();
+    _serverStats.printStats();
   }
   // bool  isTickRate(const std::string &ticket) {
   //
