@@ -173,6 +173,8 @@ private:
   void cmdKick(int fd, std::vector<std::string> &args);
 
   // channel management methods
+  void kickUserFromChannel(int fd, const std::string &target,
+                           const std::string &reason);
   void joinChannel(Client &client, const std::string &channelName);
   void joinChannel(Client &client, const std::string &channelName,
                    const std::string &key);

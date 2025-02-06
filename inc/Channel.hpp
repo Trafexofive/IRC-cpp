@@ -15,6 +15,7 @@
 
 #include "Client.hpp"
 #include "Utils.hpp"
+#include "ircResponses.hpp"
 #include <algorithm>
 #include <arpa/inet.h>
 #include <iostream>
@@ -118,8 +119,8 @@ bool isUnknown() const { return _settings.type == CHANNEL::UNKNOWN; }
         }
       }
     } else {
-      std::cout << formatServerMessage("WARNING", "Invalid use of SetMode")
-                << std::endl;
+
+        printServerMessage("ERROR", "Invalid mode string");
     }
   }
   const std::vector<Client *> &getOperators() const { return operators; }
@@ -156,24 +157,35 @@ bool isUnknown() const { return _settings.type == CHANNEL::UNKNOWN; }
     }
   }
 
+Client *getClient(const std::string &nick) {
+    for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
+         it != _Registry.end(); ++it) {
+        if (it->second.client->getNickName() == nick && it->second.state == ClientEntry::UNSUBSCRIBED)
+            return NULL;
+    if (it->second.client->getNickName() == nick && it->second.state == ClientEntry::SUBSCRIBED)
+        return it->second.client;
+    }
+    return NULL;
+}
+
+Client *getClient(int fd) {
+    if (_Registry.find(fd) != _Registry.end())
+      return _Registry.at(fd).client;
+    else
+      return NULL;
+}
+
   void massSetClientState(ClientEntry::TYPE state) {
     for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
          it != _Registry.end(); ++it) {
       it->second.state = state;
     }
   }
-  // Validation methods
-  // bool isMember(Client *client) const {
-  //   for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
-  //        it != _Registry.end(); ++it) {
-  //     if (it->second.client == client && it->second.state == ClientEntry::SUBSCRIBED)
-  //       return true;
-  //   }
-  //   return false;
-  // }
 
 // this is a better approach to the above method O(1) instead of O(n)
+  // bool isMember(Client *client) const {
   bool isMember(Client &client) const {
+  void removeMember(Client *obj);
       // maybe use if (fd == -1) // just incase
     int fd = client.getFd();
     if (_Registry.find(fd) != _Registry.end() && _Registry.at(fd).state == ClientEntry::SUBSCRIBED)
@@ -186,7 +198,6 @@ bool isUnknown() const { return _settings.type == CHANNEL::UNKNOWN; }
   bool hasPassword() const; // should be removed
   bool validatePassword(const std::string &pass) const;
   // Member management methods
-  void removeMember(Client *obj);
 
   void addMember(Client *member);
   void addOperator(Client *member) {

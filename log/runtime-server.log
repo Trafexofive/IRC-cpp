@@ -1,0 +1,13 @@
+[1m[2025-02-06 22:25:49] [0m[33mDEBUG :: [0mValidating port: 22200
+[1m[2025-02-06 22:25:49] [0m[33mDEBUG :: [0mPort valid: 22200
+[1m[2025-02-06 22:25:49] [0m[33mDEBUG :: [0mValidating password
+[1m[2025-02-06 22:25:49] [0m[33mDEBUG :: [0mPassword valid
+[1m[2025-02-06 22:25:49] [0m[32mINFO  :: [0mCONFIGURATION: 
+[1m[2025-02-06 22:25:49] [0m[32mINFO  :: [0mPORT: : 22200
+[1m[2025-02-06 22:25:49] [0m[32mINFO  :: [0mPID: 1193323
+[1m[2025-02-06 22:25:49] [0m[33mDEBUG :: [0mCreating socket...
+[1m[2025-02-06 22:25:49] [0m[33mDEBUG :: [0mSocket created: 3
+[1m[2025-02-06 22:25:49] [0m[32mINFO  :: [0mServer Socket setup complete
+[1m[2025-02-06 22:25:49] [0m[33mDEBUG :: [0mStarting to listen...
+[1m[2025-02-06 22:25:49] [0m[33mDEBUG :: [0mServer listening on port: 22200
+[1m[2025-02-06 22:25:49] [0m[33mDEBUG :: [0mServer main loop starting...

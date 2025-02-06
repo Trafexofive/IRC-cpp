@@ -12,6 +12,15 @@
 
 #include "../../inc/Server.hpp"
 
+void CoreServer::kickUserFromChannel(int fd, const std::string &target, const std::string &reason)
+{
+    if (isClientDisconnected(fd))
+        return;
+    // Client *client = getClient(target);
+    // use unsubfromchannels
+
+
+}
 
 void CoreServer::cmdKick(int fd, std::vector<std::string> &args)
 {
