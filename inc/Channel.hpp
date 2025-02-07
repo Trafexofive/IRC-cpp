@@ -182,10 +182,10 @@ Client *getClient(int fd) {
     }
   }
 
+  void removeMember(Client *client);
 // this is a better approach to the above method O(1) instead of O(n)
   // bool isMember(Client *client) const {
   bool isMember(Client &client) const {
-  void removeMember(Client *obj);
       // maybe use if (fd == -1) // just incase
     int fd = client.getFd();
     if (_Registry.find(fd) != _Registry.end() && _Registry.at(fd).state == ClientEntry::SUBSCRIBED)
@@ -217,6 +217,7 @@ Client *getClient(int fd) {
 
   // General methods
   void broadcast(const std::string &message);
+void broadcastException(const std::string &message, Client *client) ;
 
   int getMemberCount() const;
   // Registry and state management.

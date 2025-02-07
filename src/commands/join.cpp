@@ -46,33 +46,6 @@ static std::vector<std::string> splitString(const std::string &input,
   return tokens;
 }
 
-static JOIN_ARGS parseJoinParams(const std::vector<std::string> &args) {
-  JOIN_ARGS params;
-
-  if (args.size() < 2) {
-    return params;
-  }
-
-  params.channels = args[1];
-
-  if (args.size() > 2) {
-    params.keys = args[2];
-  }
-
-  for (size_t i = 0; i < params.channels.length(); ++i) {
-    if (params.channels[i] == ',') {
-      params.channels[i] = ' ';
-    }
-  }
-
-  for (size_t i = 0; i < params.keys.length(); ++i) {
-    if (params.keys[i] == ',') {
-      params.keys[i] = ' ';
-    }
-  }
-  return params;
-}
-
 #define ERR_BADCHANNELKEY "475"
 
 bool CoreServer::isChannel(const std::string &name) {
@@ -85,6 +58,30 @@ bool CoreServer::isChannel(const std::string &name) {
   return false;
 }
 
+static JOIN_ARGS parseJoinParams(const std::vector<std::string> &args) {
+  JOIN_ARGS params;
+
+  if (args.size() < 2) {
+    return params;
+  }
+
+  // Validate channel name format
+  if (args[1].empty() || args[1][0] != '#') {
+    return params;
+  }
+
+  params.channels = args[1];
+  
+  if (args.size() > 2) {
+    params.keys = args[2];
+  }
+
+  // Convert commas to spaces
+  std::replace(params.channels.begin(), params.channels.end(), ',', ' ');
+  std::replace(params.keys.begin(), params.keys.end(), ',', ' ');
+
+  return params;
+}
 
 static std::string constructJoinMessage(const std::string &source,
                                         const std::string &channelName) {

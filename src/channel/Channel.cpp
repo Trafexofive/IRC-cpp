@@ -178,3 +178,12 @@ void Channel::broadcast(const std::string &message) {
     }
   }
 }
+
+void Channel::broadcastException(const std::string &message, Client *client) {
+  for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
+       it != _Registry.end(); ++it) {
+    if (it->second.state == ClientEntry::SUBSCRIBED && it->second.client != client) {
+      it->second.client->setResponse(message);
+    }
+  }
+}
