@@ -102,33 +102,26 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
   }
   Channel *channelPtr = getChannel(channelName);
 
+// for operators and permissions
+// if (canJoinChannel(client, channelName)) { 
+//     return;
   if (channelPtr == NULL) {
-    std::cout << formatServerMessage("WARNING",
-                                     "JOIN failed: Channel not found")
-              << std::endl;
-    client.setResponse(
-        formatResponse(ERR_NOSUCHCHAN, channelName + " :No such channel"));
+    printServerMessage("WARNING", "JOIN failed: Channel not found");
+    client.setResponse(ERR_NOSUCHCHANNEL_MSG(client.getTarget(), channelName));
     return;
   }
   Channel &channel = *channelPtr;
 
   if (channel.getChannelType() == CHANNEL::PRIVATE &&
       !channel.isMember(client)) {
-    std::cout << formatServerMessage("WARNING",
-                                     "JOIN failed: Channel requires a key")
-              << std::endl;
-    client.setResponse(formatResponse(
-        ERR_BADCHANNELKEY, channelName + " :Cannot join channel (+k)"));
+    printServerMessage("WARNING", "JOIN failed: Channel is private");
+    client.setResponse(ERR_BADCHANNELKEY_MSG(client.getTarget(), channelName));
     return;
   }
   if (channel.isMember(client)) {
-    std::cout << formatServerMessage("WARNING", client.getNickName() +
-                                                    " is already in channel " +
-                                                    channelName)
-              << std::endl;
-    client.setResponse(formatResponse(ERR_USERONCHANNEL,
-                                      client.getTarget() + " " + channelName +
-                                          " :is already on channel"));
+    printServerMessage("WARNING", client.getNickName() +
+                                  " is already in channel " + channelName);
+    client.setResponse(ERR_USERONCHANNEL_MSG(client.getTarget(), channelName));
     return;
   }
   channel.addMember(&client);
@@ -147,11 +140,8 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
   }
   Channel *channelPtr = getChannel(channelName);
   if (channelPtr == NULL) {
-    std::cout << formatServerMessage("WARNING",
-                                     "JOIN failed: Channel not found")
-              << std::endl;
-    client.setResponse(
-        formatResponse(ERR_NOSUCHCHAN, channelName + " :No such channel"));
+    printServerMessage("WARNING", "JOIN failed: Channel not found");
+    client.setResponse(ERR_NOSUCHCHANNEL_MSG(client.getTarget(), channelName));
     return;
   }
   Channel &channel = *channelPtr;
@@ -162,13 +152,9 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
     return;
   }
   if (channel.isMember(client)) {
-    std::cout << formatServerMessage("WARNING", client.getNickName() +
-                                                    " is already in channel " +
-                                                    channelName)
-              << std::endl;
-    client.setResponse(formatResponse(ERR_USERONCHANNEL,
-                                      client.getNickName() + " " + channelName +
-                                          " :is already on channel"));
+    printServerMessage("WARNING", client.getNickName() +
+                                  " is already in channel " + channelName);
+    client.setResponse(ERR_USERONCHANNEL_MSG(client.getTarget(), channelName));
     return;
   }
   if (channel.getChannelType() == CHANNEL::PRIVATE &&

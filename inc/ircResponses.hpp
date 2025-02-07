@@ -195,7 +195,7 @@
 // common error responses
 
 #define ERR_NOSUCHNICK_MSG(nick) SERVER_NAME + ERR_NOSUCHNICK + " " + nick + " :No such nick/channel" + CRLF
-#define ERR_NOSUCHCHANNEL_MSG(channel) SERVER_NAME + ERR_NOSUCHCHANNEL + " " + channel + " :No such channel" + CRLF
+#define ERR_NOSUCHCHANNEL_MSG(client, channel) SERVER_NAME + ERR_NOSUCHCHANNEL + " " + client + " " + channel + " :No such channel" + CRLF
 #define ERR_NOTONCHANNEL_MSG(channel) SERVER_NAME + ERR_NOTONCHANNEL + " " + channel + " :You're not on that channel" + CRLF
 
 #define ERR_NEEDMOREPARAMS_MSG(client, command) SERVER_NAME + ERR_NEEDMOREPARAMS + " " + client + " " + command + " :Not enough parameters" + CRLF
@@ -204,7 +204,15 @@
 
 #define ERR_ALREADYREG_MSG(client) SERVER_NAME + ERR_ALREADYREG + " " + client + " :You may not reregister" + CRLF
 
+#define ERR_USERNOTINCHANNEL_MSG(client, channel) SERVER_NAME + ERR_USERNOTINCHANNEL + " " + client + " " + channel + " :They aren't on that channel" + CRLF
 
+#define ERR_NOTREGISTERED_MSG(client) SERVER_NAME + ERR_NOTREGISTERED + " " + client + " :You have not registered" + CRLF
+
+#define ERR_NOORIGIN_MSG(client) SERVER_NAME + ERR_NOORIGIN + " " + client + " :No origin specified" + CRLF
+
+#define ERR_USERONCHANNEL_MSG(client, channel) SERVER_NAME + ERR_USERONCHANNEL + " " + client + " " + channel + " :is already on channel" + CRLF
+
+#define ERR_BADCHANNELKEY_MSG(client, channel) SERVER_NAME + ERR_BADCHANNELKEY + " " + client + " " + channel + " :Cannot join channel (+k)" + CRLF
 
 
 #endif
