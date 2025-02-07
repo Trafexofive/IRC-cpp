@@ -175,7 +175,6 @@
 
 #define rplnosuchnick(nick) SERVER_NAME + ERR_NOSUCHNICK + " " + nick + " :No such nick/channel" + CRLF
 
-#define ERRNEEDMOREPARAMS(client, command) SERVER_NAME + ERR_NEEDMOREPARAMS + " " + client + " " + command + " :Not enough parameters" + CRLF
 
 
 #define formatCommandResponse(source, code, message) ":" + source + " " + SERVER_NAME + " " + code + " " + message + CRLF
@@ -184,6 +183,7 @@
 
 
 #define printServerMessage(type, message) std::cout << formatServerMessage(type, message) << std::endl
+
 #define formatResponse(code, message) SERVER_NAME + code + " " + message + CRLF
 
 #define formatResponseSource(source, code, message) SERVER_NAME + source + " " + code + " " + message + CRLF
@@ -191,4 +191,20 @@
 #define formatResponseDest(dest, code, message) SERVER_NAME + dest + " " + code + " " + message + CRLF
 
 #define formatCmdResponse(target, command, message) SERVER_NAME + target + " " + command + " " + message + CRLF // solid
+
+// common error responses
+
+#define ERR_NOSUCHNICK_MSG(nick) SERVER_NAME + ERR_NOSUCHNICK + " " + nick + " :No such nick/channel" + CRLF
+#define ERR_NOSUCHCHANNEL_MSG(channel) SERVER_NAME + ERR_NOSUCHCHANNEL + " " + channel + " :No such channel" + CRLF
+#define ERR_NOTONCHANNEL_MSG(channel) SERVER_NAME + ERR_NOTONCHANNEL + " " + channel + " :You're not on that channel" + CRLF
+
+#define ERR_NEEDMOREPARAMS_MSG(client, command) SERVER_NAME + ERR_NEEDMOREPARAMS + " " + client + " " + command + " :Not enough parameters" + CRLF
+
+#define ERR_PASSWDMISMATCH_MSG(client) SERVER_NAME + ERR_PASSWDMISMATCH + " " + client + " :Password incorrect" + CRLF
+
+#define ERR_ALREADYREG_MSG(client) SERVER_NAME + ERR_ALREADYREG + " " + client + " :You may not reregister" + CRLF
+
+
+
+
 #endif

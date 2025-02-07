@@ -27,7 +27,7 @@ void CoreServer::cmdInvite(int fd, std::vector<std::string> &args)
     }
     else if (args.size() > 3)
     {
-        client.setResponse(ERRNEEDMOREPARAMS(client.getNickName(), "INVITE"));
+        client.setResponse(ERR_NEEDMOREPARAMS_MSG(client.getNickName(), "INVITE"));
         return;
     }
     else 

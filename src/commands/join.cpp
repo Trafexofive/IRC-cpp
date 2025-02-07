@@ -187,14 +187,8 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
 void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
   Client &client = clients[fd];
 
-  if (!client.isRegistered()) {
-    std::cout << formatServerMessage("WARNING",
-                                     "JOIN failed: Client not registered")
-              << std::endl;
-    client.setResponse(
-        formatResponse(ERR_NOTREGISTERED, "JOIN :You have not registered"));
+if (isClientDisconnected(fd))
     return;
-  }
   if (args.size() < 2) {
     std::cout << formatServerMessage("WARNING",
                                      "JOIN failed: No channel specified")
@@ -205,24 +199,16 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
   }
 
   if (args.size() > 3) {
-    std::cout << formatServerMessage("WARNING",
-                                     "JOIN failed: Too many arguments")
-              << std::endl;
+    printServerMessage("WARNING", "JOIN failed: Too many parameters");
     client.setResponse(
-        formatResponse(ERR_NEEDMOREPARAMS, "JOIN :Too many arguments"));
+        ERR_NEEDMOREPARAMS_MSG(client.getTarget(), "JOIN"));
     return;
   }
-  // needs better error/edge-cases (parse ya lm3gaz)
+
   JOIN_ARGS params = parseJoinParams(args);
 
   std::vector<std::string> channelNames = splitString(params.channels, ' ');
   std::vector<std::string> keys = splitString(params.keys, ' ');
-
-  if (channelNames.empty()) {
-    client.setResponse(formatResponse(ERR_NEEDMOREPARAMS,
-                                      "JOIN :No valid channels specified"));
-    return;
-  }
 
   for (size_t i = 0; i < channelNames.size(); ++i) {
     if (!isValidChannelName(channelNames[i])) {
