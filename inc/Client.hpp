@@ -118,7 +118,7 @@ public:
   bool isRegistered() const;
   bool isAuthenticated() const;
   bool isDisconnected() const { return _status.state == STATUS::DISCONNECTED; }
-
+  void  beoper(){_operator = true;}
   void authenticate();
   void clear();
   void clearResponse();

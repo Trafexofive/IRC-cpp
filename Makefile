@@ -40,13 +40,10 @@ SRC_FILES := events/HandleEvents.cpp \
     client/client.cpp \
 	utils/Utils.cpp \
     commands/cmd.cpp \
-    commands/cap.cpp \
-    commands/ping.cpp \
     commands/nick.cpp \
     commands/privmsg.cpp \
     commands/join.cpp \
     commands/topic.cpp \
-    commands/list.cpp \
     commands/pass.cpp \
     commands/part.cpp \
     commands/user.cpp \
@@ -54,6 +51,7 @@ SRC_FILES := events/HandleEvents.cpp \
     commands/mode.cpp \
 	commands/kill.cpp \
 	commands/operwall.cpp \
+	commands/oper.cpp \
     main.cpp \
     Validation.cpp \
 	channel/Channel.cpp

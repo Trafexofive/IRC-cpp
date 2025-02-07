@@ -135,7 +135,7 @@ private:
   void start_server();
 
   // Cleaner methods
-  void disconnectClient(int fd);
+  // void disconnectClient(int fd);
   void handleDisconnect(int fd);
   void sendNotice(int fd, const std::string &message);
 
@@ -177,6 +177,7 @@ private:
   void joinChannel(Client &client, const std::string &channelName,
                    const std::string &key);
 
+  void  setOperator(Client &client);
   bool isChannel(const std::string &name);
   void unsubFromChannels(int fd) {
     if (isClientDisconnected(fd))
@@ -242,7 +243,7 @@ public:
   bool validatePassword(const std::string &password) {
     return ServData.Passwd == password;
   }
-std::vector<Client> getOperators(){return operators;};
+std::vector<Client *> getOperators(){return operators;};
 };
 
 // Non-member functions for validation

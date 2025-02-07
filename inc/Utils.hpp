@@ -63,6 +63,8 @@ struct ServerData {
     // std::string Welcome;
     
     std::string ServerName;
+    std::string Opuser;
+    std::string Oppass;
 
     LEVEL _infoLevel;
 

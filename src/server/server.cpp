@@ -119,7 +119,8 @@ CoreServer::CoreServer(std::string port, std::string password) {
   printServerMessage("INFO", "PORT: : " + numberToString(ServData.Port));
   printServerMessage("INFO", "PID: " + numberToString(getpid()));
   // print configuration if conf file used or defaults
-
+  ServData.Opuser = "admin";
+  ServData.Oppass = "admin";
 _serverStats.tickRate = TICK_RATE;
   _serverStats.tick = 0;
 _serverStats.uptime = 0;
@@ -136,13 +137,16 @@ _serverStats.totalMessages = 0;
   commands[JOIN] = &CoreServer::cmdJoin;
   commands[MODE] = &CoreServer::cmdMode;
   commands[PART] = &CoreServer::cmdPart;
-  commands[CAP] = &CoreServer::cmdCap; // only CAP LS and CAP END
+  // commands[CAP] = &CoreServer::cmdCap; // only CAP LS and CAP END
   commands[PRIVMSG] = &CoreServer::cmdPrivmsg;
+  commands["OPER"] = &CoreServer::cmdoper;
+  commands["OPERWALL"] = &CoreServer::cmdoperwall;
+  commands["KILL"] = &CoreServer::cmdKill;
   // all the commands need to be guarded by a connection check.
-  commands[PING] = &CoreServer::cmdPing;
+  // commands[PING] = &CoreServer::cmdPing;
   commands[QUIT] = &CoreServer::cmdQuit;
   commands[TOPIC] = &CoreServer::cmdTopic;
-  commands["LIST"] = &CoreServer::cmdList;
+  // commands["LIST"] = &CoreServer::cmdList;
 
   create_socket();
   start_listening();
