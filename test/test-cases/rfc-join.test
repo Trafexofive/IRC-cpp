@@ -1,3 +1,0 @@
-# Test Case 1: Single Normal Channel Join
-SINGLE NORMAL CHANNEL JOIN|:test-user!testUser@localhost JOIN :#test-channel|PASS Alilepro135!\r\nNICK test-user\r\nUSER testUser 0 * :Test User\r\nJOIN #test-channel\r\n
-

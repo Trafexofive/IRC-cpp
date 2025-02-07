@@ -88,6 +88,8 @@ private:
 
   std::map<int, Client> clients;
 
+  std::vector<Client *> operators;
+
   std::vector<struct pollfd> fds;
 
   std::vector<Channel> channels;
@@ -166,6 +168,9 @@ private:
   void cmdMode(int fd, std::vector<std::string> &args);
   void cmdWho(int fd, std::vector<std::string> &args);
   void cmdTopic(int fd, std::vector<std::string> &args);
+  void cmdKill(int fd, std::vector<std::string> &args);
+  void cmdoperwall(int fd, std::vector<std::string> &args);
+  void  cmdoper(int fd, std::vector<std::string> &args);
 
   // channel management methods
   void joinChannel(Client &client, const std::string &channelName);
@@ -237,6 +242,7 @@ public:
   bool validatePassword(const std::string &password) {
     return ServData.Passwd == password;
   }
+std::vector<Client> getOperators(){return operators;};
 };
 
 // Non-member functions for validation

@@ -15,7 +15,7 @@
 // Default constructor
 Client::Client()
     : fdClient(-1), clientInfos(), ipAddr(""), fullName(""), nickName(""),
-      realName(""), passWord(""), response(""), _target("") {
+      realName(""), passWord(""), response(""), _target("") ,_operator(false) {
 
   setStatus(STATUS::UNKNOWN);
 }

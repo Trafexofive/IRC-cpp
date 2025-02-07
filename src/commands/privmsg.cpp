@@ -1,16 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   privmsg.cpp                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mlamkadm <mlamkadm@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 19:50:09 by mlamkadm          #+#    #+#             */
-/*   Updated: 2025/01/10 19:50:09 by mlamkadm         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
-#include "../../inc/Server.hpp"
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -126,6 +114,11 @@ bool    validmsg(std::vector<std::string> target, std::string message)
         std::string msg = formatResponse(ERR_NEEDMOREPARAMS, "Not enough parameters");
         send(fd, msg.c_str(), msg.size(), 0);
         return; 
+    }
+    std::vector<std::string>::iterator ity = targets.begin();
+    for(; ity != targets.end(); ++ity)
+    {
+        std::cout << "Target: " << *ity << std::endl;
     }
     std::vector<std::string>::iterator it = targets.begin();
     for (; it != targets.end(); ++it) {

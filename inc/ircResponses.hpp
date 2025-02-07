@@ -47,6 +47,7 @@
 #define MOTD "MOTD"
 #define CAP "CAP"
 #define KILL "KILL"
+#define OPERWALL "OPERWALL"
 
 #define OPER "OPER"
 #define SERVICE "SERVICE"
@@ -164,6 +165,7 @@
 #define ERR_INVALIDCAPCMD "410"
 #define ERR_INVALIDCAP "411"
 #define ERR_NEEDMOREPARAMS "461"
+#define ERR_NOPRIVILEGES "481"
 // #define ERR_UNKNOWNCAP "410"
 
 
