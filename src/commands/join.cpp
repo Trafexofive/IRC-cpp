@@ -44,19 +44,11 @@ static std::vector<std::string> splitString(const std::string &input,
     }
   }
   return tokens;
+
 }
 
 #define ERR_BADCHANNELKEY "475"
 
-bool CoreServer::isChannel(const std::string &name) {
-
-  for (std::vector<Channel>::iterator it = channels.begin();
-       it != channels.end(); ++it) {
-    if (it->getName() == name && it->getChannelType() != CHANNEL::EMPTY)
-      return true;
-  }
-  return false;
-}
 
 static JOIN_ARGS parseJoinParams(const std::vector<std::string> &args) {
   JOIN_ARGS params;
@@ -71,7 +63,7 @@ static JOIN_ARGS parseJoinParams(const std::vector<std::string> &args) {
   }
 
   params.channels = args[1];
-  
+
   if (args.size() > 2) {
     params.keys = args[2];
   }
@@ -85,26 +77,26 @@ static JOIN_ARGS parseJoinParams(const std::vector<std::string> &args) {
 
 static std::string constructJoinMessage(const std::string &source,
                                         const std::string &channelName) {
-std::string joinMsg = ":" + source + " JOIN " + channelName + CRLF;
+  std::string joinMsg = ":" + source + " JOIN " + channelName + CRLF;
   std::cout << formatServerMessage("SERVER", joinMsg) << std::endl;
 
   return joinMsg;
 }
 
-
 void CoreServer::joinChannel(Client &client, const std::string &channelName) {
   if (!isChannel(channelName)) {
-    channels.push_back(Channel(channelName, &client));
-    channels.back().addMember(&client);
+    channels.insert(std::pair<std::string, Channel>(channelName, Channel(channelName, &client)));
+    std::map <std::string, Channel>::reverse_iterator it = channels.rbegin();
+    it->second.addMember(&client);
     client.setResponse(constructJoinMessage(client.getTarget(), channelName));
 
     return;
   }
   Channel *channelPtr = getChannel(channelName);
 
-// for operators and permissions
-// if (canJoinChannel(client, channelName)) { 
-//     return;
+  // for operators and permissions
+  // if (canJoinChannel(client, channelName)) {
+  //     return;
   if (channelPtr == NULL) {
     printServerMessage("WARNING", "JOIN failed: Channel not found");
     client.setResponse(ERR_NOSUCHCHANNEL_MSG(client.getTarget(), channelName));
@@ -120,7 +112,7 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
   }
   if (channel.isMember(client)) {
     printServerMessage("WARNING", client.getNickName() +
-                                  " is already in channel " + channelName);
+                                      " is already in channel " + channelName);
     client.setResponse(ERR_USERONCHANNEL_MSG(client.getTarget(), channelName));
     return;
   }
@@ -132,8 +124,9 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
                              const std::string &key) {
   if (!isChannel(channelName)) {
 
-    channels.push_back(Channel(channelName, "", key, &client));
-    channels.back().addMember(&client);
+    channels.insert(std::pair<std::string, Channel>(channelName, Channel(channelName, key, &client)));
+    std::map <std::string, Channel>::reverse_iterator it = channels.rbegin();
+    it->second.addMember(&client);
     client.setResponse(constructJoinMessage(client.getTarget(), channelName));
 
     return;
@@ -153,7 +146,7 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
   }
   if (channel.isMember(client)) {
     printServerMessage("WARNING", client.getNickName() +
-                                  " is already in channel " + channelName);
+                                      " is already in channel " + channelName);
     client.setResponse(ERR_USERONCHANNEL_MSG(client.getTarget(), channelName));
     return;
   }
@@ -173,7 +166,7 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
 void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
   Client &client = clients[fd];
 
-if (isClientDisconnected(fd))
+  if (isClientDisconnected(fd))
     return;
   if (args.size() < 2) {
     std::cout << formatServerMessage("WARNING",
@@ -186,8 +179,7 @@ if (isClientDisconnected(fd))
 
   if (args.size() > 3) {
     printServerMessage("WARNING", "JOIN failed: Too many parameters");
-    client.setResponse(
-        ERR_NEEDMOREPARAMS_MSG(client.getTarget(), "JOIN"));
+    client.setResponse(ERR_NEEDMOREPARAMS_MSG(client.getTarget(), "JOIN"));
     return;
   }
 

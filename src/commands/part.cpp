@@ -14,52 +14,41 @@
 
 #include <string>
 
-// Helper function to handle invalid channel case
 static void handleInvalidChannel(Client &client, const std::string &channelName) {
-  std::cout << formatServerMessage(
-                   "ERROR", "PART failed: Invalid channel name " + channelName)
-            << std::endl;
-  client.setResponse(
-      formatResponse(ERR_NOSUCHCHAN, channelName + " :Invalid channel name"));
+    printServerMessage("ERROR", "PART failed: Invalid channel");
+    client.setResponse(formatResponse(ERR_NOSUCHCHAN, channelName + " :No such channel"));
 }
 
-// Helper function to handle successful part operation
 static void handlePartSuccess(Client &client, const std::string &channelName) {
-  std::string partMsg = ":" + client.getNickName() + "!" +
-                        client.getFullName() + "@localhost PART " +
-                        channelName + "\r\n";
-  client.setResponse(partMsg);
-  std::cout << formatServerMessage("SUCCESS", client.getNickName() + " left " +
-                                                  channelName)
-            << std::endl;
+    printServerMessage("INFO", client.getNickName() + " has left " + channelName);
+    client.setResponse(":" + client.getNickName() + " PART " + channelName + "\r\n");
 }
-
 
 void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
     if (isClientDisconnected(fd))
     {
-        std::cout << formatServerMessage("ERROR", "PART failed: Client is disconnected") << std::endl;
+        printServerMessage("ERROR", "PART failed: Client is disconnected");
         return;
     }
     if (!isClientRegistered(fd))
     {
-        std::cout << formatServerMessage("ERROR", "PART failed: Client not registered") << std::endl;
+        printServerMessage("ERROR", "PART failed: No client registered");
         clients[fd].setResponse(formatResponse(ERR_NOTREGISTERED, ":You have not registered"));
         return;
     }
     if (args.size() < 2) {
-        std::cout << formatServerMessage("ERROR", "PART failed: No channel specified") << std::endl;
+        printServerMessage("ERROR", "PART failed: Not enough parameters");
         clients[fd].setResponse(formatResponse(ERR_NEEDMOREPARAMS, "PART :Not enough parameters"));
         return;
     }
 
     Client& client = clients[fd];
 
-    // Loop on args to get the channel names
+    // Loop on args to get the channel names, we will switch to map later
     for (std::vector<std::string>::size_type i = 1; i < args.size(); ++i) {
         std::string channelName = args[i];
 
-        std::cout << formatServerMessage("DEBUG", client.getNickName() + " attempting to leave " + channelName) << std::endl;
+        printServerMessage("INFO", "PART: " + client.getNickName() + " leaving " + channelName);
         if (!isChannel(channelName)) {
             handleInvalidChannel(client, channelName);
             continue;

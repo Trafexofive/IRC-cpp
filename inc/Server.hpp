@@ -93,9 +93,9 @@ private:
 
   std::vector<struct pollfd> fds;
 
-  std::vector<Channel> channels;
+  // std::vector<Channel> channels;
 
-  std::map<std::string, Channel> _channels; // in favor of quick lookup and
+  std::map<std::string, Channel> channels; // in favor of quick lookup and
   // time complexity
 
   std::map<std::string, CommandHandler> commands;
@@ -184,14 +184,14 @@ private:
   void unsubFromChannels(int fd) {
     if (isClientDisconnected(fd))
       return;
-    for (std::vector<Channel>::iterator it = channels.begin();
+    for (std::map<std::string, Channel>::iterator it = channels.begin();
          it != channels.end(); ++it) {
-      if (it->getChannelType() == CHANNEL::EMPTY)
+      if (it->second.getChannelType() == CHANNEL::EMPTY)
         continue;
-      if (it->isMember(clients[fd])) {
+      if (it->second.isMember(clients[fd])) {
         printServerMessage("INFO",
-                           "Removing client from channel " + it->getName());
-        it->removeMember(&clients[fd]);
+                           "Removing client from channel " + it->second.getName());
+        it->second.removeMember(&clients[fd]);
       }
     }
   }
@@ -228,17 +228,13 @@ public:
     clients.clear();
     _serverStats.printStats();
   }
-  // bool  isTickRate(const std::string &ticket) {
-  //
-  //     // prime numbers
-  //     return true
-  // };
 
   void removeChannel(const Channel &channel) {
-    for (std::vector<Channel>::iterator it = channels.begin();
+    for (std::map<std::string, Channel>::iterator it = channels.begin();
          it != channels.end(); ++it) {
-      if (it->getName() == channel.getName()) {
+      if (it->second.getName() == channel.getName()) {
         channels.erase(it);
+        printServerMessage("INFO", "Channel " + channel.getName() + " removed");
         break;
       }
     }

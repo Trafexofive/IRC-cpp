@@ -30,27 +30,25 @@ void CoreServer::disableClient(int fd) {
 
 void CoreServer::disableChannel(const std::string &name) {
 
-    // in favor of quick lookup and time complexity <std::string,Channel>
-  for (std::vector<Channel>::iterator it = channels.begin();
-       it != channels.end(); ++it) {
-    if (it->getName() == name) {
-      it->setChannelType(CHANNEL::EMPTY);
-    _serverStats.totalChannels--; //setChannelType should handle this.
-      return;
-    }
+  Channel *channel = getChannel(name);
+  if (channel == NULL) {
+    printServerMessage("ERROR", "Channel " + name + " does not exist");
+    return;
   }
+  channel->setChannelType(CHANNEL::EMPTY);
+  // channel->clear();
+  // channel->CleanRegistry()
+  _serverStats.totalChannels--;
 }
 
 void CoreServer::purgeEmptyChannels() {
-  std::vector<Channel>::iterator it = channels.begin();
 
-  while (it != channels.end()) {
-    if (it->getChannelType() == CHANNEL::EMPTY || it->getMemberCount() == 0) {
-        printServerMessage("INFO", "Purging empty channel: " + it->getName());
-        _serverStats.totalChannels--;
-      it = channels.erase(it); // erase() returns iterator to next element
-    } else {
-      ++it;
+  for (std::map<std::string, Channel>::iterator it = channels.begin();
+       it != channels.end(); ++it) {
+    if (it->second.getChannelType() == CHANNEL::EMPTY) {
+      printServerMessage("INFO",
+                         "Removing empty channel " + it->second.getName());
+      channels.erase(it);
     }
   }
 }
@@ -80,7 +78,8 @@ void CoreServer::displayChannelTable() {
     printLine();
     printServerMessage("INFO", "No channels available");
     printLine();
-    printServerMessage("INFO", "REGISTERED USERS: " + numberToString(_serverStats.totalClients));
+    printServerMessage("INFO", "REGISTERED USERS: " +
+                                   numberToString(_serverStats.totalClients));
     printLine();
     return;
   }
@@ -93,33 +92,24 @@ void CoreServer::displayChannelTable() {
 
   std::ostringstream header;
   header << std::left << std::setw(nameWidth) << "CHANNEL NAME"
-         << std::setw(countWidth) << "MEMBERS"
-         << std::setw(typeWidth) << "TYPE";
+         << std::setw(countWidth) << "MEMBERS" << std::setw(typeWidth)
+         << "TYPE";
   printServerMessage("INFO", header.str());
   printLine();
 
-  for (std::vector<Channel>::const_iterator it = channels.begin();
+  for (std::map<std::string, Channel>::iterator it = channels.begin();
        it != channels.end(); ++it) {
-    std::ostringstream row;
-    std::string type;
 
-    if (it->getChannelType() == CHANNEL::PRIVATE) {
-      type = "PRIVATE";
-    } else if (it->getChannelType() == CHANNEL::PUBLIC) {
-      type = "PUBLIC";
-    } else if (it->getChannelType() == CHANNEL::EMPTY) {
-      type = "EMPTY";
-    } else if (it->getChannelType() == CHANNEL::UNKNOWN) {
-      type = "UNKNOWN";
-    }
+    std::ostringstream oss;
 
-    row << std::left << std::setw(nameWidth) << it->getName()
-        << std::setw(countWidth) << it->getMemberCount()
-        << std::setw(typeWidth) << type;
-    printServerMessage("INFO", row.str());
+    oss << std::left << std::setw(nameWidth) << it->second.getName()
+        << std::setw(countWidth) << it->second.getMemberCount()
+        << std::setw(typeWidth) << it->second.getChannelType();
+    printServerMessage("INFO", oss.str());
   }
 
   printLine();
-  printServerMessage("INFO", "REGISTERED USERS: " + numberToString(_serverStats.totalClients));
+  printServerMessage("INFO", "REGISTERED USERS: " +
+                                 numberToString(_serverStats.totalClients));
   printLine();
 }

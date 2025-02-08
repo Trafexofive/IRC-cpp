@@ -140,15 +140,23 @@ int Channel::getMemberCount() const { return _memberCount; }
 
 Channel *CoreServer::getChannel(const std::string &name) {
 
-  for (std::vector<Channel>::iterator it = channels.begin();
-       it != channels.end(); ++it) {
-    if (it->getName() == name) {
-      return &(*it);
+    std::map<std::string, Channel>::iterator it = channels.find(name);
+    if (it == channels.end()) {
+        printServerMessage("ERROR", "Channel " + name + " does not exist");
+        return NULL;
     }
-  }
-  return NULL;
+    return &it->second;
 }
 
+bool CoreServer::isChannel(const std::string &name) {
+
+  if (channels.empty())
+    return false;
+  if (getChannel(name) != NULL)
+    return true;
+  return false;
+
+}
 /* ************************************************************************** */
 /*                       SECTION/FUNCTION/NAME                                */
 /* ************************************************************************** */
