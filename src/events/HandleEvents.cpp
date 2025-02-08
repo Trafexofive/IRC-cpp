@@ -89,7 +89,7 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
 
     if (clients[fd].isStatus(STATUS::UNKNOWN) && command == CAP)
         printServerMessage("INFO", "Client CAP request @fd: " + numberToString(fd) + " - " + line);
-    if (clients[fd].isStatus(STATUS::UNKNOWN) && command != "PASS" ){
+    else if (clients[fd].isStatus(STATUS::UNKNOWN) && command != "PASS" ){
       std::cout << formatServerMessage("SYSTEM",
                                        "YUP Client not authenticated @fd: ")
                 << clients[fd].getFd() << std::endl;

@@ -138,7 +138,7 @@ CoreServer::CoreServer(std::string port, std::string password) {
   commands[KICK] = &CoreServer::cmdKick;
   commands[INVITE] = &CoreServer::cmdInvite;
   commands[PART] = &CoreServer::cmdPart;
-  // commands[CAP] = &CoreServer::cmdCap; // only CAP LS and CAP END
+  commands[CAP] = &CoreServer::cmdCap; // only CAP LS and CAP END
   commands[PRIVMSG] = &CoreServer::cmdPrivmsg;
   // all the commands need to be guarded by a connection check.
   commands[PING] = &CoreServer::cmdPing;

@@ -24,17 +24,17 @@ void CoreServer::cmdCap(int fd, std::vector<std::string> &args) {
         std::cout << formatServerMessage("ERROR", "CAP failed: No subcommand specified") << std::endl;
         clients[fd].setResponse(formatResponse(ERR_NEEDMOREPARAMS, "CAP :Not enough parameters"));
         return;
-    }
+    } 
 
     std::string subcommand = args[1];
-    if (subcommand == "LS") {
-        std::string response = ":server CAP " + clients[fd].getNickName() + " LS :multi-prefix sasl\r\n";
-        clients[fd].setResponse(response);
-    } else if (subcommand == "END") {
-        std::string response = ":server CAP " + clients[fd].getNickName() + " ACK :multi-prefix sasl\r\n";
-        clients[fd].setResponse(response);
-    } else {
+
+    if (subcommand != "LS" && subcommand != "END") {
         std::cout << formatServerMessage("ERROR", "CAP failed: Invalid subcommand") << std::endl;
-        clients[fd].setResponse(formatResponse(ERR_INVALIDCAPCMD, subcommand + " :Invalid CAP subcommand"));
+        clients[fd].setResponse(formatResponse(ERR_UNKNOWNCOMMAND, "CAP :Unknown subcommand"));
+        return;
+    } else if (subcommand == "LS") {
+        clients[fd].setResponse("CAP * LS :multi-prefix");
+    } else if (subcommand == "END") {
+        clients[fd].setResponse("CAP * ACK :multi-prefix");
     }
 }
