@@ -120,14 +120,14 @@ CoreServer::CoreServer(std::string port, std::string password) {
   printServerMessage("INFO", "PID: " + numberToString(getpid()));
   // print configuration if conf file used or defaults
 
-_serverStats.tickRate = TICK_RATE;
+  _serverStats.tickRate = TICK_RATE;
   _serverStats.tick = 0;
-_serverStats.uptime = 0;
-_serverStats.totalClients = 0;
-_serverStats.totalChannels = 0;
-_serverStats.totalMessages = 0;
+  _serverStats.uptime = 0;
+  _serverStats.totalClients = 0;
+  _serverStats.totalChannels = 0;
+  _serverStats.totalMessages = 0;
 
-// _serverStats.totalCommands = 0;
+  // _serverStats.totalCommands = 0;
 
   // mandatory commands
   commands[PASS] = &CoreServer::cmdPass;
@@ -138,7 +138,7 @@ _serverStats.totalMessages = 0;
   commands[KICK] = &CoreServer::cmdKick;
   commands[INVITE] = &CoreServer::cmdInvite;
   commands[PART] = &CoreServer::cmdPart;
-  commands[CAP] = &CoreServer::cmdCap; // only CAP LS and CAP END
+  // commands[CAP] = &CoreServer::cmdCap; // only CAP LS and CAP END
   commands[PRIVMSG] = &CoreServer::cmdPrivmsg;
   // all the commands need to be guarded by a connection check.
   commands[PING] = &CoreServer::cmdPing;

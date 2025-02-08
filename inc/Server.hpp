@@ -105,7 +105,7 @@ private:
   void UpdateUptime() {
     if (_serverStats.uptime == 0)
       _serverStats.uptime = time(0);
-    time_t now = time(0);
+    time_t now = time(NULL);
     _serverStats.uptime = now - _serverStats.uptime;
   }
 
@@ -114,6 +114,7 @@ private:
   //
   // }
   void TickCycle() {
+    // we can give up on this for now
     if (_serverStats.tick == _serverStats.tickRate) {
       printServerMessage("SYSTEM", "Tick Cycle Initiated");
       printServerMessage("SYSTEM", "Cleaning up Server ...");

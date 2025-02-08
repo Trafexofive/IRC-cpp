@@ -162,21 +162,6 @@
 #define ERR_NEEDMOREPARAMS "461"
 // #define ERR_UNKNOWNCAP "410"
 
-
-    // ERR_NEEDMOREPARAMS (461)
-    // ERR_NOSUCHCHANNEL (403)
-    // ERR_NOTONCHANNEL (442)
-    // ERR_CHANOPRIVSNEEDED (482)
-    // RPL_NOTOPIC (331)
-    // RPL_TOPIC (332)
-    // RPL_TOPICWHOTIME (333)
-
-#define RPLTOPIC(client, channel, topic) SERVER_NAME + RPC_TOPIC + " " + client + " " + channel + " :" + topic + CRLF
-
-#define rplnosuchnick(nick) SERVER_NAME + ERR_NOSUCHNICK + " " + nick + " :No such nick/channel" + CRLF
-
-
-
 #define formatCommandResponse(source, code, message) ":" + source + " " + SERVER_NAME + " " + code + " " + message + CRLF
 
 #define formatClientResponse(source, code, message) SERVER_NAME + source + " " + code + " " + message + CRLF
@@ -191,6 +176,22 @@
 #define formatResponseDest(dest, code, message) SERVER_NAME + dest + " " + code + " " + message + CRLF
 
 #define formatCmdResponse(target, command, message) SERVER_NAME + target + " " + command + " " + message + CRLF // solid
+
+// all join responses
+// #define ERR_CHANOPRIVSNEEDED 482
+// #define ERR_NEEDMOREPARAMS 461
+// #define ERR_NOSUCHCHANNEL 403
+// #define ERR_NOTONCHANNEL 442
+// #define RPL_NOTOPIC 331
+// #define RPL_TOPIC 332
+// #define RPL_TOPICWHOTIME 333
+
+#define RPLTOPIC(client, channel, topic) SERVER_NAME + RPC_TOPIC + " " + client + " " + channel + " :" + topic + CRLF
+
+#define rplnosuchnick(nick) SERVER_NAME + ERR_NOSUCHNICK + " " + nick + " :No such nick/channel" + CRLF
+
+
+
 
 // common error responses
 

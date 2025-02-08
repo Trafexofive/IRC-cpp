@@ -38,7 +38,7 @@ const std::string HOST = "morpheus-server.ddns.net";
 const std::string SERVER_NAME = ":WeUseArch.localhost ";
 
 #ifndef TICK_RATE
-#   define TICK_RATE 1
+#   define TICK_RATE 15
 #endif
 
 
