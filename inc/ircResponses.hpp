@@ -201,6 +201,8 @@
 
 #define ERR_NEEDMOREPARAMS_MSG(client, command) SERVER_NAME + ERR_NEEDMOREPARAMS + " " + client + " " + command + " :Not enough parameters" + CRLF
 
+#define ERR_TOOMANYARGS_MSG(client, command) SERVER_NAME + ERR_TOOMANYARGS + " " + client + " " + command + " :Too many arguments" + CRLF
+
 #define ERR_PASSWDMISMATCH_MSG(client) SERVER_NAME + ERR_PASSWDMISMATCH + " " + client + " :Password incorrect" + CRLF
 
 #define ERR_ALREADYREG_MSG(client) SERVER_NAME + ERR_ALREADYREG + " " + client + " :You may not reregister" + CRLF
@@ -215,5 +217,10 @@
 
 #define ERR_BADCHANNELKEY_MSG(client, channel) SERVER_NAME + ERR_BADCHANNELKEY + " " + client + " " + channel + " :Cannot join channel (+k)" + CRLF
 
+#define RPLTOPICWHOTIME(client, channel, nick, time) SERVER_NAME + RPC_TOPIC + " " + client + " " + channel + " " + nick + " " + time + CRLF
+// channel responses
+
+// #define formatBroadcastMessage(client, message) ":" + client + " PRIVMSG " + message + CRLF
+#define formatBroadcastMessage(client, command, message) ":" + client + " " + command + " " + message + CRLF
 
 #endif

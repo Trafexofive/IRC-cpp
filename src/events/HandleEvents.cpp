@@ -192,6 +192,7 @@ void CoreServer::ReadEvent(int fd) {
     return;
   }
 
+  printServerMessage("CLIENT", buffer);
   buffer[dataRead] = '\0';
   std::string input(buffer);
   std::istringstream iss(input);
