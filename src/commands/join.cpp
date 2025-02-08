@@ -20,10 +20,7 @@ typedef struct {
 
 static void handleInvalidChannelName(Client &client,
                                      const std::string &channelName) {
-  std::cout << formatServerMessage("WARNING",
-                                   "JOIN failed: Invalid channel name " +
-                                       channelName)
-            << std::endl;
+    printServerMessage("DEBUG", "JOIN failed: Invalid channel name");
   client.setResponse(
       formatResponse(ERR_NOSUCHCHAN, channelName + " :Invalid channel name"));
 }
@@ -46,7 +43,6 @@ static std::vector<std::string> splitString(const std::string &input,
   return tokens;
 }
 
-#define ERR_BADCHANNELKEY "475"
 
 static JOIN_ARGS parseJoinParams(const std::vector<std::string> &args) {
   JOIN_ARGS params;

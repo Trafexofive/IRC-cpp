@@ -155,6 +155,7 @@
 #define ERR_NOTREGISTERED       "451"
 #define ERR_NEEDMOREPARAMS      "461"
 #define ERR_NOORIGIN            "409"
+#define ERR_BADCHANNELKEY "475"
 
 // CAP response codes
 #define ERR_INVALIDCAPCMD "410"
@@ -177,6 +178,7 @@
 
 #define formatCmdResponse(target, command, message) SERVER_NAME + target + " " + command + " " + message + CRLF // solid
 
+// #define formatJoinRespons
 // all join responses
 // #define ERR_CHANOPRIVSNEEDED 482
 // #define ERR_NEEDMOREPARAMS 461

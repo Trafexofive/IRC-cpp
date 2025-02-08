@@ -32,6 +32,7 @@ static void handlePartSuccess(Client &client, Channel *channel, std::string reas
     printServerMessage("INFO", client.getNickName() + " has left " + channel->getName());
     std::string response = ":" + client.getTarget() + " PART " + channel->getName();
     channel->broadcast(response);
+
 }
 
 void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
@@ -51,12 +52,13 @@ void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
     std::vector<std::string> channels = splitString(args[1], ',');
     for (std::vector<std::string>::iterator it = channels.begin(); it != channels.end(); ++it) {
         const std::string& channelName = *it;
-        printServerMessage("INFO", "PART: " + client.getNickName() + " leaving " + channelName);
+
         if (!isChannel(channelName)) {
             handleInvalidChannel(client, channelName);
             continue;
         }
         Channel* channel = getChannel(channelName);
+
         if (channel) {
             channel->removeMember(&client);
             handlePartSuccess(client, channel, reason);

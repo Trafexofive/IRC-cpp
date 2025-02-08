@@ -87,8 +87,11 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
       *it = toupper(*it);
     }
 
+    //tmp
     if (clients[fd].isStatus(STATUS::UNKNOWN) && command == CAP)
         printServerMessage("INFO", "Client CAP request @fd: " + numberToString(fd) + " - " + line);
+    else if (clients[fd].isStatus(STATUS::UNKNOWN) && command == "CAP LS")
+        printServerMessage("INFO", "Client NICK request @fd: " + numberToString(fd) + " - " + line);
     else if (clients[fd].isStatus(STATUS::UNKNOWN) && command != "PASS" ){
       std::cout << formatServerMessage("SYSTEM",
                                        "YUP Client not authenticated @fd: ")
@@ -131,9 +134,11 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
 
 // Method to send a response to the client
 void CoreServer::WriteEvent(int fd) {
+    if (isClientDisconnected(fd)) // could cause issues
+        return;
   if (!clients[fd].getResponse().empty()) {
     const std::string &response = clients[fd].getResponse();
-    std::cout << formatServerMessage("SERVER", response) << std::endl;
+    printServerMessage("SERVER", clients[fd].getTarget() + " >>" + response);
 
     ssize_t written = send(fd, response.c_str(), response.length(), 0);
 
@@ -192,7 +197,7 @@ void CoreServer::ReadEvent(int fd) {
     return;
   }
 
-  printServerMessage("CLIENT", buffer);
+  printServerMessage("CLIENT", clients[fd].getTarget() + " " + buffer);
   buffer[dataRead] = '\0';
   std::string input(buffer);
   std::istringstream iss(input);

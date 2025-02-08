@@ -188,10 +188,13 @@ void Channel::broadcast(const std::string &message) {
 }
 
 void Channel::broadcastException(const std::string &message, Client *client) {
+    printServerMessage("DEBUG", "Broadcasting exception to all clients in channel: " + name);
   for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
        it != _Registry.end(); ++it) {
     if (it->second.state == ClientEntry::SUBSCRIBED && it->second.client != client) {
+        printServerMessage("DEBUG", "Broadcasting exception to client: " + it->second.client->getTarget());
       it->second.client->setResponse(message);
     }
   }
 }
+
