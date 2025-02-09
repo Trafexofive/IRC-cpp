@@ -43,6 +43,7 @@ struct CHANNEL {
 struct ClientEntry {
 
   enum TYPE { SUBSCRIBED, UNSUBSCRIBED };
+  ClientEntry() : state(UNSUBSCRIBED), isOperator(false), client(NULL) {}
 
   TYPE state;
 
@@ -61,7 +62,10 @@ private:
 
   // std::list<ClientEntry> _Registry;
   std::map<int, ClientEntry> _Registry;
-  int _memberCount;
+
+  std::size_t _memberCount;
+  std::size_t _memberLimit; // for mode, still needs integration with the member
+                            // functions
 
   CHANNEL _settings;
 
@@ -95,53 +99,8 @@ public:
   void setName(const std::string &n);
   void setTopic(const std::string &t);
   void setPassword(const std::string &p);
-  void setMode(const std::string &mode) {
-    if (mode[0] == '+' || mode[0] == '-') {
-      for (size_t i = 1; i < mode.size(); i++) {
 
-        switch (mode[i]) {
-        case 'i':
-          _settings.inviteMode = mode[0] == '+';
-          break;
-        case 't':
-          _settings.topicMode = mode[0] == '+';
-          break;
-        case 'o':
-          _settings.operatorMode = mode[0] == '+';
-          break;
-        case 'k':
-          _settings.keyMode = mode[0] == '+';
-          break;
-        default:
-          break;
-        }
-      }
-    } else {
-
-      printServerMessage("ERROR", "Invalid mode string");
-    }
-  }
   const std::vector<Client *> &getOperators() const { return operators; }
-
-  void updateModeString() {
-    std::stringstream ss;
-    _settings.modeString.clear();
-    ss << "+";
-    if (_settings.inviteMode)
-      ss << "i";
-    if (_settings.topicMode)
-      ss << "t";
-    if (_settings.operatorMode)
-      ss << "o";
-    if (_settings.keyMode)
-      ss << "k";
-    _settings.modeString = ss.str();
-  }
-
-  const std::string &getMode() {
-    this->updateModeString();
-    return _settings.modeString;
-  }
 
   void setChannelType(CHANNEL::TYPE type) { _settings.type = type; }
 
@@ -221,6 +180,60 @@ public:
 
   int getMemberCount() const;
   // Registry and state management.
+
+  // Mode management methods
+  void setMode(const std::string &mode) {
+    if (mode.empty()) {
+      std::cerr << "ERROR: Mode string is empty." << std::endl;
+      return;
+    }
+    char sign = mode[0];
+    if (sign != '+' && sign != '-') {
+      std::cerr << "ERROR: Invalid mode string format." << std::endl;
+      return;
+    }
+    for (std::string::size_type i = 1; i < mode.size(); ++i) {
+      switch (mode[i]) {
+      case 'i':
+        _settings.inviteMode = (sign == '+');
+        break;
+      case 't':
+        _settings.topicMode = (sign == '+');
+        break;
+      case 'o':
+        _settings.operatorMode = (sign == '+');
+        break;
+      case 'k':
+        _settings.keyMode = (sign == '+');
+        break;
+      default:
+        printServerMessage("ERROR", "Invalid mode flag: " + numberToString(mode[i]));
+        break;
+      }
+    }
+    updateModeString();
+  }
+
+  // Updates the modeString by concatenating all currently active mode flags.
+  void updateModeString() {
+    std::stringstream ss;
+    ss << "+";
+    if (_settings.inviteMode)
+      ss << "i";
+    if (_settings.topicMode)
+      ss << "t";
+    if (_settings.operatorMode)
+      ss << "o";
+    if (_settings.keyMode)
+      ss << "k";
+    _settings.modeString = ss.str();
+  }
+
+  // Returns the current mode string, ensuring it is up-to-date.
+  const std::string &getMode() {
+    updateModeString();
+    return _settings.modeString;
+  }
 };
 
 #endif // CHANNEL_HPP
