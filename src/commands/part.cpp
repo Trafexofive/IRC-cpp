@@ -30,7 +30,7 @@ static void handleInvalidChannel(Client &client, const std::string &channelName)
 static void handlePartSuccess(Client &client, Channel *channel, std::string reason) {
 
     printServerMessage("INFO", client.getNickName() + " has left " + channel->getName());
-    std::string response = ":" + client.getTarget() + " PART " + channel->getName();
+    std::string response = ":WeUseArch " + client.getTarget() + " PART " + channel->getName();
     channel->broadcast(response);
 
 }
@@ -45,6 +45,7 @@ void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
         return;
     }
     Client& client = clients[fd];
+
     std::string reason = args.size() > 3 ? args[2] : "";
     if (!reason.empty() && reason[0] == ':') {
         reason = reason.substr(1);

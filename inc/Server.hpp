@@ -189,8 +189,8 @@ private:
       if (it->second.getChannelType() == CHANNEL::EMPTY)
         continue;
       if (it->second.isMember(clients[fd])) {
-        printServerMessage("INFO",
-                           "Removing client from channel " + it->second.getName());
+        printServerMessage("INFO", "Removing client from channel " +
+                                       it->second.getName());
         it->second.removeMember(&clients[fd]);
       }
     }
@@ -243,6 +243,38 @@ public:
   bool validatePassword(const std::string &password) {
     return ServData.Passwd == password;
   }
+
+  // void start() {
+  //     start_listening();
+  //     start_server();
+  // }
+
+  void broadcast(Channel &channel, const std::string &message) {
+
+    for (std::map<int, ClientEntry>::const_iterator it =
+             channel.getRegistry().begin();
+         it != channel.getRegistry().end(); ++it) {
+
+      if (it->second.state == ClientEntry::SUBSCRIBED) {
+        it->second.client->setResponse(message);
+        this->WriteEvent(it->first);
+      }
+    }
+  }
+
+  // void broadcastException(const std::string &message, Client *client) {
+  //     printServerMessage("DEBUG", "Broadcasting exception to all clients in
+  //     channel: " + name);
+  //   for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
+  //        it != _Registry.end(); ++it) {
+  //     if (it->second.state == ClientEntry::SUBSCRIBED && it->second.client !=
+  //     client) {
+  //         printServerMessage("DEBUG", "Broadcasting exception to client: " +
+  //         it->second.client->getTarget());
+  //       it->second.client->setResponse(message);
+  //     }
+  //   }
+  // }
 };
 
 // Non-member functions for validation

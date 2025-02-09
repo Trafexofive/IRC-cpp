@@ -69,16 +69,9 @@ static JOIN_ARGS parseJoinParams(const std::vector<std::string> &args) {
   return params;
 }
 
-static std::string constructJoinMessage(const std::string &source,
-                                        const std::string &channelName) {
-  std::string joinMsg = ":" + source + " JOIN " + channelName + CRLF;
-
-  // needs to get remove (macros)
-  return joinMsg;
-}
 
 void static handleJoinSuccess(Client &client, Channel &channel) {
-    channel.broadcastException(formatBroadcastMessage(client.getTarget(), "JOIN", channel.getName()), &client);
+    // channel.broadcast(formatBroadcastMessage(client.getTarget(), "JOIN", channel.getName()));
 //   std::string topic = channel.getTopic();
 //   if (!topic.empty()) {
 //     client.setResponse(RPLTOPIC(client.getTarget(), channel.getName(), topic));
@@ -92,13 +85,15 @@ void static handleJoinSuccess(Client &client, Channel &channel) {
 }
 
 void CoreServer::joinChannel(Client &client, const std::string &channelName) {
+
   if (!isChannel(channelName)) {
     channels.insert(std::pair<std::string, Channel>(
         channelName, Channel(channelName, &client)));
     std::map<std::string, Channel>::reverse_iterator it = channels.rbegin();
     it->second.addMember(&client);
     // it->second.addOperator(&client);
-    client.setResponse(constructJoinMessage(client.getTarget(), channelName));
+    handleJoinSuccess(client, it->second);
+    this->broadcast(it->second, formatBroadcastMessage(client.getTarget(), "JOIN", it->second.getName()));
 
     return;
   }
@@ -127,8 +122,8 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
     return;
   }
   channel.addMember(&client);
-  client.setResponse(constructJoinMessage(client.getTarget(), channelName));
-  handleJoinSuccess(client, channel);
+  // handleJoinSuccess(client, channel);
+    this->broadcast(channel, formatBroadcastMessage(client.getTarget(), "JOIN", channel.getName()));
 }
 
 void CoreServer::joinChannel(Client &client, const std::string &channelName,
@@ -139,7 +134,8 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
         channelName, Channel(channelName, "", key, &client)));
     std::map<std::string, Channel>::reverse_iterator it = channels.rbegin();
     it->second.addMember(&client);
-    client.setResponse(constructJoinMessage(client.getTarget(), channelName));
+    // handleJoinSuccess(client, it->second);
+    this->broadcast(it->second, formatBroadcastMessage(client.getTarget(), "JOIN", it->second.getName()));
 
     return;
   }
@@ -172,8 +168,8 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName,
     return;
   }
   channel.addMember(&client);
-  client.setResponse(constructJoinMessage(client.getTarget(), channelName));
-  handleJoinSuccess(client, channel);
+  // handleJoinSuccess(client, channel);
+    this->broadcast(channel, formatBroadcastMessage(client.getTarget(), "JOIN", channel.getName()));
 }
 
 void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {

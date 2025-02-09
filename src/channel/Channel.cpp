@@ -179,6 +179,7 @@ bool Channel::validatePassword(const std::string &pass) const {
 }
 
 void Channel::broadcast(const std::string &message) {
+
   for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
        it != _Registry.end(); ++it) {
     if (it->second.state == ClientEntry::SUBSCRIBED) {

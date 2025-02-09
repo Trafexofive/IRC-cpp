@@ -193,6 +193,7 @@ void CoreServer::ReadEvent(int fd) {
     oss << "Closing connection FD: " << fd;
     std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
 
+    
     handleDisconnect(fd);
     return;
   }
