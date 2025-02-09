@@ -13,22 +13,11 @@
 #include "../../inc/Server.hpp"
 
 void CoreServer::cmdNick(int fd, std::vector<std::string> &args) {
-  if (isClientDisconnected(fd)) {
-    std::cout << formatServerMessage("ERROR",
-                                     "NICK command failed: Client disconnected")
-              << std::endl;
-    return;
-  }
-  if (!isClientAuthenticated(fd)) {
-    std::cout << formatServerMessage("ERROR",
-                                     "NICK command failed: Client not found")
-              << std::endl;
+  if (isClientDisconnected(fd) || !isClientAuthenticated(fd)) {
     return;
   }
   if (args.size() < 2) {
-    std::cout << formatServerMessage(
-                     "ERROR", "NICK command failed: No nickname provided")
-              << std::endl;
+    printServerMessage("ERROR", "NICK command failed: No nickname given");
     clients[fd].setResponse(formatResponse("431", ":No nickname given"));
     return;
   }
@@ -50,30 +39,29 @@ void CoreServer::cmdNick(int fd, std::vector<std::string> &args) {
   for (std::map<int, Client>::iterator it = clients.begin();
        it != clients.end(); ++it) {
     if (it->first != fd && it->second.getNickName() == nickname) {
-      std::cout << formatServerMessage(
-                       "ERROR", "NICK command failed: Nickname already in use")
-                << std::endl;
+        printServerMessage("ERROR", "NICK command failed: Nickname already in use");
       clients[fd].setResponse(formatResponse(
           "433", "* " + nickname + " :Nickname is already in use"));
       return;
     }
   }
 
-  // setting the nickname
   Client &client = clients[fd];
 
   std::string oldNick = client.getNickName();
   client.setNickName(nickname);
 
   if (oldNick.empty() && client.isAuthenticated()) {
-    std::cout << formatServerMessage("DEBUG", "Nickname set to: " + nickname)
-              << std::endl;
-} else if (isClientRegistered(fd)) {
-    std::cout << formatServerMessage("DEBUG", "Nickname changed from " +
-                                                  oldNick + " to " + nickname)
-              << std::endl;
-    std::string response = ":" + client.getTarget() +
-                           " NICK :" + nickname + "\r\n";
+
+    std::string response = ":" + client.getTarget() + " 001 " + nickname +
+                           " :Welcome to the Internet Relay Network " + nickname +
+                           "\r\n";
+    client.setResponse(response);
+    printServerMessage("INFO", "Client registered @fd: " + numberToString(fd));
+  } else if (isClientRegistered(fd)) {
+    printServerMessage("INFO", "Client changed nickname @fd: " + numberToString(fd));
+    std::string response =
+        ":" + client.getTarget() + " NICK :" + nickname + "\r\n";
     client.setResponse(response);
   }
 }

@@ -262,6 +262,47 @@ public:
     }
   }
 
+  void broadcastException(Channel &channel, const std::string &message,
+                          Client *client) {
+    printServerMessage("DEBUG",
+                       "Broadcasting exception to all clients in channel: " +
+                           channel.getName());
+    for (std::map<int, ClientEntry>::const_iterator it =
+             channel.getRegistry().begin();
+         it != channel.getRegistry().end(); ++it) {
+      if (it->second.state == ClientEntry::SUBSCRIBED &&
+          it->second.client != client) {
+        printServerMessage("DEBUG", "Broadcasting exception to client: " +
+                                        it->second.client->getTarget());
+        it->second.client->setResponse(message);
+        this->WriteEvent(it->first);
+      }
+    }
+  }
+
+  void broadcastChannels(const std::string &message) {
+    for (std::map<std::string, Channel>::iterator it = channels.begin();
+         it != channels.end(); ++it) {
+      broadcast(it->second, message);
+    }
+  }
+
+void broadcastChannelsException(const std::string &message, Client *client) {
+    for (std::map<std::string, Channel>::iterator it = channels.begin();
+         it != channels.end(); ++it) {
+      broadcastException(it->second, message, client);
+    }
+}
+
+void broadcastSubbedChannels(const std::string &message, Client *client) {
+    for (std::map<std::string, Channel>::iterator it = channels.begin();
+         it != channels.end(); ++it) {
+      if (it->second.isMember(*client)) {
+        broadcast(it->second, message);
+      }
+    }
+  }
+
   // void broadcastException(const std::string &message, Client *client) {
   //     printServerMessage("DEBUG", "Broadcasting exception to all clients in
   //     channel: " + name);
@@ -283,10 +324,11 @@ public:
     _serverStats.totalChannels++;
   }
 
-void createChannel(const std::string &name, Client *client) {
-    channels.insert(std::pair<std::string, Channel>(name, Channel(name, client)));
+  void createChannel(const std::string &name, Client *client) {
+    channels.insert(
+        std::pair<std::string, Channel>(name, Channel(name, client)));
     _serverStats.totalChannels++;
-}
+  }
   void removeChannel(const std::string &name) {
     channels.erase(name);
     _serverStats.totalChannels--;

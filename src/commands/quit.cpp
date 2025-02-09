@@ -35,8 +35,8 @@ void CoreServer::cmdQuit(int fd, std::vector<std::string> &args) {
     Client &client = clients[fd];
 
     std::string quitMsg = constructQuitMessage(client, args);
-    client.setResponse(quitMsg);
-    this->WriteEvent(fd);
+    // client.setResponse(quitMsg);
+    this->broadcastSubbedChannels(quitMsg, &client);
     printServerMessage("INFO", "QUIT: " + client.getNickName() + " has quit");
 
     handleDisconnect(fd);

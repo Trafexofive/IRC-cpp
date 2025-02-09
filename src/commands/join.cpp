@@ -68,23 +68,6 @@ static JOIN_ARGS parseJoinParams(const std::vector<std::string> &args) {
   return params;
 }
 
-void static handleJoinSuccess(Client &client, Channel &channel) {
-  // channel.broadcast(formatBroadcastMessage(client.getTarget(), "JOIN",
-  // channel.getName()));
-  //   std::string topic = channel.getTopic();
-  //   if (!topic.empty()) {
-  //     client.setResponse(RPLTOPIC(client.getTarget(), channel.getName(),
-  //     topic));
-  //   }
-  //   client.setResponse(RPLTOPICWHOTIME(client.getTarget(), channel.getName(),
-  //                                       "WeUseArch", "0"));
-  // //handle names and time
-  //   client.setResponse(RPLNAMREPLY(client.getTarget(), channel.getName(),
-  //                                   channel.getMemberList()));
-  //   client.setResponse(RPLENDOFNAMES(client.getTarget(), channel.getName()));
-}
-
-
 void CoreServer::joinChannel(Client &client, const std::string &channelName) {
     Channel *channelPtr = getChannel(channelName);
     if (!channelPtr) {

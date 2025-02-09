@@ -170,15 +170,16 @@ public:
         operators.end())
       operators.push_back(member);
   }
-bool isOperator(Client *member) {
+  bool isOperator(Client *member) {
     if (member->isDisconnected())
       return false;
-    if (std::find(operators.begin(), operators.end(), member) != operators.end())
+    if (std::find(operators.begin(), operators.end(), member) !=
+        operators.end())
       return true;
     return false;
-}
+  }
 
-void removeOperator(Client *member) {
+  void removeOperator(Client *member) {
     if (member->isDisconnected())
       return;
     std::vector<Client *>::iterator it =
@@ -201,12 +202,12 @@ void removeOperator(Client *member) {
   // Mode management methods
   void setMode(const std::string &mode) {
     if (mode.empty()) {
-      std::cerr << "ERROR: Mode string is empty." << std::endl;
+        printServerMessage("ERROR", "Invalid mode string format.");
       return;
     }
     char sign = mode[0];
     if (sign != '+' && sign != '-') {
-      std::cerr << "ERROR: Invalid mode string format." << std::endl;
+        printServerMessage("ERROR", "Invalid mode string format.");
       return;
     }
     for (std::string::size_type i = 1; i < mode.size(); ++i) {
@@ -269,7 +270,6 @@ void removeOperator(Client *member) {
   const std::string &getKey() const { return _settings.key; }
   std::size_t getMemberLimit() const { return _memberLimit; }
   void setMemberLimit(std::size_t limit) { _memberLimit = limit; }
-
 };
 
 #endif // CHANNEL_HPP

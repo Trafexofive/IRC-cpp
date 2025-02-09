@@ -28,12 +28,6 @@ void CoreServer::cmdMode(int fd, std::vector<std::string> &args) {
         formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
     return;
   }
-  // else if (!isOperator(fd)) {
-  //     clients[fd].setResponse(
-  //         formatResponse(ERR_NOPRIVILEGES, ":Permission Denied- You're not an
-  //         operator"));
-  //     return;
-  // }
 
   std::string target = args[1];
   // channel mode
@@ -45,6 +39,12 @@ void CoreServer::cmdMode(int fd, std::vector<std::string> &args) {
           formatResponse(ERR_NOSUCHCHANNEL, target + " :No such channel"));
       return;
     } else {
+
+      if (!channel->isOperator(&clients[fd])) {
+        clients[fd].setResponse(formatResponse(ERR_CHANOPRIVSNEEDED,
+                                               "MODE :You're not an operator"));
+        return;
+      }
       if (args.size() == 2) {
         std::string mode = channel->getMode();
         clients[fd].setResponse(
@@ -53,6 +53,7 @@ void CoreServer::cmdMode(int fd, std::vector<std::string> &args) {
       }
       std::string mode = args[2];
 
+      // do not forget to broadcast the mode change to all users in the channel
       if (mode[0] == '+') {
         for (size_t i = 1; i < mode.size(); i++) {
           if (mode[i] == 'o') {
@@ -86,6 +87,12 @@ void CoreServer::cmdMode(int fd, std::vector<std::string> &args) {
               return;
             }
             std::string key = args[3];
+            if (key.empty()) {
+              clients[fd].setResponse(formatResponse(
+                  ERR_NEEDMOREPARAMS, "MODE :Not enough parameters +k"));
+              ;
+              return;
+            }
             channel->setPassword(key);
             clients[fd].setResponse(formatResponse(RPL_UMODEIS, "+k " + key));
             return;
@@ -107,6 +114,32 @@ void CoreServer::cmdMode(int fd, std::vector<std::string> &args) {
             }
             channel->removeOperator(&clients[fd]);
             clients[fd].setResponse(formatResponse(RPL_UMODEIS, "-o " + nick));
+            return;
+          } else if (mode[0] == 'i') {
+            channel->setInviteMode(false);
+            clients[fd].setResponse(formatResponse(RPL_UMODEIS, "-i"));
+            return;
+          } else if (mode[0] == 't') {
+            channel->setTopicMode(false);
+            clients[fd].setResponse(formatResponse(RPL_UMODEIS, "-t"));
+            return;
+          } else if (mode[0] == 'k') {
+            if (args.size() < 4) {
+              clients[fd].setResponse(formatResponse(
+                  ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
+              return;
+            }
+            std::string key = args[3];
+            if (key.empty()) {
+              clients[fd].setResponse(formatResponse(
+                  ERR_NEEDMOREPARAMS, "MODE :Not enough parameters +k"));
+              return;
+            }
+            channel->setChannelType(CHANNEL::EMPTY);
+            channel->setKeyMode(false);
+            printServerMessage("DEBUG", "Channel key removed");
+            clients[fd].setResponse(formatResponse(RPL_UMODEIS, "-k " + key));
+            channel->setPassword("");
             return;
           }
         }

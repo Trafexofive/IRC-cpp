@@ -66,7 +66,6 @@ void CoreServer::WelcomeClient() {
 
 void CoreServer::handleCommand(int fd, const std::string &line) {
   try {
-    // Parse command line into tokens
     std::istringstream iss(line);
     std::vector<std::string> args;
     std::string arg;
@@ -80,7 +79,7 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
                 << std::endl;
       return;
     }
-    // Convert command to uppercase
+
     std::string command = args[0];
     std::string::iterator it;
     for (it = command.begin(); it != command.end(); ++it) {
@@ -160,9 +159,7 @@ void CoreServer::purgeDisconnectedClients() {
     tmp = it;
     ++tmp;
     if (it->second.isStatus(STATUS::DISCONNECTED)) {
-      std::cout << formatServerMessage("INFO", "Purging client name:" +
-                                                   it->second.getNickName())
-                << std::endl;
+        printServerMessage("DEBUG", "Purging disconnected client @fd: " + numberToString(it->first));
 
       clients.erase(it);
     }

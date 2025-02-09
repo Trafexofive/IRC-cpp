@@ -15,24 +15,21 @@
 
 void CoreServer::cmdPass(int fd, std::vector<std::string> &args) {
     if (clients[fd].isRegistered()) {
-        std::cout << formatServerMessage("WARNING", "PASS command failed: Client already registered") << std::endl;
+        printServerMessage("ERROR", "PASS command failed: Client already registered");
         clients[fd].setResponse(formatResponse(ERR_ALREADYREG, ":You may not reregister"));
         return;
     }
     if (args.size() < 2) {
-        std::cout << formatServerMessage("ERROR", "PASS command failed: Not enough parameters") << std::endl;
         clients[fd].setResponse(formatResponse(ERR_NEEDMOREPARAMS, "PASS :Not enough parameters"));
         return;
     }
-    std::cout << formatServerMessage("DEBUG", "Processing PASS command") << std::endl;
     Client& client = clients[fd];
 
     if (!validatePassword(args[1])) {
-        std::cout << formatServerMessage("ERROR", "PASS command failed: Invalid password") << std::endl;
         clients[fd].setResponse(formatResponse(ERR_PASSWDMISMATCH, ":Password incorrect"));
         return;
     }
     client.setPassWord(args[1]);
     client.setStatus(STATUS::AUTHENTICATED);
-    std::cout << formatServerMessage("INFO", "Client Authenticated") << std::endl;
+    printServerMessage ("INFO", "Client authenticated @fd: " + numberToString(fd));
 }
