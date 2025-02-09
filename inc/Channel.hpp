@@ -35,6 +35,7 @@ struct CHANNEL {
   bool topicMode;
   bool operatorMode;
   bool keyMode;
+  bool limitMode;
 
   std::string key;
   std::string modeString;
@@ -169,6 +170,22 @@ public:
         operators.end())
       operators.push_back(member);
   }
+bool isOperator(Client *member) {
+    if (member->isDisconnected())
+      return false;
+    if (std::find(operators.begin(), operators.end(), member) != operators.end())
+      return true;
+    return false;
+}
+
+void removeOperator(Client *member) {
+    if (member->isDisconnected())
+      return;
+    std::vector<Client *>::iterator it =
+        std::find(operators.begin(), operators.end(), member);
+    if (it != operators.end())
+      operators.erase(it);
+  }
 
   // clean up methods
   void clearMembers();
@@ -206,15 +223,18 @@ public:
       case 'k':
         _settings.keyMode = (sign == '+');
         break;
+      case 'l':
+        _settings.limitMode = (sign == '+');
+        break;
       default:
-        printServerMessage("ERROR", "Invalid mode flag: " + numberToString(mode[i]));
+        printServerMessage("ERROR",
+                           "Invalid mode flag: " + numberToString(mode[i]));
         break;
       }
     }
     updateModeString();
   }
 
-  // Updates the modeString by concatenating all currently active mode flags.
   void updateModeString() {
     std::stringstream ss;
     ss << "+";
@@ -226,14 +246,30 @@ public:
       ss << "o";
     if (_settings.keyMode)
       ss << "k";
+    if (_settings.limitMode)
+      ss << "l";
     _settings.modeString = ss.str();
   }
 
-  // Returns the current mode string, ensuring it is up-to-date.
   const std::string &getMode() {
     updateModeString();
     return _settings.modeString;
   }
+
+  void setTopicMode(bool mode) { _settings.topicMode = mode; }
+  void setInviteMode(bool mode) { _settings.inviteMode = mode; }
+  void setOperatorMode(bool mode) { _settings.operatorMode = mode; }
+  void setKeyMode(bool mode) { _settings.keyMode = mode; }
+  void setLimitMode(bool mode) { _settings.limitMode = mode; }
+  bool getTopicMode() const { return _settings.topicMode; }
+  bool getInviteMode() const { return _settings.inviteMode; }
+  bool getOperatorMode() const { return _settings.operatorMode; }
+  bool getKeyMode() const { return _settings.keyMode; }
+  bool getLimitMode() const { return _settings.limitMode; }
+  const std::string &getKey() const { return _settings.key; }
+  std::size_t getMemberLimit() const { return _memberLimit; }
+  void setMemberLimit(std::size_t limit) { _memberLimit = limit; }
+
 };
 
 #endif // CHANNEL_HPP

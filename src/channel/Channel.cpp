@@ -26,6 +26,7 @@ Channel::Channel(const std::string &name, Client *client)
 
   _settings.type = CHANNEL::PUBLIC;
   _memberCount = 0;
+  setKeyMode(false);
   addMember(client);
 }
 
@@ -38,6 +39,7 @@ Channel::Channel(const std::string &name, const std::string &topic,
 
   _settings.type = CHANNEL::PUBLIC;
   _memberCount = 0;
+  setKeyMode(false);
   addMember(client);
 }
 
@@ -49,6 +51,8 @@ Channel::Channel(const std::string &name, const std::string &topic,
 
   _settings.type = CHANNEL::PRIVATE;
   _memberCount = 0;
+  setKeyMode(true);
+
   addMember(client);
 }
 
@@ -142,7 +146,7 @@ Channel *CoreServer::getChannel(const std::string &name) {
 
     std::map<std::string, Channel>::iterator it = channels.find(name);
     if (it == channels.end()) {
-        printServerMessage("ERROR", "Channel " + name + " does not exist");
+        printServerMessage("WARNING", "Channel " + name + " does not exist");
         return NULL;
     }
     return &it->second;
@@ -157,6 +161,7 @@ bool CoreServer::isChannel(const std::string &name) {
   return false;
 
 }
+
 /* ************************************************************************** */
 /*                       SECTION/FUNCTION/NAME                                */
 /* ************************************************************************** */

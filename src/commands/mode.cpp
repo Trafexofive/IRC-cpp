@@ -12,6 +12,13 @@
 
 #include "../../inc/Server.hpp"
 
+#define ERR_NEEDMOREPARAMS "461"
+#define ERR_NOPRIVILEGES "481"
+#define ERR_NOSUCHCHANNEL "403"
+#define ERR_CHANOPRIVSNEEDED "482"
+#define RPL_CHANNELMODEIS "324"
+#define RPL_UMODEIS "221"
+
 void CoreServer::cmdMode(int fd, std::vector<std::string> &args) {
   if (isClientDisconnected(fd)) {
     return;
@@ -45,68 +52,65 @@ void CoreServer::cmdMode(int fd, std::vector<std::string> &args) {
         return;
       }
       std::string mode = args[2];
-      // case 'k':
-      //   if (args.size() < 4) {
-      //     std::cout << formatServerMessage(
-      //                      "ERROR", "MODE failed: Incomplete message")
-      //               << std::endl;
-      //     clients[fd].setResponse(formatResponse(
-      //         ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
-      //     return;
-      //   }
-      //   std::string key = args[3];
-      //   channel->setKey(key);
-      //   break;
-      // } else {
-      //   std::cout << formatServerMessage("ERROR", "MODE failed: Invalid
-      //   mode")
-      //             << std::endl;
-      //   clients[fd].setResponse(
-      //       formatResponse(ERR_UNKNOWNMODE, ":Unknown MODE flag"));
-      // }
+
+      if (mode[0] == '+') {
+        for (size_t i = 1; i < mode.size(); i++) {
+          if (mode[i] == 'o') {
+            if (args.size() < 4) {
+              clients[fd].setResponse(formatResponse(
+                  ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
+              return;
+            }
+            std::string nick = args[3];
+            if (channel->isOperator(&clients[fd])) {
+              clients[fd].setResponse(
+                  formatResponse(ERR_CHANOPRIVSNEEDED,
+                                 nick + " :is already a channel operator"));
+              return;
+            }
+            channel->addOperator(&clients[fd]);
+            clients[fd].setResponse(formatResponse(RPL_UMODEIS, "+o " + nick));
+            return;
+          } else if (mode[i] == 'i') {
+            channel->setInviteMode(true);
+            clients[fd].setResponse(formatResponse(RPL_UMODEIS, "+i"));
+            return;
+          } else if (mode[i] == 't') {
+            channel->setTopicMode(true);
+            clients[fd].setResponse(formatResponse(RPL_UMODEIS, "+t"));
+            return;
+          } else if (mode[i] == 'k') {
+            if (args.size() < 4) {
+              clients[fd].setResponse(formatResponse(
+                  ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
+              return;
+            }
+            std::string key = args[3];
+            channel->setPassword(key);
+            clients[fd].setResponse(formatResponse(RPL_UMODEIS, "+k " + key));
+            return;
+          }
+        }
+      } else if (mode[0] == '-') {
+        for (size_t i = 1; i < mode.size(); i++) {
+          if (mode[i] == 'o') {
+            if (args.size() < 4) {
+              clients[fd].setResponse(formatResponse(
+                  ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
+              return;
+            }
+            std::string nick = args[3];
+            if (!channel->isOperator(&clients[fd])) {
+              clients[fd].setResponse(formatResponse(
+                  ERR_CHANOPRIVSNEEDED, nick + " :is not a channel operator"));
+              return;
+            }
+            channel->removeOperator(&clients[fd]);
+            clients[fd].setResponse(formatResponse(RPL_UMODEIS, "-o " + nick));
+            return;
+          }
+        }
+      }
     }
   }
-  // still need to align with the client class
-  // else //user mode
-  // {
-  //     Client &client = clients[fd];
-  //     if (args.size() < 3)
-  //     {
-  //         std::cout << formatServerMessage("ERROR", "MODE failed: Incomplete
-  //         message") << std::endl;
-  //         client.setResponse(formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not
-  //         enough parameters")); return;
-  //     }
-  //     std::string mode = args[2];
-  //     if (mode[0] == '+' || mode[0] == '-')
-  //     {
-  //         for (size_t i = 1; i < mode.size(); i++)
-  //         {
-  //             switch (mode[i])
-  //             {
-  //             case 'i':
-  //                 client.setInvisible(mode[0] == '+');
-  //                 break;
-  //             case 'w':
-  //                 client.setWallops(mode[0] == '+');
-  //                 break;
-  //             case 'o':
-  //                 client.setOperator(mode[0] == '+');
-  //                 break;
-  //             case 'r':
-  //                 client.setRestricted(mode[0] == '+');
-  //                 break;
-  //             default:
-  //                 break;
-  //             }
-  //         }
-  //     }
-  //     else
-  //     {
-  //         std::cout << formatServerMessage("ERROR", "MODE failed: Invalid
-  //         mode") << std::endl;
-  //         client.setResponse(formatResponse(ERR_UMODEUNKNOWNFLAG, ":Unknown
-  //         MODE flag"));
-  //     }
-  // }
 }
