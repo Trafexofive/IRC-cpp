@@ -20,7 +20,7 @@ typedef struct {
 
 static void handleInvalidChannelName(Client &client,
                                      const std::string &channelName) {
-    printServerMessage("DEBUG", "JOIN failed: Invalid channel name");
+  printServerMessage("DEBUG", "JOIN failed: Invalid channel name");
   client.setResponse(
       formatResponse(ERR_NOSUCHCHAN, channelName + " :Invalid channel name"));
 }
@@ -42,7 +42,6 @@ static std::vector<std::string> splitString(const std::string &input,
   }
   return tokens;
 }
-
 
 static JOIN_ARGS parseJoinParams(const std::vector<std::string> &args) {
   JOIN_ARGS params;
@@ -69,108 +68,75 @@ static JOIN_ARGS parseJoinParams(const std::vector<std::string> &args) {
   return params;
 }
 
-
 void static handleJoinSuccess(Client &client, Channel &channel) {
-    // channel.broadcast(formatBroadcastMessage(client.getTarget(), "JOIN", channel.getName()));
-//   std::string topic = channel.getTopic();
-//   if (!topic.empty()) {
-//     client.setResponse(RPLTOPIC(client.getTarget(), channel.getName(), topic));
-//   }
-//   client.setResponse(RPLTOPICWHOTIME(client.getTarget(), channel.getName(),
-//                                       "WeUseArch", "0"));
-// //handle names and time
-//   client.setResponse(RPLNAMREPLY(client.getTarget(), channel.getName(),
-//                                   channel.getMemberList()));
-//   client.setResponse(RPLENDOFNAMES(client.getTarget(), channel.getName()));
+  // channel.broadcast(formatBroadcastMessage(client.getTarget(), "JOIN",
+  // channel.getName()));
+  //   std::string topic = channel.getTopic();
+  //   if (!topic.empty()) {
+  //     client.setResponse(RPLTOPIC(client.getTarget(), channel.getName(),
+  //     topic));
+  //   }
+  //   client.setResponse(RPLTOPICWHOTIME(client.getTarget(), channel.getName(),
+  //                                       "WeUseArch", "0"));
+  // //handle names and time
+  //   client.setResponse(RPLNAMREPLY(client.getTarget(), channel.getName(),
+  //                                   channel.getMemberList()));
+  //   client.setResponse(RPLENDOFNAMES(client.getTarget(), channel.getName()));
 }
+
 
 void CoreServer::joinChannel(Client &client, const std::string &channelName) {
-
-  if (!isChannel(channelName)) {
-    channels.insert(std::pair<std::string, Channel>(
-        channelName, Channel(channelName, &client)));
-    std::map<std::string, Channel>::reverse_iterator it = channels.rbegin();
-    it->second.addMember(&client);
-    // it->second.addOperator(&client);
-    handleJoinSuccess(client, it->second);
-    this->broadcast(it->second, formatBroadcastMessage(client.getTarget(), "JOIN", it->second.getName()));
-
-    return;
-  }
-  Channel *channelPtr = getChannel(channelName);
-
-  // for operators and permissions
-  // if (canJoinChannel(client, channelName)) {
-  //     return;
-  if (channelPtr == NULL) {
-    printServerMessage("WARNING", "JOIN failed: Channel not found");
-    client.setResponse(ERR_NOSUCHCHANNEL_MSG(client.getTarget(), channelName));
-    return;
-  }
-  Channel &channel = *channelPtr;
-
-  if (channel.getChannelType() == CHANNEL::PRIVATE &&
-      !channel.isMember(client)) {
-    printServerMessage("WARNING", "JOIN failed: Channel is private");
-    client.setResponse(ERR_BADCHANNELKEY_MSG(client.getTarget(), channelName));
-    return;
-  }
-  if (channel.isMember(client)) {
-    printServerMessage("WARNING", client.getNickName() +
-                                      " is already in channel " + channelName);
-    client.setResponse(ERR_USERONCHANNEL_MSG(client.getTarget(), channelName));
-    return;
-  }
-  channel.addMember(&client);
-  // handleJoinSuccess(client, channel);
+    Channel *channelPtr = getChannel(channelName);
+    if (!channelPtr) {
+        createChannel(channelName, &client);
+        Channel &channel = this->channels.rbegin()->second;
+        this->broadcast(channel, formatBroadcastMessage(client.getTarget(), "JOIN", channel.getName()));
+        return;
+    }
+    Channel &channel = *channelPtr;
+    if (channel.isPrivate() && !channel.isMember(client)) {
+        printServerMessage("WARNING", "JOIN failed: Channel is private");
+        client.setResponse(ERR_BADCHANNELKEY_MSG(client.getTarget(), channelName));
+        return;
+    }
+    if (channel.isMember(client)) {
+        printServerMessage("WARNING", client.getNickName() + " is already in channel " + channelName);
+        client.setResponse(ERR_USERONCHANNEL_MSG(client.getTarget(), channelName));
+        return;
+    }
+    channel.addMember(&client);
     this->broadcast(channel, formatBroadcastMessage(client.getTarget(), "JOIN", channel.getName()));
 }
 
-void CoreServer::joinChannel(Client &client, const std::string &channelName,
-                             const std::string &key) {
-  if (!isChannel(channelName)) {
+void CoreServer::joinChannel(Client &client, const std::string &channelName, const std::string &key) {
 
-    channels.insert(std::pair<std::string, Channel>(
-        channelName, Channel(channelName, "", key, &client)));
-    std::map<std::string, Channel>::reverse_iterator it = channels.rbegin();
-    it->second.addMember(&client);
-    // handleJoinSuccess(client, it->second);
-    this->broadcast(it->second, formatBroadcastMessage(client.getTarget(), "JOIN", it->second.getName()));
-
-    return;
-  }
-  Channel *channelPtr = getChannel(channelName);
-  if (channelPtr == NULL) {
-    printServerMessage("WARNING", "JOIN failed: Channel not found");
-    client.setResponse(ERR_NOSUCHCHANNEL_MSG(client.getTarget(), channelName));
-    return;
-  }
-  Channel &channel = *channelPtr;
-
-  if (channel.getChannelType() == CHANNEL::PUBLIC &&
-      !channel.isMember(client)) {
-    joinChannel(client, channelName);
-    return;
-  }
-  if (channel.isMember(client)) {
-    printServerMessage("WARNING", client.getNickName() +
-                                      " is already in channel " + channelName);
-    client.setResponse(ERR_USERONCHANNEL_MSG(client.getTarget(), channelName));
-    return;
-  }
-  if (channel.getChannelType() == CHANNEL::PRIVATE &&
-      !channel.validatePassword(key)) {
-    std::cout << formatServerMessage("WARNING",
-                                     "JOIN failed: Invalid channel key")
-              << std::endl;
-    client.setResponse(formatResponse(
-        ERR_BADCHANNELKEY, channelName + " :Cannot join channel (+k)"));
-    return;
-  }
-  channel.addMember(&client);
-  // handleJoinSuccess(client, channel);
+    Channel *channelPtr = getChannel(channelName);
+    if (!channelPtr) {
+        createChannel(channelName, "", key, &client);
+        Channel &channel = this->channels.rbegin()->second;
+        this->broadcast(channel, formatBroadcastMessage(client.getTarget(), "JOIN", channel.getName()));
+        return;
+    }
+    Channel &channel = *channelPtr;
+    if (channel.isMember(client)) {
+        printServerMessage("WARNING", client.getNickName() + " is already in channel " + channelName);
+        client.setResponse(ERR_USERONCHANNEL_MSG(client.getTarget(), channelName));
+        return;
+    }
+    if (channel.getChannelType() == CHANNEL::PUBLIC) {
+        channel.addMember(&client);
+        this->broadcast(channel, formatBroadcastMessage(client.getTarget(), "JOIN", channel.getName()));
+        return;
+    }
+    if (channel.isPrivate() && !channel.validatePassword(key)) {
+        std::cout << formatServerMessage("WARNING", "JOIN failed: Invalid channel key") << std::endl;
+        client.setResponse(formatResponse(ERR_BADCHANNELKEY, channelName + " :Cannot join channel (+k)"));
+        return;
+    }
+    channel.addMember(&client);
     this->broadcast(channel, formatBroadcastMessage(client.getTarget(), "JOIN", channel.getName()));
 }
+
 
 void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
 
@@ -179,7 +145,7 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
   Client &client = clients[fd];
   if (args.size() < 2) {
     client.setResponse(ERR_NEEDMOREPARAMS_MSG(client.getTarget(), "JOIN"));
-        
+
     return;
   }
 
@@ -190,6 +156,7 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
 
   JOIN_ARGS params = parseJoinParams(args);
 
+  // this is garbage my bad al bro, I optimized it a bit
   std::vector<std::string> channelNames = splitString(params.channels, ' ');
   std::vector<std::string> keys = splitString(params.keys, ' ');
 
@@ -203,6 +170,7 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
     if (i < keys.size()) {
       key = keys[i];
     }
+    printServerMessage("DEBUG", "index: " + numberToString(i) + " channel: " + channelNames[i] + " key: " + key);
 
     if (key.empty()) {
       joinChannel(client, channelNames[i]);

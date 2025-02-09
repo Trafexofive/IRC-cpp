@@ -186,7 +186,7 @@ private:
       return;
     for (std::map<std::string, Channel>::iterator it = channels.begin();
          it != channels.end(); ++it) {
-      if (it->second.getChannelType() == CHANNEL::EMPTY)
+      if (it->second.isEmpty())
         continue;
       if (it->second.isMember(clients[fd])) {
         printServerMessage("INFO", "Removing client from channel " +
@@ -275,6 +275,22 @@ public:
   //     }
   //   }
   // }
+
+  void createChannel(const std::string &name, const std::string &topic,
+                     const std::string &password, Client *client) {
+    channels.insert(std::pair<std::string, Channel>(
+        name, Channel(name, topic, password, client)));
+    _serverStats.totalChannels++;
+  }
+
+void createChannel(const std::string &name, Client *client) {
+    channels.insert(std::pair<std::string, Channel>(name, Channel(name, client)));
+    _serverStats.totalChannels++;
+}
+  void removeChannel(const std::string &name) {
+    channels.erase(name);
+    _serverStats.totalChannels--;
+  }
 };
 
 // Non-member functions for validation

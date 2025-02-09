@@ -13,8 +13,7 @@
 #include "../../inc/Server.hpp"
 
 static std::string constructQuitMessage(const Client &client, const std::vector<std::string> &args) {
-    std::string quitMsg = ":" + client.getNickName() + "!"
-                        + client.getFullName() + "@localhost QUIT :";
+    std::string quitMsg = ":WeUseArch " + client.getTarget() + " QUIT :";
     if (args.size() > 1) {
         std::vector<std::string>::const_iterator it = args.begin() + 1;
         for (; it != args.end(); ++it) {
