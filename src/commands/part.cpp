@@ -27,13 +27,6 @@ static void handleInvalidChannel(Client &client, const std::string &channelName)
     client.setResponse(formatResponse(ERR_NOSUCHCHAN, channelName + " :No such channel"));
 }
 
-static void handlePartSuccess(Client &client, Channel *channel, std::string reason) {
-
-    printServerMessage("INFO", client.getNickName() + " has left " + channel->getName());
-    std::string response = ":WeUseArch " + client.getTarget() + " PART " + channel->getName();
-    channel->broadcast(response);
-
-}
 
 void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
     if (isClientDisconnected(fd)) {
@@ -62,7 +55,7 @@ void CoreServer::cmdPart(int fd, std::vector<std::string>& args) {
 
         if (channel) {
             channel->removeMember(&client);
-            handlePartSuccess(client, channel, reason);
+            this->broadcast(*channel, formatBroadcastMessage(client.getTarget(), "PART", channel->getName()));
         } else {
             printServerMessage("ERROR", "PART failed: Channel Not Found");
             client.setResponse(formatResponse(ERR_NOSUCHCHAN, channelName + " :No such channel"));
