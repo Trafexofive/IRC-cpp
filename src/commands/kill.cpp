@@ -1,9 +1,13 @@
 #include "../inc/Server.hpp"
 
-
-
-  void CoreServer::cmdKill(int fd, std::vector<std::string> &args)
+void CoreServer::cmdKill(int fd, std::vector<std::string> &args)
 {
+    if (clients[fd].isDisconnected())
+    {
+        std::string msg = formatResponse(ERR_NOSUCHNICK, "No such nick/channel");
+        send(fd, msg.c_str(), msg.size(), 0);
+        return;
+    }
     if (clients[fd].getOperator() == false)
     {
         std::string msg = formatResponse(ERR_NOPRIVILEGES, "Permission Denied- You're not an IRC operator");

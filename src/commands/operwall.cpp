@@ -32,6 +32,8 @@ void    CoreServer::cmdoperwall(int fd, std::vector<std::string> &args)
     std::map<int, Client *> operators = getOperators();
     for (std::map<int, Client *>::iterator it = operators.begin(); it != operators.end(); ++it)
     {
+        if (it->second->getFd() == fd)
+            continue;
         std::cout << "operwall: " << message << std::endl;
         std::string msg = formatResponseSource("NOTICE", "@#" ,message);
         send(it->first, msg.c_str(), msg.size(), 0);
