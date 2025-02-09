@@ -9,7 +9,7 @@ void    CoreServer::setOperator(Client &client)
         send(client.getFd(), msg.c_str(), msg.size(), 0);
     }
     client.beoper();
-    operators.push_back(&client);
+    operators[client.getFd()] = &client;
 }
 
 void    CoreServer::cmdoper(int fd, std::vector<std::string> &args)
@@ -21,7 +21,7 @@ void    CoreServer::cmdoper(int fd, std::vector<std::string> &args)
         return;
     }
     std::string passwd;
-    for (size_t i = 1; i < args.size(); i++)
+    for (size_t i = 2; i < args.size(); i++)
     {
         passwd += args[i];
         if (i + 1 < args.size())
@@ -29,13 +29,14 @@ void    CoreServer::cmdoper(int fd, std::vector<std::string> &args)
             passwd += " ";
         }
     }
+    // std::cout << "the password readed"<< passwd << std::endl;
     if (args[1] != ServData.Opuser || passwd != ServData.Oppass)
     {
         std::string msg = formatResponse(ERR_PASSWDMISMATCH, "Password required");
         send(fd, msg.c_str(), msg.size(), 0);
         return;
     }
-    clients[fd].setOperator(true);
+    setOperator(clients[fd]);
     // _operator.push_back(&clients[fd]);
     std::string msg = formatResponse(RPL_YOUREOPER, "You are now an IRC operator");
     send(fd, msg.c_str(), msg.size(), 0);

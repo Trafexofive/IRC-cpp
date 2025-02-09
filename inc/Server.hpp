@@ -88,7 +88,7 @@ private:
 
   std::map<int, Client> clients;
 
-  std::vector<Client *> operators;
+  std::map<int, Client *> operators;
 
   std::vector<struct pollfd> fds;
 
@@ -243,7 +243,7 @@ public:
   bool validatePassword(const std::string &password) {
     return ServData.Passwd == password;
   }
-std::vector<Client *> getOperators(){return operators;};
+std::map<int, Client *> getOperators(){return operators;};
 };
 
 // Non-member functions for validation

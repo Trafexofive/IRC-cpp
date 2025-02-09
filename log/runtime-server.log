@@ -1,0 +1,115 @@
+[1m[2025-02-09 10:48:12] [0m[33mDEBUG :: [0mValidating port: 22200
+[1m[2025-02-09 10:48:12] [0m[33mDEBUG :: [0mPort valid: 22200
+[1m[2025-02-09 10:48:12] [0m[33mDEBUG :: [0mValidating password
+[1m[2025-02-09 10:48:12] [0m[33mDEBUG :: [0mPassword valid
+[1m[2025-02-09 10:48:12] [0m[32mINFO  :: [0mCONFIGURATION: 
+[1m[2025-02-09 10:48:12] [0m[32mINFO  :: [0mPORT: : 22200
+[1m[2025-02-09 10:48:12] [0m[32mINFO  :: [0mPID: 64913
+[1m[2025-02-09 10:48:12] [0m[33mDEBUG :: [0mCreating socket...
+[1m[2025-02-09 10:48:12] [0m[33mDEBUG :: [0mSocket created: 3
+[1m[2025-02-09 10:48:12] [0m[32mINFO  :: [0mServer Socket setup complete
+[1m[2025-02-09 10:48:12] [0m[33mDEBUG :: [0mStarting to listen...
+[1m[2025-02-09 10:48:12] [0m[33mDEBUG :: [0mServer listening on port: 22200
+[1m[2025-02-09 10:48:12] [0m[33mDEBUG :: [0mServer main loop starting...
+[1m[2025-02-09 10:48:17] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-02-09 10:48:17] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-02-09 10:48:17] [0m[32mINFO  :: [0mClient connected @fd: 4
+[1m[2025-02-09 10:48:17] [0m[32mINFO  :: [0mTotal clients: 1
+[1m[2025-02-09 10:48:17] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:17] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-09 10:48:17] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:17] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-09 10:48:17] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:19] [0m[33mDEBUG :: [0mCreating new client instance for fd(5)
+[1m[2025-02-09 10:48:19] [0m[33mDEBUG :: [0mDestroying client instance for fd(5)
+[1m[2025-02-09 10:48:19] [0m[32mINFO  :: [0mClient connected @fd: 5
+[1m[2025-02-09 10:48:19] [0m[32mINFO  :: [0mTotal clients: 2
+[1m[2025-02-09 10:48:19] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-09 10:48:19] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-09 10:48:19] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:19] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-09 10:48:19] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:19] [0m[32mINFO  :: [0mREGISTERED USERS: 2
+[1m[2025-02-09 10:48:19] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:23] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-02-09 10:48:23] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-02-09 10:48:23] [0m[32mINFO  :: [0mClient Authenticated
+[1m[2025-02-09 10:48:23] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-02-09 10:48:23] [0m[33mDEBUG :: [0mNickname set to: levrai
+[1m[2025-02-09 10:48:23] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:23] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-09 10:48:23] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:23] [0m[32mINFO  :: [0mREGISTERED USERS: 2
+[1m[2025-02-09 10:48:23] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:24] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-02-09 10:48:24] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-02-09 10:48:24] [0m[32mINFO  :: [0mRegistration complete for 
+[1m[2025-02-09 10:48:24] [0m[33mDEBUG :: [0msource: levrai!primo@127.0.0.1
+[1m[2025-02-09 10:48:24] [0m[35mSERVER :: [0m:WeUseArch.localhost 001 levrai!primo@127.0.0.1 :Welcome to the WeUseArch IRC Network
+:WeUseArch.localhost 002 levrai!primo@127.0.0.1 :Your host is morpheus-server.ddns.net
+:WeUseArch.localhost 003 levrai!primo@127.0.0.1 :This server was created 2024-01-11
+:WeUseArch.localhost 004 levrai!primo@127.0.0.1 morpheus-server.ddns.net 1.0 usermodes channelmodes
+:WeUseArch.localhost 375 levrai!primo@127.0.0.1 :- morpheus-server.ddns.net Message of the Day - 
+:WeUseArch.localhost 372 levrai!primo@127.0.0.1 :- Welcome to the WeUseArch IRC Network!
+:WeUseArch.localhost 372 levrai!primo@127.0.0.1 :- Enjoy your stay!
+:WeUseArch.localhost 376 levrai!primo@127.0.0.1 :End of /MOTD command.
+
+[1m[2025-02-09 10:48:24] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-09 10:48:24] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-09 10:48:24] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:24] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-09 10:48:24] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:24] [0m[32mINFO  :: [0mREGISTERED USERS: 2
+[1m[2025-02-09 10:48:24] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:30] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-02-09 10:48:30] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-02-09 10:48:30] [0m[32mINFO  :: [0mClient Authenticated
+[1m[2025-02-09 10:48:30] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-02-09 10:48:30] [0m[33mDEBUG :: [0mNickname set to: simox
+[1m[2025-02-09 10:48:30] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:30] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-09 10:48:30] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:30] [0m[32mINFO  :: [0mREGISTERED USERS: 2
+[1m[2025-02-09 10:48:30] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:31] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-02-09 10:48:31] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-02-09 10:48:31] [0m[32mINFO  :: [0mRegistration complete for 
+[1m[2025-02-09 10:48:31] [0m[33mDEBUG :: [0msource: simox!leboss@127.0.0.1
+[1m[2025-02-09 10:48:31] [0m[35mSERVER :: [0m:WeUseArch.localhost 001 simox!leboss@127.0.0.1 :Welcome to the WeUseArch IRC Network
+:WeUseArch.localhost 002 simox!leboss@127.0.0.1 :Your host is morpheus-server.ddns.net
+:WeUseArch.localhost 003 simox!leboss@127.0.0.1 :This server was created 2024-01-11
+:WeUseArch.localhost 004 simox!leboss@127.0.0.1 morpheus-server.ddns.net 1.0 usermodes channelmodes
+:WeUseArch.localhost 375 simox!leboss@127.0.0.1 :- morpheus-server.ddns.net Message of the Day - 
+:WeUseArch.localhost 372 simox!leboss@127.0.0.1 :- Welcome to the WeUseArch IRC Network!
+:WeUseArch.localhost 372 simox!leboss@127.0.0.1 :- Enjoy your stay!
+:WeUseArch.localhost 376 simox!leboss@127.0.0.1 :End of /MOTD command.
+
+[1m[2025-02-09 10:48:31] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-09 10:48:31] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-09 10:48:31] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:31] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-09 10:48:31] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:31] [0m[32mINFO  :: [0mREGISTERED USERS: 2
+[1m[2025-02-09 10:48:31] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:40] [0m[33mDEBUG :: [0mProcessing command: OPER
+[1m[2025-02-09 10:48:40] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:40] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-09 10:48:40] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:40] [0m[32mINFO  :: [0mREGISTERED USERS: 2
+[1m[2025-02-09 10:48:40] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:45] [0m[33mDEBUG :: [0mProcessing command: OPER
+[1m[2025-02-09 10:48:45] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-09 10:48:45] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-09 10:48:45] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:45] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-09 10:48:45] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:45] [0m[32mINFO  :: [0mREGISTERED USERS: 2
+[1m[2025-02-09 10:48:45] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:55] [0m[33mDEBUG :: [0mProcessing command: OPERWALL
+operwall: hello everybody
+operwall: hello everybody
+[1m[2025-02-09 10:48:55] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:55] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-09 10:48:55] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-09 10:48:55] [0m[32mINFO  :: [0mREGISTERED USERS: 2
+[1m[2025-02-09 10:48:55] [0m[32mINFO  :: [0m+-------------------------------------------------------

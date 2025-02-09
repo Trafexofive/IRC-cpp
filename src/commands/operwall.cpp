@@ -23,10 +23,17 @@ void    CoreServer::cmdoperwall(int fd, std::vector<std::string> &args)
             message += " ";
         }
     }
-    std::vector<Client *>::iterator it = getOperators().begin();
-    for (;it != getOperators().end();++it)
+    // std::vector<Client *>::iterator it = getOperators().begin();
+    // for (;it != getOperators().end();++it)
+    // {
+    //     std::string msg = formatResponseSource("NOTICE", "@#" ,message);
+    //     send((*it)->getFd(), msg.c_str(), msg.size(), 0);
+    // }
+    std::map<int, Client *> operators = getOperators();
+    for (std::map<int, Client *>::iterator it = operators.begin(); it != operators.end(); ++it)
     {
+        std::cout << "operwall: " << message << std::endl;
         std::string msg = formatResponseSource("NOTICE", "@#" ,message);
-        send((*it)->getFd(), msg.c_str(), msg.size(), 0);
+        send(it->first, msg.c_str(), msg.size(), 0);
     }
 }
