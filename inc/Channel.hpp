@@ -18,8 +18,6 @@
 #include "ircResponses.hpp"
 #include <algorithm>
 #include <arpa/inet.h>
-#include <iostream>
-#include <list>
 #include <netinet/in.h>
 #include <sstream>
 #include <string>
@@ -40,6 +38,12 @@ struct CHANNEL {
 
   std::string key;
   std::string modeString;
+
+CHANNEL()
+      : type(UNKNOWN), inviteMode(false), topicMode(true), limitMode(false),
+        operatorMode(false), keyMode(false), key(""), modeString("") {
+
+        }
 };
 
 struct ClientEntry {
@@ -255,7 +259,10 @@ public:
     if (_settings.limitMode)
       ss << "l";
 
-    _settings.modeString = ss.str();
+    if (ss.str().size() == 1)
+      _settings.modeString = "";
+    else
+      _settings.modeString = ss.str();
   }
 
   const std::string &getMode() {
@@ -268,12 +275,15 @@ public:
   void setOperatorMode(bool mode) { _settings.operatorMode = mode; }
   void setKeyMode(bool mode) { _settings.keyMode = mode; }
   void setLimitMode(bool mode) { _settings.limitMode = mode; }
+
   bool getTopicMode() const { return _settings.topicMode; }
   bool getInviteMode() const { return _settings.inviteMode; }
   bool getOperatorMode() const { return _settings.operatorMode; }
   bool getKeyMode() const { return _settings.keyMode; }
   bool getLimitMode() const { return _settings.limitMode; }
+
   const std::string &getKey() const { return _settings.key; }
+
   std::size_t getMemberLimit() const { return _memberLimit; }
   void setMemberLimit(std::size_t limit) { _memberLimit = limit; }
 };
