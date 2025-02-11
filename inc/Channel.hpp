@@ -50,7 +50,6 @@ struct ClientEntry {
   TYPE state;
 
   Client *client;
-
 };
 
 class Channel {
@@ -63,7 +62,9 @@ private:
       operators; // still not sure about handling this this way.
 
   // std::list<ClientEntry> _Registry;
-  std::map<int, ClientEntry> _Registry;
+  std::map<int, ClientEntry> _Registry; // yo this is shit. whats the point
+                                        // chat. just use a normal map XD
+  std::map<int, Client *> _Invitees;
 
   std::size_t _memberCount;
   std::size_t _memberLimit; // for mode, still needs integration with the member
@@ -97,14 +98,33 @@ public:
   bool isEmpty() const { return _settings.type == CHANNEL::EMPTY; }
   bool isUnknown() const { return _settings.type == CHANNEL::UNKNOWN; }
 
-void setPrivate() { _settings.type = CHANNEL::PRIVATE;
+  bool isInviteMode() const { return _settings.inviteMode; }
+  bool isTopicMode() const { return _settings.topicMode; }
+  bool isLimitMode() const { return _settings.limitMode; }
+  bool isOperatorMode() const { return _settings.operatorMode; }
+
+  bool isKeyMode() const { return _settings.keyMode; }
+  // invitee management
+  bool isInvited(Client *client) {
+    if (_Invitees.find(client->getFd()) != _Invitees.end())
+      return true;
+    else
+      return false;
+  }
+  void addInvitee(Client *client) { _Invitees[client->getFd()] = client; }
+
+  // bool isInvited(Client *client)
+
+  void setPrivate() {
+    _settings.type = CHANNEL::PRIVATE;
     _settings.keyMode = true;
-}
-void setPublic() { _settings.type = CHANNEL::PUBLIC; 
+  }
+  void setPublic() {
+    _settings.type = CHANNEL::PUBLIC;
     _settings.keyMode = false;
-}
-void setEmpty() { _settings.type = CHANNEL::EMPTY; }
-void setUnknown() { _settings.type = CHANNEL::UNKNOWN; }
+  }
+  void setEmpty() { _settings.type = CHANNEL::EMPTY; }
+  void setUnknown() { _settings.type = CHANNEL::UNKNOWN; }
 
   // Setters
   void setName(const std::string &n);
@@ -125,15 +145,15 @@ void setUnknown() { _settings.type = CHANNEL::UNKNOWN; }
     }
   }
 
-// void setSubscribed(Client *client) {
-//     for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
-//          it != _Registry.end(); ++it) {
-//       if (it->second.client == client) {
-//         it->second.state = ClientEntry::SUBSCRIBED;
-//         return;
-//       }
-//     }
-// }
+  // void setSubscribed(Client *client) {
+  //     for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
+  //          it != _Registry.end(); ++it) {
+  //       if (it->second.client == client) {
+  //         it->second.state = ClientEntry::SUBSCRIBED;
+  //         return;
+  //       }
+  //     }
+  // }
 
   Client *getClient(const std::string &nick) {
     for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
@@ -219,46 +239,11 @@ void setUnknown() { _settings.type = CHANNEL::UNKNOWN; }
   int getMemberCount() const;
   // Registry and state management.
 
-  // Mode management methods
-  void setMode(const std::string &mode) {
-    if (mode.empty()) {
-        printServerMessage("ERROR", "Invalid mode string format.");
-      return;
-    }
-    char sign = mode[0];
-    if (sign != '+' && sign != '-') {
-        printServerMessage("ERROR", "Invalid mode string format.");
-      return;
-    }
-    for (std::string::size_type i = 1; i < mode.size(); ++i) {
-      switch (mode[i]) {
-      case 'i':
-        _settings.inviteMode = (sign == '+');
-        break;
-      case 't':
-        _settings.topicMode = (sign == '+');
-        break;
-      case 'o':
-        _settings.operatorMode = (sign == '+');
-        break;
-      case 'k':
-        _settings.keyMode = (sign == '+');
-        break;
-      case 'l':
-        _settings.limitMode = (sign == '+');
-        break;
-      default:
-        printServerMessage("ERROR",
-                           "Invalid mode flag: " + numberToString(mode[i]));
-        break;
-      }
-    }
-    updateModeString();
-  }
-
   void updateModeString() {
     std::stringstream ss;
+
     ss << "+";
+
     if (_settings.inviteMode)
       ss << "i";
     if (_settings.topicMode)
@@ -269,6 +254,7 @@ void setUnknown() { _settings.type = CHANNEL::UNKNOWN; }
       ss << "k";
     if (_settings.limitMode)
       ss << "l";
+
     _settings.modeString = ss.str();
   }
 
