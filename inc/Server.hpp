@@ -61,24 +61,27 @@ struct Stats {
   int tickRate;
   int tick;
 
-void reset() {
+  void reset() {
     totalClients = 0;
     totalChannels = 0;
     totalMessages = 0;
     uptime = 0;
     tick = 0;
-}
+  }
 
-void printStats() {
+  void printStats() {
     printServerMessage("INFO", "---------------------------------");
-    printServerMessage("INFO", "Total Clients: " + numberToString(totalClients));
-    printServerMessage("INFO", "Total Channels: " + numberToString(totalChannels));
-    printServerMessage("INFO", "Total Messages: " + numberToString(totalMessages));
+    printServerMessage("INFO",
+                       "Total Clients: " + numberToString(totalClients));
+    printServerMessage("INFO",
+                       "Total Channels: " + numberToString(totalChannels));
+    printServerMessage("INFO",
+                       "Total Messages: " + numberToString(totalMessages));
     printServerMessage("INFO", "Uptime: " + numberToString(uptime));
     printServerMessage("INFO", "Tick Rate: " + numberToString(tickRate));
     printServerMessage("INFO", "Tick: " + numberToString(tick));
     printServerMessage("INFO", "---------------------------------");
-}
+  }
 };
 
 class CoreServer {
@@ -87,8 +90,6 @@ private:
   Stats _serverStats;
 
   std::map<int, Client> clients;
-
-  std::map<int, Client *> operators;
 
   std::vector<struct pollfd> fds;
 
@@ -114,8 +115,8 @@ private:
   // }
   void TickCycle() {
     if (_serverStats.tick == _serverStats.tickRate) {
-        printServerMessage("SYSTEM", "Tick Cycle Initiated");
-        printServerMessage("SYSTEM", "Cleaning up Server ...");
+      printServerMessage("SYSTEM", "Tick Cycle Initiated");
+      printServerMessage("SYSTEM", "Cleaning up Server ...");
       // Execute state-based operations
       // CheckClientTimeouts();
       // CleanEmptyChannels();
@@ -135,7 +136,7 @@ private:
   void start_server();
 
   // Cleaner methods
-  // void disconnectClient(int fd);
+  void disconnectClient(int fd);
   void handleDisconnect(int fd);
   void sendNotice(int fd, const std::string &message);
 
@@ -168,16 +169,16 @@ private:
   void cmdMode(int fd, std::vector<std::string> &args);
   void cmdWho(int fd, std::vector<std::string> &args);
   void cmdTopic(int fd, std::vector<std::string> &args);
-  void cmdKill(int fd, std::vector<std::string> &args);
-  void cmdoperwall(int fd, std::vector<std::string> &args);
-  void  cmdoper(int fd, std::vector<std::string> &args);
+  void cmdInvite(int fd, std::vector<std::string> &args);
+  void cmdKick(int fd, std::vector<std::string> &args);
 
   // channel management methods
+  void kickUserFromChannel(int fd, const std::string &target,
+                           const std::string &reason);
   void joinChannel(Client &client, const std::string &channelName);
   void joinChannel(Client &client, const std::string &channelName,
                    const std::string &key);
 
-  void  setOperator(Client &client);
   bool isChannel(const std::string &name);
   void unsubFromChannels(int fd) {
     if (isClientDisconnected(fd))
@@ -186,16 +187,18 @@ private:
          it != channels.end(); ++it) {
       if (it->getChannelType() == CHANNEL::EMPTY)
         continue;
-      if (it->isMember(clients[fd]))
-      {
-        printServerMessage("INFO", "Removing client from channel " + it->getName());
+      if (it->isMember(clients[fd])) {
+        printServerMessage("INFO",
+                           "Removing client from channel " + it->getName());
         it->removeMember(&clients[fd]);
       }
     }
   }
- //privmsg helpers client && channel
-  void send_message_to_channel(int fd,const std::string &channel, const std::string &message);
-  void  send_message_to_user(int fd, const std::string &target, const std::string &message);
+  // privmsg helpers client && channel
+  void send_message_to_channel(int fd, const std::string &channel,
+                               const std::string &message);
+  void send_message_to_user(int fd, const std::string &target,
+                            const std::string &message);
 
   // Events / Client handlers
   void WelcomeClient();
@@ -243,7 +246,6 @@ public:
   bool validatePassword(const std::string &password) {
     return ServData.Passwd == password;
   }
-std::map<int, Client *> getOperators(){return operators;};
 };
 
 // Non-member functions for validation

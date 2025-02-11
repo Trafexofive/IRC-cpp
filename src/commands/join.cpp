@@ -215,7 +215,6 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
         formatResponse(ERR_NEEDMOREPARAMS, "JOIN :Too many arguments"));
     return;
   }
-
   // needs better error/edge-cases (parse ya lm3gaz)
   JOIN_ARGS params = parseJoinParams(args);
 

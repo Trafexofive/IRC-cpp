@@ -22,10 +22,6 @@
 #include <stdexcept>
 
 
-#define printServerMessage(type, message) std::cout << formatServerMessage(type, message) << std::endl
-#define formatResponse(code, message) SERVER_NAME + code + " " + message + CRLF
-#define formatResponseSource(source, code, message) SERVER_NAME + source + " " + code + " " + message + CRLF
-#define formatResponseDest(dest, code, message) SERVER_NAME + dest + " " + code + " " + message + CRLF
 // #define formatResponseCommand(source, dest, code, message) ":" + source + " " + SERVER_NAME + dest + " " + code + " " + message + CRLF
 
 // Commands
@@ -47,7 +43,6 @@
 #define MOTD "MOTD"
 #define CAP "CAP"
 #define KILL "KILL"
-#define OPERWALL "OPERWALL"
 
 #define OPER "OPER"
 #define SERVICE "SERVICE"
@@ -165,7 +160,6 @@
 #define ERR_INVALIDCAPCMD "410"
 #define ERR_INVALIDCAP "411"
 #define ERR_NEEDMOREPARAMS "461"
-#define ERR_NOPRIVILEGES "481"
 // #define ERR_UNKNOWNCAP "410"
 
 
@@ -177,9 +171,24 @@
     // RPL_TOPIC (332)
     // RPL_TOPICWHOTIME (333)
 
-#define rpltopic(client, channel, topic) SERVER_NAME + RPC_TOPIC + " " + client + " " + channel + " :" + topic + CRLF
+#define RPLTOPIC(client, channel, topic) SERVER_NAME + RPC_TOPIC + " " + client + " " + channel + " :" + topic + CRLF
+
+#define rplnosuchnick(nick) SERVER_NAME + ERR_NOSUCHNICK + " " + nick + " :No such nick/channel" + CRLF
+
+#define ERRNEEDMOREPARAMS(client, command) SERVER_NAME + ERR_NEEDMOREPARAMS + " " + client + " " + command + " :Not enough parameters" + CRLF
 
 
+#define formatCommandResponse(source, code, message) ":" + source + " " + SERVER_NAME + " " + code + " " + message + CRLF
+
+#define formatClientResponse(source, code, message) SERVER_NAME + source + " " + code + " " + message + CRLF
 
 
+#define printServerMessage(type, message) std::cout << formatServerMessage(type, message) << std::endl
+#define formatResponse(code, message) SERVER_NAME + code + " " + message + CRLF
+
+#define formatResponseSource(source, code, message) SERVER_NAME + source + " " + code + " " + message + CRLF
+
+#define formatResponseDest(dest, code, message) SERVER_NAME + dest + " " + code + " " + message + CRLF
+
+#define formatCmdResponse(target, command, message) SERVER_NAME + target + " " + command + " " + message + CRLF // solid
 #endif

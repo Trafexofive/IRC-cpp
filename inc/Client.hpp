@@ -59,7 +59,6 @@ private:
   STATE _state;
   STATUS _status;
   CLEARANCE _clearance;
-  bool _operator;
 
 public:
   // constructors
@@ -79,7 +78,6 @@ public:
   const std::string &getPassWord() const;
   const std::string &getResponse() const;
   const struct sockaddr_in &getClientInfos() const;
- bool getOperator() const { return _operator; }
 
   // Setters
   void setFd(int fd);
@@ -91,7 +89,6 @@ public:
   void setPassWord(const std::string &pass);
   void setResponse(const std::string &response);
   void setClientInfos(const struct sockaddr_in &info);
-  void setOperator(const bool &op) { _operator = op; }
 
   // Class specific methods
   void disconnect();
@@ -118,7 +115,7 @@ public:
   bool isRegistered() const;
   bool isAuthenticated() const;
   bool isDisconnected() const { return _status.state == STATUS::DISCONNECTED; }
-  void  beoper(){_operator = true;}
+
   void authenticate();
   void clear();
   void clearResponse();
