@@ -33,9 +33,10 @@ struct CHANNEL {
 
   bool inviteMode;
   bool topicMode;
+  bool limitMode;
+
   bool operatorMode;
   bool keyMode;
-  bool limitMode;
 
   std::string key;
   std::string modeString;

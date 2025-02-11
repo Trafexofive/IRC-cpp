@@ -212,3 +212,4 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args)
 		}
 	}
 }
+
