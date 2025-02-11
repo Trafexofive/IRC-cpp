@@ -92,9 +92,6 @@ void CoreServer::handleCommand(int fd, const std::string &line) {
     else if (clients[fd].isStatus(STATUS::UNKNOWN) && command == "CAP LS")
         printServerMessage("INFO", "Client NICK request @fd: " + numberToString(fd) + " - " + line);
     else if (clients[fd].isStatus(STATUS::UNKNOWN) && command != "PASS" ){
-      std::cout << formatServerMessage("SYSTEM",
-                                       "YUP Client not authenticated @fd: ")
-                << clients[fd].getFd() << std::endl;
       clients[fd].setResponse(
           formatResponse(ERR_PASSWDMISMATCH, ":Password required"));
       WriteEvent(fd);
@@ -152,19 +149,21 @@ void CoreServer::WriteEvent(int fd) {
 }
 
 void CoreServer::purgeDisconnectedClients() {
-  std::map<int, Client>::iterator it = clients.begin();
-  std::map<int, Client>::iterator tmp;
+    std::map<int, Client>::iterator it = clients.begin();
 
-  while (tmp != clients.end()) {
-    tmp = it;
-    ++tmp;
-    if (it->second.isStatus(STATUS::DISCONNECTED)) {
-        printServerMessage("DEBUG", "Purging disconnected client @fd: " + numberToString(it->first));
-
-      clients.erase(it);
+    while (it != clients.end()) {
+        if (it->second.isStatus(STATUS::DISCONNECTED)) {
+            printServerMessage("DEBUG", "Purging disconnected client: " + clients[it->first].getTarget());
+            
+            std::map<int, Client>::iterator tmp = it;
+            ++tmp;
+            
+            clients.erase(it);
+            it = tmp;
+        } else {
+            ++it;
+        }
     }
-    it = tmp;
-  }
 }
 
 void CoreServer::handleDisconnect(int fd) {
@@ -187,8 +186,7 @@ void CoreServer::ReadEvent(int fd) {
 
   if (dataRead <= 0) {
     std::ostringstream oss;
-    oss << "Closing connection FD: " << fd;
-    std::cout << formatServerMessage("INFO", oss.str()) << std::endl;
+    printServerMessage("INFO", "Client disconnected @fd: " + numberToString(fd));
 
     
     handleDisconnect(fd);

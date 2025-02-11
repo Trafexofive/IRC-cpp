@@ -78,7 +78,7 @@ void CoreServer::start_listening() {
 }
 
 void CoreServer::start_server() {
-  std::cout << formatServerMessage("DEBUG", "Server main loop starting...")
+  std::cout << formatServerMessage("INFO", "Server main loop starting...")
             << std::endl;
 
   while (1) {

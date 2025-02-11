@@ -32,9 +32,11 @@
 ---
 - [ ] MODE:
     - [ ] MODE #channel 
-    - [ ] MODE user
+        - [ ]  
+    - [ ] MODE user (non-mandatory)
     - [ ] join integration
     - [ ] operator handlers.
+    - [ ] part integration on /exit (quit cmd), to display part messages in channel.
 
 - [ ] LIST:
     - [ ] List cmd multi-params (list info only about specified channels)

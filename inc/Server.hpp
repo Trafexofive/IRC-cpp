@@ -174,27 +174,29 @@ private:
   void cmdKick(int fd, std::vector<std::string> &args);
 
   // channel management methods
-  void kickUserFromChannel(int fd, const std::string &target,
+  void kickUserFromChannel(Channel *channel, int fd, const std::string &target,
                            const std::string &reason);
   void joinChannel(Client &client, const std::string &channelName);
   void joinChannel(Client &client, const std::string &channelName,
                    const std::string &key);
 
   bool isChannel(const std::string &name);
-  void unsubFromChannels(int fd) {
+
+void unsubFromChannels(int fd) {
     if (isClientDisconnected(fd))
-      return;
+        return;
+
     for (std::map<std::string, Channel>::iterator it = channels.begin();
          it != channels.end(); ++it) {
-      if (it->second.isEmpty())
-        continue;
-      if (it->second.isMember(clients[fd])) {
-        printServerMessage("INFO", "Removing client from channel " +
-                                       it->second.getName());
-        it->second.removeMember(&clients[fd]);
-      }
+        if (it->second.isEmpty())
+            continue;
+        // Access client using the address of the client in the clients map.
+        if (it->second.isMember(clients[fd])) {
+            printServerMessage("INFO", "Removing client from channel " + it->second.getName());
+            it->second.removeMember(&clients[fd]);
+        }
     }
-  }
+}
   // privmsg helpers client && channel
   void send_message_to_channel(int fd, const std::string &channel,
                                const std::string &message);
@@ -213,9 +215,6 @@ public:
   // Constructor and destructor
   CoreServer(std::string port, std::string password);
 
-  // Utility methods
-
-  Channel *getChannel(const std::string &name);
 
   ~CoreServer() {
 
@@ -228,6 +227,10 @@ public:
     clients.clear();
     _serverStats.printStats();
   }
+
+  // Utility methods
+  Channel *getChannel(const std::string &name);
+
 
   void removeChannel(const Channel &channel) {
     for (std::map<std::string, Channel>::iterator it = channels.begin();
@@ -255,7 +258,7 @@ public:
              channel.getRegistry().begin();
          it != channel.getRegistry().end(); ++it) {
 
-      if (it->second.state == ClientEntry::SUBSCRIBED) {
+    if (it->second.state == ClientEntry::SUBSCRIBED && !it->second.client->isDisconnected()) {
         it->second.client->setResponse(message);
         this->WriteEvent(it->first);
       }
@@ -264,9 +267,7 @@ public:
 
   void broadcastException(Channel &channel, const std::string &message,
                           Client *client) {
-    printServerMessage("DEBUG",
-                       "Broadcasting exception to all clients in channel: " +
-                           channel.getName());
+
     for (std::map<int, ClientEntry>::const_iterator it =
              channel.getRegistry().begin();
          it != channel.getRegistry().end(); ++it) {
@@ -280,21 +281,15 @@ public:
     }
   }
 
-  void broadcastChannels(const std::string &message) {
-    for (std::map<std::string, Channel>::iterator it = channels.begin();
-         it != channels.end(); ++it) {
-      broadcast(it->second, message);
-    }
-  }
 
-void broadcastChannelsException(const std::string &message, Client *client) {
+  void broadcastChannelsException(const std::string &message, Client *client) {
     for (std::map<std::string, Channel>::iterator it = channels.begin();
          it != channels.end(); ++it) {
       broadcastException(it->second, message, client);
     }
-}
+  }
 
-void broadcastSubbedChannels(const std::string &message, Client *client) {
+  void broadcastSubbedChannels(const std::string &message, Client *client) {
     for (std::map<std::string, Channel>::iterator it = channels.begin();
          it != channels.end(); ++it) {
       if (it->second.isMember(*client)) {
@@ -329,10 +324,12 @@ void broadcastSubbedChannels(const std::string &message, Client *client) {
         std::pair<std::string, Channel>(name, Channel(name, client)));
     _serverStats.totalChannels++;
   }
+
   void removeChannel(const std::string &name) {
     channels.erase(name);
     _serverStats.totalChannels--;
   }
+
 };
 
 // Non-member functions for validation

@@ -14,7 +14,6 @@
 #define CLIENT_HPP
 
 #include "Utils.hpp"
-#include <algorithm>
 #include <arpa/inet.h>
 #include <ctime>
 #include <iostream>
@@ -35,7 +34,7 @@ struct STATE {
 };
 
 struct STATUS {
-  enum TYPE { AUTHENTICATED, DISCONNECTED, REGISTERED, UNKNOWN };
+  enum TYPE { AUTHENTICATED, DISCONNECTED, REGISTERED, PENDING, UNKNOWN };
   TYPE state;
 };
 
@@ -100,6 +99,7 @@ public:
   void setRegistered() { _status.state = STATUS::REGISTERED; }
   void setAuthenticated() { _status.state = STATUS::AUTHENTICATED; }
   void setDisconnected() { _status.state = STATUS::DISCONNECTED; }
+  void setPending() { _status.state = STATUS::PENDING; }
 
   void setState(STATE::TYPE state) { _state.state = state; }
   void setStatus(STATUS::TYPE state) { _status.state = state; }

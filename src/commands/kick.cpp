@@ -12,70 +12,61 @@
 
 #include "../../inc/Server.hpp"
 
-void CoreServer::kickUserFromChannel(int fd, const std::string &target, const std::string &reason)
-{
-    if (isClientDisconnected(fd))
-        return;
-    // Client *client = getClient(target);
-    // use unsubfromchannels
-
+void CoreServer::kickUserFromChannel(Channel *channel, int fd, const std::string &target,
+                                     const std::string &reason) {
+  if (isClientDisconnected(fd))
+    return;
+  Client &client = clients[fd];
 
 }
 
-void CoreServer::cmdKick(int fd, std::vector<std::string> &args)
-{
-    if (isClientDisconnected(fd))
-        return;
-    Client &client = clients[fd];
-    if (args.size() < 3)
-    {
-        client.setResponse(formatResponse(ERR_NEEDMOREPARAMS, "KICK :Not enough parameters"));
-        return;
-    }
-    else if (args.size() > 4)
-    {
-        client.setResponse(formatResponse(ERR_NEEDMOREPARAMS, "KICK :Too many parameters"));
-        return;
-    }
-    else if (args.size() > 2) // could have reason if not display default.
-    {
-        Channel *channel = getChannel(args[1]);
-        if (channel == NULL)
-        {
-            client.setResponse(formatResponse(ERR_NOSUCHCHAN, args[1] + " :No such channel"));
-            return;
-        }
-        if (args.size() == 3)
-        {
-            const std::string &target = args[2];
-            if (!channel->isMember(client))
-            {
-            //handle client not being on channel
-            // client.setResponse(formatResponse(ERR_NOTONCHANNEL, args[1] + " :You're not on that channel"));
-            return;
-            } else if (channel->isMember(client))
-            {
-            //kick target from channel
-            // client.setResponse(formatResponse(ERR_CHANOPRIVSNEEDED, args[1] + " :You're not a channel operator"));
-            return;
-            }
-        }
-        else if (args.size() == 4)
-        {
-            const std::string &target = args[2];
-            const std::string &reason = args[3];
-            if (!channel->isMember(client))
-            {
-            //handle client not being on channel
-            // client.setResponse(formatResponse(ERR_NOTONCHANNEL, args[1] + " :You're not on that channel"));
-            return;
-            } else if (channel->isMember(client))
-            {
-            //kick target from channel
-            // client.setResponse(formatResponse(ERR_CHANOPRIVSNEEDED, args[1] + " :You're not a channel operator"));
-            return;
-            }
-        }
+void CoreServer::cmdKick(int fd, std::vector<std::string> &args) {
+  if (isClientDisconnected(fd))
+    return;
+  Client &client = clients[fd];
 
+  if (args.size() < 3) {
+    client.setResponse(
+        formatResponse(ERR_NEEDMOREPARAMS, "KICK :Not enough parameters"));
+    return;
+  } else if (args.size() > 4) {
+    client.setResponse(
+        formatResponse(ERR_NEEDMOREPARAMS, "KICK :Too many parameters"));
+    return;
+  } else if (args.size() > 2) // could have reason if not display default.
+  {
+    Channel *channel = getChannel(args[1]);
+    if (channel == NULL) {
+      client.setResponse(
+          formatResponse(ERR_NOSUCHCHAN, args[1] + " :No such channel"));
+      return;
     }
+    if (args.size() == 3) {
+      const std::string &target = args[2];
+      if (!channel->isMember(client)) {
+        // handle client not being on channel
+        //  client.setResponse(formatResponse(ERR_NOTONCHANNEL, args[1] + "
+        //  :You're not on that channel"));
+        return;
+      } else if (channel->isOperator(&client)) {
+        // kick target from channel
+        kickUserFromChannel(channel, fd, target, "");
+        return;
+      }
+    } else if (args.size() == 4) {
+      const std::string &target = args[2];
+      const std::string &reason = args[3];
+      if (!channel->isMember(client)) {
+        // handle client not being on channel
+        //  client.setResponse(formatResponse(ERR_NOTONCHANNEL, args[1] + "
+        //  :You're not on that channel"));
+        return;
+      } else if (channel->isMember(client)) {
+        // kick target from channel
+        //  client.setResponse(formatResponse(ERR_CHANOPRIVSNEEDED, args[1] + "
+        //  :You're not a channel operator"));
+        return;
+      }
+    }
+  }
 }

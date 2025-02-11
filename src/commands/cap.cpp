@@ -12,8 +12,6 @@
 
 #include "../../inc/Server.hpp"
 
-// I need to understand this better, cant properly inplement for now
-// Kinda do now ,the logic requires freezing the registration process. until the cap command is done sending the capabilities.
 
 void CoreServer::cmdCap(int fd, std::vector<std::string> &args) {
     if (isClientDisconnected(fd)) {
@@ -36,5 +34,6 @@ void CoreServer::cmdCap(int fd, std::vector<std::string> &args) {
         clients[fd].setResponse("CAP * LS :multi-prefix");
     } else if (subcommand == "END") {
         clients[fd].setResponse("CAP * ACK :multi-prefix");
+        // clients[fd].setPending();
     }
 }

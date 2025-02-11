@@ -44,12 +44,12 @@ struct CHANNEL {
 struct ClientEntry {
 
   enum TYPE { SUBSCRIBED, UNSUBSCRIBED };
-  ClientEntry() : state(UNSUBSCRIBED), isOperator(false), client(NULL) {}
+  ClientEntry() : state(SUBSCRIBED), client(NULL) {}
 
   TYPE state;
 
-  bool isOperator;
   Client *client;
+
 };
 
 class Channel {
@@ -96,6 +96,15 @@ public:
   bool isEmpty() const { return _settings.type == CHANNEL::EMPTY; }
   bool isUnknown() const { return _settings.type == CHANNEL::UNKNOWN; }
 
+void setPrivate() { _settings.type = CHANNEL::PRIVATE;
+    _settings.keyMode = true;
+}
+void setPublic() { _settings.type = CHANNEL::PUBLIC; 
+    _settings.keyMode = false;
+}
+void setEmpty() { _settings.type = CHANNEL::EMPTY; }
+void setUnknown() { _settings.type = CHANNEL::UNKNOWN; }
+
   // Setters
   void setName(const std::string &n);
   void setTopic(const std::string &t);
@@ -115,15 +124,24 @@ public:
     }
   }
 
+// void setSubscribed(Client *client) {
+//     for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
+//          it != _Registry.end(); ++it) {
+//       if (it->second.client == client) {
+//         it->second.state = ClientEntry::SUBSCRIBED;
+//         return;
+//       }
+//     }
+// }
+
   Client *getClient(const std::string &nick) {
     for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
          it != _Registry.end(); ++it) {
       if (it->second.client->getNickName() == nick &&
-          it->second.state == ClientEntry::UNSUBSCRIBED)
-        return NULL;
-      if (it->second.client->getNickName() == nick &&
           it->second.state == ClientEntry::SUBSCRIBED)
         return it->second.client;
+      else
+        continue;
     }
     return NULL;
   }
@@ -170,6 +188,7 @@ public:
         operators.end())
       operators.push_back(member);
   }
+
   bool isOperator(Client *member) {
     if (member->isDisconnected())
       return false;

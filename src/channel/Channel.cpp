@@ -56,17 +56,30 @@ Channel::Channel(const std::string &name, const std::string &topic,
   addMember(client);
 }
 
+// void Channel::CleanRegistry() {
+//
+  // for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
+  //      it != _Registry.end(); ++it) {
+  //   if (it->second.state == ClientEntry::UNSUBSCRIBED) {
+  //     _Registry.erase(it);
+  //   }
+  // }
+//
+//
+//
+//   if (_Registry.empty())
+//     setChannelType(CHANNEL::EMPTY);
+// }
+
 void Channel::CleanRegistry() {
-
-  for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
-       it != _Registry.end(); ++it) {
-    if (it->second.state == ClientEntry::UNSUBSCRIBED) {
-      _Registry.erase(it);
+    for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
+         it != _Registry.end();) {
+        if (it->second.state == ClientEntry::UNSUBSCRIBED) {
+            _Registry.erase(it++);
+        } else {
+            ++it;
+        }
     }
-  }
-
-  if (_Registry.empty())
-    setChannelType(CHANNEL::EMPTY);
 }
 
 // Destructor
@@ -144,22 +157,12 @@ int Channel::getMemberCount() const { return _memberCount; }
 
 Channel *CoreServer::getChannel(const std::string &name) {
 
-    std::map<std::string, Channel>::iterator it = channels.find(name);
-    if (it == channels.end()) {
-        printServerMessage("WARNING", "Channel " + name + " does not exist");
-        return NULL;
-    }
-    return &it->second;
-}
-
-bool CoreServer::isChannel(const std::string &name) {
-
-  if (channels.empty())
-    return false;
-  if (getChannel(name) != NULL)
-    return true;
-  return false;
-
+  std::map<std::string, Channel>::iterator it = channels.find(name);
+  if (it == channels.end() || it->second.isEmpty()) {
+    printServerMessage("WARNING", "Channel " + name + " does not exist");
+    return NULL;
+  }
+  return &it->second;
 }
 
 /* ************************************************************************** */
@@ -194,13 +197,15 @@ void Channel::broadcast(const std::string &message) {
 }
 
 void Channel::broadcastException(const std::string &message, Client *client) {
-    printServerMessage("DEBUG", "Broadcasting exception to all clients in channel: " + name);
+  printServerMessage(
+      "DEBUG", "Broadcasting exception to all clients in channel: " + name);
   for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
        it != _Registry.end(); ++it) {
-    if (it->second.state == ClientEntry::SUBSCRIBED && it->second.client != client) {
-        printServerMessage("DEBUG", "Broadcasting exception to client: " + it->second.client->getTarget());
+    if (it->second.state == ClientEntry::SUBSCRIBED &&
+        it->second.client != client) {
+      printServerMessage("DEBUG", "Broadcasting exception to client: " +
+                                      it->second.client->getTarget());
       it->second.client->setResponse(message);
     }
   }
 }
-

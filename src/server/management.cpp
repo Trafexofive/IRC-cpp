@@ -37,22 +37,23 @@ void CoreServer::disableChannel(const std::string &name) {
   }
   channel->setChannelType(CHANNEL::EMPTY);
   // channel->clear();
-  // channel->CleanRegistry()
+  // channel->CleanRegistry();
   _serverStats.totalChannels--;
 }
 
+
 void CoreServer::purgeEmptyChannels() {
-
-  for (std::map<std::string, Channel>::iterator it = channels.begin();
-       it != channels.end(); ++it) {
-    if (it->second.getChannelType() == CHANNEL::EMPTY) {
-      printServerMessage("INFO",
-                         "Removing empty channel " + it->second.getName());
-      channels.erase(it);
+    for (std::map<std::string, Channel>::iterator it = channels.begin(); it != channels.end(); ) {
+        if (it->second.isEmpty()) {
+            printServerMessage("INFO", "Removing empty channel " + it->second.getName());
+            std::map<std::string, Channel>::iterator tmp = it; // store current iterator
+            ++it; // advance it before erasing
+            channels.erase(tmp);
+        } else {
+            ++it;
+        }
     }
-  }
 }
-
 /* ************************************************************************** */
 /*                       CLIENT MANAGEMENT                                    */
 /* ************************************************************************** */
