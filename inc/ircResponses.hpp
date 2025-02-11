@@ -154,6 +154,7 @@
 #define ERR_PASSWDMISMATCH      "464"
 #define ERR_NOTREGISTERED       "451"
 #define ERR_NEEDMOREPARAMS      "461"
+#define ERR_NOPRIVILEGES        "481"
 #define ERR_NOORIGIN            "409"
 
 // CAP response codes

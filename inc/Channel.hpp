@@ -156,7 +156,7 @@ bool isUnknown() const { return _settings.type == CHANNEL::UNKNOWN; }
       }
     }
   }
-
+void removeMember(Client *client);
 Client *getClient(const std::string &nick) {
     for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
          it != _Registry.end(); ++it) {

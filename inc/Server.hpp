@@ -95,6 +95,8 @@ private:
 
   std::vector<Channel> channels;
 
+  std::map<int, Client *> operators;
+
   std::map<std::string, Channel> _channels; // in favor of quick lookup and
   // time complexity
 
@@ -151,26 +153,31 @@ private:
   bool isClientRegistered(int fd) { return clients[fd].isRegistered(); }
   bool isClientAuthenticated(int fd) { return clients[fd].isAuthenticated(); }
   bool isClientDisconnected(int fd) { return clients[fd].isDisconnected(); }
+  std::map<int, Client *> getOperators() { return operators; }
 
   // Command handlers
   void handleCommand(int fd, const std::string &line);
 
   // Actual commands
   void cmdNick(int fd, std::vector<std::string> &args);
-  void cmdList(int fd, std::vector<std::string> &args);
+  // void cmdList(int fd, std::vector<std::string> &args);
   void cmdUser(int fd, std::vector<std::string> &args);
   void cmdPass(int fd, std::vector<std::string> &args);
   void cmdJoin(int fd, std::vector<std::string> &args);
   void cmdPrivmsg(int fd, std::vector<std::string> &args);
-  void cmdPart(int fd, std::vector<std::string> &args);
-  void cmdPing(int fd, std::vector<std::string> &args);
-  void cmdCap(int fd, std::vector<std::string> &args);
+  // void cmdPart(int fd, std::vector<std::string> &args);
+  // void cmdPing(int fd, std::vector<std::string> &args);
+  // void cmdCap(int fd, std::vector<std::string> &args);
   void cmdQuit(int fd, std::vector<std::string> &args);
   void cmdMode(int fd, std::vector<std::string> &args);
-  void cmdWho(int fd, std::vector<std::string> &args);
+  // void cmdWho(int fd, std::vector<std::string> &args);
   void cmdTopic(int fd, std::vector<std::string> &args);
   void cmdInvite(int fd, std::vector<std::string> &args);
   void cmdKick(int fd, std::vector<std::string> &args);
+  void cmdKill(int fd, std::vector<std::string> &args);
+  void cmdoperwall(int fd, std::vector<std::string> &args);
+  void    cmdoper(int fd, std::vector<std::string> &args);
+  void    setOperator(Client &client);
 
   // channel management methods
   void kickUserFromChannel(int fd, const std::string &target,

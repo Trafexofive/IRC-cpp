@@ -45,12 +45,13 @@ SRC_FILES := events/HandleEvents.cpp \
     commands/join.cpp \
     commands/topic.cpp \
     commands/pass.cpp \
-    commands/part.cpp \
     commands/user.cpp \
     commands/quit.cpp \
     commands/mode.cpp \
 	commands/kill.cpp \
+	commands/kick.cpp \
 	commands/operwall.cpp \
+	commands/invite.cpp \
 	commands/oper.cpp \
     main.cpp \
     Validation.cpp \

@@ -137,14 +137,14 @@ _serverStats.totalMessages = 0;
   commands[MODE] = &CoreServer::cmdMode;
   commands[KICK] = &CoreServer::cmdKick;
   commands[INVITE] = &CoreServer::cmdInvite;
-  commands[PART] = &CoreServer::cmdPart;
-  commands[CAP] = &CoreServer::cmdCap; // only CAP LS and CAP END
+  // commands[PART] = &CoreServer::cmdPart;
+  // commands[CAP] = &CoreServer::cmdCap; // only CAP LS and CAP END
   commands[PRIVMSG] = &CoreServer::cmdPrivmsg;
   // all the commands need to be guarded by a connection check.
-  commands[PING] = &CoreServer::cmdPing;
+  // commands[PING] = &CoreServer::cmdPing;
   commands[QUIT] = &CoreServer::cmdQuit;
   commands[TOPIC] = &CoreServer::cmdTopic;
-  commands["LIST"] = &CoreServer::cmdList;
+  // commands["LIST"] = &CoreServer::cmdList;
 
   create_socket();
   start_listening();

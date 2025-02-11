@@ -53,6 +53,7 @@ private:
 
   std::string passWord;
   std::string response;
+  bool _operator;
 
   std::string _target; // should be renamed to target
 
@@ -78,6 +79,8 @@ public:
   const std::string &getPassWord() const;
   const std::string &getResponse() const;
   const struct sockaddr_in &getClientInfos() const;
+  bool getOperator() { return _operator; }
+  void setOperator(bool op) { _operator = op; }
 
   // Setters
   void setFd(int fd);
@@ -89,6 +92,7 @@ public:
   void setPassWord(const std::string &pass);
   void setResponse(const std::string &response);
   void setClientInfos(const struct sockaddr_in &info);
+  void  beoper() { _operator = true; }
 
   // Class specific methods
   void disconnect();

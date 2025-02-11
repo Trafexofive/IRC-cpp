@@ -1,0 +1,91 @@
+[1m[2025-02-11 10:06:54] [0m[33mDEBUG :: [0mValidating port: 22200
+[1m[2025-02-11 10:06:54] [0m[33mDEBUG :: [0mPort valid: 22200
+[1m[2025-02-11 10:06:54] [0m[33mDEBUG :: [0mValidating password
+[1m[2025-02-11 10:06:54] [0m[33mDEBUG :: [0mPassword valid
+[1m[2025-02-11 10:06:54] [0m[32mINFO  :: [0mCONFIGURATION: 
+[1m[2025-02-11 10:06:54] [0m[32mINFO  :: [0mPORT: : 22200
+[1m[2025-02-11 10:06:54] [0m[32mINFO  :: [0mPID: 59659
+[1m[2025-02-11 10:06:54] [0m[33mDEBUG :: [0mCreating socket...
+[1m[2025-02-11 10:06:54] [0m[33mDEBUG :: [0mSocket created: 3
+[1m[2025-02-11 10:06:54] [0m[32mINFO  :: [0mServer Socket setup complete
+[1m[2025-02-11 10:06:54] [0m[33mDEBUG :: [0mStarting to listen...
+[1m[2025-02-11 10:06:54] [0m[33mDEBUG :: [0mServer listening on port: 22200
+[1m[2025-02-11 10:06:54] [0m[33mDEBUG :: [0mServer main loop starting...
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0mClient connected @fd: 4
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0mTotal clients: 1
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mProcessing PASS command
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0mClient Authenticated
+[1m[2025-02-11 10:07:02] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-11 10:07:02] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mNickname set to: mboutuil
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0mRegistration complete for 
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0msource: mboutuil!mboutuil@127.0.0.1
+[1m[2025-02-11 10:07:02] [0m[35mSERVER :: [0m:WeUseArch.localhost 001 mboutuil!mboutuil@127.0.0.1 :Welcome to the WeUseArch IRC Network
+:WeUseArch.localhost 002 mboutuil!mboutuil@127.0.0.1 :Your host is morpheus-server.ddns.net
+:WeUseArch.localhost 003 mboutuil!mboutuil@127.0.0.1 :This server was created 2024-01-11
+:WeUseArch.localhost 004 mboutuil!mboutuil@127.0.0.1 morpheus-server.ddns.net 1.0 usermodes channelmodes
+:WeUseArch.localhost 375 mboutuil!mboutuil@127.0.0.1 :- morpheus-server.ddns.net Message of the Day - 
+:WeUseArch.localhost 372 mboutuil!mboutuil@127.0.0.1 :- Welcome to the WeUseArch IRC Network!
+:WeUseArch.localhost 372 mboutuil!mboutuil@127.0.0.1 :- Enjoy your stay!
+:WeUseArch.localhost 376 mboutuil!mboutuil@127.0.0.1 :End of /MOTD command.
+
+[1m[2025-02-11 10:07:02] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-11 10:07:02] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mCreating new channel: #ninja
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mDestroying channel: #ninja
+[1m[2025-02-11 10:07:02] [0m[33m[1mWARNING :: [0mClient already added to channel. Server Omitting ...
+[1m[2025-02-11 10:07:02] [0m[35mSERVER :: [0m:mboutuil!mboutuil@127.0.0.1 JOIN #ninja
+
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mCreating new channel: #pop
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mDestroying channel: #ninja
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mDestroying channel: #pop
+[1m[2025-02-11 10:07:02] [0m[33m[1mWARNING :: [0mClient already added to channel. Server Omitting ...
+[1m[2025-02-11 10:07:02] [0m[35mSERVER :: [0m:mboutuil!mboutuil@127.0.0.1 JOIN #pop
+
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mCreating new channel: #mboutuil
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mDestroying channel: #pop
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mDestroying channel: #ninja
+[1m[2025-02-11 10:07:02] [0m[33mDEBUG :: [0mDestroying channel: #mboutuil
+[1m[2025-02-11 10:07:02] [0m[33m[1mWARNING :: [0mClient already added to channel. Server Omitting ...
+[1m[2025-02-11 10:07:02] [0m[35mSERVER :: [0m:mboutuil!mboutuil@127.0.0.1 JOIN #mboutuil
+
+[1m[2025-02-11 10:07:02] [0m[35mSERVER :: [0m:mboutuil!mboutuil@127.0.0.1 JOIN #ninja
+:mboutuil!mboutuil@127.0.0.1 JOIN #pop
+:mboutuil!mboutuil@127.0.0.1 JOIN #mboutuil
+
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0mCHANNEL NAME        MEMBERS   TYPE      
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m#ninja              1         PUBLIC    
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m#pop                1         PUBLIC    
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m#mboutuil           1         PUBLIC    
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-11 10:07:02] [0m[32mINFO  :: [0m+-------------------------------------------------------
