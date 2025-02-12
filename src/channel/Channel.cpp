@@ -52,34 +52,18 @@ Channel::Channel(const std::string &name, const std::string &topic,
   _settings.type = CHANNEL::PRIVATE;
   _memberCount = 0;
   setKeyMode(true);
-
   addMember(client);
 }
 
-// void Channel::CleanRegistry() {
-//
-  // for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
-  //      it != _Registry.end(); ++it) {
-  //   if (it->second.state == ClientEntry::UNSUBSCRIBED) {
-  //     _Registry.erase(it);
-  //   }
-  // }
-//
-//
-//
-//   if (_Registry.empty())
-//     setChannelType(CHANNEL::EMPTY);
-// }
-
 void Channel::CleanRegistry() {
-    for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
-         it != _Registry.end();) {
-        if (it->second.state == ClientEntry::UNSUBSCRIBED) {
-            _Registry.erase(it++);
-        } else {
-            ++it;
-        }
+  for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
+       it != _Registry.end();) {
+    if (it->second.state == ClientEntry::UNSUBSCRIBED) {
+      _Registry.erase(it++);
+    } else {
+      ++it;
     }
+  }
 }
 
 // Destructor
@@ -150,6 +134,39 @@ void Channel::removeMember(Client *client) {
 }
 
 int Channel::getMemberCount() const { return _memberCount; }
+
+bool Channel::isOperator(Client *member) {
+  if (std::find(_Operators.begin(), _Operators.end(), member) !=
+      _Operators.end())
+    return true;
+  else
+    return false;
+}
+
+void Channel::addOperator(Client *member) {
+  if (member->isDisconnected())
+    return;
+  else if (isOperator(member)) {
+    printServerMessage("WARNING",
+                       "Operator " + member->getNickName() +
+                           " fd@: " + numberToString(member->getFd()) +
+                           " already exists in channel " + name);
+    return;
+  } else {
+    _Operators.push_back(member);
+  }
+}
+
+void Channel::removeOperator(Client *member) {
+  if (member->isDisconnected())
+    return;
+  else if (!isOperator(member))
+    return;
+  else {
+    _Operators.erase(std::remove(_Operators.begin(), _Operators.end(), member),
+                     _Operators.end());
+  }
+}
 
 /* ************************************************************************** */
 /*                       STATES/TYPES                                         */

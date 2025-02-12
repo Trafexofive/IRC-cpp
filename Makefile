@@ -71,14 +71,6 @@ CPPFLAGS := -MMD -MP -I$(DIR_INC)
 LEVEL := -DPRODUCTION
 LDFLAGS := -L/usr/local/lib 
 
-# # Debug Configuration
-# ifeq ($(DEBUG), 1)
-#     CXXFLAGS += -g3 -DDEBUG
-#     BUILD_TYPE := Debug
-# else
-#     CXXFLAGS += -O2 -DNDEBUG
-#     BUILD_TYPE := Release
-# endif
 
 # Platform-specific Configuration
 UNAME_S := $(shell uname -s)

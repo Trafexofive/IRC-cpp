@@ -1,0 +1,342 @@
+[1m[2025-02-12 08:10:00] [0m[33mDEBUG :: [0mValidating port: 22200
+[1m[2025-02-12 08:10:00] [0m[33mDEBUG :: [0mPort valid: 22200
+[1m[2025-02-12 08:10:00] [0m[33mDEBUG :: [0mValidating password
+[1m[2025-02-12 08:10:00] [0m[33mDEBUG :: [0mPassword valid
+[1m[2025-02-12 08:10:00] [0m[32mINFO  :: [0mCONFIGURATION: 
+[1m[2025-02-12 08:10:00] [0m[32mINFO  :: [0mPORT: : 22200
+[1m[2025-02-12 08:10:00] [0m[32mINFO  :: [0mPID: 139192
+[1m[2025-02-12 08:10:00] [0m[33mDEBUG :: [0mCreating socket...
+[1m[2025-02-12 08:10:00] [0m[33mDEBUG :: [0mSocket created: 3
+[1m[2025-02-12 08:10:00] [0m[32mINFO  :: [0mServer Socket setup complete
+[1m[2025-02-12 08:10:00] [0m[33mDEBUG :: [0mStarting to listen...
+[1m[2025-02-12 08:10:00] [0m[33mDEBUG :: [0mServer listening on port: 22200
+[1m[2025-02-12 08:10:00] [0m[32mINFO  :: [0mServer main loop starting...
+[1m[2025-02-12 08:10:01] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-02-12 08:10:01] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-02-12 08:10:01] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-02-12 08:10:01] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-12 08:10:01] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-12 08:10:01] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-02-12 08:10:01] [0m[32mINFO  :: [0mClient connected @fd: 4
+[1m[2025-02-12 08:10:01] [0m[32mINFO  :: [0mTotal clients: 1
+[1m[2025-02-12 08:10:01] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:10:01] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:10:01] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:01] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-12 08:10:01] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:01] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-12 08:10:01] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:01] [0m[36mCLIENT :: [0m PASS Alilepro135!
+NICK clevo
+USER testuser 0 * :testreal
+
+[1m[2025-02-12 08:10:01] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-02-12 08:10:01] [0m[32mINFO  :: [0mClient authenticated @fd: 4
+[1m[2025-02-12 08:10:01] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-02-12 08:10:01] [0m[32mINFO  :: [0mClient registered @fd: 4
+[1m[2025-02-12 08:10:01] [0m[35mSERVER :: [0m >>: 001 clevo :Welcome to the Internet Relay Network clevo
+
+[1m[2025-02-12 08:10:01] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-02-12 08:10:01] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-02-12 08:10:01] [0m[32mINFO  :: [0mRegistration complete for 
+[1m[2025-02-12 08:10:01] [0m[33mDEBUG :: [0msource: clevo!testreal@127.0.0.1
+[1m[2025-02-12 08:10:01] [0m[35mSERVER :: [0mclevo!testreal@127.0.0.1 >>:WeUseArch.localhost 001 clevo!testreal@127.0.0.1 :Welcome to the WeUseArch IRC Network
+:WeUseArch.localhost 002 clevo!testreal@127.0.0.1 :Your host is morpheus-server.ddns.net
+:WeUseArch.localhost 003 clevo!testreal@127.0.0.1 :This server was created 2024-01-11
+:WeUseArch.localhost 004 clevo!testreal@127.0.0.1 morpheus-server.ddns.net 1.0 usermodes channelmodes
+:WeUseArch.localhost 375 clevo!testreal@127.0.0.1 :- morpheus-server.ddns.net Message of the Day - 
+:WeUseArch.localhost 372 clevo!testreal@127.0.0.1 :- Welcome to the WeUseArch IRC Network!
+:WeUseArch.localhost 372 clevo!testreal@127.0.0.1 :- Enjoy your stay!
+:WeUseArch.localhost 376 clevo!testreal@127.0.0.1 :End of /MOTD command.
+
+[1m[2025-02-12 08:10:01] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:10:01] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:10:01] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:01] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-12 08:10:01] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:01] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-12 08:10:01] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:07] [0m[36mCLIENT :: [0mclevo!testreal@127.0.0.1 join #ham ham
+
+[1m[2025-02-12 08:10:07] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-12 08:10:07] [0m[33m[1mWARNING :: [0mChannel #ham does not exist
+[1m[2025-02-12 08:10:07] [0m[33mDEBUG :: [0mCreating new channel: #ham with topic: 
+[1m[2025-02-12 08:10:07] [0m[33mDEBUG :: [0mDestroying channel: #ham
+[1m[2025-02-12 08:10:07] [0m[33mDEBUG :: [0mDestroying channel: #ham
+[1m[2025-02-12 08:10:07] [0m[33mDEBUG :: [0mDestroying channel: #ham
+[1m[2025-02-12 08:10:07] [0m[35mSERVER :: [0mclevo!testreal@127.0.0.1 >>:clevo!testreal@127.0.0.1 JOIN #ham
+
+[1m[2025-02-12 08:10:07] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:10:07] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:10:07] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:07] [0m[32mINFO  :: [0mCHANNEL NAME        MEMBERS   TYPE      
+[1m[2025-02-12 08:10:07] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:07] [0m[32mINFO  :: [0m#ham                1         1         
+[1m[2025-02-12 08:10:07] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:07] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-12 08:10:07] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:16] [0m[36mCLIENT :: [0mclevo!testreal@127.0.0.1 topic #ham :ahhaha
+
+[1m[2025-02-12 08:10:16] [0m[33mDEBUG :: [0mProcessing command: TOPIC
+[1m[2025-02-12 08:10:16] [0m[33mDEBUG :: [0mparsedMessage TOPIC: :ahhaha
+[1m[2025-02-12 08:10:16] [0m[33mDEBUG :: [0mTOPIC: clevo changed the topic of #ham to ahhaha
+[1m[2025-02-12 08:10:16] [0m[35mSERVER :: [0mclevo!testreal@127.0.0.1 >>:WeUseArch.localhost 332 #hamahhaha
+
+[1m[2025-02-12 08:10:16] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:10:16] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:10:16] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:16] [0m[32mINFO  :: [0mCHANNEL NAME        MEMBERS   TYPE      
+[1m[2025-02-12 08:10:16] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:16] [0m[32mINFO  :: [0m#ham                1         1         
+[1m[2025-02-12 08:10:16] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:16] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-12 08:10:16] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:43] [0m[32mINFO  :: [0mClient disconnected @fd: 4
+[1m[2025-02-12 08:10:43] [0m[32mINFO  :: [0mRemoving client from channel #ham
+[1m[2025-02-12 08:10:43] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:10:43] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:10:43] [0m[33mDEBUG :: [0mPurging disconnected client: clevo!testreal@127.0.0.1
+[1m[2025-02-12 08:10:43] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-12 08:10:43] [0m[32mINFO  :: [0mRemoving empty channel #ham
+[1m[2025-02-12 08:10:43] [0m[33mDEBUG :: [0mDestroying channel: #ham
+[1m[2025-02-12 08:10:43] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:43] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-12 08:10:43] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:43] [0m[32mINFO  :: [0mREGISTERED USERS: 0
+[1m[2025-02-12 08:10:43] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:55] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-02-12 08:10:55] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-02-12 08:10:55] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-02-12 08:10:55] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-12 08:10:55] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-12 08:10:55] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-02-12 08:10:55] [0m[32mINFO  :: [0mClient connected @fd: 4
+[1m[2025-02-12 08:10:55] [0m[32mINFO  :: [0mTotal clients: 1
+[1m[2025-02-12 08:10:55] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:10:55] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:10:55] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:55] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-12 08:10:55] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:55] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-12 08:10:55] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:55] [0m[36mCLIENT :: [0m PASS Alilepro135!
+NICK clevo
+USER testuser 0 * :testreal
+
+[1m[2025-02-12 08:10:55] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-02-12 08:10:55] [0m[32mINFO  :: [0mClient authenticated @fd: 4
+[1m[2025-02-12 08:10:55] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-02-12 08:10:55] [0m[32mINFO  :: [0mClient registered @fd: 4
+[1m[2025-02-12 08:10:55] [0m[35mSERVER :: [0m >>: 001 clevo :Welcome to the Internet Relay Network clevo
+
+[1m[2025-02-12 08:10:55] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-02-12 08:10:55] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-02-12 08:10:55] [0m[32mINFO  :: [0mRegistration complete for 
+[1m[2025-02-12 08:10:55] [0m[33mDEBUG :: [0msource: clevo!testreal@127.0.0.1
+[1m[2025-02-12 08:10:55] [0m[35mSERVER :: [0mclevo!testreal@127.0.0.1 >>:WeUseArch.localhost 001 clevo!testreal@127.0.0.1 :Welcome to the WeUseArch IRC Network
+:WeUseArch.localhost 002 clevo!testreal@127.0.0.1 :Your host is morpheus-server.ddns.net
+:WeUseArch.localhost 003 clevo!testreal@127.0.0.1 :This server was created 2024-01-11
+:WeUseArch.localhost 004 clevo!testreal@127.0.0.1 morpheus-server.ddns.net 1.0 usermodes channelmodes
+:WeUseArch.localhost 375 clevo!testreal@127.0.0.1 :- morpheus-server.ddns.net Message of the Day - 
+:WeUseArch.localhost 372 clevo!testreal@127.0.0.1 :- Welcome to the WeUseArch IRC Network!
+:WeUseArch.localhost 372 clevo!testreal@127.0.0.1 :- Enjoy your stay!
+:WeUseArch.localhost 376 clevo!testreal@127.0.0.1 :End of /MOTD command.
+
+[1m[2025-02-12 08:10:55] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:10:55] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:10:55] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:55] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-12 08:10:55] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:55] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-12 08:10:55] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:59] [0m[36mCLIENT :: [0mclevo!testreal@127.0.0.1 /join #ham ham
+
+[1m[2025-02-12 08:10:59] [0m[33mDEBUG :: [0mProcessing command: /JOIN
+[1m[2025-02-12 08:10:59] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:10:59] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:10:59] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:59] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-12 08:10:59] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:10:59] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-12 08:10:59] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:11:03] [0m[36mCLIENT :: [0mclevo!testreal@127.0.0.1 join #ham ham
+
+[1m[2025-02-12 08:11:03] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-12 08:11:03] [0m[33m[1mWARNING :: [0mChannel #ham does not exist
+[1m[2025-02-12 08:11:03] [0m[33mDEBUG :: [0mCreating new channel: #ham with topic: 
+[1m[2025-02-12 08:11:03] [0m[33mDEBUG :: [0mDestroying channel: #ham
+[1m[2025-02-12 08:11:03] [0m[33mDEBUG :: [0mDestroying channel: #ham
+[1m[2025-02-12 08:11:03] [0m[33mDEBUG :: [0mDestroying channel: #ham
+[1m[2025-02-12 08:11:03] [0m[35mSERVER :: [0mclevo!testreal@127.0.0.1 >>:clevo!testreal@127.0.0.1 JOIN #ham
+
+[1m[2025-02-12 08:11:03] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:11:03] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:11:03] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:11:03] [0m[32mINFO  :: [0mCHANNEL NAME        MEMBERS   TYPE      
+[1m[2025-02-12 08:11:03] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:11:03] [0m[32mINFO  :: [0m#ham                1         1         
+[1m[2025-02-12 08:11:03] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:11:03] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-12 08:11:03] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:11:12] [0m[36mCLIENT :: [0mclevo!testreal@127.0.0.1 topic #ham :kapa
+
+[1m[2025-02-12 08:11:12] [0m[33mDEBUG :: [0mProcessing command: TOPIC
+[1m[2025-02-12 08:11:12] [0m[33mDEBUG :: [0mparsedMessage TOPIC: :kapa
+[1m[2025-02-12 08:11:12] [0m[33mDEBUG :: [0mTOPIC: clevo changed the topic of #ham to kapa
+[1m[2025-02-12 08:11:12] [0m[35mSERVER :: [0mclevo!testreal@127.0.0.1 >>:WeUseArch.localhost 332 #hamkapa
+
+[1m[2025-02-12 08:11:12] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:11:12] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:11:12] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:11:12] [0m[32mINFO  :: [0mCHANNEL NAME        MEMBERS   TYPE      
+[1m[2025-02-12 08:11:12] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:11:12] [0m[32mINFO  :: [0m#ham                1         1         
+[1m[2025-02-12 08:11:12] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:11:12] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-12 08:11:12] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:13:53] [0m[36mCLIENT :: [0mclevo!testreal@127.0.0.1 topic #ham :
+
+[1m[2025-02-12 08:13:53] [0m[33mDEBUG :: [0mProcessing command: TOPIC
+[1m[2025-02-12 08:13:53] [0m[33mDEBUG :: [0mparsedMessage TOPIC: :
+[1m[2025-02-12 08:13:53] [0m[35mSERVER :: [0mclevo!testreal@127.0.0.1 >>:WeUseArch.localhost 332 #ham :Resetting Channel topic for #ham
+
+[1m[2025-02-12 08:13:53] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:13:53] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:13:53] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:13:53] [0m[32mINFO  :: [0mCHANNEL NAME        MEMBERS   TYPE      
+[1m[2025-02-12 08:13:53] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:13:53] [0m[32mINFO  :: [0m#ham                1         1         
+[1m[2025-02-12 08:13:53] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:13:53] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-12 08:13:53] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:14:37] [0m[32mINFO  :: [0mClient disconnected @fd: 4
+[1m[2025-02-12 08:14:37] [0m[32mINFO  :: [0mRemoving client from channel #ham
+[1m[2025-02-12 08:14:37] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:14:37] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:14:37] [0m[33mDEBUG :: [0mPurging disconnected client: clevo!testreal@127.0.0.1
+[1m[2025-02-12 08:14:37] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-12 08:14:37] [0m[32mINFO  :: [0mRemoving empty channel #ham
+[1m[2025-02-12 08:14:37] [0m[33mDEBUG :: [0mDestroying channel: #ham
+[1m[2025-02-12 08:14:37] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:14:37] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-12 08:14:37] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:14:37] [0m[32mINFO  :: [0mREGISTERED USERS: 0
+[1m[2025-02-12 08:14:37] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:39] [0m[33mDEBUG :: [0mCreating new client instance for fd(4)
+[1m[2025-02-12 08:15:39] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-02-12 08:15:39] [0m[33mDEBUG :: [0mCreating new client instance for fd(-1)
+[1m[2025-02-12 08:15:39] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-12 08:15:39] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-12 08:15:39] [0m[33mDEBUG :: [0mDestroying client instance for fd(4)
+[1m[2025-02-12 08:15:39] [0m[32mINFO  :: [0mClient connected @fd: 4
+[1m[2025-02-12 08:15:39] [0m[32mINFO  :: [0mTotal clients: 1
+[1m[2025-02-12 08:15:39] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:15:39] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:15:39] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:39] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-12 08:15:39] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:39] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-12 08:15:39] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:39] [0m[36mCLIENT :: [0m PASS Alilepro135!
+NICK clevo
+USER testuser 0 * :testreal
+
+[1m[2025-02-12 08:15:39] [0m[33mDEBUG :: [0mProcessing command: PASS
+[1m[2025-02-12 08:15:39] [0m[32mINFO  :: [0mClient authenticated @fd: 4
+[1m[2025-02-12 08:15:39] [0m[33mDEBUG :: [0mProcessing command: NICK
+[1m[2025-02-12 08:15:39] [0m[32mINFO  :: [0mClient registered @fd: 4
+[1m[2025-02-12 08:15:39] [0m[35mSERVER :: [0m >>: 001 clevo :Welcome to the Internet Relay Network clevo
+
+[1m[2025-02-12 08:15:39] [0m[33mDEBUG :: [0mProcessing command: USER
+[1m[2025-02-12 08:15:39] [0m[33mDEBUG :: [0mProcessing USER command
+[1m[2025-02-12 08:15:39] [0m[32mINFO  :: [0mRegistration complete for 
+[1m[2025-02-12 08:15:39] [0m[33mDEBUG :: [0msource: clevo!testreal@127.0.0.1
+[1m[2025-02-12 08:15:39] [0m[35mSERVER :: [0mclevo!testreal@127.0.0.1 >>:WeUseArch.localhost 001 clevo!testreal@127.0.0.1 :Welcome to the WeUseArch IRC Network
+:WeUseArch.localhost 002 clevo!testreal@127.0.0.1 :Your host is morpheus-server.ddns.net
+:WeUseArch.localhost 003 clevo!testreal@127.0.0.1 :This server was created 2024-01-11
+:WeUseArch.localhost 004 clevo!testreal@127.0.0.1 morpheus-server.ddns.net 1.0 usermodes channelmodes
+:WeUseArch.localhost 375 clevo!testreal@127.0.0.1 :- morpheus-server.ddns.net Message of the Day - 
+:WeUseArch.localhost 372 clevo!testreal@127.0.0.1 :- Welcome to the WeUseArch IRC Network!
+:WeUseArch.localhost 372 clevo!testreal@127.0.0.1 :- Enjoy your stay!
+:WeUseArch.localhost 376 clevo!testreal@127.0.0.1 :End of /MOTD command.
+
+[1m[2025-02-12 08:15:39] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:15:39] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:15:39] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:39] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-12 08:15:39] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:39] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-12 08:15:39] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:46] [0m[36mCLIENT :: [0mclevo!testreal@127.0.0.1 join #ham ham
+
+[1m[2025-02-12 08:15:46] [0m[33mDEBUG :: [0mProcessing command: JOIN
+[1m[2025-02-12 08:15:46] [0m[33m[1mWARNING :: [0mChannel #ham does not exist
+[1m[2025-02-12 08:15:46] [0m[33mDEBUG :: [0mCreating new channel: #ham with topic: 
+[1m[2025-02-12 08:15:46] [0m[33mDEBUG :: [0mDestroying channel: #ham
+[1m[2025-02-12 08:15:46] [0m[33mDEBUG :: [0mDestroying channel: #ham
+[1m[2025-02-12 08:15:46] [0m[33mDEBUG :: [0mDestroying channel: #ham
+[1m[2025-02-12 08:15:46] [0m[35mSERVER :: [0mclevo!testreal@127.0.0.1 >>:clevo!testreal@127.0.0.1 JOIN #ham
+
+[1m[2025-02-12 08:15:46] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:15:46] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:15:46] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:46] [0m[32mINFO  :: [0mCHANNEL NAME        MEMBERS   TYPE      
+[1m[2025-02-12 08:15:46] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:46] [0m[32mINFO  :: [0m#ham                1         1         
+[1m[2025-02-12 08:15:46] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:46] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-12 08:15:46] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:51] [0m[36mCLIENT :: [0mclevo!testreal@127.0.0.1 /topic
+
+[1m[2025-02-12 08:15:51] [0m[33mDEBUG :: [0mProcessing command: /TOPIC
+[1m[2025-02-12 08:15:51] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:15:51] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:15:51] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:51] [0m[32mINFO  :: [0mCHANNEL NAME        MEMBERS   TYPE      
+[1m[2025-02-12 08:15:51] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:51] [0m[32mINFO  :: [0m#ham                1         1         
+[1m[2025-02-12 08:15:51] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:51] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-12 08:15:51] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:54] [0m[36mCLIENT :: [0mclevo!testreal@127.0.0.1 topic
+
+[1m[2025-02-12 08:15:54] [0m[33mDEBUG :: [0mProcessing command: TOPIC
+[1m[2025-02-12 08:15:54] [0m[33mDEBUG :: [0mTOPIC failed: Not enough parameters
+[1m[2025-02-12 08:15:54] [0m[35mSERVER :: [0mclevo!testreal@127.0.0.1 >>:WeUseArch.localhost 461 TOPIC :Not enough parameters
+
+[1m[2025-02-12 08:15:54] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:15:54] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:15:54] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:54] [0m[32mINFO  :: [0mCHANNEL NAME        MEMBERS   TYPE      
+[1m[2025-02-12 08:15:54] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:54] [0m[32mINFO  :: [0m#ham                1         1         
+[1m[2025-02-12 08:15:54] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:54] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-12 08:15:54] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:59] [0m[36mCLIENT :: [0mclevo!testreal@127.0.0.1 topic #ham
+
+[1m[2025-02-12 08:15:59] [0m[33mDEBUG :: [0mProcessing command: TOPIC
+[1m[2025-02-12 08:15:59] [0m[35mSERVER :: [0mclevo!testreal@127.0.0.1 >>:WeUseArch.localhost 331 clevo #ham :No topic is set
+
+[1m[2025-02-12 08:15:59] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 08:15:59] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 08:15:59] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:59] [0m[32mINFO  :: [0mCHANNEL NAME        MEMBERS   TYPE      
+[1m[2025-02-12 08:15:59] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:59] [0m[32mINFO  :: [0m#ham                1         1         
+[1m[2025-02-12 08:15:59] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 08:15:59] [0m[32mINFO  :: [0mREGISTERED USERS: 1
+[1m[2025-02-12 08:15:59] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 16:23:50] [0m[32mINFO  :: [0mClient disconnected @fd: 4
+[1m[2025-02-12 16:23:50] [0m[32mINFO  :: [0mRemoving client from channel #ham
+[1m[2025-02-12 16:23:50] [0m[36m[1mSYSTEM :: [0mTick Cycle Initiated
+[1m[2025-02-12 16:23:50] [0m[36m[1mSYSTEM :: [0mCleaning up Server ...
+[1m[2025-02-12 16:23:50] [0m[33mDEBUG :: [0mPurging disconnected client: clevo!testreal@127.0.0.1
+[1m[2025-02-12 16:23:50] [0m[33mDEBUG :: [0mDestroying client instance for fd(-1)
+[1m[2025-02-12 16:23:50] [0m[32mINFO  :: [0mRemoving empty channel #ham
+[1m[2025-02-12 16:23:50] [0m[33mDEBUG :: [0mDestroying channel: #ham
+[1m[2025-02-12 16:23:50] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 16:23:50] [0m[32mINFO  :: [0mNo channels available
+[1m[2025-02-12 16:23:50] [0m[32mINFO  :: [0m+-------------------------------------------------------
+[1m[2025-02-12 16:23:50] [0m[32mINFO  :: [0mREGISTERED USERS: 0
+[1m[2025-02-12 16:23:50] [0m[32mINFO  :: [0m+-------------------------------------------------------

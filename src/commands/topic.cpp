@@ -26,10 +26,7 @@ void CoreServer::cmdTopic(int fd, std::vector<std::string> &args)
 	Channel	*channel;
 
 	if (isClientDisconnected(fd))
-	{
-		printServerMessage("DEBUG", "TOPIC failed: Client is disconnected");
 		return ;
-	}
 	if (args.size() < 2)
 	{
 		printServerMessage("DEBUG", "TOPIC failed: Not enough parameters");
@@ -46,39 +43,45 @@ void CoreServer::cmdTopic(int fd, std::vector<std::string> &args)
 		client.setResponse(formatResponse(ERR_NOSUCHCHANNEL, channelName
 				+ " :No such channel"));
 		return ;
+	} else if (!channel->isMember(client)) {
+	    client.setResponse(formatChannelResponse(channelName, client.getTarget(), ERR_NOTONCHANNEL,
+	            + "You're not on that channel"));
+	    return ;
 	}
 	if (args.size() == 2)
 	{
-		std::string topic = channel->getTopic();
-		if (topic.empty())
+		if (channel->getTopic().empty())
 		{
-			client.setResponse(formatResponse(RPL_NOTOPIC, channelName
-					+ " :No topic is set"));
+			client.setResponse(formatChannelResponse(channelName, client.getNickName(), RPL_NOTOPIC, "No topic is set"));
 			return ;
 		}
-		client.setResponse(formatResponse(RPL_TOPIC, channelName + " :"
-				+ topic));
+		client.setResponse(formatChannelResponse(channelName, client.getTarget(), RPL_TOPIC, "Channel Topic is: " + channel->getTopic()));
 		return ;
 	}
 	else if (args.size() > 2)
 	{
 		std::string parsedMessage = "";
 		appendArgs(args, parsedMessage, 2);
-		if (containsMessage(parsedMessage))
+		if (containsMessage(parsedMessage) && !(parsedMessage.size() == 1))
 		{
+            if (channel->isTopicMode() && !(channel->isOperator(&client)))
+            {
+                client.setResponse(formatChannelResponse(channel->getName(), client.getTarget(), ERR_CHANOPRIVSNEEDED,
+                "You're not an operator"));
+                return ;
+            } 
 			std::string newTopic = parsedMessage.substr(1);
+
 			channel->setTopic(newTopic);
-			std::string topicMsg = formatResponse(RPL_TOPIC, channelName + " :"
-					+ newTopic);
+			std::string topicMsg = formatResponse(RPL_TOPIC, channelName + newTopic);
 			client.setResponse(topicMsg);
 			printServerMessage("DEBUG", "TOPIC: " + client.getNickName()
 				+ " changed the topic of " + channelName + " to " + newTopic);
 			return ;
 		}
-		else
+		else if (parsedMessage.size() == 1)
 		{
-			client.setResponse(formatResponse(RPL_TOPIC, channelName + " :"
-					+ "Resetting Channel topic"));
+			client.setResponse(formatResponse(RPL_TOPIC, channelName + "Resetting Channel topic for " + channelName));
 			channel->setTopic("");
 		}
 	}

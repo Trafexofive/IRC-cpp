@@ -36,14 +36,11 @@ struct CHANNEL {
   bool operatorMode;
   bool keyMode;
 
-  std::string key;
   std::string modeString;
 
-CHANNEL()
+  CHANNEL()
       : type(UNKNOWN), inviteMode(false), topicMode(true), limitMode(false),
-        operatorMode(false), keyMode(false), key(""), modeString("") {
-
-        }
+        operatorMode(false), keyMode(false), modeString("") {}
 };
 
 struct ClientEntry {
@@ -62,18 +59,14 @@ private:
   std::string topic;
   std::string password;
 
-  std::vector<Client *>
-      operators; // still not sure about handling this this way.
-
-  // std::list<ClientEntry> _Registry;
   std::map<int, ClientEntry> _Registry; // yo this is shit. whats the point
                                         // chat. just use a normal map XD
-  std::map<int, Client *> _Invitees;
-
   std::size_t _memberCount;
   std::size_t _memberLimit; // for mode, still needs integration with the member
                             // functions
 
+  std::vector<Client *> _Invitees;
+  std::vector<Client *> _Operators;
   CHANNEL _settings;
 
   Channel();
@@ -110,7 +103,7 @@ public:
   bool isKeyMode() const { return _settings.keyMode; }
   // invitee management
   bool isInvited(Client *client) {
-    if (_Invitees.find(client->getFd()) != _Invitees.end())
+    if (std::find(_Invitees.begin(), _Invitees.end(), client) != _Invitees.end())
       return true;
     else
       return false;
@@ -135,7 +128,7 @@ public:
   void setTopic(const std::string &t);
   void setPassword(const std::string &p);
 
-  const std::vector<Client *> &getOperators() const { return operators; }
+  // const std::vector<Client *> &getOperators() const { return operators; }
 
   void setChannelType(CHANNEL::TYPE type) { _settings.type = type; }
 
@@ -203,34 +196,11 @@ public:
   // Member management methods
 
   void addMember(Client *member);
-  void addOperator(Client *member) {
-    if (member->isDisconnected())
-      return;
-    // if (member->isOperator())
-    //   return;
-    //   handle is already an operator
-    if (std::find(operators.begin(), operators.end(), member) ==
-        operators.end())
-      operators.push_back(member);
-  }
 
-  bool isOperator(Client *member) {
-    if (member->isDisconnected())
-      return false;
-    if (std::find(operators.begin(), operators.end(), member) !=
-        operators.end())
-      return true;
-    return false;
-  }
-
-  void removeOperator(Client *member) {
-    if (member->isDisconnected())
-      return;
-    std::vector<Client *>::iterator it =
-        std::find(operators.begin(), operators.end(), member);
-    if (it != operators.end())
-      operators.erase(it);
-  }
+    // operator management
+    bool isOperator(Client *member);
+    void addOperator(Client *member);
+    void removeOperator(Client *member);
 
   // clean up methods
   void clearMembers();
@@ -281,8 +251,6 @@ public:
   bool getOperatorMode() const { return _settings.operatorMode; }
   bool getKeyMode() const { return _settings.keyMode; }
   bool getLimitMode() const { return _settings.limitMode; }
-
-  const std::string &getKey() const { return _settings.key; }
 
   std::size_t getMemberLimit() const { return _memberLimit; }
   void setMemberLimit(std::size_t limit) { _memberLimit = limit; }

@@ -22,7 +22,6 @@
 #include <stdexcept>
 
 
-// #define formatResponseCommand(source, dest, code, message) ":" + source + " " + SERVER_NAME + dest + " " + code + " " + message + CRLF
 
 // Commands
 
@@ -163,12 +162,27 @@
 #define ERR_NEEDMOREPARAMS "461"
 // #define ERR_UNKNOWNCAP "410"
 
-#define formatCommandResponse(source, code, message) ":" + source + " " + SERVER_NAME + " " + code + " " + message + CRLF
+// Channel responses
+
+#define ERR_NEEDMOREPARAMS "461"
+#define ERR_NOSUCHCHANNEL "403"
+#define ERR_BADCHANNELKEY "475"
+#define ERR_INVITEONLYCHAN "473"
+#define ERR_CHANNELISFULL "471"
+#define ERR_USERONCHANNEL "443"
+#define RPL_TOPIC "332"
+#define RPL_NOTOPIC "331"
+#define ERR_CHANOPRIVSNEEDED "482"
+
+#define printServerMessage(type, message) std::cout << formatServerMessage(type, message) << std::endl
+
+// Response Macros
+
+#define formatCommandResponse(source, code, message) ":" + source + " " + SERVER_NAME + code + " " + message + CRLF
 
 #define formatClientResponse(source, code, message) SERVER_NAME + source + " " + code + " " + message + CRLF
 
-
-#define printServerMessage(type, message) std::cout << formatServerMessage(type, message) << std::endl
+#define formatChannelResponse(channel, source, code, message) SERVER_NAME + code + " " + source + " " + channel + " :" + message + CRLF
 
 #define formatResponse(code, message) SERVER_NAME + code + " " + message + CRLF
 
@@ -178,10 +192,11 @@
 
 #define formatCmdResponse(target, command, message) SERVER_NAME + target + " " + command + " " + message + CRLF // solid
 
-
-#define RPLTOPIC(client, channel, topic) SERVER_NAME + RPC_TOPIC + " " + client + " " + channel + " :" + topic + CRLF
-
 #define rplnosuchnick(nick) SERVER_NAME + ERR_NOSUCHNICK + " " + nick + " :No such nick/channel" + CRLF
+
+
+#define RPL_TOPIC_REPLY(client, channel, topic) ":" +  RPL_TOPIC + " " + client + " " + channel + " :" + topic + CRLF
+
 
 
 

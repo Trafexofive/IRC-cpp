@@ -1,13 +1,6 @@
 #include "../../inc/Server.hpp"
 
 // IRC response codes
-#define ERR_NEEDMOREPARAMS "461"
-#define ERR_NOSUCHCHANNEL "403"
-#define ERR_BADCHANNELKEY "475"
-#define ERR_INVITEONLYCHAN "473"
-#define ERR_CHANNELISFULL "471"
-#define ERR_USERONCHANNEL "443"
-#define RPL_TOPIC "332"
 
 typedef struct {
     std::string channels;
