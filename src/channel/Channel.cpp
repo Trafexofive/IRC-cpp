@@ -28,6 +28,7 @@ Channel::Channel(const std::string &name, Client *client)
   _memberCount = 0;
   setKeyMode(false);
   addMember(client);
+  addOperator(client);
 }
 
 Channel::Channel(const std::string &name, const std::string &topic,
@@ -41,6 +42,7 @@ Channel::Channel(const std::string &name, const std::string &topic,
   _memberCount = 0;
   setKeyMode(false);
   addMember(client);
+  addOperator(client);
 }
 
 Channel::Channel(const std::string &name, const std::string &topic,
@@ -53,6 +55,7 @@ Channel::Channel(const std::string &name, const std::string &topic,
   _memberCount = 0;
   setKeyMode(true);
   addMember(client);
+  addOperator(client);
 }
 
 void Channel::CleanRegistry() {
@@ -135,36 +138,58 @@ void Channel::removeMember(Client *client) {
 
 int Channel::getMemberCount() const { return _memberCount; }
 
-bool Channel::isOperator(Client *member) {
-  if (std::find(_Operators.begin(), _Operators.end(), member) !=
-      _Operators.end())
+bool Channel::isOperator(const std::string &nick) {
+  ClientEntry *entry = getEntry(nick);
+  if (entry && entry->isOperator) {
+    printServerMessage("DEBUG", "CHANNEL :" + this->getName() + "Client " + nick +
+                              " is an operator");
     return true;
-  else
-    return false;
+  }
+  printServerMessage("DEBUG", "CHANNEL :" + this->getName() + "Client " + nick +
+                                  " is not an operator");
+  return false;
+}
+
+ClientEntry *Channel::getEntry(const std::string &nick) {
+  for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
+       it != _Registry.end(); ++it) {
+    if (it->second.client->getNickName() == nick &&
+        it->second.state == ClientEntry::SUBSCRIBED &&
+        !it->second.client->isDisconnected())
+      return &it->second;
+    else
+      continue;
+  }
+  return NULL;
 }
 
 void Channel::addOperator(Client *member) {
   if (member->isDisconnected())
     return;
-  else if (isOperator(member)) {
-    printServerMessage("WARNING",
-                       "Operator " + member->getNickName() +
-                           " fd@: " + numberToString(member->getFd()) +
-                           " already exists in channel " + name);
-    return;
-  } else {
-    _Operators.push_back(member);
+  else {
+    ClientEntry *entry = getEntry(member->getNickName());
+    if (entry) {
+      entry->isOperator = true;
+      printServerMessage("DEBUG", "Client [" + member->getNickName() +
+                                      "] is now an operator");
+
+    } else {
+      printServerMessage("WARNING", "addOperator: Client not found in channel");
+    }
   }
 }
 
 void Channel::removeOperator(Client *member) {
   if (member->isDisconnected())
     return;
-  else if (!isOperator(member))
-    return;
   else {
-    _Operators.erase(std::remove(_Operators.begin(), _Operators.end(), member),
-                     _Operators.end());
+    ClientEntry *entry = getEntry(member->getNickName());
+    if (entry)
+      entry->isOperator = false;
+    else {
+      printServerMessage("WARNING",
+                         "removeOperator: Client not found in channel");
+    }
   }
 }
 

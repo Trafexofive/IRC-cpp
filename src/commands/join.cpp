@@ -59,7 +59,6 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName) {
     if (!channelPtr) {
         createChannel(channelName, &client);
         Channel &channel = this->channels.rbegin()->second;
-        channel.addOperator(&client);
         this->broadcast(channel, formatBroadcastMessage(client.getTarget(), "JOIN", channel.getName()));
         return;
     }
@@ -111,7 +110,6 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName, con
     if (!channelPtr) {
         createChannel(channelName, "", key, &client);
         Channel &channel = this->channels.rbegin()->second;
-        channel.addOperator(&client);
         this->broadcast(channel, formatBroadcastMessage(client.getTarget(), "JOIN", channel.getName()));
         return;
     }

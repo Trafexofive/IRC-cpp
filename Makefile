@@ -79,7 +79,7 @@ ifeq ($(UNAME_S),Linux)
 endif
 
 # Environment Variables
-PORT ?= 22200
+PORT ?= 16000
 PASSWORD ?= Alilepro135!
 ARGS := $(PORT) $(PASSWORD)
 

@@ -46,10 +46,12 @@ struct CHANNEL {
 struct ClientEntry {
 
   enum TYPE { SUBSCRIBED, UNSUBSCRIBED };
-  ClientEntry() : state(SUBSCRIBED), client(NULL) {}
+  ClientEntry() : state(UNSUBSCRIBED), isOperator(false), client(NULL) {}
 
   TYPE state;
 
+  // bool isInvited;
+  bool isOperator;
   Client *client;
 };
 
@@ -103,7 +105,8 @@ public:
   bool isKeyMode() const { return _settings.keyMode; }
   // invitee management
   bool isInvited(Client *client) {
-    if (std::find(_Invitees.begin(), _Invitees.end(), client) != _Invitees.end())
+    if (std::find(_Invitees.begin(), _Invitees.end(), client) !=
+        _Invitees.end())
       return true;
     else
       return false;
@@ -153,6 +156,7 @@ public:
   // }
 
   Client *getClient(const std::string &nick) {
+
     for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
          it != _Registry.end(); ++it) {
       if (it->second.client->getNickName() == nick &&
@@ -179,10 +183,8 @@ public:
   }
 
   void removeMember(Client *client);
-  // this is a better approach to the above method O(1) instead of O(n)
-  // bool isMember(Client *client) const {
+
   bool isMember(Client &client) const {
-    // maybe use if (fd == -1) // just incase
     int fd = client.getFd();
     if (_Registry.find(fd) != _Registry.end() &&
         _Registry.at(fd).state == ClientEntry::SUBSCRIBED)
@@ -197,15 +199,19 @@ public:
 
   void addMember(Client *member);
 
-    // operator management
-    bool isOperator(Client *member);
-    void addOperator(Client *member);
-    void removeOperator(Client *member);
+  // operator management
+  // bool isOperator(Client *member);
+  bool isOperator(const std::string &nick);
+  void addOperator(Client *member);
+  void removeOperator(Client *member);
 
   // clean up methods
   void clearMembers();
+  // Registry management methods
   void CleanRegistry();
 
+  ClientEntry *getEntry(const std::string &nick);
+  // ClientEntry &getEntry(Client *client);
   // General methods
   void broadcast(const std::string &message);
   void broadcastException(const std::string &message, Client *client);

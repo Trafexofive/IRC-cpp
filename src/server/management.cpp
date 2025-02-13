@@ -37,7 +37,7 @@ void CoreServer::disableChannel(const std::string &name) {
   }
   channel->setChannelType(CHANNEL::EMPTY);
   // channel->clear();
-  // channel->CleanRegistry();
+  channel->CleanRegistry();
   _serverStats.totalChannels--;
 }
 
@@ -109,8 +109,15 @@ void CoreServer::displayChannelTable() {
     printServerMessage("INFO", oss.str());
   }
 
+  displayRegisteredClientStats();
+}
+
+void CoreServer::displayRegisteredClientStats() {
   printLine();
-  printServerMessage("INFO", "REGISTERED USERS: " +
-                                 numberToString(_serverStats.totalClients));
+for (std::map<int, Client>::iterator it = clients.begin(); it != clients.end();
+       ++it) {
+    if (it->second.isRegistered()) 
+        printServerMessage("INFO", "Client @fd: " + numberToString(it->first) + " and mask: " + it->second.getNickName() + " is connected");
+}
   printLine();
 }

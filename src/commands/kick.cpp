@@ -48,7 +48,7 @@ void CoreServer::cmdKick(int fd, std::vector<std::string> &args) {
         //  client.setResponse(formatResponse(ERR_NOTONCHANNEL, args[1] + "
         //  :You're not on that channel"));
         return;
-      } else if (channel->isOperator(&client)) {
+      } else if (channel->isOperator(client.getNickName())) {
         // kick target from channel
         kickUserFromChannel(channel, fd, target, "");
         return;

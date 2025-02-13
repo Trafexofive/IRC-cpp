@@ -64,7 +64,7 @@ void CoreServer::cmdTopic(int fd, std::vector<std::string> &args)
 		appendArgs(args, parsedMessage, 2);
 		if (containsMessage(parsedMessage) && !(parsedMessage.size() == 1))
 		{
-            if (channel->isTopicMode() && !(channel->isOperator(&client)))
+            if (channel->isTopicMode() && !(channel->isOperator(client.getNickName())))
             {
                 client.setResponse(formatChannelResponse(channel->getName(), client.getTarget(), ERR_CHANOPRIVSNEEDED,
                 "You're not an operator"));

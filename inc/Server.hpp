@@ -115,7 +115,7 @@ private:
   // }
   void TickCycle() {
     // we can give up on this for now
-    if (_serverStats.tick == _serverStats.tickRate) {
+    // if (_serverStats.tick == _serverStats.tickRate) {
       printServerMessage("SYSTEM", "Tick Cycle Initiated");
       printServerMessage("SYSTEM", "Cleaning up Server ...");
       // Execute state-based operations
@@ -125,10 +125,10 @@ private:
       purgeDisconnectedClients();
 
       purgeEmptyChannels();
-      UpdateUptime();
-      _serverStats.tick = 0;
-    } else
-      _serverStats.tick++;
+      // UpdateUptime();
+    //   _serverStats.tick = 0;
+    // } else
+    //   _serverStats.tick++;
   }
 
   // Socket and server initialization
@@ -182,21 +182,22 @@ private:
 
   bool isChannel(const std::string &name);
 
-void unsubFromChannels(int fd) {
+  void unsubFromChannels(int fd) {
     if (isClientDisconnected(fd))
-        return;
+      return;
 
     for (std::map<std::string, Channel>::iterator it = channels.begin();
          it != channels.end(); ++it) {
-        if (it->second.isEmpty())
-            continue;
-        // Access client using the address of the client in the clients map.
-        if (it->second.isMember(clients[fd])) {
-            printServerMessage("INFO", "Removing client from channel " + it->second.getName());
-            it->second.removeMember(&clients[fd]);
-        }
+      if (it->second.isEmpty())
+        continue;
+      // Access client using the address of the client in the clients map.
+      if (it->second.isMember(clients[fd])) {
+        printServerMessage("INFO", "Removing client from channel " +
+                                       it->second.getName());
+        it->second.removeMember(&clients[fd]);
+      }
     }
-}
+  }
   // privmsg helpers client && channel
   void send_message_to_channel(int fd, const std::string &channel,
                                const std::string &message);
@@ -215,7 +216,6 @@ public:
   // Constructor and destructor
   CoreServer(std::string port, std::string password);
 
-
   ~CoreServer() {
 
     for (std::vector<struct pollfd>::iterator it = fds.begin(); it != fds.end();
@@ -230,7 +230,6 @@ public:
 
   // Utility methods
   Channel *getChannel(const std::string &name);
-
 
   void removeChannel(const Channel &channel) {
     for (std::map<std::string, Channel>::iterator it = channels.begin();
@@ -258,7 +257,8 @@ public:
              channel.getRegistry().begin();
          it != channel.getRegistry().end(); ++it) {
 
-    if (it->second.state == ClientEntry::SUBSCRIBED && !it->second.client->isDisconnected()) {
+      if (it->second.state == ClientEntry::SUBSCRIBED &&
+          !it->second.client->isDisconnected()) {
         it->second.client->setResponse(message);
         this->WriteEvent(it->first);
       }
@@ -280,7 +280,6 @@ public:
       }
     }
   }
-
 
   void broadcastChannelsException(const std::string &message, Client *client) {
     for (std::map<std::string, Channel>::iterator it = channels.begin();
@@ -330,6 +329,9 @@ public:
     _serverStats.totalChannels--;
   }
 
+// Display / Debug
+
+void displayRegisteredClientStats() ;
 };
 
 // Non-member functions for validation
