@@ -1,216 +1,3 @@
-// #include "../../inc/Server.hpp"
-//
-// #define ERR_NEEDMOREPARAMS "461"
-// #define ERR_NOPRIVILEGES "481"
-// #define ERR_NOSUCHCHANNEL "403"
-// #define ERR_CHANOPRIVSNEEDED "482"
-// #define RPL_CHANNELMODEIS "324"
-// #define RPL_UMODEIS "221"
-//
-//
-// void CoreServer::cmdMode(int fd, std::vector<std::string> &args) {
-//     if (isClientDisconnected(fd)) {
-//         return;
-//     }
-//
-//     if (args.size() < 2) {
-//         clients[fd].setResponse(
-//             formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
-//         return;
-//     }
-//
-//     std::string target = args[1];
-//     // Client *client = &clients[fd];
-//
-//     // Channel mode handling
-//     if (target[0] == '#') {
-//         Channel *channel = getChannel(target);
-//         if (!channel) {
-//             printServerMessage("ERROR", "MODE failed: Channel not found");
-//             clients[fd].setResponse(formatResponse(ERR_NOSUCHCHANNEL, target + " :No such channel"));
-//             return;
-//         }
-//
-//         // If no mode specified, return the current channel mode
-//         if (args.size() == 2) {
-//             clients[fd].setResponse(formatResponse(RPL_CHANNELMODEIS, target + " " + channel->getMode()));
-//             return;
-//         }
-//         // Only channel operators can change channel modes
-//         if (!channel->isOperator(clients[fd].getNickName())) {
-//             clients[fd].setResponse(
-//                 formatResponse(ERR_CHANOPRIVSNEEDED, "MODE :You're not an operator"));
-//             return;
-//         }
-//
-//
-//         std::string mode = args[2];
-//         if (mode.empty()) {
-//             clients[fd].setResponse(
-//                 formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
-//             return;
-//         }
-//
-//         // Accumulate responses for each mode change
-//         std::string finalResponse;
-//
-//         // For modes that require an extra parameter (like 'o', 'k', 'l'), use a moving index
-//         size_t argIndex = 3;
-//
-//         // Handle add mode ('+')
-//         if (mode[0] == '+') {
-//             for (size_t i = 1; i < mode.size(); i++) {
-//                 switch (mode[i]) {
-//                     case 'o': {
-//                         if (argIndex >= args.size()) {
-//                             clients[fd].setResponse(
-//                                 formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
-//                             return;
-//                         }
-//                         std::string nick = args[argIndex++];
-//                         Client* targetClient = channel->getClient(nick);
-//                         if (!targetClient) {
-//                             clients[fd].setResponse(formatResponse(ERR_NOSUCHNICK, nick + " :Target Not on Channel"));
-//                             return;
-//                         }
-//                         // Client &client = getClient(nick);
-//                         // Client *targetClient = &client;
-//                         printServerMessage("DEBUG", "targetClient: " + targetClient->getNickName() + " nick: " + nick + " fd: " + numberToString(targetClient->getFd()));
-//                         if (!targetClient) {
-//                             clients[fd].setResponse(formatResponse(ERR_NOSUCHNICK, nick + " :No such nick"));
-//                             return;
-//                         }
-//                         if (channel->isOperator(targetClient->getNickName())) {
-//                             clients[fd].setResponse(
-//                                 formatResponse(ERR_CHANOPRIVSNEEDED, nick + " :is already a channel operator"));
-//                             return;
-//                         }
-//                         channel->addOperator(targetClient);
-//                         finalResponse += formatResponse(RPL_UMODEIS, "+o " + nick) + "\n";
-//                         break;
-//                     }
-//                     case 'i': {
-//                         channel->setInviteMode(true);
-//                         finalResponse += formatResponse(RPL_UMODEIS, "+i") + "\n";
-//                         break;
-//                     }
-//                     case 't': {
-//                         channel->setTopicMode(true);
-//                         finalResponse += formatResponse(RPL_UMODEIS, "+t") + "\n";
-//                         break;
-//                     }
-//                     case 'k': {
-//                         if (argIndex >= args.size()) {
-//                             clients[fd].setResponse(
-//                                 formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
-//                             return;
-//                         }
-//                         std::string key = args[argIndex++];
-//                         if (key.empty()) {
-//                             clients[fd].setResponse(
-//                                 formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters +k"));
-//                             return;
-//                         }
-//                         channel->setPassword(key);
-//                         channel->setKeyMode(true);
-//                         channel->setChannelType(CHANNEL::PRIVATE);
-//                         printServerMessage("DEBUG", "Channel key set");
-//                         finalResponse += formatResponse(RPL_UMODEIS, "+k " + key) + "\n";
-//                         break;
-//                     }
-//                     case 'l': {
-//                         if (argIndex >= args.size()) {
-//                             clients[fd].setResponse(
-//                                 formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
-//                             return;
-//                         }
-//                         std::string limitStr = args[argIndex++];
-//                         std::size_t limit = static_cast<std::size_t>(atoi(limitStr.c_str()));
-//                         if (limit <= 0) {
-//                             clients[fd].setResponse(
-//                                 formatResponse(ERR_NEEDMOREPARAMS, "MODE :Invalid limit value"));
-//                             return;
-//                         }
-//                         channel->setMemberLimit(limit);
-//                         channel->setLimitMode(true);
-//                         finalResponse += formatResponse(RPL_UMODEIS, "+l " + limitStr) + "\n";
-//                         break;
-//                     }
-//                     default: {
-//                         clients[fd].setResponse(
-//                             formatResponse(ERR_UNKNOWNMODE, std::string(1, mode[i]) + " :is not a recognised channel mode"));
-//                         return;
-//                     }
-//                 }
-//             }
-//             clients[fd].setResponse(finalResponse);
-//             return;
-//         }
-//         // Handle remove mode ('-')
-//         else if (mode[0] == '-') {
-//             for (size_t i = 1; i < mode.size(); i++) {
-//                 switch (mode[i]) {
-//                     case 'o': {
-//                         if (argIndex >= args.size()) {
-//                             clients[fd].setResponse(
-//                                 formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
-//                             return;
-//                         }
-//                         std::string nick = args[argIndex++];
-//                         Client* targetClient = channel->getClient(nick);
-//                         if (!targetClient) {
-//                             clients[fd].setResponse(formatResponse(ERR_NOSUCHNICK, nick + " :No such nick"));
-//                             return;
-//                         }
-//                         if (!channel->isOperator(targetClient->getNickName())) {
-//                             clients[fd].setResponse(
-//                                 formatResponse(ERR_CHANOPRIVSNEEDED, nick + " :is not a channel operator"));
-//                             return;
-//                         }
-//                         channel->removeOperator(targetClient);
-//                         finalResponse += formatResponse(RPL_UMODEIS, "-o " + nick) + "\n";
-//                         break;
-//                     }
-//                     case 'i': {
-//                         channel->setInviteMode(false);
-//                         finalResponse += formatResponse(RPL_UMODEIS, "-i") + "\n";
-//                         break;
-//                     }
-//                     case 't': {
-//                         channel->setTopicMode(false);
-//                         finalResponse += formatResponse(RPL_UMODEIS, "-t") + "\n";
-//                         break;
-//                     }
-//                     case 'k': {
-//                         channel->setPassword("");
-//                         channel->setKeyMode(false);
-//                         channel->setChannelType(CHANNEL::PUBLIC);
-//                         printServerMessage("DEBUG", "Channel key removed");
-//                         finalResponse += formatResponse(RPL_UMODEIS, "-k") + "\n";
-//                         break;
-//                     }
-//                     case 'l': {
-//                         channel->setMemberLimit(0);
-//                         channel->setLimitMode(false);
-//                         finalResponse += formatResponse(RPL_UMODEIS, "-l") + "\n";
-//                         break;
-//                     }
-//                     default: {
-//                         clients[fd].setResponse(
-//                             formatResponse(ERR_UNKNOWNMODE, std::string(1, mode[i]) + " :is not a recognised channel mode"));
-//                         return;
-//                     }
-//                 }
-//             }
-//             clients[fd].setResponse(finalResponse);
-//             return;
-//         }
-//     } else {
-//         // User mode or other types can be handled here if needed. non-mandatory
-//     }
-// }
-
-
 #include "../../inc/Server.hpp"
 
 #define ERR_NEEDMOREPARAMS "461"
@@ -218,8 +5,8 @@
 #define ERR_NOSUCHCHANNEL "403"
 #define ERR_CHANOPRIVSNEEDED "482"
 #define RPL_CHANNELMODEIS "324"
-#define RPL_UMODEIS "221"
-
+#define ERR_UNKNOWNMODE "472"
+#define ERR_NOSUCHNICK "401"
 
 void CoreServer::cmdMode(int fd, std::vector<std::string> &args) {
     if (isClientDisconnected(fd)) {
@@ -233,192 +20,205 @@ void CoreServer::cmdMode(int fd, std::vector<std::string> &args) {
     }
 
     std::string target = args[1];
-    // Client *client = &clients[fd];
-
+    
     // Channel mode handling
     if (target[0] == '#') {
         Channel *channel = getChannel(target);
         if (!channel) {
             printServerMessage("ERROR", "MODE failed: Channel not found");
-            clients[fd].setResponse(formatResponse(ERR_NOSUCHCHANNEL, target + " :No such channel"));
+            clients[fd].setResponse(
+                formatResponse(ERR_NOSUCHCHANNEL, target + " :No such channel"));
             return;
         }
 
-        // If no mode specified, return the current channel mode
+        // If no mode specified, return the current channel mode.
         if (args.size() == 2) {
-            clients[fd].setResponse(formatResponse(RPL_CHANNELMODEIS, target + " " + channel->getMode()));
+            clients[fd].setResponse(
+                formatResponse(RPL_CHANNELMODEIS, target + " " + channel->getMode()));
             return;
         }
-        // Only channel operators can change channel modes
+        // Only channel operators can change channel modes.
         if (!channel->isOperator(clients[fd].getNickName())) {
             clients[fd].setResponse(
                 formatResponse(ERR_CHANOPRIVSNEEDED, "MODE :You're not an operator"));
             return;
         }
 
-
-        std::string mode = args[2];
-        if (mode.empty()) {
+        std::string modeCommand = args[2];
+        if (modeCommand.empty()) {
             clients[fd].setResponse(
                 formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
             return;
         }
 
-        // Accumulate responses for each mode change
-        std::string finalResponse;
+        printServerMessage("INFO", "Client " + clients[fd].getNickName() + " is authorized to use MODE");
 
-        // For modes that require an extra parameter (like 'o', 'k', 'l'), use a moving index
-        size_t argIndex = 3;
+        // We'll accumulate the mode letters and their parameters.
+        std::string modeSign;               // Either "+" or "-"
+        std::string modeLetters;            // E.g. "oitk"
+        std::vector<std::string> modeParams;  // Parameters for those modes, if any.
 
-        // Handle add mode ('+')
-        if (mode[0] == '+') {
-            for (size_t i = 1; i < mode.size(); i++) {
-                switch (mode[i]) {
-                    case 'o': {
-                        if (argIndex >= args.size()) {
+        size_t argIndex = 3; // starting index for mode parameters
+
+        // The mode string should start with a '+' or '-' sign.
+        if (modeCommand[0] == '+' || modeCommand[0] == '-') {
+            modeSign = modeCommand.substr(0, 1); // save the sign
+            // Process each mode letter after the sign.
+            for (size_t i = 1; i < modeCommand.size(); i++) {
+                char modeChar = modeCommand[i];
+                if (modeSign == "+") {
+                    switch (modeChar) {
+                        case 'o': {
+                            if (argIndex >= args.size()) {
+                                clients[fd].setResponse(
+                                    formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
+                                return;
+                            }
+                            std::string nick = args[argIndex++];
+                            Client* targetClient = channel->getClient(nick);
+                            if (!targetClient) {
+                                clients[fd].setResponse(
+                                    formatResponse(ERR_NOSUCHNICK, nick + " :Target Not on Channel"));
+                                return;
+                            }
+                            if (channel->isOperator(targetClient->getNickName())) {
+                                clients[fd].setResponse(
+                                    formatResponse(ERR_CHANOPRIVSNEEDED, nick + " :is already a channel operator"));
+                                return;
+                            }
+                            channel->addOperator(targetClient);
+                            modeLetters.push_back('o');
+                            modeParams.push_back(nick);
+                            break;
+                        }
+                        case 'i': {
+                            channel->setInviteMode(true);
+                            modeLetters.push_back('i');
+                            break;
+                        }
+                        case 't': {
+                            channel->setTopicMode(true);
+                            modeLetters.push_back('t');
+                            break;
+                        }
+                        case 'k': {
+                            if (argIndex >= args.size()) {
+                                clients[fd].setResponse(
+                                    formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
+                                return;
+                            }
+                            std::string key = args[argIndex++];
+                            if (key.empty()) {
+                                clients[fd].setResponse(
+                                    formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters +k"));
+                                return;
+                            }
+                            channel->setPassword(key);
+                            channel->setKeyMode(true);
+                            channel->setChannelType(CHANNEL::PRIVATE);
+                            modeLetters.push_back('k');
+                            modeParams.push_back(key);
+                            break;
+                        }
+                        case 'l': {
+                            if (argIndex >= args.size()) {
+                                clients[fd].setResponse(
+                                    formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
+                                return;
+                            }
+                            std::string limitStr = args[argIndex++];
+                            std::size_t limit = static_cast<std::size_t>(atoi(limitStr.c_str()));
+                            if (limit <= 0) {
+                                clients[fd].setResponse(
+                                    formatResponse(ERR_NEEDMOREPARAMS, "MODE :Invalid limit value"));
+                                return;
+                            }
+                            channel->setMemberLimit(limit);
+                            channel->setLimitMode(true);
+                            modeLetters.push_back('l');
+                            modeParams.push_back(limitStr);
+                            break;
+                        }
+                        default: {
                             clients[fd].setResponse(
-                                formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
+                                formatResponse(ERR_UNKNOWNMODE, std::string(1, modeChar) + " :is not a recognised channel mode"));
                             return;
                         }
-                        std::string nick = args[argIndex++];
-                        Client* targetClient = channel->getClient(nick);
-                        if (!targetClient) {
-                            clients[fd].setResponse(formatResponse(ERR_NOSUCHNICK, nick + " :Target Not on Channel"));
-                            return;
-                        }
-                        // Client &client = getClient(nick);
-                        // Client *targetClient = &client;
-                        printServerMessage("DEBUG", "targetClient: " + targetClient->getNickName() + " nick: " + nick + " fd: " + numberToString(targetClient->getFd()));
-                        if (!targetClient) {
-                            clients[fd].setResponse(formatResponse(ERR_NOSUCHNICK, nick + " :No such nick"));
-                            return;
-                        }
-                        if (channel->isOperator(targetClient->getNickName())) {
-                            clients[fd].setResponse(
-                                formatResponse(ERR_CHANOPRIVSNEEDED, nick + " :is already a channel operator"));
-                            return;
-                        }
-                        channel->addOperator(targetClient);
-                        finalResponse += formatResponse(RPL_CHANNELMODEIS, target + " +o " + nick) + "\n";
-                        break;
                     }
-                    case 'i': {
-                        channel->setInviteMode(true);
-                        finalResponse += formatResponse(RPL_CHANNELMODEIS, target + " +i") + "\n";
-                        break;
-                    }
-                    case 't': {
-                        channel->setTopicMode(true);
-                        finalResponse += formatResponse(RPL_CHANNELMODEIS, target + " +t") + "\n";
-                        break;
-                    }
-                    case 'k': {
-                        if (argIndex >= args.size()) {
+                }
+                else if (modeSign == "-") {
+                    switch (modeChar) {
+                        case 'o': {
+                            if (argIndex >= args.size()) {
+                                clients[fd].setResponse(
+                                    formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
+                                return;
+                            }
+                            std::string nick = args[argIndex++];
+                            Client* targetClient = channel->getClient(nick);
+                            if (!targetClient) {
+                                clients[fd].setResponse(
+                                    formatResponse(ERR_NOSUCHNICK, nick + " :No such nick"));
+                                return;
+                            }
+                            if (!channel->isOperator(targetClient->getNickName())) {
+                                clients[fd].setResponse(
+                                    formatResponse(ERR_CHANOPRIVSNEEDED, nick + " :is not a channel operator"));
+                                return;
+                            }
+                            channel->removeOperator(targetClient);
+                            modeLetters.push_back('o');
+                            modeParams.push_back(nick);
+                            break;
+                        }
+                        case 'i': {
+                            channel->setInviteMode(false);
+                            modeLetters.push_back('i');
+                            break;
+                        }
+                        case 't': {
+                            channel->setTopicMode(false);
+                            modeLetters.push_back('t');
+                            break;
+                        }
+                        case 'k': {
+                            channel->setPassword("");
+                            channel->setKeyMode(false);
+                            channel->setChannelType(CHANNEL::PUBLIC);
+                            modeLetters.push_back('k');
+                            break;
+                        }
+                        case 'l': {
+                            channel->setMemberLimit(0);
+                            channel->setLimitMode(false);
+                            modeLetters.push_back('l');
+                            break;
+                        }
+                        default: {
                             clients[fd].setResponse(
-                                formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
+                                formatResponse(ERR_UNKNOWNMODE, std::string(1, modeChar) + " :is not a recognised channel mode"));
                             return;
                         }
-                        std::string key = args[argIndex++];
-                        if (key.empty()) {
-                            clients[fd].setResponse(
-                                formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters +k"));
-                            return;
-                        }
-                        channel->setPassword(key);
-                        channel->setKeyMode(true);
-                        channel->setChannelType(CHANNEL::PRIVATE);
-                        printServerMessage("DEBUG", "Channel key set");
-                        finalResponse += formatResponse(RPL_CHANNELMODEIS, target + " +k " + key) + "\n";
-                        break;
-                    }
-                    case 'l': {
-                        if (argIndex >= args.size()) {
-                            clients[fd].setResponse(
-                                formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
-                            return;
-                        }
-                        std::string limitStr = args[argIndex++];
-                        std::size_t limit = static_cast<std::size_t>(atoi(limitStr.c_str()));
-                        if (limit <= 0) {
-                            clients[fd].setResponse(
-                                formatResponse(ERR_NEEDMOREPARAMS, "MODE :Invalid limit value"));
-                            return;
-                        }
-                        channel->setMemberLimit(limit);
-                        channel->setLimitMode(true);
-                        finalResponse += formatResponse(RPL_CHANNELMODEIS, target + " +l " + limitStr) + "\n";
-                        break;
-                    }
-                    default: {
-                        clients[fd].setResponse(
-                            formatResponse(ERR_UNKNOWNMODE, std::string(1, mode[i]) + " :is not a recognised channel mode"));
-                        return;
                     }
                 }
             }
-            clients[fd].setResponse(finalResponse);
-            return;
-        }
-        // Handle remove mode ('-')
-        else if (mode[0] == '-') {
-            for (size_t i = 1; i < mode.size(); i++) {
-                switch (mode[i]) {
-                    case 'o': {
-                        if (argIndex >= args.size()) {
-                            clients[fd].setResponse(
-                                formatResponse(ERR_NEEDMOREPARAMS, "MODE :Not enough parameters"));
-                            return;
-                        }
-                        std::string nick = args[argIndex++];
-                        Client* targetClient = channel->getClient(nick);
-                        if (!targetClient) {
-                            clients[fd].setResponse(formatResponse(ERR_NOSUCHNICK, nick + " :No such nick"));
-                            return;
-                        }
-                        if (!channel->isOperator(targetClient->getNickName())) {
-                            clients[fd].setResponse(
-                                formatResponse(ERR_CHANOPRIVSNEEDED, nick + " :is not a channel operator"));
-                            return;
-                        }
-                        channel->removeOperator(targetClient);
-                        finalResponse += formatResponse(RPL_CHANNELMODEIS, target + " -o " + nick) + "\n";
-                        break;
-                    }
-                    case 'i': {
-                        channel->setInviteMode(false);
-                        finalResponse += formatResponse(RPL_CHANNELMODEIS, target + " -i") + "\n";
-                        break;
-                    }
-                    case 't': {
-                        channel->setTopicMode(false);
-                        finalResponse += formatResponse(RPL_CHANNELMODEIS, target + " -t") + "\n";
-                        break;
-                    }
-                    case 'k': {
-                        channel->setPassword("");
-                        channel->setKeyMode(false);
-                        channel->setChannelType(CHANNEL::PUBLIC);
-                        printServerMessage("DEBUG", "Channel key removed");
-                        finalResponse += formatResponse(RPL_CHANNELMODEIS, target + " -k") + "\n";
-                        break;
-                    }
-                    case 'l': {
-                        channel->setMemberLimit(0);
-                        channel->setLimitMode(false);
-                        finalResponse += formatResponse(RPL_CHANNELMODEIS, target + " -l") + "\n";
-                        break;
-                    }
-                    default: {
-                        clients[fd].setResponse(
-                            formatResponse(ERR_UNKNOWNMODE, std::string(1, mode[i]) + " :is not a recognised channel mode"));
-                        return;
+
+            // Compose the final mode string.
+            // The format is: "<target> <sign><letters> [params...]"
+            std::string finalModeStr = target + " " + modeSign + modeLetters;
+            if (!modeParams.empty()) {
+                finalModeStr += " ";
+                for (size_t i = 0; i < modeParams.size(); i++) {
+                    finalModeStr += modeParams[i];
+                    if (i < modeParams.size() - 1) {
+                        finalModeStr += " ";
                     }
                 }
             }
-            clients[fd].setResponse(finalResponse);
+            clients[fd].setResponse(formatBroadcastMessage(clients[fd].getTarget(), "MODE", finalModeStr));
             return;
         }
     } else {
-        // User mode or other types can be handled here if needed. non-mandatory
+        // Handle user mode or other types if needed.
     }
 }

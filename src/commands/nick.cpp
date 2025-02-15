@@ -13,7 +13,13 @@
 #include "../../inc/Server.hpp"
 
 void CoreServer::cmdNick(int fd, std::vector<std::string> &args) {
-  if (isClientDisconnected(fd) || !isClientAuthenticated(fd)) {
+  if (isClientDisconnected(fd)) {
+    return;
+  }
+  if (!isClientAuthenticated(fd)) {
+    printServerMessage("ERROR",
+                       "NICK command failed: Client already authenticated");
+    sendNotice(fd, "You need to authenticate first, use PASS <password>");
     return;
   }
   if (args.size() < 2) {
@@ -39,7 +45,8 @@ void CoreServer::cmdNick(int fd, std::vector<std::string> &args) {
   for (std::map<int, Client>::iterator it = clients.begin();
        it != clients.end(); ++it) {
     if (it->first != fd && it->second.getNickName() == nickname) {
-        printServerMessage("ERROR", "NICK command failed: Nickname already in use");
+      printServerMessage("ERROR",
+                         "NICK command failed: Nickname already in use");
       clients[fd].setResponse(formatResponse(
           "433", "* " + nickname + " :Nickname is already in use"));
       return;
@@ -54,14 +61,16 @@ void CoreServer::cmdNick(int fd, std::vector<std::string> &args) {
   if (oldNick.empty() && client.isAuthenticated()) {
 
     std::string response = ":" + client.getTarget() + " 001 " + nickname +
-                           " :Welcome to the Internet Relay Network " + nickname +
-                           "\r\n";
+                           " :Welcome to the Internet Relay Network " +
+                           nickname + "\r\n";
     client.setResponse(response);
-    printServerMessage("INFO", "Client registered @fd: " + numberToString(fd));
+    printServerMessage("INFO", "Client registered @fd: " + numberToString(fd) + " with nickname: " + nickname);
   } else if (isClientRegistered(fd)) {
-    printServerMessage("INFO", "Client changed nickname @fd: " + numberToString(fd));
+    printServerMessage("INFO",
+                    "Client changed nickname @fd: " + numberToString(fd) + " from " + oldNick + " to " + nickname);
     std::string response =
         ":" + client.getTarget() + " NICK :" + nickname + "\r\n";
     client.setResponse(response);
   }
+
 }

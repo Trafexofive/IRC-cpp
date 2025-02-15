@@ -80,6 +80,8 @@ public:
   Channel(const std::string &name, const std::string &topic, Client *client);
   Channel(const std::string &name, const std::string &topic,
           const std::string &password, Client *client);
+
+  // Channel(const Channel &src);
   // Destructor
   ~Channel();
 

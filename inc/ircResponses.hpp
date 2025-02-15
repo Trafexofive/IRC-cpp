@@ -178,9 +178,9 @@
 
 // Response Macros
 
-#define formatCommandResponse(source, code, message) ":" + source + " " + SERVER_NAME + code + " " + message + CRLF
+// #define formatCommandResponse(source, code, message) ":" + source + " " + SERVER_NAME + code + " " + message + CRLF
 
-#define formatClientResponse(source, code, message) SERVER_NAME + source + " " + code + " " + message + CRLF
+// #define formatClientResponse(source, code, message) SERVER_NAME + + code + " " + source + " " + message + CRLF
 
 #define formatChannelResponse(channel, source, code, message) SERVER_NAME + code + " " + source + " " + channel + " :" + message + CRLF
 

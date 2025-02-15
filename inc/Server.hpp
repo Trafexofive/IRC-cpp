@@ -82,6 +82,13 @@ struct Stats {
     printServerMessage("INFO", "Tick: " + numberToString(tick));
     printServerMessage("INFO", "---------------------------------");
   }
+
+  void UpdateUptime() {
+    if (uptime == 0)
+      uptime = time(0);
+    time_t now = time(NULL);
+    uptime = now - uptime;
+  }
 };
 
 class CoreServer {
@@ -90,42 +97,46 @@ private:
   Stats _serverStats;
 
   std::map<int, Client> clients;
-
   std::vector<struct pollfd> fds;
 
-  // std::vector<Channel> channels;
-
   std::map<std::string, Channel> channels; // in favor of quick lookup and
-  // time complexity
-
   std::map<std::string, CommandHandler> commands;
 
   // TickRate methods
 
-  void UpdateUptime() {
-    if (_serverStats.uptime == 0)
-      _serverStats.uptime = time(0);
-    time_t now = time(NULL);
-    _serverStats.uptime = now - _serverStats.uptime;
+  void UpdateServerStats() {
+    // should be after every tick
+    _serverStats.totalClients = clients.size();
+    _serverStats.totalChannels = channels.size();
+    _serverStats.UpdateUptime();
+    // _serverStats.totalMessages = 0;
   }
 
-  // void UpdateServerStats()
-  // {
-  //
-  // }
+  // Ill think about implementing this later
+  // void checkClientTimeouts() {
+  //     for (std::map<int, Client>::iterator it = clients.begin();
+  //          it != clients.end(); ++it) {
+  //       if (it->second.isDisconnected())
+  //         continue;
+  //       if (it->second.isTimedOut()) {
+  //         printServerMessage("INFO", "Client " + it->second.getNick() +
+  //                                        " has timed out");
+  //         handleDisconnect(it->first);
+  //       }
+  //     }
+  //   }
   void TickCycle() {
     // we can give up on this for now
     // if (_serverStats.tick == _serverStats.tickRate) {
-      printServerMessage("SYSTEM", "Tick Cycle Initiated");
-      printServerMessage("SYSTEM", "Cleaning up Server ...");
-      // Execute state-based operations
-      // CheckClientTimeouts();
-      // CleanEmptyChannels();
-      // UpdateServerStats();
-      purgeDisconnectedClients();
+    printServerMessage("SYSTEM", "Tick Cycle Initiated");
+    printServerMessage("SYSTEM", "Cleaning up Server ...");
+    // Execute state-based cleanup
 
-      purgeEmptyChannels();
-      // UpdateUptime();
+    // CheckClientTimeouts();
+    purgeDisconnectedClients();
+
+    purgeEmptyChannels();
+    UpdateServerStats();
     //   _serverStats.tick = 0;
     // } else
     //   _serverStats.tick++;
@@ -176,28 +187,14 @@ private:
   // channel management methods
   void kickUserFromChannel(Channel *channel, int fd, const std::string &target,
                            const std::string &reason);
+
   void joinChannel(Client &client, const std::string &channelName);
   void joinChannel(Client &client, const std::string &channelName,
                    const std::string &key);
 
   bool isChannel(const std::string &name);
 
-  void unsubFromChannels(int fd) {
-    if (isClientDisconnected(fd))
-      return;
-
-    for (std::map<std::string, Channel>::iterator it = channels.begin();
-         it != channels.end(); ++it) {
-      if (it->second.isEmpty())
-        continue;
-      // Access client using the address of the client in the clients map.
-      if (it->second.isMember(clients[fd])) {
-        printServerMessage("INFO", "Removing client from channel " +
-                                       it->second.getName());
-        it->second.removeMember(&clients[fd]);
-      }
-    }
-  }
+  void unsubFromChannels(int fd) ;
   // privmsg helpers client && channel
   void send_message_to_channel(int fd, const std::string &channel,
                                const std::string &message);
@@ -273,8 +270,7 @@ public:
          it != channel.getRegistry().end(); ++it) {
       if (it->second.state == ClientEntry::SUBSCRIBED &&
           it->second.client != client) {
-        printServerMessage("DEBUG", "Broadcasting exception to client: " +
-                                        it->second.client->getTarget());
+
         it->second.client->setResponse(message);
         this->WriteEvent(it->first);
       }
@@ -297,20 +293,6 @@ public:
     }
   }
 
-  // void broadcastException(const std::string &message, Client *client) {
-  //     printServerMessage("DEBUG", "Broadcasting exception to all clients in
-  //     channel: " + name);
-  //   for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
-  //        it != _Registry.end(); ++it) {
-  //     if (it->second.state == ClientEntry::SUBSCRIBED && it->second.client !=
-  //     client) {
-  //         printServerMessage("DEBUG", "Broadcasting exception to client: " +
-  //         it->second.client->getTarget());
-  //       it->second.client->setResponse(message);
-  //     }
-  //   }
-  // }
-
   void createChannel(const std::string &name, const std::string &topic,
                      const std::string &password, Client *client) {
     channels.insert(std::pair<std::string, Channel>(
@@ -329,9 +311,9 @@ public:
     _serverStats.totalChannels--;
   }
 
-// Display / Debug
+  // Display / Debug
 
-void displayRegisteredClientStats() ;
+  void displayRegisteredClientStats();
 };
 
 // Non-member functions for validation

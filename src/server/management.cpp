@@ -60,8 +60,25 @@ void CoreServer::purgeEmptyChannels() {
 
 void CoreServer::sendNotice(int fd, const std::string &message) {
 
-  clients[fd].setResponse(formatResponse(NOTICE, message));
+  clients[fd].setResponse(formatResponse(NOTICE, " " + message));
 }
+
+  void CoreServer::unsubFromChannels(int fd) {
+    if (isClientDisconnected(fd))
+      return;
+
+    for (std::map<std::string, Channel>::iterator it = channels.begin();
+         it != channels.end(); ++it) {
+      if (it->second.isEmpty())
+        continue;
+      // Access client using the address of the client in the clients map.
+      if (it->second.isMember(clients[fd])) {
+        printServerMessage("INFO", "Removing client from channel " +
+                                       it->second.getName());
+        it->second.removeMember(&clients[fd]);
+      }
+    }
+  }
 
 /* ************************************************************************** */
 /*                       DISPLAY                                              */

@@ -14,6 +14,9 @@
 #include <string>
 
 void CoreServer::cmdPass(int fd, std::vector<std::string> &args) {
+    if (isClientDisconnected(fd)) {
+        return;
+    }
     if (clients[fd].isRegistered()) {
         printServerMessage("ERROR", "PASS command failed: Client already registered");
         clients[fd].setResponse(formatResponse(ERR_ALREADYREG, ":You may not reregister"));
@@ -31,5 +34,4 @@ void CoreServer::cmdPass(int fd, std::vector<std::string> &args) {
     }
     client.setPassWord(args[1]);
     client.setStatus(STATUS::AUTHENTICATED);
-    printServerMessage ("INFO", "Client authenticated @fd: " + numberToString(fd));
 }

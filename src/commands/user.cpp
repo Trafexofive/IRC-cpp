@@ -41,9 +41,6 @@ static void welcomeClient(Client &client) {
   client.setResponse(formatResponse(
       RPL_MYINFO,
       nick + " morpheus-server.ddns.net 1.0 usermodes channelmodes"));
-  // client.setResponse(formatResponse(RPL_ISUPPORT, nick + " CHANTYPES=#
-  // PREFIX=(o)@ CHANMODES=k,l,imnpst :are supported by this server")); Send
-  // MOTD
 }
 
 void CoreServer::cmdUser(int fd, std::vector<std::string> &args) {

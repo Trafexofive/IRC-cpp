@@ -52,7 +52,7 @@ void CoreServer::cmdTopic(int fd, std::vector<std::string> &args)
 	{
 		if (channel->getTopic().empty())
 		{
-			client.setResponse(formatChannelResponse(channelName, client.getNickName(), RPL_NOTOPIC, "No topic is set"));
+			client.setResponse(formatChannelResponse(channelName, client.getTarget(), RPL_NOTOPIC, "No topic is set"));
 			return ;
 		}
 		client.setResponse(formatChannelResponse(channelName, client.getTarget(), RPL_TOPIC, "Channel Topic is: " + channel->getTopic()));
@@ -73,7 +73,7 @@ void CoreServer::cmdTopic(int fd, std::vector<std::string> &args)
 			std::string newTopic = parsedMessage.substr(1);
 
 			channel->setTopic(newTopic);
-			std::string topicMsg = formatResponse(RPL_TOPIC, channelName + newTopic);
+			std::string topicMsg = formatChannelResponse(channelName, client.getTarget(), RPL_TOPIC, newTopic);
 			client.setResponse(topicMsg);
 			printServerMessage("DEBUG", "TOPIC: " + client.getNickName()
 				+ " changed the topic of " + channelName + " to " + newTopic);
@@ -81,7 +81,8 @@ void CoreServer::cmdTopic(int fd, std::vector<std::string> &args)
 		}
 		else if (parsedMessage.size() == 1)
 		{
-			client.setResponse(formatResponse(RPL_TOPIC, channelName + "Resetting Channel topic for " + channelName));
+			// client.setResponse(formatResponse(RPL_TOPIC, channelName + "Resetting Channel topic for " + channelName));
+			client.setResponse(formatChannelResponse(channelName, client.getTarget(), RPL_TOPIC, "TOPIC :Resetting Channel topic for " + channelName));
 			channel->setTopic("");
 		}
 	}

@@ -52,14 +52,22 @@ static JOIN_ARGS parseJoinParams(const std::vector<std::string> &args) {
     return params;
 }
 
+
+// Channel *CoreServer::getChannel(const std::string &name) {
+//     if (channels.find(name) == channels.end()) {
+//         return nullptr;
+//     }
+//     return &channels.at(name);
+// }
+
 void CoreServer::joinChannel(Client &client, const std::string &channelName) {
     Channel *channelPtr = getChannel(channelName);
 
     // If the channel doesn't exist, create it and make the client an operator
     if (!channelPtr) {
         createChannel(channelName, &client);
-        Channel &channel = this->channels.rbegin()->second;
-        this->broadcast(channel, formatBroadcastMessage(client.getTarget(), "JOIN", channel.getName()));
+        Channel &channel = channels.at(channelName);
+        channel.broadcast(formatBroadcastMessage(client.getTarget(), "JOIN", channel.getName()));
         return;
     }
 
@@ -109,8 +117,8 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName, con
     // If the channel doesn't exist, create it and make the client an operator
     if (!channelPtr) {
         createChannel(channelName, "", key, &client);
-        Channel &channel = this->channels.rbegin()->second;
-        this->broadcast(channel, formatBroadcastMessage(client.getTarget(), "JOIN", channel.getName()));
+        Channel &channel = channels.at(channelName);
+        channel.broadcast(formatBroadcastMessage(client.getTarget(), "JOIN", channel.getName()));
         return;
     }
 
@@ -119,7 +127,7 @@ void CoreServer::joinChannel(Client &client, const std::string &channelName, con
     // Check if the client is already a member of the channel
     if (channel.isMember(client)) {
         printServerMessage("WARNING", client.getNickName() + " is already in channel " + channelName);
-        client.setResponse(formatResponse(ERR_USERONCHANNEL, client.getNickName() + " " + channelName + " :is already on channel"));
+        client.setResponse(formatResponse(ERR_USERONCHANNEL, client.getTarget() + " " + channelName + " :is already on channel"));
         return;
     }
 
@@ -180,6 +188,7 @@ void CoreServer::cmdJoin(int fd, std::vector<std::string> &args) {
             key = keys[i];
         }
 
+        printServerMessage("DEBUG", "JOIN " + client.getNickName() + " " + channelNames[i] + " " + key);
         if (key.empty()) {
             joinChannel(client, channelNames[i]);
         } else {

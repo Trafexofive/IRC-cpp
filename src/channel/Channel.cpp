@@ -58,6 +58,18 @@ Channel::Channel(const std::string &name, const std::string &topic,
   addOperator(client);
 }
 
+
+// Channel::Channel(const Channel &src) {
+//
+//   name = src.name;
+//
+//   topic = src.topic;
+//   password = src.password;
+//   _memberCount = src._memberCount;
+//   _settings = src._settings;
+//   _Registry = src._Registry;
+// }
+
 void Channel::CleanRegistry() {
   for (std::map<int, ClientEntry>::iterator it = _Registry.begin();
        it != _Registry.end();) {
@@ -105,6 +117,11 @@ void Channel::addMember(Client *client) {
     return;
   } else if (_Registry[fd].client == client) {
     _Registry[fd].state = ClientEntry::SUBSCRIBED;
+    // this->broadcast(channel, formatBroadcastMessage(client.getTarget(), "JOIN", channel.getName()));
+    // client->setResponse(formatResponse(RPL_TOPIC, name + " :" + topic));
+    // client->setResponse(formatResponse(RPL_NAMREPLY, name + " :" + client->getNickName()));
+    // client->setResponse(formatResponse(RPL_ENDOFNAMES, name + " :End of /NAMES list"));
+    broadcastException(formatBroadcastMessage(client->getNickName(), "JOIN", name), client);
     _memberCount++;
     return;
   }
@@ -206,6 +223,7 @@ Channel *CoreServer::getChannel(const std::string &name) {
   }
   return &it->second;
 }
+
 
 /* ************************************************************************** */
 /*                       SECTION/FUNCTION/NAME                                */
