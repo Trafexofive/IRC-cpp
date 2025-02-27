@@ -219,6 +219,6 @@ void CoreServer::cmdMode(int fd, std::vector<std::string> &args) {
             return;
         }
     } else {
-        // Handle user mode or other types if needed.
+        // Handle user mode or other types if needed. (non mandatory)
     }
 }
