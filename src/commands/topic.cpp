@@ -55,7 +55,7 @@ void CoreServer::cmdTopic(int fd, std::vector<std::string> &args)
 			client.setResponse(formatChannelResponse(channelName, client.getTarget(), RPL_NOTOPIC, "No topic is set"));
 			return ;
 		}
-		client.setResponse(formatChannelResponse(channelName, client.getTarget(), RPL_TOPIC, "Channel Topic is: " + channel->getTopic()));
+		client.setResponse(formatChannelResponse(channelName, client.getTarget(), RPL_TOPIC,  channel->getTopic()));
 		return ;
 	}
 	else if (args.size() > 2)
